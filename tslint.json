@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "tslint:recommended"
+  ],
+  "rules": {
+    "quotemark": [true, "single", "avoid-escape"],
+    "array-type": [true, "generic"],
+    "arrow-parens": false,
+    "trailing-comma": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "interface-name": false,
+    "object-literal-key-quotes": [true, "consistent"],
+    "object-literal-shorthand": false,
+    "no-null-keyword": true,
+    "no-empty-interface": false,
+    "max-line-length": [false],
+    "no-bitwise": false
+  }
+}

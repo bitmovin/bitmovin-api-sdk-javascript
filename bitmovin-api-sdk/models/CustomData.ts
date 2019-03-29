@@ -1,0 +1,25 @@
+import {map} from '../common/Mapper';
+
+/**
+ * @export
+ * @class CustomData
+ */
+export default class CustomData {
+  constructor(obj: any) {
+    this.customData = map(obj.customData);
+    this.createdAt = map(obj.createdAt);
+  }
+
+  /**
+   * User-specific meta data. This can hold a custom JSON object.
+   * @type {{ [key: string]: any; }}
+   * @memberof CustomData
+   */
+  public customData?: { [key: string]: any; };
+  /**
+   * Creation timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof CustomData
+   */
+  public createdAt?: Date;
+}
