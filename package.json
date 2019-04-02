@@ -1,6 +1,6 @@
 {
   "name": "@bitmovin/api-sdk",
-  "version": "1.12.0-alpha.0",
+  "version": "1.12.0-alpha.1",
   "description": "OpenAPI client for @bitmovin/api-sdk",
   "author": "Bitmovin Inc",
   "keywords": [
