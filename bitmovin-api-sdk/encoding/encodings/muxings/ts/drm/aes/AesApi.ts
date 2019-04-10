@@ -24,7 +24,7 @@ export default class AesApi extends BaseAPI {
    * @summary Add AES Encryption to TS Segment
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
-   * @param {AesEncryptionDrm} [aesEncryptionDrm] TODO Add Description
+   * @param {AesEncryptionDrm} [aesEncryptionDrm]
    * @throws {RequiredError}
    * @memberof AesApi
    */

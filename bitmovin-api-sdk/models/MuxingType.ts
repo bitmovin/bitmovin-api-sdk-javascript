@@ -4,6 +4,7 @@
  */
 enum MuxingType {
   FMP4 = 'FMP4',
+  CMAF = 'CMAF',
   MP4 = 'MP4',
   TS = 'TS',
   WEBM = 'WEBM',

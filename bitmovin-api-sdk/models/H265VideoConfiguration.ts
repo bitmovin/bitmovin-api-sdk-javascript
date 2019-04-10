@@ -6,9 +6,9 @@ import EncodingMode from './EncodingMode';
 import ForceFlushMode from './ForceFlushMode';
 import LevelH265 from './LevelH265';
 import LimitReferences from './LimitReferences';
-import LimitTransferUnitDepthRecursionMode from './LimitTransferUnitDepthRecursionMode';
+import LimitTransformUnitDepthRecursionMode from './LimitTransformUnitDepthRecursionMode';
 import MaxCtuSize from './MaxCtuSize';
-import MaxTransferUnitSize from './MaxTransferUnitSize';
+import MaxTransformUnitSize from './MaxTransformUnitSize';
 import MinCodingUnitSize from './MinCodingUnitSize';
 import MotionSearch from './MotionSearch';
 import PixelFormat from './PixelFormat';
@@ -94,11 +94,11 @@ export default class H265VideoConfiguration extends VideoConfiguration {
     this.codingUnitLossless = map(obj.codingUnitLossless);
     this.transformSkip = map(obj.transformSkip);
     this.refineRateDistortionCost = map(obj.refineRateDistortionCost);
-    this.limitTransferUnitDepthRecursion = map(obj.limitTransferUnitDepthRecursion);
+    this.limitTransformUnitDepthRecursion = map(obj.limitTransformUnitDepthRecursion);
     this.noiseReductionIntra = map(obj.noiseReductionIntra);
     this.noiseReductionInter = map(obj.noiseReductionInter);
     this.rateDistortionPenalty = map(obj.rateDistortionPenalty);
-    this.maximumTransferUnitSize = map(obj.maximumTransferUnitSize);
+    this.maximumTransformUnitSize = map(obj.maximumTransformUnitSize);
     this.dynamicRateDistortionStrength = map(obj.dynamicRateDistortionStrength);
     this.ssimRateDistortionOptimization = map(obj.ssimRateDistortionOptimization);
     this.temporalMotionVectorPredictors = map(obj.temporalMotionVectorPredictors);
@@ -507,11 +507,11 @@ export default class H265VideoConfiguration extends VideoConfiguration {
    */
   public refineRateDistortionCost?: boolean;
   /**
-   * Enables early exit from transfer unit depth recursion, for inter coded blocks. Default is DISABLED.
-   * @type {LimitTransferUnitDepthRecursionMode}
+   * Enables early exit from transform unit depth recursion, for inter coded blocks. Default is DISABLED.
+   * @type {LimitTransformUnitDepthRecursionMode}
    * @memberof H265VideoConfiguration
    */
-  public limitTransferUnitDepthRecursion?: LimitTransferUnitDepthRecursionMode;
+  public limitTransformUnitDepthRecursion?: LimitTransformUnitDepthRecursionMode;
   /**
    * An integer value, which denotes strength of noise reduction in intra CUs. Default 0.
    * @type {number}
@@ -525,17 +525,17 @@ export default class H265VideoConfiguration extends VideoConfiguration {
    */
   public noiseReductionInter?: number;
   /**
-   * Penalty for 32x32 intra transfer units in non-I slices. Default DISABLED.
+   * Penalty for 32x32 intra transform units in non-I slices. Default DISABLED.
    * @type {RateDistortionPenaltyMode}
    * @memberof H265VideoConfiguration
    */
   public rateDistortionPenalty?: RateDistortionPenaltyMode;
   /**
-   * Penalty for 32x32 intra transfer units in non-I slices. Default DISABLED.
-   * @type {MaxTransferUnitSize}
+   * Penalty for 32x32 intra transform units in non-I slices. Default DISABLED.
+   * @type {MaxTransformUnitSize}
    * @memberof H265VideoConfiguration
    */
-  public maximumTransferUnitSize?: MaxTransferUnitSize;
+  public maximumTransformUnitSize?: MaxTransformUnitSize;
   /**
    * Increases the RD level at points where quality drops due to VBV rate control enforcement. Default 0.
    * @type {number}

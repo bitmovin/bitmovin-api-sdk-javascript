@@ -1,16 +1,16 @@
 export default interface CencDrmListQueryParams {
 
     /**
-     * TODO Add description
-     * @type {string}
+     * Index of the first item to return, starting at 0. Default is 0
+     * @type {number}
      * @memberof CencDrmListQueryParams
      */
-    offset?: string;
+    offset?: number;
 
     /**
-     * TODO Add description
-     * @type {string}
+     * Maximum number of items to return. Default is 25, maximum is 100
+     * @type {number}
      * @memberof CencDrmListQueryParams
      */
-    limit?: string;
+    limit?: number;
 }

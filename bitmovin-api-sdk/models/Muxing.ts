@@ -1,6 +1,7 @@
 import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import BroadcastTsMuxing from './BroadcastTsMuxing';
+import CmafMuxing from './CmafMuxing';
 import EncodingOutput from './EncodingOutput';
 import Fmp4Muxing from './Fmp4Muxing';
 import Ignoring from './Ignoring';

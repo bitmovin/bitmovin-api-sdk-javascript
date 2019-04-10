@@ -24,7 +24,7 @@ export default class MarlinApi extends BaseAPI {
    * @summary Add Marlin DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {MarlinDrm} [marlinDrm] TODO Add Description
+   * @param {MarlinDrm} [marlinDrm]
    * @throws {RequiredError}
    * @memberof MarlinApi
    */
@@ -41,7 +41,7 @@ export default class MarlinApi extends BaseAPI {
   /**
    * @summary Delete Marlin DRM from fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the Marlin DRM configuration.
    * @throws {RequiredError}
    * @memberof MarlinApi
@@ -60,7 +60,7 @@ export default class MarlinApi extends BaseAPI {
   /**
    * @summary Marlin DRM Details of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the Marlin DRM configuration.
    * @throws {RequiredError}
    * @memberof MarlinApi
@@ -79,7 +79,7 @@ export default class MarlinApi extends BaseAPI {
   /**
    * @summary List Marlin DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {*} [queryParams] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof MarlinApi

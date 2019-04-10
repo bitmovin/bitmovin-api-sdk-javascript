@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import Fmp4Api from './fmp4/Fmp4Api';
+import CmafApi from './cmaf/CmafApi';
 import SegmentedRawApi from './segmentedRaw/SegmentedRawApi';
 import TsApi from './ts/TsApi';
 import WebmApi from './webm/WebmApi';
@@ -24,6 +25,7 @@ import MuxingListQueryParams from './MuxingListQueryParams';
  */
 export default class MuxingsApi extends BaseAPI {
   public fmp4: Fmp4Api;
+  public cmaf: CmafApi;
   public segmentedRaw: SegmentedRawApi;
   public ts: TsApi;
   public webm: WebmApi;
@@ -37,6 +39,7 @@ export default class MuxingsApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.fmp4 = new Fmp4Api(configuration);
+    this.cmaf = new CmafApi(configuration);
     this.segmentedRaw = new SegmentedRawApi(configuration);
     this.ts = new TsApi(configuration);
     this.webm = new WebmApi(configuration);

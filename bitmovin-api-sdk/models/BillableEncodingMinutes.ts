@@ -15,7 +15,7 @@ export default class BillableEncodingMinutes {
     this.codec = map(obj.codec);
     this.perTitleResultStream = map(obj.perTitleResultStream);
     this.psnrMode = map(obj.psnrMode);
-    this.billableMinutesDetails = map<BillableEncodingMinutesDetails>(obj.billableMinutesDetails, BillableEncodingMinutesDetails);
+    this.billableMinutes = map<BillableEncodingMinutesDetails>(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 
   /**
@@ -39,9 +39,8 @@ export default class BillableEncodingMinutes {
    */
   public psnrMode?: PsnrPerStreamMode;
   /**
-   * Details about billable minutes for each resolution category
-   * @type {Array<BillableEncodingMinutesDetails>}
+   * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
-  public billableMinutesDetails?: Array<BillableEncodingMinutesDetails>;
+  public billableMinutes?: BillableEncodingMinutesDetails;
 }

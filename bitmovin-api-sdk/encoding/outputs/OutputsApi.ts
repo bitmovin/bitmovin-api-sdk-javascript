@@ -9,6 +9,7 @@ import GcsApi from './gcs/GcsApi';
 import AzureApi from './azure/AzureApi';
 import FtpApi from './ftp/FtpApi';
 import SftpApi from './sftp/SftpApi';
+import AkamaiMslApi from './akamaiMsl/AkamaiMslApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import Output from '../../models/Output';
 import { OutputTypeMap } from '../../models/typeMappings'
@@ -31,6 +32,7 @@ export default class OutputsApi extends BaseAPI {
   public azure: AzureApi;
   public ftp: FtpApi;
   public sftp: SftpApi;
+  public akamaiMsl: AkamaiMslApi;
   public akamaiNetstorage: AkamaiNetstorageApi;
 
   constructor(configuration: Configuration) {
@@ -44,6 +46,7 @@ export default class OutputsApi extends BaseAPI {
     this.azure = new AzureApi(configuration);
     this.ftp = new FtpApi(configuration);
     this.sftp = new SftpApi(configuration);
+    this.akamaiMsl = new AkamaiMslApi(configuration);
     this.akamaiNetstorage = new AkamaiNetstorageApi(configuration);
   }
 

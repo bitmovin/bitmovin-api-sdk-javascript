@@ -26,6 +26,7 @@ import LocalOutput from './LocalOutput';
 import S3Output from './S3Output';
 import S3RoleBasedOutput from './S3RoleBasedOutput';
 import SftpOutput from './SftpOutput';
+import AkamaiMslOutput from './AkamaiMslOutput';
 import AacAudioConfiguration from './AacAudioConfiguration';
 import HeAacV1AudioConfiguration from './HeAacV1AudioConfiguration';
 import HeAacV2AudioConfiguration from './HeAacV2AudioConfiguration';
@@ -60,6 +61,7 @@ import TimecodeTrackTrimmingInputStream from './TimecodeTrackTrimmingInputStream
 import H264PictureTimingTrimmingInputStream from './H264PictureTimingTrimmingInputStream';
 import AudioMixInputStream from './AudioMixInputStream';
 import Fmp4Muxing from './Fmp4Muxing';
+import CmafMuxing from './CmafMuxing';
 import Mp4Muxing from './Mp4Muxing';
 import TsMuxing from './TsMuxing';
 import WebmMuxing from './WebmMuxing';
@@ -111,6 +113,7 @@ export const OutputTypeMap: any = {
   'S3': S3Output,
   'S3_ROLE_BASED': S3RoleBasedOutput,
   'SFTP': SftpOutput,
+  'AKAMAI_MSL': AkamaiMslOutput,
 };
 export const CodecConfigurationTypeMap: any = {
   'AAC': AacAudioConfiguration,
@@ -153,6 +156,7 @@ export const BasicInputStreamTypeMap: any = {
 };
 export const MuxingTypeMap: any = {
   'FMP4': Fmp4Muxing,
+  'CMAF': CmafMuxing,
   'MP4': Mp4Muxing,
   'TS': TsMuxing,
   'WEBM': WebmMuxing,

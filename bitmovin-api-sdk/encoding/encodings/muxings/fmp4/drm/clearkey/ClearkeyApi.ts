@@ -41,7 +41,7 @@ export default class ClearkeyApi extends BaseAPI {
   /**
    * @summary Delete ClearKey DRM from fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the ClearKey DRM configuration.
    * @throws {RequiredError}
    * @memberof ClearkeyApi
@@ -60,7 +60,7 @@ export default class ClearkeyApi extends BaseAPI {
   /**
    * @summary ClearKey DRM Details of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the ClearKey DRM configuration.
    * @throws {RequiredError}
    * @memberof ClearkeyApi
@@ -79,7 +79,7 @@ export default class ClearkeyApi extends BaseAPI {
   /**
    * @summary List ClearKey DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fragmented mp4.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {*} [queryParams] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ClearkeyApi

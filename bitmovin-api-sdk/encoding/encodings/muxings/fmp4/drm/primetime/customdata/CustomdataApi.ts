@@ -17,7 +17,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary PrimeTime DRM Custom Data of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PrimeTime DRM configuration.
    * @throws {RequiredError}
    * @memberof CustomdataApi

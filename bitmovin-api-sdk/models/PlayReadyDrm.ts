@@ -13,18 +13,19 @@ export default class PlayReadyDrm extends Drm {
     this.key = map(obj.key);
     this.keySeed = map(obj.keySeed);
     this.laUrl = map(obj.laUrl);
+    this.pssh = map(obj.pssh);
     this.method = map(obj.method);
     this.kid = map(obj.kid);
   }
 
   /**
-   * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required.
+   * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
    * @type {string}
    * @memberof PlayReadyDrm
    */
   public key?: string;
   /**
-   * Key seed to generate key. Either key or keySeed is required.
+   * Key seed to generate key. Either key or keySeed is required
    * @type {string}
    * @memberof PlayReadyDrm
    */
@@ -35,6 +36,12 @@ export default class PlayReadyDrm extends Drm {
    * @memberof PlayReadyDrm
    */
   public laUrl?: string;
+  /**
+   * Base64 encoded pssh payload
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public pssh?: string;
   /**
    * @type {PlayReadyEncryptionMethod}
    * @memberof PlayReadyDrm

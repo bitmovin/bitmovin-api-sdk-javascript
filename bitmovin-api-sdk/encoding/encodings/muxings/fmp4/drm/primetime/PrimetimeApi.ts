@@ -24,7 +24,7 @@ export default class PrimetimeApi extends BaseAPI {
    * @summary Add PrimeTime DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {PrimeTimeDrm} [primeTimeDrm] TODO Add Description
+   * @param {PrimeTimeDrm} [primeTimeDrm]
    * @throws {RequiredError}
    * @memberof PrimetimeApi
    */
@@ -41,7 +41,7 @@ export default class PrimetimeApi extends BaseAPI {
   /**
    * @summary Delete PrimeTime DRM from fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PrimeTime DRM configuration.
    * @throws {RequiredError}
    * @memberof PrimetimeApi
@@ -60,7 +60,7 @@ export default class PrimetimeApi extends BaseAPI {
   /**
    * @summary PrimeTime DRM Details of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PrimeTime DRM configuration.
    * @throws {RequiredError}
    * @memberof PrimetimeApi
@@ -79,7 +79,7 @@ export default class PrimetimeApi extends BaseAPI {
   /**
    * @summary List PrimeTime DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {*} [queryParams] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof PrimetimeApi

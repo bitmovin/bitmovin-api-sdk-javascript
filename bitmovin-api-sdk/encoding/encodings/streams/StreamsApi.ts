@@ -9,6 +9,7 @@ import BurnInSubtitlesApi from './burnInSubtitles/BurnInSubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
 import ThumbnailsApi from './thumbnails/ThumbnailsApi';
 import SpritesApi from './sprites/SpritesApi';
+import QcApi from './qc/QcApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Stream from '../../../models/Stream';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -30,6 +31,7 @@ export default class StreamsApi extends BaseAPI {
   public captions: CaptionsApi;
   public thumbnails: ThumbnailsApi;
   public sprites: SpritesApi;
+  public qc: QcApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -42,6 +44,7 @@ export default class StreamsApi extends BaseAPI {
     this.captions = new CaptionsApi(configuration);
     this.thumbnails = new ThumbnailsApi(configuration);
     this.sprites = new SpritesApi(configuration);
+    this.qc = new QcApi(configuration);
   }
 
   /**

@@ -24,7 +24,7 @@ export default class PlayreadyApi extends BaseAPI {
    * @summary Add PlayReady DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {PlayReadyDrm} [playReadyDrm] TODO Add Description
+   * @param {PlayReadyDrm} [playReadyDrm]
    * @throws {RequiredError}
    * @memberof PlayreadyApi
    */
@@ -41,7 +41,7 @@ export default class PlayreadyApi extends BaseAPI {
   /**
    * @summary Delete PlayReady DRM from fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PlayReady DRM configuration.
    * @throws {RequiredError}
    * @memberof PlayreadyApi
@@ -60,7 +60,7 @@ export default class PlayreadyApi extends BaseAPI {
   /**
    * @summary PlayReady DRM Details of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PlayReady DRM configuration.
    * @throws {RequiredError}
    * @memberof PlayreadyApi
@@ -79,7 +79,7 @@ export default class PlayreadyApi extends BaseAPI {
   /**
    * @summary List PlayReady DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the fmp4 fragment.
+   * @param {string} muxingId Id of the fMP4 muxing
    * @param {*} [queryParams] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof PlayreadyApi

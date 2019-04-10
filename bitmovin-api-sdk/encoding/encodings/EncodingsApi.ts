@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import LiveApi from './live/LiveApi';
+import MachineLearningApi from './machineLearning/MachineLearningApi';
 import CustomdataApi from './customdata/CustomdataApi';
 import StreamsApi from './streams/StreamsApi';
 import InputStreamsApi from './inputStreams/InputStreamsApi';
@@ -27,6 +28,7 @@ import EncodingListQueryParams from './EncodingListQueryParams';
  */
 export default class EncodingsApi extends BaseAPI {
   public live: LiveApi;
+  public machineLearning: MachineLearningApi;
   public customdata: CustomdataApi;
   public streams: StreamsApi;
   public inputStreams: InputStreamsApi;
@@ -39,6 +41,7 @@ export default class EncodingsApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.live = new LiveApi(configuration);
+    this.machineLearning = new MachineLearningApi(configuration);
     this.customdata = new CustomdataApi(configuration);
     this.streams = new StreamsApi(configuration);
     this.inputStreams = new InputStreamsApi(configuration);

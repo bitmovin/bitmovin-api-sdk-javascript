@@ -42,7 +42,7 @@ export default class DvbsubApi extends BaseAPI {
    * @summary Delete Specific DVB-SUB Subtitle from Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {string} subtitleId TODO Add description
+   * @param {string} subtitleId Id of the subtitle.
    * @throws {RequiredError}
    * @memberof DvbsubApi
    */

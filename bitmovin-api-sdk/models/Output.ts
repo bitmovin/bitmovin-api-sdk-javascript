@@ -1,5 +1,6 @@
 import {map} from '../common/Mapper';
 import AclEntry from './AclEntry';
+import AkamaiMslOutput from './AkamaiMslOutput';
 import AkamaiNetStorageOutput from './AkamaiNetStorageOutput';
 import AzureOutput from './AzureOutput';
 import BitmovinResource from './BitmovinResource';

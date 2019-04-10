@@ -1,8 +1,10 @@
 import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
+import SidecarErrorMode from './SidecarErrorMode';
 
 /**
+ * A file that is added to an encoding. The size limit for a sidecar file is 10 MB
  * @export
  * @class SidecarFile
  */
@@ -12,6 +14,7 @@ export default class SidecarFile extends BitmovinResource {
     this.inputId = map(obj.inputId);
     this.inputPath = map(obj.inputPath);
     this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+    this.errorMode = map(obj.errorMode);
   }
 
   /**
@@ -31,4 +34,9 @@ export default class SidecarFile extends BitmovinResource {
    * @memberof SidecarFile
    */
   public outputs?: Array<EncodingOutput>;
+  /**
+   * @type {SidecarErrorMode}
+   * @memberof SidecarFile
+   */
+  public errorMode?: SidecarErrorMode;
 }

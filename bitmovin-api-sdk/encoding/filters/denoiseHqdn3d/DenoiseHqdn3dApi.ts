@@ -22,7 +22,7 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
 
   /**
    * @summary Create Denoise hqdn3d Filter
-   * @param {DenoiseHqdn3dFilter} [denoiseHqdn3dFilter] TODO Add Description
+   * @param {DenoiseHqdn3dFilter} [denoiseHqdn3dFilter]
    * @throws {RequiredError}
    * @memberof DenoiseHqdn3dApi
    */
