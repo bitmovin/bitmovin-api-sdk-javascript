@@ -26,7 +26,7 @@ export default class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    * @type {string}
    * @memberof AnalyticsQueryRequest
    */
-  public licenseKey?: string;
+  public licenseKey: string;
   /**
    * @type {Array<AnalyticsFilter>}
    * @memberof AnalyticsQueryRequest
@@ -43,17 +43,17 @@ export default class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    */
   public dimension: string;
   /**
-   * @type {Array<AnalyticsInterval>}
+   * @type {AnalyticsInterval}
    * @memberof AnalyticsQueryRequest
    */
-  public interval?: Array<AnalyticsInterval>;
+  public interval?: AnalyticsInterval;
   /**
    * @type {Array<string>}
    * @memberof AnalyticsQueryRequest
    */
   public groupBy?: Array<string>;
   /**
-   * Maximum number of rows returned (max. 150)
+   * Maximum number of rows returned (max. 200)
    * @type {number}
    * @memberof AnalyticsQueryRequest
    */

@@ -33,7 +33,7 @@ export default class PlayerVersion extends BitmovinResponse {
    */
   public downloadUrl?: string;
   /**
-   * Creation timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof PlayerVersion
    */

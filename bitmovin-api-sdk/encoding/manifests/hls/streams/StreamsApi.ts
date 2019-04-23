@@ -1,6 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
-import CustomTagApi from './customTag/CustomTagApi';
+import CustomTagsApi from './customTags/CustomTagsApi';
 import IframeApi from './iframe/IframeApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import StreamInfo from '../../../../models/StreamInfo';
@@ -14,12 +14,12 @@ import StreamInfoListQueryParams from './StreamInfoListQueryParams';
  * @extends {BaseAPI}
  */
 export default class StreamsApi extends BaseAPI {
-  public customTag: CustomTagApi;
+  public customTags: CustomTagsApi;
   public iframe: IframeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
-    this.customTag = new CustomTagApi(configuration);
+    this.customTags = new CustomTagsApi(configuration);
     this.iframe = new IframeApi(configuration);
   }
 

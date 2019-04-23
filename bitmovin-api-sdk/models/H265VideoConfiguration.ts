@@ -85,8 +85,6 @@ export default class H265VideoConfiguration extends VideoConfiguration {
     this.qpMin = map(obj.qpMin);
     this.qpMax = map(obj.qpMax);
     this.wavefrontParallelProcessing = map(obj.wavefrontParallelProcessing);
-    this.parallelModeDecision = map(obj.parallelModeDecision);
-    this.parallelMotionEstimation = map(obj.parallelMotionEstimation);
     this.slices = map(obj.slices);
     this.copyPicture = map(obj.copyPicture);
     this.levelHighTier = map(obj.levelHighTier);
@@ -452,18 +450,6 @@ export default class H265VideoConfiguration extends VideoConfiguration {
    * @memberof H265VideoConfiguration
    */
   public wavefrontParallelProcessing?: boolean;
-  /**
-   * When enabled the encoder will distribute the analysis work of each CU (merge, inter, intra) across multiple worker threads. Default is disabled.
-   * @type {boolean}
-   * @memberof H265VideoConfiguration
-   */
-  public parallelModeDecision?: boolean;
-  /**
-   * When enabled the encoder will distribute motion estimation across multiple worker threads when more than two references require motion searches for a given CU. Default is disabled.
-   * @type {boolean}
-   * @memberof H265VideoConfiguration
-   */
-  public parallelMotionEstimation?: boolean;
   /**
    * Encode each incoming frame as multiple parallel slices that may be decoded independently. Default is 1.
    * @type {number}

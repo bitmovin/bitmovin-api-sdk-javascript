@@ -3,7 +3,6 @@ import Configuration from '../../../../../../../../common/Configuration';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import DashCmafDrmRepresentation from '../../../../../../../../models/DashCmafDrmRepresentation';
-import DashFmp4DrmRepresentation from '../../../../../../../../models/DashFmp4DrmRepresentation';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
 import DashCmafDrmRepresentationListQueryParams from './DashCmafDrmRepresentationListQueryParams';
 

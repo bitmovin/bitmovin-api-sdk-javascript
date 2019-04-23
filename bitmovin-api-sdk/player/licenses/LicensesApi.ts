@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import AnalyticsApi from './analytics/AnalyticsApi';
 import DomainsApi from './domains/DomainsApi';
 import ThirdPartyLicensingApi from './thirdPartyLicensing/ThirdPartyLicensingApi';
 import PlayerLicense from '../../models/PlayerLicense';
@@ -13,13 +14,27 @@ import PlayerLicenseListQueryParams from './PlayerLicenseListQueryParams';
  * @extends {BaseAPI}
  */
 export default class LicensesApi extends BaseAPI {
+  public analytics: AnalyticsApi;
   public domains: DomainsApi;
   public thirdPartyLicensing: ThirdPartyLicensingApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.analytics = new AnalyticsApi(configuration);
     this.domains = new DomainsApi(configuration);
     this.thirdPartyLicensing = new ThirdPartyLicensingApi(configuration);
+  }
+
+  /**
+   * @summary Create Player License
+   * @param {PlayerLicense} [playerLicense] Player License to be created
+   * @throws {RequiredError}
+   * @memberof LicensesApi
+   */
+  public create(playerLicense?: PlayerLicense): Promise<PlayerLicense> {
+    return this.restClient.post<PlayerLicense>('/player/licenses', {}, playerLicense).then((response) => {
+      return new PlayerLicense(response);
+    });
   }
 
   /**

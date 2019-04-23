@@ -16,6 +16,7 @@ export default class PlayerLicense extends BitmovinResponse {
     this.maxImpressions = map(obj.maxImpressions);
     this.thirdPartyLicensingEnabled = map(obj.thirdPartyLicensingEnabled);
     this.domains = map<Domain>(obj.domains, Domain);
+    this.analyticsKey = map(obj.analyticsKey);
   }
 
   /**
@@ -23,9 +24,9 @@ export default class PlayerLicense extends BitmovinResponse {
    * @type {string}
    * @memberof PlayerLicense
    */
-  public name?: string;
+  public name: string;
   /**
-   * Creation timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof PlayerLicense
    */
@@ -60,4 +61,10 @@ export default class PlayerLicense extends BitmovinResponse {
    * @memberof PlayerLicense
    */
   public domains?: Array<Domain>;
+  /**
+   * Analytics License Key
+   * @type {string}
+   * @memberof PlayerLicense
+   */
+  public analyticsKey?: string;
 }

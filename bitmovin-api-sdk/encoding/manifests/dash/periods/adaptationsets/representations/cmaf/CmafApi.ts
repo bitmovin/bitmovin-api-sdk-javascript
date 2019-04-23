@@ -4,7 +4,7 @@ import DrmApi from './drm/DrmApi';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashCmafRepresentation from '../../../../../../../models/DashCmafRepresentation';
-import DashFmp4Representation from '../../../../../../../models/DashFmp4Representation';
+import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
 import DashCmafRepresentationListQueryParams from './DashCmafRepresentationListQueryParams';
 

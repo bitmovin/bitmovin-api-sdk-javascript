@@ -12,14 +12,14 @@ export default class AnalyticsQueryTimeframe {
 
   /**
    * Start of timeframe which is queried
-   * @type {Date}
+   * @type {string}
    * @memberof AnalyticsQueryTimeframe
    */
-  public start?: Date;
+  public start?: string;
   /**
    * End of timeframe which is queried
-   * @type {Date}
+   * @type {string}
    * @memberof AnalyticsQueryTimeframe
    */
-  public end?: Date;
+  public end?: string;
 }

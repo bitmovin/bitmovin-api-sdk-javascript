@@ -1,6 +1,5 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
-import IframeApi from './iframe/IframeApi';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import StandardMediaInfo from '../../../../../models/StandardMediaInfo';
 import VideoMediaInfo from '../../../../../models/VideoMediaInfo';
@@ -14,11 +13,9 @@ import VideoMediaInfoListQueryParams from './VideoMediaInfoListQueryParams';
  * @extends {BaseAPI}
  */
 export default class VideoApi extends BaseAPI {
-  public iframe: IframeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
-    this.iframe = new IframeApi(configuration);
   }
 
   /**

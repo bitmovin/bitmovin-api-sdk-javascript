@@ -6,7 +6,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import StreamsApi from './streams/StreamsApi';
 import InputStreamsApi from './inputStreams/InputStreamsApi';
 import MuxingsApi from './muxings/MuxingsApi';
-import SubtitlesApi from './subtitles/SubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
 import SidecarsApi from './sidecars/SidecarsApi';
 import KeyframesApi from './keyframes/KeyframesApi';
@@ -33,7 +32,6 @@ export default class EncodingsApi extends BaseAPI {
   public streams: StreamsApi;
   public inputStreams: InputStreamsApi;
   public muxings: MuxingsApi;
-  public subtitles: SubtitlesApi;
   public captions: CaptionsApi;
   public sidecars: SidecarsApi;
   public keyframes: KeyframesApi;
@@ -46,7 +44,6 @@ export default class EncodingsApi extends BaseAPI {
     this.streams = new StreamsApi(configuration);
     this.inputStreams = new InputStreamsApi(configuration);
     this.muxings = new MuxingsApi(configuration);
-    this.subtitles = new SubtitlesApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.sidecars = new SidecarsApi(configuration);
     this.keyframes = new KeyframesApi(configuration);

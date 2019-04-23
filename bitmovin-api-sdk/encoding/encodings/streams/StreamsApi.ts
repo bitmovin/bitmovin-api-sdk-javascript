@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import InputApi from './input/InputApi';
 import InputsApi from './inputs/InputsApi';
 import FiltersApi from './filters/FiltersApi';
-import SubtitlesApi from './subtitles/SubtitlesApi';
 import BurnInSubtitlesApi from './burnInSubtitles/BurnInSubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
 import ThumbnailsApi from './thumbnails/ThumbnailsApi';
@@ -26,7 +25,6 @@ export default class StreamsApi extends BaseAPI {
   public input: InputApi;
   public inputs: InputsApi;
   public filters: FiltersApi;
-  public subtitles: SubtitlesApi;
   public burnInSubtitles: BurnInSubtitlesApi;
   public captions: CaptionsApi;
   public thumbnails: ThumbnailsApi;
@@ -39,7 +37,6 @@ export default class StreamsApi extends BaseAPI {
     this.input = new InputApi(configuration);
     this.inputs = new InputsApi(configuration);
     this.filters = new FiltersApi(configuration);
-    this.subtitles = new SubtitlesApi(configuration);
     this.burnInSubtitles = new BurnInSubtitlesApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.thumbnails = new ThumbnailsApi(configuration);

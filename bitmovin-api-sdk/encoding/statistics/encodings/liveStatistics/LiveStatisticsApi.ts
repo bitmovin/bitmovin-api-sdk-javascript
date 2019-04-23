@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import EventsApi from './events/EventsApi';
 import StreamsApi from './streams/StreamsApi';
+import SrtApi from './srt/SrtApi';
 import LiveEncodingStats from '../../../../models/LiveEncodingStats';
 
 /**
@@ -13,11 +14,13 @@ import LiveEncodingStats from '../../../../models/LiveEncodingStats';
 export default class LiveStatisticsApi extends BaseAPI {
   public events: EventsApi;
   public streams: StreamsApi;
+  public srt: SrtApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.events = new EventsApi(configuration);
     this.streams = new StreamsApi(configuration);
+    this.srt = new SrtApi(configuration);
   }
 
   /**

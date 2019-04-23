@@ -19,6 +19,18 @@ export default class LicensesApi extends BaseAPI {
   }
 
   /**
+   * @summary Create Analytics License
+   * @param {AnalyticsLicense} [analyticsLicense] Analytics License to be created
+   * @throws {RequiredError}
+   * @memberof LicensesApi
+   */
+  public create(analyticsLicense?: AnalyticsLicense): Promise<AnalyticsLicense> {
+    return this.restClient.post<AnalyticsLicense>('/analytics/licenses', {}, analyticsLicense).then((response) => {
+      return new AnalyticsLicense(response);
+    });
+  }
+
+  /**
    * @summary Get License
    * @param {string} licenseId License id
    * @throws {RequiredError}

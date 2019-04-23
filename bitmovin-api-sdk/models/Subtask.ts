@@ -48,43 +48,43 @@ export default class Subtask extends BitmovinResponse {
    */
   public messages?: Array<Message>;
   /**
-   * Timestamp when the subtask was created, expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask was created, formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public createdAt?: Date;
   /**
-   * Timestamp when the subtask was last updated, expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask was last updated, formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public updatedAt?: Date;
   /**
-   * Timestamp when the subtask was started, expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask was started, formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public startedAt?: Date;
   /**
-   * Timestamp when the subtask status changed to 'QUEUED', expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask status changed to 'QUEUED', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public queuedAt?: Date;
   /**
-   * Timestamp when the subtask status changed to to 'RUNNING', expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask status changed to to 'RUNNING', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public runningAt?: Date;
   /**
-   * Timestamp when the subtask status changed to 'FINISHED', expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask status changed to 'FINISHED', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */
   public finishedAt?: Date;
   /**
-   * Timestamp when the subtask status changed to 'ERROR', expressed in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the subtask status changed to 'ERROR', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof Subtask
    */

@@ -1,12 +1,12 @@
 import {map} from '../common/Mapper';
-import DashFmp4Representation from './DashFmp4Representation';
 import DashMuxingType from './DashMuxingType';
+import DashSegmentedRepresentation from './DashSegmentedRepresentation';
 
 /**
  * @export
  * @class DashCmafRepresentation
  */
-export default class DashCmafRepresentation extends DashFmp4Representation {
+export default class DashCmafRepresentation extends DashSegmentedRepresentation {
   constructor(obj: any) {
     super(obj);
   }

@@ -8,6 +8,7 @@ import EncodingsApi from './encodings/EncodingsApi';
 import ManifestsApi from './manifests/ManifestsApi';
 import InfrastructureApi from './infrastructure/InfrastructureApi';
 import StatisticsApi from './statistics/StatisticsApi';
+import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
 
 /**
  * EncodingApi - object-oriented interface
@@ -24,6 +25,7 @@ export default class EncodingApi extends BaseAPI {
   public manifests: ManifestsApi;
   public infrastructure: InfrastructureApi;
   public statistics: StatisticsApi;
+  public errorDefinitions: ErrorDefinitionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -35,5 +37,6 @@ export default class EncodingApi extends BaseAPI {
     this.manifests = new ManifestsApi(configuration);
     this.infrastructure = new InfrastructureApi(configuration);
     this.statistics = new StatisticsApi(configuration);
+    this.errorDefinitions = new ErrorDefinitionsApi(configuration);
   }
 }

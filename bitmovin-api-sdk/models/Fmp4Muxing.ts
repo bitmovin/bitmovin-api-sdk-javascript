@@ -17,6 +17,7 @@ export default class Fmp4Muxing extends Muxing {
     this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
     this.initSegmentName = map(obj.initSegmentName);
     this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
+    this.writeDurationPerSample = map(obj.writeDurationPerSample);
     this.segmentsMuxed = map(obj.segmentsMuxed);
   }
 
@@ -50,6 +51,12 @@ export default class Fmp4Muxing extends Muxing {
    * @memberof Fmp4Muxing
    */
   public initSegmentNameTemplate?: string;
+  /**
+   * Writes the duration per sample into the sample entry in the Track Fragment Run Box. This could help to fix playback issues on legacy players. Enabling this flag increases the muxing overhead by 4 bytes per sample/frame.
+   * @type {boolean}
+   * @memberof Fmp4Muxing
+   */
+  public writeDurationPerSample?: boolean;
   /**
    * Number of segments which have been encoded
    * @type {number}

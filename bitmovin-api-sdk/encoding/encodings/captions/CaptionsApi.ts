@@ -1,8 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
-import CeaApi from './cea/CeaApi';
-import WebvttApi from './webvtt/WebvttApi';
-import TtmlApi from './ttml/TtmlApi';
+import ExtractApi from './extract/ExtractApi';
 import SccApi from './scc/SccApi';
 
 /**
@@ -12,16 +10,12 @@ import SccApi from './scc/SccApi';
  * @extends {BaseAPI}
  */
 export default class CaptionsApi extends BaseAPI {
-  public cea: CeaApi;
-  public webvtt: WebvttApi;
-  public ttml: TtmlApi;
+  public extract: ExtractApi;
   public scc: SccApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
-    this.cea = new CeaApi(configuration);
-    this.webvtt = new WebvttApi(configuration);
-    this.ttml = new TtmlApi(configuration);
+    this.extract = new ExtractApi(configuration);
     this.scc = new SccApi(configuration);
   }
 }

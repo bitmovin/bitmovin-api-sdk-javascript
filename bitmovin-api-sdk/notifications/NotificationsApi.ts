@@ -1,7 +1,7 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
 import WebhooksApi from './webhooks/WebhooksApi';
-import StateApi from './state/StateApi';
+import StatesApi from './states/StatesApi';
 import EmailsApi from './emails/EmailsApi';
 import BitmovinResponse from '../models/BitmovinResponse';
 import Notification from '../models/Notification';
@@ -18,13 +18,13 @@ import NotificationListQueryParams from './NotificationListQueryParams';
  */
 export default class NotificationsApi extends BaseAPI {
   public webhooks: WebhooksApi;
-  public state: StateApi;
+  public states: StatesApi;
   public emails: EmailsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.webhooks = new WebhooksApi(configuration);
-    this.state = new StateApi(configuration);
+    this.states = new StatesApi(configuration);
     this.emails = new EmailsApi(configuration);
   }
 
@@ -85,7 +85,7 @@ export default class NotificationsApi extends BaseAPI {
     const pathParamMap = {
       notification_id: notificationId
     };
-    return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/state', pathParamMap, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/states', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<NotificationStateEntry>(response);
       if (paginationResponse.items) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new NotificationStateEntry(i));

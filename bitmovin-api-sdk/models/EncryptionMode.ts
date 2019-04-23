@@ -5,7 +5,7 @@
  */
 enum EncryptionMode {
   CTR = 'CTR',
-  CBS = 'CBS'
+  CBC = 'CBC'
 }
 
 export default EncryptionMode;

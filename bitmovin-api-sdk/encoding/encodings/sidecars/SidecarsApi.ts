@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
+import WebvttApi from './webvtt/WebvttApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import SidecarFile from '../../../models/SidecarFile';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -14,10 +15,12 @@ import SidecarFileListQueryParams from './SidecarFileListQueryParams';
  */
 export default class SidecarsApi extends BaseAPI {
   public customdata: CustomdataApi;
+  public webvtt: WebvttApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
+    this.webvtt = new WebvttApi(configuration);
   }
 
   /**
