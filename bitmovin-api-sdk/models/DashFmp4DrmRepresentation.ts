@@ -1,6 +1,7 @@
 import {map} from '../common/Mapper';
 import DashFmp4Representation from './DashFmp4Representation';
-import DashMuxingType from './DashMuxingType';
+import DashRepresentationType from './DashRepresentationType';
+import DashRepresentationTypeMode from './DashRepresentationTypeMode';
 
 /**
  * @export

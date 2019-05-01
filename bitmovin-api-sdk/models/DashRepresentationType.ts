@@ -2,11 +2,11 @@
  * @export
  * @enum {string}
  */
-enum DashMuxingType {
+enum DashRepresentationType {
   TEMPLATE = 'TEMPLATE',
   LIST = 'LIST',
   TIMELINE = 'TIMELINE'
 }
 
-export default DashMuxingType;
+export default DashRepresentationType;
 

@@ -1,6 +1,7 @@
 import {map} from '../common/Mapper';
-import DashMuxingType from './DashMuxingType';
 import DashRepresentation from './DashRepresentation';
+import DashRepresentationType from './DashRepresentationType';
+import DashRepresentationTypeMode from './DashRepresentationTypeMode';
 
 /**
  * @export
@@ -10,6 +11,7 @@ export default class DashSegmentedRepresentation extends DashRepresentation {
   constructor(obj: any) {
     super(obj);
     this.type = map(obj.type);
+    this.mode = map(obj.mode);
     this.segmentPath = map(obj.segmentPath);
     this.startSegmentNumber = map(obj.startSegmentNumber);
     this.endSegmentNumber = map(obj.endSegmentNumber);
@@ -18,12 +20,17 @@ export default class DashSegmentedRepresentation extends DashRepresentation {
   }
 
   /**
-   * @type {DashMuxingType}
+   * @type {DashRepresentationType}
    * @memberof DashSegmentedRepresentation
    */
-  public type: DashMuxingType;
+  public type: DashRepresentationType;
   /**
-   * Path to segments
+   * @type {DashRepresentationTypeMode}
+   * @memberof DashSegmentedRepresentation
+   */
+  public mode?: DashRepresentationTypeMode;
+  /**
+   * Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET
    * @type {string}
    * @memberof DashSegmentedRepresentation
    */
