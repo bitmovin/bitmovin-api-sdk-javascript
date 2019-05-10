@@ -10,7 +10,7 @@ import StatisticsPerStream from './StatisticsPerStream';
  */
 export default class EncodingStats {
   constructor(obj: any) {
-    this.date = map(obj.date);
+    this.date = map(obj.date, Date);
     this.encodingId = map(obj.encodingId);
     this.bytesEncoded = map(obj.bytesEncoded);
     this.timeEncoded = map(obj.timeEncoded);

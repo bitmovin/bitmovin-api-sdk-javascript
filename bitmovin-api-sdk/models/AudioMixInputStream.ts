@@ -1,13 +1,13 @@
 import {map} from '../common/Mapper';
 import AudioMixInputChannelLayout from './AudioMixInputChannelLayout';
 import AudioMixInputStreamChannel from './AudioMixInputStreamChannel';
-import BasicInputStream from './BasicInputStream';
+import InputStream from './InputStream';
 
 /**
  * @export
  * @class AudioMixInputStream
  */
-export default class AudioMixInputStream extends BasicInputStream {
+export default class AudioMixInputStream extends InputStream {
   constructor(obj: any) {
     super(obj);
     this.channelLayout = map(obj.channelLayout);

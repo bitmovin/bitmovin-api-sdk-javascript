@@ -13,7 +13,7 @@ export default class NotificationStateEntry extends BitmovinResponse {
     this.muted = map(obj.muted);
     this.notificationId = map(obj.notificationId);
     this.resourceId = map(obj.resourceId);
-    this.triggeredAt = map(obj.triggeredAt);
+    this.triggeredAt = map(obj.triggeredAt, Date);
   }
 
   /**

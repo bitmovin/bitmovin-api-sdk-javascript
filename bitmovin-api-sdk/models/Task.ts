@@ -17,11 +17,11 @@ export default class Task extends BitmovinResponse {
     this.progress = map(obj.progress);
     this.subtasks = map<Subtask>(obj.subtasks, Subtask);
     this.messages = map<Message>(obj.messages, Message);
-    this.createdAt = map(obj.createdAt);
-    this.queuedAt = map(obj.queuedAt);
-    this.runningAt = map(obj.runningAt);
-    this.finishedAt = map(obj.finishedAt);
-    this.errorAt = map(obj.errorAt);
+    this.createdAt = map(obj.createdAt, Date);
+    this.queuedAt = map(obj.queuedAt, Date);
+    this.runningAt = map(obj.runningAt, Date);
+    this.finishedAt = map(obj.finishedAt, Date);
+    this.errorAt = map(obj.errorAt, Date);
     this.error = map<ErrorDetails>(obj.error, ErrorDetails);
   }
 

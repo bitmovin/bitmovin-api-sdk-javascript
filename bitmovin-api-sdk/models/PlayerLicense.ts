@@ -10,7 +10,7 @@ export default class PlayerLicense extends BitmovinResponse {
   constructor(obj: any) {
     super(obj);
     this.name = map(obj.name);
-    this.createdAt = map(obj.createdAt);
+    this.createdAt = map(obj.createdAt, Date);
     this.licenseKey = map(obj.licenseKey);
     this.impressions = map(obj.impressions);
     this.maxImpressions = map(obj.maxImpressions);

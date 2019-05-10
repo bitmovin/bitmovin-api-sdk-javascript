@@ -8,7 +8,7 @@ import BillableEncodingMinutes from './BillableEncodingMinutes';
  */
 export default class DailyStatistics {
   constructor(obj: any) {
-    this.date = map(obj.date);
+    this.date = map(obj.date, Date);
     this.bytesEncoded = map(obj.bytesEncoded);
     this.timeEncoded = map(obj.timeEncoded);
     this.billableMinutes = map(obj.billableMinutes);
@@ -44,10 +44,10 @@ export default class DailyStatistics {
   public billableMinutes?: number;
   /**
    * Label identifier.
-   * @type {Date}
+   * @type {string}
    * @memberof DailyStatistics
    */
-  public label?: Date;
+  public label?: string;
   /**
    * Billable minutes for each encoding configuration.
    * @type {Array<BillableEncodingMinutes>}

@@ -1,12 +1,12 @@
 import {map} from '../common/Mapper';
-import BasicInputStream from './BasicInputStream';
 import ConcatenationInputConfiguration from './ConcatenationInputConfiguration';
+import InputStream from './InputStream';
 
 /**
  * @export
  * @class ConcatenationInputStream
  */
-export default class ConcatenationInputStream extends BasicInputStream {
+export default class ConcatenationInputStream extends InputStream {
   constructor(obj: any) {
     super(obj);
     this.concatenation = map<ConcatenationInputConfiguration>(obj.concatenation, ConcatenationInputConfiguration);

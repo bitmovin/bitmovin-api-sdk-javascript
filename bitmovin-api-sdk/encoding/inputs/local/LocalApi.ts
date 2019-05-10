@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
+import BitmovinResponse from '../../../models/BitmovinResponse';
 import LocalInput from '../../../models/LocalInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import LocalInputListQueryParams from './LocalInputListQueryParams';
@@ -37,12 +38,12 @@ export default class LocalApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof LocalApi
    */
-  public delete(inputId: string): Promise<LocalInput> {
+  public delete(inputId: string): Promise<BitmovinResponse> {
     const pathParamMap = {
       input_id: inputId
     };
-    return this.restClient.delete<LocalInput>('/encoding/inputs/local/{input_id}', pathParamMap).then((response) => {
-      return new LocalInput(response);
+    return this.restClient.delete<BitmovinResponse>('/encoding/inputs/local/{input_id}', pathParamMap).then((response) => {
+      return new BitmovinResponse(response);
     });
   }
 

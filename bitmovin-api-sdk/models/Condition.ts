@@ -1,8 +1,6 @@
 import {map} from '../common/Mapper';
 import AbstractCondition from './AbstractCondition';
-import ConditionAttribute from './ConditionAttribute';
 import ConditionOperator from './ConditionOperator';
-import ConditionType from './ConditionType';
 
 /**
  * @export
@@ -17,11 +15,13 @@ export default class Condition extends AbstractCondition {
   }
 
   /**
-   * @type {ConditionAttribute}
+   * The attribute that should be used for the evaluation
+   * @type {string}
    * @memberof Condition
    */
-  public attribute: ConditionAttribute;
+  public attribute: string;
   /**
+   * The operator that should be used for the evaluation
    * @type {ConditionOperator}
    * @memberof Condition
    */

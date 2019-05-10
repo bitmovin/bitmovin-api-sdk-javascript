@@ -7,7 +7,7 @@ import {map} from '../common/Mapper';
 export default class CustomData {
   constructor(obj: any) {
     this.customData = map(obj.customData);
-    this.createdAt = map(obj.createdAt);
+    this.createdAt = map(obj.createdAt, Date);
   }
 
   /**

@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import DrmApi from './drm/DrmApi';
-import CaptionsApi from './captions/CaptionsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Fmp4Muxing from '../../../../models/Fmp4Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -17,13 +16,11 @@ import Fmp4MuxingListQueryParams from './Fmp4MuxingListQueryParams';
 export default class Fmp4Api extends BaseAPI {
   public customdata: CustomdataApi;
   public drm: DrmApi;
-  public captions: CaptionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
     this.drm = new DrmApi(configuration);
-    this.captions = new CaptionsApi(configuration);
   }
 
   /**

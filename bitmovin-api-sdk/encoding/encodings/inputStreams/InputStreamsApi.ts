@@ -5,10 +5,10 @@ import AudioMixApi from './audioMix/AudioMixApi';
 import IngestApi from './ingest/IngestApi';
 import ConcatenationApi from './concatenation/ConcatenationApi';
 import TrimmingApi from './trimming/TrimmingApi';
-import BasicInputStream from '../../../models/BasicInputStream';
-import { BasicInputStreamTypeMap } from '../../../models/typeMappings'
+import InputStream from '../../../models/InputStream';
+import { InputStreamTypeMap } from '../../../models/typeMappings'
 import PaginationResponse from '../../../models/PaginationResponse';
-import BasicInputStreamListQueryParams from './BasicInputStreamListQueryParams';
+import InputStreamListQueryParams from './InputStreamListQueryParams';
 
 /**
  * InputStreamsApi - object-oriented interface
@@ -39,13 +39,13 @@ export default class InputStreamsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof InputStreamsApi
    */
-  public get(encodingId: string, inputStreamId: string): Promise<BasicInputStream> {
+  public get(encodingId: string, inputStreamId: string): Promise<InputStream> {
     const pathParamMap = {
       encoding_id: encodingId,
       input_stream_id: inputStreamId
     };
-    return this.restClient.get<BasicInputStream>('/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}', pathParamMap).then((response) => {
-      return new BasicInputStream(response);
+    return this.restClient.get<InputStream>('/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}', pathParamMap).then((response) => {
+      return new InputStream(response);
     });
   }
 
@@ -56,14 +56,14 @@ export default class InputStreamsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof InputStreamsApi
    */
-  public list(encodingId: string, queryParams?: BasicInputStreamListQueryParams): Promise<PaginationResponse<BasicInputStream>> {
+  public list(encodingId: string, queryParams?: InputStreamListQueryParams): Promise<PaginationResponse<InputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
-    return this.restClient.get<PaginationResponse<BasicInputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<BasicInputStream>(response);
+    return this.restClient.get<PaginationResponse<InputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
+      const paginationResponse = new PaginationResponse<InputStream>(response);
       if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new BasicInputStreamTypeMap[i.type](i));
+        paginationResponse.items = paginationResponse.items.map((i: any) => new InputStreamTypeMap[i.type](i));
       }
       return paginationResponse;
     });

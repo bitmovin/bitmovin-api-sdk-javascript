@@ -1,5 +1,7 @@
 import {map} from '../common/Mapper';
-import ConditionType from './ConditionType';
+import AndConjunction from './AndConjunction';
+import Condition from './Condition';
+import OrConjunction from './OrConjunction';
 
 /**
  * @export
@@ -7,12 +9,6 @@ import ConditionType from './ConditionType';
  */
 export default class AbstractCondition {
   constructor(obj: any) {
-    this.type = map(obj.type);
   }
 
-  /**
-   * @type {ConditionType}
-   * @memberof AbstractCondition
-   */
-  public type?: ConditionType;
 }

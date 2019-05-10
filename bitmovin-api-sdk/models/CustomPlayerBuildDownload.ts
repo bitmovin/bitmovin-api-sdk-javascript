@@ -8,7 +8,7 @@ import {map} from '../common/Mapper';
 export default class CustomPlayerBuildDownload {
   constructor(obj: any) {
     this.downloadLink = map(obj.downloadLink);
-    this.expiresAt = map(obj.expiresAt);
+    this.expiresAt = map(obj.expiresAt, Date);
   }
 
   /**

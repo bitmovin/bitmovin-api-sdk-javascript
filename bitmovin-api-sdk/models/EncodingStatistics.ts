@@ -6,7 +6,7 @@ import {map} from '../common/Mapper';
  */
 export default class EncodingStatistics {
   constructor(obj: any) {
-    this.date = map(obj.date);
+    this.date = map(obj.date, Date);
     this.bytesEncoded = map(obj.bytesEncoded);
     this.timeEncoded = map(obj.timeEncoded);
   }

@@ -5,7 +5,7 @@ import BitmovinResource from './BitmovinResource';
 import DecodingErrorMode from './DecodingErrorMode';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
-import InputStream from './InputStream';
+import StreamInput from './StreamInput';
 import StreamMetadata from './StreamMetadata';
 import StreamMode from './StreamMode';
 import StreamPerTitleSettings from './StreamPerTitleSettings';
@@ -17,7 +17,7 @@ import StreamPerTitleSettings from './StreamPerTitleSettings';
 export default class Stream extends BitmovinResource {
   constructor(obj: any) {
     super(obj);
-    this.inputStreams = map<InputStream>(obj.inputStreams, InputStream);
+    this.inputStreams = map<StreamInput>(obj.inputStreams, StreamInput);
     this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
     this.createQualityMetaData = map(obj.createQualityMetaData);
     this.codecConfigId = map(obj.codecConfigId);
@@ -32,10 +32,10 @@ export default class Stream extends BitmovinResource {
   }
 
   /**
-   * @type {Array<InputStream>}
+   * @type {Array<StreamInput>}
    * @memberof Stream
    */
-  public inputStreams: Array<InputStream>;
+  public inputStreams: Array<StreamInput>;
   /**
    * @type {Array<EncodingOutput>}
    * @memberof Stream

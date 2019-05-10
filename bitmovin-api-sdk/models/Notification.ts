@@ -10,7 +10,7 @@ export default class Notification extends BitmovinResponse {
     super(obj);
     this.resolve = map(obj.resolve);
     this.resourceId = map(obj.resourceId);
-    this.triggeredAt = map(obj.triggeredAt);
+    this.triggeredAt = map(obj.triggeredAt, Date);
     this.type = map(obj.type);
     this.eventType = map(obj.eventType);
     this.category = map(obj.category);

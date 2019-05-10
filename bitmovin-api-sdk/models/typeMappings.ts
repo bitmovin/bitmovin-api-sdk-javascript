@@ -146,7 +146,7 @@ export const FilterTypeMap: any = {
   'INTERLACE': InterlaceFilter,
   'AUDIO_VOLUME': AudioVolumeFilter,
 };
-export const BasicInputStreamTypeMap: any = {
+export const InputStreamTypeMap: any = {
   'INGEST': IngestInputStream,
   'CONCATENATION': ConcatenationInputStream,
   'TRIMMING_TIME_BASED': TimeBasedTrimmingInputStream,

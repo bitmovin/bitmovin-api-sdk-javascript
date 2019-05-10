@@ -11,7 +11,7 @@ export default class PlayerVersion extends BitmovinResponse {
     this.version = map(obj.version);
     this.cdnUrl = map(obj.cdnUrl);
     this.downloadUrl = map(obj.downloadUrl);
-    this.createdAt = map(obj.createdAt);
+    this.createdAt = map(obj.createdAt, Date);
   }
 
   /**

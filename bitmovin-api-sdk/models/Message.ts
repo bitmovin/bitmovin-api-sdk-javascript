@@ -15,7 +15,7 @@ export default class Message extends BitmovinResponse {
     this.field = map(obj.field);
     this.links = map<Link>(obj.links, Link);
     this.more = map(obj.more);
-    this.date = map(obj.date);
+    this.date = map(obj.date, Date);
   }
 
   /**

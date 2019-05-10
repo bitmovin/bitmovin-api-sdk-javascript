@@ -10,8 +10,8 @@ export default class BitmovinResource extends BitmovinResponse {
     super(obj);
     this.name = map(obj.name);
     this.description = map(obj.description);
-    this.createdAt = map(obj.createdAt);
-    this.modifiedAt = map(obj.modifiedAt);
+    this.createdAt = map(obj.createdAt, Date);
+    this.modifiedAt = map(obj.modifiedAt, Date);
     this.customData = map(obj.customData);
   }
 

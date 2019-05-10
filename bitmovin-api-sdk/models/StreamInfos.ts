@@ -7,7 +7,7 @@ import StreamInfosDetails from './StreamInfosDetails';
  */
 export default class StreamInfos {
   constructor(obj: any) {
-    this.time = map(obj.time);
+    this.time = map(obj.time, Date);
     this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails);
   }
 

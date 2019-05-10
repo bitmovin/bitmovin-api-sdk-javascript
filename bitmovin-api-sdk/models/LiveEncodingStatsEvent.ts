@@ -7,7 +7,7 @@ import LiveEncodingStatsEventDetails from './LiveEncodingStatsEventDetails';
  */
 export default class LiveEncodingStatsEvent {
   constructor(obj: any) {
-    this.time = map(obj.time);
+    this.time = map(obj.time, Date);
     this.details = map<LiveEncodingStatsEventDetails>(obj.details, LiveEncodingStatsEventDetails);
   }
 

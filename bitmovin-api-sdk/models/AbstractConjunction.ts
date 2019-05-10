@@ -1,6 +1,5 @@
 import {map} from '../common/Mapper';
 import AbstractCondition from './AbstractCondition';
-import ConditionType from './ConditionType';
 
 /**
  * @export

@@ -1,11 +1,11 @@
 import {map} from '../common/Mapper';
-import BasicInputStream from './BasicInputStream';
+import InputStream from './InputStream';
 
 /**
  * @export
  * @class TimecodeTrackTrimmingInputStream
  */
-export default class TimecodeTrackTrimmingInputStream extends BasicInputStream {
+export default class TimecodeTrackTrimmingInputStream extends InputStream {
   constructor(obj: any) {
     super(obj);
     this.inputStreamId = map(obj.inputStreamId);

@@ -18,7 +18,7 @@ function getHeaders(apiKey: string, tenantOrgId?: string) {
   const headers: any = {
     'X-Api-Key': apiKey,
     'X-Api-Client': 'bitmovin-api-sdk-javascript',
-    'X-Api-Client-Version': '1.14.1-alpha.0',
+    'X-Api-Client-Version': '1.14.3-alpha.0',
     'Content-Type': 'application/json'
   };
 
@@ -143,6 +143,15 @@ export class RestClient {
             status: response.status,
             headers: response.headers,
             responseData
+          });
+        }, errorData => {
+          throw new BitmovinError(response.statusText, {
+            ok: response.ok,
+            statusText: response.statusText,
+            redirected: response.redirected,
+            type: response.type,
+            status: response.status,
+            headers: response.headers
           });
         });
       }

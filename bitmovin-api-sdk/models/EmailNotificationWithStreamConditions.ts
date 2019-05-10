@@ -1,6 +1,6 @@
 import {map} from '../common/Mapper';
+import AbstractCondition from './AbstractCondition';
 import EmailNotification from './EmailNotification';
-import StreamCondition from './StreamCondition';
 
 /**
  * @export
@@ -9,12 +9,12 @@ import StreamCondition from './StreamCondition';
 export default class EmailNotificationWithStreamConditions extends EmailNotification {
   constructor(obj: any) {
     super(obj);
-    this.conditions = map<StreamCondition>(obj.conditions, StreamCondition);
+    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
   }
 
   /**
-   * @type {Array<StreamCondition>}
+   * @type {Array<AbstractCondition>}
    * @memberof EmailNotificationWithStreamConditions
    */
-  public conditions?: Array<StreamCondition>;
+  public conditions?: Array<AbstractCondition>;
 }

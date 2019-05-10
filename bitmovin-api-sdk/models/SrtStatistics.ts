@@ -11,7 +11,7 @@ import SrtStatisticWindow from './SrtStatisticWindow';
 export default class SrtStatistics {
   constructor(obj: any) {
     this.id = map(obj.id);
-    this.createdAt = map(obj.createdAt);
+    this.createdAt = map(obj.createdAt, Date);
     this.encodingId = map(obj.encodingId);
     this.orgId = map(obj.orgId);
     this.userId = map(obj.userId);

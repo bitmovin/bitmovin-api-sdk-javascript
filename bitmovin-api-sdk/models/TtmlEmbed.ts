@@ -1,6 +1,6 @@
 import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
-import InputStream from './InputStream';
+import StreamInput from './StreamInput';
 
 /**
  * @export
@@ -9,13 +9,13 @@ import InputStream from './InputStream';
 export default class TtmlEmbed extends BitmovinResource {
   constructor(obj: any) {
     super(obj);
-    this.inputStream = map<InputStream>(obj.inputStream, InputStream);
+    this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
   }
 
   /**
    * The input stream to extract the subtitle from
-   * @type {InputStream}
+   * @type {StreamInput}
    * @memberof TtmlEmbed
    */
-  public inputStream: InputStream;
+  public inputStream: StreamInput;
 }

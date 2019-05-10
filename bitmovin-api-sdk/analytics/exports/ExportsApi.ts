@@ -1,9 +1,8 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import AnalyticsExportTask from '../../models/AnalyticsExportTask';
-import AnalyticsExportTaskDetails from '../../models/AnalyticsExportTaskDetails';
 import PaginationResponse from '../../models/PaginationResponse';
-import AnalyticsExportTaskDetailsListQueryParams from './AnalyticsExportTaskDetailsListQueryParams';
+import AnalyticsExportTaskListQueryParams from './AnalyticsExportTaskListQueryParams';
 
 /**
  * ExportsApi - object-oriented interface
@@ -23,9 +22,9 @@ export default class ExportsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof ExportsApi
    */
-  public create(analyticsExportTask?: AnalyticsExportTask): Promise<AnalyticsExportTaskDetails> {
-    return this.restClient.post<AnalyticsExportTaskDetails>('/analytics/exports', {}, analyticsExportTask).then((response) => {
-      return new AnalyticsExportTaskDetails(response);
+  public create(analyticsExportTask?: AnalyticsExportTask): Promise<AnalyticsExportTask> {
+    return this.restClient.post<AnalyticsExportTask>('/analytics/exports', {}, analyticsExportTask).then((response) => {
+      return new AnalyticsExportTask(response);
     });
   }
 
@@ -35,12 +34,12 @@ export default class ExportsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof ExportsApi
    */
-  public get(exportTaskId: string): Promise<AnalyticsExportTaskDetails> {
+  public get(exportTaskId: string): Promise<AnalyticsExportTask> {
     const pathParamMap = {
       export_task_id: exportTaskId
     };
-    return this.restClient.get<AnalyticsExportTaskDetails>('/analytics/exports/{export_task_id}', pathParamMap).then((response) => {
-      return new AnalyticsExportTaskDetails(response);
+    return this.restClient.get<AnalyticsExportTask>('/analytics/exports/{export_task_id}', pathParamMap).then((response) => {
+      return new AnalyticsExportTask(response);
     });
   }
 
@@ -50,11 +49,11 @@ export default class ExportsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof ExportsApi
    */
-  public list(queryParams?: AnalyticsExportTaskDetailsListQueryParams): Promise<PaginationResponse<AnalyticsExportTaskDetails>> {
-    return this.restClient.get<PaginationResponse<AnalyticsExportTaskDetails>>('/analytics/exports', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AnalyticsExportTaskDetails>(response);
+  public list(queryParams?: AnalyticsExportTaskListQueryParams): Promise<PaginationResponse<AnalyticsExportTask>> {
+    return this.restClient.get<PaginationResponse<AnalyticsExportTask>>('/analytics/exports', {}, queryParams).then((response) => {
+      const paginationResponse = new PaginationResponse<AnalyticsExportTask>(response);
       if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AnalyticsExportTaskDetails(i));
+        paginationResponse.items = paginationResponse.items.map((i: any) => new AnalyticsExportTask(i));
       }
       return paginationResponse;
     });

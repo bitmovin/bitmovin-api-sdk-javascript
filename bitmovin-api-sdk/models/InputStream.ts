@@ -1,47 +1,19 @@
 import {map} from '../common/Mapper';
-import StreamSelectionMode from './StreamSelectionMode';
+import AudioMixInputStream from './AudioMixInputStream';
+import BitmovinResource from './BitmovinResource';
+import ConcatenationInputStream from './ConcatenationInputStream';
+import H264PictureTimingTrimmingInputStream from './H264PictureTimingTrimmingInputStream';
+import IngestInputStream from './IngestInputStream';
+import TimeBasedTrimmingInputStream from './TimeBasedTrimmingInputStream';
+import TimecodeTrackTrimmingInputStream from './TimecodeTrackTrimmingInputStream';
 
 /**
  * @export
  * @class InputStream
  */
-export default class InputStream {
+export default class InputStream extends BitmovinResource {
   constructor(obj: any) {
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.selectionMode = map(obj.selectionMode);
-    this.position = map(obj.position);
-    this.inputStreamId = map(obj.inputStreamId);
+    super(obj);
   }
 
-  /**
-   * Id of input
-   * @type {string}
-   * @memberof InputStream
-   */
-  public inputId?: string;
-  /**
-   * Path to media file
-   * @type {string}
-   * @memberof InputStream
-   */
-  public inputPath?: string;
-  /**
-   * Specifies the algorithm how the stream in the input file will be selected
-   * @type {StreamSelectionMode}
-   * @memberof InputStream
-   */
-  public selectionMode?: StreamSelectionMode;
-  /**
-   * Position of the stream
-   * @type {number}
-   * @memberof InputStream
-   */
-  public position?: number;
-  /**
-   * Set this property instead of all others to reference an ingest, trimming or concatenation input stream
-   * @type {string}
-   * @memberof InputStream
-   */
-  public inputStreamId?: string;
 }

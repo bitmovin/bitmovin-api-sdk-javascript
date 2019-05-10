@@ -7,7 +7,7 @@ import DailyStatistics from './DailyStatistics';
  */
 export default class DailyStatisticsPerLabel {
   constructor(obj: any) {
-    this.date = map(obj.date);
+    this.date = map(obj.date, Date);
     this.labels = map<DailyStatistics>(obj.labels, DailyStatistics);
   }
 
