@@ -21,7 +21,7 @@ export default class CustomdataApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CustomdataApi
    */
-  public getCustomData(encodingId: string, sidecarId: string): Promise<CustomData> {
+  public get(encodingId: string, sidecarId: string): Promise<CustomData> {
     const pathParamMap = {
       encoding_id: encodingId,
       sidecar_id: sidecarId

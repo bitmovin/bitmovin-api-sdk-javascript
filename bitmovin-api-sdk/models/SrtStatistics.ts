@@ -13,6 +13,8 @@ export default class SrtStatistics {
     this.id = map(obj.id);
     this.createdAt = map(obj.createdAt, Date);
     this.encodingId = map(obj.encodingId);
+    this.srtInputId = map(obj.srtInputId);
+    this.srtInputSelected = map(obj.srtInputSelected);
     this.orgId = map(obj.orgId);
     this.userId = map(obj.userId);
     this.link = map<SrtStatisticLink>(obj.link, SrtStatisticLink);
@@ -39,6 +41,18 @@ export default class SrtStatistics {
    * @memberof SrtStatistics
    */
   public encodingId?: string;
+  /**
+   * UUID of the SRT input used to capture this statistics
+   * @type {string}
+   * @memberof SrtStatistics
+   */
+  public srtInputId?: string;
+  /**
+   * Whether the SRT input that generated this statistics was selected (i.e. actively used) at the time or not
+   * @type {boolean}
+   * @memberof SrtStatistics
+   */
+  public srtInputSelected?: boolean;
   /**
    * UUID of the associated organization
    * @type {string}

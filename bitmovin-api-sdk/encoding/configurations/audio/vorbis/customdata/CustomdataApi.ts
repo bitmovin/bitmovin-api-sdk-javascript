@@ -20,7 +20,7 @@ export default class CustomdataApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CustomdataApi
    */
-  public getCustomData(configurationId: string): Promise<CustomData> {
+  public get(configurationId: string): Promise<CustomData> {
     const pathParamMap = {
       configuration_id: configurationId
     };

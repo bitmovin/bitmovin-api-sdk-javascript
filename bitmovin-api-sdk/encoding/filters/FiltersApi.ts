@@ -8,6 +8,7 @@ import RotateApi from './rotate/RotateApi';
 import DeinterlaceApi from './deinterlace/DeinterlaceApi';
 import AudioMixApi from './audioMix/AudioMixApi';
 import DenoiseHqdn3dApi from './denoiseHqdn3d/DenoiseHqdn3dApi';
+import EbuR128SinglePassApi from './ebuR128SinglePass/EbuR128SinglePassApi';
 import TextApi from './text/TextApi';
 import InterlaceApi from './interlace/InterlaceApi';
 import UnsharpApi from './unsharp/UnsharpApi';
@@ -33,6 +34,7 @@ export default class FiltersApi extends BaseAPI {
   public deinterlace: DeinterlaceApi;
   public audioMix: AudioMixApi;
   public denoiseHqdn3d: DenoiseHqdn3dApi;
+  public ebuR128SinglePass: EbuR128SinglePassApi;
   public text: TextApi;
   public interlace: InterlaceApi;
   public unsharp: UnsharpApi;
@@ -49,6 +51,7 @@ export default class FiltersApi extends BaseAPI {
     this.deinterlace = new DeinterlaceApi(configuration);
     this.audioMix = new AudioMixApi(configuration);
     this.denoiseHqdn3d = new DenoiseHqdn3dApi(configuration);
+    this.ebuR128SinglePass = new EbuR128SinglePassApi(configuration);
     this.text = new TextApi(configuration);
     this.interlace = new InterlaceApi(configuration);
     this.unsharp = new UnsharpApi(configuration);

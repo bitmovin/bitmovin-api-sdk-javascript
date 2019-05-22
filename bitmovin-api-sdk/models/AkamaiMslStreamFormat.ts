@@ -3,7 +3,9 @@
  * @enum {string}
  */
 enum AkamaiMslStreamFormat {
-  DASH = 'DASH'
+  DASH = 'DASH',
+  HLS = 'HLS',
+  CMAF = 'CMAF'
 }
 
 export default AkamaiMslStreamFormat;

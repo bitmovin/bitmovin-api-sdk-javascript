@@ -1,4 +1,5 @@
 import {map} from '../common/Mapper';
+import BackupSrtInputs from './BackupSrtInputs';
 import Input from './Input';
 import SrtMode from './SrtMode';
 
@@ -16,6 +17,7 @@ export default class SrtInput extends Input {
     this.latency = map(obj.latency);
     this.passphrase = map(obj.passphrase);
     this.keyLength = map(obj.keyLength);
+    this.backupSrtInputs = map<BackupSrtInputs>(obj.backupSrtInputs, BackupSrtInputs);
   }
 
   /**
@@ -31,7 +33,7 @@ export default class SrtInput extends Input {
    */
   public host?: string;
   /**
-   * The port to connect to or listen on. Has to be 2088 if using LISTENER mode.
+   * The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode.
    * @type {number}
    * @memberof SrtInput
    */
@@ -60,4 +62,9 @@ export default class SrtInput extends Input {
    * @memberof SrtInput
    */
   public keyLength?: number;
+  /**
+   * @type {BackupSrtInputs}
+   * @memberof SrtInput
+   */
+  public backupSrtInputs?: BackupSrtInputs;
 }

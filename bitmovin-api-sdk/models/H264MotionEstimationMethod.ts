@@ -6,9 +6,7 @@
 enum H264MotionEstimationMethod {
   DIA = 'DIA',
   HEX = 'HEX',
-  UMH = 'UMH',
-  ESA = 'ESA',
-  TESA = 'TESA'
+  UMH = 'UMH'
 }
 
 export default H264MotionEstimationMethod;

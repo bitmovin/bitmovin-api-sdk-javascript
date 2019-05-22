@@ -5,6 +5,7 @@ import BitmovinResource from './BitmovinResource';
 import CropFilter from './CropFilter';
 import DeinterlaceFilter from './DeinterlaceFilter';
 import DenoiseHqdn3dFilter from './DenoiseHqdn3dFilter';
+import EbuR128SinglePassFilter from './EbuR128SinglePassFilter';
 import EnhancedWatermarkFilter from './EnhancedWatermarkFilter';
 import InterlaceFilter from './InterlaceFilter';
 import RotateFilter from './RotateFilter';

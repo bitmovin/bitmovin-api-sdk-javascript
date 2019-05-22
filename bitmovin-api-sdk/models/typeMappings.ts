@@ -54,6 +54,7 @@ import UnsharpFilter from './UnsharpFilter';
 import ScaleFilter from './ScaleFilter';
 import InterlaceFilter from './InterlaceFilter';
 import AudioVolumeFilter from './AudioVolumeFilter';
+import EbuR128SinglePassFilter from './EbuR128SinglePassFilter';
 import IngestInputStream from './IngestInputStream';
 import ConcatenationInputStream from './ConcatenationInputStream';
 import TimeBasedTrimmingInputStream from './TimeBasedTrimmingInputStream';
@@ -145,6 +146,7 @@ export const FilterTypeMap: any = {
   'SCALE': ScaleFilter,
   'INTERLACE': InterlaceFilter,
   'AUDIO_VOLUME': AudioVolumeFilter,
+  'EBU_R128_SINGLE_PASS': EbuR128SinglePassFilter,
 };
 export const InputStreamTypeMap: any = {
   'INGEST': IngestInputStream,

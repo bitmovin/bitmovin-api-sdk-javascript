@@ -15,6 +15,7 @@ export default class EnhancedWatermarkFilter extends Filter {
     this.top = map(obj.top);
     this.bottom = map(obj.bottom);
     this.unit = map(obj.unit);
+    this.opacity = map(obj.opacity);
   }
 
   /**
@@ -52,4 +53,10 @@ export default class EnhancedWatermarkFilter extends Filter {
    * @memberof EnhancedWatermarkFilter
    */
   public unit?: PositionUnit;
+  /**
+   * Opacity to apply on the watermark image. Valid values are from 0.0 (completely transparent) to 1.0 (not transparent at all)
+   * @type {number}
+   * @memberof EnhancedWatermarkFilter
+   */
+  public opacity?: number;
 }

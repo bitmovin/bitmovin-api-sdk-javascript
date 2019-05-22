@@ -161,12 +161,12 @@ export default class EncodingsApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof EncodingsApi
    */
-  public start(encodingId: string, startEncodingRequest?: StartEncodingRequest): Promise<StartEncodingRequest> {
+  public start(encodingId: string, startEncodingRequest?: StartEncodingRequest): Promise<BitmovinResponse> {
     const pathParamMap = {
       encoding_id: encodingId
     };
-    return this.restClient.post<StartEncodingRequest>('/encoding/encodings/{encoding_id}/start', pathParamMap, startEncodingRequest).then((response) => {
-      return new StartEncodingRequest(response);
+    return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/start', pathParamMap, startEncodingRequest).then((response) => {
+      return new BitmovinResponse(response);
     });
   }
 

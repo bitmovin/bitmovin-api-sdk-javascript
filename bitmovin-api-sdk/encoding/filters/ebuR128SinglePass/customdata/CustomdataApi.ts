@@ -15,16 +15,16 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Custom Data
-   * @param {string} inputId Id of the input
+   * @summary EBU R128 Single Pass Filter Custom Data
+   * @param {string} filterId Id of the EBU R128 Single Pass filter.
    * @throws {RequiredError}
    * @memberof CustomdataApi
    */
-  public get(inputId: string): Promise<CustomData> {
+  public get(filterId: string): Promise<CustomData> {
     const pathParamMap = {
-      input_id: inputId
+      filter_id: filterId
     };
-    return this.restClient.get<CustomData>('/encoding/inputs/azure/{input_id}/customData', pathParamMap).then((response) => {
+    return this.restClient.get<CustomData>('/encoding/filters/ebu-r128-single-pass/{filter_id}/customData', pathParamMap).then((response) => {
       return new CustomData(response);
     });
   }

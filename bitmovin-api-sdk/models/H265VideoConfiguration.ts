@@ -421,7 +421,7 @@ export default class H265VideoConfiguration extends VideoConfiguration {
    */
   public signHide?: boolean;
   /**
-   * Level of rate-distortion optimization in mode decision. The lower the value the faster the encode, the higher the value higher the compression efficiency. Valid range: 0 - 6
+   * Level of rate-distortion optimization in mode decision. The lower the value the faster the encode, the higher the value higher the compression efficiency. Valid range: 0 - 4
    * @type {number}
    * @memberof H265VideoConfiguration
    */
