@@ -1,19 +1,16 @@
-const webpack = require('webpack');
 const path = require('path');
-const packageJson = require('./package');
-
 const isProd = process.env.NODE_ENV === 'production';
-const baseFileName = 'bitmovin';
+const baseFileName = 'bitmovin-api-sdk';
 
 const config = {
   mode: isProd ? 'production' : 'development',
-  context: path.join(__dirname, 'bitmovin-api-sdk'),
+  context: path.join(__dirname, 'src'),
   entry: ['./index.ts'],
   output: {
     filename: `${baseFileName}.browser${isProd ? '.min' : ''}.js`,
     path: path.join(__dirname, 'dist'),
     libraryTarget: 'umd',
-    library: 'bitmovin'
+    library: 'bitmovin-api-sdk'
   },
   module: {
     rules: [
@@ -31,12 +28,7 @@ const config = {
     extensions: ['.tsx', '.ts', '.js']
   },
   devtool: isProd ? false : 'source-map',
-  stats: process.env.WEBPACK_MODE === 'log' ? 'verbose' : 'normal',
-  plugins: [
-    new webpack.DefinePlugin({
-      __VERSION__: JSON.stringify(packageJson.version)
-    })
-  ]
+  stats: process.env.WEBPACK_MODE === 'log' ? 'verbose' : 'normal'
 };
 
 module.exports = config;

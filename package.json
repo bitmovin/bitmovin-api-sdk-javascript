@@ -1,6 +1,6 @@
 {
   "name": "@bitmovin/api-sdk",
-  "version": "1.15.0-alpha.0",
+  "version": "1.16.0-alpha.0",
   "description": "OpenAPI client for @bitmovin/api-sdk",
   "author": "Bitmovin Inc",
   "keywords": [
@@ -10,19 +10,18 @@
     "@bitmovin/api-sdk"
   ],
   "license": "MIT",
-  "main": "./dist/index.js",
-  "browser": "./dist/bitmovin.browser.js",
-  "typings": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run build:bundle:dev && npm run build:bundle:prod && npm run build:modules",
     "build:bundle:dev": "cross-env NODE_ENV=development webpack --config=./webpack.config.js",
     "build:bundle:prod": "cross-env NODE_ENV=production webpack --config=./webpack.config.js",
     "build:modules": "tsc --project ./tsconfig.json",
     "prepublishOnly": "npm run build",
-    "lint": "tslint \"./bitmovin-api-sdk/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"./bitmovin-api-sdk/**/*.{ts,tsx,scss}\"",
-    "format-check-verbose": "prettier --check \"./bitmovin-api-sdk/**/*.{ts,tsx,scss}\"",
-    "format-check": "prettier --list-different \"./bitmovin-api-sdk/**/*.{ts,tsx,scss}\"",
+    "lint": "tslint \"./src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"./src/**/*.{ts,tsx,scss}\"",
+    "format-check-verbose": "prettier --check \"./src/**/*.{ts,tsx,scss}\"",
+    "format-check": "prettier --list-different \"./src/**/*.{ts,tsx,scss}\"",
     "test": "jest"
   },
   "dependencies": {
