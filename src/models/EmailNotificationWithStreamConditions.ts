@@ -13,10 +13,10 @@ export class EmailNotificationWithStreamConditions extends EmailNotification {
   }
 
   /**
-   * @type {Array<AbstractCondition>}
+   * @type {AbstractCondition}
    * @memberof EmailNotificationWithStreamConditions
    */
-  public conditions?: Array<AbstractCondition>;
+  public conditions?: AbstractCondition;
 }
 
 export default EmailNotificationWithStreamConditions;

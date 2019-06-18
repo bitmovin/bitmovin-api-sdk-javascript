@@ -163,6 +163,7 @@ export * from './Eac3AudioConfiguration';
 export * from './EbuR128SinglePassFilter';
 export * from './EmailNotification';
 export * from './EmailNotificationWithStreamConditions';
+export * from './EmailNotificationWithStreamConditionsRequest';
 export * from './Encoding';
 export * from './EncodingErrorDefinition';
 export * from './EncodingErrorEmailNotification';

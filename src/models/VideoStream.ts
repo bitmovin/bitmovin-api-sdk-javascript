@@ -30,7 +30,7 @@ export class VideoStream extends MediaStream {
    */
   public bitrate?: string;
   /**
-   * Bitrate in bps
+   * Bitrate in bps (the same as bitrate, but represented as an integer value)
    * @type {number}
    * @memberof VideoStream
    */

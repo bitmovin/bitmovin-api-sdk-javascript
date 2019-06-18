@@ -54,10 +54,10 @@ export class EncodingStreamInputDetails {
   public bitrate?: number;
   /**
    * Additional metadata saved in the input file
-   * @type {Array<string>}
+   * @type {{ [key: string]: any; }}
    * @memberof EncodingStreamInputDetails
    */
-  public tags?: Array<string>;
+  public tags?: { [key: string]: any; };
   /**
    * Video streams in the input file
    * @type {Array<VideoStream>}

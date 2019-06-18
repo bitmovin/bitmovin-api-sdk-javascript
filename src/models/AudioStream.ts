@@ -24,10 +24,10 @@ export class AudioStream extends MediaStream {
   public sampleRate?: number;
   /**
    * Bitrate in bps
-   * @type {number}
+   * @type {string}
    * @memberof AudioStream
    */
-  public bitrate?: number;
+  public bitrate?: string;
   /**
    * Bitrate in bps
    * @type {number}
