@@ -15,7 +15,7 @@ Installation
 ------------
 
 ``` bash
-npm install @bitmovin/api-sdk@1.17.0-alpha.0
+npm install @bitmovin/api-sdk@1.17.1-alpha.0
 ```
 
 Initialization
