@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Vp8NoiseSensitivity {
+export enum Vp8NoiseSensitivity {
   OFF = 'OFF',
   ON_Y_ONLY = 'ON_Y_ONLY',
   ON_YUV = 'ON_YUV',

@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum DeinterlaceMode {
+export enum DeinterlaceMode {
   FRAME = 'FRAME',
   FIELD = 'FIELD',
   FRAME_NOSPATIAL = 'FRAME_NOSPATIAL',

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum MaxTransformUnitSize {
+export enum MaxTransformUnitSize {
   MTU_4x4 = 'MTU_4x4',
   MTU_8x8 = 'MTU_8x8',
   MTU_16x16 = 'MTU_16x16',

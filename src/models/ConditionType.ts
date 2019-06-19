@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ConditionType {
+export enum ConditionType {
   CONDITION = 'CONDITION',
   AND = 'AND',
   OR = 'OR'

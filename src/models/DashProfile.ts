@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum DashProfile {
+export enum DashProfile {
   LIVE = 'LIVE',
   ON_DEMAND = 'ON_DEMAND'
 }

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PositionMode {
+export enum PositionMode {
   KEYFRAME = 'KEYFRAME',
   TIME = 'TIME',
   SEGMENT = 'SEGMENT'

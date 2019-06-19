@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum PlayReadyEncryptionMethod {
+export enum PlayReadyEncryptionMethod {
   MPEG_CENC = 'MPEG_CENC',
   PIFF_CTR = 'PIFF_CTR'
 }

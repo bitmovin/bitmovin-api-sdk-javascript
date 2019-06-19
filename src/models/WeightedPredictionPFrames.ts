@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum WeightedPredictionPFrames {
+export enum WeightedPredictionPFrames {
   DISABLED = 'DISABLED',
   SIMPLE = 'SIMPLE',
   SMART = 'SMART'

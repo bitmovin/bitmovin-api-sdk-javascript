@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ChunkLengthMode {
+export enum ChunkLengthMode {
   SPEED_OPTIMIZED = 'SPEED_OPTIMIZED',
   CUSTOM = 'CUSTOM'
 }

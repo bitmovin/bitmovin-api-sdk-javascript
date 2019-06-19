@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ConditionOperator {
+export enum ConditionOperator {
   EQUAL = '==',
   NOT_EQUAL = '!=',
   LESS_THAN_OR_EQUAL = '<=',

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum VorbisChannelLayout {
+export enum VorbisChannelLayout {
   NONE = 'NONE',
   MONO = 'MONO',
   CL_STEREO = 'STEREO',

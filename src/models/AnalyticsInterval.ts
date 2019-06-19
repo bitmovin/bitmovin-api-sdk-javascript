@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AnalyticsInterval {
+export enum AnalyticsInterval {
   MINUTE = 'MINUTE',
   HOUR = 'HOUR',
   DAY = 'DAY',

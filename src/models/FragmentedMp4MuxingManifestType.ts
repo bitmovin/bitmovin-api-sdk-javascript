@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum FragmentedMp4MuxingManifestType {
+export enum FragmentedMp4MuxingManifestType {
   SMOOTH = 'SMOOTH',
   DASH_ON_DEMAND = 'DASH_ON_DEMAND',
   HLS_BYTE_RANGES = 'HLS_BYTE_RANGES',

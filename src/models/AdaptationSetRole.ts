@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AdaptationSetRole {
+export enum AdaptationSetRole {
   ALTERNATE = 'ALTERNATE',
   CAPTION = 'CAPTION',
   COMMENTARY = 'COMMENTARY',

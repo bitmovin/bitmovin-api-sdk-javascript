@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum StreamSelectionMode {
+export enum StreamSelectionMode {
   AUTO = 'AUTO',
   POSITION_ABSOLUTE = 'POSITION_ABSOLUTE',
   VIDEO_RELATIVE = 'VIDEO_RELATIVE',

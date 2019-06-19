@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Permission {
+export enum Permission {
   GET = 'GET',
   DELETE = 'DELETE',
   POST = 'POST',

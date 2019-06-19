@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum InputStreamType {
+export enum InputStreamType {
   INGEST = 'INGEST',
   CONCATENATION = 'CONCATENATION',
   TRIMMING_TIME_BASED = 'TRIMMING_TIME_BASED',

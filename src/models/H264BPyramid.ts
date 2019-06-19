@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264BPyramid {
+export enum H264BPyramid {
   NONE = 'NONE',
   STRICT = 'STRICT',
   NORMAL = 'NORMAL'

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum TextFilterFont {
+export enum TextFilterFont {
   DEJAVUSANS = 'DEJAVUSANS',
   DEJAVUSERIF = 'DEJAVUSERIF',
   DEJAVUSANSMONO = 'DEJAVUSANSMONO',

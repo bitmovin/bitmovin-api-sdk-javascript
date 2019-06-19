@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum VerticalLowPassFilteringMode {
+export enum VerticalLowPassFilteringMode {
   DISABLED = 'DISABLED',
   LOW_PASS = 'LOW_PASS',
   COMPLEX = 'COMPLEX'

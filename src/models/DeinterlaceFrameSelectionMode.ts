@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum DeinterlaceFrameSelectionMode {
+export enum DeinterlaceFrameSelectionMode {
   ALL = 'ALL',
   INTERLACED = 'INTERLACED'
 }

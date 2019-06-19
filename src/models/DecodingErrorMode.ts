@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum DecodingErrorMode {
+export enum DecodingErrorMode {
   FAIL_ON_ERROR = 'FAIL_ON_ERROR',
   DUPLICATE_FRAMES = 'DUPLICATE_FRAMES'
 }

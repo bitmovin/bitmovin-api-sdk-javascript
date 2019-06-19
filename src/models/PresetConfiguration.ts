@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PresetConfiguration {
+export enum PresetConfiguration {
   LIVE_HIGH_QUALITY = 'LIVE_HIGH_QUALITY',
   LIVE_LOW_LATENCY = 'LIVE_LOW_LATENCY',
   VOD_HIGH_QUALITY = 'VOD_HIGH_QUALITY',

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum SpriteUnit {
+export enum SpriteUnit {
   SECONDS = 'SECONDS',
   PERCENTS = 'PERCENTS'
 }

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AkamaiMslVersion {
+export enum AkamaiMslVersion {
   MSL4 = 'MSL4'
 }
 

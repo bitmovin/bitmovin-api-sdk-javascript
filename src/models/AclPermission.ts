@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AclPermission {
+export enum AclPermission {
   PUBLIC_READ = 'PUBLIC_READ',
   PRIVATE = 'PRIVATE'
 }

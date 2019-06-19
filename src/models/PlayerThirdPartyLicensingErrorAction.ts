@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PlayerThirdPartyLicensingErrorAction {
+export enum PlayerThirdPartyLicensingErrorAction {
   ALLOW = 'ALLOW',
   DENY = 'DENY'
 }

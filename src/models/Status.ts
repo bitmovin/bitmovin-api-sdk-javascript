@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum Status {
+export enum Status {
   CREATED = 'CREATED',
   QUEUED = 'QUEUED',
   RUNNING = 'RUNNING',

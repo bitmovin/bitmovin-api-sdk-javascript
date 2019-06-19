@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum TuInterDepth {
+export enum TuInterDepth {
   D1 = '1',
   D2 = '2',
   D3 = '3',

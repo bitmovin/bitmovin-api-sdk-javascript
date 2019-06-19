@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum Id3TagPositionMode {
+export enum Id3TagPositionMode {
   TIME = 'TIME',
   FRAME = 'FRAME'
 }

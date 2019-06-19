@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ProfileH265 {
+export enum ProfileH265 {
   MAIN = 'main',
   MAIN10 = 'main10'
 }

@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum RaiUnit {
+export enum RaiUnit {
   NONE = 'NONE',
   ALL_PES_PACKETS = 'ALL_PES_PACKETS',
   ACQUISITION_POINT_PACKETS = 'ACQUISITION_POINT_PACKETS',

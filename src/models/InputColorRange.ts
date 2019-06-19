@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum InputColorRange {
+export enum InputColorRange {
   UNSPECIFIED = 'UNSPECIFIED',
   MPEG = 'MPEG',
   JPEG = 'JPEG'

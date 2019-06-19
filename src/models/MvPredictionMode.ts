@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum MvPredictionMode {
+export enum MvPredictionMode {
   NONE = 'NONE',
   SPATIAL = 'SPATIAL',
   TEMPORAL = 'TEMPORAL',

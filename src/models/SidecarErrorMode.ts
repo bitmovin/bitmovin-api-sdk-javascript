@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum SidecarErrorMode {
+export enum SidecarErrorMode {
   FAIL_ON_ERROR = 'FAIL_ON_ERROR',
   CONTINUE_ON_ERROR = 'CONTINUE_ON_ERROR'
 }

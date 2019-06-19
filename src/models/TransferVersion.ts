@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum TransferVersion {
+export enum TransferVersion {
   DEFAULT = 'DEFAULT',
   POOL = 'POOL'
 }

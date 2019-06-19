@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum MaxCtuSize {
+export enum MaxCtuSize {
   S16 = '16',
   S32 = '32',
   S64 = '64'

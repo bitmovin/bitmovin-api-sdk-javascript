@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum CaptionCharacterEncoding {
+export enum CaptionCharacterEncoding {
   ANSI_X3_4_1968 = 'ANSI_X3.4-1968',
   ANSI_X3_4_1986 = 'ANSI_X3.4-1986',
   ARABIC = 'ARABIC',

@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum RateDistortionPenaltyMode {
+export enum RateDistortionPenaltyMode {
   DISABLED = 'DISABLED',
   NORMAL = 'NORMAL',
   MAXIMUM = 'MAXIMUM'

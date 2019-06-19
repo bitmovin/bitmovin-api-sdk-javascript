@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AdaptiveQuantMode {
+export enum AdaptiveQuantMode {
   DISABLED = 'DISABLED',
   VARIANCE = 'VARIANCE',
   AUTO_VARIANCE = 'AUTO_VARIANCE',

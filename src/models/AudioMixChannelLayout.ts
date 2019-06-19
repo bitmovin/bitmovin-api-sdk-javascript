@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum AudioMixChannelLayout {
+export enum AudioMixChannelLayout {
   NONE = 'NONE',
   CL_MONO = 'MONO',
   CL_STEREO = 'STEREO',

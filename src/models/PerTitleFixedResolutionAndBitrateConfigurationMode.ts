@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PerTitleFixedResolutionAndBitrateConfigurationMode {
+export enum PerTitleFixedResolutionAndBitrateConfigurationMode {
   LAST_CALCULATED_BITRATE = 'LAST_CALCULATED_BITRATE',
   MINIMUM = 'MINIMUM',
   MAXIMUM = 'MAXIMUM',

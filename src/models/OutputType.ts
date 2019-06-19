@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum OutputType {
+export enum OutputType {
   AKAMAI_NETSTORAGE = 'AKAMAI_NETSTORAGE',
   AZURE = 'AZURE',
   GENERIC_S3 = 'GENERIC_S3',

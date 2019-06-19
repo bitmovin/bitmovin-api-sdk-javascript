@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum BAdapt {
+export enum BAdapt {
   NONE = 'NONE',
   FAST = 'FAST',
   FULL = 'FULL'

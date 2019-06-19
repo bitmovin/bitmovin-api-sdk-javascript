@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum SignatureType {
+export enum SignatureType {
   HMAC = 'HMAC'
 }
 

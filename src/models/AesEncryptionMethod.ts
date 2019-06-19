@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum AesEncryptionMethod {
+export enum AesEncryptionMethod {
   SAMPLE_AES = 'SAMPLE_AES',
   AES_128 = 'AES_128'
 }

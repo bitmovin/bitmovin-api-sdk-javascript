@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ColorSpace {
+export enum ColorSpace {
   UNSPECIFIED = 'UNSPECIFIED',
   RGB = 'RGB',
   BT709 = 'BT709',

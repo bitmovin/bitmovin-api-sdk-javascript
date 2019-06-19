@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Vp9Quality {
+export enum Vp9Quality {
   REALTIME = 'REALTIME',
   GOOD = 'GOOD',
   BEST = 'BEST'

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum NotificationStates {
+export enum NotificationStates {
   FIRED = 'FIRED',
   RESOLVED = 'RESOLVED'
 }

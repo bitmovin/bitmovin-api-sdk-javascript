@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum AudioVolumeUnit {
+export enum AudioVolumeUnit {
   PERCENT = 'PERCENT',
   DB = 'DB'
 }

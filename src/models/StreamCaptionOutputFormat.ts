@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum StreamCaptionOutputFormat {
+export enum StreamCaptionOutputFormat {
   WEBVTT = 'WEBVTT'
 }
 

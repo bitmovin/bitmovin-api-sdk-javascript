@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum VariantStreamDroppingMode {
+export enum VariantStreamDroppingMode {
   STREAM = 'STREAM',
   AUDIO = 'AUDIO'
 }

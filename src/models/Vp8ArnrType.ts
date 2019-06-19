@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Vp8ArnrType {
+export enum Vp8ArnrType {
   BACKWARD = 'BACKWARD',
   FORWARD = 'FORWARD',
   CENTERED = 'CENTERED'

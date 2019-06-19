@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ScalingAlgorithm {
+export enum ScalingAlgorithm {
   FAST_BILINEAR = 'FAST_BILINEAR',
   BILINEAR = 'BILINEAR',
   BICUBIC = 'BICUBIC',

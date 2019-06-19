@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Policy {
+export enum Policy {
   ALLOW = 'ALLOW',
   DENY = 'DENY'
 }

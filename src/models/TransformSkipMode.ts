@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum TransformSkipMode {
+export enum TransformSkipMode {
   NONE = 'NONE',
   NORMAL = 'NORMAL',
   FAST = 'FAST'

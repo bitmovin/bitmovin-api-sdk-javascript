@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum RetryHint {
+export enum RetryHint {
   RETRY = 'RETRY',
   RETRY_IN_DIFFERENT_REGION = 'RETRY_IN_DIFFERENT_REGION',
   NO_RETRY = 'NO_RETRY'

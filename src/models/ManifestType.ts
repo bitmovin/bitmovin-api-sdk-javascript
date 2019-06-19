@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ManifestType {
+export enum ManifestType {
   DASH = 'DASH',
   HLS = 'HLS',
   SMOOTH_STREAMING = 'SMOOTH_STREAMING'

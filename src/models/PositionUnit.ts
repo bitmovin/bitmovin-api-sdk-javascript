@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PositionUnit {
+export enum PositionUnit {
   PIXELS = 'PIXELS',
   PERCENTS = 'PERCENTS'
 }

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum LiveEncodingEventName {
+export enum LiveEncodingEventName {
   FIRST_CONNECT = 'FIRST_CONNECT',
   DISCONNECT = 'DISCONNECT',
   RECONNECT = 'RECONNECT',

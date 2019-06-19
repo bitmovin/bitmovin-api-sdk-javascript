@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum OpusChannelLayout {
+export enum OpusChannelLayout {
   NONE = 'NONE',
   MONO = 'MONO',
   CL_STEREO = 'STEREO',

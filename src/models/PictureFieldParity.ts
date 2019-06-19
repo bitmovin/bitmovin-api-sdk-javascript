@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum PictureFieldParity {
+export enum PictureFieldParity {
   AUTO = 'AUTO',
   TOP_FIELD_FIRST = 'TOP_FIELD_FIRST',
   BOTTOM_FIELD_FIRST = 'BOTTOM_FIELD_FIRST'

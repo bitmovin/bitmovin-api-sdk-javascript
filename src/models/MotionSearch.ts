@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum MotionSearch {
+export enum MotionSearch {
   DIA = 'DIA',
   HEX = 'HEX',
   UMH = 'UMH',

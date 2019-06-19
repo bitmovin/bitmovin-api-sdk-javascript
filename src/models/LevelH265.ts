@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum LevelH265 {
+export enum LevelH265 {
   L1 = '1',
   L2 = '2',
   L2_1 = '2.1',

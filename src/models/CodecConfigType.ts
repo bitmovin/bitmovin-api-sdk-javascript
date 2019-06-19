@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum CodecConfigType {
+export enum CodecConfigType {
   AAC = 'AAC',
   HE_AAC_V1 = 'HE_AAC_V1',
   HE_AAC_V2 = 'HE_AAC_V2',

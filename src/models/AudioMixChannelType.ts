@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum AudioMixChannelType {
+export enum AudioMixChannelType {
   CHANNEL_NUMBER = 'CHANNEL_NUMBER',
   FRONT_LEFT = 'FRONT_LEFT',
   FRONT_RIGHT = 'FRONT_RIGHT',

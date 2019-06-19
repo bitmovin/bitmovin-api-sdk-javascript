@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum ForceFlushMode {
+export enum ForceFlushMode {
   DISABLED = 'DISABLED',
   ALL_FRAMES = 'ALL_FRAMES',
   SLICE_TYPE = 'SLICE_TYPE'

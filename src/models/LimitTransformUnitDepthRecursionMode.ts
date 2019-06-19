@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum LimitTransformUnitDepthRecursionMode {
+export enum LimitTransformUnitDepthRecursionMode {
   DISABLED = 'DISABLED',
   LEVEL_1 = 'LEVEL_1',
   LEVEL_2 = 'LEVEL_2',

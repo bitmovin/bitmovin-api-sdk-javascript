@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ChromaLocation {
+export enum ChromaLocation {
   UNSPECIFIED = 'UNSPECIFIED',
   LEFT = 'LEFT',
   CENTER = 'CENTER',

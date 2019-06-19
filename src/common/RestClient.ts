@@ -18,7 +18,7 @@ function getHeaders(apiKey: string, tenantOrgId?: string) {
   const headers: any = {
     'X-Api-Key': apiKey,
     'X-Api-Client': 'bitmovin-api-sdk-javascript',
-    'X-Api-Client-Version': '1.17.1-alpha.0',
+    'X-Api-Client-Version': '1.17.2-alpha.0',
     'Content-Type': 'application/json'
   };
 

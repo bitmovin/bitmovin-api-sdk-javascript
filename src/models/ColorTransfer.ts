@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ColorTransfer {
+export enum ColorTransfer {
   UNSPECIFIED = 'UNSPECIFIED',
   BT709 = 'BT709',
   GAMMA22 = 'GAMMA22',

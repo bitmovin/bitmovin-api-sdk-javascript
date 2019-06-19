@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum FilterType {
+export enum FilterType {
   CROP = 'CROP',
   WATERMARK = 'WATERMARK',
   ENHANCED_WATERMARK = 'ENHANCED_WATERMARK',

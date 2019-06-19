@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264Partition {
+export enum H264Partition {
   NONE = 'NONE',
   P8X8 = 'P8X8',
   P4X4 = 'P4X4',

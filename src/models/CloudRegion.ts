@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum CloudRegion {
+export enum CloudRegion {
   AWS_US_EAST_1 = 'AWS_US_EAST_1',
   AWS_US_EAST_2 = 'AWS_US_EAST_2',
   AWS_US_WEST_1 = 'AWS_US_WEST_1',

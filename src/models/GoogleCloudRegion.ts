@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum GoogleCloudRegion {
+export enum GoogleCloudRegion {
   US_CENTRAL_1 = 'US_CENTRAL_1',
   US_EAST_1 = 'US_EAST_1',
   ASIA_EAST_1 = 'ASIA_EAST_1',

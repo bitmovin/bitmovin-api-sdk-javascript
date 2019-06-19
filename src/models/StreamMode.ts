@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum StreamMode {
+export enum StreamMode {
   STANDARD = 'STANDARD',
   PER_TITLE_TEMPLATE = 'PER_TITLE_TEMPLATE',
   PER_TITLE_TEMPLATE_FIXED_RESOLUTION = 'PER_TITLE_TEMPLATE_FIXED_RESOLUTION',

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AacChannelLayout {
+export enum AacChannelLayout {
   NONE = 'NONE',
   MONO = 'MONO',
   CL_STEREO = 'STEREO',

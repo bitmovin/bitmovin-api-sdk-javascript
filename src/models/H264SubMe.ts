@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264SubMe {
+export enum H264SubMe {
   FULLPEL = 'FULLPEL',
   SAD = 'SAD',
   SATD = 'SATD',

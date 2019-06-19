@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ConvertSccPositionMode {
+export enum ConvertSccPositionMode {
   FULL = 'FULL',
   SIMPLE = 'SIMPLE',
   NONE = 'NONE'

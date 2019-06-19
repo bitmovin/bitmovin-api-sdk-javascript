@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum EncryptionMode {
+export enum EncryptionMode {
   CTR = 'CTR',
   CBC = 'CBC'
 }

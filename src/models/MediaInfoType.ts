@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum MediaInfoType {
+export enum MediaInfoType {
   AUDIO = 'AUDIO',
   VIDEO = 'VIDEO',
   SUBTITLES = 'SUBTITLES',

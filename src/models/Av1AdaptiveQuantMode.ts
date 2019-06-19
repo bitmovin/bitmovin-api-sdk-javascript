@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Av1AdaptiveQuantMode {
+export enum Av1AdaptiveQuantMode {
   OFF = 'OFF',
   VARIANCE = 'VARIANCE',
   COMPLEXITY = 'COMPLEXITY',

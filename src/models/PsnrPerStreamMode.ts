@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum PsnrPerStreamMode {
+export enum PsnrPerStreamMode {
   DISABLED = 'DISABLED',
   ENABLED = 'ENABLED'
 }

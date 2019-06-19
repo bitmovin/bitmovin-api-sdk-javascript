@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum StatisticsResolution {
+export enum StatisticsResolution {
   SD = 'SD',
   HD = 'HD',
   UHD = 'UHD'

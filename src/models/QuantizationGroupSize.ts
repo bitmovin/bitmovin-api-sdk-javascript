@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum QuantizationGroupSize {
+export enum QuantizationGroupSize {
   QGS_8x8 = 'QGS_8x8',
   QGS_16x16 = 'QGS_16x16',
   QGS_32x32 = 'QGS_32x32',

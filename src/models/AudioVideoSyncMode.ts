@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AudioVideoSyncMode {
+export enum AudioVideoSyncMode {
   STANDARD = 'STANDARD',
   RESYNC_AT_START = 'RESYNC_AT_START'
 }

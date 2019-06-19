@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264MotionEstimationMethod {
+export enum H264MotionEstimationMethod {
   DIA = 'DIA',
   HEX = 'HEX',
   UMH = 'UMH'

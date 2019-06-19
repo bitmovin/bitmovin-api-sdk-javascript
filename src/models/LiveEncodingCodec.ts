@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum LiveEncodingCodec {
+export enum LiveEncodingCodec {
   H264 = 'H264',
   H265 = 'H265',
   AAC = 'AAC'

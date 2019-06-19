@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ResponseStatus {
+export enum ResponseStatus {
   SUCCESS = 'SUCCESS',
   ERROR = 'ERROR'
 }

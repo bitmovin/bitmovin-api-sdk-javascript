@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum SmoothManifestDefaultVersion {
+export enum SmoothManifestDefaultVersion {
   V1 = 'V1'
 }
 

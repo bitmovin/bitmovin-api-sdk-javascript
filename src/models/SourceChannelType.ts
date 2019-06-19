@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum SourceChannelType {
+export enum SourceChannelType {
   CHANNEL_NUMBER = 'CHANNEL_NUMBER',
   FRONT_LEFT = 'FRONT_LEFT',
   FRONT_RIGHT = 'FRONT_RIGHT',

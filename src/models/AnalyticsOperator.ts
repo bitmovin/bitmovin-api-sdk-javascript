@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AnalyticsOperator {
+export enum AnalyticsOperator {
   EQ = 'EQ',
   NE = 'NE',
   LT = 'LT',

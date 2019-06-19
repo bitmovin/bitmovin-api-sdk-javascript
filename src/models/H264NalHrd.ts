@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264NalHrd {
+export enum H264NalHrd {
   NONE = 'NONE',
   VBR = 'VBR',
   CBR = 'CBR'

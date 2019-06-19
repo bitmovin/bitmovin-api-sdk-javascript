@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum PixelFormat {
+export enum PixelFormat {
   YUV410P = 'YUV410P',
   YUV411P = 'YUV411P',
   YUV420P = 'YUV420P',

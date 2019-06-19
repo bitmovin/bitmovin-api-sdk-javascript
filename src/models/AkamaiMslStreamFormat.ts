@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AkamaiMslStreamFormat {
+export enum AkamaiMslStreamFormat {
   DASH = 'DASH',
   HLS = 'HLS',
   CMAF = 'CMAF'

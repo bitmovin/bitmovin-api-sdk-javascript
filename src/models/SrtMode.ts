@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum SrtMode {
+export enum SrtMode {
   LISTENER = 'LISTENER',
   CALLER = 'CALLER'
 }

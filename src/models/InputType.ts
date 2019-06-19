@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum InputType {
+export enum InputType {
   AKAMAI_NETSTORAGE = 'AKAMAI_NETSTORAGE',
   ASPERA = 'ASPERA',
   AZURE = 'AZURE',

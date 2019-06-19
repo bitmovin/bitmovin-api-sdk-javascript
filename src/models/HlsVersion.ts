@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum HlsVersion {
+export enum HlsVersion {
   HLS_V3 = '3',
   HLS_V4 = '4',
   HLS_V5 = '5',

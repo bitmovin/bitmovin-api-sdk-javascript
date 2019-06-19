@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AnalyticsExportStatus {
+export enum AnalyticsExportStatus {
   STARTED = 'STARTED',
   FINISHED = 'FINISHED',
   QUEUED = 'QUEUED',

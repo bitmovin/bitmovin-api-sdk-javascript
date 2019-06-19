@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum MuxingType {
+export enum MuxingType {
   FMP4 = 'FMP4',
   CMAF = 'CMAF',
   MP4 = 'MP4',

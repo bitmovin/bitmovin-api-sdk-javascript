@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum H264Trellis {
+export enum H264Trellis {
   DISABLED = 'DISABLED',
   ENABLED_FINAL_MB = 'ENABLED_FINAL_MB',
   ENABLED_ALL = 'ENABLED_ALL'

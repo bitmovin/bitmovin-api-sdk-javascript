@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum VideoFormat {
+export enum VideoFormat {
   UNDEFINED = 'UNDEFINED',
   COMPONENT = 'COMPONENT',
   PAL = 'PAL',

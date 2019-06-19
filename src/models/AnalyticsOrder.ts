@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum AnalyticsOrder {
+export enum AnalyticsOrder {
   ASC = 'ASC',
   DESC = 'DESC'
 }

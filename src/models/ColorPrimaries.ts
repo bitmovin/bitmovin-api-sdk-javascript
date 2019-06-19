@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum ColorPrimaries {
+export enum ColorPrimaries {
   UNSPECIFIED = 'UNSPECIFIED',
   BT709 = 'BT709',
   BT470M = 'BT470M',

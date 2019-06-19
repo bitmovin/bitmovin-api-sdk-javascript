@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum DashRepresentationType {
+export enum DashRepresentationType {
   TEMPLATE = 'TEMPLATE',
   LIST = 'LIST',
   TIMELINE = 'TIMELINE'

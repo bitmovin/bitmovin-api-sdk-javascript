@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum DrmType {
+export enum DrmType {
   WIDEVINE = 'WIDEVINE',
   PLAYREADY = 'PLAYREADY',
   PRIMETIME = 'PRIMETIME',

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum HlsManifestDefaultVersion {
+export enum HlsManifestDefaultVersion {
   V1 = 'V1'
 }
 

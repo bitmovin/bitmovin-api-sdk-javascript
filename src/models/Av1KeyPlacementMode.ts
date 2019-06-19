@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Av1KeyPlacementMode {
+export enum Av1KeyPlacementMode {
   AUTO = 'AUTO',
   FIXED = 'FIXED',
   DISABLED = 'DISABLED'

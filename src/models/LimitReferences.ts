@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum LimitReferences {
+export enum LimitReferences {
   DISABLED = 'DISABLED',
   DEPTH = 'DEPTH',
   CU = 'CU',

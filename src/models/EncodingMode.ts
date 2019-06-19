@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum EncodingMode {
+export enum EncodingMode {
   STANDARD = 'STANDARD',
   SINGLE_PASS = 'SINGLE_PASS',
   TWO_PASS = 'TWO_PASS',

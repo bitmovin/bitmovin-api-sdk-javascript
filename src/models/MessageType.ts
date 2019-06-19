@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum MessageType {
+export enum MessageType {
   ERROR = 'ERROR',
   WARNING = 'WARNING',
   INFO = 'INFO',

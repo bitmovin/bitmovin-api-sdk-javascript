@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum EncryptionType {
+export enum EncryptionType {
   AES = 'AES',
   DESEDE = 'DESede',
   BLOWFISH = 'Blowfish',

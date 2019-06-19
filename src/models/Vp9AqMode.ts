@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum Vp9AqMode {
+export enum Vp9AqMode {
   NONE = 'NONE',
   VARIANCE = 'VARIANCE',
   COMPLEXITY = 'COMPLEXITY',

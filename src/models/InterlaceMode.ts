@@ -3,7 +3,7 @@
  * @export
  * @enum {string}
  */
-export const enum InterlaceMode {
+export enum InterlaceMode {
   TOP = 'TOP',
   BOTTOM = 'BOTTOM',
   DROP_EVEN = 'DROP_EVEN',

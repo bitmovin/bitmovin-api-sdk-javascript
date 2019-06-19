@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export const enum DashManifestDefaultVersion {
+export enum DashManifestDefaultVersion {
   V1 = 'V1'
 }
 
