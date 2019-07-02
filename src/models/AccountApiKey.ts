@@ -12,7 +12,7 @@ export class AccountApiKey extends BitmovinResource {
   }
 
   /**
-   * Key value for authentication with the Bitmovin API
+   * Key value for authentication with the Bitmovin API (required)
    * @type {string}
    * @memberof AccountApiKey
    */

@@ -14,7 +14,7 @@ export class DashFmp4DrmRepresentation extends DashFmp4Representation {
   }
 
   /**
-   * DRM Id
+   * DRM Id (required)
    * @type {string}
    * @memberof DashFmp4DrmRepresentation
    */

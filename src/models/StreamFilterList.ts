@@ -11,7 +11,7 @@ export class StreamFilterList {
   }
 
   /**
-   * List of stream filters
+   * List of stream filters (required)
    * @type {Array<StreamFilter>}
    * @memberof StreamFilterList
    */

@@ -11,13 +11,13 @@ export class XmlNamespace {
   }
 
   /**
-   * Name of the XML Namespace reference
+   * Name of the XML Namespace reference (required)
    * @type {string}
    * @memberof XmlNamespace
    */
   public prefix: string;
   /**
-   * Source of the XML Namespace reference
+   * Source of the XML Namespace reference (required)
    * @type {string}
    * @memberof XmlNamespace
    */

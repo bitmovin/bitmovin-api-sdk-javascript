@@ -14,7 +14,7 @@ export class DashCmafDrmRepresentation extends DashCmafRepresentation {
   }
 
   /**
-   * DRM Id
+   * DRM Id (required)
    * @type {string}
    * @memberof DashCmafDrmRepresentation
    */

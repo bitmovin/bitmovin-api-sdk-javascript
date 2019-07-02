@@ -30,7 +30,7 @@ export class DashSegmentedRepresentation extends DashRepresentation {
    */
   public mode?: DashRepresentationTypeMode;
   /**
-   * Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET
+   * Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET (required)
    * @type {string}
    * @memberof DashSegmentedRepresentation
    */

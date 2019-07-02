@@ -14,19 +14,19 @@ export class AwsAccount extends BitmovinResource {
   }
 
   /**
-   * Amazon access key
+   * Amazon access key (required)
    * @type {string}
    * @memberof AwsAccount
    */
   public accessKey: string;
   /**
-   * Amazon secret key
+   * Amazon secret key (required)
    * @type {string}
    * @memberof AwsAccount
    */
   public secretKey: string;
   /**
-   * Amazon account number (12 digits as per AWS spec)
+   * Amazon account number (12 digits as per AWS spec) (required)
    * @type {string}
    * @memberof AwsAccount
    */

@@ -17,7 +17,7 @@ export class CustomTag extends BitmovinResource {
   }
 
   /**
-   * The positioning mode that should be used when inserting the placement opportunity
+   * The positioning mode that should be used when inserting the placement opportunity (required)
    * @type {PositionMode}
    * @memberof CustomTag
    */
@@ -41,7 +41,7 @@ export class CustomTag extends BitmovinResource {
    */
   public segment?: number;
   /**
-   * The data to be contained in the custom tag.
+   * The data to be contained in the custom tag. (required)
    * @type {string}
    * @memberof CustomTag
    */

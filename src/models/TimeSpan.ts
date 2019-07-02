@@ -11,13 +11,13 @@ export class TimeSpan {
   }
 
   /**
-   * Start offset of the time frame in milliseconds
+   * Start offset of the time frame in milliseconds (required)
    * @type {number}
    * @memberof TimeSpan
    */
   public from: number;
   /**
-   * End offset of the time frame in milliseconds
+   * End offset of the time frame in milliseconds (required)
    * @type {number}
    * @memberof TimeSpan
    */

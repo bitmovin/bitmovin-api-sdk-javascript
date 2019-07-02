@@ -11,13 +11,13 @@ export class RtmpIngestPoint {
   }
 
   /**
-   * The name of the application where the ingest is streamed to. This has to be unique for each ingest point
+   * The name of the application where the ingest is streamed to. This has to be unique for each ingest point (required)
    * @type {string}
    * @memberof RtmpIngestPoint
    */
   public applicationName: string;
   /**
-   * The stream key for the backup input
+   * The stream key for the backup input (required)
    * @type {string}
    * @memberof RtmpIngestPoint
    */

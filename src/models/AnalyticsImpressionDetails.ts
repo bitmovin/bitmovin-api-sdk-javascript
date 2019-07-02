@@ -251,7 +251,7 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
    */
   public experimentName?: string;
   /**
-   * Random UUID that is used to identify a sessions
+   * Random UUID that is used to identify a sessions (required)
    * @type {string}
    * @memberof AnalyticsImpressionDetails
    */

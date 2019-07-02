@@ -32,37 +32,37 @@ export class StatisticsPerStream {
   }
 
   /**
-   * ID of the stream
+   * ID of the stream (required)
    * @type {string}
    * @memberof StatisticsPerStream
    */
   public streamId: string;
   /**
-   * ID of the condec configuration
+   * ID of the condec configuration (required)
    * @type {string}
    * @memberof StatisticsPerStream
    */
   public codecConfigId: string;
   /**
-   * Multiplier for the encoded minutes. Depends on muxing type.
+   * Multiplier for the encoded minutes. Depends on muxing type. (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */
   public multiplicator: number;
   /**
-   * Encoded bytes.
+   * Encoded bytes. (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */
   public encodedBytes: number;
   /**
-   * Length of the stream.
+   * Length of the stream. (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */
   public encodedSeconds: number;
   /**
-   * Minutes you will be charged for (billableMinutes = encodedSeconds * multiplicator)
+   * Minutes you will be charged for (billableMinutes = encodedSeconds * multiplicator) (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */
@@ -80,13 +80,13 @@ export class StatisticsPerStream {
    */
   public height?: number;
   /**
-   * If it' a video stream this value is the FPS, for audio it's the sample rate.
+   * If it' a video stream this value is the FPS, for audio it's the sample rate. (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */
   public rate: number;
   /**
-   * Bitrate of the stream
+   * Bitrate of the stream (required)
    * @type {number}
    * @memberof StatisticsPerStream
    */

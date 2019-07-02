@@ -22,7 +22,7 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
   }
 
   /**
-   * Analytics license key
+   * Analytics license key (required)
    * @type {string}
    * @memberof AnalyticsQueryRequest
    */

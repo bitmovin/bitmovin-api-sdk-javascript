@@ -15,13 +15,13 @@ export class BurnInSubtitleSrt extends BitmovinResource {
   }
 
   /**
-   * Character encoding of the SRT file
+   * Character encoding of the SRT file (required)
    * @type {CaptionCharacterEncoding}
    * @memberof BurnInSubtitleSrt
    */
   public characterEncoding: CaptionCharacterEncoding;
   /**
-   * The input location to get the SRT file from
+   * The input location to get the SRT file from (required)
    * @type {InputPath}
    * @memberof BurnInSubtitleSrt
    */

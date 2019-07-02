@@ -13,7 +13,7 @@ export class ProgressiveTsMuxingInformationByteRanges {
   }
 
   /**
-   * Number of the segment (starting at 0)
+   * Number of the segment (starting at 0) (required)
    * @type {number}
    * @memberof ProgressiveTsMuxingInformationByteRanges
    */

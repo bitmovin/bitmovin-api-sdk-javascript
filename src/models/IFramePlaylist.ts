@@ -12,7 +12,7 @@ export class IFramePlaylist extends BitmovinResource {
   }
 
   /**
-   * The filename of your I-frame playlist
+   * The filename of your I-frame playlist (required)
    * @type {string}
    * @memberof IFramePlaylist
    */

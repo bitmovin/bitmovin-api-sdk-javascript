@@ -31,7 +31,7 @@ export class EncodingStats {
    */
   public date?: Date;
   /**
-   * The id of the encoding
+   * The id of the encoding (required)
    * @type {string}
    * @memberof EncodingStats
    */
@@ -67,7 +67,7 @@ export class EncodingStats {
    */
   public billableEncodingMinutes?: Array<BillableEncodingMinutes>;
   /**
-   * Billable transmuxing minutes
+   * Billable transmuxing minutes (required)
    * @type {number}
    * @memberof EncodingStats
    */
@@ -79,13 +79,13 @@ export class EncodingStats {
    */
   public billableFeatureMinutes?: number;
   /**
-   * Detailed statistics per stream
+   * Detailed statistics per stream (required)
    * @type {Array<StatisticsPerStream>}
    * @memberof EncodingStats
    */
   public streams: Array<StatisticsPerStream>;
   /**
-   * Detailed statistics per muxing
+   * Detailed statistics per muxing (required)
    * @type {Array<StatisticsPerMuxing>}
    * @memberof EncodingStats
    */

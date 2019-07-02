@@ -23,7 +23,7 @@ export class AnalyticsFilter {
    */
   public operator: AnalyticsOperator;
   /**
-   * The value to compare to the property specified by the name
+   * The value to compare to the property specified by the name (required)
    * @type {string}
    * @memberof AnalyticsFilter
    */

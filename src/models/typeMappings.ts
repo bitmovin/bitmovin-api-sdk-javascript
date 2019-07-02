@@ -61,6 +61,7 @@ import TimeBasedTrimmingInputStream from './TimeBasedTrimmingInputStream';
 import TimecodeTrackTrimmingInputStream from './TimecodeTrackTrimmingInputStream';
 import H264PictureTimingTrimmingInputStream from './H264PictureTimingTrimmingInputStream';
 import AudioMixInputStream from './AudioMixInputStream';
+import FileInputStream from './FileInputStream';
 import Fmp4Muxing from './Fmp4Muxing';
 import CmafMuxing from './CmafMuxing';
 import Mp4Muxing from './Mp4Muxing';
@@ -71,6 +72,8 @@ import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
 import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import BroadcastTsMuxing from './BroadcastTsMuxing';
+import ChunkedTextMuxing from './ChunkedTextMuxing';
+import TextMuxing from './TextMuxing';
 import WidevineDrm from './WidevineDrm';
 import PlayReadyDrm from './PlayReadyDrm';
 import PrimeTimeDrm from './PrimeTimeDrm';
@@ -155,6 +158,7 @@ export const InputStreamTypeMap: any = {
   'TRIMMING_TIME_CODE_TRACK': TimecodeTrackTrimmingInputStream,
   'TRIMMING_H264_PICTURE_TIMING': H264PictureTimingTrimmingInputStream,
   'AUDIO_MIX': AudioMixInputStream,
+  'FILE': FileInputStream,
 };
 export const MuxingTypeMap: any = {
   'FMP4': Fmp4Muxing,
@@ -167,6 +171,8 @@ export const MuxingTypeMap: any = {
   'PROGRESSIVE_MOV': ProgressiveMovMuxing,
   'PROGRESSIVE_TS': ProgressiveTsMuxing,
   'BROADCAST_TS': BroadcastTsMuxing,
+  'CHUNKED_TEXT': ChunkedTextMuxing,
+  'TEXT': TextMuxing,
 };
 export const DrmTypeMap: any = {
   'WIDEVINE': WidevineDrm,

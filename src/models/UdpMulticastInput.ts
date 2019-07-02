@@ -13,13 +13,13 @@ export class UdpMulticastInput extends Input {
   }
 
   /**
-   * Host name or IP address to use
+   * Host name or IP address to use (required)
    * @type {string}
    * @memberof UdpMulticastInput
    */
   public host: string;
   /**
-   * Port to use
+   * Port to use (required)
    * @type {number}
    * @memberof UdpMulticastInput
    */

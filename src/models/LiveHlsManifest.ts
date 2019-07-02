@@ -13,7 +13,7 @@ export class LiveHlsManifest {
   }
 
   /**
-   * Hls manifest ids
+   * Hls manifest ids (required)
    * @type {string}
    * @memberof LiveHlsManifest
    */

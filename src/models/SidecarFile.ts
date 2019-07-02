@@ -18,13 +18,13 @@ export class SidecarFile extends BitmovinResource {
   }
 
   /**
-   * Id of input
+   * Id of input (required)
    * @type {string}
    * @memberof SidecarFile
    */
   public inputId: string;
   /**
-   * Path to sidecar file
+   * Path to sidecar file (required)
    * @type {string}
    * @memberof SidecarFile
    */

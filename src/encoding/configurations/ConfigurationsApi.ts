@@ -3,6 +3,7 @@ import Configuration from '../../common/Configuration';
 import TypeApi from './type/TypeApi';
 import VideoApi from './video/VideoApi';
 import AudioApi from './audio/AudioApi';
+import SubtitlesApi from './subtitles/SubtitlesApi';
 import CodecConfiguration from '../../models/CodecConfiguration';
 import { CodecConfigurationTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
@@ -18,12 +19,14 @@ export default class ConfigurationsApi extends BaseAPI {
   public type: TypeApi;
   public video: VideoApi;
   public audio: AudioApi;
+  public subtitles: SubtitlesApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.type = new TypeApi(configuration);
     this.video = new VideoApi(configuration);
     this.audio = new AudioApi(configuration);
+    this.subtitles = new SubtitlesApi(configuration);
   }
 
   /**

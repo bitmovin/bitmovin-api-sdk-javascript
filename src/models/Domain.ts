@@ -12,7 +12,7 @@ export class Domain extends BitmovinResource {
   }
 
   /**
-   * Host where the player is allowed to play
+   * Host where the player is allowed to play (required)
    * @type {string}
    * @memberof Domain
    */

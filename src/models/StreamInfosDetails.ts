@@ -29,13 +29,13 @@ export class StreamInfosDetails {
   }
 
   /**
-   * The id of the stream
+   * The id of the stream (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public id: number;
   /**
-   * The media type of the stream
+   * The media type of the stream (required)
    * @type {MediaType}
    * @memberof StreamInfosDetails
    */
@@ -53,85 +53,85 @@ export class StreamInfosDetails {
    */
   public height?: number;
   /**
-   * The rate (sample rate / fps) of the stream
+   * The rate (sample rate / fps) of the stream (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public rate: number;
   /**
-   * The codec of the input stream
+   * The codec of the input stream (required)
    * @type {LiveEncodingCodec}
    * @memberof StreamInfosDetails
    */
   public codec: LiveEncodingCodec;
   /**
-   * The minimum samples read per second within the last minute
+   * The minimum samples read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesReadPerSecondMin: number;
   /**
-   * The maximum samples read per second within the last minute
+   * The maximum samples read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesReadPerSecondMax: number;
   /**
-   * The average samples read per second within the last minute
+   * The average samples read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesReadPerSecondAvg: number;
   /**
-   * The minimum amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The minimum amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesBackupPerSecondMin: number;
   /**
-   * The maximum amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The maximum amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesBackupPerSecondMax: number;
   /**
-   * The average amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The average amount of backup samples used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public samplesBackupPerSecondAvg: number;
   /**
-   * The minimum bytes read per second within the last minute
+   * The minimum bytes read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public bytesReadPerSecondMin: number;
   /**
-   * The maximum bytes read per second within the last minute
+   * The maximum bytes read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public bytesReadPerSecondMax: number;
   /**
-   * The average bytes read per second within the last minute
+   * The average bytes read per second within the last minute (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public bytesReadPerSecondAvg: number;
   /**
-   * The minimum amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The minimum amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public bytesBackupPerSecondMin: number;
   /**
-   * The maximum amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The maximum amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */
   public bytesBackupPerSecondMax: number;
   /**
-   * The average amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio.
+   * The average amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
    * @type {number}
    * @memberof StreamInfosDetails
    */

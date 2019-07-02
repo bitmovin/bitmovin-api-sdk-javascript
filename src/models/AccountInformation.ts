@@ -18,13 +18,13 @@ export class AccountInformation extends BitmovinResource {
   }
 
   /**
-   * Email address of the account.
+   * Email address of the account. (required)
    * @type {string}
    * @memberof AccountInformation
    */
   public email: string;
   /**
-   * ApiKeys associated with the account
+   * ApiKeys associated with the account (required)
    * @type {Array<AccountApiKey>}
    * @memberof AccountInformation
    */

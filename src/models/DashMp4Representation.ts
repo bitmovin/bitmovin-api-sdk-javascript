@@ -12,7 +12,7 @@ export class DashMp4Representation extends DashRepresentation {
   }
 
   /**
-   * Path to the MP4 file
+   * Path to the MP4 file (required)
    * @type {string}
    * @memberof DashMp4Representation
    */

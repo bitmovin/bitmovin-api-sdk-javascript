@@ -10,7 +10,7 @@ export class PlayerLicenseAnalytics {
   }
 
   /**
-   * Analytics License Key
+   * Analytics License Key (required)
    * @type {string}
    * @memberof PlayerLicenseAnalytics
    */

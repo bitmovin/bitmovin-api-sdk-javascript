@@ -18,7 +18,7 @@ export class BasicMediaInfo extends BitmovinResponse {
   }
 
   /**
-   * The value is a quoted-string which specifies the group to which the Rendition belongs.
+   * The value is a quoted-string which specifies the group to which the Rendition belongs. (required)
    * @type {string}
    * @memberof BasicMediaInfo
    */
@@ -36,7 +36,7 @@ export class BasicMediaInfo extends BitmovinResponse {
    */
   public assocLanguage?: string;
   /**
-   * Human readable description of the rendition.
+   * Human readable description of the rendition. (required)
    * @type {string}
    * @memberof BasicMediaInfo
    */

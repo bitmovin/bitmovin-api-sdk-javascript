@@ -19,7 +19,7 @@ export class Thumbnail extends BitmovinResource {
   }
 
   /**
-   * Height of the thumbnail.
+   * Height of the thumbnail. (required)
    * @type {number}
    * @memberof Thumbnail
    */

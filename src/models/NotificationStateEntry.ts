@@ -22,19 +22,19 @@ export class NotificationStateEntry extends BitmovinResponse {
    */
   public state: NotificationStates;
   /**
-   * Indicate if notification was sent
+   * Indicate if notification was sent (required)
    * @type {boolean}
    * @memberof NotificationStateEntry
    */
   public muted: boolean;
   /**
-   * The notification this state belongs to
+   * The notification this state belongs to (required)
    * @type {string}
    * @memberof NotificationStateEntry
    */
   public notificationId: string;
   /**
-   * Indicate if triggered for specific resource
+   * Indicate if triggered for specific resource (required)
    * @type {string}
    * @memberof NotificationStateEntry
    */

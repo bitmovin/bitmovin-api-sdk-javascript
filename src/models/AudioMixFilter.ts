@@ -15,13 +15,13 @@ export class AudioMixFilter extends Filter {
   }
 
   /**
-   * Channel layout of the audio codec configuration
+   * Channel layout of the audio codec configuration (required)
    * @type {AudioMixChannelLayout}
    * @memberof AudioMixFilter
    */
   public channelLayout: AudioMixChannelLayout;
   /**
-   * List of mixed channels that matches the channel layout
+   * List of mixed channels that matches the channel layout (required)
    * @type {Array<AudioMixChannel>}
    * @memberof AudioMixFilter
    */

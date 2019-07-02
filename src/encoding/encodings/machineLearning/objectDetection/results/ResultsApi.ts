@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import ByTimestampApi from './byTimestamp/ByTimestampApi';
 import ObjectDetectionResult from '../../../../../models/ObjectDetectionResult';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import ObjectDetectionResultListQueryParams from './ObjectDetectionResultListQueryParams';
@@ -11,9 +12,11 @@ import ObjectDetectionResultListQueryParams from './ObjectDetectionResultListQue
  * @extends {BaseAPI}
  */
 export default class ResultsApi extends BaseAPI {
+  public byTimestamp: ByTimestampApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.byTimestamp = new ByTimestampApi(configuration);
   }
 
   /**

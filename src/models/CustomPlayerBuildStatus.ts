@@ -16,7 +16,7 @@ export class CustomPlayerBuildStatus {
   }
 
   /**
-   * Status of the player build
+   * Status of the player build (required)
    * @type {Status}
    * @memberof CustomPlayerBuildStatus
    */
@@ -28,7 +28,7 @@ export class CustomPlayerBuildStatus {
    */
   public eta?: number;
   /**
-   * The actual progress of the custom player build.
+   * The actual progress of the custom player build. (required)
    * @type {number}
    * @memberof CustomPlayerBuildStatus
    */

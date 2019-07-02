@@ -19,13 +19,13 @@ export class Message extends BitmovinResponse {
   }
 
   /**
-   * Message type giving a hint on the importance of the message (log level)
+   * Message type giving a hint on the importance of the message (log level) (required)
    * @type {MessageType}
    * @memberof Message
    */
   public type: MessageType;
   /**
-   * Message text
+   * Message text (required)
    * @type {string}
    * @memberof Message
    */

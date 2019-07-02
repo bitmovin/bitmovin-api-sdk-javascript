@@ -13,13 +13,13 @@ export class DashRepresentation extends BitmovinResponse {
   }
 
   /**
-   * UUID of an encoding
+   * UUID of an encoding (required)
    * @type {string}
    * @memberof DashRepresentation
    */
   public encodingId: string;
   /**
-   * UUID of a muxing
+   * UUID of a muxing (required)
    * @type {string}
    * @memberof DashRepresentation
    */

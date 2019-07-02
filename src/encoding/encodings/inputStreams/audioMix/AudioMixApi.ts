@@ -53,7 +53,7 @@ export default class AudioMixApi extends BaseAPI {
   /**
    * @summary Audio mix input stream details
    * @param {string} encodingId Id of the encoding.
-   * @param {string} inputStreamId Id of the concatenation input stream.
+   * @param {string} inputStreamId Id of the audio mix input stream.
    * @throws {RequiredError}
    * @memberof AudioMixApi
    */

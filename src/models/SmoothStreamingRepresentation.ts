@@ -16,19 +16,19 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
   }
 
   /**
-   * Id of the encoding
+   * Id of the encoding (required)
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */
   public encodingId: string;
   /**
-   * Id of the muxing.
+   * Id of the muxing. (required)
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */
   public muxingId: string;
   /**
-   * The Smooth Streaming ismv or isma file that will be referenced in the manifest.
+   * The Smooth Streaming ismv or isma file that will be referenced in the manifest. (required)
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */

@@ -20,7 +20,7 @@ export class Manifest extends BitmovinResource {
    */
   public type?: ManifestType;
   /**
-   * The outputs to store the manifest
+   * The outputs to store the manifest (required)
    * @type {Array<EncodingOutput>}
    * @memberof Manifest
    */

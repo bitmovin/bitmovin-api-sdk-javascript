@@ -13,13 +13,13 @@ export class EncodingStatisticsVod extends EncodingStatistics {
   }
 
   /**
-   * Time in seconds encoded for this encoding.
+   * Time in seconds encoded for this encoding. (required)
    * @type {number}
    * @memberof EncodingStatisticsVod
    */
   public timeEnqueued: number;
   /**
-   * The realtime factor.
+   * The realtime factor. (required)
    * @type {number}
    * @memberof EncodingStatisticsVod
    */

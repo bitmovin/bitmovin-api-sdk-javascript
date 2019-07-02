@@ -26,7 +26,7 @@ export class Task extends BitmovinResponse {
   }
 
   /**
-   * Current status
+   * Current status (required)
    * @type {Status}
    * @memberof Task
    */

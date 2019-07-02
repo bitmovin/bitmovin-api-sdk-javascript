@@ -18,13 +18,13 @@ export class SegmentedRawMuxing extends Muxing {
   }
 
   /**
-   * Length of the fragments in seconds
+   * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof SegmentedRawMuxing
    */
   public segmentLength: number;
   /**
-   * Segment naming policy
+   * Segment naming policy (required)
    * @type {string}
    * @memberof SegmentedRawMuxing
    */

@@ -6,6 +6,7 @@ import InputsApi from './inputs/InputsApi';
 import FiltersApi from './filters/FiltersApi';
 import BurnInSubtitlesApi from './burnInSubtitles/BurnInSubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
+import BifsApi from './bifs/BifsApi';
 import ThumbnailsApi from './thumbnails/ThumbnailsApi';
 import SpritesApi from './sprites/SpritesApi';
 import QcApi from './qc/QcApi';
@@ -27,6 +28,7 @@ export default class StreamsApi extends BaseAPI {
   public filters: FiltersApi;
   public burnInSubtitles: BurnInSubtitlesApi;
   public captions: CaptionsApi;
+  public bifs: BifsApi;
   public thumbnails: ThumbnailsApi;
   public sprites: SpritesApi;
   public qc: QcApi;
@@ -39,6 +41,7 @@ export default class StreamsApi extends BaseAPI {
     this.filters = new FiltersApi(configuration);
     this.burnInSubtitles = new BurnInSubtitlesApi(configuration);
     this.captions = new CaptionsApi(configuration);
+    this.bifs = new BifsApi(configuration);
     this.thumbnails = new ThumbnailsApi(configuration);
     this.sprites = new SpritesApi(configuration);
     this.qc = new QcApi(configuration);

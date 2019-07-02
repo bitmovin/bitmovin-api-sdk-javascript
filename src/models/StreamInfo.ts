@@ -51,25 +51,25 @@ export class StreamInfo extends BitmovinResource {
    */
   public subtitles?: string;
   /**
-   * If the value is not 'NONE', it MUST match the value of the GROUP-ID attribute of a Closed Captions EXT-X-MEDIA tag elsewhere in the Playlist
+   * If the value is not 'NONE', it MUST match the value of the GROUP-ID attribute of a Closed Captions EXT-X-MEDIA tag elsewhere in the Playlist (required)
    * @type {string}
    * @memberof StreamInfo
    */
   public closedCaptions: string;
   /**
-   * Id of the encoding.
+   * Id of the encoding. (required)
    * @type {string}
    * @memberof StreamInfo
    */
   public encodingId: string;
   /**
-   * Id of the stream.
+   * Id of the stream. (required)
    * @type {string}
    * @memberof StreamInfo
    */
   public streamId: string;
   /**
-   * Id of the muxing.
+   * Id of the muxing. (required)
    * @type {string}
    * @memberof StreamInfo
    */
@@ -81,13 +81,13 @@ export class StreamInfo extends BitmovinResource {
    */
   public drmId?: string;
   /**
-   * Path to segments.
+   * Path to segments. (required)
    * @type {string}
    * @memberof StreamInfo
    */
   public segmentPath: string;
   /**
-   * The URI of the playlist file.
+   * The URI of the playlist file. (required)
    * @type {string}
    * @memberof StreamInfo
    */

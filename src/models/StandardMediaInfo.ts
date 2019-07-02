@@ -12,7 +12,7 @@ export class StandardMediaInfo extends SegmentsMediaInfo {
   }
 
   /**
-   * The URI of the Rendition
+   * The URI of the Rendition (required)
    * @type {string}
    * @memberof StandardMediaInfo
    */

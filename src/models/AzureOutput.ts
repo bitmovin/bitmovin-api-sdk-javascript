@@ -15,19 +15,19 @@ export class AzureOutput extends Output {
   }
 
   /**
-   * Azure Account Name
+   * Azure Account Name (required)
    * @type {string}
    * @memberof AzureOutput
    */
   public accountName: string;
   /**
-   * Azure Account Key
+   * Azure Account Key (required)
    * @type {string}
    * @memberof AzureOutput
    */
   public accountKey: string;
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof AzureOutput
    */

@@ -14,19 +14,19 @@ export class AkamaiNetStorageInput extends Input {
   }
 
   /**
-   * Host to use for Akamai NetStorage transfers
+   * Host to use for Akamai NetStorage transfers (required)
    * @type {string}
    * @memberof AkamaiNetStorageInput
    */
   public host: string;
   /**
-   * Your Akamai NetStorage Username
+   * Your Akamai NetStorage Username (required)
    * @type {string}
    * @memberof AkamaiNetStorageInput
    */
   public username: string;
   /**
-   * Your Akamai NetStorage password
+   * Your Akamai NetStorage password (required)
    * @type {string}
    * @memberof AkamaiNetStorageInput
    */

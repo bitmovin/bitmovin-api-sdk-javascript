@@ -11,13 +11,13 @@ export class Statistics {
   }
 
   /**
-   * Bytes encoded total.
+   * Bytes encoded total. (required)
    * @type {number}
    * @memberof Statistics
    */
   public bytesEncodedTotal: number;
   /**
-   * Time in seconds encoded for all contained daily statistics.
+   * Time in seconds encoded for all contained daily statistics. (required)
    * @type {number}
    * @memberof Statistics
    */

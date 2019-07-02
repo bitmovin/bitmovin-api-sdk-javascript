@@ -15,25 +15,25 @@ export class PlayerVersion extends BitmovinResponse {
   }
 
   /**
-   * Version of the Player
+   * Version of the Player (required)
    * @type {string}
    * @memberof PlayerVersion
    */
   public version?: string;
   /**
-   * URL of the specified player
+   * URL of the specified player (required)
    * @type {string}
    * @memberof PlayerVersion
    */
   public cdnUrl?: string;
   /**
-   * Download URL of the specified player package
+   * Download URL of the specified player package (required)
    * @type {string}
    * @memberof PlayerVersion
    */
   public downloadUrl?: string;
   /**
-   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
    * @type {Date}
    * @memberof PlayerVersion
    */

@@ -12,13 +12,13 @@ export class AudioMixChannel {
   }
 
   /**
-   * Channel number of this mix (starting with 0)
+   * Channel number of this mix (starting with 0) (required)
    * @type {number}
    * @memberof AudioMixChannel
    */
   public channelNumber: number;
   /**
-   * List of source channels to be mixed
+   * List of source channels to be mixed (required)
    * @type {Array<SourceChannel>}
    * @memberof AudioMixChannel
    */

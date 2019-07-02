@@ -12,19 +12,19 @@ export class EncodingStatistics {
   }
 
   /**
-   * Date, format. yyyy-MM-dd
+   * Date, format. yyyy-MM-dd (required)
    * @type {Date}
    * @memberof EncodingStatistics
    */
   public date: Date;
   /**
-   * Bytes encoded for this encoding.
+   * Bytes encoded for this encoding. (required)
    * @type {number}
    * @memberof EncodingStatistics
    */
   public bytesEncoded: number;
   /**
-   * Time in seconds encoded for this encoding.
+   * Time in seconds encoded for this encoding. (required)
    * @type {number}
    * @memberof EncodingStatistics
    */

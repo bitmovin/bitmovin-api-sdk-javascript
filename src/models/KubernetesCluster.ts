@@ -14,13 +14,13 @@ export class KubernetesCluster extends BitmovinResource {
   }
 
   /**
-   * Shows if the Bitmovin Agent is alive
+   * Shows if the Bitmovin Agent is alive (required)
    * @type {boolean}
    * @memberof KubernetesCluster
    */
   public online?: boolean;
   /**
-   * Shows if the Kubernetes cluster is accessible by the Bitmovin Agent
+   * Shows if the Kubernetes cluster is accessible by the Bitmovin Agent (required)
    * @type {boolean}
    * @memberof KubernetesCluster
    */

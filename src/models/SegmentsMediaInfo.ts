@@ -18,25 +18,25 @@ export class SegmentsMediaInfo extends BasicMediaInfo {
   }
 
   /**
-   * Path to segments.
+   * Path to segments. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
   public segmentPath: string;
   /**
-   * Id of the encoding.
+   * Id of the encoding. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
   public encodingId: string;
   /**
-   * Id of the stream.
+   * Id of the stream. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
   public streamId: string;
   /**
-   * Id of the muxing.
+   * Id of the muxing. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */

@@ -13,7 +13,7 @@ export class Keyframe extends BitmovinResource {
   }
 
   /**
-   * Time in seconds where the keyframe should be inserted
+   * Time in seconds where the keyframe should be inserted (required)
    * @type {number}
    * @memberof Keyframe
    */

@@ -12,7 +12,7 @@ export class Tenant extends BitmovinResource {
   }
 
   /**
-   * Email address of the tenant.
+   * Email address of the tenant. (required)
    * @type {string}
    * @memberof Tenant
    */

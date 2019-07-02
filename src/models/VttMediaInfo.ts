@@ -14,13 +14,13 @@ export class VttMediaInfo extends BasicMediaInfo {
   }
 
   /**
-   * The URL of the referenced VTT file
+   * The URL of the referenced VTT file (required)
    * @type {string}
    * @memberof VttMediaInfo
    */
   public vttUrl: string;
   /**
-   * The URI of the Rendition
+   * The URI of the Rendition (required)
    * @type {string}
    * @memberof VttMediaInfo
    */

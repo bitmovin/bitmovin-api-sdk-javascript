@@ -22,13 +22,13 @@ export class Sprite extends BitmovinResource {
   }
 
   /**
-   * Height of one thumbnail
+   * Height of one thumbnail (required)
    * @type {number}
    * @memberof Sprite
    */
   public height: number;
   /**
-   * Width of one thumbnail
+   * Width of one thumbnail (required)
    * @type {number}
    * @memberof Sprite
    */
@@ -45,7 +45,7 @@ export class Sprite extends BitmovinResource {
    */
   public distance?: number;
   /**
-   * Name of the sprite image. File extension \".jpg\" or \".png\" is required.
+   * Name of the sprite image. File extension \".jpg\" or \".png\" is required. (required)
    * @type {string}
    * @memberof Sprite
    */
@@ -57,7 +57,7 @@ export class Sprite extends BitmovinResource {
    */
   public filename?: string;
   /**
-   * Filename of the vtt-file. The file-extension \".vtt\" is required.
+   * Filename of the vtt-file. The file-extension \".vtt\" is required. (required)
    * @type {string}
    * @memberof Sprite
    */

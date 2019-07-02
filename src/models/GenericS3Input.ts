@@ -19,13 +19,13 @@ export class GenericS3Input extends Input {
   }
 
   /**
-   * Your generic S3 bucket name
+   * Your generic S3 bucket name (required)
    * @type {string}
    * @memberof GenericS3Input
    */
   public bucketName: string;
   /**
-   * The generic S3 server hostname (or IP address)
+   * The generic S3 server hostname (or IP address) (required)
    * @type {string}
    * @memberof GenericS3Input
    */
@@ -49,13 +49,13 @@ export class GenericS3Input extends Input {
    */
   public signatureVersion?: S3SignatureVersion;
   /**
-   * Your generic S3 access key
+   * Your generic S3 access key (required)
    * @type {string}
    * @memberof GenericS3Input
    */
   public accessKey: string;
   /**
-   * Your generic S3 secret key
+   * Your generic S3 secret key (required)
    * @type {string}
    * @memberof GenericS3Input
    */

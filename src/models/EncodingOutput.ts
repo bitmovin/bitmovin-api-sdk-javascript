@@ -13,13 +13,13 @@ export class EncodingOutput {
   }
 
   /**
-   * Id of the corresponding output
+   * Id of the corresponding output (required)
    * @type {string}
    * @memberof EncodingOutput
    */
   public outputId: string;
   /**
-   * Subdirectory where to save the files to
+   * Subdirectory where to save the files to (required)
    * @type {string}
    * @memberof EncodingOutput
    */

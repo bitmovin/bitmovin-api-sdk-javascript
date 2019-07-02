@@ -20,7 +20,7 @@ export class StartLiveEncodingRequest {
   }
 
   /**
-   * Key for the stream. (a-zA-Z, 3-20 characters)
+   * Key for the stream. (a-zA-Z, 3-20 characters) (required)
    * @type {string}
    * @memberof StartLiveEncodingRequest
    */

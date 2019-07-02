@@ -12,7 +12,7 @@ export class LiveEncodingStatsEvent {
   }
 
   /**
-   * Timestamp of the event formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp of the event formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
    * @type {Date}
    * @memberof LiveEncodingStatsEvent
    */

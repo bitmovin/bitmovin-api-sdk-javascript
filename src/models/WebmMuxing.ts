@@ -20,7 +20,7 @@ export class WebmMuxing extends Muxing {
   }
 
   /**
-   * Length of the fragments in seconds
+   * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof WebmMuxing
    */

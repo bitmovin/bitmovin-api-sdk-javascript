@@ -15,13 +15,13 @@ export class FairPlayDrm extends Drm {
   }
 
   /**
-   * 16 byte Encryption key, 32 hexadecimal characters
+   * 16 byte Encryption key, 32 hexadecimal characters (required)
    * @type {string}
    * @memberof FairPlayDrm
    */
   public key: string;
   /**
-   * 16 byte initialization vector
+   * 16 byte initialization vector (required)
    * @type {string}
    * @memberof FairPlayDrm
    */

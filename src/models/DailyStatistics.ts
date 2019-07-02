@@ -19,19 +19,19 @@ export class DailyStatistics {
   }
 
   /**
-   * Date for the shown data. Format: yyyy-MM-dd
+   * Date for the shown data. Format: yyyy-MM-dd (required)
    * @type {Date}
    * @memberof DailyStatistics
    */
   public date: Date;
   /**
-   * Bytes encoded.
+   * Bytes encoded. (required)
    * @type {number}
    * @memberof DailyStatistics
    */
   public bytesEncoded: number;
   /**
-   * Time in seconds encoded for this day.
+   * Time in seconds encoded for this day. (required)
    * @type {number}
    * @memberof DailyStatistics
    */

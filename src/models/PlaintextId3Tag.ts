@@ -14,13 +14,13 @@ export class PlaintextId3Tag extends Id3Tag {
   }
 
   /**
-   * Plain Text Data
+   * Plain Text Data (required)
    * @type {string}
    * @memberof PlaintextId3Tag
    */
   public text: string;
   /**
-   * 4 character long Frame ID
+   * 4 character long Frame ID (required)
    * @type {string}
    * @memberof PlaintextId3Tag
    */

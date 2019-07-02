@@ -15,7 +15,7 @@ export class HttpInput extends Input {
   }
 
   /**
-   * Host Url or IP of the HTTP server
+   * Host Url or IP of the HTTP server (required)
    * @type {string}
    * @memberof HttpInput
    */

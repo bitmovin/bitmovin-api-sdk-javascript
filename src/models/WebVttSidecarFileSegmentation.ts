@@ -11,7 +11,7 @@ export class WebVttSidecarFileSegmentation {
   }
 
   /**
-   * The length of the WebVTT fragments in seconds
+   * The length of the WebVTT fragments in seconds (required)
    * @type {number}
    * @memberof WebVttSidecarFileSegmentation
    */

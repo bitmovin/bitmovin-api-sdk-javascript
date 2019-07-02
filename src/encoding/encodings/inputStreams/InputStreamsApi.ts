@@ -4,7 +4,10 @@ import TypeApi from './type/TypeApi';
 import AudioMixApi from './audioMix/AudioMixApi';
 import IngestApi from './ingest/IngestApi';
 import ConcatenationApi from './concatenation/ConcatenationApi';
+import FileApi from './file/FileApi';
 import TrimmingApi from './trimming/TrimmingApi';
+import SubtitlesApi from './subtitles/SubtitlesApi';
+import CaptionsApi from './captions/CaptionsApi';
 import InputStream from '../../../models/InputStream';
 import { InputStreamTypeMap } from '../../../models/typeMappings'
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -21,7 +24,10 @@ export default class InputStreamsApi extends BaseAPI {
   public audioMix: AudioMixApi;
   public ingest: IngestApi;
   public concatenation: ConcatenationApi;
+  public file: FileApi;
   public trimming: TrimmingApi;
+  public subtitles: SubtitlesApi;
+  public captions: CaptionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -29,7 +35,10 @@ export default class InputStreamsApi extends BaseAPI {
     this.audioMix = new AudioMixApi(configuration);
     this.ingest = new IngestApi(configuration);
     this.concatenation = new ConcatenationApi(configuration);
+    this.file = new FileApi(configuration);
     this.trimming = new TrimmingApi(configuration);
+    this.subtitles = new SubtitlesApi(configuration);
+    this.captions = new CaptionsApi(configuration);
   }
 
   /**

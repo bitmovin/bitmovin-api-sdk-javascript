@@ -11,7 +11,7 @@ export class CustomAttribute {
   }
 
   /**
-   * unique string identifier for the custom attribute
+   * unique string identifier for the custom attribute (required)
    * @type {string}
    * @memberof CustomAttribute
    */

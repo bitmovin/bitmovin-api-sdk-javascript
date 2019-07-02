@@ -14,25 +14,25 @@ export class PlayerThirdPartyLicensing {
   }
 
   /**
-   * URL to your license check server
+   * URL to your license check server (required)
    * @type {string}
    * @memberof PlayerThirdPartyLicensing
    */
   public licenseCheckServer: string;
   /**
-   * Timeout in ms
+   * Timeout in ms (required)
    * @type {number}
    * @memberof PlayerThirdPartyLicensing
    */
   public licenseCheckTimeout: number;
   /**
-   * Specify if the Licensing Request should fail or not on Third Party Licensing Error
+   * Specify if the Licensing Request should fail or not on Third Party Licensing Error (required)
    * @type {PlayerThirdPartyLicensingErrorAction}
    * @memberof PlayerThirdPartyLicensing
    */
   public errorAction: PlayerThirdPartyLicensingErrorAction;
   /**
-   * Specify if the Licensing Request should fail or not on Third Party Licensing timeout
+   * Specify if the Licensing Request should fail or not on Third Party Licensing timeout (required)
    * @type {PlayerThirdPartyLicensingErrorAction}
    * @memberof PlayerThirdPartyLicensing
    */

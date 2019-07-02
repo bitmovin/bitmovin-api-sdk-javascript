@@ -12,7 +12,7 @@ export class RotateFilter extends Filter {
   }
 
   /**
-   * Rotation of the video in degrees. A positive value will rotate the video clockwise and a negative one counter clockwise.
+   * Rotation of the video in degrees. A positive value will rotate the video clockwise and a negative one counter clockwise. (required)
    * @type {number}
    * @memberof RotateFilter
    */

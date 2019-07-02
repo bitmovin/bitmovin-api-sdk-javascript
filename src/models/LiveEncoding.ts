@@ -11,13 +11,13 @@ export class LiveEncoding {
   }
 
   /**
-   * Stream key of the live encoder
+   * Stream key of the live encoder (required)
    * @type {string}
    * @memberof LiveEncoding
    */
   public streamKey: string;
   /**
-   * IP address of the live encoder
+   * IP address of the live encoder (required)
    * @type {string}
    * @memberof LiveEncoding
    */

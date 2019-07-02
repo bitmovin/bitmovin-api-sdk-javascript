@@ -15,19 +15,19 @@ export class Condition extends AbstractCondition {
   }
 
   /**
-   * The attribute that should be used for the evaluation. Valid values include, depending on the context: - HEIGHT - WIDTH - BITRATE - FPS - ASPECTRATIO - INPUTSTREAM - LANGUAGE - CHANNELFORMAT - CHANNELLAYOUT - STREAMCOUNT - AUDIOSTREAMCOUNT - VIDEOSTREAMCOUNT - DURATION - CONNECTION_STATUS - CONNECTION_STATUS_JUST_CHANGED 
+   * The attribute that should be used for the evaluation. Valid values include, depending on the context: - HEIGHT - WIDTH - BITRATE - FPS - ASPECTRATIO - INPUTSTREAM - LANGUAGE - CHANNELFORMAT - CHANNELLAYOUT - STREAMCOUNT - AUDIOSTREAMCOUNT - VIDEOSTREAMCOUNT - DURATION - CONNECTION_STATUS - CONNECTION_STATUS_JUST_CHANGED (required)
    * @type {string}
    * @memberof Condition
    */
   public attribute: string;
   /**
-   * The operator that should be used for the evaluation
+   * The operator that should be used for the evaluation (required)
    * @type {ConditionOperator}
    * @memberof Condition
    */
   public operator: ConditionOperator;
   /**
-   * The value that should be used for comparison
+   * The value that should be used for comparison (required)
    * @type {string}
    * @memberof Condition
    */

@@ -14,13 +14,13 @@ export class FrameIdId3Tag extends Id3Tag {
   }
 
   /**
-   * Base64 Encoded Data
+   * Base64 Encoded Data (required)
    * @type {string}
    * @memberof FrameIdId3Tag
    */
   public bytes: string;
   /**
-   * 4 character long Frame ID
+   * 4 character long Frame ID (required)
    * @type {string}
    * @memberof FrameIdId3Tag
    */

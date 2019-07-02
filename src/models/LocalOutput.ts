@@ -13,7 +13,7 @@ export class LocalOutput extends Output {
   }
 
   /**
-   * Path to your local storage
+   * Path to your local storage (required)
    * @type {string}
    * @memberof LocalOutput
    */

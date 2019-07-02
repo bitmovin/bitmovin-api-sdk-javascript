@@ -12,7 +12,7 @@ export class DashVttRepresentation extends BitmovinResource {
   }
 
   /**
-   * URL of the referenced VTT file
+   * URL of the referenced VTT file (required)
    * @type {string}
    * @memberof DashVttRepresentation
    */

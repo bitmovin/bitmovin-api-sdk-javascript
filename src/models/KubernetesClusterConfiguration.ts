@@ -11,13 +11,13 @@ export class KubernetesClusterConfiguration {
   }
 
   /**
-   * Number of parallel scheduled encodings on the Kubernetes cluster
+   * Number of parallel scheduled encodings on the Kubernetes cluster (required)
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */
   public parallelEncodings: number;
   /**
-   * Number of worker nodes used for each encoding on the Kubernetes cluster
+   * Number of worker nodes used for each encoding on the Kubernetes cluster (required)
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */

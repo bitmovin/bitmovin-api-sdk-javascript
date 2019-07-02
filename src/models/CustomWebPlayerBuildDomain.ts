@@ -12,7 +12,7 @@ export class CustomWebPlayerBuildDomain extends BitmovinResource {
   }
 
   /**
-   * Domain where the player is allowed to play
+   * Domain where the player is allowed to play (required)
    * @type {string}
    * @memberof CustomWebPlayerBuildDomain
    */

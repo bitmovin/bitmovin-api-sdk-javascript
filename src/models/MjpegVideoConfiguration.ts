@@ -29,13 +29,13 @@ export class MjpegVideoConfiguration extends CodecConfiguration {
    */
   public height?: number;
   /**
-   * Target frame rate of the encoded video!
+   * Target frame rate of the encoded video! (required)
    * @type {number}
    * @memberof MjpegVideoConfiguration
    */
   public rate: number;
   /**
-   * The quality scale parameter
+   * The quality scale parameter (required)
    * @type {number}
    * @memberof MjpegVideoConfiguration
    */

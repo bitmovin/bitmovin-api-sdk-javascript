@@ -14,7 +14,7 @@ export class AudioVolumeFilter extends Filter {
   }
 
   /**
-   * Audio volume value
+   * Audio volume value (required)
    * @type {number}
    * @memberof AudioVolumeFilter
    */

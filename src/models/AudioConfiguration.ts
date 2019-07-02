@@ -13,7 +13,7 @@ export class AudioConfiguration extends CodecConfiguration {
   }
 
   /**
-   * Target bitrate for the encoded audio in bps
+   * Target bitrate for the encoded audio in bps (required)
    * @type {number}
    * @memberof AudioConfiguration
    */

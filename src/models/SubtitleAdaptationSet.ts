@@ -15,7 +15,7 @@ export class SubtitleAdaptationSet extends AdaptationSet {
   }
 
   /**
-   * ISO 639-1 (Alpha-2) code identifying the language of the subtitle adaptation set
+   * ISO 639-1 (Alpha-2) code identifying the language of the subtitle adaptation set (required)
    * @type {string}
    * @memberof SubtitleAdaptationSet
    */

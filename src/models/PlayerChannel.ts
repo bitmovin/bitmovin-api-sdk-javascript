@@ -12,7 +12,7 @@ export class PlayerChannel extends BitmovinResponse {
   }
 
   /**
-   * Name of the resource
+   * Name of the resource (required)
    * @type {string}
    * @memberof PlayerChannel
    */

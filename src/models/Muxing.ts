@@ -1,6 +1,7 @@
 import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import BroadcastTsMuxing from './BroadcastTsMuxing';
+import ChunkedTextMuxing from './ChunkedTextMuxing';
 import CmafMuxing from './CmafMuxing';
 import EncodingOutput from './EncodingOutput';
 import Fmp4Muxing from './Fmp4Muxing';
@@ -12,6 +13,7 @@ import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
 import StreamConditionsMode from './StreamConditionsMode';
+import TextMuxing from './TextMuxing';
 import TsMuxing from './TsMuxing';
 import WebmMuxing from './WebmMuxing';
 

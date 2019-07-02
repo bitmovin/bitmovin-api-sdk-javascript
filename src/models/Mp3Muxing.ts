@@ -16,7 +16,7 @@ export class Mp3Muxing extends Muxing {
   }
 
   /**
-   * Name of the new file
+   * Name of the new file (required)
    * @type {string}
    * @memberof Mp3Muxing
    */

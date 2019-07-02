@@ -16,19 +16,19 @@ export class ResponseErrorData {
   }
 
   /**
-   * Contains an error code as defined in https://bitmovin.com/encoding-documentation/bitmovin-api/#/introduction/api-error-codes 
+   * Contains an error code as defined in https://bitmovin.com/encoding-documentation/bitmovin-api/#/introduction/api-error-codes (required)
    * @type {number}
    * @memberof ResponseErrorData
    */
   public code: number;
   /**
-   * General error message
+   * General error message (required)
    * @type {string}
    * @memberof ResponseErrorData
    */
   public message: string;
   /**
-   * More detailed message meant for developers
+   * More detailed message meant for developers (required)
    * @type {string}
    * @memberof ResponseErrorData
    */

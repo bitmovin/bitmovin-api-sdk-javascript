@@ -36,13 +36,13 @@ export class AwsAccountRegionSettings extends BitmovinResource {
    */
   public maxMoneyToSpendPerMonth?: number;
   /**
-   * Id of the security group for encoding instances
+   * Id of the security group for encoding instances (required)
    * @type {string}
    * @memberof AwsAccountRegionSettings
    */
   public securityGroupId: string;
   /**
-   * Id of the subnet for encoding instances
+   * Id of the subnet for encoding instances (required)
    * @type {string}
    * @memberof AwsAccountRegionSettings
    */

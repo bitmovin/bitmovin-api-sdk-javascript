@@ -14,13 +14,13 @@ export class ClearKeyDrm extends Drm {
   }
 
   /**
-   * 16 byte encryption key, 32 hexadecimal characters
+   * 16 byte encryption key, 32 hexadecimal characters (required)
    * @type {string}
    * @memberof ClearKeyDrm
    */
   public key: string;
   /**
-   * 16 byte key id
+   * 16 byte key id (required)
    * @type {string}
    * @memberof ClearKeyDrm
    */

@@ -12,13 +12,13 @@ export class WebhookEncryption {
   }
 
   /**
-   * The encryption algorithm used for the webhook
+   * The encryption algorithm used for the webhook (required)
    * @type {EncryptionType}
    * @memberof WebhookEncryption
    */
   public type: EncryptionType;
   /**
-   * The key of the encryption
+   * The key of the encryption (required)
    * @type {string}
    * @memberof WebhookEncryption
    */

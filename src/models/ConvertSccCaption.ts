@@ -20,7 +20,7 @@ export class ConvertSccCaption extends BitmovinResource {
   }
 
   /**
-   * The input location to get the scc file from
+   * The input location to get the scc file from (required)
    * @type {InputPath}
    * @memberof ConvertSccCaption
    */
@@ -31,7 +31,7 @@ export class ConvertSccCaption extends BitmovinResource {
    */
   public outputs: Array<EncodingOutput>;
   /**
-   * Name of the captions file
+   * Name of the captions file (required)
    * @type {string}
    * @memberof ConvertSccCaption
    */

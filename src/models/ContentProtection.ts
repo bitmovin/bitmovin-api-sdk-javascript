@@ -12,7 +12,7 @@ export class ContentProtection extends DashRepresentation {
   }
 
   /**
-   * DRM Id
+   * DRM Id (required)
    * @type {string}
    * @memberof ContentProtection
    */

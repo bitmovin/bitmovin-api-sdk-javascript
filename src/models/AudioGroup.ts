@@ -11,13 +11,13 @@ export class AudioGroup {
   }
 
   /**
-   * Name of the audio group
+   * Name of the audio group (required)
    * @type {string}
    * @memberof AudioGroup
    */
   public name: string;
   /**
-   * Priority of the audio group
+   * Priority of the audio group (required)
    * @type {number}
    * @memberof AudioGroup
    */

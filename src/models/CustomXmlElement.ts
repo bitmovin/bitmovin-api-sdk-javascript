@@ -12,7 +12,7 @@ export class CustomXmlElement extends BitmovinResponse {
   }
 
   /**
-   * String representation of the XML element
+   * String representation of the XML element (required)
    * @type {string}
    * @memberof CustomXmlElement
    */

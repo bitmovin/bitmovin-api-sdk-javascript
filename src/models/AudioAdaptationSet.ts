@@ -15,7 +15,7 @@ export class AudioAdaptationSet extends AdaptationSet {
   }
 
   /**
-   * ISO 639-1 (Alpha-2) code identifying the language of the audio adaptation set
+   * ISO 639-1 (Alpha-2) code identifying the language of the audio adaptation set (required)
    * @type {string}
    * @memberof AudioAdaptationSet
    */

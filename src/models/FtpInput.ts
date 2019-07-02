@@ -17,7 +17,7 @@ export class FtpInput extends Input {
   }
 
   /**
-   * Host URL or IP of the FTP server
+   * Host URL or IP of the FTP server (required)
    * @type {string}
    * @memberof FtpInput
    */

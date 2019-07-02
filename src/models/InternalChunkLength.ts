@@ -12,7 +12,7 @@ export class InternalChunkLength {
   }
 
   /**
-   * Defines how the internal chunk length for encoding will be determined
+   * Defines how the internal chunk length for encoding will be determined (required)
    * @type {ChunkLengthMode}
    * @memberof InternalChunkLength
    */

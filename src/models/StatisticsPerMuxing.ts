@@ -16,31 +16,31 @@ export class StatisticsPerMuxing {
   }
 
   /**
-   * ID of the stream
+   * ID of the stream (required)
    * @type {string}
    * @memberof StatisticsPerMuxing
    */
   public streamId: string;
   /**
-   * ID of the muxing
+   * ID of the muxing (required)
    * @type {string}
    * @memberof StatisticsPerMuxing
    */
   public muxingId: string;
   /**
-   * Multiplier for the encoded minutes. Depends on muxing type.
+   * Multiplier for the encoded minutes. Depends on muxing type. (required)
    * @type {number}
    * @memberof StatisticsPerMuxing
    */
   public multiplicator: number;
   /**
-   * Encoded bytes.
+   * Encoded bytes. (required)
    * @type {number}
    * @memberof StatisticsPerMuxing
    */
   public encodedBytes: number;
   /**
-   * Resulting minutes you will be charged for.
+   * Resulting minutes you will be charged for. (required)
    * @type {number}
    * @memberof StatisticsPerMuxing
    */

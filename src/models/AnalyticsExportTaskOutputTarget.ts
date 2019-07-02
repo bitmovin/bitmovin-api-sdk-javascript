@@ -11,13 +11,13 @@ export class AnalyticsExportTaskOutputTarget {
   }
 
   /**
-   * Path where the export should be saved
+   * Path where the export should be saved (required)
    * @type {string}
    * @memberof AnalyticsExportTaskOutputTarget
    */
   public outputPath: string;
   /**
-   * Id of the output that should be used
+   * Id of the output that should be used (required)
    * @type {string}
    * @memberof AnalyticsExportTaskOutputTarget
    */

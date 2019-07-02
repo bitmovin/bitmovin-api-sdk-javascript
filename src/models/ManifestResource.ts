@@ -10,7 +10,7 @@ export class ManifestResource {
   }
 
   /**
-   * Id of the manifest resource
+   * Id of the manifest resource (required)
    * @type {string}
    * @memberof ManifestResource
    */

@@ -10,7 +10,7 @@ export class BitmovinResponse {
   }
 
   /**
-   * Id of the resource
+   * Id of the resource (required)
    * @type {string}
    * @memberof BitmovinResponse
    */

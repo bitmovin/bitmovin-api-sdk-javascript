@@ -27,7 +27,7 @@ export class CencDrm extends Drm {
   }
 
   /**
-   * 16 byte encryption key, 32 hexadecimal characters
+   * 16 byte encryption key, 32 hexadecimal characters (required)
    * @type {string}
    * @memberof CencDrm
    */
@@ -39,7 +39,7 @@ export class CencDrm extends Drm {
    */
   public kid?: string;
   /**
-   * The encryption method to use. Default is `CTR`
+   * The encryption method to use. Default is `CTR` (required)
    * @type {EncryptionMode}
    * @memberof CencDrm
    */

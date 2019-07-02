@@ -12,7 +12,7 @@ export class LiveDashManifest {
   }
 
   /**
-   * Dash manifest ids
+   * Dash manifest ids (required)
    * @type {string}
    * @memberof LiveDashManifest
    */

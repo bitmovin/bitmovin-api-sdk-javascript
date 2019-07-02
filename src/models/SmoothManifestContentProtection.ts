@@ -14,19 +14,19 @@ export class SmoothManifestContentProtection extends BitmovinResource {
   }
 
   /**
-   * Id of the encoding.
+   * Id of the encoding. (required)
    * @type {string}
    * @memberof SmoothManifestContentProtection
    */
   public encodingId: string;
   /**
-   * Id of the muxing.
+   * Id of the muxing. (required)
    * @type {string}
    * @memberof SmoothManifestContentProtection
    */
   public muxingId: string;
   /**
-   * Id of the drm.
+   * Id of the drm. (required)
    * @type {string}
    * @memberof SmoothManifestContentProtection
    */

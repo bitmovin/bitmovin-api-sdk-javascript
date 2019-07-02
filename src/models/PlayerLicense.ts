@@ -20,43 +20,43 @@ export class PlayerLicense extends BitmovinResponse {
   }
 
   /**
-   * Name of the resource
+   * Name of the resource (required)
    * @type {string}
    * @memberof PlayerLicense
    */
   public name: string;
   /**
-   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
    * @type {Date}
    * @memberof PlayerLicense
    */
   public createdAt?: Date;
   /**
-   * License Key
+   * License Key (required)
    * @type {string}
    * @memberof PlayerLicense
    */
   public licenseKey?: string;
   /**
-   * Number of impressions recorded
+   * Number of impressions recorded (required)
    * @type {number}
    * @memberof PlayerLicense
    */
   public impressions?: number;
   /**
-   * Maximum number of impressions
+   * Maximum number of impressions (required)
    * @type {number}
    * @memberof PlayerLicense
    */
   public maxImpressions?: number;
   /**
-   * Flag if third party licensing is enabled
+   * Flag if third party licensing is enabled (required)
    * @type {boolean}
    * @memberof PlayerLicense
    */
   public thirdPartyLicensingEnabled?: boolean;
   /**
-   * Whitelisted domains
+   * Whitelisted domains (required)
    * @type {Array<Domain>}
    * @memberof PlayerLicense
    */

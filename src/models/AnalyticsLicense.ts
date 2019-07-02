@@ -19,7 +19,7 @@ export class AnalyticsLicense extends BitmovinResponse {
    */
   public name?: string;
   /**
-   * License Key
+   * License Key (required)
    * @type {string}
    * @memberof AnalyticsLicense
    */

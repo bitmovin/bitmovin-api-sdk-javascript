@@ -20,25 +20,25 @@ export class GenericS3Output extends Output {
   }
 
   /**
-   * Your generic S3 access key
+   * Your generic S3 access key (required)
    * @type {string}
    * @memberof GenericS3Output
    */
   public accessKey: string;
   /**
-   * Your generic S3 secret key
+   * Your generic S3 secret key (required)
    * @type {string}
    * @memberof GenericS3Output
    */
   public secretKey: string;
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof GenericS3Output
    */
   public bucketName: string;
   /**
-   * The Generic S3 server hostname (or IP address)
+   * The Generic S3 server hostname (or IP address) (required)
    * @type {string}
    * @memberof GenericS3Output
    */

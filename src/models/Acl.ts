@@ -16,7 +16,7 @@ export class Acl extends BitmovinResource {
   }
 
   /**
-   * Resource to define the permission for.
+   * Resource to define the permission for. (required)
    * @type {string}
    * @memberof Acl
    */
@@ -27,7 +27,7 @@ export class Acl extends BitmovinResource {
    */
   public policy: Policy;
   /**
-   * Permissions to assign.
+   * Permissions to assign. (required)
    * @type {Array<Permission>}
    * @memberof Acl
    */

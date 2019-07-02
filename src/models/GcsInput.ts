@@ -16,7 +16,7 @@ export class GcsInput extends Input {
   }
 
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof GcsInput
    */
@@ -28,13 +28,13 @@ export class GcsInput extends Input {
    */
   public cloudRegion?: GoogleCloudRegion;
   /**
-   * GCS access key
+   * GCS access key (required)
    * @type {string}
    * @memberof GcsInput
    */
   public accessKey: string;
   /**
-   * GCS secret key
+   * GCS secret key (required)
    * @type {string}
    * @memberof GcsInput
    */

@@ -16,7 +16,7 @@ export class SftpInput extends Input {
   }
 
   /**
-   * Host Url or IP of the SFTP server
+   * Host Url or IP of the SFTP server (required)
    * @type {string}
    * @memberof SftpInput
    */

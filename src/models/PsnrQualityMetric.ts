@@ -17,7 +17,7 @@ export class PsnrQualityMetric {
    */
   public timeSpan: TimeSpan;
   /**
-   * Peak signal-to-noise ratio
+   * Peak signal-to-noise ratio (required)
    * @type {number}
    * @memberof PsnrQualityMetric
    */

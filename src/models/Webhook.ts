@@ -19,7 +19,7 @@ export class Webhook extends BitmovinResource {
   }
 
   /**
-   * Webhook url
+   * Webhook url (required)
    * @type {string}
    * @memberof Webhook
    */

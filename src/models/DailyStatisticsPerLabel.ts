@@ -12,13 +12,13 @@ export class DailyStatisticsPerLabel {
   }
 
   /**
-   * Date, format. yyyy-MM-dd
+   * Date, format. yyyy-MM-dd (required)
    * @type {Date}
    * @memberof DailyStatisticsPerLabel
    */
   public date: Date;
   /**
-   * List of labels and their aggregated statistics
+   * List of labels and their aggregated statistics (required)
    * @type {Array<DailyStatistics>}
    * @memberof DailyStatisticsPerLabel
    */

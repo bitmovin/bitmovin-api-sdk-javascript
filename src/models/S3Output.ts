@@ -20,19 +20,19 @@ export class S3Output extends Output {
   }
 
   /**
-   * Amazon S3 bucket name
+   * Amazon S3 bucket name (required)
    * @type {string}
    * @memberof S3Output
    */
   public bucketName: string;
   /**
-   * Amazon S3 access key
+   * Amazon S3 access key (required)
    * @type {string}
    * @memberof S3Output
    */
   public accessKey: string;
   /**
-   * Amazon S3 secret key
+   * Amazon S3 secret key (required)
    * @type {string}
    * @memberof S3Output
    */

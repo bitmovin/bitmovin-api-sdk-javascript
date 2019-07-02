@@ -48,7 +48,7 @@ export class Stream extends BitmovinResource {
    */
   public createQualityMetaData?: boolean;
   /**
-   * Id of the codec configuration
+   * Id of the codec configuration (required)
    * @type {string}
    * @memberof Stream
    */

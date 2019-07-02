@@ -22,19 +22,19 @@ export class S3Input extends Input {
    */
   public cloudRegion?: AwsCloudRegion;
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof S3Input
    */
   public bucketName: string;
   /**
-   * Amazon access key
+   * Amazon access key (required)
    * @type {string}
    * @memberof S3Input
    */
   public accessKey: string;
   /**
-   * Amazon secret key
+   * Amazon secret key (required)
    * @type {string}
    * @memberof S3Input
    */

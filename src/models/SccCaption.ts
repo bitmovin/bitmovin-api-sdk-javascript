@@ -13,7 +13,7 @@ export class SccCaption extends BitmovinResource {
   }
 
   /**
-   * The input location to get the scc file from
+   * The input location to get the scc file from (required)
    * @type {InputPath}
    * @memberof SccCaption
    */

@@ -21,7 +21,7 @@ export class SrtInput extends Input {
   }
 
   /**
-   * The SRT mode to use
+   * The SRT mode to use (required)
    * @type {SrtMode}
    * @memberof SrtInput
    */
@@ -33,7 +33,7 @@ export class SrtInput extends Input {
    */
   public host?: string;
   /**
-   * The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode.
+   * The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode. (required)
    * @type {number}
    * @memberof SrtInput
    */

@@ -14,25 +14,25 @@ export class ErrorDetails {
   }
 
   /**
-   * Specific error code
+   * Specific error code (required)
    * @type {number}
    * @memberof ErrorDetails
    */
   public code: number;
   /**
-   * Error group name
+   * Error group name (required)
    * @type {string}
    * @memberof ErrorDetails
    */
   public category: string;
   /**
-   * Detailed error message
+   * Detailed error message (required)
    * @type {string}
    * @memberof ErrorDetails
    */
   public text: string;
   /**
-   * Information if the encoding could potentially succeed when retrying.
+   * Information if the encoding could potentially succeed when retrying. (required)
    * @type {RetryHint}
    * @memberof ErrorDetails
    */

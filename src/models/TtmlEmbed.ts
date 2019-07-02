@@ -13,7 +13,7 @@ export class TtmlEmbed extends BitmovinResource {
   }
 
   /**
-   * The input stream to extract the subtitle from
+   * The input stream to extract the subtitle from (required)
    * @type {StreamInput}
    * @memberof TtmlEmbed
    */

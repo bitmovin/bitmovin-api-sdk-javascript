@@ -1,8 +1,10 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import Fmp4Api from './fmp4/Fmp4Api';
+import ChunkedTextApi from './chunkedText/ChunkedTextApi';
 import CmafApi from './cmaf/CmafApi';
 import SegmentedRawApi from './segmentedRaw/SegmentedRawApi';
+import TextApi from './text/TextApi';
 import TsApi from './ts/TsApi';
 import WebmApi from './webm/WebmApi';
 import Mp3Api from './mp3/Mp3Api';
@@ -25,8 +27,10 @@ import MuxingListQueryParams from './MuxingListQueryParams';
  */
 export default class MuxingsApi extends BaseAPI {
   public fmp4: Fmp4Api;
+  public chunkedText: ChunkedTextApi;
   public cmaf: CmafApi;
   public segmentedRaw: SegmentedRawApi;
+  public text: TextApi;
   public ts: TsApi;
   public webm: WebmApi;
   public mp3: Mp3Api;
@@ -39,8 +43,10 @@ export default class MuxingsApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.fmp4 = new Fmp4Api(configuration);
+    this.chunkedText = new ChunkedTextApi(configuration);
     this.cmaf = new CmafApi(configuration);
     this.segmentedRaw = new SegmentedRawApi(configuration);
+    this.text = new TextApi(configuration);
     this.ts = new TsApi(configuration);
     this.webm = new WebmApi(configuration);
     this.mp3 = new Mp3Api(configuration);

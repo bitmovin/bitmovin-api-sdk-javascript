@@ -16,13 +16,13 @@ export class PrewarmEncoderSettings extends BitmovinResource {
   }
 
   /**
-   * Encoder Version to be prewarmed. Only one encoder of this version can be prewarmed per cluster.
+   * Encoder Version to be prewarmed. Only one encoder of this version can be prewarmed per cluster. (required)
    * @type {string}
    * @memberof PrewarmEncoderSettings
    */
   public encoderVersion: string;
   /**
-   * The minimum number of prewarmed encoders of this Version
+   * The minimum number of prewarmed encoders of this Version (required)
    * @type {number}
    * @memberof PrewarmEncoderSettings
    */

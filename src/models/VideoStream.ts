@@ -36,13 +36,13 @@ export class VideoStream extends MediaStream {
    */
   public rate?: number;
   /**
-   * Width of the video
+   * Width of the video (required)
    * @type {number}
    * @memberof VideoStream
    */
   public width: number;
   /**
-   * Height of the video
+   * Height of the video (required)
    * @type {number}
    * @memberof VideoStream
    */

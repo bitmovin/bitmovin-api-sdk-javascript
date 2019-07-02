@@ -11,13 +11,13 @@ export class InputPath {
   }
 
   /**
-   * Id of input
+   * Id of input (required)
    * @type {string}
    * @memberof InputPath
    */
   public inputId: string;
   /**
-   * Path to media file
+   * Path to media file (required)
    * @type {string}
    * @memberof InputPath
    */

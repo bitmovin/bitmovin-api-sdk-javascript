@@ -11,13 +11,13 @@ export class Login {
   }
 
   /**
-   * Email address of the account.
+   * Email address of the account. (required)
    * @type {string}
    * @memberof Login
    */
   public eMail: string;
   /**
-   * Password of the account.
+   * Password of the account. (required)
    * @type {string}
    * @memberof Login
    */

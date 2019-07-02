@@ -17,19 +17,19 @@ export class GcsOutput extends Output {
   }
 
   /**
-   * GCS access key
+   * GCS access key (required)
    * @type {string}
    * @memberof GcsOutput
    */
   public accessKey: string;
   /**
-   * GCS secret key
+   * GCS secret key (required)
    * @type {string}
    * @memberof GcsOutput
    */
   public secretKey: string;
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof GcsOutput
    */

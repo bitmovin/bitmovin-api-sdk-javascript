@@ -18,13 +18,13 @@ export class AkamaiMslOutput extends Output {
   }
 
   /**
-   * The Akamai stream ID
+   * The Akamai stream ID (required)
    * @type {number}
    * @memberof AkamaiMslOutput
    */
   public streamId: number;
   /**
-   * The Akamai event name
+   * The Akamai event name (required)
    * @type {string}
    * @memberof AkamaiMslOutput
    */

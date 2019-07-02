@@ -20,7 +20,7 @@ export class FtpOutput extends Output {
   }
 
   /**
-   * Host URL or IP of the FTP server
+   * Host URL or IP of the FTP server (required)
    * @type {string}
    * @memberof FtpOutput
    */

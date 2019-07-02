@@ -29,7 +29,7 @@ export class AsperaInput extends Input {
    */
   public maxBandwidth?: string;
   /**
-   * Host to use for Aspera transfers
+   * Host to use for Aspera transfers (required)
    * @type {string}
    * @memberof AsperaInput
    */

@@ -24,7 +24,7 @@ export class Subtask extends BitmovinResponse {
   }
 
   /**
-   * Current status
+   * Current status (required)
    * @type {Status}
    * @memberof Subtask
    */
@@ -36,7 +36,7 @@ export class Subtask extends BitmovinResponse {
    */
   public progress?: number;
   /**
-   * Name of the subtask
+   * Name of the subtask (required)
    * @type {string}
    * @memberof Subtask
    */

@@ -10,7 +10,7 @@ export class ReprioritizeEncodingRequest {
   }
 
   /**
-   * Priority of the Encoding
+   * Priority of the Encoding (required)
    * @type {number}
    * @memberof ReprioritizeEncodingRequest
    */

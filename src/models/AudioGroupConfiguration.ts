@@ -13,13 +13,13 @@ export class AudioGroupConfiguration {
   }
 
   /**
-   * Dropping mode
+   * Dropping mode (required)
    * @type {VariantStreamDroppingMode}
    * @memberof AudioGroupConfiguration
    */
   public droppingMode: VariantStreamDroppingMode;
   /**
-   * Audio groups
+   * Audio groups (required)
    * @type {Array<AudioGroup>}
    * @memberof AudioGroupConfiguration
    */

@@ -12,7 +12,7 @@ export class LocalInput extends Input {
   }
 
   /**
-   * Path to your local storage
+   * Path to your local storage (required)
    * @type {string}
    * @memberof LocalInput
    */

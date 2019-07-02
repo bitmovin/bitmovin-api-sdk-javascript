@@ -18,7 +18,7 @@ export class StatisticsPerLabel extends Statistics {
   }
 
   /**
-   * An optional error message, when the event is in error state (occurs at event: ERROR)
+   * An optional error message, when the event is in error state (occurs at event: ERROR) (required)
    * @type {string}
    * @memberof StatisticsPerLabel
    */

@@ -11,7 +11,7 @@ export class Link {
   }
 
   /**
-   * webpage target URL
+   * webpage target URL (required)
    * @type {string}
    * @memberof Link
    */

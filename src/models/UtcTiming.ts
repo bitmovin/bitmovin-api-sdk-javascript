@@ -11,13 +11,13 @@ export class UtcTiming {
   }
 
   /**
-   * The server to get the time from
+   * The server to get the time from (required)
    * @type {string}
    * @memberof UtcTiming
    */
   public value: string;
   /**
-   * The scheme id to use. Please refer to the DASH standard.
+   * The scheme id to use. Please refer to the DASH standard. (required)
    * @type {string}
    * @memberof UtcTiming
    */

@@ -23,19 +23,19 @@ export class AnalyticsExportTask extends BitmovinResponse {
   }
 
   /**
-   * Start of timeframe which is exported in UTC format
+   * Start of timeframe which is exported in UTC format (required)
    * @type {Date}
    * @memberof AnalyticsExportTask
    */
   public startTime: Date;
   /**
-   * End of timeframe which is exported in UTC format
+   * End of timeframe which is exported in UTC format (required)
    * @type {Date}
    * @memberof AnalyticsExportTask
    */
   public endTime: Date;
   /**
-   * Name of the export task
+   * Name of the export task (required)
    * @type {string}
    * @memberof AnalyticsExportTask
    */
@@ -47,7 +47,7 @@ export class AnalyticsExportTask extends BitmovinResponse {
    */
   public description?: string;
   /**
-   * License key
+   * License key (required)
    * @type {string}
    * @memberof AnalyticsExportTask
    */

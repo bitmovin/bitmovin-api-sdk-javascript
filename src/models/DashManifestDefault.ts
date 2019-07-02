@@ -19,7 +19,7 @@ export class DashManifestDefault extends DashManifest {
   }
 
   /**
-   * The id of the encoding to create a default manifest from
+   * The id of the encoding to create a default manifest from (required)
    * @type {string}
    * @memberof DashManifestDefault
    */

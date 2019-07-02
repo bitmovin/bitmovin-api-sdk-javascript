@@ -4,6 +4,7 @@ import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import StreamConditionsMode from './StreamConditionsMode';
+import TsMuxingConfiguration from './TsMuxingConfiguration';
 
 /**
  * @export
@@ -17,10 +18,11 @@ export class TsMuxing extends Muxing {
     this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
     this.startOffset = map(obj.startOffset);
     this.segmentsMuxed = map(obj.segmentsMuxed);
+    this.configuration = map<TsMuxingConfiguration>(obj.configuration, TsMuxingConfiguration);
   }
 
   /**
-   * Length of the fragments in seconds
+   * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof TsMuxing
    */
@@ -49,6 +51,12 @@ export class TsMuxing extends Muxing {
    * @memberof TsMuxing
    */
   public segmentsMuxed?: number;
+  /**
+   * Advanced Configuration of the MPEG Transport Stream Parameters
+   * @type {TsMuxingConfiguration}
+   * @memberof TsMuxing
+   */
+  public configuration?: TsMuxingConfiguration;
 }
 
 export default TsMuxing;

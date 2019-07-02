@@ -17,7 +17,7 @@ export class HlsManifest extends Manifest {
   }
 
   /**
-   * The filename of your manifest
+   * The filename of your manifest (required)
    * @type {string}
    * @memberof HlsManifest
    */

@@ -14,19 +14,19 @@ export class AzureInput extends Input {
   }
 
   /**
-   * Azure Account Name
+   * Azure Account Name (required)
    * @type {string}
    * @memberof AzureInput
    */
   public accountName: string;
   /**
-   * Azure Account Key
+   * Azure Account Key (required)
    * @type {string}
    * @memberof AzureInput
    */
   public accountKey: string;
   /**
-   * Name of the bucket
+   * Name of the bucket (required)
    * @type {string}
    * @memberof AzureInput
    */

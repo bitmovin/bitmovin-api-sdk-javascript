@@ -14,13 +14,13 @@ export class MarlinDrm extends Drm {
   }
 
   /**
-   * 16 byte key in hex (32 characters)
+   * 16 byte key in hex (32 characters) (required)
    * @type {string}
    * @memberof MarlinDrm
    */
   public key: string;
   /**
-   * 16 byte key in hex (32 characters)
+   * 16 byte key in hex (32 characters) (required)
    * @type {string}
    * @memberof MarlinDrm
    */

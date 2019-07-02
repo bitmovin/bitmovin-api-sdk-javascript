@@ -10,7 +10,7 @@ export class CencWidevine {
   }
 
   /**
-   * Base64 encoded pssh payload
+   * Base64 encoded pssh payload (required)
    * @type {string}
    * @memberof CencWidevine
    */

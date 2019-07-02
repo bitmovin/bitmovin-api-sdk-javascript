@@ -22,7 +22,7 @@ export class Fmp4Muxing extends Muxing {
   }
 
   /**
-   * Length of the fragments in seconds
+   * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof Fmp4Muxing
    */

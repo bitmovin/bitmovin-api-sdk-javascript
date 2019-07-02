@@ -18,7 +18,7 @@ export class WatermarkFilter extends Filter {
   }
 
   /**
-   * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF
+   * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
    * @type {string}
    * @memberof WatermarkFilter
    */
