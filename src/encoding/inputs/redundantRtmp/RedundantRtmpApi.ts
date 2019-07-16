@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import RedundantRtmpInput from '../../../models/RedundantRtmpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import RedundantRtmpInputListQueryParams from './RedundantRtmpInputListQueryParams';
+import { RedundantRtmpInputListQueryParams, RedundantRtmpInputListQueryParamsBuilder } from './RedundantRtmpInputListQueryParams';
 
 /**
  * RedundantRtmpApi - object-oriented interface
@@ -61,11 +61,17 @@ export default class RedundantRtmpApi extends BaseAPI {
 
   /**
    * @summary List Redundant RTMP Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof RedundantRtmpApi
    */
-  public list(queryParams?: RedundantRtmpInputListQueryParams): Promise<PaginationResponse<RedundantRtmpInput>> {
+  public list(queryParameters?: RedundantRtmpInputListQueryParams | ((q: RedundantRtmpInputListQueryParamsBuilder) => RedundantRtmpInputListQueryParamsBuilder)): Promise<PaginationResponse<RedundantRtmpInput>> {
+    let queryParams: RedundantRtmpInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new RedundantRtmpInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<RedundantRtmpInput>>('/encoding/inputs/redundant-rtmp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<RedundantRtmpInput>(response);
       if (paginationResponse.items) {

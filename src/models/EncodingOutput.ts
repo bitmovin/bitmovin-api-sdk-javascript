@@ -6,29 +6,31 @@ import AclEntry from './AclEntry';
  * @class EncodingOutput
  */
 export class EncodingOutput {
-  constructor(obj: any) {
-    this.outputId = map(obj.outputId);
-    this.outputPath = map(obj.outputPath);
-    this.acl = map<AclEntry>(obj.acl, AclEntry);
-  }
-
   /**
    * Id of the corresponding output (required)
    * @type {string}
    * @memberof EncodingOutput
    */
   public outputId: string;
+
   /**
    * Subdirectory where to save the files to (required)
    * @type {string}
    * @memberof EncodingOutput
    */
   public outputPath: string;
+
   /**
-   * @type {Array<AclEntry>}
+   * @type {AclEntry[]}
    * @memberof EncodingOutput
    */
-  public acl?: Array<AclEntry>;
+  public acl?: AclEntry[];
+
+  constructor(obj: Partial<EncodingOutput>) {
+    this.outputId = map(obj.outputId);
+    this.outputPath = map(obj.outputPath);
+    this.acl = map<AclEntry>(obj.acl, AclEntry);
+  }
 }
 
 export default EncodingOutput;

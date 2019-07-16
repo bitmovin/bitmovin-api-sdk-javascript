@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EbuR128SinglePassFilter from '../../../models/EbuR128SinglePassFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import EbuR128SinglePassFilterListQueryParams from './EbuR128SinglePassFilterListQueryParams';
+import { EbuR128SinglePassFilterListQueryParams, EbuR128SinglePassFilterListQueryParamsBuilder } from './EbuR128SinglePassFilterListQueryParams';
 
 /**
  * EbuR128SinglePassApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class EbuR128SinglePassApi extends BaseAPI {
 
   /**
    * @summary Create EBU R128 Single Pass Filter
-   * @param {EbuR128SinglePassFilter} ebuR128SinglePassFilter
+   * @param {EbuR128SinglePassFilter} ebuR128SinglePassFilter The EBU R128 Single Pass Filter to be created
    * @throws {RequiredError}
    * @memberof EbuR128SinglePassApi
    */
@@ -64,11 +64,17 @@ export default class EbuR128SinglePassApi extends BaseAPI {
 
   /**
    * @summary List EBU R128 Single Pass Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof EbuR128SinglePassApi
    */
-  public list(queryParams?: EbuR128SinglePassFilterListQueryParams): Promise<PaginationResponse<EbuR128SinglePassFilter>> {
+  public list(queryParameters?: EbuR128SinglePassFilterListQueryParams | ((q: EbuR128SinglePassFilterListQueryParamsBuilder) => EbuR128SinglePassFilterListQueryParamsBuilder)): Promise<PaginationResponse<EbuR128SinglePassFilter>> {
+    let queryParams: EbuR128SinglePassFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EbuR128SinglePassFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<EbuR128SinglePassFilter>>('/encoding/filters/ebu-r128-single-pass', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EbuR128SinglePassFilter>(response);
       if (paginationResponse.items) {

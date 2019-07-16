@@ -8,24 +8,25 @@ import Filter from './Filter';
  * @class AudioMixFilter
  */
 export class AudioMixFilter extends Filter {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-    this.audioMixChannels = map<AudioMixChannel>(obj.audioMixChannels, AudioMixChannel);
-  }
-
   /**
    * Channel layout of the audio codec configuration (required)
    * @type {AudioMixChannelLayout}
    * @memberof AudioMixFilter
    */
   public channelLayout: AudioMixChannelLayout;
+
   /**
    * List of mixed channels that matches the channel layout (required)
-   * @type {Array<AudioMixChannel>}
+   * @type {AudioMixChannel[]}
    * @memberof AudioMixFilter
    */
-  public audioMixChannels: Array<AudioMixChannel>;
+  public audioMixChannels: AudioMixChannel[];
+
+  constructor(obj: Partial<AudioMixFilter>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+    this.audioMixChannels = map<AudioMixChannel>(obj.audioMixChannels, AudioMixChannel);
+  }
 }
 
 export default AudioMixFilter;

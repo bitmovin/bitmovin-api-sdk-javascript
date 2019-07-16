@@ -6,10 +6,9 @@ import BitmovinResource from './BitmovinResource';
  * @class Group
  */
 export class Group extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<Group>) {
     super(obj);
   }
-
 }
 
 export default Group;

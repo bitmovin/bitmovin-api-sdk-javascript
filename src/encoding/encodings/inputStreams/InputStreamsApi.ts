@@ -11,7 +11,7 @@ import CaptionsApi from './captions/CaptionsApi';
 import InputStream from '../../../models/InputStream';
 import { InputStreamTypeMap } from '../../../models/typeMappings'
 import PaginationResponse from '../../../models/PaginationResponse';
-import InputStreamListQueryParams from './InputStreamListQueryParams';
+import { InputStreamListQueryParams, InputStreamListQueryParamsBuilder } from './InputStreamListQueryParams';
 
 /**
  * InputStreamsApi - object-oriented interface
@@ -54,21 +54,29 @@ export default class InputStreamsApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<InputStream>('/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}', pathParamMap).then((response) => {
-      return new InputStream(response);
+      // `ts-ignore` is necessary to compile, because our models don't have the property `type`
+      // @ts-ignore
+      return new InputStreamTypeMap[response.type](response);
     });
   }
 
   /**
    * @summary List All Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof InputStreamsApi
    */
-  public list(encodingId: string, queryParams?: InputStreamListQueryParams): Promise<PaginationResponse<InputStream>> {
+  public list(encodingId: string, queryParameters?: InputStreamListQueryParams | ((q: InputStreamListQueryParamsBuilder) => InputStreamListQueryParamsBuilder)): Promise<PaginationResponse<InputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: InputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new InputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<InputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<InputStream>(response);
       if (paginationResponse.items) {

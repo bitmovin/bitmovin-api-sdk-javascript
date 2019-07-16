@@ -4,7 +4,7 @@ import ErrorApi from './error/ErrorApi';
 import FinishedApi from './finished/FinishedApi';
 import Notification from '../../../../models/Notification';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import NotificationListQueryParams from './NotificationListQueryParams';
+import { NotificationListQueryParams, NotificationListQueryParamsBuilder } from './NotificationListQueryParams';
 
 /**
  * ManifestApi - object-oriented interface
@@ -25,14 +25,20 @@ export default class ManifestApi extends BaseAPI {
   /**
    * @summary List Webhook Notifications (Specific Manifest)
    * @param {string} manifestId Id of the manifest resource
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ManifestApi
    */
-  public list(manifestId: string, queryParams?: NotificationListQueryParams): Promise<PaginationResponse<Notification>> {
+  public list(manifestId: string, queryParameters?: NotificationListQueryParams | ((q: NotificationListQueryParamsBuilder) => NotificationListQueryParamsBuilder)): Promise<PaginationResponse<Notification>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: NotificationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new NotificationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Notification>>('/notifications/webhooks/encoding/manifest/{manifest_id}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Notification>(response);
       if (paginationResponse.items) {

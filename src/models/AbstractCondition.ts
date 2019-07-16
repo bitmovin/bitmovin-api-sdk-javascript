@@ -8,9 +8,8 @@ import OrConjunction from './OrConjunction';
  * @class AbstractCondition
  */
 export class AbstractCondition {
-  constructor(obj: any) {
+  constructor(obj: Partial<AbstractCondition>) {
   }
-
 }
 
 export default AbstractCondition;

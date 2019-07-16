@@ -8,17 +8,17 @@ import PerTitleFixedResolutionAndBitrateConfiguration from './PerTitleFixedResol
  * @class Vp9PerTitleConfiguration
  */
 export class Vp9PerTitleConfiguration extends PerTitleConfiguration {
-  constructor(obj: any) {
-    super(obj);
-    this.targetQualityCrf = map(obj.targetQualityCrf);
-  }
-
   /**
    * Desired target quality of the highest representation expressed as CRF value
    * @type {number}
    * @memberof Vp9PerTitleConfiguration
    */
   public targetQualityCrf?: number;
+
+  constructor(obj: Partial<Vp9PerTitleConfiguration>) {
+    super(obj);
+    this.targetQualityCrf = map(obj.targetQualityCrf);
+  }
 }
 
 export default Vp9PerTitleConfiguration;

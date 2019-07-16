@@ -18,7 +18,7 @@ export default class CountApi extends BaseAPI {
 
   /**
    * @summary Count
-   * @param {AnalyticsCountQueryRequest} analyticsCountQueryRequest
+   * @param {AnalyticsCountQueryRequest} analyticsCountQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof CountApi
    */

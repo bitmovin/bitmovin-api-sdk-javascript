@@ -1,16 +1,43 @@
-export default interface StreamInfosListQueryParams {
+
+export interface StreamInfosListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
      * @memberof StreamInfosListQueryParams
      */
-    offset?: number;
+    offset?: number | undefined;
 
     /**
      * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
      * @memberof StreamInfosListQueryParams
      */
-    limit?: number;
+    limit?: number | undefined;
+}
+
+export class StreamInfosListQueryParamsBuilder {
+    private internalParams: StreamInfosListQueryParams = {};
+
+    /**
+     *
+     * @param offset Index of the first item to return, starting at 0. Default is 0
+     */
+    public offset(offset: number) {
+        this.internalParams.offset = offset;
+        return this;
+    }
+
+    /**
+     *
+     * @param limit Maximum number of items to return. Default is 25, maximum is 100
+     */
+    public limit(limit: number) {
+        this.internalParams.limit = limit;
+        return this;
+    }
+
+    public buildQueryParams() {
+        return this.internalParams;
+    }
 }

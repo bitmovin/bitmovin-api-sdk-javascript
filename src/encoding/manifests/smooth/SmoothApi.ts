@@ -8,7 +8,7 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import SmoothStreamingManifest from '../../../models/SmoothStreamingManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
-import SmoothStreamingManifestListQueryParams from './SmoothStreamingManifestListQueryParams';
+import { SmoothStreamingManifestListQueryParams, SmoothStreamingManifestListQueryParamsBuilder } from './SmoothStreamingManifestListQueryParams';
 
 /**
  * SmoothApi - object-oriented interface
@@ -32,7 +32,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Create Smooth Streaming Manifest
-   * @param {SmoothStreamingManifest} smoothStreamingManifest
+   * @param {SmoothStreamingManifest} smoothStreamingManifest The Smooth Streaming Manifest to be created
    * @throws {RequiredError}
    * @memberof SmoothApi
    */
@@ -74,11 +74,17 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary List Smooth Streaming Manifests
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SmoothApi
    */
-  public list(queryParams?: SmoothStreamingManifestListQueryParams): Promise<PaginationResponse<SmoothStreamingManifest>> {
+  public list(queryParameters?: SmoothStreamingManifestListQueryParams | ((q: SmoothStreamingManifestListQueryParamsBuilder) => SmoothStreamingManifestListQueryParamsBuilder)): Promise<PaginationResponse<SmoothStreamingManifest>> {
+    let queryParams: SmoothStreamingManifestListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SmoothStreamingManifestListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SmoothStreamingManifest>>('/encoding/manifests/smooth', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SmoothStreamingManifest>(response);
       if (paginationResponse.items) {

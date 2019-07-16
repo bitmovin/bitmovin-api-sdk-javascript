@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import SrtInput from '../../../models/SrtInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import SrtInputListQueryParams from './SrtInputListQueryParams';
+import { SrtInputListQueryParams, SrtInputListQueryParamsBuilder } from './SrtInputListQueryParams';
 
 /**
  * SrtApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class SrtApi extends BaseAPI {
 
   /**
    * @summary List SRT inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SrtApi
    */
-  public list(queryParams?: SrtInputListQueryParams): Promise<PaginationResponse<SrtInput>> {
+  public list(queryParameters?: SrtInputListQueryParams | ((q: SrtInputListQueryParamsBuilder) => SrtInputListQueryParamsBuilder)): Promise<PaginationResponse<SrtInput>> {
+    let queryParams: SrtInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SrtInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SrtInput>>('/encoding/inputs/srt', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SrtInput>(response);
       if (paginationResponse.items) {

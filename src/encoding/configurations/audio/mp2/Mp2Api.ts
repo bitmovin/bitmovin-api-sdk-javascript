@@ -20,7 +20,7 @@ export default class Mp2Api extends BaseAPI {
 
   /**
    * @summary Create MP2 Codec Configuration
-   * @param {Mp2AudioConfiguration} mp2AudioConfiguration
+   * @param {Mp2AudioConfiguration} mp2AudioConfiguration The MP2 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Mp2Api
    */

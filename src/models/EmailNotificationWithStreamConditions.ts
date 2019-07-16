@@ -7,16 +7,16 @@ import EmailNotification from './EmailNotification';
  * @class EmailNotificationWithStreamConditions
  */
 export class EmailNotificationWithStreamConditions extends EmailNotification {
-  constructor(obj: any) {
-    super(obj);
-    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
-  }
-
   /**
    * @type {AbstractCondition}
    * @memberof EmailNotificationWithStreamConditions
    */
   public conditions?: AbstractCondition;
+
+  constructor(obj: Partial<EmailNotificationWithStreamConditions>) {
+    super(obj);
+    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
+  }
 }
 
 export default EmailNotificationWithStreamConditions;

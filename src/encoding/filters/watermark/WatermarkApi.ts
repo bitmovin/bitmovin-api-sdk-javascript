@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import WatermarkFilter from '../../../models/WatermarkFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import WatermarkFilterListQueryParams from './WatermarkFilterListQueryParams';
+import { WatermarkFilterListQueryParams, WatermarkFilterListQueryParamsBuilder } from './WatermarkFilterListQueryParams';
 
 /**
  * WatermarkApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class WatermarkApi extends BaseAPI {
 
   /**
    * @summary Create Watermark Filter
-   * @param {WatermarkFilter} watermarkFilter Only one horizontal and one vertical distance parameter is allowed, either top or bottom, and either left or right. See example body.
+   * @param {WatermarkFilter} watermarkFilter The Watermark Filter to be created. Only one horizontal and one vertical distance parameter is allowed, either top or bottom, and either left or right. See example body.
    * @throws {RequiredError}
    * @memberof WatermarkApi
    */
@@ -64,11 +64,17 @@ export default class WatermarkApi extends BaseAPI {
 
   /**
    * @summary List Watermark Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof WatermarkApi
    */
-  public list(queryParams?: WatermarkFilterListQueryParams): Promise<PaginationResponse<WatermarkFilter>> {
+  public list(queryParameters?: WatermarkFilterListQueryParams | ((q: WatermarkFilterListQueryParamsBuilder) => WatermarkFilterListQueryParamsBuilder)): Promise<PaginationResponse<WatermarkFilter>> {
+    let queryParams: WatermarkFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new WatermarkFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<WatermarkFilter>>('/encoding/filters/watermark', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WatermarkFilter>(response);
       if (paginationResponse.items) {

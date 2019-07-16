@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import H265VideoConfiguration from '../../../../models/H265VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import H265VideoConfigurationListQueryParams from './H265VideoConfigurationListQueryParams';
+import { H265VideoConfigurationListQueryParams, H265VideoConfigurationListQueryParamsBuilder } from './H265VideoConfigurationListQueryParams';
 
 /**
  * H265Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class H265Api extends BaseAPI {
 
   /**
    * @summary Create H265/HEVC Codec Configuration
-   * @param {H265VideoConfiguration} h265VideoConfiguration
+   * @param {H265VideoConfiguration} h265VideoConfiguration The H265/HEVC Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof H265Api
    */
@@ -64,11 +64,17 @@ export default class H265Api extends BaseAPI {
 
   /**
    * @summary List H265/HEVC Codec Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof H265Api
    */
-  public list(queryParams?: H265VideoConfigurationListQueryParams): Promise<PaginationResponse<H265VideoConfiguration>> {
+  public list(queryParameters?: H265VideoConfigurationListQueryParams | ((q: H265VideoConfigurationListQueryParamsBuilder) => H265VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<H265VideoConfiguration>> {
+    let queryParams: H265VideoConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new H265VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<H265VideoConfiguration>>('/encoding/configurations/video/h265', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<H265VideoConfiguration>(response);
       if (paginationResponse.items) {

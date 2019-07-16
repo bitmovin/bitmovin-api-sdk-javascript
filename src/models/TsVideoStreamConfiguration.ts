@@ -6,10 +6,9 @@ import TsStreamConfiguration from './TsStreamConfiguration';
  * @class TsVideoStreamConfiguration
  */
 export class TsVideoStreamConfiguration extends TsStreamConfiguration {
-  constructor(obj: any) {
+  constructor(obj: Partial<TsVideoStreamConfiguration>) {
     super(obj);
   }
-
 }
 
 export default TsVideoStreamConfiguration;

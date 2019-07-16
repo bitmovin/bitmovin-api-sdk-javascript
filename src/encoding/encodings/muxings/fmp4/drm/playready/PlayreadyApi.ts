@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PlayReadyDrm from '../../../../../../models/PlayReadyDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import PlayReadyDrmListQueryParams from './PlayReadyDrmListQueryParams';
+import { PlayReadyDrmListQueryParams, PlayReadyDrmListQueryParamsBuilder } from './PlayReadyDrmListQueryParams';
 
 /**
  * PlayreadyApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class PlayreadyApi extends BaseAPI {
    * @summary Add PlayReady DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {PlayReadyDrm} playReadyDrm
+   * @param {PlayReadyDrm} playReadyDrm The PlayReady DRM to be created
    * @throws {RequiredError}
    * @memberof PlayreadyApi
    */
@@ -80,15 +80,21 @@ export default class PlayreadyApi extends BaseAPI {
    * @summary List PlayReady DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof PlayreadyApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: PlayReadyDrmListQueryParams): Promise<PaginationResponse<PlayReadyDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: PlayReadyDrmListQueryParams | ((q: PlayReadyDrmListQueryParamsBuilder) => PlayReadyDrmListQueryParamsBuilder)): Promise<PaginationResponse<PlayReadyDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: PlayReadyDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new PlayReadyDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<PlayReadyDrm>>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/playready', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<PlayReadyDrm>(response);
       if (paginationResponse.items) {

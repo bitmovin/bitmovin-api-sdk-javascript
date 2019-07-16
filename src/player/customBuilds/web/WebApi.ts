@@ -28,7 +28,7 @@ export default class WebApi extends BaseAPI {
 
   /**
    * @summary Add Custom Web Player Build
-   * @param {CustomPlayerBuildDetails} customPlayerBuildDetails
+   * @param {CustomPlayerBuildDetails} customPlayerBuildDetails The Custom Web Player Build to be added
    * @throws {RequiredError}
    * @memberof WebApi
    */

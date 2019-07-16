@@ -6,17 +6,17 @@ import BitmovinResource from './BitmovinResource';
  * @class IFramePlaylist
  */
 export class IFramePlaylist extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.filename = map(obj.filename);
-  }
-
   /**
    * The filename of your I-frame playlist (required)
    * @type {string}
    * @memberof IFramePlaylist
    */
   public filename: string;
+
+  constructor(obj: Partial<IFramePlaylist>) {
+    super(obj);
+    this.filename = map(obj.filename);
+  }
 }
 
 export default IFramePlaylist;

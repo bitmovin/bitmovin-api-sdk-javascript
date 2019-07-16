@@ -3,7 +3,7 @@ import Configuration from '../../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import SubtitleAdaptationSet from '../../../../../../models/SubtitleAdaptationSet';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import SubtitleAdaptationSetListQueryParams from './SubtitleAdaptationSetListQueryParams';
+import { SubtitleAdaptationSetListQueryParams, SubtitleAdaptationSetListQueryParamsBuilder } from './SubtitleAdaptationSetListQueryParams';
 
 /**
  * SubtitleApi - object-oriented interface
@@ -77,15 +77,21 @@ export default class SubtitleApi extends BaseAPI {
    * @summary List all Subtitle AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SubtitleApi
    */
-  public list(manifestId: string, periodId: string, queryParams?: SubtitleAdaptationSetListQueryParams): Promise<PaginationResponse<SubtitleAdaptationSet>> {
+  public list(manifestId: string, periodId: string, queryParameters?: SubtitleAdaptationSetListQueryParams | ((q: SubtitleAdaptationSetListQueryParamsBuilder) => SubtitleAdaptationSetListQueryParamsBuilder)): Promise<PaginationResponse<SubtitleAdaptationSet>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId
     };
+    let queryParams: SubtitleAdaptationSetListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SubtitleAdaptationSetListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SubtitleAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SubtitleAdaptationSet>(response);
       if (paginationResponse.items) {

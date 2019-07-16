@@ -4,7 +4,7 @@ import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import DashCmafDrmRepresentation from '../../../../../../../../models/DashCmafDrmRepresentation';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
-import DashCmafDrmRepresentationListQueryParams from './DashCmafDrmRepresentationListQueryParams';
+import { DashCmafDrmRepresentationListQueryParams, DashCmafDrmRepresentationListQueryParamsBuilder } from './DashCmafDrmRepresentationListQueryParams';
 
 /**
  * DrmApi - object-oriented interface
@@ -87,16 +87,22 @@ export default class DrmApi extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DrmApi
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashCmafDrmRepresentationListQueryParams): Promise<PaginationResponse<DashCmafDrmRepresentation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashCmafDrmRepresentationListQueryParams | ((q: DashCmafDrmRepresentationListQueryParamsBuilder) => DashCmafDrmRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashCmafDrmRepresentation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashCmafDrmRepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashCmafDrmRepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashCmafDrmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashCmafDrmRepresentation>(response);
       if (paginationResponse.items) {

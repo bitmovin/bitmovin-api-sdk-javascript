@@ -3,7 +3,7 @@ import Configuration from '../../../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashVttRepresentation from '../../../../../../../models/DashVttRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import DashVttRepresentationListQueryParams from './DashVttRepresentationListQueryParams';
+import { DashVttRepresentationListQueryParams, DashVttRepresentationListQueryParamsBuilder } from './DashVttRepresentationListQueryParams';
 
 /**
  * VttApi - object-oriented interface
@@ -84,16 +84,22 @@ export default class VttApi extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof VttApi
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashVttRepresentationListQueryParams): Promise<PaginationResponse<DashVttRepresentation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashVttRepresentationListQueryParams | ((q: DashVttRepresentationListQueryParamsBuilder) => DashVttRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashVttRepresentation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashVttRepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashVttRepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashVttRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashVttRepresentation>(response);
       if (paginationResponse.items) {

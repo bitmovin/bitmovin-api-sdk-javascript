@@ -18,7 +18,7 @@ export default class SumApi extends BaseAPI {
 
   /**
    * @summary Sum
-   * @param {AnalyticsSumQueryRequest} analyticsSumQueryRequest
+   * @param {AnalyticsSumQueryRequest} analyticsSumQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof SumApi
    */

@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EnhancedWatermarkFilter from '../../../models/EnhancedWatermarkFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import EnhancedWatermarkFilterListQueryParams from './EnhancedWatermarkFilterListQueryParams';
+import { EnhancedWatermarkFilterListQueryParams, EnhancedWatermarkFilterListQueryParamsBuilder } from './EnhancedWatermarkFilterListQueryParams';
 
 /**
  * EnhancedWatermarkApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class EnhancedWatermarkApi extends BaseAPI {
 
   /**
    * @summary Create Enhanced Watermark Filter
-   * @param {EnhancedWatermarkFilter} enhancedWatermarkFilter Only one horizontal and one vertical distance parameter is allowed, either top or bottom, and either left or right. See example body.
+   * @param {EnhancedWatermarkFilter} enhancedWatermarkFilter The Enhanced Watermark Filter to be created. Only one horizontal and one vertical distance parameter is allowed, either top or bottom, and either left or right. See example body.
    * @throws {RequiredError}
    * @memberof EnhancedWatermarkApi
    */
@@ -64,11 +64,17 @@ export default class EnhancedWatermarkApi extends BaseAPI {
 
   /**
    * @summary List Enhanced Watermark Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof EnhancedWatermarkApi
    */
-  public list(queryParams?: EnhancedWatermarkFilterListQueryParams): Promise<PaginationResponse<EnhancedWatermarkFilter>> {
+  public list(queryParameters?: EnhancedWatermarkFilterListQueryParams | ((q: EnhancedWatermarkFilterListQueryParamsBuilder) => EnhancedWatermarkFilterListQueryParamsBuilder)): Promise<PaginationResponse<EnhancedWatermarkFilter>> {
+    let queryParams: EnhancedWatermarkFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EnhancedWatermarkFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<EnhancedWatermarkFilter>>('/encoding/filters/enhanced-watermark', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EnhancedWatermarkFilter>(response);
       if (paginationResponse.items) {

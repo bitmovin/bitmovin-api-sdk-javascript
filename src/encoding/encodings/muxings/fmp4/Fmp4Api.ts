@@ -5,7 +5,7 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Fmp4Muxing from '../../../../models/Fmp4Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Fmp4MuxingListQueryParams from './Fmp4MuxingListQueryParams';
+import { Fmp4MuxingListQueryParams, Fmp4MuxingListQueryParamsBuilder } from './Fmp4MuxingListQueryParams';
 
 /**
  * Fmp4Api - object-oriented interface
@@ -26,7 +26,7 @@ export default class Fmp4Api extends BaseAPI {
   /**
    * @summary Add fMP4 Segment Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Fmp4Muxing} fmp4Muxing
+   * @param {Fmp4Muxing} fmp4Muxing The fMP4 Segment Muxing to be created
    * @throws {RequiredError}
    * @memberof Fmp4Api
    */
@@ -76,14 +76,20 @@ export default class Fmp4Api extends BaseAPI {
   /**
    * @summary List fMP4 Segment Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Fmp4Api
    */
-  public list(encodingId: string, queryParams?: Fmp4MuxingListQueryParams): Promise<PaginationResponse<Fmp4Muxing>> {
+  public list(encodingId: string, queryParameters?: Fmp4MuxingListQueryParams | ((q: Fmp4MuxingListQueryParamsBuilder) => Fmp4MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Fmp4Muxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: Fmp4MuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Fmp4MuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Fmp4Muxing>>('/encoding/encodings/{encoding_id}/muxings/fmp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Fmp4Muxing>(response);
       if (paginationResponse.items) {

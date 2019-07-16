@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import HttpsInput from '../../../models/HttpsInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import HttpsInputListQueryParams from './HttpsInputListQueryParams';
+import { HttpsInputListQueryParams, HttpsInputListQueryParamsBuilder } from './HttpsInputListQueryParams';
 
 /**
  * HttpsApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class HttpsApi extends BaseAPI {
 
   /**
    * @summary List HTTPS Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof HttpsApi
    */
-  public list(queryParams?: HttpsInputListQueryParams): Promise<PaginationResponse<HttpsInput>> {
+  public list(queryParameters?: HttpsInputListQueryParams | ((q: HttpsInputListQueryParamsBuilder) => HttpsInputListQueryParamsBuilder)): Promise<PaginationResponse<HttpsInput>> {
+    let queryParams: HttpsInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new HttpsInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<HttpsInput>>('/encoding/inputs/https', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<HttpsInput>(response);
       if (paginationResponse.items) {

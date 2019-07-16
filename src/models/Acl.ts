@@ -8,30 +8,32 @@ import Policy from './Policy';
  * @class Acl
  */
 export class Acl extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.resource = map(obj.resource);
-    this.policy = map(obj.policy);
-    this.permissions = map(obj.permissions);
-  }
-
   /**
    * Resource to define the permission for. (required)
    * @type {string}
    * @memberof Acl
    */
   public resource: string;
+
   /**
    * @type {Policy}
    * @memberof Acl
    */
   public policy: Policy;
+
   /**
    * Permissions to assign. (required)
-   * @type {Array<Permission>}
+   * @type {Permission[]}
    * @memberof Acl
    */
-  public permissions: Array<Permission>;
+  public permissions: Permission[];
+
+  constructor(obj: Partial<Acl>) {
+    super(obj);
+    this.resource = map(obj.resource);
+    this.policy = map(obj.policy);
+    this.permissions = map(obj.permissions);
+  }
 }
 
 export default Acl;

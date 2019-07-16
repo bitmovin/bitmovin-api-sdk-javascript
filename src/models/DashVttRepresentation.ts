@@ -6,17 +6,17 @@ import BitmovinResource from './BitmovinResource';
  * @class DashVttRepresentation
  */
 export class DashVttRepresentation extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.vttUrl = map(obj.vttUrl);
-  }
-
   /**
    * URL of the referenced VTT file (required)
    * @type {string}
    * @memberof DashVttRepresentation
    */
   public vttUrl: string;
+
+  constructor(obj: Partial<DashVttRepresentation>) {
+    super(obj);
+    this.vttUrl = map(obj.vttUrl);
+  }
 }
 
 export default DashVttRepresentation;

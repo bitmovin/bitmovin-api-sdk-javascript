@@ -6,16 +6,16 @@ import {map} from '../common/Mapper';
  * @class WebVttSidecarFileSegmentation
  */
 export class WebVttSidecarFileSegmentation {
-  constructor(obj: any) {
-    this.segmentLength = map(obj.segmentLength);
-  }
-
   /**
    * The length of the WebVTT fragments in seconds (required)
    * @type {number}
    * @memberof WebVttSidecarFileSegmentation
    */
   public segmentLength: number;
+
+  constructor(obj: Partial<WebVttSidecarFileSegmentation>) {
+    this.segmentLength = map(obj.segmentLength);
+  }
 }
 
 export default WebVttSidecarFileSegmentation;

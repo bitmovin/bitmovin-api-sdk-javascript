@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import RawId3Tag from '../../../../../../models/RawId3Tag';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import RawId3TagListQueryParams from './RawId3TagListQueryParams';
+import { RawId3TagListQueryParams, RawId3TagListQueryParamsBuilder } from './RawId3TagListQueryParams';
 
 /**
  * RawApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class RawApi extends BaseAPI {
    * @summary Add Raw ID3 Tag to Progressive TS Muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
-   * @param {RawId3Tag} rawId3Tag
+   * @param {RawId3Tag} rawId3Tag The Raw ID3 Tag to be created
    * @throws {RequiredError}
    * @memberof RawApi
    */
@@ -80,15 +80,21 @@ export default class RawApi extends BaseAPI {
    * @summary List Raw ID3 Tags of Progressive TS Muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof RawApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: RawId3TagListQueryParams): Promise<PaginationResponse<RawId3Tag>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: RawId3TagListQueryParams | ((q: RawId3TagListQueryParamsBuilder) => RawId3TagListQueryParamsBuilder)): Promise<PaginationResponse<RawId3Tag>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: RawId3TagListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new RawId3TagListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<RawId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<RawId3Tag>(response);
       if (paginationResponse.items) {

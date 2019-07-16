@@ -18,7 +18,7 @@ export default class MinApi extends BaseAPI {
 
   /**
    * @summary Min
-   * @param {AnalyticsMinQueryRequest} analyticsMinQueryRequest
+   * @param {AnalyticsMinQueryRequest} analyticsMinQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof MinApi
    */

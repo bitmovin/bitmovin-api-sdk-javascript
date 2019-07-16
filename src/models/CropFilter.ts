@@ -7,7 +7,41 @@ import PositionUnit from './PositionUnit';
  * @class CropFilter
  */
 export class CropFilter extends Filter {
-  constructor(obj: any) {
+  /**
+   * Amount of pixels which will be cropped of the input video from the left side.
+   * @type {number}
+   * @memberof CropFilter
+   */
+  public left?: number;
+
+  /**
+   * Amount of pixels which will be cropped of the input video from the right side.
+   * @type {number}
+   * @memberof CropFilter
+   */
+  public right?: number;
+
+  /**
+   * Amount of pixels which will be cropped of the input video from the top.
+   * @type {number}
+   * @memberof CropFilter
+   */
+  public top?: number;
+
+  /**
+   * Amount of pixels which will be cropped of the input video from the bottom.
+   * @type {number}
+   * @memberof CropFilter
+   */
+  public bottom?: number;
+
+  /**
+   * @type {PositionUnit}
+   * @memberof CropFilter
+   */
+  public unit?: PositionUnit;
+
+  constructor(obj: Partial<CropFilter>) {
     super(obj);
     this.left = map(obj.left);
     this.right = map(obj.right);
@@ -15,36 +49,6 @@ export class CropFilter extends Filter {
     this.bottom = map(obj.bottom);
     this.unit = map(obj.unit);
   }
-
-  /**
-   * Amount of pixels which will be cropped of the input video from the left side.
-   * @type {number}
-   * @memberof CropFilter
-   */
-  public left?: number;
-  /**
-   * Amount of pixels which will be cropped of the input video from the right side.
-   * @type {number}
-   * @memberof CropFilter
-   */
-  public right?: number;
-  /**
-   * Amount of pixels which will be cropped of the input video from the top.
-   * @type {number}
-   * @memberof CropFilter
-   */
-  public top?: number;
-  /**
-   * Amount of pixels which will be cropped of the input video from the bottom.
-   * @type {number}
-   * @memberof CropFilter
-   */
-  public bottom?: number;
-  /**
-   * @type {PositionUnit}
-   * @memberof CropFilter
-   */
-  public unit?: PositionUnit;
 }
 
 export default CropFilter;

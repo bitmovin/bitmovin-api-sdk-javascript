@@ -3,7 +3,7 @@ import Configuration from '../../common/Configuration';
 import EncodingApi from './encoding/EncodingApi';
 import Notification from '../../models/Notification';
 import PaginationResponse from '../../models/PaginationResponse';
-import NotificationListQueryParams from './NotificationListQueryParams';
+import { NotificationListQueryParams, NotificationListQueryParamsBuilder } from './NotificationListQueryParams';
 
 /**
  * EmailsApi - object-oriented interface
@@ -21,11 +21,17 @@ export default class EmailsApi extends BaseAPI {
 
   /**
    * @summary List Email Notifications
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof EmailsApi
    */
-  public list(queryParams?: NotificationListQueryParams): Promise<PaginationResponse<Notification>> {
+  public list(queryParameters?: NotificationListQueryParams | ((q: NotificationListQueryParamsBuilder) => NotificationListQueryParamsBuilder)): Promise<PaginationResponse<Notification>> {
+    let queryParams: NotificationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new NotificationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Notification>>('/notifications/emails', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Notification>(response);
       if (paginationResponse.items) {

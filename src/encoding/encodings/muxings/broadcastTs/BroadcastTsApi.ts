@@ -5,7 +5,7 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import BroadcastTsMuxing from '../../../../models/BroadcastTsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import BroadcastTsMuxingListQueryParams from './BroadcastTsMuxingListQueryParams';
+import { BroadcastTsMuxingListQueryParams, BroadcastTsMuxingListQueryParamsBuilder } from './BroadcastTsMuxingListQueryParams';
 
 /**
  * BroadcastTsApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class BroadcastTsApi extends BaseAPI {
   /**
    * @summary Add Broadcast TS Muxing
    * @param {string} encodingId ID of the encoding.
-   * @param {BroadcastTsMuxing} broadcastTsMuxing
+   * @param {BroadcastTsMuxing} broadcastTsMuxing The Broadcast TS Muxing to be created
    * @throws {RequiredError}
    * @memberof BroadcastTsApi
    */
@@ -76,14 +76,20 @@ export default class BroadcastTsApi extends BaseAPI {
   /**
    * @summary List Broadcast TS Muxings
    * @param {string} encodingId ID of the Encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof BroadcastTsApi
    */
-  public list(encodingId: string, queryParams?: BroadcastTsMuxingListQueryParams): Promise<PaginationResponse<BroadcastTsMuxing>> {
+  public list(encodingId: string, queryParameters?: BroadcastTsMuxingListQueryParams | ((q: BroadcastTsMuxingListQueryParamsBuilder) => BroadcastTsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<BroadcastTsMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: BroadcastTsMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new BroadcastTsMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<BroadcastTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<BroadcastTsMuxing>(response);
       if (paginationResponse.items) {

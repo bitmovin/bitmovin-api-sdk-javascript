@@ -2,7 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import RtmpInput from '../../../models/RtmpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import RtmpInputListQueryParams from './RtmpInputListQueryParams';
+import { RtmpInputListQueryParams, RtmpInputListQueryParamsBuilder } from './RtmpInputListQueryParams';
 
 /**
  * RtmpApi - object-oriented interface
@@ -33,11 +33,17 @@ export default class RtmpApi extends BaseAPI {
 
   /**
    * @summary List RTMP Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof RtmpApi
    */
-  public list(queryParams?: RtmpInputListQueryParams): Promise<PaginationResponse<RtmpInput>> {
+  public list(queryParameters?: RtmpInputListQueryParams | ((q: RtmpInputListQueryParamsBuilder) => RtmpInputListQueryParamsBuilder)): Promise<PaginationResponse<RtmpInput>> {
+    let queryParams: RtmpInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new RtmpInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<RtmpInput>>('/encoding/inputs/rtmp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<RtmpInput>(response);
       if (paginationResponse.items) {

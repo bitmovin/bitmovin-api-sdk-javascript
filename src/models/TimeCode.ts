@@ -5,16 +5,16 @@ import {map} from '../common/Mapper';
  * @class TimeCode
  */
 export class TimeCode {
-  constructor(obj: any) {
-    this.timeCodeStart = map(obj.timeCodeStart);
-  }
-
   /**
    * Specify start timecode for writing.
    * @type {string}
    * @memberof TimeCode
    */
   public timeCodeStart?: string;
+
+  constructor(obj: Partial<TimeCode>) {
+    this.timeCodeStart = map(obj.timeCodeStart);
+  }
 }
 
 export default TimeCode;

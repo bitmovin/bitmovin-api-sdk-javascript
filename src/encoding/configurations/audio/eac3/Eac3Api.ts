@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Eac3AudioConfiguration from '../../../../models/Eac3AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Eac3AudioConfigurationListQueryParams from './Eac3AudioConfigurationListQueryParams';
+import { Eac3AudioConfigurationListQueryParams, Eac3AudioConfigurationListQueryParamsBuilder } from './Eac3AudioConfigurationListQueryParams';
 
 /**
  * Eac3Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class Eac3Api extends BaseAPI {
 
   /**
    * @summary Create E-AC3 Codec Configuration
-   * @param {Eac3AudioConfiguration} eac3AudioConfiguration
+   * @param {Eac3AudioConfiguration} eac3AudioConfiguration The E-AC3 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Eac3Api
    */
@@ -64,11 +64,17 @@ export default class Eac3Api extends BaseAPI {
 
   /**
    * @summary List E-AC3 Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Eac3Api
    */
-  public list(queryParams?: Eac3AudioConfigurationListQueryParams): Promise<PaginationResponse<Eac3AudioConfiguration>> {
+  public list(queryParameters?: Eac3AudioConfigurationListQueryParams | ((q: Eac3AudioConfigurationListQueryParamsBuilder) => Eac3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Eac3AudioConfiguration>> {
+    let queryParams: Eac3AudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Eac3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Eac3AudioConfiguration>>('/encoding/configurations/audio/eac3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Eac3AudioConfiguration>(response);
       if (paginationResponse.items) {

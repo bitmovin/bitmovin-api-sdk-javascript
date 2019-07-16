@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import GcsInput from '../../../models/GcsInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import GcsInputListQueryParams from './GcsInputListQueryParams';
+import { GcsInputListQueryParams, GcsInputListQueryParamsBuilder } from './GcsInputListQueryParams';
 
 /**
  * GcsApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class GcsApi extends BaseAPI {
 
   /**
    * @summary List GCS Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof GcsApi
    */
-  public list(queryParams?: GcsInputListQueryParams): Promise<PaginationResponse<GcsInput>> {
+  public list(queryParameters?: GcsInputListQueryParams | ((q: GcsInputListQueryParamsBuilder) => GcsInputListQueryParamsBuilder)): Promise<PaginationResponse<GcsInput>> {
+    let queryParams: GcsInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new GcsInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<GcsInput>>('/encoding/inputs/gcs', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<GcsInput>(response);
       if (paginationResponse.items) {

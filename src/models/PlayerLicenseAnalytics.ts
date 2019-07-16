@@ -5,16 +5,16 @@ import {map} from '../common/Mapper';
  * @class PlayerLicenseAnalytics
  */
 export class PlayerLicenseAnalytics {
-  constructor(obj: any) {
-    this.analyticsKey = map(obj.analyticsKey);
-  }
-
   /**
    * Analytics License Key (required)
    * @type {string}
    * @memberof PlayerLicenseAnalytics
    */
   public analyticsKey: string;
+
+  constructor(obj: Partial<PlayerLicenseAnalytics>) {
+    this.analyticsKey = map(obj.analyticsKey);
+  }
 }
 
 export default PlayerLicenseAnalytics;

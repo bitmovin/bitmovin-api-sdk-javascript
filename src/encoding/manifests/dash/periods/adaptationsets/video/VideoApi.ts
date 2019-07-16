@@ -4,7 +4,7 @@ import AdaptationSet from '../../../../../../models/AdaptationSet';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import VideoAdaptationSet from '../../../../../../models/VideoAdaptationSet';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import VideoAdaptationSetListQueryParams from './VideoAdaptationSetListQueryParams';
+import { VideoAdaptationSetListQueryParams, VideoAdaptationSetListQueryParamsBuilder } from './VideoAdaptationSetListQueryParams';
 
 /**
  * VideoApi - object-oriented interface
@@ -78,15 +78,21 @@ export default class VideoApi extends BaseAPI {
    * @summary List all Video AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof VideoApi
    */
-  public list(manifestId: string, periodId: string, queryParams?: VideoAdaptationSetListQueryParams): Promise<PaginationResponse<VideoAdaptationSet>> {
+  public list(manifestId: string, periodId: string, queryParameters?: VideoAdaptationSetListQueryParams | ((q: VideoAdaptationSetListQueryParamsBuilder) => VideoAdaptationSetListQueryParamsBuilder)): Promise<PaginationResponse<VideoAdaptationSet>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId
     };
+    let queryParams: VideoAdaptationSetListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new VideoAdaptationSetListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<VideoAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/video', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<VideoAdaptationSet>(response);
       if (paginationResponse.items) {

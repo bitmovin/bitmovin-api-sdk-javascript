@@ -10,17 +10,17 @@ import StreamConditionsMode from './StreamConditionsMode';
  * @class Mp3Muxing
  */
 export class Mp3Muxing extends Muxing {
-  constructor(obj: any) {
-    super(obj);
-    this.filename = map(obj.filename);
-  }
-
   /**
    * Name of the new file (required)
    * @type {string}
    * @memberof Mp3Muxing
    */
   public filename: string;
+
+  constructor(obj: Partial<Mp3Muxing>) {
+    super(obj);
+    this.filename = map(obj.filename);
+  }
 }
 
 export default Mp3Muxing;

@@ -10,7 +10,7 @@ export class BaseAPI {
     protected restClient: RestClient;
 
     constructor(configuration: Configuration) {
-        this.restClient = new RestClient(configuration)
+        this.restClient = new RestClient(configuration);
     }
 }
 

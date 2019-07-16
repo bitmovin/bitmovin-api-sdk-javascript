@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import CencDrm from '../../../../../../models/CencDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import CencDrmListQueryParams from './CencDrmListQueryParams';
+import { CencDrmListQueryParams, CencDrmListQueryParamsBuilder } from './CencDrmListQueryParams';
 
 /**
  * CencApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class CencApi extends BaseAPI {
    * @summary Add CENC DRM to MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4 fragment.
-   * @param {CencDrm} cencDrm
+   * @param {CencDrm} cencDrm The CENC DRM to be created
    * @throws {RequiredError}
    * @memberof CencApi
    */
@@ -80,15 +80,21 @@ export default class CencApi extends BaseAPI {
    * @summary List CENC DRMs of MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CencApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: CencDrmListQueryParams): Promise<PaginationResponse<CencDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: CencDrmListQueryParams | ((q: CencDrmListQueryParamsBuilder) => CencDrmListQueryParamsBuilder)): Promise<PaginationResponse<CencDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: CencDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CencDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CencDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CencDrm>(response);
       if (paginationResponse.items) {

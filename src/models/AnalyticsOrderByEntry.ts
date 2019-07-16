@@ -1,4 +1,5 @@
 import {map} from '../common/Mapper';
+import AnalyticsAttribute from './AnalyticsAttribute';
 import AnalyticsOrder from './AnalyticsOrder';
 
 /**
@@ -6,21 +7,22 @@ import AnalyticsOrder from './AnalyticsOrder';
  * @class AnalyticsOrderByEntry
  */
 export class AnalyticsOrderByEntry {
-  constructor(obj: any) {
-    this.name = map(obj.name);
-    this.order = map(obj.order);
-  }
-
   /**
-   * @type {string}
+   * @type {AnalyticsAttribute}
    * @memberof AnalyticsOrderByEntry
    */
-  public name?: string;
+  public name?: AnalyticsAttribute;
+
   /**
    * @type {AnalyticsOrder}
    * @memberof AnalyticsOrderByEntry
    */
   public order: AnalyticsOrder;
+
+  constructor(obj: Partial<AnalyticsOrderByEntry>) {
+    this.name = map(obj.name);
+    this.order = map(obj.order);
+  }
 }
 
 export default AnalyticsOrderByEntry;

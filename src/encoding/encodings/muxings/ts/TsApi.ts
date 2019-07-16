@@ -5,7 +5,7 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TsMuxing from '../../../../models/TsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import TsMuxingListQueryParams from './TsMuxingListQueryParams';
+import { TsMuxingListQueryParams, TsMuxingListQueryParamsBuilder } from './TsMuxingListQueryParams';
 
 /**
  * TsApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class TsApi extends BaseAPI {
   /**
    * @summary Add TS Segment Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {TsMuxing} tsMuxing
+   * @param {TsMuxing} tsMuxing The TS Segment Muxing to be created
    * @throws {RequiredError}
    * @memberof TsApi
    */
@@ -76,14 +76,20 @@ export default class TsApi extends BaseAPI {
   /**
    * @summary List TS Segment Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof TsApi
    */
-  public list(encodingId: string, queryParams?: TsMuxingListQueryParams): Promise<PaginationResponse<TsMuxing>> {
+  public list(encodingId: string, queryParameters?: TsMuxingListQueryParams | ((q: TsMuxingListQueryParamsBuilder) => TsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<TsMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: TsMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new TsMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<TsMuxing>>('/encoding/encodings/{encoding_id}/muxings/ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TsMuxing>(response);
       if (paginationResponse.items) {

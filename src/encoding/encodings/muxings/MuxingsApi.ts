@@ -17,7 +17,7 @@ import Muxing from '../../../models/Muxing';
 import StreamMode from '../../../models/StreamMode';
 import { MuxingTypeMap } from '../../../models/typeMappings'
 import PaginationResponse from '../../../models/PaginationResponse';
-import MuxingListQueryParams from './MuxingListQueryParams';
+import { MuxingListQueryParams, MuxingListQueryParamsBuilder } from './MuxingListQueryParams';
 
 /**
  * MuxingsApi - object-oriented interface
@@ -60,14 +60,20 @@ export default class MuxingsApi extends BaseAPI {
   /**
    * @summary List All Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof MuxingsApi
    */
-  public list(encodingId: string, queryParams?: MuxingListQueryParams): Promise<PaginationResponse<Muxing>> {
+  public list(encodingId: string, queryParameters?: MuxingListQueryParams | ((q: MuxingListQueryParamsBuilder) => MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Muxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: MuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new MuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Muxing>>('/encoding/encodings/{encoding_id}/muxings', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Muxing>(response);
       if (paginationResponse.items) {

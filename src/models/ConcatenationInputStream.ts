@@ -7,17 +7,17 @@ import InputStream from './InputStream';
  * @class ConcatenationInputStream
  */
 export class ConcatenationInputStream extends InputStream {
-  constructor(obj: any) {
+  /**
+   * Concatenation configuration for the output of this stream
+   * @type {ConcatenationInputConfiguration[]}
+   * @memberof ConcatenationInputStream
+   */
+  public concatenation?: ConcatenationInputConfiguration[];
+
+  constructor(obj: Partial<ConcatenationInputStream>) {
     super(obj);
     this.concatenation = map<ConcatenationInputConfiguration>(obj.concatenation, ConcatenationInputConfiguration);
   }
-
-  /**
-   * Concatenation configuration for the output of this stream
-   * @type {Array<ConcatenationInputConfiguration>}
-   * @memberof ConcatenationInputStream
-   */
-  public concatenation?: Array<ConcatenationInputConfiguration>;
 }
 
 export default ConcatenationInputStream;

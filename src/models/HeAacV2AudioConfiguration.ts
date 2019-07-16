@@ -7,17 +7,17 @@ import AudioConfiguration from './AudioConfiguration';
  * @class HeAacV2AudioConfiguration
  */
 export class HeAacV2AudioConfiguration extends AudioConfiguration {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-  }
-
   /**
    * Channel layout of the audio codec configuration
    * @type {AacChannelLayout}
    * @memberof HeAacV2AudioConfiguration
    */
   public channelLayout?: AacChannelLayout;
+
+  constructor(obj: Partial<HeAacV2AudioConfiguration>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+  }
 }
 
 export default HeAacV2AudioConfiguration;

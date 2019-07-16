@@ -5,23 +5,24 @@ import {map} from '../common/Mapper';
  * @class XmlNamespace
  */
 export class XmlNamespace {
-  constructor(obj: any) {
-    this.prefix = map(obj.prefix);
-    this.uri = map(obj.uri);
-  }
-
   /**
    * Name of the XML Namespace reference (required)
    * @type {string}
    * @memberof XmlNamespace
    */
   public prefix: string;
+
   /**
    * Source of the XML Namespace reference (required)
    * @type {string}
    * @memberof XmlNamespace
    */
   public uri: string;
+
+  constructor(obj: Partial<XmlNamespace>) {
+    this.prefix = map(obj.prefix);
+    this.uri = map(obj.uri);
+  }
 }
 
 export default XmlNamespace;

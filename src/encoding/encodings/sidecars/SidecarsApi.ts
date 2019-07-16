@@ -5,7 +5,7 @@ import WebvttApi from './webvtt/WebvttApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import SidecarFile from '../../../models/SidecarFile';
 import PaginationResponse from '../../../models/PaginationResponse';
-import SidecarFileListQueryParams from './SidecarFileListQueryParams';
+import { SidecarFileListQueryParams, SidecarFileListQueryParamsBuilder } from './SidecarFileListQueryParams';
 
 /**
  * SidecarsApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class SidecarsApi extends BaseAPI {
   /**
    * @summary Add Sidecar
    * @param {string} encodingId Id of the encoding.
-   * @param {SidecarFile} sidecarFile
+   * @param {SidecarFile} sidecarFile The Sidecar to be added
    * @throws {RequiredError}
    * @memberof SidecarsApi
    */
@@ -76,14 +76,20 @@ export default class SidecarsApi extends BaseAPI {
   /**
    * @summary List Sidecars
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SidecarsApi
    */
-  public list(encodingId: string, queryParams?: SidecarFileListQueryParams): Promise<PaginationResponse<SidecarFile>> {
+  public list(encodingId: string, queryParameters?: SidecarFileListQueryParams | ((q: SidecarFileListQueryParamsBuilder) => SidecarFileListQueryParamsBuilder)): Promise<PaginationResponse<SidecarFile>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: SidecarFileListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SidecarFileListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SidecarFile>>('/encoding/encodings/{encoding_id}/sidecars', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SidecarFile>(response);
       if (paginationResponse.items) {

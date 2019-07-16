@@ -7,30 +7,32 @@ import InputStream from './InputStream';
  * @class FileInputStream
  */
 export class FileInputStream extends InputStream {
-  constructor(obj: any) {
-    super(obj);
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.fileType = map(obj.fileType);
-  }
-
   /**
    * Id of input (required)
    * @type {string}
    * @memberof FileInputStream
    */
   public inputId: string;
+
   /**
    * Path to file (required)
    * @type {string}
    * @memberof FileInputStream
    */
   public inputPath: string;
+
   /**
    * @type {FileInputStreamType}
    * @memberof FileInputStream
    */
   public fileType: FileInputStreamType;
+
+  constructor(obj: Partial<FileInputStream>) {
+    super(obj);
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.fileType = map(obj.fileType);
+  }
 }
 
 export default FileInputStream;

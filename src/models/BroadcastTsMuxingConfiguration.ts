@@ -9,35 +9,38 @@ import BroadcastTsVideoInputStreamConfiguration from './BroadcastTsVideoInputStr
  * @class BroadcastTsMuxingConfiguration
  */
 export class BroadcastTsMuxingConfiguration {
-  constructor(obj: any) {
-    this.transport = map<BroadcastTsTransportConfiguration>(obj.transport, BroadcastTsTransportConfiguration);
-    this.program = map<BroadcastTsProgramConfiguration>(obj.program, BroadcastTsProgramConfiguration);
-    this.videoStreams = map<BroadcastTsVideoInputStreamConfiguration>(obj.videoStreams, BroadcastTsVideoInputStreamConfiguration);
-    this.audioStreams = map<BroadcastTsAudioInputStreamConfiguration>(obj.audioStreams, BroadcastTsAudioInputStreamConfiguration);
-  }
-
   /**
    * Transport configuration details for the Broadcast TS muxing.
    * @type {BroadcastTsTransportConfiguration}
    * @memberof BroadcastTsMuxingConfiguration
    */
   public transport?: BroadcastTsTransportConfiguration;
+
   /**
    * Program configuration details for the Broadcast TS muxing.
    * @type {BroadcastTsProgramConfiguration}
    * @memberof BroadcastTsMuxingConfiguration
    */
   public program?: BroadcastTsProgramConfiguration;
+
   /**
-   * @type {Array<BroadcastTsVideoInputStreamConfiguration>}
+   * @type {BroadcastTsVideoInputStreamConfiguration[]}
    * @memberof BroadcastTsMuxingConfiguration
    */
-  public videoStreams?: Array<BroadcastTsVideoInputStreamConfiguration>;
+  public videoStreams?: BroadcastTsVideoInputStreamConfiguration[];
+
   /**
-   * @type {Array<BroadcastTsAudioInputStreamConfiguration>}
+   * @type {BroadcastTsAudioInputStreamConfiguration[]}
    * @memberof BroadcastTsMuxingConfiguration
    */
-  public audioStreams?: Array<BroadcastTsAudioInputStreamConfiguration>;
+  public audioStreams?: BroadcastTsAudioInputStreamConfiguration[];
+
+  constructor(obj: Partial<BroadcastTsMuxingConfiguration>) {
+    this.transport = map<BroadcastTsTransportConfiguration>(obj.transport, BroadcastTsTransportConfiguration);
+    this.program = map<BroadcastTsProgramConfiguration>(obj.program, BroadcastTsProgramConfiguration);
+    this.videoStreams = map<BroadcastTsVideoInputStreamConfiguration>(obj.videoStreams, BroadcastTsVideoInputStreamConfiguration);
+    this.audioStreams = map<BroadcastTsAudioInputStreamConfiguration>(obj.audioStreams, BroadcastTsAudioInputStreamConfiguration);
+  }
 }
 
 export default BroadcastTsMuxingConfiguration;

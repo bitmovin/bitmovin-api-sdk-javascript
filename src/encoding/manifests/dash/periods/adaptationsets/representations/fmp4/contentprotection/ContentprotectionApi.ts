@@ -3,7 +3,7 @@ import Configuration from '../../../../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import ContentProtection from '../../../../../../../../models/ContentProtection';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
-import ContentProtectionListQueryParams from './ContentProtectionListQueryParams';
+import { ContentProtectionListQueryParams, ContentProtectionListQueryParamsBuilder } from './ContentProtectionListQueryParams';
 
 /**
  * ContentprotectionApi - object-oriented interface
@@ -91,17 +91,23 @@ export default class ContentprotectionApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ContentprotectionApi
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, queryParams?: ContentProtectionListQueryParams): Promise<PaginationResponse<ContentProtection>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, queryParameters?: ContentProtectionListQueryParams | ((q: ContentProtectionListQueryParamsBuilder) => ContentProtectionListQueryParamsBuilder)): Promise<PaginationResponse<ContentProtection>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId,
       representation_id: representationId
     };
+    let queryParams: ContentProtectionListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ContentProtectionListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ContentProtection>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}/contentprotection', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ContentProtection>(response);
       if (paginationResponse.items) {

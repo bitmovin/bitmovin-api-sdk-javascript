@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DeinterlaceFilter from '../../../models/DeinterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import DeinterlaceFilterListQueryParams from './DeinterlaceFilterListQueryParams';
+import { DeinterlaceFilterListQueryParams, DeinterlaceFilterListQueryParamsBuilder } from './DeinterlaceFilterListQueryParams';
 
 /**
  * DeinterlaceApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class DeinterlaceApi extends BaseAPI {
 
   /**
    * @summary Create Deinterlace Filter
-   * @param {DeinterlaceFilter} deinterlaceFilter
+   * @param {DeinterlaceFilter} deinterlaceFilter The Deinterlace Filter to be created
    * @throws {RequiredError}
    * @memberof DeinterlaceApi
    */
@@ -64,11 +64,17 @@ export default class DeinterlaceApi extends BaseAPI {
 
   /**
    * @summary List Deinterlace Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DeinterlaceApi
    */
-  public list(queryParams?: DeinterlaceFilterListQueryParams): Promise<PaginationResponse<DeinterlaceFilter>> {
+  public list(queryParameters?: DeinterlaceFilterListQueryParams | ((q: DeinterlaceFilterListQueryParamsBuilder) => DeinterlaceFilterListQueryParamsBuilder)): Promise<PaginationResponse<DeinterlaceFilter>> {
+    let queryParams: DeinterlaceFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DeinterlaceFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DeinterlaceFilter>>('/encoding/filters/deinterlace', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DeinterlaceFilter>(response);
       if (paginationResponse.items) {

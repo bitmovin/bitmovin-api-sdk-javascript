@@ -5,7 +5,7 @@ import AdaptationsetsApi from './adaptationsets/AdaptationsetsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Period from '../../../../models/Period';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import PeriodListQueryParams from './PeriodListQueryParams';
+import { PeriodListQueryParams, PeriodListQueryParamsBuilder } from './PeriodListQueryParams';
 
 /**
  * PeriodsApi - object-oriented interface
@@ -76,14 +76,20 @@ export default class PeriodsApi extends BaseAPI {
   /**
    * @summary List all Periods
    * @param {string} manifestId Id of the manifest
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof PeriodsApi
    */
-  public list(manifestId: string, queryParams?: PeriodListQueryParams): Promise<PaginationResponse<Period>> {
+  public list(manifestId: string, queryParameters?: PeriodListQueryParams | ((q: PeriodListQueryParamsBuilder) => PeriodListQueryParamsBuilder)): Promise<PaginationResponse<Period>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: PeriodListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new PeriodListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Period>>('/encoding/manifests/dash/{manifest_id}/periods', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Period>(response);
       if (paginationResponse.items) {

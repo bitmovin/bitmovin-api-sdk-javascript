@@ -18,7 +18,7 @@ export default class MedianApi extends BaseAPI {
 
   /**
    * @summary Median
-   * @param {AnalyticsMedianQueryRequest} analyticsMedianQueryRequest
+   * @param {AnalyticsMedianQueryRequest} analyticsMedianQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof MedianApi
    */

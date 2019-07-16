@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import VorbisAudioConfiguration from '../../../../models/VorbisAudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import VorbisAudioConfigurationListQueryParams from './VorbisAudioConfigurationListQueryParams';
+import { VorbisAudioConfigurationListQueryParams, VorbisAudioConfigurationListQueryParamsBuilder } from './VorbisAudioConfigurationListQueryParams';
 
 /**
  * VorbisApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class VorbisApi extends BaseAPI {
 
   /**
    * @summary Create Vorbis Codec Configuration
-   * @param {VorbisAudioConfiguration} vorbisAudioConfiguration
+   * @param {VorbisAudioConfiguration} vorbisAudioConfiguration The Vorbis Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof VorbisApi
    */
@@ -64,11 +64,17 @@ export default class VorbisApi extends BaseAPI {
 
   /**
    * @summary List Vorbis Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof VorbisApi
    */
-  public list(queryParams?: VorbisAudioConfigurationListQueryParams): Promise<PaginationResponse<VorbisAudioConfiguration>> {
+  public list(queryParameters?: VorbisAudioConfigurationListQueryParams | ((q: VorbisAudioConfigurationListQueryParamsBuilder) => VorbisAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<VorbisAudioConfiguration>> {
+    let queryParams: VorbisAudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new VorbisAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<VorbisAudioConfiguration>>('/encoding/configurations/audio/vorbis', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<VorbisAudioConfiguration>(response);
       if (paginationResponse.items) {

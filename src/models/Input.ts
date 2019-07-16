@@ -25,10 +25,9 @@ import ZixiInput from './ZixiInput';
  * @class Input
  */
 export class Input extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<Input>) {
     super(obj);
   }
-
 }
 
 export default Input;

@@ -19,7 +19,7 @@ export default class DomainsApi extends BaseAPI {
   /**
    * @summary Add Domain
    * @param {string} licenseId License id
-   * @param {Domain} domain
+   * @param {Domain} domain The domain to be added
    * @throws {RequiredError}
    * @memberof DomainsApi
    */

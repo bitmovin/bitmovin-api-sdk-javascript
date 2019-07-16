@@ -6,24 +6,25 @@ import SegmentsMediaInfo from './SegmentsMediaInfo';
  * @class ClosedCaptionsMediaInfo
  */
 export class ClosedCaptionsMediaInfo extends SegmentsMediaInfo {
-  constructor(obj: any) {
-    super(obj);
-    this.instreamId = map(obj.instreamId);
-    this.forced = map(obj.forced);
-  }
-
   /**
    * Specifies a Rendition within the segments in the Media Playlist. (See HLS spec 4.3.4.1. EXT-X-MEDIA INSTREAM-ID) (required)
    * @type {string}
    * @memberof ClosedCaptionsMediaInfo
    */
   public instreamId: string;
+
   /**
    * A value of true indicates that the Rendition contains content which is considered essential to play.
    * @type {boolean}
    * @memberof ClosedCaptionsMediaInfo
    */
   public forced?: boolean;
+
+  constructor(obj: Partial<ClosedCaptionsMediaInfo>) {
+    super(obj);
+    this.instreamId = map(obj.instreamId);
+    this.forced = map(obj.forced);
+  }
 }
 
 export default ClosedCaptionsMediaInfo;

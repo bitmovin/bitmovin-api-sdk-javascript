@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import AwsAccountRegionSettings from '../../../../models/AwsAccountRegionSettings';
 import AwsCloudRegion from '../../../../models/AwsCloudRegion';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import AwsAccountRegionSettingsListQueryParams from './AwsAccountRegionSettingsListQueryParams';
+import { AwsAccountRegionSettingsListQueryParams, AwsAccountRegionSettingsListQueryParamsBuilder } from './AwsAccountRegionSettingsListQueryParams';
 
 /**
  * RegionsApi - object-oriented interface
@@ -21,7 +21,7 @@ export default class RegionsApi extends BaseAPI {
    * @summary Add AWS Region Setting
    * @param {string} infrastructureId Id of the AWS account
    * @param {AwsCloudRegion} region AWS region.
-   * @param {AwsAccountRegionSettings} awsAccountRegionSettings
+   * @param {AwsAccountRegionSettings} awsAccountRegionSettings The AWS Region Settings to be added
    * @throws {RequiredError}
    * @memberof RegionsApi
    */
@@ -72,14 +72,20 @@ export default class RegionsApi extends BaseAPI {
   /**
    * @summary List AWS Region Settings
    * @param {string} infrastructureId Id of the AWS account
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof RegionsApi
    */
-  public list(infrastructureId: string, queryParams?: AwsAccountRegionSettingsListQueryParams): Promise<PaginationResponse<AwsAccountRegionSettings>> {
+  public list(infrastructureId: string, queryParameters?: AwsAccountRegionSettingsListQueryParams | ((q: AwsAccountRegionSettingsListQueryParamsBuilder) => AwsAccountRegionSettingsListQueryParamsBuilder)): Promise<PaginationResponse<AwsAccountRegionSettings>> {
     const pathParamMap = {
       infrastructure_id: infrastructureId
     };
+    let queryParams: AwsAccountRegionSettingsListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AwsAccountRegionSettingsListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AwsAccountRegionSettings>>('/encoding/infrastructure/aws/{infrastructure_id}/regions', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AwsAccountRegionSettings>(response);
       if (paginationResponse.items) {

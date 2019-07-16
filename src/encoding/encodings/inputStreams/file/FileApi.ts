@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import FileInputStream from '../../../../models/FileInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import FileInputStreamListQueryParams from './FileInputStreamListQueryParams';
+import { FileInputStreamListQueryParams, FileInputStreamListQueryParamsBuilder } from './FileInputStreamListQueryParams';
 
 /**
  * FileApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class FileApi extends BaseAPI {
   /**
    * @summary Add File input stream
    * @param {string} encodingId Id of the encoding.
-   * @param {FileInputStream} fileInputStream
+   * @param {FileInputStream} fileInputStream The File input stream to be created
    * @throws {RequiredError}
    * @memberof FileApi
    */
@@ -70,14 +70,20 @@ export default class FileApi extends BaseAPI {
   /**
    * @summary List File input stream
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof FileApi
    */
-  public list(encodingId: string, queryParams?: FileInputStreamListQueryParams): Promise<PaginationResponse<FileInputStream>> {
+  public list(encodingId: string, queryParameters?: FileInputStreamListQueryParams | ((q: FileInputStreamListQueryParamsBuilder) => FileInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<FileInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: FileInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new FileInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<FileInputStream>>('/encoding/encodings/{encoding_id}/input-streams/file', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FileInputStream>(response);
       if (paginationResponse.items) {

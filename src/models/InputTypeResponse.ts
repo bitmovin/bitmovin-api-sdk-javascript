@@ -6,16 +6,16 @@ import InputType from './InputType';
  * @class InputTypeResponse
  */
 export class InputTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the input
    * @type {InputType}
    * @memberof InputTypeResponse
    */
   public type?: InputType;
+
+  constructor(obj: Partial<InputTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default InputTypeResponse;

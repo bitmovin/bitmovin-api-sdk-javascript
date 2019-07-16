@@ -9,17 +9,17 @@ import CustomAttribute from './CustomAttribute';
  * @class SubtitleAdaptationSet
  */
 export class SubtitleAdaptationSet extends AdaptationSet {
-  constructor(obj: any) {
-    super(obj);
-    this.lang = map(obj.lang);
-  }
-
   /**
    * ISO 639-1 (Alpha-2) code identifying the language of the subtitle adaptation set (required)
    * @type {string}
    * @memberof SubtitleAdaptationSet
    */
   public lang: string;
+
+  constructor(obj: Partial<SubtitleAdaptationSet>) {
+    super(obj);
+    this.lang = map(obj.lang);
+  }
 }
 
 export default SubtitleAdaptationSet;

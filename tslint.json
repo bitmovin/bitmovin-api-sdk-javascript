@@ -4,7 +4,7 @@
   ],
   "rules": {
     "quotemark": [true, "single", "avoid-escape"],
-    "array-type": [true, "generic"],
+    "array-type": [true, "array"],
     "arrow-parens": false,
     "trailing-comma": false,
     "object-literal-sort-keys": false,

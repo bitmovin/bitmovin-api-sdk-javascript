@@ -3,7 +3,7 @@ import Configuration from '../../../../../../common/Configuration';
 import AudioAdaptationSet from '../../../../../../models/AudioAdaptationSet';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import AudioAdaptationSetListQueryParams from './AudioAdaptationSetListQueryParams';
+import { AudioAdaptationSetListQueryParams, AudioAdaptationSetListQueryParamsBuilder } from './AudioAdaptationSetListQueryParams';
 
 /**
  * AudioApi - object-oriented interface
@@ -77,15 +77,21 @@ export default class AudioApi extends BaseAPI {
    * @summary List all Audio AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AudioApi
    */
-  public list(manifestId: string, periodId: string, queryParams?: AudioAdaptationSetListQueryParams): Promise<PaginationResponse<AudioAdaptationSet>> {
+  public list(manifestId: string, periodId: string, queryParameters?: AudioAdaptationSetListQueryParams | ((q: AudioAdaptationSetListQueryParamsBuilder) => AudioAdaptationSetListQueryParamsBuilder)): Promise<PaginationResponse<AudioAdaptationSet>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId
     };
+    let queryParams: AudioAdaptationSetListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AudioAdaptationSetListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AudioAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioAdaptationSet>(response);
       if (paginationResponse.items) {

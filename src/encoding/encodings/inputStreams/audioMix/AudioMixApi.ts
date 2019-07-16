@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import AudioMixInputStream from '../../../../models/AudioMixInputStream';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import AudioMixInputStreamListQueryParams from './AudioMixInputStreamListQueryParams';
+import { AudioMixInputStreamListQueryParams, AudioMixInputStreamListQueryParamsBuilder } from './AudioMixInputStreamListQueryParams';
 
 /**
  * AudioMixApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class AudioMixApi extends BaseAPI {
   /**
    * @summary Add audio mix input stream
    * @param {string} encodingId Id of the encoding.
-   * @param {AudioMixInputStream} audioMixInputStream
+   * @param {AudioMixInputStream} audioMixInputStream The audio mix input stream to be created
    * @throws {RequiredError}
    * @memberof AudioMixApi
    */
@@ -70,14 +70,20 @@ export default class AudioMixApi extends BaseAPI {
   /**
    * @summary List audio mix input stream
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AudioMixApi
    */
-  public list(encodingId: string, queryParams?: AudioMixInputStreamListQueryParams): Promise<PaginationResponse<AudioMixInputStream>> {
+  public list(encodingId: string, queryParameters?: AudioMixInputStreamListQueryParams | ((q: AudioMixInputStreamListQueryParamsBuilder) => AudioMixInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<AudioMixInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: AudioMixInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AudioMixInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AudioMixInputStream>>('/encoding/encodings/{encoding_id}/input-streams/audio-mix', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioMixInputStream>(response);
       if (paginationResponse.items) {

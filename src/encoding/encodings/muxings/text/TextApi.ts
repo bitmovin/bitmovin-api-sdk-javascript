@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TextMuxing from '../../../../models/TextMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import TextMuxingListQueryParams from './TextMuxingListQueryParams';
+import { TextMuxingListQueryParams, TextMuxingListQueryParamsBuilder } from './TextMuxingListQueryParams';
 
 /**
  * TextApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class TextApi extends BaseAPI {
   /**
    * @summary Add Text Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {TextMuxing} textMuxing
+   * @param {TextMuxing} textMuxing The Text Muxing to be created
    * @throws {RequiredError}
    * @memberof TextApi
    */
@@ -73,14 +73,20 @@ export default class TextApi extends BaseAPI {
   /**
    * @summary List Text Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof TextApi
    */
-  public list(encodingId: string, queryParams?: TextMuxingListQueryParams): Promise<PaginationResponse<TextMuxing>> {
+  public list(encodingId: string, queryParameters?: TextMuxingListQueryParams | ((q: TextMuxingListQueryParamsBuilder) => TextMuxingListQueryParamsBuilder)): Promise<PaginationResponse<TextMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: TextMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new TextMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<TextMuxing>>('/encoding/encodings/{encoding_id}/muxings/text', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TextMuxing>(response);
       if (paginationResponse.items) {

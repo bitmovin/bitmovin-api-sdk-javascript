@@ -10,16 +10,16 @@ import WebVttSidecarFileSegmentation from './WebVttSidecarFileSegmentation';
  * @class WebVttSidecarFile
  */
 export class WebVttSidecarFile extends SidecarFile {
-  constructor(obj: any) {
-    super(obj);
-    this.segmentation = map<WebVttSidecarFileSegmentation>(obj.segmentation, WebVttSidecarFileSegmentation);
-  }
-
   /**
    * @type {WebVttSidecarFileSegmentation}
    * @memberof WebVttSidecarFile
    */
   public segmentation?: WebVttSidecarFileSegmentation;
+
+  constructor(obj: Partial<WebVttSidecarFile>) {
+    super(obj);
+    this.segmentation = map<WebVttSidecarFileSegmentation>(obj.segmentation, WebVttSidecarFileSegmentation);
+  }
 }
 
 export default WebVttSidecarFile;

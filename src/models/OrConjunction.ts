@@ -7,10 +7,9 @@ import AbstractConjunction from './AbstractConjunction';
  * @class OrConjunction
  */
 export class OrConjunction extends AbstractConjunction {
-  constructor(obj: any) {
+  constructor(obj: Partial<OrConjunction>) {
     super(obj);
   }
-
 }
 
 export default OrConjunction;

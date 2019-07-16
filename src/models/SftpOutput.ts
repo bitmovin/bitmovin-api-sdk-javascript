@@ -8,7 +8,56 @@ import TransferVersion from './TransferVersion';
  * @class SftpOutput
  */
 export class SftpOutput extends Output {
-  constructor(obj: any) {
+  /**
+   * Host Url or IP of the SFTP server (required)
+   * @type {string}
+   * @memberof SftpOutput
+   */
+  public host: string;
+
+  /**
+   * Port to use, standard for SFTP: 22
+   * @type {number}
+   * @memberof SftpOutput
+   */
+  public port?: number;
+
+  /**
+   * Use passive mode. Default is true.
+   * @type {boolean}
+   * @memberof SftpOutput
+   */
+  public passive?: boolean;
+
+  /**
+   * Your SFTP Username
+   * @type {string}
+   * @memberof SftpOutput
+   */
+  public username?: string;
+
+  /**
+   * Your SFTP password
+   * @type {string}
+   * @memberof SftpOutput
+   */
+  public password?: string;
+
+  /**
+   * Controls which transfer version should be used
+   * @type {TransferVersion}
+   * @memberof SftpOutput
+   */
+  public transferVersion?: TransferVersion;
+
+  /**
+   * Restrict maximum concurrent connections. Requires at least version 1.1.0.
+   * @type {number}
+   * @memberof SftpOutput
+   */
+  public maxConcurrentConnections?: number;
+
+  constructor(obj: Partial<SftpOutput>) {
     super(obj);
     this.host = map(obj.host);
     this.port = map(obj.port);
@@ -18,49 +67,6 @@ export class SftpOutput extends Output {
     this.transferVersion = map(obj.transferVersion);
     this.maxConcurrentConnections = map(obj.maxConcurrentConnections);
   }
-
-  /**
-   * Host Url or IP of the SFTP server (required)
-   * @type {string}
-   * @memberof SftpOutput
-   */
-  public host: string;
-  /**
-   * Port to use, standard for SFTP: 22
-   * @type {number}
-   * @memberof SftpOutput
-   */
-  public port?: number;
-  /**
-   * Use passive mode. Default is true.
-   * @type {boolean}
-   * @memberof SftpOutput
-   */
-  public passive?: boolean;
-  /**
-   * Your SFTP Username
-   * @type {string}
-   * @memberof SftpOutput
-   */
-  public username?: string;
-  /**
-   * Your SFTP password
-   * @type {string}
-   * @memberof SftpOutput
-   */
-  public password?: string;
-  /**
-   * Controls which transfer version should be used
-   * @type {TransferVersion}
-   * @memberof SftpOutput
-   */
-  public transferVersion?: TransferVersion;
-  /**
-   * Restrict maximum concurrent connections. Requires at least version 1.1.0.
-   * @type {number}
-   * @memberof SftpOutput
-   */
-  public maxConcurrentConnections?: number;
 }
 
 export default SftpOutput;

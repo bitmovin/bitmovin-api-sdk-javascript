@@ -5,23 +5,32 @@ import {map} from '../common/Mapper';
  * @class LiveEncoding
  */
 export class LiveEncoding {
-  constructor(obj: any) {
-    this.streamKey = map(obj.streamKey);
-    this.encoderIp = map(obj.encoderIp);
-  }
-
   /**
    * Stream key of the live encoder (required)
    * @type {string}
    * @memberof LiveEncoding
    */
-  public streamKey: string;
+  public streamKey?: string;
+
   /**
    * IP address of the live encoder (required)
    * @type {string}
    * @memberof LiveEncoding
    */
-  public encoderIp: string;
+  public encoderIp?: string;
+
+  /**
+   * This will indicate the application 'live'
+   * @type {string}
+   * @memberof LiveEncoding
+   */
+  public application?: string;
+
+  constructor(obj: Partial<LiveEncoding>) {
+    this.streamKey = map(obj.streamKey);
+    this.encoderIp = map(obj.encoderIp);
+    this.application = map(obj.application);
+  }
 }
 
 export default LiveEncoding;

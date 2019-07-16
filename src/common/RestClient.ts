@@ -14,29 +14,22 @@ const BASE_URL = 'https://api.bitmovin.com/v1'.replace(/\/+$/, '');
 
 export type FetchAPI = (url: string, init?: any) => Promise<Response>;
 
-function getHeaders(apiKey: string, tenantOrgId?: string) {
-  const headers: any = {
-    'X-Api-Key': apiKey,
-    'X-Api-Client': 'bitmovin-api-sdk-javascript',
-    'X-Api-Client-Version': '1.18.0-alpha.0',
-    'Content-Type': 'application/json'
-  };
-
-  if (tenantOrgId) {
-    headers['X-Tenant-Org-Id'] = tenantOrgId;
-  }
-
-  return headers;
-}
-
 function queryParams(params) {
   if (!params) {
     return '';
   }
 
-  return Object.keys(params)
-    .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-    .join('&');
+  let queryParameterString = '';
+  let addSeperator = false;
+
+  for (const key in params) {
+    if (params[key] && typeof params[key] !== 'function') {
+      queryParameterString += (addSeperator ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+      addSeperator = true;
+    }
+  }
+
+  return queryParameterString;
 }
 
 function prepareUrl(baseUrl: string, url: string, urlParameterMap: any, queryStringParameters: any): URL {
@@ -81,6 +74,7 @@ export class RestClient {
   private readonly baseUrl: string;
   private readonly fetch: FetchAPI;
   private readonly logger: Logger;
+  private readonly additionalHeaders?: Record<string, string>;
 
   constructor(configuration: Configuration) {
     if (!configuration) {
@@ -96,6 +90,7 @@ export class RestClient {
     this.baseUrl = configuration.baseUrl || BASE_URL;
     this.fetch = configuration.fetch || isomorphicFetch;
     this.logger = configuration.logger || new NullLogger();
+    this.additionalHeaders = configuration.additionalHeaders;
   }
 
   public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
@@ -114,6 +109,23 @@ export class RestClient {
     return this.request(this.PUT, url, urlParameterMap, body);
   }
 
+  private getHeaders(): any {
+    let headers: Record<string, string> = {
+      'X-Api-Key': this.apiKey,
+      'X-Api-Client': 'bitmovin-api-sdk-javascript',
+      'X-Api-Client-Version': '1.12.0-alpha.1',
+      'Content-Type': 'application/json'
+    };
+
+    if (this.tenantOrgId) {
+      headers['X-Tenant-Org-Id'] = this.tenantOrgId;
+    }
+
+    headers = Object.assign(headers, this.additionalHeaders);
+
+    return headers;
+  }
+
   private request<T>(method: string, url: string, urlParameterMap?: object, body?: object, queryStringParameters?: object): Promise<T> {
     const requestUrl = prepareUrl(this.baseUrl, url, urlParameterMap, queryStringParameters);
 
@@ -125,48 +137,51 @@ export class RestClient {
     return this.fetch!(requestUrl.toString(), {
       method: method,
       body: JSON.stringify(body),
-      headers: getHeaders(this.apiKey, this.tenantOrgId)
+      headers: this.getHeaders()
     }).then((response) => {
-      if (response.status > 399) {
-        const errorMessage =
-          `HTTP Request was unsuccessful: HTTP Response Code was ${response.status} ${response.statusText}`;
-
-        this.logger.error(errorMessage);
-
-        return response.json().then(responseData => {
-          this.logger.error('Error Response Body:', responseData);
-          throw new BitmovinError(errorMessage, {
-            ok: response.ok,
-            statusText: response.statusText,
-            redirected: response.redirected,
-            type: response.type,
-            status: response.status,
-            headers: response.headers,
-            responseData
-          });
-        }, errorData => {
-          throw new BitmovinError(response.statusText, {
-            ok: response.ok,
-            statusText: response.statusText,
-            redirected: response.redirected,
-            type: response.type,
-            status: response.status,
-            headers: response.headers
-          });
+        return response.json().then((json) => {
+          if (response.status > 399) {
+            this.logger.error(`HTTP request was unsuccessful: HTTP response code was ${response.status} ${response.statusText}`);
+            throw this.buildBitmovinError(response, json);
+          }
+          return json;
+        }, () => {
+          if (response.status !== 204) {
+            this.logger.error(`Response body was empty or could not be parsed`);
+            throw this.buildBitmovinError(response);
+          }
+          return {data: {}};
         });
-      }
-
-      // Empty content
-      if (response.status === 204) {
-        this.logger.log('Response: 204 - No Content');
-        return {data: {}};
-      }
-
-      return response.json();
     }).then((responseJson) => {
       const result = responseJson.data.result;
       this.logger.log('Response body:', responseJson);
       return result;
     });
+  }
+
+  private buildBitmovinError(response: any, errorResponse?: any): BitmovinError {
+    let message: string = `HTTP request was unsuccessful: HTTP response code was ${response.status} ${response.statusText}.`;
+    let developerMessage: string | undefined;
+    let code: number | undefined;
+    let details: any;
+    let requestId: string | undefined;
+
+    if (errorResponse !== undefined && errorResponse.data !== undefined) {
+      if (errorResponse.data.message !== undefined) {
+        message = errorResponse.data.message;
+      }
+      developerMessage = errorResponse.data.developerMessage;
+      code = errorResponse.data.code;
+      details = errorResponse.data.details;
+      requestId = errorResponse.requestId;
+    } else {
+      if (response.headers.get('content-length') === '0') {
+        message += ' The response did not contain a body';
+      } else {
+        message += ' The response body could not be parsed';
+      }
+    }
+
+    return new BitmovinError(message, response.status, developerMessage, requestId, code, details);
   }
 }

@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import OpusAudioConfiguration from '../../../../models/OpusAudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import OpusAudioConfigurationListQueryParams from './OpusAudioConfigurationListQueryParams';
+import { OpusAudioConfigurationListQueryParams, OpusAudioConfigurationListQueryParamsBuilder } from './OpusAudioConfigurationListQueryParams';
 
 /**
  * OpusApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class OpusApi extends BaseAPI {
 
   /**
    * @summary Create Opus Codec Configuration
-   * @param {OpusAudioConfiguration} opusAudioConfiguration
+   * @param {OpusAudioConfiguration} opusAudioConfiguration The Opus Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof OpusApi
    */
@@ -64,11 +64,17 @@ export default class OpusApi extends BaseAPI {
 
   /**
    * @summary List Opus Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof OpusApi
    */
-  public list(queryParams?: OpusAudioConfigurationListQueryParams): Promise<PaginationResponse<OpusAudioConfiguration>> {
+  public list(queryParameters?: OpusAudioConfigurationListQueryParams | ((q: OpusAudioConfigurationListQueryParamsBuilder) => OpusAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<OpusAudioConfiguration>> {
+    let queryParams: OpusAudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new OpusAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<OpusAudioConfiguration>>('/encoding/configurations/audio/opus', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<OpusAudioConfiguration>(response);
       if (paginationResponse.items) {

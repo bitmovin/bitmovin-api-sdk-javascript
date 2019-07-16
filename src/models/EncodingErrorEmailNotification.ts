@@ -6,10 +6,9 @@ import EmailNotification from './EmailNotification';
  * @class EncodingErrorEmailNotification
  */
 export class EncodingErrorEmailNotification extends EmailNotification {
-  constructor(obj: any) {
+  constructor(obj: Partial<EncodingErrorEmailNotification>) {
     super(obj);
   }
-
 }
 
 export default EncodingErrorEmailNotification;

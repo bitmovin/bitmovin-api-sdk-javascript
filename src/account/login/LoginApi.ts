@@ -17,7 +17,7 @@ export default class LoginApi extends BaseAPI {
 
   /**
    * @summary Login
-   * @param {Login} login
+   * @param {Login} login Login Credentials
    * @throws {RequiredError}
    * @memberof LoginApi
    */

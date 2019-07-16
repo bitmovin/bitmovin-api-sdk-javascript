@@ -7,7 +7,41 @@ import PixelFormat from './PixelFormat';
  * @class MjpegVideoConfiguration
  */
 export class MjpegVideoConfiguration extends CodecConfiguration {
-  constructor(obj: any) {
+  /**
+   * Width of the encoded video
+   * @type {number}
+   * @memberof MjpegVideoConfiguration
+   */
+  public width?: number;
+
+  /**
+   * Height of the encoded video
+   * @type {number}
+   * @memberof MjpegVideoConfiguration
+   */
+  public height?: number;
+
+  /**
+   * Target frame rate of the encoded video! (required)
+   * @type {number}
+   * @memberof MjpegVideoConfiguration
+   */
+  public rate: number;
+
+  /**
+   * The quality scale parameter (required)
+   * @type {number}
+   * @memberof MjpegVideoConfiguration
+   */
+  public qScale: number;
+
+  /**
+   * @type {PixelFormat}
+   * @memberof MjpegVideoConfiguration
+   */
+  public pixelFormat?: PixelFormat;
+
+  constructor(obj: Partial<MjpegVideoConfiguration>) {
     super(obj);
     this.width = map(obj.width);
     this.height = map(obj.height);
@@ -15,36 +49,6 @@ export class MjpegVideoConfiguration extends CodecConfiguration {
     this.qScale = map(obj.qScale);
     this.pixelFormat = map(obj.pixelFormat);
   }
-
-  /**
-   * Width of the encoded video
-   * @type {number}
-   * @memberof MjpegVideoConfiguration
-   */
-  public width?: number;
-  /**
-   * Height of the encoded video
-   * @type {number}
-   * @memberof MjpegVideoConfiguration
-   */
-  public height?: number;
-  /**
-   * Target frame rate of the encoded video! (required)
-   * @type {number}
-   * @memberof MjpegVideoConfiguration
-   */
-  public rate: number;
-  /**
-   * The quality scale parameter (required)
-   * @type {number}
-   * @memberof MjpegVideoConfiguration
-   */
-  public qScale: number;
-  /**
-   * @type {PixelFormat}
-   * @memberof MjpegVideoConfiguration
-   */
-  public pixelFormat?: PixelFormat;
 }
 
 export default MjpegVideoConfiguration;

@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import TimeBasedTrimmingInputStream from '../../../../../models/TimeBasedTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import TimeBasedTrimmingInputStreamListQueryParams from './TimeBasedTrimmingInputStreamListQueryParams';
+import { TimeBasedTrimmingInputStreamListQueryParams, TimeBasedTrimmingInputStreamListQueryParamsBuilder } from './TimeBasedTrimmingInputStreamListQueryParams';
 
 /**
  * TimeBasedApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class TimeBasedApi extends BaseAPI {
   /**
    * @summary Add Time-Based Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {TimeBasedTrimmingInputStream} timeBasedTrimmingInputStream
+   * @param {TimeBasedTrimmingInputStream} timeBasedTrimmingInputStream The Time-Based Trimming Input Stream to be created
    * @throws {RequiredError}
    * @memberof TimeBasedApi
    */
@@ -70,14 +70,20 @@ export default class TimeBasedApi extends BaseAPI {
   /**
    * @summary List Time-Based Trimming Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof TimeBasedApi
    */
-  public list(encodingId: string, queryParams?: TimeBasedTrimmingInputStreamListQueryParams): Promise<PaginationResponse<TimeBasedTrimmingInputStream>> {
+  public list(encodingId: string, queryParameters?: TimeBasedTrimmingInputStreamListQueryParams | ((q: TimeBasedTrimmingInputStreamListQueryParamsBuilder) => TimeBasedTrimmingInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<TimeBasedTrimmingInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: TimeBasedTrimmingInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new TimeBasedTrimmingInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<TimeBasedTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/time-based', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TimeBasedTrimmingInputStream>(response);
       if (paginationResponse.items) {

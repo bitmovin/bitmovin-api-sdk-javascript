@@ -7,7 +7,7 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import DashManifest from '../../../models/DashManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
-import DashManifestListQueryParams from './DashManifestListQueryParams';
+import { DashManifestListQueryParams, DashManifestListQueryParamsBuilder } from './DashManifestListQueryParams';
 
 /**
  * DashApi - object-oriented interface
@@ -71,11 +71,17 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary List DASH Manifests
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DashApi
    */
-  public list(queryParams?: DashManifestListQueryParams): Promise<PaginationResponse<DashManifest>> {
+  public list(queryParameters?: DashManifestListQueryParams | ((q: DashManifestListQueryParamsBuilder) => DashManifestListQueryParamsBuilder)): Promise<PaginationResponse<DashManifest>> {
+    let queryParams: DashManifestListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashManifestListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashManifest>>('/encoding/manifests/dash', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashManifest>(response);
       if (paginationResponse.items) {

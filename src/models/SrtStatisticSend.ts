@@ -5,7 +5,49 @@ import {map} from '../common/Mapper';
  * @class SrtStatisticSend
  */
 export class SrtStatisticSend {
-  constructor(obj: any) {
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public bytes?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public bytesDropped?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public mbitRate?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public packets?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public packetsDropped?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public packetsLost?: number;
+
+  /**
+   * @type {number}
+   * @memberof SrtStatisticSend
+   */
+  public packetsRetransmitted?: number;
+
+  constructor(obj: Partial<SrtStatisticSend>) {
     this.bytes = map(obj.bytes);
     this.bytesDropped = map(obj.bytesDropped);
     this.mbitRate = map(obj.mbitRate);
@@ -14,42 +56,6 @@ export class SrtStatisticSend {
     this.packetsLost = map(obj.packetsLost);
     this.packetsRetransmitted = map(obj.packetsRetransmitted);
   }
-
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public bytes?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public bytesDropped?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public mbitRate?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public packets?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public packetsDropped?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public packetsLost?: number;
-  /**
-   * @type {number}
-   * @memberof SrtStatisticSend
-   */
-  public packetsRetransmitted?: number;
 }
 
 export default SrtStatisticSend;

@@ -6,10 +6,9 @@ import BitmovinResource from './BitmovinResource';
  * @class ObjectDetectionConfiguration
  */
 export class ObjectDetectionConfiguration extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<ObjectDetectionConfiguration>) {
     super(obj);
   }
-
 }
 
 export default ObjectDetectionConfiguration;

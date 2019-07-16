@@ -7,17 +7,17 @@ import StreamInput from './StreamInput';
  * @class TtmlEmbed
  */
 export class TtmlEmbed extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
-  }
-
   /**
    * The input stream to extract the subtitle from (required)
    * @type {StreamInput}
    * @memberof TtmlEmbed
    */
   public inputStream: StreamInput;
+
+  constructor(obj: Partial<TtmlEmbed>) {
+    super(obj);
+    this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
+  }
 }
 
 export default TtmlEmbed;

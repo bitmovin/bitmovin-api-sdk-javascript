@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AesEncryptionDrm from '../../../../../../models/AesEncryptionDrm';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import AesEncryptionDrmListQueryParams from './AesEncryptionDrmListQueryParams';
+import { AesEncryptionDrmListQueryParams, AesEncryptionDrmListQueryParamsBuilder } from './AesEncryptionDrmListQueryParams';
 
 /**
  * AesApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class AesApi extends BaseAPI {
    * @summary Add AES Encryption to TS Segment
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
-   * @param {AesEncryptionDrm} aesEncryptionDrm
+   * @param {AesEncryptionDrm} aesEncryptionDrm The AES Encryption to be created
    * @throws {RequiredError}
    * @memberof AesApi
    */
@@ -80,15 +80,21 @@ export default class AesApi extends BaseAPI {
    * @summary List AES Encryption of TS Segment
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the transport stream segment.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AesApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: AesEncryptionDrmListQueryParams): Promise<PaginationResponse<AesEncryptionDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: AesEncryptionDrmListQueryParams | ((q: AesEncryptionDrmListQueryParamsBuilder) => AesEncryptionDrmListQueryParamsBuilder)): Promise<PaginationResponse<AesEncryptionDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: AesEncryptionDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AesEncryptionDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AesEncryptionDrm>>('/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AesEncryptionDrm>(response);
       if (paginationResponse.items) {

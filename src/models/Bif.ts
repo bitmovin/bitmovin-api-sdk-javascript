@@ -8,7 +8,41 @@ import EncodingOutput from './EncodingOutput';
  * @class Bif
  */
 export class Bif extends BitmovinResource {
-  constructor(obj: any) {
+  /**
+   * Height of one thumbnail
+   * @type {number}
+   * @memberof Bif
+   */
+  public height?: number;
+
+  /**
+   * Width of one thumbnail. Roku recommends a width of 240 for SD and 320 for HD.
+   * @type {number}
+   * @memberof Bif
+   */
+  public width?: number;
+
+  /**
+   * Distance in seconds between a screenshot
+   * @type {number}
+   * @memberof Bif
+   */
+  public distance?: number;
+
+  /**
+   * Filename of the Bif image. (required)
+   * @type {string}
+   * @memberof Bif
+   */
+  public filename: string;
+
+  /**
+   * @type {EncodingOutput[]}
+   * @memberof Bif
+   */
+  public outputs: EncodingOutput[];
+
+  constructor(obj: Partial<Bif>) {
     super(obj);
     this.height = map(obj.height);
     this.width = map(obj.width);
@@ -16,36 +50,6 @@ export class Bif extends BitmovinResource {
     this.filename = map(obj.filename);
     this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
   }
-
-  /**
-   * Height of one thumbnail
-   * @type {number}
-   * @memberof Bif
-   */
-  public height?: number;
-  /**
-   * Width of one thumbnail. Roku recommends a width of 240 for SD and 320 for HD.
-   * @type {number}
-   * @memberof Bif
-   */
-  public width?: number;
-  /**
-   * Distance in seconds between a screenshot
-   * @type {number}
-   * @memberof Bif
-   */
-  public distance?: number;
-  /**
-   * Filename of the Bif image. (required)
-   * @type {string}
-   * @memberof Bif
-   */
-  public filename: string;
-  /**
-   * @type {Array<EncodingOutput>}
-   * @memberof Bif
-   */
-  public outputs: Array<EncodingOutput>;
 }
 
 export default Bif;

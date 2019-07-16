@@ -8,24 +8,25 @@ import InputPath from './InputPath';
  * @class BurnInSubtitleSrt
  */
 export class BurnInSubtitleSrt extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.characterEncoding = map(obj.characterEncoding);
-    this.input = map<InputPath>(obj.input, InputPath);
-  }
-
   /**
    * Character encoding of the SRT file (required)
    * @type {CaptionCharacterEncoding}
    * @memberof BurnInSubtitleSrt
    */
   public characterEncoding: CaptionCharacterEncoding;
+
   /**
    * The input location to get the SRT file from (required)
    * @type {InputPath}
    * @memberof BurnInSubtitleSrt
    */
   public input: InputPath;
+
+  constructor(obj: Partial<BurnInSubtitleSrt>) {
+    super(obj);
+    this.characterEncoding = map(obj.characterEncoding);
+    this.input = map<InputPath>(obj.input, InputPath);
+  }
 }
 
 export default BurnInSubtitleSrt;

@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import SegmentedRawMuxing from '../../../../models/SegmentedRawMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import SegmentedRawMuxingListQueryParams from './SegmentedRawMuxingListQueryParams';
+import { SegmentedRawMuxingListQueryParams, SegmentedRawMuxingListQueryParamsBuilder } from './SegmentedRawMuxingListQueryParams';
 
 /**
  * SegmentedRawApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class SegmentedRawApi extends BaseAPI {
   /**
    * @summary Add Segmented RAW Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {SegmentedRawMuxing} segmentedRawMuxing
+   * @param {SegmentedRawMuxing} segmentedRawMuxing The Segmented RAW Muxing to be created
    * @throws {RequiredError}
    * @memberof SegmentedRawApi
    */
@@ -73,14 +73,20 @@ export default class SegmentedRawApi extends BaseAPI {
   /**
    * @summary List Segmented RAW Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SegmentedRawApi
    */
-  public list(encodingId: string, queryParams?: SegmentedRawMuxingListQueryParams): Promise<PaginationResponse<SegmentedRawMuxing>> {
+  public list(encodingId: string, queryParameters?: SegmentedRawMuxingListQueryParams | ((q: SegmentedRawMuxingListQueryParamsBuilder) => SegmentedRawMuxingListQueryParamsBuilder)): Promise<PaginationResponse<SegmentedRawMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: SegmentedRawMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SegmentedRawMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SegmentedRawMuxing>>('/encoding/encodings/{encoding_id}/muxings/segmented-raw', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SegmentedRawMuxing>(response);
       if (paginationResponse.items) {

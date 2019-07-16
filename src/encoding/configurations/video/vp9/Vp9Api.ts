@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Vp9VideoConfiguration from '../../../../models/Vp9VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Vp9VideoConfigurationListQueryParams from './Vp9VideoConfigurationListQueryParams';
+import { Vp9VideoConfigurationListQueryParams, Vp9VideoConfigurationListQueryParamsBuilder } from './Vp9VideoConfigurationListQueryParams';
 
 /**
  * Vp9Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class Vp9Api extends BaseAPI {
 
   /**
    * @summary Create VP9 Codec Configuration
-   * @param {Vp9VideoConfiguration} vp9VideoConfiguration
+   * @param {Vp9VideoConfiguration} vp9VideoConfiguration The VP9 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Vp9Api
    */
@@ -64,11 +64,17 @@ export default class Vp9Api extends BaseAPI {
 
   /**
    * @summary List VP9 Codec Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Vp9Api
    */
-  public list(queryParams?: Vp9VideoConfigurationListQueryParams): Promise<PaginationResponse<Vp9VideoConfiguration>> {
+  public list(queryParameters?: Vp9VideoConfigurationListQueryParams | ((q: Vp9VideoConfigurationListQueryParamsBuilder) => Vp9VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Vp9VideoConfiguration>> {
+    let queryParams: Vp9VideoConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Vp9VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Vp9VideoConfiguration>>('/encoding/configurations/video/vp9', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Vp9VideoConfiguration>(response);
       if (paginationResponse.items) {

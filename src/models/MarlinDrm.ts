@@ -7,24 +7,25 @@ import EncodingOutput from './EncodingOutput';
  * @class MarlinDrm
  */
 export class MarlinDrm extends Drm {
-  constructor(obj: any) {
-    super(obj);
-    this.key = map(obj.key);
-    this.kid = map(obj.kid);
-  }
-
   /**
    * 16 byte key in hex (32 characters) (required)
    * @type {string}
    * @memberof MarlinDrm
    */
   public key: string;
+
   /**
    * 16 byte key in hex (32 characters) (required)
    * @type {string}
    * @memberof MarlinDrm
    */
   public kid: string;
+
+  constructor(obj: Partial<MarlinDrm>) {
+    super(obj);
+    this.key = map(obj.key);
+    this.kid = map(obj.kid);
+  }
 }
 
 export default MarlinDrm;

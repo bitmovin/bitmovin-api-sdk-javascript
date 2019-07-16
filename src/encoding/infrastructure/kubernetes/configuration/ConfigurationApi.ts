@@ -32,7 +32,7 @@ export default class ConfigurationApi extends BaseAPI {
   /**
    * @summary Update Kubernetes Cluster Configuration
    * @param {string} infrastructureId Id of the Kubernetes cluster
-   * @param {KubernetesClusterConfiguration} kubernetesClusterConfiguration
+   * @param {KubernetesClusterConfiguration} kubernetesClusterConfiguration The Kubernetes Cluster Configuration which should be applied
    * @throws {RequiredError}
    * @memberof ConfigurationApi
    */

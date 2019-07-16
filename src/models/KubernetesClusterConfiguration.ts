@@ -5,23 +5,24 @@ import {map} from '../common/Mapper';
  * @class KubernetesClusterConfiguration
  */
 export class KubernetesClusterConfiguration {
-  constructor(obj: any) {
-    this.parallelEncodings = map(obj.parallelEncodings);
-    this.workersPerEncoding = map(obj.workersPerEncoding);
-  }
-
   /**
    * Number of parallel scheduled encodings on the Kubernetes cluster (required)
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */
   public parallelEncodings: number;
+
   /**
    * Number of worker nodes used for each encoding on the Kubernetes cluster (required)
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */
   public workersPerEncoding: number;
+
+  constructor(obj: Partial<KubernetesClusterConfiguration>) {
+    this.parallelEncodings = map(obj.parallelEncodings);
+    this.workersPerEncoding = map(obj.workersPerEncoding);
+  }
 }
 
 export default KubernetesClusterConfiguration;

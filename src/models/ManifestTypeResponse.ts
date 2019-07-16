@@ -6,16 +6,16 @@ import ManifestType from './ManifestType';
  * @class ManifestTypeResponse
  */
 export class ManifestTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the manifest
    * @type {ManifestType}
    * @memberof ManifestTypeResponse
    */
   public type?: ManifestType;
+
+  constructor(obj: Partial<ManifestTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default ManifestTypeResponse;

@@ -8,10 +8,9 @@ import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
  * @class Mp3MuxingInformation
  */
 export class Mp3MuxingInformation extends ProgressiveMuxingInformation {
-  constructor(obj: any) {
+  constructor(obj: Partial<Mp3MuxingInformation>) {
     super(obj);
   }
-
 }
 
 export default Mp3MuxingInformation;

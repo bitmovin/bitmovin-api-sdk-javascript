@@ -2,7 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import UdpInput from '../../../models/UdpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import UdpInputListQueryParams from './UdpInputListQueryParams';
+import { UdpInputListQueryParams, UdpInputListQueryParamsBuilder } from './UdpInputListQueryParams';
 
 /**
  * UdpApi - object-oriented interface
@@ -33,11 +33,17 @@ export default class UdpApi extends BaseAPI {
 
   /**
    * @summary List UDP inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof UdpApi
    */
-  public list(queryParams?: UdpInputListQueryParams): Promise<PaginationResponse<UdpInput>> {
+  public list(queryParameters?: UdpInputListQueryParams | ((q: UdpInputListQueryParamsBuilder) => UdpInputListQueryParamsBuilder)): Promise<PaginationResponse<UdpInput>> {
+    let queryParams: UdpInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new UdpInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<UdpInput>>('/encoding/inputs/udp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<UdpInput>(response);
       if (paginationResponse.items) {

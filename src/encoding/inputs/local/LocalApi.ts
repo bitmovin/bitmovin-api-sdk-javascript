@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LocalInput from '../../../models/LocalInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import LocalInputListQueryParams from './LocalInputListQueryParams';
+import { LocalInputListQueryParams, LocalInputListQueryParamsBuilder } from './LocalInputListQueryParams';
 
 /**
  * LocalApi - object-oriented interface
@@ -64,11 +64,17 @@ export default class LocalApi extends BaseAPI {
 
   /**
    * @summary List Local Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof LocalApi
    */
-  public list(queryParams?: LocalInputListQueryParams): Promise<PaginationResponse<LocalInput>> {
+  public list(queryParameters?: LocalInputListQueryParams | ((q: LocalInputListQueryParamsBuilder) => LocalInputListQueryParamsBuilder)): Promise<PaginationResponse<LocalInput>> {
+    let queryParams: LocalInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new LocalInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<LocalInput>>('/encoding/inputs/local', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<LocalInput>(response);
       if (paginationResponse.items) {

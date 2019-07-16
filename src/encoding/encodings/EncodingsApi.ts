@@ -17,7 +17,7 @@ import RescheduleEncodingRequest from '../../models/RescheduleEncodingRequest';
 import StartEncodingRequest from '../../models/StartEncodingRequest';
 import Task from '../../models/Task';
 import PaginationResponse from '../../models/PaginationResponse';
-import EncodingListQueryParams from './EncodingListQueryParams';
+import { EncodingListQueryParams, EncodingListQueryParamsBuilder } from './EncodingListQueryParams';
 
 /**
  * EncodingsApi - object-oriented interface
@@ -108,11 +108,17 @@ export default class EncodingsApi extends BaseAPI {
 
   /**
    * @summary List all Encodings
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof EncodingsApi
    */
-  public list(queryParams?: EncodingListQueryParams): Promise<PaginationResponse<Encoding>> {
+  public list(queryParameters?: EncodingListQueryParams | ((q: EncodingListQueryParamsBuilder) => EncodingListQueryParamsBuilder)): Promise<PaginationResponse<Encoding>> {
+    let queryParams: EncodingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EncodingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Encoding>>('/encoding/encodings', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Encoding>(response);
       if (paginationResponse.items) {
@@ -125,7 +131,7 @@ export default class EncodingsApi extends BaseAPI {
   /**
    * @summary Reprioritize Encoding
    * @param {string} encodingId Id of the encoding.
-   * @param {ReprioritizeEncodingRequest} reprioritizeEncodingRequest
+   * @param {ReprioritizeEncodingRequest} reprioritizeEncodingRequest Reprioritization options
    * @throws {RequiredError}
    * @memberof EncodingsApi
    */
@@ -141,7 +147,7 @@ export default class EncodingsApi extends BaseAPI {
   /**
    * @summary Reschedule Encoding
    * @param {string} encodingId Id of the encoding.
-   * @param {RescheduleEncodingRequest} rescheduleEncodingRequest
+   * @param {RescheduleEncodingRequest} rescheduleEncodingRequest Rescheduling options
    * @throws {RequiredError}
    * @memberof EncodingsApi
    */
@@ -157,7 +163,7 @@ export default class EncodingsApi extends BaseAPI {
   /**
    * @summary Start Encoding
    * @param {string} encodingId Id of the encoding
-   * @param {StartEncodingRequest} [startEncodingRequest]
+   * @param {StartEncodingRequest} [startEncodingRequest] Encoding Startup Options
    * @throws {RequiredError}
    * @memberof EncodingsApi
    */

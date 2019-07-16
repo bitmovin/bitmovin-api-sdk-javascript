@@ -17,7 +17,7 @@ import TypeApi from './type/TypeApi';
 import Filter from '../../models/Filter';
 import { FilterTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import FilterListQueryParams from './FilterListQueryParams';
+import { FilterListQueryParams, FilterListQueryParamsBuilder } from './FilterListQueryParams';
 
 /**
  * FiltersApi - object-oriented interface
@@ -61,11 +61,17 @@ export default class FiltersApi extends BaseAPI {
 
   /**
    * @summary List all Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof FiltersApi
    */
-  public list(queryParams?: FilterListQueryParams): Promise<PaginationResponse<Filter>> {
+  public list(queryParameters?: FilterListQueryParams | ((q: FilterListQueryParamsBuilder) => FilterListQueryParamsBuilder)): Promise<PaginationResponse<Filter>> {
+    let queryParams: FilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new FilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Filter>>('/encoding/filters', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Filter>(response);
       if (paginationResponse.items) {

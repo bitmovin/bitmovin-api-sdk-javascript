@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import Av1VideoConfiguration from '../../../../models/Av1VideoConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Av1VideoConfigurationListQueryParams from './Av1VideoConfigurationListQueryParams';
+import { Av1VideoConfigurationListQueryParams, Av1VideoConfigurationListQueryParamsBuilder } from './Av1VideoConfigurationListQueryParams';
 
 /**
  * Av1Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class Av1Api extends BaseAPI {
 
   /**
    * @summary Create AV1 Codec Configuration
-   * @param {Av1VideoConfiguration} av1VideoConfiguration
+   * @param {Av1VideoConfiguration} av1VideoConfiguration The AV1 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Av1Api
    */
@@ -64,11 +64,17 @@ export default class Av1Api extends BaseAPI {
 
   /**
    * @summary List AV1 Codec Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Av1Api
    */
-  public list(queryParams?: Av1VideoConfigurationListQueryParams): Promise<PaginationResponse<Av1VideoConfiguration>> {
+  public list(queryParameters?: Av1VideoConfigurationListQueryParams | ((q: Av1VideoConfigurationListQueryParamsBuilder) => Av1VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Av1VideoConfiguration>> {
+    let queryParams: Av1VideoConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Av1VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Av1VideoConfiguration>>('/encoding/configurations/video/av1', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Av1VideoConfiguration>(response);
       if (paginationResponse.items) {

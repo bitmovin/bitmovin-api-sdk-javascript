@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import SftpInput from '../../../models/SftpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import SftpInputListQueryParams from './SftpInputListQueryParams';
+import { SftpInputListQueryParams, SftpInputListQueryParamsBuilder } from './SftpInputListQueryParams';
 
 /**
  * SftpApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class SftpApi extends BaseAPI {
 
   /**
    * @summary List SFTP Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SftpApi
    */
-  public list(queryParams?: SftpInputListQueryParams): Promise<PaginationResponse<SftpInput>> {
+  public list(queryParameters?: SftpInputListQueryParams | ((q: SftpInputListQueryParamsBuilder) => SftpInputListQueryParamsBuilder)): Promise<PaginationResponse<SftpInput>> {
+    let queryParams: SftpInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SftpInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SftpInput>>('/encoding/inputs/sftp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SftpInput>(response);
       if (paginationResponse.items) {

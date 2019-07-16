@@ -8,7 +8,7 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import HlsManifest from '../../../models/HlsManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
-import HlsManifestListQueryParams from './HlsManifestListQueryParams';
+import { HlsManifestListQueryParams, HlsManifestListQueryParamsBuilder } from './HlsManifestListQueryParams';
 
 /**
  * HlsApi - object-oriented interface
@@ -32,7 +32,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary Create HLS Manifest
-   * @param {HlsManifest} hlsManifest
+   * @param {HlsManifest} hlsManifest The HLS Manifest to be created
    * @throws {RequiredError}
    * @memberof HlsApi
    */
@@ -74,11 +74,17 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary List HLS Manifests
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof HlsApi
    */
-  public list(queryParams?: HlsManifestListQueryParams): Promise<PaginationResponse<HlsManifest>> {
+  public list(queryParameters?: HlsManifestListQueryParams | ((q: HlsManifestListQueryParamsBuilder) => HlsManifestListQueryParamsBuilder)): Promise<PaginationResponse<HlsManifest>> {
+    let queryParams: HlsManifestListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new HlsManifestListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<HlsManifest>>('/encoding/manifests/hls', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<HlsManifest>(response);
       if (paginationResponse.items) {

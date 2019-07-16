@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import TimecodeTrackTrimmingInputStream from '../../../../../models/TimecodeTrackTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import TimecodeTrackTrimmingInputStreamListQueryParams from './TimecodeTrackTrimmingInputStreamListQueryParams';
+import { TimecodeTrackTrimmingInputStreamListQueryParams, TimecodeTrackTrimmingInputStreamListQueryParamsBuilder } from './TimecodeTrackTrimmingInputStreamListQueryParams';
 
 /**
  * TimecodeTrackApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class TimecodeTrackApi extends BaseAPI {
   /**
    * @summary Add Timecode Track Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {TimecodeTrackTrimmingInputStream} timecodeTrackTrimmingInputStream
+   * @param {TimecodeTrackTrimmingInputStream} timecodeTrackTrimmingInputStream The Timecode Track Trimming Input Stream to be created
    * @throws {RequiredError}
    * @memberof TimecodeTrackApi
    */
@@ -70,14 +70,20 @@ export default class TimecodeTrackApi extends BaseAPI {
   /**
    * @summary List Timecode Track Trimming Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof TimecodeTrackApi
    */
-  public list(encodingId: string, queryParams?: TimecodeTrackTrimmingInputStreamListQueryParams): Promise<PaginationResponse<TimecodeTrackTrimmingInputStream>> {
+  public list(encodingId: string, queryParameters?: TimecodeTrackTrimmingInputStreamListQueryParams | ((q: TimecodeTrackTrimmingInputStreamListQueryParamsBuilder) => TimecodeTrackTrimmingInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<TimecodeTrackTrimmingInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: TimecodeTrackTrimmingInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new TimecodeTrackTrimmingInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<TimecodeTrackTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/timecode-track', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TimecodeTrackTrimmingInputStream>(response);
       if (paginationResponse.items) {

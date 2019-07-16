@@ -64,7 +64,7 @@ export default class LiveApi extends BaseAPI {
   /**
    * @summary Start Live Encoding
    * @param {string} encodingId Id of the encoding
-   * @param {StartLiveEncodingRequest} startLiveEncodingRequest
+   * @param {StartLiveEncodingRequest} startLiveEncodingRequest Live Encoding startup options
    * @throws {RequiredError}
    * @memberof LiveApi
    */

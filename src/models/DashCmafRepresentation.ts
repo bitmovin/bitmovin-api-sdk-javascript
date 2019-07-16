@@ -8,10 +8,9 @@ import DashSegmentedRepresentation from './DashSegmentedRepresentation';
  * @class DashCmafRepresentation
  */
 export class DashCmafRepresentation extends DashSegmentedRepresentation {
-  constructor(obj: any) {
+  constructor(obj: Partial<DashCmafRepresentation>) {
     super(obj);
   }
-
 }
 
 export default DashCmafRepresentation;

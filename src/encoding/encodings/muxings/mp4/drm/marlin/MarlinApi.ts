@@ -3,7 +3,7 @@ import Configuration from '../../../../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import MarlinDrm from '../../../../../../models/MarlinDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import MarlinDrmListQueryParams from './MarlinDrmListQueryParams';
+import { MarlinDrmListQueryParams, MarlinDrmListQueryParamsBuilder } from './MarlinDrmListQueryParams';
 
 /**
  * MarlinApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class MarlinApi extends BaseAPI {
    * @summary Add Marlin DRM to MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
-   * @param {MarlinDrm} marlinDrm
+   * @param {MarlinDrm} marlinDrm The Marlin DRM to be created
    * @throws {RequiredError}
    * @memberof MarlinApi
    */
@@ -79,15 +79,21 @@ export default class MarlinApi extends BaseAPI {
    * @summary List Marlin DRMs of MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof MarlinApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: MarlinDrmListQueryParams): Promise<PaginationResponse<MarlinDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: MarlinDrmListQueryParams | ((q: MarlinDrmListQueryParamsBuilder) => MarlinDrmListQueryParamsBuilder)): Promise<PaginationResponse<MarlinDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: MarlinDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new MarlinDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<MarlinDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<MarlinDrm>(response);
       if (paginationResponse.items) {

@@ -5,7 +5,7 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveWebmMuxing from '../../../../models/ProgressiveWebmMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ProgressiveWebmMuxingListQueryParams from './ProgressiveWebmMuxingListQueryParams';
+import { ProgressiveWebmMuxingListQueryParams, ProgressiveWebmMuxingListQueryParamsBuilder } from './ProgressiveWebmMuxingListQueryParams';
 
 /**
  * ProgressiveWebmApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   /**
    * @summary Add Progressive WebM Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ProgressiveWebmMuxing} progressiveWebmMuxing
+   * @param {ProgressiveWebmMuxing} progressiveWebmMuxing The Progressive WebM Muxing to be created
    * @throws {RequiredError}
    * @memberof ProgressiveWebmApi
    */
@@ -76,14 +76,20 @@ export default class ProgressiveWebmApi extends BaseAPI {
   /**
    * @summary List Progressive WebM Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ProgressiveWebmApi
    */
-  public list(encodingId: string, queryParams?: ProgressiveWebmMuxingListQueryParams): Promise<PaginationResponse<ProgressiveWebmMuxing>> {
+  public list(encodingId: string, queryParameters?: ProgressiveWebmMuxingListQueryParams | ((q: ProgressiveWebmMuxingListQueryParamsBuilder) => ProgressiveWebmMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ProgressiveWebmMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ProgressiveWebmMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ProgressiveWebmMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ProgressiveWebmMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-webm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ProgressiveWebmMuxing>(response);
       if (paginationResponse.items) {

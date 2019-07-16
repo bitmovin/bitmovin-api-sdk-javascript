@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import FtpInput from '../../../models/FtpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import FtpInputListQueryParams from './FtpInputListQueryParams';
+import { FtpInputListQueryParams, FtpInputListQueryParamsBuilder } from './FtpInputListQueryParams';
 
 /**
  * FtpApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class FtpApi extends BaseAPI {
 
   /**
    * @summary List FTP Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof FtpApi
    */
-  public list(queryParams?: FtpInputListQueryParams): Promise<PaginationResponse<FtpInput>> {
+  public list(queryParameters?: FtpInputListQueryParams | ((q: FtpInputListQueryParamsBuilder) => FtpInputListQueryParamsBuilder)): Promise<PaginationResponse<FtpInput>> {
+    let queryParams: FtpInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new FtpInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<FtpInput>>('/encoding/inputs/ftp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FtpInput>(response);
       if (paginationResponse.items) {

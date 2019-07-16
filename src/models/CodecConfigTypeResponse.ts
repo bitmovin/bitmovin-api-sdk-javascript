@@ -6,16 +6,16 @@ import CodecConfigType from './CodecConfigType';
  * @class CodecConfigTypeResponse
  */
 export class CodecConfigTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the codec config
    * @type {CodecConfigType}
    * @memberof CodecConfigTypeResponse
    */
   public type?: CodecConfigType;
+
+  constructor(obj: Partial<CodecConfigTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default CodecConfigTypeResponse;

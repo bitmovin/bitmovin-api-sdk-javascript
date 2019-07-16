@@ -2,8 +2,8 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import EncodingStatisticsLive from '../../../../models/EncodingStatisticsLive';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import EncodingStatisticsLiveListQueryParams from './EncodingStatisticsLiveListQueryParams';
-import EncodingStatisticsLiveListByDateRangeQueryParams from './EncodingStatisticsLiveListByDateRangeQueryParams';
+import { EncodingStatisticsLiveListQueryParams, EncodingStatisticsLiveListQueryParamsBuilder } from './EncodingStatisticsLiveListQueryParams';
+import { EncodingStatisticsLiveListByDateRangeQueryParams, EncodingStatisticsLiveListByDateRangeQueryParamsBuilder } from './EncodingStatisticsLiveListByDateRangeQueryParams';
 
 /**
  * LiveApi - object-oriented interface
@@ -19,11 +19,17 @@ export default class LiveApi extends BaseAPI {
 
   /**
    * @summary List Live Encoding Statistics
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof LiveApi
    */
-  public list(queryParams?: EncodingStatisticsLiveListQueryParams): Promise<PaginationResponse<EncodingStatisticsLive>> {
+  public list(queryParameters?: EncodingStatisticsLiveListQueryParams | ((q: EncodingStatisticsLiveListQueryParamsBuilder) => EncodingStatisticsLiveListQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsLive>> {
+    let queryParams: EncodingStatisticsLiveListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EncodingStatisticsLiveListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
       if (paginationResponse.items) {
@@ -37,15 +43,21 @@ export default class LiveApi extends BaseAPI {
    * @summary List live encoding statistics within specific dates
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof LiveApi
    */
-  public listByDateRange(from: Date, to: Date, queryParams?: EncodingStatisticsLiveListByDateRangeQueryParams): Promise<PaginationResponse<EncodingStatisticsLive>> {
+  public listByDateRange(from: Date, to: Date, queryParameters?: EncodingStatisticsLiveListByDateRangeQueryParams | ((q: EncodingStatisticsLiveListByDateRangeQueryParamsBuilder) => EncodingStatisticsLiveListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsLive>> {
     const pathParamMap = {
       from: from,
       to: to
     };
+    let queryParams: EncodingStatisticsLiveListByDateRangeQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EncodingStatisticsLiveListByDateRangeQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
       if (paginationResponse.items) {

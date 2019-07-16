@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import Bif from '../../../../models/Bif';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import BifListQueryParams from './BifListQueryParams';
+import { BifListQueryParams, BifListQueryParamsBuilder } from './BifListQueryParams';
 
 /**
  * BifsApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class BifsApi extends BaseAPI {
    * @summary Add a Roku Bif file
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {Bif} bif
+   * @param {Bif} bif The Roku Bif file to be added
    * @throws {RequiredError}
    * @memberof BifsApi
    */
@@ -80,15 +80,21 @@ export default class BifsApi extends BaseAPI {
    * @summary List Bifs
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof BifsApi
    */
-  public list(encodingId: string, streamId: string, queryParams?: BifListQueryParams): Promise<PaginationResponse<Bif>> {
+  public list(encodingId: string, streamId: string, queryParameters?: BifListQueryParams | ((q: BifListQueryParamsBuilder) => BifListQueryParamsBuilder)): Promise<PaginationResponse<Bif>> {
     const pathParamMap = {
       encoding_id: encodingId,
       stream_id: streamId
     };
+    let queryParams: BifListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new BifListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Bif>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Bif>(response);
       if (paginationResponse.items) {

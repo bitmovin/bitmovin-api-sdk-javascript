@@ -1,5 +1,6 @@
 import {map} from '../common/Mapper';
-import AnalyticsFilter from './AnalyticsFilter';
+import AnalyticsAttribute from './AnalyticsAttribute';
+import AnalyticsBaseFilter from './AnalyticsBaseFilter';
 import AnalyticsInterval from './AnalyticsInterval';
 import AnalyticsOrderByEntry from './AnalyticsOrderByEntry';
 import AnalyticsQueryTimeframe from './AnalyticsQueryTimeframe';
@@ -9,10 +10,61 @@ import AnalyticsQueryTimeframe from './AnalyticsQueryTimeframe';
  * @class AnalyticsQueryRequest
  */
 export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
-  constructor(obj: any) {
+  /**
+   * Analytics license key (required)
+   * @type {string}
+   * @memberof AnalyticsQueryRequest
+   */
+  public licenseKey: string;
+
+  /**
+   * @type {AnalyticsBaseFilter[]}
+   * @memberof AnalyticsQueryRequest
+   */
+  public filters?: AnalyticsBaseFilter[];
+
+  /**
+   * @type {AnalyticsOrderByEntry[]}
+   * @memberof AnalyticsQueryRequest
+   */
+  public orderBy?: AnalyticsOrderByEntry[];
+
+  /**
+   * @type {AnalyticsAttribute}
+   * @memberof AnalyticsQueryRequest
+   */
+  public dimension: AnalyticsAttribute;
+
+  /**
+   * @type {AnalyticsInterval}
+   * @memberof AnalyticsQueryRequest
+   */
+  public interval?: AnalyticsInterval;
+
+  /**
+   * @type {AnalyticsAttribute[]}
+   * @memberof AnalyticsQueryRequest
+   */
+  public groupBy?: AnalyticsAttribute[];
+
+  /**
+   * Maximum number of rows returned (max. 200)
+   * @type {number}
+   * @memberof AnalyticsQueryRequest
+   */
+  public limit?: number;
+
+  /**
+   * Offset of data
+   * @type {number}
+   * @memberof AnalyticsQueryRequest
+   */
+  public offset?: number;
+
+  constructor(obj: Partial<AnalyticsQueryRequest>) {
     super(obj);
     this.licenseKey = map(obj.licenseKey);
-    this.filters = map<AnalyticsFilter>(obj.filters, AnalyticsFilter);
+    this.filters = map<AnalyticsBaseFilter>(obj.filters, AnalyticsBaseFilter);
     this.orderBy = map<AnalyticsOrderByEntry>(obj.orderBy, AnalyticsOrderByEntry);
     this.dimension = map(obj.dimension);
     this.interval = map(obj.interval);
@@ -20,50 +72,6 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
     this.limit = map(obj.limit);
     this.offset = map(obj.offset);
   }
-
-  /**
-   * Analytics license key (required)
-   * @type {string}
-   * @memberof AnalyticsQueryRequest
-   */
-  public licenseKey: string;
-  /**
-   * @type {Array<AnalyticsFilter>}
-   * @memberof AnalyticsQueryRequest
-   */
-  public filters?: Array<AnalyticsFilter>;
-  /**
-   * @type {Array<AnalyticsOrderByEntry>}
-   * @memberof AnalyticsQueryRequest
-   */
-  public orderBy?: Array<AnalyticsOrderByEntry>;
-  /**
-   * @type {string}
-   * @memberof AnalyticsQueryRequest
-   */
-  public dimension: string;
-  /**
-   * @type {AnalyticsInterval}
-   * @memberof AnalyticsQueryRequest
-   */
-  public interval?: AnalyticsInterval;
-  /**
-   * @type {Array<string>}
-   * @memberof AnalyticsQueryRequest
-   */
-  public groupBy?: Array<string>;
-  /**
-   * Maximum number of rows returned (max. 200)
-   * @type {number}
-   * @memberof AnalyticsQueryRequest
-   */
-  public limit?: number;
-  /**
-   * Offset of data
-   * @type {number}
-   * @memberof AnalyticsQueryRequest
-   */
-  public offset?: number;
 }
 
 export default AnalyticsQueryRequest;

@@ -6,7 +6,56 @@ import MediaStream from './MediaStream';
  * @class VideoStream
  */
 export class VideoStream extends MediaStream {
-  constructor(obj: any) {
+  /**
+   * Frame rate of the video
+   * @type {string}
+   * @memberof VideoStream
+   */
+  public fps?: string;
+
+  /**
+   * Bitrate in bps
+   * @type {string}
+   * @memberof VideoStream
+   */
+  public bitrate?: string;
+
+  /**
+   * Bitrate in bps (the same as bitrate, but represented as an integer value)
+   * @type {number}
+   * @memberof VideoStream
+   */
+  public rate?: number;
+
+  /**
+   * Width of the video (required)
+   * @type {number}
+   * @memberof VideoStream
+   */
+  public width: number;
+
+  /**
+   * Height of the video (required)
+   * @type {number}
+   * @memberof VideoStream
+   */
+  public height: number;
+
+  /**
+   * Pixel aspect ratio of the video. Default is 1.0
+   * @type {number}
+   * @memberof VideoStream
+   */
+  public par?: number;
+
+  /**
+   * Rotation of the video for mobile devices. Default is 0.
+   * @type {number}
+   * @memberof VideoStream
+   */
+  public rotation?: number;
+
+  constructor(obj: Partial<VideoStream>) {
     super(obj);
     this.fps = map(obj.fps);
     this.bitrate = map(obj.bitrate);
@@ -16,49 +65,6 @@ export class VideoStream extends MediaStream {
     this.par = map(obj.par);
     this.rotation = map(obj.rotation);
   }
-
-  /**
-   * Frame rate of the video
-   * @type {string}
-   * @memberof VideoStream
-   */
-  public fps?: string;
-  /**
-   * Bitrate in bps
-   * @type {string}
-   * @memberof VideoStream
-   */
-  public bitrate?: string;
-  /**
-   * Bitrate in bps (the same as bitrate, but represented as an integer value)
-   * @type {number}
-   * @memberof VideoStream
-   */
-  public rate?: number;
-  /**
-   * Width of the video (required)
-   * @type {number}
-   * @memberof VideoStream
-   */
-  public width: number;
-  /**
-   * Height of the video (required)
-   * @type {number}
-   * @memberof VideoStream
-   */
-  public height: number;
-  /**
-   * Pixel aspect ratio of the video. Default is 1.0
-   * @type {number}
-   * @memberof VideoStream
-   */
-  public par?: number;
-  /**
-   * Rotation of the video for mobile devices. Default is 0.
-   * @type {number}
-   * @memberof VideoStream
-   */
-  public rotation?: number;
 }
 
 export default VideoStream;

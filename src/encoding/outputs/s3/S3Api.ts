@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import S3Output from '../../../models/S3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
-import S3OutputListQueryParams from './S3OutputListQueryParams';
+import { S3OutputListQueryParams, S3OutputListQueryParamsBuilder } from './S3OutputListQueryParams';
 
 /**
  * S3Api - object-oriented interface
@@ -21,7 +21,7 @@ export default class S3Api extends BaseAPI {
 
   /**
    * @summary Create S3 Output
-   * @param {S3Output} s3Output
+   * @param {S3Output} s3Output The S3 output to be created
    * @throws {RequiredError}
    * @memberof S3Api
    */
@@ -63,11 +63,17 @@ export default class S3Api extends BaseAPI {
 
   /**
    * @summary List S3 Outputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof S3Api
    */
-  public list(queryParams?: S3OutputListQueryParams): Promise<PaginationResponse<S3Output>> {
+  public list(queryParameters?: S3OutputListQueryParams | ((q: S3OutputListQueryParamsBuilder) => S3OutputListQueryParamsBuilder)): Promise<PaginationResponse<S3Output>> {
+    let queryParams: S3OutputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new S3OutputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<S3Output>>('/encoding/outputs/s3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<S3Output>(response);
       if (paginationResponse.items) {

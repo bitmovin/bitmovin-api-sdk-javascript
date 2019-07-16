@@ -2,8 +2,8 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import DailyStatistics from '../../../models/DailyStatistics';
 import PaginationResponse from '../../../models/PaginationResponse';
-import DailyStatisticsListQueryParams from './DailyStatisticsListQueryParams';
-import DailyStatisticsListByDateRangeQueryParams from './DailyStatisticsListByDateRangeQueryParams';
+import { DailyStatisticsListQueryParams, DailyStatisticsListQueryParamsBuilder } from './DailyStatisticsListQueryParams';
+import { DailyStatisticsListByDateRangeQueryParams, DailyStatisticsListByDateRangeQueryParamsBuilder } from './DailyStatisticsListByDateRangeQueryParams';
 
 /**
  * DailyApi - object-oriented interface
@@ -19,11 +19,17 @@ export default class DailyApi extends BaseAPI {
 
   /**
    * @summary List Daily Statistics
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DailyApi
    */
-  public list(queryParams?: DailyStatisticsListQueryParams): Promise<PaginationResponse<DailyStatistics>> {
+  public list(queryParameters?: DailyStatisticsListQueryParams | ((q: DailyStatisticsListQueryParamsBuilder) => DailyStatisticsListQueryParamsBuilder)): Promise<PaginationResponse<DailyStatistics>> {
+    let queryParams: DailyStatisticsListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DailyStatisticsListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DailyStatistics>(response);
       if (paginationResponse.items) {
@@ -37,15 +43,21 @@ export default class DailyApi extends BaseAPI {
    * @summary List daily statistics within specific dates
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DailyApi
    */
-  public listByDateRange(from: Date, to: Date, queryParams?: DailyStatisticsListByDateRangeQueryParams): Promise<PaginationResponse<DailyStatistics>> {
+  public listByDateRange(from: Date, to: Date, queryParameters?: DailyStatisticsListByDateRangeQueryParams | ((q: DailyStatisticsListByDateRangeQueryParamsBuilder) => DailyStatisticsListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<DailyStatistics>> {
     const pathParamMap = {
       from: from,
       to: to
     };
+    let queryParams: DailyStatisticsListByDateRangeQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DailyStatisticsListByDateRangeQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DailyStatistics>(response);
       if (paginationResponse.items) {

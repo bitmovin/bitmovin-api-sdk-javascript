@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import ClosedCaptionsMediaInfo from '../../../../../models/ClosedCaptionsMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import ClosedCaptionsMediaInfoListQueryParams from './ClosedCaptionsMediaInfoListQueryParams';
+import { ClosedCaptionsMediaInfoListQueryParams, ClosedCaptionsMediaInfoListQueryParamsBuilder } from './ClosedCaptionsMediaInfoListQueryParams';
 
 /**
  * ClosedCaptionsApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
   /**
    * @summary Add Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {ClosedCaptionsMediaInfo} closedCaptionsMediaInfo
+   * @param {ClosedCaptionsMediaInfo} closedCaptionsMediaInfo The Closed Captions Media to be added
    * @throws {RequiredError}
    * @memberof ClosedCaptionsApi
    */
@@ -70,14 +70,20 @@ export default class ClosedCaptionsApi extends BaseAPI {
   /**
    * @summary List all Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ClosedCaptionsApi
    */
-  public list(manifestId: string, queryParams?: ClosedCaptionsMediaInfoListQueryParams): Promise<PaginationResponse<ClosedCaptionsMediaInfo>> {
+  public list(manifestId: string, queryParameters?: ClosedCaptionsMediaInfoListQueryParams | ((q: ClosedCaptionsMediaInfoListQueryParamsBuilder) => ClosedCaptionsMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<ClosedCaptionsMediaInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: ClosedCaptionsMediaInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ClosedCaptionsMediaInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ClosedCaptionsMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/closed-captions', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ClosedCaptionsMediaInfo>(response);
       if (paginationResponse.items) {

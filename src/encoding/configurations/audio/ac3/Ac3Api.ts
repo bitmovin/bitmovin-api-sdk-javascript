@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import Ac3AudioConfiguration from '../../../../models/Ac3AudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Ac3AudioConfigurationListQueryParams from './Ac3AudioConfigurationListQueryParams';
+import { Ac3AudioConfigurationListQueryParams, Ac3AudioConfigurationListQueryParamsBuilder } from './Ac3AudioConfigurationListQueryParams';
 
 /**
  * Ac3Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class Ac3Api extends BaseAPI {
 
   /**
    * @summary Create AC3 Codec Configuration
-   * @param {Ac3AudioConfiguration} ac3AudioConfiguration
+   * @param {Ac3AudioConfiguration} ac3AudioConfiguration The AC3 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Ac3Api
    */
@@ -64,11 +64,17 @@ export default class Ac3Api extends BaseAPI {
 
   /**
    * @summary List AC3 Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Ac3Api
    */
-  public list(queryParams?: Ac3AudioConfigurationListQueryParams): Promise<PaginationResponse<Ac3AudioConfiguration>> {
+  public list(queryParameters?: Ac3AudioConfigurationListQueryParams | ((q: Ac3AudioConfigurationListQueryParamsBuilder) => Ac3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Ac3AudioConfiguration>> {
+    let queryParams: Ac3AudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Ac3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Ac3AudioConfiguration>>('/encoding/configurations/audio/ac3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Ac3AudioConfiguration>(response);
       if (paginationResponse.items) {

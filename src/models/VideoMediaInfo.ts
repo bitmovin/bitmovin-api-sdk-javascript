@@ -6,10 +6,9 @@ import StandardMediaInfo from './StandardMediaInfo';
  * @class VideoMediaInfo
  */
 export class VideoMediaInfo extends StandardMediaInfo {
-  constructor(obj: any) {
+  constructor(obj: Partial<VideoMediaInfo>) {
     super(obj);
   }
-
 }
 
 export default VideoMediaInfo;

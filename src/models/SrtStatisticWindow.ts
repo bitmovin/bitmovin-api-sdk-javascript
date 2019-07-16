@@ -5,27 +5,29 @@ import {map} from '../common/Mapper';
  * @class SrtStatisticWindow
  */
 export class SrtStatisticWindow {
-  constructor(obj: any) {
-    this.congestion = map(obj.congestion);
-    this.flight = map(obj.flight);
-    this.flow = map(obj.flow);
-  }
-
   /**
    * @type {number}
    * @memberof SrtStatisticWindow
    */
   public congestion?: number;
+
   /**
    * @type {number}
    * @memberof SrtStatisticWindow
    */
   public flight?: number;
+
   /**
    * @type {number}
    * @memberof SrtStatisticWindow
    */
   public flow?: number;
+
+  constructor(obj: Partial<SrtStatisticWindow>) {
+    this.congestion = map(obj.congestion);
+    this.flight = map(obj.flight);
+    this.flow = map(obj.flow);
+  }
 }
 
 export default SrtStatisticWindow;

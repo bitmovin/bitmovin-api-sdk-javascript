@@ -7,7 +7,63 @@ import BillableEncodingMinutes from './BillableEncodingMinutes';
  * @class DailyStatistics
  */
 export class DailyStatistics {
-  constructor(obj: any) {
+  /**
+   * Date for the shown data. Format: yyyy-MM-dd (required)
+   * @type {Date}
+   * @memberof DailyStatistics
+   */
+  public date: Date;
+
+  /**
+   * Bytes encoded. (required)
+   * @type {number}
+   * @memberof DailyStatistics
+   */
+  public bytesEncoded: number;
+
+  /**
+   * Time in seconds encoded for this day. (required)
+   * @type {number}
+   * @memberof DailyStatistics
+   */
+  public timeEncoded: number;
+
+  /**
+   * The billable minutes.
+   * @type {number}
+   * @memberof DailyStatistics
+   */
+  public billableMinutes?: number;
+
+  /**
+   * Label identifier.
+   * @type {string}
+   * @memberof DailyStatistics
+   */
+  public label?: string;
+
+  /**
+   * Billable minutes for each encoding configuration.
+   * @type {BillableEncodingMinutes[]}
+   * @memberof DailyStatistics
+   */
+  public billableEncodingMinutes?: BillableEncodingMinutes[];
+
+  /**
+   * Billable minutes for muxings.
+   * @type {number}
+   * @memberof DailyStatistics
+   */
+  public billableTransmuxingMinutes?: number;
+
+  /**
+   * Billable minutes for features
+   * @type {BillableEncodingFeatureMinutes[]}
+   * @memberof DailyStatistics
+   */
+  public billableFeatureMinutes?: BillableEncodingFeatureMinutes[];
+
+  constructor(obj: Partial<DailyStatistics>) {
     this.date = map(obj.date, Date);
     this.bytesEncoded = map(obj.bytesEncoded);
     this.timeEncoded = map(obj.timeEncoded);
@@ -17,55 +73,6 @@ export class DailyStatistics {
     this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
     this.billableFeatureMinutes = map<BillableEncodingFeatureMinutes>(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes);
   }
-
-  /**
-   * Date for the shown data. Format: yyyy-MM-dd (required)
-   * @type {Date}
-   * @memberof DailyStatistics
-   */
-  public date: Date;
-  /**
-   * Bytes encoded. (required)
-   * @type {number}
-   * @memberof DailyStatistics
-   */
-  public bytesEncoded: number;
-  /**
-   * Time in seconds encoded for this day. (required)
-   * @type {number}
-   * @memberof DailyStatistics
-   */
-  public timeEncoded: number;
-  /**
-   * The billable minutes.
-   * @type {number}
-   * @memberof DailyStatistics
-   */
-  public billableMinutes?: number;
-  /**
-   * Label identifier.
-   * @type {string}
-   * @memberof DailyStatistics
-   */
-  public label?: string;
-  /**
-   * Billable minutes for each encoding configuration.
-   * @type {Array<BillableEncodingMinutes>}
-   * @memberof DailyStatistics
-   */
-  public billableEncodingMinutes?: Array<BillableEncodingMinutes>;
-  /**
-   * Billable minutes for muxings.
-   * @type {number}
-   * @memberof DailyStatistics
-   */
-  public billableTransmuxingMinutes?: number;
-  /**
-   * Billable minutes for features
-   * @type {Array<BillableEncodingFeatureMinutes>}
-   * @memberof DailyStatistics
-   */
-  public billableFeatureMinutes?: Array<BillableEncodingFeatureMinutes>;
 }
 
 export default DailyStatistics;

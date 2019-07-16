@@ -6,17 +6,17 @@ import Input from './Input';
  * @class LocalInput
  */
 export class LocalInput extends Input {
-  constructor(obj: any) {
-    super(obj);
-    this.path = map(obj.path);
-  }
-
   /**
    * Path to your local storage (required)
    * @type {string}
    * @memberof LocalInput
    */
   public path: string;
+
+  constructor(obj: Partial<LocalInput>) {
+    super(obj);
+    this.path = map(obj.path);
+  }
 }
 
 export default LocalInput;

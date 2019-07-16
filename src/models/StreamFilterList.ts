@@ -6,16 +6,16 @@ import StreamFilter from './StreamFilter';
  * @class StreamFilterList
  */
 export class StreamFilterList {
-  constructor(obj: any) {
-    this.filters = map<StreamFilter>(obj.filters, StreamFilter);
-  }
-
   /**
    * List of stream filters (required)
-   * @type {Array<StreamFilter>}
+   * @type {StreamFilter[]}
    * @memberof StreamFilterList
    */
-  public filters: Array<StreamFilter>;
+  public filters: StreamFilter[];
+
+  constructor(obj: Partial<StreamFilterList>) {
+    this.filters = map<StreamFilter>(obj.filters, StreamFilter);
+  }
 }
 
 export default StreamFilterList;

@@ -6,23 +6,24 @@ import StreamInfosDetails from './StreamInfosDetails';
  * @class StreamInfos
  */
 export class StreamInfos {
-  constructor(obj: any) {
-    this.time = map(obj.time, Date);
-    this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails);
-  }
-
   /**
    * Timestamp of the event formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
    * @type {Date}
    * @memberof StreamInfos
    */
   public time: Date;
+
   /**
    * Details about billable minutes for each resolution category
-   * @type {Array<StreamInfosDetails>}
+   * @type {StreamInfosDetails[]}
    * @memberof StreamInfos
    */
-  public streamInfos?: Array<StreamInfosDetails>;
+  public streamInfos?: StreamInfosDetails[];
+
+  constructor(obj: Partial<StreamInfos>) {
+    this.time = map(obj.time, Date);
+    this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails);
+  }
 }
 
 export default StreamInfos;

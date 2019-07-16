@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomTag from '../../../../../models/CustomTag';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import CustomTagListQueryParams from './CustomTagListQueryParams';
+import { CustomTagListQueryParams, CustomTagListQueryParamsBuilder } from './CustomTagListQueryParams';
 
 /**
  * CustomTagsApi - object-oriented interface
@@ -21,7 +21,7 @@ export default class CustomTagsApi extends BaseAPI {
    * @summary Add Custom Tag to Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the audio media.
-   * @param {CustomTag} customTag
+   * @param {CustomTag} customTag The Custom Tag to be added
    * @throws {RequiredError}
    * @memberof CustomTagsApi
    */
@@ -77,15 +77,21 @@ export default class CustomTagsApi extends BaseAPI {
    * @summary List all Custom Tags of a Audio media
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the audio media.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CustomTagsApi
    */
-  public list(manifestId: string, mediaId: string, queryParams?: CustomTagListQueryParams): Promise<PaginationResponse<CustomTag>> {
+  public list(manifestId: string, mediaId: string, queryParameters?: CustomTagListQueryParams | ((q: CustomTagListQueryParamsBuilder) => CustomTagListQueryParamsBuilder)): Promise<PaginationResponse<CustomTag>> {
     const pathParamMap = {
       manifest_id: manifestId,
       media_id: mediaId
     };
+    let queryParams: CustomTagListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CustomTagListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CustomTag>>('/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CustomTag>(response);
       if (paginationResponse.items) {

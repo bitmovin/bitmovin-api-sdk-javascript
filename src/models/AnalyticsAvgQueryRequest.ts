@@ -1,5 +1,6 @@
 import {map} from '../common/Mapper';
-import AnalyticsFilter from './AnalyticsFilter';
+import AnalyticsAttribute from './AnalyticsAttribute';
+import AnalyticsBaseFilter from './AnalyticsBaseFilter';
 import AnalyticsInterval from './AnalyticsInterval';
 import AnalyticsOrderByEntry from './AnalyticsOrderByEntry';
 import AnalyticsQueryRequest from './AnalyticsQueryRequest';
@@ -9,10 +10,9 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  * @class AnalyticsAvgQueryRequest
  */
 export class AnalyticsAvgQueryRequest extends AnalyticsQueryRequest {
-  constructor(obj: any) {
+  constructor(obj: Partial<AnalyticsAvgQueryRequest>) {
     super(obj);
   }
-
 }
 
 export default AnalyticsAvgQueryRequest;

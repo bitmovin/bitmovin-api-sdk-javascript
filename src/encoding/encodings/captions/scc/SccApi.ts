@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConvertSccCaption from '../../../../models/ConvertSccCaption';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ConvertSccCaptionListQueryParams from './ConvertSccCaptionListQueryParams';
+import { ConvertSccCaptionListQueryParams, ConvertSccCaptionListQueryParamsBuilder } from './ConvertSccCaptionListQueryParams';
 
 /**
  * SccApi - object-oriented interface
@@ -73,14 +73,20 @@ export default class SccApi extends BaseAPI {
   /**
    * @summary List Convert SCC captions
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SccApi
    */
-  public list(encodingId: string, queryParams?: ConvertSccCaptionListQueryParams): Promise<PaginationResponse<ConvertSccCaption>> {
+  public list(encodingId: string, queryParameters?: ConvertSccCaptionListQueryParams | ((q: ConvertSccCaptionListQueryParamsBuilder) => ConvertSccCaptionListQueryParamsBuilder)): Promise<PaginationResponse<ConvertSccCaption>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ConvertSccCaptionListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ConvertSccCaptionListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ConvertSccCaption>>('/encoding/encodings/{encoding_id}/captions/scc', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ConvertSccCaption>(response);
       if (paginationResponse.items) {

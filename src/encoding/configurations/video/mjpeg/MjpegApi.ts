@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import MjpegVideoConfiguration from '../../../../models/MjpegVideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import MjpegVideoConfigurationListQueryParams from './MjpegVideoConfigurationListQueryParams';
+import { MjpegVideoConfigurationListQueryParams, MjpegVideoConfigurationListQueryParamsBuilder } from './MjpegVideoConfigurationListQueryParams';
 
 /**
  * MjpegApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class MjpegApi extends BaseAPI {
 
   /**
    * @summary Create MJPEG Codec Configuration
-   * @param {MjpegVideoConfiguration} mjpegVideoConfiguration
+   * @param {MjpegVideoConfiguration} mjpegVideoConfiguration The MJPEG Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof MjpegApi
    */
@@ -64,11 +64,17 @@ export default class MjpegApi extends BaseAPI {
 
   /**
    * @summary List MJPEG Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof MjpegApi
    */
-  public list(queryParams?: MjpegVideoConfigurationListQueryParams): Promise<PaginationResponse<MjpegVideoConfiguration>> {
+  public list(queryParameters?: MjpegVideoConfigurationListQueryParams | ((q: MjpegVideoConfigurationListQueryParamsBuilder) => MjpegVideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<MjpegVideoConfiguration>> {
+    let queryParams: MjpegVideoConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new MjpegVideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<MjpegVideoConfiguration>>('/encoding/configurations/video/mjpeg', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<MjpegVideoConfiguration>(response);
       if (paginationResponse.items) {

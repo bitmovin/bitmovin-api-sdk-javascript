@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AkamaiMslOutput from '../../../models/AkamaiMslOutput';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PaginationResponse from '../../../models/PaginationResponse';
-import AkamaiMslOutputListQueryParams from './AkamaiMslOutputListQueryParams';
+import { AkamaiMslOutputListQueryParams, AkamaiMslOutputListQueryParamsBuilder } from './AkamaiMslOutputListQueryParams';
 
 /**
  * AkamaiMslApi - object-oriented interface
@@ -64,11 +64,17 @@ export default class AkamaiMslApi extends BaseAPI {
 
   /**
    * @summary List Akamai MSL Outputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AkamaiMslApi
    */
-  public list(queryParams?: AkamaiMslOutputListQueryParams): Promise<PaginationResponse<AkamaiMslOutput>> {
+  public list(queryParameters?: AkamaiMslOutputListQueryParams | ((q: AkamaiMslOutputListQueryParamsBuilder) => AkamaiMslOutputListQueryParamsBuilder)): Promise<PaginationResponse<AkamaiMslOutput>> {
+    let queryParams: AkamaiMslOutputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AkamaiMslOutputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AkamaiMslOutput>>('/encoding/outputs/akamai-msl', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AkamaiMslOutput>(response);
       if (paginationResponse.items) {

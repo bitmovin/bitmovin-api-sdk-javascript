@@ -7,23 +7,24 @@ import VariantStreamDroppingMode from './VariantStreamDroppingMode';
  * @class AudioGroupConfiguration
  */
 export class AudioGroupConfiguration {
-  constructor(obj: any) {
-    this.droppingMode = map(obj.droppingMode);
-    this.groups = map<AudioGroup>(obj.groups, AudioGroup);
-  }
-
   /**
    * Dropping mode (required)
    * @type {VariantStreamDroppingMode}
    * @memberof AudioGroupConfiguration
    */
   public droppingMode: VariantStreamDroppingMode;
+
   /**
    * Audio groups (required)
-   * @type {Array<AudioGroup>}
+   * @type {AudioGroup[]}
    * @memberof AudioGroupConfiguration
    */
-  public groups: Array<AudioGroup>;
+  public groups: AudioGroup[];
+
+  constructor(obj: Partial<AudioGroupConfiguration>) {
+    this.droppingMode = map(obj.droppingMode);
+    this.groups = map<AudioGroup>(obj.groups, AudioGroup);
+  }
 }
 
 export default AudioGroupConfiguration;

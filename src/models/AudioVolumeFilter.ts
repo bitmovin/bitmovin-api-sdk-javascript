@@ -7,23 +7,24 @@ import Filter from './Filter';
  * @class AudioVolumeFilter
  */
 export class AudioVolumeFilter extends Filter {
-  constructor(obj: any) {
-    super(obj);
-    this.volume = map(obj.volume);
-    this.unit = map(obj.unit);
-  }
-
   /**
    * Audio volume value (required)
    * @type {number}
    * @memberof AudioVolumeFilter
    */
   public volume: number;
+
   /**
    * @type {AudioVolumeUnit}
    * @memberof AudioVolumeFilter
    */
   public unit: AudioVolumeUnit;
+
+  constructor(obj: Partial<AudioVolumeFilter>) {
+    super(obj);
+    this.volume = map(obj.volume);
+    this.unit = map(obj.unit);
+  }
 }
 
 export default AudioVolumeFilter;

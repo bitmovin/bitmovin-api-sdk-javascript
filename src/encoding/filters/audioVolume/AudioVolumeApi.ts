@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AudioVolumeFilter from '../../../models/AudioVolumeFilter';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PaginationResponse from '../../../models/PaginationResponse';
-import AudioVolumeFilterListQueryParams from './AudioVolumeFilterListQueryParams';
+import { AudioVolumeFilterListQueryParams, AudioVolumeFilterListQueryParamsBuilder } from './AudioVolumeFilterListQueryParams';
 
 /**
  * AudioVolumeApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class AudioVolumeApi extends BaseAPI {
 
   /**
    * @summary Create Audio Volume Filter
-   * @param {AudioVolumeFilter} audioVolumeFilter
+   * @param {AudioVolumeFilter} audioVolumeFilter The Audio Volume Filter to be created
    * @throws {RequiredError}
    * @memberof AudioVolumeApi
    */
@@ -64,11 +64,17 @@ export default class AudioVolumeApi extends BaseAPI {
 
   /**
    * @summary List Audio Volume Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AudioVolumeApi
    */
-  public list(queryParams?: AudioVolumeFilterListQueryParams): Promise<PaginationResponse<AudioVolumeFilter>> {
+  public list(queryParameters?: AudioVolumeFilterListQueryParams | ((q: AudioVolumeFilterListQueryParamsBuilder) => AudioVolumeFilterListQueryParamsBuilder)): Promise<PaginationResponse<AudioVolumeFilter>> {
+    let queryParams: AudioVolumeFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AudioVolumeFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AudioVolumeFilter>>('/encoding/filters/audio-volume', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioVolumeFilter>(response);
       if (paginationResponse.items) {

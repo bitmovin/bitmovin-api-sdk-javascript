@@ -4,7 +4,7 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashMp4Representation from '../../../../../../../models/DashMp4Representation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import DashMp4RepresentationListQueryParams from './DashMp4RepresentationListQueryParams';
+import { DashMp4RepresentationListQueryParams, DashMp4RepresentationListQueryParamsBuilder } from './DashMp4RepresentationListQueryParams';
 
 /**
  * Mp4Api - object-oriented interface
@@ -87,16 +87,22 @@ export default class Mp4Api extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Mp4Api
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashMp4RepresentationListQueryParams): Promise<PaginationResponse<DashMp4Representation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashMp4RepresentationListQueryParams | ((q: DashMp4RepresentationListQueryParamsBuilder) => DashMp4RepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashMp4Representation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashMp4RepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashMp4RepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashMp4Representation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/mp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashMp4Representation>(response);
       if (paginationResponse.items) {

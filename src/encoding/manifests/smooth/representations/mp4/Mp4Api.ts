@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import SmoothStreamingRepresentation from '../../../../../models/SmoothStreamingRepresentation';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import SmoothStreamingRepresentationListQueryParams from './SmoothStreamingRepresentationListQueryParams';
+import { SmoothStreamingRepresentationListQueryParams, SmoothStreamingRepresentationListQueryParamsBuilder } from './SmoothStreamingRepresentationListQueryParams';
 
 /**
  * Mp4Api - object-oriented interface
@@ -20,7 +20,7 @@ export default class Mp4Api extends BaseAPI {
   /**
    * @summary Add MP4 Representation to Smooth Streaming Manifest
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @param {SmoothStreamingRepresentation} smoothStreamingRepresentation
+   * @param {SmoothStreamingRepresentation} smoothStreamingRepresentation The MP4 Representation to be added
    * @throws {RequiredError}
    * @memberof Mp4Api
    */
@@ -70,14 +70,20 @@ export default class Mp4Api extends BaseAPI {
   /**
    * @summary List MP4 Representation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Mp4Api
    */
-  public list(manifestId: string, queryParams?: SmoothStreamingRepresentationListQueryParams): Promise<PaginationResponse<SmoothStreamingRepresentation>> {
+  public list(manifestId: string, queryParameters?: SmoothStreamingRepresentationListQueryParams | ((q: SmoothStreamingRepresentationListQueryParamsBuilder) => SmoothStreamingRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<SmoothStreamingRepresentation>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: SmoothStreamingRepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SmoothStreamingRepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SmoothStreamingRepresentation>>('/encoding/manifests/smooth/{manifest_id}/representations/mp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SmoothStreamingRepresentation>(response);
       if (paginationResponse.items) {

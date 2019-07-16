@@ -2,7 +2,7 @@ import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
 import ObjectDetectionTimestampResult from '../../../../../../models/ObjectDetectionTimestampResult';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import ObjectDetectionTimestampResultListQueryParams from './ObjectDetectionTimestampResultListQueryParams';
+import { ObjectDetectionTimestampResultListQueryParams, ObjectDetectionTimestampResultListQueryParamsBuilder } from './ObjectDetectionTimestampResultListQueryParams';
 
 /**
  * ByTimestampApi - object-oriented interface
@@ -20,15 +20,21 @@ export default class ByTimestampApi extends BaseAPI {
    * @summary List object detection results grouped by timestamp
    * @param {string} encodingId Id of the encoding
    * @param {string} objectDetectionId Id of the object detection configuration
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ByTimestampApi
    */
-  public list(encodingId: string, objectDetectionId: string, queryParams?: ObjectDetectionTimestampResultListQueryParams): Promise<PaginationResponse<ObjectDetectionTimestampResult>> {
+  public list(encodingId: string, objectDetectionId: string, queryParameters?: ObjectDetectionTimestampResultListQueryParams | ((q: ObjectDetectionTimestampResultListQueryParamsBuilder) => ObjectDetectionTimestampResultListQueryParamsBuilder)): Promise<PaginationResponse<ObjectDetectionTimestampResult>> {
     const pathParamMap = {
       encoding_id: encodingId,
       object_detection_id: objectDetectionId
     };
+    let queryParams: ObjectDetectionTimestampResultListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ObjectDetectionTimestampResultListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ObjectDetectionTimestampResult>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results/by-timestamp', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ObjectDetectionTimestampResult>(response);
       if (paginationResponse.items) {

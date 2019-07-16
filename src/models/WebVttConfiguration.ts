@@ -6,10 +6,9 @@ import BitmovinResource from './BitmovinResource';
  * @class WebVttConfiguration
  */
 export class WebVttConfiguration extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<WebVttConfiguration>) {
     super(obj);
   }
-
 }
 
 export default WebVttConfiguration;

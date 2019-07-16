@@ -16,7 +16,7 @@ export default class DefaultApi extends BaseAPI {
 
   /**
    * @summary Create HLS Manifest Default
-   * @param {HlsManifestDefault} hlsManifestDefault
+   * @param {HlsManifestDefault} hlsManifestDefault The HLS Manifest to be created
    * @throws {RequiredError}
    * @memberof DefaultApi
    */

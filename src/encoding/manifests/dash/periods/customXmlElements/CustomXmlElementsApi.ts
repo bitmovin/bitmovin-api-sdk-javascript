@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomXmlElement from '../../../../../models/CustomXmlElement';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import CustomXmlElementListQueryParams from './CustomXmlElementListQueryParams';
+import { CustomXmlElementListQueryParams, CustomXmlElementListQueryParamsBuilder } from './CustomXmlElementListQueryParams';
 
 /**
  * CustomXmlElementsApi - object-oriented interface
@@ -77,15 +77,21 @@ export default class CustomXmlElementsApi extends BaseAPI {
    * @summary List all Custom XML Elements of Period
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CustomXmlElementsApi
    */
-  public list(manifestId: string, periodId: string, queryParams?: CustomXmlElementListQueryParams): Promise<PaginationResponse<CustomXmlElement>> {
+  public list(manifestId: string, periodId: string, queryParameters?: CustomXmlElementListQueryParams | ((q: CustomXmlElementListQueryParamsBuilder) => CustomXmlElementListQueryParamsBuilder)): Promise<PaginationResponse<CustomXmlElement>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId
     };
+    let queryParams: CustomXmlElementListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CustomXmlElementListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CustomXmlElement>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CustomXmlElement>(response);
       if (paginationResponse.items) {

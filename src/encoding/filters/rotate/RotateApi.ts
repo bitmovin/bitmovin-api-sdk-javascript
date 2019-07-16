@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import RotateFilter from '../../../models/RotateFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import RotateFilterListQueryParams from './RotateFilterListQueryParams';
+import { RotateFilterListQueryParams, RotateFilterListQueryParamsBuilder } from './RotateFilterListQueryParams';
 
 /**
  * RotateApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class RotateApi extends BaseAPI {
 
   /**
    * @summary Create Rotate Filter
-   * @param {RotateFilter} rotateFilter
+   * @param {RotateFilter} rotateFilter The Rotate Filter to be created
    * @throws {RequiredError}
    * @memberof RotateApi
    */
@@ -64,11 +64,17 @@ export default class RotateApi extends BaseAPI {
 
   /**
    * @summary List Rotate Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof RotateApi
    */
-  public list(queryParams?: RotateFilterListQueryParams): Promise<PaginationResponse<RotateFilter>> {
+  public list(queryParameters?: RotateFilterListQueryParams | ((q: RotateFilterListQueryParamsBuilder) => RotateFilterListQueryParamsBuilder)): Promise<PaginationResponse<RotateFilter>> {
+    let queryParams: RotateFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new RotateFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<RotateFilter>>('/encoding/filters/rotate', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<RotateFilter>(response);
       if (paginationResponse.items) {

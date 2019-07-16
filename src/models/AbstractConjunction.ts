@@ -6,17 +6,17 @@ import AbstractCondition from './AbstractCondition';
  * @class AbstractConjunction
  */
 export class AbstractConjunction extends AbstractCondition {
-  constructor(obj: any) {
+  /**
+   * Array to perform the AND/OR evaluation on
+   * @type {AbstractCondition[]}
+   * @memberof AbstractConjunction
+   */
+  public conditions?: AbstractCondition[];
+
+  constructor(obj: Partial<AbstractConjunction>) {
     super(obj);
     this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
   }
-
-  /**
-   * Array to perform the AND/OR evaluation on
-   * @type {Array<AbstractCondition>}
-   * @memberof AbstractConjunction
-   */
-  public conditions?: Array<AbstractCondition>;
 }
 
 export default AbstractConjunction;

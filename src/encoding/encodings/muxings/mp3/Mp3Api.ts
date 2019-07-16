@@ -5,7 +5,7 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3Muxing from '../../../../models/Mp3Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Mp3MuxingListQueryParams from './Mp3MuxingListQueryParams';
+import { Mp3MuxingListQueryParams, Mp3MuxingListQueryParamsBuilder } from './Mp3MuxingListQueryParams';
 
 /**
  * Mp3Api - object-oriented interface
@@ -26,7 +26,7 @@ export default class Mp3Api extends BaseAPI {
   /**
    * @summary Add MP3 Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Mp3Muxing} mp3Muxing
+   * @param {Mp3Muxing} mp3Muxing The MP3 Muxing to be created
    * @throws {RequiredError}
    * @memberof Mp3Api
    */
@@ -76,14 +76,20 @@ export default class Mp3Api extends BaseAPI {
   /**
    * @summary List MP3 Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Mp3Api
    */
-  public list(encodingId: string, queryParams?: Mp3MuxingListQueryParams): Promise<PaginationResponse<Mp3Muxing>> {
+  public list(encodingId: string, queryParameters?: Mp3MuxingListQueryParams | ((q: Mp3MuxingListQueryParamsBuilder) => Mp3MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Mp3Muxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: Mp3MuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Mp3MuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Mp3Muxing>>('/encoding/encodings/{encoding_id}/muxings/mp3', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Mp3Muxing>(response);
       if (paginationResponse.items) {

@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Thumbnail from '../../../../models/Thumbnail';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ThumbnailListQueryParams from './ThumbnailListQueryParams';
+import { ThumbnailListQueryParams, ThumbnailListQueryParamsBuilder } from './ThumbnailListQueryParams';
 
 /**
  * ThumbnailsApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class ThumbnailsApi extends BaseAPI {
    * @summary Add Thumbnail
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {Thumbnail} thumbnail
+   * @param {Thumbnail} thumbnail The Thumbnail to be added
    * @throws {RequiredError}
    * @memberof ThumbnailsApi
    */
@@ -80,15 +80,21 @@ export default class ThumbnailsApi extends BaseAPI {
    * @summary List Thumbnails
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ThumbnailsApi
    */
-  public list(encodingId: string, streamId: string, queryParams?: ThumbnailListQueryParams): Promise<PaginationResponse<Thumbnail>> {
+  public list(encodingId: string, streamId: string, queryParameters?: ThumbnailListQueryParams | ((q: ThumbnailListQueryParamsBuilder) => ThumbnailListQueryParamsBuilder)): Promise<PaginationResponse<Thumbnail>> {
     const pathParamMap = {
       encoding_id: encodingId,
       stream_id: streamId
     };
+    let queryParams: ThumbnailListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ThumbnailListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Thumbnail>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Thumbnail>(response);
       if (paginationResponse.items) {

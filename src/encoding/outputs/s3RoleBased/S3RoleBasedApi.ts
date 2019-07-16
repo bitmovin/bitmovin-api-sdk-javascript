@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import S3RoleBasedOutput from '../../../models/S3RoleBasedOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import S3RoleBasedOutputListQueryParams from './S3RoleBasedOutputListQueryParams';
+import { S3RoleBasedOutputListQueryParams, S3RoleBasedOutputListQueryParamsBuilder } from './S3RoleBasedOutputListQueryParams';
 
 /**
  * S3RoleBasedApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class S3RoleBasedApi extends BaseAPI {
 
   /**
    * @summary List S3 Role-based Outputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof S3RoleBasedApi
    */
-  public list(queryParams?: S3RoleBasedOutputListQueryParams): Promise<PaginationResponse<S3RoleBasedOutput>> {
+  public list(queryParameters?: S3RoleBasedOutputListQueryParams | ((q: S3RoleBasedOutputListQueryParamsBuilder) => S3RoleBasedOutputListQueryParamsBuilder)): Promise<PaginationResponse<S3RoleBasedOutput>> {
+    let queryParams: S3RoleBasedOutputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new S3RoleBasedOutputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<S3RoleBasedOutput>>('/encoding/outputs/s3-role-based', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<S3RoleBasedOutput>(response);
       if (paginationResponse.items) {

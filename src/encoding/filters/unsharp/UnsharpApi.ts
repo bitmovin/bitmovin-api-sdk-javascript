@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import UnsharpFilter from '../../../models/UnsharpFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import UnsharpFilterListQueryParams from './UnsharpFilterListQueryParams';
+import { UnsharpFilterListQueryParams, UnsharpFilterListQueryParamsBuilder } from './UnsharpFilterListQueryParams';
 
 /**
  * UnsharpApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class UnsharpApi extends BaseAPI {
 
   /**
    * @summary Create Unsharp Filter
-   * @param {UnsharpFilter} unsharpFilter
+   * @param {UnsharpFilter} unsharpFilter The Unsharp Filter to be created
    * @throws {RequiredError}
    * @memberof UnsharpApi
    */
@@ -64,11 +64,17 @@ export default class UnsharpApi extends BaseAPI {
 
   /**
    * @summary List Unsharp Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof UnsharpApi
    */
-  public list(queryParams?: UnsharpFilterListQueryParams): Promise<PaginationResponse<UnsharpFilter>> {
+  public list(queryParameters?: UnsharpFilterListQueryParams | ((q: UnsharpFilterListQueryParamsBuilder) => UnsharpFilterListQueryParamsBuilder)): Promise<PaginationResponse<UnsharpFilter>> {
+    let queryParams: UnsharpFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new UnsharpFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<UnsharpFilter>>('/encoding/filters/unsharp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<UnsharpFilter>(response);
       if (paginationResponse.items) {

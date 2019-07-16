@@ -7,24 +7,25 @@ import Id3TagPositionMode from './Id3TagPositionMode';
  * @class PlaintextId3Tag
  */
 export class PlaintextId3Tag extends Id3Tag {
-  constructor(obj: any) {
-    super(obj);
-    this.text = map(obj.text);
-    this.frameId = map(obj.frameId);
-  }
-
   /**
    * Plain Text Data (required)
    * @type {string}
    * @memberof PlaintextId3Tag
    */
   public text: string;
+
   /**
    * 4 character long Frame ID (required)
    * @type {string}
    * @memberof PlaintextId3Tag
    */
   public frameId: string;
+
+  constructor(obj: Partial<PlaintextId3Tag>) {
+    super(obj);
+    this.text = map(obj.text);
+    this.frameId = map(obj.frameId);
+  }
 }
 
 export default PlaintextId3Tag;

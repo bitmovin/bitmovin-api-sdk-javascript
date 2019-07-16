@@ -18,7 +18,7 @@ export default class WebvttApi extends BaseAPI {
   /**
    * @summary Add WebVTT sidecar file
    * @param {string} encodingId Id of the encoding.
-   * @param {WebVttSidecarFile} webVttSidecarFile
+   * @param {WebVttSidecarFile} webVttSidecarFile The WebVTT Sidecar file to be added
    * @throws {RequiredError}
    * @memberof WebvttApi
    */

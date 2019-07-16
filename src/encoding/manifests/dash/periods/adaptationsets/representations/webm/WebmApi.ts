@@ -5,7 +5,7 @@ import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import DashWebmRepresentation from '../../../../../../../models/DashWebmRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import DashWebmRepresentationListQueryParams from './DashWebmRepresentationListQueryParams';
+import { DashWebmRepresentationListQueryParams, DashWebmRepresentationListQueryParamsBuilder } from './DashWebmRepresentationListQueryParams';
 
 /**
  * WebmApi - object-oriented interface
@@ -88,16 +88,22 @@ export default class WebmApi extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof WebmApi
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashWebmRepresentationListQueryParams): Promise<PaginationResponse<DashWebmRepresentation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashWebmRepresentationListQueryParams | ((q: DashWebmRepresentationListQueryParamsBuilder) => DashWebmRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashWebmRepresentation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashWebmRepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashWebmRepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashWebmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashWebmRepresentation>(response);
       if (paginationResponse.items) {

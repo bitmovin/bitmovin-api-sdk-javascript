@@ -5,15 +5,15 @@ import {map} from '../common/Mapper';
  * @class MuxingStream
  */
 export class MuxingStream {
-  constructor(obj: any) {
-    this.streamId = map(obj.streamId);
-  }
-
   /**
    * @type {string}
    * @memberof MuxingStream
    */
   public streamId: string;
+
+  constructor(obj: Partial<MuxingStream>) {
+    this.streamId = map(obj.streamId);
+  }
 }
 
 export default MuxingStream;

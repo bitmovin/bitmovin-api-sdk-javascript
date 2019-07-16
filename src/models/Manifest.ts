@@ -8,23 +8,24 @@ import ManifestType from './ManifestType';
  * @class Manifest
  */
 export class Manifest extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.type = map(obj.type);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-  }
-
   /**
    * @type {ManifestType}
    * @memberof Manifest
    */
   public type?: ManifestType;
+
   /**
    * The outputs to store the manifest (required)
-   * @type {Array<EncodingOutput>}
+   * @type {EncodingOutput[]}
    * @memberof Manifest
    */
-  public outputs: Array<EncodingOutput>;
+  public outputs: EncodingOutput[];
+
+  constructor(obj: Partial<Manifest>) {
+    super(obj);
+    this.type = map(obj.type);
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+  }
 }
 
 export default Manifest;

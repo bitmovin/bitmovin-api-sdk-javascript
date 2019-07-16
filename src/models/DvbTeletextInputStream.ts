@@ -7,7 +7,42 @@ import StreamSelectionMode from './StreamSelectionMode';
  * @class DvbTeletextInputStream
  */
 export class DvbTeletextInputStream extends InputStream {
-  constructor(obj: any) {
+  /**
+   * Id of input
+   * @type {string}
+   * @memberof DvbTeletextInputStream
+   */
+  public inputId?: string;
+
+  /**
+   * Path to media file
+   * @type {string}
+   * @memberof DvbTeletextInputStream
+   */
+  public inputPath?: string;
+
+  /**
+   * Specifies the algorithm how the stream in the input file will be selected
+   * @type {StreamSelectionMode}
+   * @memberof DvbTeletextInputStream
+   */
+  public selectionMode?: StreamSelectionMode;
+
+  /**
+   * Position of the stream
+   * @type {number}
+   * @memberof DvbTeletextInputStream
+   */
+  public position?: number;
+
+  /**
+   * Page number of the subtitles
+   * @type {number}
+   * @memberof DvbTeletextInputStream
+   */
+  public page?: number;
+
+  constructor(obj: Partial<DvbTeletextInputStream>) {
     super(obj);
     this.inputId = map(obj.inputId);
     this.inputPath = map(obj.inputPath);
@@ -15,37 +50,6 @@ export class DvbTeletextInputStream extends InputStream {
     this.position = map(obj.position);
     this.page = map(obj.page);
   }
-
-  /**
-   * Id of input
-   * @type {string}
-   * @memberof DvbTeletextInputStream
-   */
-  public inputId?: string;
-  /**
-   * Path to media file
-   * @type {string}
-   * @memberof DvbTeletextInputStream
-   */
-  public inputPath?: string;
-  /**
-   * Specifies the algorithm how the stream in the input file will be selected
-   * @type {StreamSelectionMode}
-   * @memberof DvbTeletextInputStream
-   */
-  public selectionMode?: StreamSelectionMode;
-  /**
-   * Position of the stream
-   * @type {number}
-   * @memberof DvbTeletextInputStream
-   */
-  public position?: number;
-  /**
-   * Page number of the subtitles
-   * @type {number}
-   * @memberof DvbTeletextInputStream
-   */
-  public page?: number;
 }
 
 export default DvbTeletextInputStream;

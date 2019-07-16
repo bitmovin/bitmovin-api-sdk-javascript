@@ -5,7 +5,7 @@ import CaptionsApi from './captions/CaptionsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import CmafMuxing from '../../../../models/CmafMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import CmafMuxingListQueryParams from './CmafMuxingListQueryParams';
+import { CmafMuxingListQueryParams, CmafMuxingListQueryParamsBuilder } from './CmafMuxingListQueryParams';
 
 /**
  * CmafApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class CmafApi extends BaseAPI {
   /**
    * @summary Add CMAF muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {CmafMuxing} cmafMuxing
+   * @param {CmafMuxing} cmafMuxing The CMAF muxing to be created
    * @throws {RequiredError}
    * @memberof CmafApi
    */
@@ -76,14 +76,20 @@ export default class CmafApi extends BaseAPI {
   /**
    * @summary List CMAF muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CmafApi
    */
-  public list(encodingId: string, queryParams?: CmafMuxingListQueryParams): Promise<PaginationResponse<CmafMuxing>> {
+  public list(encodingId: string, queryParameters?: CmafMuxingListQueryParams | ((q: CmafMuxingListQueryParamsBuilder) => CmafMuxingListQueryParamsBuilder)): Promise<PaginationResponse<CmafMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: CmafMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CmafMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CmafMuxing>>('/encoding/encodings/{encoding_id}/muxings/cmaf', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CmafMuxing>(response);
       if (paginationResponse.items) {

@@ -11,24 +11,25 @@ import StreamConditionsMode from './StreamConditionsMode';
  * @class ProgressiveWebmMuxing
  */
 export class ProgressiveWebmMuxing extends Muxing {
-  constructor(obj: any) {
-    super(obj);
-    this.filename = map(obj.filename);
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
-  }
-
   /**
    * Name of the new Video
    * @type {string}
    * @memberof ProgressiveWebmMuxing
    */
   public filename?: string;
+
   /**
    * Modifies the internal chunk length used for chunked encoding
    * @type {InternalChunkLength}
    * @memberof ProgressiveWebmMuxing
    */
   public internalChunkLength?: InternalChunkLength;
+
+  constructor(obj: Partial<ProgressiveWebmMuxing>) {
+    super(obj);
+    this.filename = map(obj.filename);
+    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+  }
 }
 
 export default ProgressiveWebmMuxing;

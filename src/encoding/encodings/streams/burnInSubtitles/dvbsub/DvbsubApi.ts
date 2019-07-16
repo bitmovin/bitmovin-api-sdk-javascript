@@ -18,7 +18,7 @@ export default class DvbsubApi extends BaseAPI {
    * @summary Burn-In DVB-SUB Subtitle into Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {StreamDvbSubSubtitle} streamDvbSubSubtitle
+   * @param {StreamDvbSubSubtitle} streamDvbSubSubtitle The Burn-In DVB-SUB Subtitle to be added
    * @throws {RequiredError}
    * @memberof DvbsubApi
    */

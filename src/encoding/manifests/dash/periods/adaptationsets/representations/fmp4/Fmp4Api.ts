@@ -6,7 +6,7 @@ import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashFmp4Representation from '../../../../../../../models/DashFmp4Representation';
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import DashFmp4RepresentationListQueryParams from './DashFmp4RepresentationListQueryParams';
+import { DashFmp4RepresentationListQueryParams, DashFmp4RepresentationListQueryParamsBuilder } from './DashFmp4RepresentationListQueryParams';
 
 /**
  * Fmp4Api - object-oriented interface
@@ -91,16 +91,22 @@ export default class Fmp4Api extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Fmp4Api
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashFmp4RepresentationListQueryParams): Promise<PaginationResponse<DashFmp4Representation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashFmp4RepresentationListQueryParams | ((q: DashFmp4RepresentationListQueryParamsBuilder) => DashFmp4RepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashFmp4Representation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashFmp4RepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashFmp4RepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashFmp4Representation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashFmp4Representation>(response);
       if (paginationResponse.items) {

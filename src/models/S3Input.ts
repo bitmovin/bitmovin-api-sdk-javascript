@@ -7,38 +7,41 @@ import Input from './Input';
  * @class S3Input
  */
 export class S3Input extends Input {
-  constructor(obj: any) {
-    super(obj);
-    this.cloudRegion = map(obj.cloudRegion);
-    this.bucketName = map(obj.bucketName);
-    this.accessKey = map(obj.accessKey);
-    this.secretKey = map(obj.secretKey);
-  }
-
   /**
    * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
    * @type {AwsCloudRegion}
    * @memberof S3Input
    */
   public cloudRegion?: AwsCloudRegion;
+
   /**
    * Name of the bucket (required)
    * @type {string}
    * @memberof S3Input
    */
   public bucketName: string;
+
   /**
    * Amazon access key (required)
    * @type {string}
    * @memberof S3Input
    */
   public accessKey: string;
+
   /**
    * Amazon secret key (required)
    * @type {string}
    * @memberof S3Input
    */
   public secretKey: string;
+
+  constructor(obj: Partial<S3Input>) {
+    super(obj);
+    this.cloudRegion = map(obj.cloudRegion);
+    this.bucketName = map(obj.bucketName);
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
+  }
 }
 
 export default S3Input;

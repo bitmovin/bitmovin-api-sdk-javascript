@@ -5,7 +5,7 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveMovMuxing from '../../../../models/ProgressiveMovMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ProgressiveMovMuxingListQueryParams from './ProgressiveMovMuxingListQueryParams';
+import { ProgressiveMovMuxingListQueryParams, ProgressiveMovMuxingListQueryParamsBuilder } from './ProgressiveMovMuxingListQueryParams';
 
 /**
  * ProgressiveMovApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   /**
    * @summary Add Progressive MOV Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ProgressiveMovMuxing} progressiveMovMuxing
+   * @param {ProgressiveMovMuxing} progressiveMovMuxing The Progressive MOV Muxing to be created
    * @throws {RequiredError}
    * @memberof ProgressiveMovApi
    */
@@ -76,14 +76,20 @@ export default class ProgressiveMovApi extends BaseAPI {
   /**
    * @summary List Progressive MOV Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ProgressiveMovApi
    */
-  public list(encodingId: string, queryParams?: ProgressiveMovMuxingListQueryParams): Promise<PaginationResponse<ProgressiveMovMuxing>> {
+  public list(encodingId: string, queryParameters?: ProgressiveMovMuxingListQueryParams | ((q: ProgressiveMovMuxingListQueryParamsBuilder) => ProgressiveMovMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ProgressiveMovMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ProgressiveMovMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ProgressiveMovMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ProgressiveMovMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-mov', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ProgressiveMovMuxing>(response);
       if (paginationResponse.items) {

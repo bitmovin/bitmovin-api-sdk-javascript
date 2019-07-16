@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import AudioMediaInfo from '../../../../../models/AudioMediaInfo';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import AudioMediaInfoListQueryParams from './AudioMediaInfoListQueryParams';
+import { AudioMediaInfoListQueryParams, AudioMediaInfoListQueryParamsBuilder } from './AudioMediaInfoListQueryParams';
 
 /**
  * AudioApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class AudioApi extends BaseAPI {
   /**
    * @summary Add Audio Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {AudioMediaInfo} audioMediaInfo
+   * @param {AudioMediaInfo} audioMediaInfo The Audio Media to be added
    * @throws {RequiredError}
    * @memberof AudioApi
    */
@@ -70,14 +70,20 @@ export default class AudioApi extends BaseAPI {
   /**
    * @summary List all Audio Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AudioApi
    */
-  public list(manifestId: string, queryParams?: AudioMediaInfoListQueryParams): Promise<PaginationResponse<AudioMediaInfo>> {
+  public list(manifestId: string, queryParameters?: AudioMediaInfoListQueryParams | ((q: AudioMediaInfoListQueryParamsBuilder) => AudioMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<AudioMediaInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: AudioMediaInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AudioMediaInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AudioMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/audio', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioMediaInfo>(response);
       if (paginationResponse.items) {

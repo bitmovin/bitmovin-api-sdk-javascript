@@ -9,36 +9,39 @@ import SidecarErrorMode from './SidecarErrorMode';
  * @class SidecarFile
  */
 export class SidecarFile extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.errorMode = map(obj.errorMode);
-  }
-
   /**
    * Id of input (required)
    * @type {string}
    * @memberof SidecarFile
    */
   public inputId: string;
+
   /**
    * Path to sidecar file (required)
    * @type {string}
    * @memberof SidecarFile
    */
   public inputPath: string;
+
   /**
-   * @type {Array<EncodingOutput>}
+   * @type {EncodingOutput[]}
    * @memberof SidecarFile
    */
-  public outputs?: Array<EncodingOutput>;
+  public outputs?: EncodingOutput[];
+
   /**
    * @type {SidecarErrorMode}
    * @memberof SidecarFile
    */
   public errorMode?: SidecarErrorMode;
+
+  constructor(obj: Partial<SidecarFile>) {
+    super(obj);
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+    this.errorMode = map(obj.errorMode);
+  }
 }
 
 export default SidecarFile;

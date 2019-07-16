@@ -18,7 +18,7 @@ export default class AvgApi extends BaseAPI {
 
   /**
    * @summary Avg
-   * @param {AnalyticsAvgQueryRequest} analyticsAvgQueryRequest
+   * @param {AnalyticsAvgQueryRequest} analyticsAvgQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof AvgApi
    */

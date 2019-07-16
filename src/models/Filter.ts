@@ -19,10 +19,9 @@ import WatermarkFilter from './WatermarkFilter';
  * @class Filter
  */
 export class Filter extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<Filter>) {
     super(obj);
   }
-
 }
 
 export default Filter;

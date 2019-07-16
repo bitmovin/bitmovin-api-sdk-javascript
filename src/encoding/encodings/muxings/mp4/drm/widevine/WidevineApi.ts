@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import WidevineDrm from '../../../../../../models/WidevineDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import WidevineDrmListQueryParams from './WidevineDrmListQueryParams';
+import { WidevineDrmListQueryParams, WidevineDrmListQueryParamsBuilder } from './WidevineDrmListQueryParams';
 
 /**
  * WidevineApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class WidevineApi extends BaseAPI {
    * @summary Add Widevine DRM to MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
-   * @param {WidevineDrm} widevineDrm
+   * @param {WidevineDrm} widevineDrm The Widevine DRM to be created
    * @throws {RequiredError}
    * @memberof WidevineApi
    */
@@ -80,15 +80,21 @@ export default class WidevineApi extends BaseAPI {
    * @summary List Widevine DRMs of MP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4 fragment.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof WidevineApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: WidevineDrmListQueryParams): Promise<PaginationResponse<WidevineDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: WidevineDrmListQueryParams | ((q: WidevineDrmListQueryParamsBuilder) => WidevineDrmListQueryParamsBuilder)): Promise<PaginationResponse<WidevineDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: WidevineDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new WidevineDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<WidevineDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/widevine', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WidevineDrm>(response);
       if (paginationResponse.items) {

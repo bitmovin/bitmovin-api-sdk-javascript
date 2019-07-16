@@ -5,16 +5,16 @@ import {map} from '../common/Mapper';
  * @class ManifestResource
  */
 export class ManifestResource {
-  constructor(obj: any) {
-    this.manifestId = map(obj.manifestId);
-  }
-
   /**
    * Id of the manifest resource (required)
    * @type {string}
    * @memberof ManifestResource
    */
   public manifestId: string;
+
+  constructor(obj: Partial<ManifestResource>) {
+    this.manifestId = map(obj.manifestId);
+  }
 }
 
 export default ManifestResource;

@@ -4,7 +4,7 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import StandardMediaInfo from '../../../../../models/StandardMediaInfo';
 import VideoMediaInfo from '../../../../../models/VideoMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import VideoMediaInfoListQueryParams from './VideoMediaInfoListQueryParams';
+import { VideoMediaInfoListQueryParams, VideoMediaInfoListQueryParamsBuilder } from './VideoMediaInfoListQueryParams';
 
 /**
  * VideoApi - object-oriented interface
@@ -21,7 +21,7 @@ export default class VideoApi extends BaseAPI {
   /**
    * @summary Add Video Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {VideoMediaInfo} videoMediaInfo
+   * @param {VideoMediaInfo} videoMediaInfo The Video Media to be added
    * @throws {RequiredError}
    * @memberof VideoApi
    */
@@ -71,14 +71,20 @@ export default class VideoApi extends BaseAPI {
   /**
    * @summary List all Video Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof VideoApi
    */
-  public list(manifestId: string, queryParams?: VideoMediaInfoListQueryParams): Promise<PaginationResponse<VideoMediaInfo>> {
+  public list(manifestId: string, queryParameters?: VideoMediaInfoListQueryParams | ((q: VideoMediaInfoListQueryParamsBuilder) => VideoMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<VideoMediaInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: VideoMediaInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new VideoMediaInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<VideoMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/video', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<VideoMediaInfo>(response);
       if (paginationResponse.items) {

@@ -13,7 +13,40 @@ import TimeCode from './TimeCode';
  * @class Mp4Muxing
  */
 export class Mp4Muxing extends Muxing {
-  constructor(obj: any) {
+  /**
+   * Name of the new Video
+   * @type {string}
+   * @memberof Mp4Muxing
+   */
+  public filename?: string;
+
+  /**
+   *  Duration of fragments in milliseconds. Required for Fragmented MP4 Muxing (for Smooth Streaming or DASH On-Demand). Not setting this will result in unfragmented mp4.
+   * @type {number}
+   * @memberof Mp4Muxing
+   */
+  public fragmentDuration?: number;
+
+  /**
+   * @type {TimeCode}
+   * @memberof Mp4Muxing
+   */
+  public timeCode?: TimeCode;
+
+  /**
+   * @type {FragmentedMp4MuxingManifestType}
+   * @memberof Mp4Muxing
+   */
+  public fragmentedMP4MuxingManifestType?: FragmentedMp4MuxingManifestType;
+
+  /**
+   * Modifies the internal chunk length used for chunked encoding
+   * @type {InternalChunkLength}
+   * @memberof Mp4Muxing
+   */
+  public internalChunkLength?: InternalChunkLength;
+
+  constructor(obj: Partial<Mp4Muxing>) {
     super(obj);
     this.filename = map(obj.filename);
     this.fragmentDuration = map(obj.fragmentDuration);
@@ -21,35 +54,6 @@ export class Mp4Muxing extends Muxing {
     this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }
-
-  /**
-   * Name of the new Video
-   * @type {string}
-   * @memberof Mp4Muxing
-   */
-  public filename?: string;
-  /**
-   *  Duration of fragments in milliseconds. Required for Fragmented MP4 Muxing (for Smooth Streaming or DASH On-Demand). Not setting this will result in unfragmented mp4.
-   * @type {number}
-   * @memberof Mp4Muxing
-   */
-  public fragmentDuration?: number;
-  /**
-   * @type {TimeCode}
-   * @memberof Mp4Muxing
-   */
-  public timeCode?: TimeCode;
-  /**
-   * @type {FragmentedMp4MuxingManifestType}
-   * @memberof Mp4Muxing
-   */
-  public fragmentedMP4MuxingManifestType?: FragmentedMp4MuxingManifestType;
-  /**
-   * Modifies the internal chunk length used for chunked encoding
-   * @type {InternalChunkLength}
-   * @memberof Mp4Muxing
-   */
-  public internalChunkLength?: InternalChunkLength;
 }
 
 export default Mp4Muxing;

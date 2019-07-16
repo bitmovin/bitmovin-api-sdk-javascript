@@ -6,10 +6,9 @@ import Input from './Input';
  * @class UdpInput
  */
 export class UdpInput extends Input {
-  constructor(obj: any) {
+  constructor(obj: Partial<UdpInput>) {
     super(obj);
   }
-
 }
 
 export default UdpInput;

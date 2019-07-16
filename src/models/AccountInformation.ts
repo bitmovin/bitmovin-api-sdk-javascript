@@ -7,7 +7,49 @@ import BitmovinResource from './BitmovinResource';
  * @class AccountInformation
  */
 export class AccountInformation extends BitmovinResource {
-  constructor(obj: any) {
+  /**
+   * Email address of the account. (required)
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public email: string;
+
+  /**
+   * ApiKeys associated with the account (required)
+   * @type {AccountApiKey[]}
+   * @memberof AccountInformation
+   */
+  public apiKeys: AccountApiKey[];
+
+  /**
+   * First name of the tenant.
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public firstName?: string;
+
+  /**
+   * Last name of the tenant.
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public lastName?: string;
+
+  /**
+   * Phone number of the tenant.
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public phone?: string;
+
+  /**
+   * Company name of the tenant.
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public company?: string;
+
+  constructor(obj: Partial<AccountInformation>) {
     super(obj);
     this.email = map(obj.email);
     this.apiKeys = map<AccountApiKey>(obj.apiKeys, AccountApiKey);
@@ -16,43 +58,6 @@ export class AccountInformation extends BitmovinResource {
     this.phone = map(obj.phone);
     this.company = map(obj.company);
   }
-
-  /**
-   * Email address of the account. (required)
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public email: string;
-  /**
-   * ApiKeys associated with the account (required)
-   * @type {Array<AccountApiKey>}
-   * @memberof AccountInformation
-   */
-  public apiKeys: Array<AccountApiKey>;
-  /**
-   * First name of the tenant.
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public firstName?: string;
-  /**
-   * Last name of the tenant.
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public lastName?: string;
-  /**
-   * Phone number of the tenant.
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public phone?: string;
-  /**
-   * Company name of the tenant.
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public company?: string;
 }
 
 export default AccountInformation;

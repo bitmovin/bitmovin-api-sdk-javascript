@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import CropFilter from '../../../models/CropFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import CropFilterListQueryParams from './CropFilterListQueryParams';
+import { CropFilterListQueryParams, CropFilterListQueryParamsBuilder } from './CropFilterListQueryParams';
 
 /**
  * CropApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class CropApi extends BaseAPI {
 
   /**
    * @summary Create Crop Filter
-   * @param {CropFilter} cropFilter
+   * @param {CropFilter} cropFilter The Crop Filter to be created
    * @throws {RequiredError}
    * @memberof CropApi
    */
@@ -64,11 +64,17 @@ export default class CropApi extends BaseAPI {
 
   /**
    * @summary List Crop Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CropApi
    */
-  public list(queryParams?: CropFilterListQueryParams): Promise<PaginationResponse<CropFilter>> {
+  public list(queryParameters?: CropFilterListQueryParams | ((q: CropFilterListQueryParamsBuilder) => CropFilterListQueryParamsBuilder)): Promise<PaginationResponse<CropFilter>> {
+    let queryParams: CropFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CropFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CropFilter>>('/encoding/filters/crop', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CropFilter>(response);
       if (paginationResponse.items) {

@@ -2,7 +2,7 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import AnalyticsExportTask from '../../models/AnalyticsExportTask';
 import PaginationResponse from '../../models/PaginationResponse';
-import AnalyticsExportTaskListQueryParams from './AnalyticsExportTaskListQueryParams';
+import { AnalyticsExportTaskListQueryParams, AnalyticsExportTaskListQueryParamsBuilder } from './AnalyticsExportTaskListQueryParams';
 
 /**
  * ExportsApi - object-oriented interface
@@ -45,11 +45,17 @@ export default class ExportsApi extends BaseAPI {
 
   /**
    * @summary List Export Tasks
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ExportsApi
    */
-  public list(queryParams?: AnalyticsExportTaskListQueryParams): Promise<PaginationResponse<AnalyticsExportTask>> {
+  public list(queryParameters?: AnalyticsExportTaskListQueryParams | ((q: AnalyticsExportTaskListQueryParamsBuilder) => AnalyticsExportTaskListQueryParamsBuilder)): Promise<PaginationResponse<AnalyticsExportTask>> {
+    let queryParams: AnalyticsExportTaskListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AnalyticsExportTaskListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AnalyticsExportTask>>('/analytics/exports', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AnalyticsExportTask>(response);
       if (paginationResponse.items) {

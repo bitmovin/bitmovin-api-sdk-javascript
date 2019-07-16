@@ -6,7 +6,7 @@ import BitmovinResource from '../../../../models/BitmovinResource';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ObjectDetectionConfiguration from '../../../../models/ObjectDetectionConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ObjectDetectionConfigurationListQueryParams from './ObjectDetectionConfigurationListQueryParams';
+import { ObjectDetectionConfigurationListQueryParams, ObjectDetectionConfigurationListQueryParamsBuilder } from './ObjectDetectionConfigurationListQueryParams';
 
 /**
  * ObjectDetectionApi - object-oriented interface
@@ -77,14 +77,20 @@ export default class ObjectDetectionApi extends BaseAPI {
   /**
    * @summary List object detection configurations of an encoding
    * @param {string} encodingId Id of the encoding
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ObjectDetectionApi
    */
-  public list(encodingId: string, queryParams?: ObjectDetectionConfigurationListQueryParams): Promise<PaginationResponse<ObjectDetectionConfiguration>> {
+  public list(encodingId: string, queryParameters?: ObjectDetectionConfigurationListQueryParams | ((q: ObjectDetectionConfigurationListQueryParamsBuilder) => ObjectDetectionConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<ObjectDetectionConfiguration>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ObjectDetectionConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ObjectDetectionConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ObjectDetectionConfiguration>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ObjectDetectionConfiguration>(response);
       if (paginationResponse.items) {

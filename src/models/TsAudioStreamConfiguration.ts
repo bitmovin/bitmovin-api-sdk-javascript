@@ -6,10 +6,9 @@ import TsStreamConfiguration from './TsStreamConfiguration';
  * @class TsAudioStreamConfiguration
  */
 export class TsAudioStreamConfiguration extends TsStreamConfiguration {
-  constructor(obj: any) {
+  constructor(obj: Partial<TsAudioStreamConfiguration>) {
     super(obj);
   }
-
 }
 
 export default TsAudioStreamConfiguration;

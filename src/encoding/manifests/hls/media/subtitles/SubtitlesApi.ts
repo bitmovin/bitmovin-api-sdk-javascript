@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import SubtitlesMediaInfo from '../../../../../models/SubtitlesMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import SubtitlesMediaInfoListQueryParams from './SubtitlesMediaInfoListQueryParams';
+import { SubtitlesMediaInfoListQueryParams, SubtitlesMediaInfoListQueryParamsBuilder } from './SubtitlesMediaInfoListQueryParams';
 
 /**
  * SubtitlesApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class SubtitlesApi extends BaseAPI {
   /**
    * @summary Add Subtitles Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {SubtitlesMediaInfo} subtitlesMediaInfo
+   * @param {SubtitlesMediaInfo} subtitlesMediaInfo The Subtitles Media to be added
    * @throws {RequiredError}
    * @memberof SubtitlesApi
    */
@@ -70,14 +70,20 @@ export default class SubtitlesApi extends BaseAPI {
   /**
    * @summary List all Subtitles Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SubtitlesApi
    */
-  public list(manifestId: string, queryParams?: SubtitlesMediaInfoListQueryParams): Promise<PaginationResponse<SubtitlesMediaInfo>> {
+  public list(manifestId: string, queryParameters?: SubtitlesMediaInfoListQueryParams | ((q: SubtitlesMediaInfoListQueryParamsBuilder) => SubtitlesMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<SubtitlesMediaInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: SubtitlesMediaInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SubtitlesMediaInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SubtitlesMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/subtitles', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SubtitlesMediaInfo>(response);
       if (paginationResponse.items) {

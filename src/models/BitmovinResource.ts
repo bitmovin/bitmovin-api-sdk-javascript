@@ -6,7 +6,42 @@ import BitmovinResponse from './BitmovinResponse';
  * @class BitmovinResource
  */
 export class BitmovinResource extends BitmovinResponse {
-  constructor(obj: any) {
+  /**
+   * Name of the resource. Can be freely chosen by the user.
+   * @type {string}
+   * @memberof BitmovinResource
+   */
+  public name?: string;
+
+  /**
+   * Description of the resource. Can be freely chosen by the user.
+   * @type {string}
+   * @memberof BitmovinResource
+   */
+  public description?: string;
+
+  /**
+   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof BitmovinResource
+   */
+  public createdAt?: Date;
+
+  /**
+   * Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof BitmovinResource
+   */
+  public modifiedAt?: Date;
+
+  /**
+   * User-specific meta data. This can hold anything.
+   * @type {{ [key: string]: any; }}
+   * @memberof BitmovinResource
+   */
+  public customData?: { [key: string]: any; };
+
+  constructor(obj: Partial<BitmovinResource>) {
     super(obj);
     this.name = map(obj.name);
     this.description = map(obj.description);
@@ -14,37 +49,6 @@ export class BitmovinResource extends BitmovinResponse {
     this.modifiedAt = map(obj.modifiedAt, Date);
     this.customData = map(obj.customData);
   }
-
-  /**
-   * Name of the resource. Can be freely chosen by the user.
-   * @type {string}
-   * @memberof BitmovinResource
-   */
-  public name?: string;
-  /**
-   * Description of the resource. Can be freely chosen by the user.
-   * @type {string}
-   * @memberof BitmovinResource
-   */
-  public description?: string;
-  /**
-   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
-   * @type {Date}
-   * @memberof BitmovinResource
-   */
-  public createdAt?: Date;
-  /**
-   * Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
-   * @type {Date}
-   * @memberof BitmovinResource
-   */
-  public modifiedAt?: Date;
-  /**
-   * User-specific meta data. This can hold anything.
-   * @type {{ [key: string]: any; }}
-   * @memberof BitmovinResource
-   */
-  public customData?: { [key: string]: any; };
 }
 
 export default BitmovinResource;

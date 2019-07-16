@@ -6,7 +6,7 @@ import PlainTextApi from './plainText/PlainTextApi';
 import Id3Tag from '../../../../../models/Id3Tag';
 import { Id3TagTypeMap } from '../../../../../models/typeMappings'
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import Id3TagListQueryParams from './Id3TagListQueryParams';
+import { Id3TagListQueryParams, Id3TagListQueryParamsBuilder } from './Id3TagListQueryParams';
 
 /**
  * Id3Api - object-oriented interface
@@ -30,15 +30,21 @@ export default class Id3Api extends BaseAPI {
    * @summary List all ID3 Tags of Progressive TS Muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Id3Api
    */
-  public list(encodingId: string, muxingId: string, queryParams?: Id3TagListQueryParams): Promise<PaginationResponse<Id3Tag>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: Id3TagListQueryParams | ((q: Id3TagListQueryParamsBuilder) => Id3TagListQueryParamsBuilder)): Promise<PaginationResponse<Id3Tag>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: Id3TagListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Id3TagListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Id3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Id3Tag>(response);
       if (paginationResponse.items) {

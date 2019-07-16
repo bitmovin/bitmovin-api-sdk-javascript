@@ -6,16 +6,16 @@ import InputStreamType from './InputStreamType';
  * @class InputStreamTypeResponse
  */
 export class InputStreamTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the input stream
    * @type {InputStreamType}
    * @memberof InputStreamTypeResponse
    */
   public type?: InputStreamType;
+
+  constructor(obj: Partial<InputStreamTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default InputStreamTypeResponse;

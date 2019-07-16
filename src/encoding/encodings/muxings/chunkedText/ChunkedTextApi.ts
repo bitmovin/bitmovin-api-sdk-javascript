@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ChunkedTextMuxing from '../../../../models/ChunkedTextMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ChunkedTextMuxingListQueryParams from './ChunkedTextMuxingListQueryParams';
+import { ChunkedTextMuxingListQueryParams, ChunkedTextMuxingListQueryParamsBuilder } from './ChunkedTextMuxingListQueryParams';
 
 /**
  * ChunkedTextApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class ChunkedTextApi extends BaseAPI {
   /**
    * @summary Add Chunked Text Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ChunkedTextMuxing} chunkedTextMuxing
+   * @param {ChunkedTextMuxing} chunkedTextMuxing The Chunked Text Muxing to be created
    * @throws {RequiredError}
    * @memberof ChunkedTextApi
    */
@@ -73,14 +73,20 @@ export default class ChunkedTextApi extends BaseAPI {
   /**
    * @summary List Chunked Text Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ChunkedTextApi
    */
-  public list(encodingId: string, queryParams?: ChunkedTextMuxingListQueryParams): Promise<PaginationResponse<ChunkedTextMuxing>> {
+  public list(encodingId: string, queryParameters?: ChunkedTextMuxingListQueryParams | ((q: ChunkedTextMuxingListQueryParamsBuilder) => ChunkedTextMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ChunkedTextMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ChunkedTextMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ChunkedTextMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ChunkedTextMuxing>>('/encoding/encodings/{encoding_id}/muxings/chunked-text', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ChunkedTextMuxing>(response);
       if (paginationResponse.items) {

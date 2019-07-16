@@ -5,7 +5,7 @@ import IframeApi from './iframe/IframeApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import StreamInfo from '../../../../models/StreamInfo';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import StreamInfoListQueryParams from './StreamInfoListQueryParams';
+import { StreamInfoListQueryParams, StreamInfoListQueryParamsBuilder } from './StreamInfoListQueryParams';
 
 /**
  * StreamsApi - object-oriented interface
@@ -26,7 +26,7 @@ export default class StreamsApi extends BaseAPI {
   /**
    * @summary Add Variant Stream
    * @param {string} manifestId Id of the hls manifest.
-   * @param {StreamInfo} streamInfo
+   * @param {StreamInfo} streamInfo The Variant Stream to be added
    * @throws {RequiredError}
    * @memberof StreamsApi
    */
@@ -76,14 +76,20 @@ export default class StreamsApi extends BaseAPI {
   /**
    * @summary List all Variant Streams
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof StreamsApi
    */
-  public list(manifestId: string, queryParams?: StreamInfoListQueryParams): Promise<PaginationResponse<StreamInfo>> {
+  public list(manifestId: string, queryParameters?: StreamInfoListQueryParams | ((q: StreamInfoListQueryParamsBuilder) => StreamInfoListQueryParamsBuilder)): Promise<PaginationResponse<StreamInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: StreamInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new StreamInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<StreamInfo>>('/encoding/manifests/hls/{manifest_id}/streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<StreamInfo>(response);
       if (paginationResponse.items) {

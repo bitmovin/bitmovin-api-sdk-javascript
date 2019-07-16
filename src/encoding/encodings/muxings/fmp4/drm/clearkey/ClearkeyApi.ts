@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import ClearKeyDrm from '../../../../../../models/ClearKeyDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import ClearKeyDrmListQueryParams from './ClearKeyDrmListQueryParams';
+import { ClearKeyDrmListQueryParams, ClearKeyDrmListQueryParamsBuilder } from './ClearKeyDrmListQueryParams';
 
 /**
  * ClearkeyApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class ClearkeyApi extends BaseAPI {
    * @summary Add ClearKey DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {ClearKeyDrm} clearKeyDrm
+   * @param {ClearKeyDrm} clearKeyDrm The ClearKey DRM to be created
    * @throws {RequiredError}
    * @memberof ClearkeyApi
    */
@@ -80,15 +80,21 @@ export default class ClearkeyApi extends BaseAPI {
    * @summary List ClearKey DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ClearkeyApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: ClearKeyDrmListQueryParams): Promise<PaginationResponse<ClearKeyDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: ClearKeyDrmListQueryParams | ((q: ClearKeyDrmListQueryParamsBuilder) => ClearKeyDrmListQueryParamsBuilder)): Promise<PaginationResponse<ClearKeyDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: ClearKeyDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ClearKeyDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ClearKeyDrm>>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ClearKeyDrm>(response);
       if (paginationResponse.items) {

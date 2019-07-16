@@ -5,7 +5,7 @@ import DomainsApi from './domains/DomainsApi';
 import ThirdPartyLicensingApi from './thirdPartyLicensing/ThirdPartyLicensingApi';
 import PlayerLicense from '../../models/PlayerLicense';
 import PaginationResponse from '../../models/PaginationResponse';
-import PlayerLicenseListQueryParams from './PlayerLicenseListQueryParams';
+import { PlayerLicenseListQueryParams, PlayerLicenseListQueryParamsBuilder } from './PlayerLicenseListQueryParams';
 
 /**
  * LicensesApi - object-oriented interface
@@ -54,11 +54,17 @@ export default class LicensesApi extends BaseAPI {
 
   /**
    * @summary List Player Licenses
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof LicensesApi
    */
-  public list(queryParams?: PlayerLicenseListQueryParams): Promise<PaginationResponse<PlayerLicense>> {
+  public list(queryParameters?: PlayerLicenseListQueryParams | ((q: PlayerLicenseListQueryParamsBuilder) => PlayerLicenseListQueryParamsBuilder)): Promise<PaginationResponse<PlayerLicense>> {
+    let queryParams: PlayerLicenseListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new PlayerLicenseListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<PlayerLicense>>('/player/licenses', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<PlayerLicense>(response);
       if (paginationResponse.items) {

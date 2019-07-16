@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DenoiseHqdn3dFilter from '../../../models/DenoiseHqdn3dFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import DenoiseHqdn3dFilterListQueryParams from './DenoiseHqdn3dFilterListQueryParams';
+import { DenoiseHqdn3dFilterListQueryParams, DenoiseHqdn3dFilterListQueryParamsBuilder } from './DenoiseHqdn3dFilterListQueryParams';
 
 /**
  * DenoiseHqdn3dApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
 
   /**
    * @summary Create Denoise hqdn3d Filter
-   * @param {DenoiseHqdn3dFilter} denoiseHqdn3dFilter
+   * @param {DenoiseHqdn3dFilter} denoiseHqdn3dFilter The Denoise hqdn3d Filter to be created
    * @throws {RequiredError}
    * @memberof DenoiseHqdn3dApi
    */
@@ -64,11 +64,17 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
 
   /**
    * @summary List Denoise hqdn3d Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof DenoiseHqdn3dApi
    */
-  public list(queryParams?: DenoiseHqdn3dFilterListQueryParams): Promise<PaginationResponse<DenoiseHqdn3dFilter>> {
+  public list(queryParameters?: DenoiseHqdn3dFilterListQueryParams | ((q: DenoiseHqdn3dFilterListQueryParamsBuilder) => DenoiseHqdn3dFilterListQueryParamsBuilder)): Promise<PaginationResponse<DenoiseHqdn3dFilter>> {
+    let queryParams: DenoiseHqdn3dFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DenoiseHqdn3dFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DenoiseHqdn3dFilter>>('/encoding/filters/denoise-hqdn3d', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DenoiseHqdn3dFilter>(response);
       if (paginationResponse.items) {

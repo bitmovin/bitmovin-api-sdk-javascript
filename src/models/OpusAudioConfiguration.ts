@@ -7,17 +7,17 @@ import OpusChannelLayout from './OpusChannelLayout';
  * @class OpusAudioConfiguration
  */
 export class OpusAudioConfiguration extends AudioConfiguration {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-  }
-
   /**
    * Channel layout of the audio codec configuration
    * @type {OpusChannelLayout}
    * @memberof OpusAudioConfiguration
    */
   public channelLayout?: OpusChannelLayout;
+
+  constructor(obj: Partial<OpusAudioConfiguration>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+  }
 }
 
 export default OpusAudioConfiguration;

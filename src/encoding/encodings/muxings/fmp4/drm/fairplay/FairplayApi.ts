@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FairPlayDrm from '../../../../../../models/FairPlayDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import FairPlayDrmListQueryParams from './FairPlayDrmListQueryParams';
+import { FairPlayDrmListQueryParams, FairPlayDrmListQueryParamsBuilder } from './FairPlayDrmListQueryParams';
 
 /**
  * FairplayApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class FairplayApi extends BaseAPI {
    * @summary Add FairPlay DRM to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
-   * @param {FairPlayDrm} fairPlayDrm
+   * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
    * @throws {RequiredError}
    * @memberof FairplayApi
    */
@@ -80,15 +80,21 @@ export default class FairplayApi extends BaseAPI {
    * @summary List FairPlay DRMs of fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof FairplayApi
    */
-  public list(encodingId: string, muxingId: string, queryParams?: FairPlayDrmListQueryParams): Promise<PaginationResponse<FairPlayDrm>> {
+  public list(encodingId: string, muxingId: string, queryParameters?: FairPlayDrmListQueryParams | ((q: FairPlayDrmListQueryParamsBuilder) => FairPlayDrmListQueryParamsBuilder)): Promise<PaginationResponse<FairPlayDrm>> {
     const pathParamMap = {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
+    let queryParams: FairPlayDrmListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new FairPlayDrmListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<FairPlayDrm>>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FairPlayDrm>(response);
       if (paginationResponse.items) {

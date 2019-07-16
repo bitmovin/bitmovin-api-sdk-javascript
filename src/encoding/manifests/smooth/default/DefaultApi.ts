@@ -16,7 +16,7 @@ export default class DefaultApi extends BaseAPI {
 
   /**
    * @summary Create Smooth Streaming Manifest Default
-   * @param {SmoothManifestDefault} smoothManifestDefault
+   * @param {SmoothManifestDefault} smoothManifestDefault The Smooth Streaming Default Manifest to be created
    * @throws {RequiredError}
    * @memberof DefaultApi
    */

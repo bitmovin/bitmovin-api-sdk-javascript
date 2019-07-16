@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import ScaleFilter from '../../../models/ScaleFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import ScaleFilterListQueryParams from './ScaleFilterListQueryParams';
+import { ScaleFilterListQueryParams, ScaleFilterListQueryParamsBuilder } from './ScaleFilterListQueryParams';
 
 /**
  * ScaleApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class ScaleApi extends BaseAPI {
 
   /**
    * @summary Create Scale Filter
-   * @param {ScaleFilter} scaleFilter
+   * @param {ScaleFilter} scaleFilter The Scale Filter to be created
    * @throws {RequiredError}
    * @memberof ScaleApi
    */
@@ -64,11 +64,17 @@ export default class ScaleApi extends BaseAPI {
 
   /**
    * @summary List Scale Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ScaleApi
    */
-  public list(queryParams?: ScaleFilterListQueryParams): Promise<PaginationResponse<ScaleFilter>> {
+  public list(queryParameters?: ScaleFilterListQueryParams | ((q: ScaleFilterListQueryParamsBuilder) => ScaleFilterListQueryParamsBuilder)): Promise<PaginationResponse<ScaleFilter>> {
+    let queryParams: ScaleFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ScaleFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ScaleFilter>>('/encoding/filters/scale', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ScaleFilter>(response);
       if (paginationResponse.items) {

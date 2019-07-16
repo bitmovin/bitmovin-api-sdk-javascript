@@ -22,7 +22,54 @@ import WebmMuxing from './WebmMuxing';
  * @class Muxing
  */
 export class Muxing extends BitmovinResource {
-  constructor(obj: any) {
+  /**
+   * @type {MuxingStream[]}
+   * @memberof Muxing
+   */
+  public streams: MuxingStream[];
+
+  /**
+   * @type {EncodingOutput[]}
+   * @memberof Muxing
+   */
+  public outputs?: EncodingOutput[];
+
+  /**
+   * Average bitrate. Available after encoding finishes.
+   * @type {number}
+   * @memberof Muxing
+   */
+  public avgBitrate?: number;
+
+  /**
+   * Min bitrate. Available after encoding finishes.
+   * @type {number}
+   * @memberof Muxing
+   */
+  public minBitrate?: number;
+
+  /**
+   * Max bitrate. Available after encoding finishes.
+   * @type {number}
+   * @memberof Muxing
+   */
+  public maxBitrate?: number;
+
+  /**
+   * If this is set and contains objects, then this muxing has been ignored during the encoding process
+   * @type {Ignoring[]}
+   * @memberof Muxing
+   */
+  public ignoredBy?: Ignoring[];
+
+  /**
+   * Specifies how to handle streams that don't fulfill stream conditions
+   * @type {StreamConditionsMode}
+   * @memberof Muxing
+   */
+  public streamConditionsMode?: StreamConditionsMode;
+
+  constructor(obj: Partial<Muxing>) {
     super(obj);
     this.streams = map<MuxingStream>(obj.streams, MuxingStream);
     this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
@@ -32,47 +79,6 @@ export class Muxing extends BitmovinResource {
     this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring);
     this.streamConditionsMode = map(obj.streamConditionsMode);
   }
-
-  /**
-   * @type {Array<MuxingStream>}
-   * @memberof Muxing
-   */
-  public streams: Array<MuxingStream>;
-  /**
-   * @type {Array<EncodingOutput>}
-   * @memberof Muxing
-   */
-  public outputs?: Array<EncodingOutput>;
-  /**
-   * Average bitrate. Available after encoding finishes.
-   * @type {number}
-   * @memberof Muxing
-   */
-  public avgBitrate?: number;
-  /**
-   * Min bitrate. Available after encoding finishes.
-   * @type {number}
-   * @memberof Muxing
-   */
-  public minBitrate?: number;
-  /**
-   * Max bitrate. Available after encoding finishes.
-   * @type {number}
-   * @memberof Muxing
-   */
-  public maxBitrate?: number;
-  /**
-   * If this is set and contains objects, then this muxing has been ignored during the encoding process
-   * @type {Array<Ignoring>}
-   * @memberof Muxing
-   */
-  public ignoredBy?: Array<Ignoring>;
-  /**
-   * Specifies how to handle streams that don't fulfill stream conditions
-   * @type {StreamConditionsMode}
-   * @memberof Muxing
-   */
-  public streamConditionsMode?: StreamConditionsMode;
 }
 
 export default Muxing;

@@ -6,16 +6,16 @@ import MediaInfoType from './MediaInfoType';
  * @class MediaInfoTypeResponse
  */
 export class MediaInfoTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the media-info
    * @type {MediaInfoType}
    * @memberof MediaInfoTypeResponse
    */
   public type?: MediaInfoType;
+
+  constructor(obj: Partial<MediaInfoTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default MediaInfoTypeResponse;

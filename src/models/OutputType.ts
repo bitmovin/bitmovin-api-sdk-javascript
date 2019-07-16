@@ -12,7 +12,8 @@ export enum OutputType {
   S3 = 'S3',
   S3_ROLE_BASED = 'S3_ROLE_BASED',
   SFTP = 'SFTP',
-  AKAMAI_MSL = 'AKAMAI_MSL'
+  AKAMAI_MSL = 'AKAMAI_MSL',
+  LIVE_MEDIA_INGEST = 'LIVE_MEDIA_INGEST'
 }
 
 export default OutputType;

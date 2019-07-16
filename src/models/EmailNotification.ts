@@ -6,16 +6,16 @@ import Notification from './Notification';
  * @class EmailNotification
  */
 export class EmailNotification extends Notification {
-  constructor(obj: any) {
+  /**
+   * @type {string[]}
+   * @memberof EmailNotification
+   */
+  public emails: string[];
+
+  constructor(obj: Partial<EmailNotification>) {
     super(obj);
     this.emails = map(obj.emails);
   }
-
-  /**
-   * @type {Array<string>}
-   * @memberof EmailNotification
-   */
-  public emails: Array<string>;
 }
 
 export default EmailNotification;

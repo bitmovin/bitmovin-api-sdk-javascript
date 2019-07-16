@@ -6,28 +6,30 @@ import AnalyticsColumnLabel from './AnalyticsColumnLabel';
  * @class AnalyticsResponse
  */
 export class AnalyticsResponse {
-  constructor(obj: any) {
-    this.rows = map(obj.rows);
-    this.rowCount = map(obj.rowCount);
-    this.columnLabels = map<AnalyticsColumnLabel>(obj.columnLabels, AnalyticsColumnLabel);
-  }
-
   /**
-   * @type {Array<any>}
+   * @type {any[]}
    * @memberof AnalyticsResponse
    */
-  public rows?: Array<any>;
+  public rows?: any[];
+
   /**
    * Number of rows returned
    * @type {number}
    * @memberof AnalyticsResponse
    */
   public rowCount?: number;
+
   /**
-   * @type {Array<AnalyticsColumnLabel>}
+   * @type {AnalyticsColumnLabel[]}
    * @memberof AnalyticsResponse
    */
-  public columnLabels?: Array<AnalyticsColumnLabel>;
+  public columnLabels?: AnalyticsColumnLabel[];
+
+  constructor(obj: Partial<AnalyticsResponse>) {
+    this.rows = map(obj.rows);
+    this.rowCount = map(obj.rowCount);
+    this.columnLabels = map<AnalyticsColumnLabel>(obj.columnLabels, AnalyticsColumnLabel);
+  }
 }
 
 export default AnalyticsResponse;

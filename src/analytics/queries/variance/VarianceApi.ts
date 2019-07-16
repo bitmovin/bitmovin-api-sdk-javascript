@@ -18,7 +18,7 @@ export default class VarianceApi extends BaseAPI {
 
   /**
    * @summary Variance
-   * @param {AnalyticsVarianceQueryRequest} analyticsVarianceQueryRequest
+   * @param {AnalyticsVarianceQueryRequest} analyticsVarianceQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof VarianceApi
    */

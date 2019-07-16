@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Cea708CaptionInputStream from '../../../../../models/Cea708CaptionInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import Cea708CaptionInputStreamListQueryParams from './Cea708CaptionInputStreamListQueryParams';
+import { Cea708CaptionInputStreamListQueryParams, Cea708CaptionInputStreamListQueryParamsBuilder } from './Cea708CaptionInputStreamListQueryParams';
 
 /**
  * Cea708Api - object-oriented interface
@@ -20,7 +20,7 @@ export default class Cea708Api extends BaseAPI {
   /**
    * @summary Add CEA 708 Input Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {Cea708CaptionInputStream} cea708CaptionInputStream
+   * @param {Cea708CaptionInputStream} cea708CaptionInputStream The CEA 708 Input Stream to be created
    * @throws {RequiredError}
    * @memberof Cea708Api
    */
@@ -70,14 +70,20 @@ export default class Cea708Api extends BaseAPI {
   /**
    * @summary List CEA 708 Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Cea708Api
    */
-  public list(encodingId: string, queryParams?: Cea708CaptionInputStreamListQueryParams): Promise<PaginationResponse<Cea708CaptionInputStream>> {
+  public list(encodingId: string, queryParameters?: Cea708CaptionInputStreamListQueryParams | ((q: Cea708CaptionInputStreamListQueryParamsBuilder) => Cea708CaptionInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<Cea708CaptionInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: Cea708CaptionInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Cea708CaptionInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Cea708CaptionInputStream>>('/encoding/encodings/{encoding_id}/input-streams/captions/cea708', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Cea708CaptionInputStream>(response);
       if (paginationResponse.items) {

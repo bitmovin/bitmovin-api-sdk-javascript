@@ -9,17 +9,17 @@ import ProgressiveTsMuxingInformationByteRanges from './ProgressiveTsMuxingInfor
  * @class ProgressiveTsMuxingInformation
  */
 export class ProgressiveTsMuxingInformation extends ProgressiveMuxingInformation {
-  constructor(obj: any) {
+  /**
+   * Byte ranges for the segments within the TS file
+   * @type {ProgressiveTsMuxingInformationByteRanges[]}
+   * @memberof ProgressiveTsMuxingInformation
+   */
+  public byteRanges?: ProgressiveTsMuxingInformationByteRanges[];
+
+  constructor(obj: Partial<ProgressiveTsMuxingInformation>) {
     super(obj);
     this.byteRanges = map<ProgressiveTsMuxingInformationByteRanges>(obj.byteRanges, ProgressiveTsMuxingInformationByteRanges);
   }
-
-  /**
-   * Byte ranges for the segments within the TS file
-   * @type {Array<ProgressiveTsMuxingInformationByteRanges>}
-   * @memberof ProgressiveTsMuxingInformation
-   */
-  public byteRanges?: Array<ProgressiveTsMuxingInformationByteRanges>;
 }
 
 export default ProgressiveTsMuxingInformation;

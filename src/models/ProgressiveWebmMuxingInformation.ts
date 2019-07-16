@@ -8,10 +8,9 @@ import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
  * @class ProgressiveWebmMuxingInformation
  */
 export class ProgressiveWebmMuxingInformation extends ProgressiveMuxingInformation {
-  constructor(obj: any) {
+  constructor(obj: Partial<ProgressiveWebmMuxingInformation>) {
     super(obj);
   }
-
 }
 
 export default ProgressiveWebmMuxingInformation;

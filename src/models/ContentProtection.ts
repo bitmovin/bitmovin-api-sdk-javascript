@@ -6,17 +6,17 @@ import DashRepresentation from './DashRepresentation';
  * @class ContentProtection
  */
 export class ContentProtection extends DashRepresentation {
-  constructor(obj: any) {
-    super(obj);
-    this.drmId = map(obj.drmId);
-  }
-
   /**
    * DRM Id (required)
    * @type {string}
    * @memberof ContentProtection
    */
   public drmId: string;
+
+  constructor(obj: Partial<ContentProtection>) {
+    super(obj);
+    this.drmId = map(obj.drmId);
+  }
 }
 
 export default ContentProtection;

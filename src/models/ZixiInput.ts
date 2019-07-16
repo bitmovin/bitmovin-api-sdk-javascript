@@ -6,7 +6,55 @@ import Input from './Input';
  * @class ZixiInput
  */
 export class ZixiInput extends Input {
-  constructor(obj: any) {
+  /**
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public host?: string;
+
+  /**
+   * @type {number}
+   * @memberof ZixiInput
+   */
+  public port?: number;
+
+  /**
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public stream?: string;
+
+  /**
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public password?: string;
+
+  /**
+   * @type {number}
+   * @memberof ZixiInput
+   */
+  public latency?: number;
+
+  /**
+   * @type {number}
+   * @memberof ZixiInput
+   */
+  public minBitrate?: number;
+
+  /**
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public decryptionType?: string;
+
+  /**
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public decryptionKey?: string;
+
+  constructor(obj: Partial<ZixiInput>) {
     super(obj);
     this.host = map(obj.host);
     this.port = map(obj.port);
@@ -17,47 +65,6 @@ export class ZixiInput extends Input {
     this.decryptionType = map(obj.decryptionType);
     this.decryptionKey = map(obj.decryptionKey);
   }
-
-  /**
-   * @type {string}
-   * @memberof ZixiInput
-   */
-  public host?: string;
-  /**
-   * @type {number}
-   * @memberof ZixiInput
-   */
-  public port?: number;
-  /**
-   * @type {string}
-   * @memberof ZixiInput
-   */
-  public stream?: string;
-  /**
-   * @type {string}
-   * @memberof ZixiInput
-   */
-  public password?: string;
-  /**
-   * @type {number}
-   * @memberof ZixiInput
-   */
-  public latency?: number;
-  /**
-   * @type {number}
-   * @memberof ZixiInput
-   */
-  public minBitrate?: number;
-  /**
-   * @type {string}
-   * @memberof ZixiInput
-   */
-  public decryptionType?: string;
-  /**
-   * @type {string}
-   * @memberof ZixiInput
-   */
-  public decryptionKey?: string;
 }
 
 export default ZixiInput;

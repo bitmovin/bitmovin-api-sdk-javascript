@@ -18,7 +18,7 @@ export default class DomainsApi extends BaseAPI {
 
   /**
    * @summary Add Domain
-   * @param {CustomWebPlayerBuildDomain} customWebPlayerBuildDomain
+   * @param {CustomWebPlayerBuildDomain} customWebPlayerBuildDomain The Domain to be added
    * @throws {RequiredError}
    * @memberof DomainsApi
    */

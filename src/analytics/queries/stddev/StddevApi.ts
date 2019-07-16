@@ -18,7 +18,7 @@ export default class StddevApi extends BaseAPI {
 
   /**
    * @summary Stddev
-   * @param {AnalyticsStddevQueryRequest} analyticsStddevQueryRequest
+   * @param {AnalyticsStddevQueryRequest} analyticsStddevQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof StddevApi
    */

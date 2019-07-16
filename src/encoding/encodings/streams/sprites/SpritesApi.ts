@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Sprite from '../../../../models/Sprite';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import SpriteListQueryParams from './SpriteListQueryParams';
+import { SpriteListQueryParams, SpriteListQueryParamsBuilder } from './SpriteListQueryParams';
 
 /**
  * SpritesApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class SpritesApi extends BaseAPI {
    * @summary Add Sprite
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {Sprite} sprite
+   * @param {Sprite} sprite The Sprite to be added
    * @throws {RequiredError}
    * @memberof SpritesApi
    */
@@ -80,15 +80,21 @@ export default class SpritesApi extends BaseAPI {
    * @summary List Sprites
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SpritesApi
    */
-  public list(encodingId: string, streamId: string, queryParams?: SpriteListQueryParams): Promise<PaginationResponse<Sprite>> {
+  public list(encodingId: string, streamId: string, queryParameters?: SpriteListQueryParams | ((q: SpriteListQueryParamsBuilder) => SpriteListQueryParamsBuilder)): Promise<PaginationResponse<Sprite>> {
     const pathParamMap = {
       encoding_id: encodingId,
       stream_id: streamId
     };
+    let queryParams: SpriteListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SpriteListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Sprite>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Sprite>(response);
       if (paginationResponse.items) {

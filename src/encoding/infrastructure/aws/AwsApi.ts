@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import RegionsApi from './regions/RegionsApi';
 import AwsAccount from '../../../models/AwsAccount';
 import PaginationResponse from '../../../models/PaginationResponse';
-import AwsAccountListQueryParams from './AwsAccountListQueryParams';
+import { AwsAccountListQueryParams, AwsAccountListQueryParamsBuilder } from './AwsAccountListQueryParams';
 
 /**
  * AwsApi - object-oriented interface
@@ -21,7 +21,7 @@ export default class AwsApi extends BaseAPI {
 
   /**
    * @summary Add AWS Account
-   * @param {AwsAccount} awsAccount
+   * @param {AwsAccount} awsAccount The AWS Account to be added
    * @throws {RequiredError}
    * @memberof AwsApi
    */
@@ -63,11 +63,17 @@ export default class AwsApi extends BaseAPI {
 
   /**
    * @summary List AWS Accounts
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AwsApi
    */
-  public list(queryParams?: AwsAccountListQueryParams): Promise<PaginationResponse<AwsAccount>> {
+  public list(queryParameters?: AwsAccountListQueryParams | ((q: AwsAccountListQueryParamsBuilder) => AwsAccountListQueryParamsBuilder)): Promise<PaginationResponse<AwsAccount>> {
+    let queryParams: AwsAccountListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AwsAccountListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AwsAccount>>('/encoding/infrastructure/aws', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AwsAccount>(response);
       if (paginationResponse.items) {

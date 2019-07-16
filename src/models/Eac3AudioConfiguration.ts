@@ -7,17 +7,17 @@ import AudioConfiguration from './AudioConfiguration';
  * @class Eac3AudioConfiguration
  */
 export class Eac3AudioConfiguration extends AudioConfiguration {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-  }
-
   /**
    * Channel layout of the audio codec configuration
    * @type {Ac3ChannelLayout}
    * @memberof Eac3AudioConfiguration
    */
   public channelLayout?: Ac3ChannelLayout;
+
+  constructor(obj: Partial<Eac3AudioConfiguration>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+  }
 }
 
 export default Eac3AudioConfiguration;

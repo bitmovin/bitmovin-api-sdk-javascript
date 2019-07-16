@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import SccCaption from '../../../../../../models/SccCaption';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import SccCaptionListQueryParams from './SccCaptionListQueryParams';
+import { SccCaptionListQueryParams, SccCaptionListQueryParamsBuilder } from './SccCaptionListQueryParams';
 
 /**
  * SccApi - object-oriented interface
@@ -24,7 +24,7 @@ export default class SccApi extends BaseAPI {
    * @summary Embed SCC captions as 608/708 into Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {SccCaption} sccCaption
+   * @param {SccCaption} sccCaption The SCC captions to be embedded as 607/708 into Stream
    * @throws {RequiredError}
    * @memberof SccApi
    */
@@ -80,15 +80,21 @@ export default class SccApi extends BaseAPI {
    * @summary List SCC captions as 608/708 from Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof SccApi
    */
-  public list(encodingId: string, streamId: string, queryParams?: SccCaptionListQueryParams): Promise<PaginationResponse<SccCaption>> {
+  public list(encodingId: string, streamId: string, queryParameters?: SccCaptionListQueryParams | ((q: SccCaptionListQueryParamsBuilder) => SccCaptionListQueryParamsBuilder)): Promise<PaginationResponse<SccCaption>> {
     const pathParamMap = {
       encoding_id: encodingId,
       stream_id: streamId
     };
+    let queryParams: SccCaptionListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new SccCaptionListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<SccCaption>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SccCaption>(response);
       if (paginationResponse.items) {

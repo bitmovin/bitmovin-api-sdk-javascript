@@ -1,33 +1,21 @@
 import {map} from '../common/Mapper';
-import AnalyticsOperator from './AnalyticsOperator';
+import AnalyticsBaseFilter from './AnalyticsBaseFilter';
 
 /**
  * @export
  * @class AnalyticsFilter
  */
-export class AnalyticsFilter {
-  constructor(obj: any) {
-    this.name = map(obj.name);
-    this.operator = map(obj.operator);
+export class AnalyticsFilter extends AnalyticsBaseFilter {
+  /**
+   * @type {any}
+   * @memberof AnalyticsFilter
+   */
+  public value: any;
+
+  constructor(obj: Partial<AnalyticsFilter>) {
+    super(obj);
     this.value = map(obj.value);
   }
-
-  /**
-   * @type {string}
-   * @memberof AnalyticsFilter
-   */
-  public name?: string;
-  /**
-   * @type {AnalyticsOperator}
-   * @memberof AnalyticsFilter
-   */
-  public operator: AnalyticsOperator;
-  /**
-   * The value to compare to the property specified by the name (required)
-   * @type {string}
-   * @memberof AnalyticsFilter
-   */
-  public value: string;
 }
 
 export default AnalyticsFilter;

@@ -6,24 +6,25 @@ import BitmovinResponse from './BitmovinResponse';
  * @class DashRepresentation
  */
 export class DashRepresentation extends BitmovinResponse {
-  constructor(obj: any) {
-    super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.muxingId = map(obj.muxingId);
-  }
-
   /**
    * UUID of an encoding (required)
    * @type {string}
    * @memberof DashRepresentation
    */
   public encodingId: string;
+
   /**
    * UUID of a muxing (required)
    * @type {string}
    * @memberof DashRepresentation
    */
   public muxingId: string;
+
+  constructor(obj: Partial<DashRepresentation>) {
+    super(obj);
+    this.encodingId = map(obj.encodingId);
+    this.muxingId = map(obj.muxingId);
+  }
 }
 
 export default DashRepresentation;

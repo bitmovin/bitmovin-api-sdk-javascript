@@ -2,7 +2,7 @@ export interface Callable<T> {
    new(obj: any): T;
 }
 
-export function map<T>(value: any, clazz?: Callable<T>): any | Array<T> | T {
+export function map<T>(value: any, clazz?: Callable<T>): any | T[] | T {
  if (!clazz || typeof clazz !== 'function') {
   return value;
  }

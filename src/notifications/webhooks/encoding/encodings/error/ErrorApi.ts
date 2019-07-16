@@ -4,8 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Webhook from '../../../../../models/Webhook';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import WebhookListQueryParams from './WebhookListQueryParams';
-import WebhookListByEncodingIdQueryParams from './WebhookListByEncodingIdQueryParams';
+import { WebhookListQueryParams, WebhookListQueryParamsBuilder } from './WebhookListQueryParams';
+import { WebhookListByEncodingIdQueryParams, WebhookListByEncodingIdQueryParamsBuilder } from './WebhookListByEncodingIdQueryParams';
 
 /**
  * ErrorApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class ErrorApi extends BaseAPI {
 
   /**
    * @summary Add Encoding Error Webhook
-   * @param {Webhook} webhook
+   * @param {Webhook} webhook The Encoding Error Webhook to be added
    * @throws {RequiredError}
    * @memberof ErrorApi
    */
@@ -36,7 +36,7 @@ export default class ErrorApi extends BaseAPI {
   /**
    * @summary Add Encoding Error Webhook for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
-   * @param {Webhook} webhook
+   * @param {Webhook} webhook The Encoding Error Webhook to be added
    * @throws {RequiredError}
    * @memberof ErrorApi
    */
@@ -115,11 +115,17 @@ export default class ErrorApi extends BaseAPI {
 
   /**
    * @summary List Encoding Error Webhooks
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ErrorApi
    */
-  public list(queryParams?: WebhookListQueryParams): Promise<PaginationResponse<Webhook>> {
+  public list(queryParameters?: WebhookListQueryParams | ((q: WebhookListQueryParamsBuilder) => WebhookListQueryParamsBuilder)): Promise<PaginationResponse<Webhook>> {
+    let queryParams: WebhookListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new WebhookListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/error', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Webhook>(response);
       if (paginationResponse.items) {
@@ -132,14 +138,20 @@ export default class ErrorApi extends BaseAPI {
   /**
    * @summary List Encoding Error Webhooks for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ErrorApi
    */
-  public listByEncodingId(encodingId: string, queryParams?: WebhookListByEncodingIdQueryParams): Promise<PaginationResponse<Webhook>> {
+  public listByEncodingId(encodingId: string, queryParameters?: WebhookListByEncodingIdQueryParams | ((q: WebhookListByEncodingIdQueryParamsBuilder) => WebhookListByEncodingIdQueryParamsBuilder)): Promise<PaginationResponse<Webhook>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: WebhookListByEncodingIdQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new WebhookListByEncodingIdQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/{encoding_id}/error', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Webhook>(response);
       if (paginationResponse.items) {

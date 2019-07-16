@@ -6,17 +6,17 @@ import BitmovinResource from './BitmovinResource';
  * @class AccountApiKey
  */
 export class AccountApiKey extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.value = map(obj.value);
-  }
-
   /**
    * Key value for authentication with the Bitmovin API (required)
    * @type {string}
    * @memberof AccountApiKey
    */
   public value: string;
+
+  constructor(obj: Partial<AccountApiKey>) {
+    super(obj);
+    this.value = map(obj.value);
+  }
 }
 
 export default AccountApiKey;

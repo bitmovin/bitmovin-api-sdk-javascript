@@ -7,7 +7,40 @@ import NotificationStates from './NotificationStates';
  * @class NotificationStateEntry
  */
 export class NotificationStateEntry extends BitmovinResponse {
-  constructor(obj: any) {
+  /**
+   * @type {NotificationStates}
+   * @memberof NotificationStateEntry
+   */
+  public state: NotificationStates;
+
+  /**
+   * Indicate if notification was sent (required)
+   * @type {boolean}
+   * @memberof NotificationStateEntry
+   */
+  public muted: boolean;
+
+  /**
+   * The notification this state belongs to (required)
+   * @type {string}
+   * @memberof NotificationStateEntry
+   */
+  public notificationId: string;
+
+  /**
+   * Indicate if triggered for specific resource (required)
+   * @type {string}
+   * @memberof NotificationStateEntry
+   */
+  public resourceId: string;
+
+  /**
+   * @type {Date}
+   * @memberof NotificationStateEntry
+   */
+  public triggeredAt: Date;
+
+  constructor(obj: Partial<NotificationStateEntry>) {
     super(obj);
     this.state = map(obj.state);
     this.muted = map(obj.muted);
@@ -15,35 +48,6 @@ export class NotificationStateEntry extends BitmovinResponse {
     this.resourceId = map(obj.resourceId);
     this.triggeredAt = map(obj.triggeredAt, Date);
   }
-
-  /**
-   * @type {NotificationStates}
-   * @memberof NotificationStateEntry
-   */
-  public state: NotificationStates;
-  /**
-   * Indicate if notification was sent (required)
-   * @type {boolean}
-   * @memberof NotificationStateEntry
-   */
-  public muted: boolean;
-  /**
-   * The notification this state belongs to (required)
-   * @type {string}
-   * @memberof NotificationStateEntry
-   */
-  public notificationId: string;
-  /**
-   * Indicate if triggered for specific resource (required)
-   * @type {string}
-   * @memberof NotificationStateEntry
-   */
-  public resourceId: string;
-  /**
-   * @type {Date}
-   * @memberof NotificationStateEntry
-   */
-  public triggeredAt: Date;
 }
 
 export default NotificationStateEntry;

@@ -6,16 +6,16 @@ import OutputType from './OutputType';
  * @class OutputTypeResponse
  */
 export class OutputTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the output
    * @type {OutputType}
    * @memberof OutputTypeResponse
    */
   public type?: OutputType;
+
+  constructor(obj: Partial<OutputTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default OutputTypeResponse;

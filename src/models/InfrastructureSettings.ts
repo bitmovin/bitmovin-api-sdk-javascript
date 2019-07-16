@@ -6,22 +6,23 @@ import CloudRegion from './CloudRegion';
  * @class InfrastructureSettings
  */
 export class InfrastructureSettings {
-  constructor(obj: any) {
-    this.infrastructureId = map(obj.infrastructureId);
-    this.cloudRegion = map(obj.cloudRegion);
-  }
-
   /**
    * Id of a custom infrastructure, e.g., Kubernetes Cluster
    * @type {string}
    * @memberof InfrastructureSettings
    */
   public infrastructureId?: string;
+
   /**
    * @type {CloudRegion}
    * @memberof InfrastructureSettings
    */
   public cloudRegion?: CloudRegion;
+
+  constructor(obj: Partial<InfrastructureSettings>) {
+    this.infrastructureId = map(obj.infrastructureId);
+    this.cloudRegion = map(obj.cloudRegion);
+  }
 }
 
 export default InfrastructureSettings;

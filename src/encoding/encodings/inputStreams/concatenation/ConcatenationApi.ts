@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConcatenationInputStream from '../../../../models/ConcatenationInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ConcatenationInputStreamListQueryParams from './ConcatenationInputStreamListQueryParams';
+import { ConcatenationInputStreamListQueryParams, ConcatenationInputStreamListQueryParamsBuilder } from './ConcatenationInputStreamListQueryParams';
 
 /**
  * ConcatenationApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class ConcatenationApi extends BaseAPI {
   /**
    * @summary Add Concatenation Input Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {ConcatenationInputStream} concatenationInputStream
+   * @param {ConcatenationInputStream} concatenationInputStream The Concatenation Input Stream to be created
    * @throws {RequiredError}
    * @memberof ConcatenationApi
    */
@@ -70,14 +70,20 @@ export default class ConcatenationApi extends BaseAPI {
   /**
    * @summary List Concatenation Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ConcatenationApi
    */
-  public list(encodingId: string, queryParams?: ConcatenationInputStreamListQueryParams): Promise<PaginationResponse<ConcatenationInputStream>> {
+  public list(encodingId: string, queryParameters?: ConcatenationInputStreamListQueryParams | ((q: ConcatenationInputStreamListQueryParamsBuilder) => ConcatenationInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<ConcatenationInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ConcatenationInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ConcatenationInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ConcatenationInputStream>>('/encoding/encodings/{encoding_id}/input-streams/concatenation', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ConcatenationInputStream>(response);
       if (paginationResponse.items) {

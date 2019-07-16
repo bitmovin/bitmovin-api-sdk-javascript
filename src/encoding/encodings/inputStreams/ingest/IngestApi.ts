@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import IngestInputStream from '../../../../models/IngestInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import IngestInputStreamListQueryParams from './IngestInputStreamListQueryParams';
+import { IngestInputStreamListQueryParams, IngestInputStreamListQueryParamsBuilder } from './IngestInputStreamListQueryParams';
 
 /**
  * IngestApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class IngestApi extends BaseAPI {
   /**
    * @summary Add Ingest Input Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {IngestInputStream} ingestInputStream
+   * @param {IngestInputStream} ingestInputStream The Ingest Input Stream to be created
    * @throws {RequiredError}
    * @memberof IngestApi
    */
@@ -70,14 +70,20 @@ export default class IngestApi extends BaseAPI {
   /**
    * @summary List Ingest Input Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof IngestApi
    */
-  public list(encodingId: string, queryParams?: IngestInputStreamListQueryParams): Promise<PaginationResponse<IngestInputStream>> {
+  public list(encodingId: string, queryParameters?: IngestInputStreamListQueryParams | ((q: IngestInputStreamListQueryParamsBuilder) => IngestInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<IngestInputStream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: IngestInputStreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new IngestInputStreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<IngestInputStream>>('/encoding/encodings/{encoding_id}/input-streams/ingest', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<IngestInputStream>(response);
       if (paginationResponse.items) {

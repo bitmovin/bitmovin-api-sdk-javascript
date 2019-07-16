@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AacAudioConfiguration from '../../../../models/AacAudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import AacAudioConfigurationListQueryParams from './AacAudioConfigurationListQueryParams';
+import { AacAudioConfigurationListQueryParams, AacAudioConfigurationListQueryParamsBuilder } from './AacAudioConfigurationListQueryParams';
 
 /**
  * AacApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class AacApi extends BaseAPI {
 
   /**
    * @summary Create AAC Codec Configuration
-   * @param {AacAudioConfiguration} aacAudioConfiguration
+   * @param {AacAudioConfiguration} aacAudioConfiguration The AAC Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof AacApi
    */
@@ -64,11 +64,17 @@ export default class AacApi extends BaseAPI {
 
   /**
    * @summary List AAC Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AacApi
    */
-  public list(queryParams?: AacAudioConfigurationListQueryParams): Promise<PaginationResponse<AacAudioConfiguration>> {
+  public list(queryParameters?: AacAudioConfigurationListQueryParams | ((q: AacAudioConfigurationListQueryParamsBuilder) => AacAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<AacAudioConfiguration>> {
+    let queryParams: AacAudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AacAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AacAudioConfiguration>>('/encoding/configurations/audio/aac', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AacAudioConfiguration>(response);
       if (paginationResponse.items) {

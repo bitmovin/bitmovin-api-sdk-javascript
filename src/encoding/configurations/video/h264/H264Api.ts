@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import H264VideoConfiguration from '../../../../models/H264VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import H264VideoConfigurationListQueryParams from './H264VideoConfigurationListQueryParams';
+import { H264VideoConfigurationListQueryParams, H264VideoConfigurationListQueryParamsBuilder } from './H264VideoConfigurationListQueryParams';
 
 /**
  * H264Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class H264Api extends BaseAPI {
 
   /**
    * @summary Create H264/AVC Codec Configuration
-   * @param {H264VideoConfiguration} h264VideoConfiguration
+   * @param {H264VideoConfiguration} h264VideoConfiguration The H264/AVC Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof H264Api
    */
@@ -64,11 +64,17 @@ export default class H264Api extends BaseAPI {
 
   /**
    * @summary List H264/AVC Codec Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof H264Api
    */
-  public list(queryParams?: H264VideoConfigurationListQueryParams): Promise<PaginationResponse<H264VideoConfiguration>> {
+  public list(queryParameters?: H264VideoConfigurationListQueryParams | ((q: H264VideoConfigurationListQueryParamsBuilder) => H264VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<H264VideoConfiguration>> {
+    let queryParams: H264VideoConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new H264VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<H264VideoConfiguration>>('/encoding/configurations/video/h264', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<H264VideoConfiguration>(response);
       if (paginationResponse.items) {

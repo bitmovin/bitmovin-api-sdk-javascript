@@ -5,23 +5,24 @@ import {map} from '../common/Mapper';
  * @class TimeSpan
  */
 export class TimeSpan {
-  constructor(obj: any) {
-    this.from = map(obj.from);
-    this.to = map(obj.to);
-  }
-
   /**
    * Start offset of the time frame in milliseconds (required)
    * @type {number}
    * @memberof TimeSpan
    */
   public from: number;
+
   /**
    * End offset of the time frame in milliseconds (required)
    * @type {number}
    * @memberof TimeSpan
    */
   public to: number;
+
+  constructor(obj: Partial<TimeSpan>) {
+    this.from = map(obj.from);
+    this.to = map(obj.to);
+  }
 }
 
 export default TimeSpan;

@@ -6,17 +6,17 @@ import BitmovinResponse from './BitmovinResponse';
  * @class CustomXmlElement
  */
 export class CustomXmlElement extends BitmovinResponse {
-  constructor(obj: any) {
-    super(obj);
-    this.data = map(obj.data);
-  }
-
   /**
    * String representation of the XML element (required)
    * @type {string}
    * @memberof CustomXmlElement
    */
   public data: string;
+
+  constructor(obj: Partial<CustomXmlElement>) {
+    super(obj);
+    this.data = map(obj.data);
+  }
 }
 
 export default CustomXmlElement;

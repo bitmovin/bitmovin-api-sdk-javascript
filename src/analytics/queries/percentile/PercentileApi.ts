@@ -17,7 +17,7 @@ export default class PercentileApi extends BaseAPI {
 
   /**
    * @summary Percentile
-   * @param {AnalyticsPercentileQueryRequest} analyticsPercentileQueryRequest
+   * @param {AnalyticsPercentileQueryRequest} analyticsPercentileQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof PercentileApi
    */

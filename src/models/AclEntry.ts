@@ -6,21 +6,22 @@ import AclPermission from './AclPermission';
  * @class AclEntry
  */
 export class AclEntry {
-  constructor(obj: any) {
-    this.scope = map(obj.scope);
-    this.permission = map(obj.permission);
-  }
-
   /**
    * @type {string}
    * @memberof AclEntry
    */
   public scope?: string;
+
   /**
    * @type {AclPermission}
    * @memberof AclEntry
    */
   public permission: AclPermission;
+
+  constructor(obj: Partial<AclEntry>) {
+    this.scope = map(obj.scope);
+    this.permission = map(obj.permission);
+  }
 }
 
 export default AclEntry;

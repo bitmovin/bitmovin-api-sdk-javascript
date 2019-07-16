@@ -6,15 +6,15 @@ import Domain from './Domain';
  * @class DomainList
  */
 export class DomainList {
-  constructor(obj: any) {
-    this.domains = map<Domain>(obj.domains, Domain);
-  }
-
   /**
-   * @type {Array<Domain>}
+   * @type {Domain[]}
    * @memberof DomainList
    */
-  public domains?: Array<Domain>;
+  public domains?: Domain[];
+
+  constructor(obj: Partial<DomainList>) {
+    this.domains = map<Domain>(obj.domains, Domain);
+  }
 }
 
 export default DomainList;

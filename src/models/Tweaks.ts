@@ -6,16 +6,16 @@ import AudioVideoSyncMode from './AudioVideoSyncMode';
  * @class Tweaks
  */
 export class Tweaks {
-  constructor(obj: any) {
-    this.audioVideoSyncMode = map(obj.audioVideoSyncMode);
-  }
-
   /**
    * Defines special audio video sync handling
    * @type {AudioVideoSyncMode}
    * @memberof Tweaks
    */
   public audioVideoSyncMode?: AudioVideoSyncMode;
+
+  constructor(obj: Partial<Tweaks>) {
+    this.audioVideoSyncMode = map(obj.audioVideoSyncMode);
+  }
 }
 
 export default Tweaks;

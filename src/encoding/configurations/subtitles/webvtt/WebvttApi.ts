@@ -5,7 +5,7 @@ import BitmovinResource from '../../../../models/BitmovinResource';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttConfiguration from '../../../../models/WebVttConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import WebVttConfigurationListQueryParams from './WebVttConfigurationListQueryParams';
+import { WebVttConfigurationListQueryParams, WebVttConfigurationListQueryParamsBuilder } from './WebVttConfigurationListQueryParams';
 
 /**
  * WebvttApi - object-oriented interface
@@ -23,7 +23,7 @@ export default class WebvttApi extends BaseAPI {
 
   /**
    * @summary Create WebVtt Subtitle Configuration
-   * @param {WebVttConfiguration} webVttConfiguration
+   * @param {WebVttConfiguration} webVttConfiguration The WebVtt Subtitle Configuration to be created
    * @throws {RequiredError}
    * @memberof WebvttApi
    */
@@ -65,11 +65,17 @@ export default class WebvttApi extends BaseAPI {
 
   /**
    * @summary List WebVtt Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof WebvttApi
    */
-  public list(queryParams?: WebVttConfigurationListQueryParams): Promise<PaginationResponse<WebVttConfiguration>> {
+  public list(queryParameters?: WebVttConfigurationListQueryParams | ((q: WebVttConfigurationListQueryParamsBuilder) => WebVttConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<WebVttConfiguration>> {
+    let queryParams: WebVttConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new WebVttConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt/', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WebVttConfiguration>(response);
       if (paginationResponse.items) {

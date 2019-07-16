@@ -8,7 +8,7 @@ import PrewarmedDeploymentApi from './prewarmedDeployment/PrewarmedDeploymentApi
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import KubernetesCluster from '../../../models/KubernetesCluster';
 import PaginationResponse from '../../../models/PaginationResponse';
-import KubernetesClusterListQueryParams from './KubernetesClusterListQueryParams';
+import { KubernetesClusterListQueryParams, KubernetesClusterListQueryParamsBuilder } from './KubernetesClusterListQueryParams';
 
 /**
  * KubernetesApi - object-oriented interface
@@ -34,7 +34,7 @@ export default class KubernetesApi extends BaseAPI {
 
   /**
    * @summary Connect Kubernetes Cluster
-   * @param {KubernetesCluster} kubernetesCluster
+   * @param {KubernetesCluster} kubernetesCluster The Kubernetes Cluster to be created
    * @throws {RequiredError}
    * @memberof KubernetesApi
    */
@@ -76,11 +76,17 @@ export default class KubernetesApi extends BaseAPI {
 
   /**
    * @summary List Kubernetes Cluster
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof KubernetesApi
    */
-  public list(queryParams?: KubernetesClusterListQueryParams): Promise<PaginationResponse<KubernetesCluster>> {
+  public list(queryParameters?: KubernetesClusterListQueryParams | ((q: KubernetesClusterListQueryParamsBuilder) => KubernetesClusterListQueryParamsBuilder)): Promise<PaginationResponse<KubernetesCluster>> {
+    let queryParams: KubernetesClusterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new KubernetesClusterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<KubernetesCluster>>('/encoding/infrastructure/kubernetes', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<KubernetesCluster>(response);
       if (paginationResponse.items) {

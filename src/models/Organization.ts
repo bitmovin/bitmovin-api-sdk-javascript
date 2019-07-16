@@ -6,10 +6,9 @@ import BitmovinResource from './BitmovinResource';
  * @class Organization
  */
 export class Organization extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<Organization>) {
     super(obj);
   }
-
 }
 
 export default Organization;

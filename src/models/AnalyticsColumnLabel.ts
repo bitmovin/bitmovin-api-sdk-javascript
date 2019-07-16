@@ -5,21 +5,22 @@ import {map} from '../common/Mapper';
  * @class AnalyticsColumnLabel
  */
 export class AnalyticsColumnLabel {
-  constructor(obj: any) {
-    this.key = map(obj.key);
-    this.label = map(obj.label);
-  }
-
   /**
    * @type {string}
    * @memberof AnalyticsColumnLabel
    */
   public key?: string;
+
   /**
    * @type {string}
    * @memberof AnalyticsColumnLabel
    */
   public label?: string;
+
+  constructor(obj: Partial<AnalyticsColumnLabel>) {
+    this.key = map(obj.key);
+    this.label = map(obj.label);
+  }
 }
 
 export default AnalyticsColumnLabel;

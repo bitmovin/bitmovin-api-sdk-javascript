@@ -8,23 +8,24 @@ import InputStream from './InputStream';
  * @class AudioMixInputStream
  */
 export class AudioMixInputStream extends InputStream {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-    this.audioMixChannels = map<AudioMixInputStreamChannel>(obj.audioMixChannels, AudioMixInputStreamChannel);
-  }
-
   /**
    * Channel layout of the audio mix input stream
    * @type {AudioMixInputChannelLayout}
    * @memberof AudioMixInputStream
    */
   public channelLayout?: AudioMixInputChannelLayout;
+
   /**
-   * @type {Array<AudioMixInputStreamChannel>}
+   * @type {AudioMixInputStreamChannel[]}
    * @memberof AudioMixInputStream
    */
-  public audioMixChannels?: Array<AudioMixInputStreamChannel>;
+  public audioMixChannels?: AudioMixInputStreamChannel[];
+
+  constructor(obj: Partial<AudioMixInputStream>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+    this.audioMixChannels = map<AudioMixInputStreamChannel>(obj.audioMixChannels, AudioMixInputStreamChannel);
+  }
 }
 
 export default AudioMixInputStream;

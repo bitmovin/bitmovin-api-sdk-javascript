@@ -13,7 +13,7 @@ import QcApi from './qc/QcApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Stream from '../../../models/Stream';
 import PaginationResponse from '../../../models/PaginationResponse';
-import StreamListQueryParams from './StreamListQueryParams';
+import { StreamListQueryParams, StreamListQueryParamsBuilder } from './StreamListQueryParams';
 
 /**
  * StreamsApi - object-oriented interface
@@ -50,7 +50,7 @@ export default class StreamsApi extends BaseAPI {
   /**
    * @summary Add Stream
    * @param {string} encodingId Id of the encoding.
-   * @param {Stream} stream
+   * @param {Stream} stream The Stream to be created
    * @throws {RequiredError}
    * @memberof StreamsApi
    */
@@ -100,14 +100,20 @@ export default class StreamsApi extends BaseAPI {
   /**
    * @summary List Streams
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof StreamsApi
    */
-  public list(encodingId: string, queryParams?: StreamListQueryParams): Promise<PaginationResponse<Stream>> {
+  public list(encodingId: string, queryParameters?: StreamListQueryParams | ((q: StreamListQueryParamsBuilder) => StreamListQueryParamsBuilder)): Promise<PaginationResponse<Stream>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: StreamListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new StreamListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Stream>>('/encoding/encodings/{encoding_id}/streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Stream>(response);
       if (paginationResponse.items) {

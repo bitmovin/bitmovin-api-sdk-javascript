@@ -9,31 +9,33 @@ import CustomAttribute from './CustomAttribute';
  * @class AdaptationSet
  */
 export class AdaptationSet extends BitmovinResponse {
-  constructor(obj: any) {
+  /**
+   * Custom adaptation set attributes
+   * @type {CustomAttribute[]}
+   * @memberof AdaptationSet
+   */
+  public customAttributes?: CustomAttribute[];
+
+  /**
+   * Roles of the adaptation set
+   * @type {AdaptationSetRole[]}
+   * @memberof AdaptationSet
+   */
+  public roles?: AdaptationSetRole[];
+
+  /**
+   * Provide signaling of CEA 607 and CEA 708
+   * @type {Accessibility[]}
+   * @memberof AdaptationSet
+   */
+  public accessibilities?: Accessibility[];
+
+  constructor(obj: Partial<AdaptationSet>) {
     super(obj);
     this.customAttributes = map<CustomAttribute>(obj.customAttributes, CustomAttribute);
     this.roles = map(obj.roles);
     this.accessibilities = map<Accessibility>(obj.accessibilities, Accessibility);
   }
-
-  /**
-   * Custom adaptation set attributes
-   * @type {Array<CustomAttribute>}
-   * @memberof AdaptationSet
-   */
-  public customAttributes?: Array<CustomAttribute>;
-  /**
-   * Roles of the adaptation set
-   * @type {Array<AdaptationSetRole>}
-   * @memberof AdaptationSet
-   */
-  public roles?: Array<AdaptationSetRole>;
-  /**
-   * Provide signaling of CEA 607 and CEA 708
-   * @type {Array<Accessibility>}
-   * @memberof AdaptationSet
-   */
-  public accessibilities?: Array<Accessibility>;
 }
 
 export default AdaptationSet;

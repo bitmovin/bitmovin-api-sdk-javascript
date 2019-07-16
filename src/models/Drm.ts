@@ -15,16 +15,16 @@ import WidevineDrm from './WidevineDrm';
  * @class Drm
  */
 export class Drm extends BitmovinResource {
-  constructor(obj: any) {
+  /**
+   * @type {EncodingOutput[]}
+   * @memberof Drm
+   */
+  public outputs?: EncodingOutput[];
+
+  constructor(obj: Partial<Drm>) {
     super(obj);
     this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
   }
-
-  /**
-   * @type {Array<EncodingOutput>}
-   * @memberof Drm
-   */
-  public outputs?: Array<EncodingOutput>;
 }
 
 export default Drm;

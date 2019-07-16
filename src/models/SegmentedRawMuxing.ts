@@ -10,31 +10,33 @@ import StreamConditionsMode from './StreamConditionsMode';
  * @class SegmentedRawMuxing
  */
 export class SegmentedRawMuxing extends Muxing {
-  constructor(obj: any) {
-    super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
-  }
-
   /**
    * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof SegmentedRawMuxing
    */
   public segmentLength: number;
+
   /**
    * Segment naming policy (required)
    * @type {string}
    * @memberof SegmentedRawMuxing
    */
   public segmentNaming: string;
+
   /**
    * Number of segments which have been encoded
    * @type {number}
    * @memberof SegmentedRawMuxing
    */
   public segmentsMuxed?: number;
+
+  constructor(obj: Partial<SegmentedRawMuxing>) {
+    super(obj);
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
+  }
 }
 
 export default SegmentedRawMuxing;

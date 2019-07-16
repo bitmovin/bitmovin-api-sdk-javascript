@@ -7,7 +7,7 @@ import SubtitlesApi from './subtitles/SubtitlesApi';
 import CodecConfiguration from '../../models/CodecConfiguration';
 import { CodecConfigurationTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import CodecConfigurationListQueryParams from './CodecConfigurationListQueryParams';
+import { CodecConfigurationListQueryParams, CodecConfigurationListQueryParamsBuilder } from './CodecConfigurationListQueryParams';
 
 /**
  * ConfigurationsApi - object-oriented interface
@@ -31,11 +31,17 @@ export default class ConfigurationsApi extends BaseAPI {
 
   /**
    * @summary List all Codec Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ConfigurationsApi
    */
-  public list(queryParams?: CodecConfigurationListQueryParams): Promise<PaginationResponse<CodecConfiguration>> {
+  public list(queryParameters?: CodecConfigurationListQueryParams | ((q: CodecConfigurationListQueryParamsBuilder) => CodecConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<CodecConfiguration>> {
+    let queryParams: CodecConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new CodecConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<CodecConfiguration>>('/encoding/configurations', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CodecConfiguration>(response);
       if (paginationResponse.items) {

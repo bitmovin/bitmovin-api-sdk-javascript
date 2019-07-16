@@ -5,16 +5,16 @@ import {map} from '../common/Mapper';
  * @class CencWidevine
  */
 export class CencWidevine {
-  constructor(obj: any) {
-    this.pssh = map(obj.pssh);
-  }
-
   /**
    * Base64 encoded pssh payload (required)
    * @type {string}
    * @memberof CencWidevine
    */
   public pssh: string;
+
+  constructor(obj: Partial<CencWidevine>) {
+    this.pssh = map(obj.pssh);
+  }
 }
 
 export default CencWidevine;

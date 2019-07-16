@@ -5,16 +5,16 @@ import {map} from '../common/Mapper';
  * @class BitmovinResponse
  */
 export class BitmovinResponse {
-  constructor(obj: any) {
-    this.id = map(obj.id);
-  }
-
   /**
    * Id of the resource (required)
    * @type {string}
    * @memberof BitmovinResponse
    */
   public id?: string;
+
+  constructor(obj: Partial<BitmovinResponse>) {
+    this.id = map(obj.id);
+  }
 }
 
 export default BitmovinResponse;

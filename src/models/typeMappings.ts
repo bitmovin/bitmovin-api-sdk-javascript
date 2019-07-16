@@ -27,6 +27,7 @@ import S3Output from './S3Output';
 import S3RoleBasedOutput from './S3RoleBasedOutput';
 import SftpOutput from './SftpOutput';
 import AkamaiMslOutput from './AkamaiMslOutput';
+import LiveMediaIngestOutput from './LiveMediaIngestOutput';
 import AacAudioConfiguration from './AacAudioConfiguration';
 import HeAacV1AudioConfiguration from './HeAacV1AudioConfiguration';
 import HeAacV2AudioConfiguration from './HeAacV2AudioConfiguration';
@@ -118,6 +119,7 @@ export const OutputTypeMap: any = {
   'S3_ROLE_BASED': S3RoleBasedOutput,
   'SFTP': SftpOutput,
   'AKAMAI_MSL': AkamaiMslOutput,
+  'LIVE_MEDIA_INGEST': LiveMediaIngestOutput,
 };
 export const CodecConfigurationTypeMap: any = {
   'AAC': AacAudioConfiguration,

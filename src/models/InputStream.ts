@@ -13,10 +13,9 @@ import TimecodeTrackTrimmingInputStream from './TimecodeTrackTrimmingInputStream
  * @class InputStream
  */
 export class InputStream extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<InputStream>) {
     super(obj);
   }
-
 }
 
 export default InputStream;

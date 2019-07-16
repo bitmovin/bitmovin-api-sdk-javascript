@@ -12,24 +12,25 @@ import XmlNamespace from './XmlNamespace';
  * @class DashManifestDefault
  */
 export class DashManifestDefault extends DashManifest {
-  constructor(obj: any) {
-    super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.version = map(obj.version);
-  }
-
   /**
    * The id of the encoding to create a default manifest from (required)
    * @type {string}
    * @memberof DashManifestDefault
    */
   public encodingId: string;
+
   /**
    * The version of the default manifest generator
    * @type {DashManifestDefaultVersion}
    * @memberof DashManifestDefault
    */
   public version?: DashManifestDefaultVersion;
+
+  constructor(obj: Partial<DashManifestDefault>) {
+    super(obj);
+    this.encodingId = map(obj.encodingId);
+    this.version = map(obj.version);
+  }
 }
 
 export default DashManifestDefault;

@@ -10,7 +10,128 @@ import StatisticsResolution from './StatisticsResolution';
  * @class StatisticsPerStream
  */
 export class StatisticsPerStream {
-  constructor(obj: any) {
+  /**
+   * ID of the stream (required)
+   * @type {string}
+   * @memberof StatisticsPerStream
+   */
+  public streamId: string;
+
+  /**
+   * ID of the condec configuration (required)
+   * @type {string}
+   * @memberof StatisticsPerStream
+   */
+  public codecConfigId: string;
+
+  /**
+   * Multiplier for the encoded minutes. Depends on muxing type. (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public multiplicator: number;
+
+  /**
+   * Encoded bytes. (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public encodedBytes: number;
+
+  /**
+   * Length of the stream. (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public encodedSeconds: number;
+
+  /**
+   * Minutes you will be charged for (billableMinutes = encodedSeconds * multiplicator) (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public billableMinutes: number;
+
+  /**
+   * Video width, only if video stream
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public width?: number;
+
+  /**
+   * Video height, only if video stream
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public height?: number;
+
+  /**
+   * If it' a video stream this value is the FPS, for audio it's the sample rate. (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public rate: number;
+
+  /**
+   * Bitrate of the stream (required)
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public bitrate: number;
+
+  /**
+   * @type {CodecConfigType}
+   * @memberof StatisticsPerStream
+   */
+  public codec: CodecConfigType;
+
+  /**
+   * @type {StatisticsResolution}
+   * @memberof StatisticsPerStream
+   */
+  public resolution?: StatisticsResolution;
+
+  /**
+   * @type {EncodingMode}
+   * @memberof StatisticsPerStream
+   */
+  public encodingMode?: EncodingMode;
+
+  /**
+   * The output minutes multiplicator for the given encodingMode
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public encodingModeMultiplicator?: number;
+
+  /**
+   * @type {StatisticsPerTitleStream}
+   * @memberof StatisticsPerStream
+   */
+  public perTitleResultStream?: StatisticsPerTitleStream;
+
+  /**
+   * The output minutes multiplicator for per-title
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public perTitleMultiplicator?: number;
+
+  /**
+   * @type {PsnrPerStreamMode}
+   * @memberof StatisticsPerStream
+   */
+  public psnrMode?: PsnrPerStreamMode;
+
+  /**
+   * The output minutes multiplicator for psnr streams
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public psnrMultiplicator?: number;
+
+  constructor(obj: Partial<StatisticsPerStream>) {
     this.streamId = map(obj.streamId);
     this.codecConfigId = map(obj.codecConfigId);
     this.multiplicator = map(obj.multiplicator);
@@ -30,110 +151,6 @@ export class StatisticsPerStream {
     this.psnrMode = map(obj.psnrMode);
     this.psnrMultiplicator = map(obj.psnrMultiplicator);
   }
-
-  /**
-   * ID of the stream (required)
-   * @type {string}
-   * @memberof StatisticsPerStream
-   */
-  public streamId: string;
-  /**
-   * ID of the condec configuration (required)
-   * @type {string}
-   * @memberof StatisticsPerStream
-   */
-  public codecConfigId: string;
-  /**
-   * Multiplier for the encoded minutes. Depends on muxing type. (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public multiplicator: number;
-  /**
-   * Encoded bytes. (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public encodedBytes: number;
-  /**
-   * Length of the stream. (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public encodedSeconds: number;
-  /**
-   * Minutes you will be charged for (billableMinutes = encodedSeconds * multiplicator) (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public billableMinutes: number;
-  /**
-   * Video width, only if video stream
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public width?: number;
-  /**
-   * Video height, only if video stream
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public height?: number;
-  /**
-   * If it' a video stream this value is the FPS, for audio it's the sample rate. (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public rate: number;
-  /**
-   * Bitrate of the stream (required)
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public bitrate: number;
-  /**
-   * @type {CodecConfigType}
-   * @memberof StatisticsPerStream
-   */
-  public codec: CodecConfigType;
-  /**
-   * @type {StatisticsResolution}
-   * @memberof StatisticsPerStream
-   */
-  public resolution?: StatisticsResolution;
-  /**
-   * @type {EncodingMode}
-   * @memberof StatisticsPerStream
-   */
-  public encodingMode?: EncodingMode;
-  /**
-   * The output minutes multiplicator for the given encodingMode
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public encodingModeMultiplicator?: number;
-  /**
-   * @type {StatisticsPerTitleStream}
-   * @memberof StatisticsPerStream
-   */
-  public perTitleResultStream?: StatisticsPerTitleStream;
-  /**
-   * The output minutes multiplicator for per-title
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public perTitleMultiplicator?: number;
-  /**
-   * @type {PsnrPerStreamMode}
-   * @memberof StatisticsPerStream
-   */
-  public psnrMode?: PsnrPerStreamMode;
-  /**
-   * The output minutes multiplicator for psnr streams
-   * @type {number}
-   * @memberof StatisticsPerStream
-   */
-  public psnrMultiplicator?: number;
 }
 
 export default StatisticsPerStream;

@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import InterlaceFilter from '../../../models/InterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import InterlaceFilterListQueryParams from './InterlaceFilterListQueryParams';
+import { InterlaceFilterListQueryParams, InterlaceFilterListQueryParamsBuilder } from './InterlaceFilterListQueryParams';
 
 /**
  * InterlaceApi - object-oriented interface
@@ -22,7 +22,7 @@ export default class InterlaceApi extends BaseAPI {
 
   /**
    * @summary Create Interlace Filter
-   * @param {InterlaceFilter} interlaceFilter
+   * @param {InterlaceFilter} interlaceFilter The Interlace Filter to be created
    * @throws {RequiredError}
    * @memberof InterlaceApi
    */
@@ -64,11 +64,17 @@ export default class InterlaceApi extends BaseAPI {
 
   /**
    * @summary List Interlace Filters
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof InterlaceApi
    */
-  public list(queryParams?: InterlaceFilterListQueryParams): Promise<PaginationResponse<InterlaceFilter>> {
+  public list(queryParameters?: InterlaceFilterListQueryParams | ((q: InterlaceFilterListQueryParamsBuilder) => InterlaceFilterListQueryParamsBuilder)): Promise<PaginationResponse<InterlaceFilter>> {
+    let queryParams: InterlaceFilterListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new InterlaceFilterListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<InterlaceFilter>>('/encoding/filters/interlace', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<InterlaceFilter>(response);
       if (paginationResponse.items) {

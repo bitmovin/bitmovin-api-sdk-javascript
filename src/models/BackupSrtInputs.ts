@@ -6,22 +6,23 @@ import SrtInput from './SrtInput';
  * @class BackupSrtInputs
  */
 export class BackupSrtInputs {
-  constructor(obj: any) {
-    this.delayThreshold = map(obj.delayThreshold);
-    this.srtInputs = map<SrtInput>(obj.srtInputs, SrtInput);
-  }
-
   /**
    * When there is no input signal present for this number of seconds, the encoder will switch to the next input
    * @type {number}
    * @memberof BackupSrtInputs
    */
   public delayThreshold?: number;
+
   /**
-   * @type {Array<SrtInput>}
+   * @type {SrtInput[]}
    * @memberof BackupSrtInputs
    */
-  public srtInputs: Array<SrtInput>;
+  public srtInputs: SrtInput[];
+
+  constructor(obj: Partial<BackupSrtInputs>) {
+    this.delayThreshold = map(obj.delayThreshold);
+    this.srtInputs = map<SrtInput>(obj.srtInputs, SrtInput);
+  }
 }
 
 export default BackupSrtInputs;

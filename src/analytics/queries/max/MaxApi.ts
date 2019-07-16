@@ -18,7 +18,7 @@ export default class MaxApi extends BaseAPI {
 
   /**
    * @summary Max
-   * @param {AnalyticsMaxQueryRequest} analyticsMaxQueryRequest
+   * @param {AnalyticsMaxQueryRequest} analyticsMaxQueryRequest Analytics Query Object
    * @throws {RequiredError}
    * @memberof MaxApi
    */

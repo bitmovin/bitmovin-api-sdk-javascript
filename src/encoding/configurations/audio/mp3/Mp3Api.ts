@@ -4,7 +4,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3AudioConfiguration from '../../../../models/Mp3AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Mp3AudioConfigurationListQueryParams from './Mp3AudioConfigurationListQueryParams';
+import { Mp3AudioConfigurationListQueryParams, Mp3AudioConfigurationListQueryParamsBuilder } from './Mp3AudioConfigurationListQueryParams';
 
 /**
  * Mp3Api - object-oriented interface
@@ -22,7 +22,7 @@ export default class Mp3Api extends BaseAPI {
 
   /**
    * @summary Create MP3 Codec Configuration
-   * @param {Mp3AudioConfiguration} mp3AudioConfiguration
+   * @param {Mp3AudioConfiguration} mp3AudioConfiguration The MP3 Codec Configuration to be created
    * @throws {RequiredError}
    * @memberof Mp3Api
    */
@@ -64,11 +64,17 @@ export default class Mp3Api extends BaseAPI {
 
   /**
    * @summary List MP3 Configurations
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Mp3Api
    */
-  public list(queryParams?: Mp3AudioConfigurationListQueryParams): Promise<PaginationResponse<Mp3AudioConfiguration>> {
+  public list(queryParameters?: Mp3AudioConfigurationListQueryParams | ((q: Mp3AudioConfigurationListQueryParamsBuilder) => Mp3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Mp3AudioConfiguration>> {
+    let queryParams: Mp3AudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Mp3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Mp3AudioConfiguration>>('/encoding/configurations/audio/mp3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Mp3AudioConfiguration>(response);
       if (paginationResponse.items) {

@@ -7,7 +7,7 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveTsMuxing from '../../../../models/ProgressiveTsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import ProgressiveTsMuxingListQueryParams from './ProgressiveTsMuxingListQueryParams';
+import { ProgressiveTsMuxingListQueryParams, ProgressiveTsMuxingListQueryParamsBuilder } from './ProgressiveTsMuxingListQueryParams';
 
 /**
  * ProgressiveTsApi - object-oriented interface
@@ -32,7 +32,7 @@ export default class ProgressiveTsApi extends BaseAPI {
   /**
    * @summary Add Progressive TS Muxing
    * @param {string} encodingId ID of the encoding.
-   * @param {ProgressiveTsMuxing} progressiveTsMuxing
+   * @param {ProgressiveTsMuxing} progressiveTsMuxing The Progressive TS Muxing to be created
    * @throws {RequiredError}
    * @memberof ProgressiveTsApi
    */
@@ -82,14 +82,20 @@ export default class ProgressiveTsApi extends BaseAPI {
   /**
    * @summary List Progressive TS Muxings
    * @param {string} encodingId ID of the Encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ProgressiveTsApi
    */
-  public list(encodingId: string, queryParams?: ProgressiveTsMuxingListQueryParams): Promise<PaginationResponse<ProgressiveTsMuxing>> {
+  public list(encodingId: string, queryParameters?: ProgressiveTsMuxingListQueryParams | ((q: ProgressiveTsMuxingListQueryParamsBuilder) => ProgressiveTsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ProgressiveTsMuxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: ProgressiveTsMuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ProgressiveTsMuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ProgressiveTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ProgressiveTsMuxing>(response);
       if (paginationResponse.items) {

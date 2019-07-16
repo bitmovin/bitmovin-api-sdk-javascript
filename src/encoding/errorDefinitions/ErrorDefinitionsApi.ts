@@ -2,7 +2,7 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import EncodingErrorDefinition from '../../models/EncodingErrorDefinition';
 import PaginationResponse from '../../models/PaginationResponse';
-import EncodingErrorDefinitionListQueryParams from './EncodingErrorDefinitionListQueryParams';
+import { EncodingErrorDefinitionListQueryParams, EncodingErrorDefinitionListQueryParamsBuilder } from './EncodingErrorDefinitionListQueryParams';
 
 /**
  * ErrorDefinitionsApi - object-oriented interface
@@ -18,11 +18,17 @@ export default class ErrorDefinitionsApi extends BaseAPI {
 
   /**
    * @summary List all possible encoding error definitions
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ErrorDefinitionsApi
    */
-  public list(queryParams?: EncodingErrorDefinitionListQueryParams): Promise<PaginationResponse<EncodingErrorDefinition>> {
+  public list(queryParameters?: EncodingErrorDefinitionListQueryParams | ((q: EncodingErrorDefinitionListQueryParamsBuilder) => EncodingErrorDefinitionListQueryParamsBuilder)): Promise<PaginationResponse<EncodingErrorDefinition>> {
+    let queryParams: EncodingErrorDefinitionListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new EncodingErrorDefinitionListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<EncodingErrorDefinition>>('/encoding/error-definitions', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingErrorDefinition>(response);
       if (paginationResponse.items) {

@@ -6,7 +6,7 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp4Muxing from '../../../../models/Mp4Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import Mp4MuxingListQueryParams from './Mp4MuxingListQueryParams';
+import { Mp4MuxingListQueryParams, Mp4MuxingListQueryParamsBuilder } from './Mp4MuxingListQueryParams';
 
 /**
  * Mp4Api - object-oriented interface
@@ -29,7 +29,7 @@ export default class Mp4Api extends BaseAPI {
   /**
    * @summary Add MP4 Muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Mp4Muxing} mp4Muxing
+   * @param {Mp4Muxing} mp4Muxing The MP4 Muxing to be created
    * @throws {RequiredError}
    * @memberof Mp4Api
    */
@@ -79,14 +79,20 @@ export default class Mp4Api extends BaseAPI {
   /**
    * @summary List MP4 Muxings
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof Mp4Api
    */
-  public list(encodingId: string, queryParams?: Mp4MuxingListQueryParams): Promise<PaginationResponse<Mp4Muxing>> {
+  public list(encodingId: string, queryParameters?: Mp4MuxingListQueryParams | ((q: Mp4MuxingListQueryParamsBuilder) => Mp4MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Mp4Muxing>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: Mp4MuxingListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new Mp4MuxingListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Mp4Muxing>>('/encoding/encodings/{encoding_id}/muxings/mp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Mp4Muxing>(response);
       if (paginationResponse.items) {

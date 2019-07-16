@@ -7,17 +7,17 @@ import ChannelLayout from './ChannelLayout';
  * @class Mp2AudioConfiguration
  */
 export class Mp2AudioConfiguration extends AudioConfiguration {
-  constructor(obj: any) {
-    super(obj);
-    this.channelLayout = map(obj.channelLayout);
-  }
-
   /**
    * Channel layout of the audio codec configuration
    * @type {ChannelLayout}
    * @memberof Mp2AudioConfiguration
    */
   public channelLayout?: ChannelLayout;
+
+  constructor(obj: Partial<Mp2AudioConfiguration>) {
+    super(obj);
+    this.channelLayout = map(obj.channelLayout);
+  }
 }
 
 export default Mp2AudioConfiguration;

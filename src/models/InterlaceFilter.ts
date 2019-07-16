@@ -8,22 +8,23 @@ import VerticalLowPassFilteringMode from './VerticalLowPassFilteringMode';
  * @class InterlaceFilter
  */
 export class InterlaceFilter extends Filter {
-  constructor(obj: any) {
-    super(obj);
-    this.mode = map(obj.mode);
-    this.verticalLowPassFilteringMode = map(obj.verticalLowPassFilteringMode);
-  }
-
   /**
    * @type {InterlaceMode}
    * @memberof InterlaceFilter
    */
   public mode?: InterlaceMode;
+
   /**
    * @type {VerticalLowPassFilteringMode}
    * @memberof InterlaceFilter
    */
   public verticalLowPassFilteringMode?: VerticalLowPassFilteringMode;
+
+  constructor(obj: Partial<InterlaceFilter>) {
+    super(obj);
+    this.mode = map(obj.mode);
+    this.verticalLowPassFilteringMode = map(obj.verticalLowPassFilteringMode);
+  }
 }
 
 export default InterlaceFilter;

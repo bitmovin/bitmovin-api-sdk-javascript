@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import AzureInput from '../../../models/AzureInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import AzureInputListQueryParams from './AzureInputListQueryParams';
+import { AzureInputListQueryParams, AzureInputListQueryParamsBuilder } from './AzureInputListQueryParams';
 
 /**
  * AzureApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class AzureApi extends BaseAPI {
 
   /**
    * @summary List Azure Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AzureApi
    */
-  public list(queryParams?: AzureInputListQueryParams): Promise<PaginationResponse<AzureInput>> {
+  public list(queryParameters?: AzureInputListQueryParams | ((q: AzureInputListQueryParamsBuilder) => AzureInputListQueryParamsBuilder)): Promise<PaginationResponse<AzureInput>> {
+    let queryParams: AzureInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AzureInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AzureInput>>('/encoding/inputs/azure', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AzureInput>(response);
       if (paginationResponse.items) {

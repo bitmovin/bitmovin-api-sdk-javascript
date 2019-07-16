@@ -7,17 +7,17 @@ import InputPath from './InputPath';
  * @class SccCaption
  */
 export class SccCaption extends BitmovinResource {
-  constructor(obj: any) {
-    super(obj);
-    this.input = map<InputPath>(obj.input, InputPath);
-  }
-
   /**
    * The input location to get the scc file from (required)
    * @type {InputPath}
    * @memberof SccCaption
    */
   public input: InputPath;
+
+  constructor(obj: Partial<SccCaption>) {
+    super(obj);
+    this.input = map<InputPath>(obj.input, InputPath);
+  }
 }
 
 export default SccCaption;

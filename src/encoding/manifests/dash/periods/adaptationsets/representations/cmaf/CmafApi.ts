@@ -6,7 +6,7 @@ import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashCmafRepresentation from '../../../../../../../models/DashCmafRepresentation';
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import DashCmafRepresentationListQueryParams from './DashCmafRepresentationListQueryParams';
+import { DashCmafRepresentationListQueryParams, DashCmafRepresentationListQueryParamsBuilder } from './DashCmafRepresentationListQueryParams';
 
 /**
  * CmafApi - object-oriented interface
@@ -91,16 +91,22 @@ export default class CmafApi extends BaseAPI {
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof CmafApi
    */
-  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParams?: DashCmafRepresentationListQueryParams): Promise<PaginationResponse<DashCmafRepresentation>> {
+  public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashCmafRepresentationListQueryParams | ((q: DashCmafRepresentationListQueryParamsBuilder) => DashCmafRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashCmafRepresentation>> {
     const pathParamMap = {
       manifest_id: manifestId,
       period_id: periodId,
       adaptationset_id: adaptationsetId
     };
+    let queryParams: DashCmafRepresentationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new DashCmafRepresentationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<DashCmafRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashCmafRepresentation>(response);
       if (paginationResponse.items) {

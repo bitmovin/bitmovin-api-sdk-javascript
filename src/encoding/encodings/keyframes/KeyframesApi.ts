@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Keyframe from '../../../models/Keyframe';
 import PaginationResponse from '../../../models/PaginationResponse';
-import KeyframeListQueryParams from './KeyframeListQueryParams';
+import { KeyframeListQueryParams, KeyframeListQueryParamsBuilder } from './KeyframeListQueryParams';
 
 /**
  * KeyframesApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class KeyframesApi extends BaseAPI {
   /**
    * @summary Create Keyframes
    * @param {string} encodingId Id of the encoding.
-   * @param {Keyframe} keyframe
+   * @param {Keyframe} keyframe The Keyframes to be created
    * @throws {RequiredError}
    * @memberof KeyframesApi
    */
@@ -70,14 +70,20 @@ export default class KeyframesApi extends BaseAPI {
   /**
    * @summary List all Keyframes
    * @param {string} encodingId Id of the encoding.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof KeyframesApi
    */
-  public list(encodingId: string, queryParams?: KeyframeListQueryParams): Promise<PaginationResponse<Keyframe>> {
+  public list(encodingId: string, queryParameters?: KeyframeListQueryParams | ((q: KeyframeListQueryParamsBuilder) => KeyframeListQueryParamsBuilder)): Promise<PaginationResponse<Keyframe>> {
     const pathParamMap = {
       encoding_id: encodingId
     };
+    let queryParams: KeyframeListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new KeyframeListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Keyframe>>('/encoding/encodings/{encoding_id}/keyframes', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Keyframe>(response);
       if (paginationResponse.items) {

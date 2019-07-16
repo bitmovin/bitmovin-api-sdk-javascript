@@ -3,7 +3,7 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import AsperaInput from '../../../models/AsperaInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import AsperaInputListQueryParams from './AsperaInputListQueryParams';
+import { AsperaInputListQueryParams, AsperaInputListQueryParamsBuilder } from './AsperaInputListQueryParams';
 
 /**
  * AsperaApi - object-oriented interface
@@ -63,11 +63,17 @@ export default class AsperaApi extends BaseAPI {
 
   /**
    * @summary List Aspera Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof AsperaApi
    */
-  public list(queryParams?: AsperaInputListQueryParams): Promise<PaginationResponse<AsperaInput>> {
+  public list(queryParameters?: AsperaInputListQueryParams | ((q: AsperaInputListQueryParamsBuilder) => AsperaInputListQueryParamsBuilder)): Promise<PaginationResponse<AsperaInput>> {
+    let queryParams: AsperaInputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new AsperaInputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<AsperaInput>>('/encoding/inputs/aspera', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AsperaInput>(response);
       if (paginationResponse.items) {

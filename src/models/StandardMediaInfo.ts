@@ -6,17 +6,17 @@ import SegmentsMediaInfo from './SegmentsMediaInfo';
  * @class StandardMediaInfo
  */
 export class StandardMediaInfo extends SegmentsMediaInfo {
-  constructor(obj: any) {
-    super(obj);
-    this.uri = map(obj.uri);
-  }
-
   /**
    * The URI of the Rendition (required)
    * @type {string}
    * @memberof StandardMediaInfo
    */
   public uri: string;
+
+  constructor(obj: Partial<StandardMediaInfo>) {
+    super(obj);
+    this.uri = map(obj.uri);
+  }
 }
 
 export default StandardMediaInfo;

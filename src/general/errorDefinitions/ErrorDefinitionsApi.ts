@@ -2,7 +2,7 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import ApiErrorDefinition from '../../models/ApiErrorDefinition';
 import PaginationResponse from '../../models/PaginationResponse';
-import ApiErrorDefinitionListQueryParams from './ApiErrorDefinitionListQueryParams';
+import { ApiErrorDefinitionListQueryParams, ApiErrorDefinitionListQueryParamsBuilder } from './ApiErrorDefinitionListQueryParams';
 
 /**
  * ErrorDefinitionsApi - object-oriented interface
@@ -18,11 +18,17 @@ export default class ErrorDefinitionsApi extends BaseAPI {
 
   /**
    * @summary List all possible api error definitions
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof ErrorDefinitionsApi
    */
-  public list(queryParams?: ApiErrorDefinitionListQueryParams): Promise<PaginationResponse<ApiErrorDefinition>> {
+  public list(queryParameters?: ApiErrorDefinitionListQueryParams | ((q: ApiErrorDefinitionListQueryParamsBuilder) => ApiErrorDefinitionListQueryParamsBuilder)): Promise<PaginationResponse<ApiErrorDefinition>> {
+    let queryParams: ApiErrorDefinitionListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new ApiErrorDefinitionListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<ApiErrorDefinition>>('/general/error-definitions', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ApiErrorDefinition>(response);
       if (paginationResponse.items) {

@@ -8,7 +8,75 @@ import BitmovinResponse from './BitmovinResponse';
  * @class AnalyticsExportTask
  */
 export class AnalyticsExportTask extends BitmovinResponse {
-  constructor(obj: any) {
+  /**
+   * Start of timeframe which is exported in UTC format (required)
+   * @type {Date}
+   * @memberof AnalyticsExportTask
+   */
+  public startTime: Date;
+
+  /**
+   * End of timeframe which is exported in UTC format (required)
+   * @type {Date}
+   * @memberof AnalyticsExportTask
+   */
+  public endTime: Date;
+
+  /**
+   * Name of the export task (required)
+   * @type {string}
+   * @memberof AnalyticsExportTask
+   */
+  public name: string;
+
+  /**
+   * Export task description
+   * @type {string}
+   * @memberof AnalyticsExportTask
+   */
+  public description?: string;
+
+  /**
+   * License key (required)
+   * @type {string}
+   * @memberof AnalyticsExportTask
+   */
+  public licenseKey: string;
+
+  /**
+   * @type {AnalyticsExportTaskOutputTarget}
+   * @memberof AnalyticsExportTask
+   */
+  public output: AnalyticsExportTaskOutputTarget;
+
+  /**
+   * Progress of the export task
+   * @type {number}
+   * @memberof AnalyticsExportTask
+   */
+  public progress?: number;
+
+  /**
+   * @type {AnalyticsExportStatus}
+   * @memberof AnalyticsExportTask
+   */
+  public status?: AnalyticsExportStatus;
+
+  /**
+   * UTC timestamp when the export task started
+   * @type {Date}
+   * @memberof AnalyticsExportTask
+   */
+  public startedAt?: Date;
+
+  /**
+   * UTC timestamp when the export task finished
+   * @type {Date}
+   * @memberof AnalyticsExportTask
+   */
+  public finishedAt?: Date;
+
+  constructor(obj: Partial<AnalyticsExportTask>) {
     super(obj);
     this.startTime = map(obj.startTime, Date);
     this.endTime = map(obj.endTime, Date);
@@ -21,65 +89,6 @@ export class AnalyticsExportTask extends BitmovinResponse {
     this.startedAt = map(obj.startedAt, Date);
     this.finishedAt = map(obj.finishedAt, Date);
   }
-
-  /**
-   * Start of timeframe which is exported in UTC format (required)
-   * @type {Date}
-   * @memberof AnalyticsExportTask
-   */
-  public startTime: Date;
-  /**
-   * End of timeframe which is exported in UTC format (required)
-   * @type {Date}
-   * @memberof AnalyticsExportTask
-   */
-  public endTime: Date;
-  /**
-   * Name of the export task (required)
-   * @type {string}
-   * @memberof AnalyticsExportTask
-   */
-  public name: string;
-  /**
-   * Export task description
-   * @type {string}
-   * @memberof AnalyticsExportTask
-   */
-  public description?: string;
-  /**
-   * License key (required)
-   * @type {string}
-   * @memberof AnalyticsExportTask
-   */
-  public licenseKey: string;
-  /**
-   * @type {AnalyticsExportTaskOutputTarget}
-   * @memberof AnalyticsExportTask
-   */
-  public output: AnalyticsExportTaskOutputTarget;
-  /**
-   * Progress of the export task
-   * @type {number}
-   * @memberof AnalyticsExportTask
-   */
-  public progress?: number;
-  /**
-   * @type {AnalyticsExportStatus}
-   * @memberof AnalyticsExportTask
-   */
-  public status?: AnalyticsExportStatus;
-  /**
-   * UTC timestamp when the export task started
-   * @type {Date}
-   * @memberof AnalyticsExportTask
-   */
-  public startedAt?: Date;
-  /**
-   * UTC timestamp when the export task finished
-   * @type {Date}
-   * @memberof AnalyticsExportTask
-   */
-  public finishedAt?: Date;
 }
 
 export default AnalyticsExportTask;

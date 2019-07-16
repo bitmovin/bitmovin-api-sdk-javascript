@@ -6,10 +6,9 @@ import Input from './Input';
  * @class RtmpInput
  */
 export class RtmpInput extends Input {
-  constructor(obj: any) {
+  constructor(obj: Partial<RtmpInput>) {
     super(obj);
   }
-
 }
 
 export default RtmpInput;

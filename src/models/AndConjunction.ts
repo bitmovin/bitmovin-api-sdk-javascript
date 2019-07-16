@@ -7,10 +7,9 @@ import AbstractConjunction from './AbstractConjunction';
  * @class AndConjunction
  */
 export class AndConjunction extends AbstractConjunction {
-  constructor(obj: any) {
+  constructor(obj: Partial<AndConjunction>) {
     super(obj);
   }
-
 }
 
 export default AndConjunction;

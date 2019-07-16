@@ -5,9 +5,8 @@ import {map} from '../common/Mapper';
  * @class CencMarlin
  */
 export class CencMarlin {
-  constructor(obj: any) {
+  constructor(obj: Partial<CencMarlin>) {
   }
-
 }
 
 export default CencMarlin;

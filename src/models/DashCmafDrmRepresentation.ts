@@ -8,17 +8,17 @@ import DashRepresentationTypeMode from './DashRepresentationTypeMode';
  * @class DashCmafDrmRepresentation
  */
 export class DashCmafDrmRepresentation extends DashCmafRepresentation {
-  constructor(obj: any) {
-    super(obj);
-    this.drmId = map(obj.drmId);
-  }
-
   /**
    * DRM Id (required)
    * @type {string}
    * @memberof DashCmafDrmRepresentation
    */
   public drmId: string;
+
+  constructor(obj: Partial<DashCmafDrmRepresentation>) {
+    super(obj);
+    this.drmId = map(obj.drmId);
+  }
 }
 
 export default DashCmafDrmRepresentation;

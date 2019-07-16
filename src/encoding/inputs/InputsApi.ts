@@ -23,7 +23,7 @@ import ZixiApi from './zixi/ZixiApi';
 import Input from '../../models/Input';
 import { InputTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import InputListQueryParams from './InputListQueryParams';
+import { InputListQueryParams, InputListQueryParamsBuilder } from './InputListQueryParams';
 
 /**
  * InputsApi - object-oriented interface
@@ -79,11 +79,17 @@ export default class InputsApi extends BaseAPI {
 
   /**
    * @summary List all Inputs
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof InputsApi
    */
-  public list(queryParams?: InputListQueryParams): Promise<PaginationResponse<Input>> {
+  public list(queryParameters?: InputListQueryParams | ((q: InputListQueryParamsBuilder) => InputListQueryParamsBuilder)): Promise<PaginationResponse<Input>> {
+    let queryParams: InputListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new InputListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<Input>>('/encoding/inputs', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Input>(response);
       if (paginationResponse.items) {

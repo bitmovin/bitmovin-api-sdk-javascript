@@ -6,17 +6,17 @@ import Filter from './Filter';
  * @class RotateFilter
  */
 export class RotateFilter extends Filter {
-  constructor(obj: any) {
-    super(obj);
-    this.rotation = map(obj.rotation);
-  }
-
   /**
    * Rotation of the video in degrees. A positive value will rotate the video clockwise and a negative one counter clockwise. (required)
    * @type {number}
    * @memberof RotateFilter
    */
   public rotation: number;
+
+  constructor(obj: Partial<RotateFilter>) {
+    super(obj);
+    this.rotation = map(obj.rotation);
+  }
 }
 
 export default RotateFilter;

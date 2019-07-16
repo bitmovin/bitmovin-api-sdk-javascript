@@ -21,10 +21,9 @@ import Vp9VideoConfiguration from './Vp9VideoConfiguration';
  * @class CodecConfiguration
  */
 export class CodecConfiguration extends BitmovinResource {
-  constructor(obj: any) {
+  constructor(obj: Partial<CodecConfiguration>) {
     super(obj);
   }
-
 }
 
 export default CodecConfiguration;

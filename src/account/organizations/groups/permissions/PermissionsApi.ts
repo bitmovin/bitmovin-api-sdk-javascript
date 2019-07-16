@@ -20,7 +20,7 @@ export default class PermissionsApi extends BaseAPI {
    * @summary Set Group Permissions
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
-   * @param {Acl} acl
+   * @param {Acl} acl Group Permissions
    * @throws {RequiredError}
    * @memberof PermissionsApi
    */

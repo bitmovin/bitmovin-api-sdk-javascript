@@ -6,16 +6,16 @@ import FilterType from './FilterType';
  * @class FilterTypeResponse
  */
 export class FilterTypeResponse {
-  constructor(obj: any) {
-    this.type = map(obj.type);
-  }
-
   /**
    * The type of the filter
    * @type {FilterType}
    * @memberof FilterTypeResponse
    */
   public type?: FilterType;
+
+  constructor(obj: Partial<FilterTypeResponse>) {
+    this.type = map(obj.type);
+  }
 }
 
 export default FilterTypeResponse;

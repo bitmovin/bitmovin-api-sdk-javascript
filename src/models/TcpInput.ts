@@ -6,10 +6,9 @@ import Input from './Input';
  * @class TcpInput
  */
 export class TcpInput extends Input {
-  constructor(obj: any) {
+  constructor(obj: Partial<TcpInput>) {
     super(obj);
   }
-
 }
 
 export default TcpInput;

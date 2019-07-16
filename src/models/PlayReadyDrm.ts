@@ -8,7 +8,48 @@ import PlayReadyEncryptionMethod from './PlayReadyEncryptionMethod';
  * @class PlayReadyDrm
  */
 export class PlayReadyDrm extends Drm {
-  constructor(obj: any) {
+  /**
+   * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public key?: string;
+
+  /**
+   * Key seed to generate key. Either key or keySeed is required
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public keySeed?: string;
+
+  /**
+   * URL of the license server
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public laUrl?: string;
+
+  /**
+   * Base64 encoded pssh payload
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public pssh?: string;
+
+  /**
+   * @type {PlayReadyEncryptionMethod}
+   * @memberof PlayReadyDrm
+   */
+  public method?: PlayReadyEncryptionMethod;
+
+  /**
+   * Key identifier
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public kid?: string;
+
+  constructor(obj: Partial<PlayReadyDrm>) {
     super(obj);
     this.key = map(obj.key);
     this.keySeed = map(obj.keySeed);
@@ -17,42 +58,6 @@ export class PlayReadyDrm extends Drm {
     this.method = map(obj.method);
     this.kid = map(obj.kid);
   }
-
-  /**
-   * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
-   * @type {string}
-   * @memberof PlayReadyDrm
-   */
-  public key?: string;
-  /**
-   * Key seed to generate key. Either key or keySeed is required
-   * @type {string}
-   * @memberof PlayReadyDrm
-   */
-  public keySeed?: string;
-  /**
-   * URL of the license server
-   * @type {string}
-   * @memberof PlayReadyDrm
-   */
-  public laUrl?: string;
-  /**
-   * Base64 encoded pssh payload
-   * @type {string}
-   * @memberof PlayReadyDrm
-   */
-  public pssh?: string;
-  /**
-   * @type {PlayReadyEncryptionMethod}
-   * @memberof PlayReadyDrm
-   */
-  public method?: PlayReadyEncryptionMethod;
-  /**
-   * Key identifier
-   * @type {string}
-   * @memberof PlayReadyDrm
-   */
-  public kid?: string;
 }
 
 export default PlayReadyDrm;

@@ -9,17 +9,17 @@ import CustomAttribute from './CustomAttribute';
  * @class AudioAdaptationSet
  */
 export class AudioAdaptationSet extends AdaptationSet {
-  constructor(obj: any) {
-    super(obj);
-    this.lang = map(obj.lang);
-  }
-
   /**
    * ISO 639-1 (Alpha-2) code identifying the language of the audio adaptation set (required)
    * @type {string}
    * @memberof AudioAdaptationSet
    */
   public lang: string;
+
+  constructor(obj: Partial<AudioAdaptationSet>) {
+    super(obj);
+    this.lang = map(obj.lang);
+  }
 }
 
 export default AudioAdaptationSet;

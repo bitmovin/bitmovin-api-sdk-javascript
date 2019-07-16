@@ -3,7 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import VttMediaInfo from '../../../../../models/VttMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import VttMediaInfoListQueryParams from './VttMediaInfoListQueryParams';
+import { VttMediaInfoListQueryParams, VttMediaInfoListQueryParamsBuilder } from './VttMediaInfoListQueryParams';
 
 /**
  * VttApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class VttApi extends BaseAPI {
   /**
    * @summary Add VTT Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {VttMediaInfo} vttMediaInfo
+   * @param {VttMediaInfo} vttMediaInfo The VTT Media to be added
    * @throws {RequiredError}
    * @memberof VttApi
    */
@@ -70,14 +70,20 @@ export default class VttApi extends BaseAPI {
   /**
    * @summary List all VTT Media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof VttApi
    */
-  public list(manifestId: string, queryParams?: VttMediaInfoListQueryParams): Promise<PaginationResponse<VttMediaInfo>> {
+  public list(manifestId: string, queryParameters?: VttMediaInfoListQueryParams | ((q: VttMediaInfoListQueryParamsBuilder) => VttMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<VttMediaInfo>> {
     const pathParamMap = {
       manifest_id: manifestId
     };
+    let queryParams: VttMediaInfoListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new VttMediaInfoListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<VttMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/vtt', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<VttMediaInfo>(response);
       if (paginationResponse.items) {

@@ -6,24 +6,25 @@ import Input from './Input';
  * @class UdpMulticastInput
  */
 export class UdpMulticastInput extends Input {
-  constructor(obj: any) {
-    super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-  }
-
   /**
    * Host name or IP address to use (required)
    * @type {string}
    * @memberof UdpMulticastInput
    */
   public host: string;
+
   /**
    * Port to use (required)
    * @type {number}
    * @memberof UdpMulticastInput
    */
   public port: number;
+
+  constructor(obj: Partial<UdpMulticastInput>) {
+    super(obj);
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+  }
 }
 
 export default UdpMulticastInput;

@@ -3,7 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PrewarmEncoderSettings from '../../../../models/PrewarmEncoderSettings';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import PrewarmEncoderSettingsListQueryParams from './PrewarmEncoderSettingsListQueryParams';
+import { PrewarmEncoderSettingsListQueryParams, PrewarmEncoderSettingsListQueryParamsBuilder } from './PrewarmEncoderSettingsListQueryParams';
 
 /**
  * PrewarmedDeploymentApi - object-oriented interface
@@ -20,7 +20,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
   /**
    * @summary Prewarm Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
-   * @param {PrewarmEncoderSettings} prewarmEncoderSettings
+   * @param {PrewarmEncoderSettings} prewarmEncoderSettings Settings for prewarming Encoders
    * @throws {RequiredError}
    * @memberof PrewarmedDeploymentApi
    */
@@ -70,14 +70,20 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
   /**
    * @summary List Prewarmed Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
-   * @param {*} [queryParams] query parameters for filtering, sorting and pagination
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {RequiredError}
    * @memberof PrewarmedDeploymentApi
    */
-  public list(infrastructureId: string, queryParams?: PrewarmEncoderSettingsListQueryParams): Promise<PaginationResponse<PrewarmEncoderSettings>> {
+  public list(infrastructureId: string, queryParameters?: PrewarmEncoderSettingsListQueryParams | ((q: PrewarmEncoderSettingsListQueryParamsBuilder) => PrewarmEncoderSettingsListQueryParamsBuilder)): Promise<PaginationResponse<PrewarmEncoderSettings>> {
     const pathParamMap = {
       infrastructure_id: infrastructureId
     };
+    let queryParams: PrewarmEncoderSettingsListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+        queryParams = queryParameters(new PrewarmEncoderSettingsListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+        queryParams = queryParameters;
+    }
     return this.restClient.get<PaginationResponse<PrewarmEncoderSettings>>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<PrewarmEncoderSettings>(response);
       if (paginationResponse.items) {
