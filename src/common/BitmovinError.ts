@@ -1,18 +1,25 @@
+import {Link, Message} from '../models';
+
 export class BitmovinError extends Error {
+  public details?: Message[];
+  public links?: Link[];
+
+  private shortMessage: string;
   private developerMessage?: string;
   private requestId?: string;
   private errorCode?: number;
   private httpStatusCode: number;
-  private details: any;
 
-  constructor(message: string, httpStatusCode: number, developerMessage?: string, requestId?: string, errorCode?: number, details?: any) {
+  constructor(message: string, httpStatusCode: number, shortMessage: string, developerMessage?: string, requestId?: string, errorCode?: number, details?: Message[], links?: Link[]) {
     super(message);
     this.name = 'BitmovinError';
+    this.shortMessage = shortMessage;
     this.httpStatusCode = httpStatusCode;
     this.developerMessage = developerMessage;
     this.requestId = requestId;
     this.errorCode = errorCode;
     this.details = details;
+    this.links = links;
 
     // Maintain stack trace if possible
     if (typeof (Error as any).captureStackTrace === 'function') {

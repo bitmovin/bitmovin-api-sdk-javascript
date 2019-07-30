@@ -39,6 +39,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public crf?: number;
 
   /**
+   * When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)
    * @type {ProfileH264}
    * @memberof H264VideoConfiguration
    */
@@ -149,6 +150,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public maxKeyframeInterval?: number;
 
   /**
+   * If three-pass encoding is used and a level is set for the encoder, the bitrate for some segments may exceed the bitrate limit which is defined by the level.
    * @type {LevelH264}
    * @memberof H264VideoConfiguration
    */

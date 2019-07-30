@@ -41,6 +41,13 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
    */
   public trackName?: string;
 
+  /**
+   * Specify the priority of this representation. Representations with higher priority will be listed first in the manifest.
+   * @type {number}
+   * @memberof SmoothStreamingRepresentation
+   */
+  public priority?: number;
+
   constructor(obj: Partial<SmoothStreamingRepresentation>) {
     super(obj);
     this.encodingId = map(obj.encodingId);
@@ -48,6 +55,7 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
     this.mediaFile = map(obj.mediaFile);
     this.language = map(obj.language);
     this.trackName = map(obj.trackName);
+    this.priority = map(obj.priority);
   }
 }
 

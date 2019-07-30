@@ -26,7 +26,7 @@ export class ProgressiveTsMuxing extends Muxing {
   public filename?: string;
 
   /**
-   * Offset of MPEG-TS timestamps in seconds. E.g., first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
+   * Offset of MPEG-TS timestamps in seconds. e.g. first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
    * @type {number}
    * @memberof ProgressiveTsMuxing
    */

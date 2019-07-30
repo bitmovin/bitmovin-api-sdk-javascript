@@ -1,7 +1,9 @@
 import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import CloudRegion from './CloudRegion';
+import EncodingMode from './EncodingMode';
 import InfrastructureSettings from './InfrastructureSettings';
+import Status from './Status';
 
 /**
  * @export
@@ -35,6 +37,34 @@ export class Encoding extends BitmovinResource {
   public infrastructure?: InfrastructureSettings;
 
   /**
+   * Will be set to the encoder version that was actually used for the encoding. This is especially useful when starting an encoding with a version tag like STABLE or BETA.
+   * @type {string}
+   * @memberof Encoding
+   */
+  public selectedEncoderVersion?: string;
+
+  /**
+   * Will be set to the encoding mode that was actually used for the encoding. This is especially useful when starting an encoding with encoding mode STANDARD.
+   * @type {EncodingMode}
+   * @memberof Encoding
+   */
+  public selectedEncodingMode?: EncodingMode;
+
+  /**
+   * Contains the region which was selected when cloudregion:AUTO was specified
+   * @type {CloudRegion}
+   * @memberof Encoding
+   */
+  public selectedCloudRegion?: CloudRegion;
+
+  /**
+   * The current status of the encoding.
+   * @type {Status}
+   * @memberof Encoding
+   */
+  public status?: Status;
+
+  /**
    * You may pass a list of groups associated with this encoding. This will enable you to group results in the statistics resource
    * @type {string[]}
    * @memberof Encoding
@@ -47,6 +77,10 @@ export class Encoding extends BitmovinResource {
     this.encoderVersion = map(obj.encoderVersion);
     this.infrastructureId = map(obj.infrastructureId);
     this.infrastructure = map<InfrastructureSettings>(obj.infrastructure, InfrastructureSettings);
+    this.selectedEncoderVersion = map(obj.selectedEncoderVersion);
+    this.selectedEncodingMode = map(obj.selectedEncodingMode);
+    this.selectedCloudRegion = map(obj.selectedCloudRegion);
+    this.status = map(obj.status);
     this.labels = map(obj.labels);
   }
 }

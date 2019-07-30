@@ -15,6 +15,7 @@
     "no-null-keyword": true,
     "no-empty-interface": false,
     "max-line-length": [false],
-    "no-bitwise": false
+    "no-bitwise": false,
+    "triple-equals": [true, "allow-undefined-check"]
   }
 }

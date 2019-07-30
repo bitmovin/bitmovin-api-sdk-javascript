@@ -7,7 +7,7 @@ export interface Configuration {
   baseUrl?: string;
   fetch?: FetchAPI;
   logger?: Logger;
-  additionalHeaders?: Record<string, string>;
+  headers?: Record<string, string>;
 }
 
 export default Configuration;

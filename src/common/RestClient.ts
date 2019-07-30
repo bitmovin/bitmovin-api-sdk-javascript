@@ -2,11 +2,11 @@ import * as e6p from 'es6-promise';
 import * as urljoin from 'url-join';
 import * as isomorphicFetch from 'isomorphic-fetch';
 
-import BitmovinError from './BitmovinError';
 import {RequiredError} from './BaseAPI';
 import Configuration from './Configuration';
 import Logger from './Logger';
 import NullLogger from './NullLogger';
+import {buildBitmovinError} from './BitmovinErrorBuilder';
 
 (e6p as any).polyfill();
 
@@ -22,7 +22,7 @@ function queryParams(params) {
   let queryParameterString = '';
   let addSeperator = false;
 
-  for (const key in params) {
+  for (const key of Object.keys(params)) {
     if (params[key] && typeof params[key] !== 'function') {
       queryParameterString += (addSeperator ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
       addSeperator = true;
@@ -36,16 +36,13 @@ function prepareUrl(baseUrl: string, url: string, urlParameterMap: any, queryStr
   let modifiedUrl = url;
 
   if (urlParameterMap) {
-    for (const key in urlParameterMap) {
-      if (urlParameterMap.hasOwnProperty(key)) {
-
-        // Convert to ISO string if the parameter is a Date
-        if (urlParameterMap[key] instanceof Date) {
-          urlParameterMap[key] = urlParameterMap[key].toISOString();
-        }
-
-        modifiedUrl = modifiedUrl.replace(new RegExp(`{${key}}`), urlParameterMap[key]);
+    for (const key of Object.keys(urlParameterMap)) {
+      // Convert to ISO string if the parameter is a Date
+      if (urlParameterMap[key] instanceof Date) {
+        urlParameterMap[key] = urlParameterMap[key].toISOString();
       }
+
+      modifiedUrl = modifiedUrl.replace(new RegExp(`{${key}}`), urlParameterMap[key]);
     }
   }
 
@@ -74,7 +71,7 @@ export class RestClient {
   private readonly baseUrl: string;
   private readonly fetch: FetchAPI;
   private readonly logger: Logger;
-  private readonly additionalHeaders?: Record<string, string>;
+  private readonly headers?: Record<string, string>;
 
   constructor(configuration: Configuration) {
     if (!configuration) {
@@ -90,7 +87,7 @@ export class RestClient {
     this.baseUrl = configuration.baseUrl || BASE_URL;
     this.fetch = configuration.fetch || isomorphicFetch;
     this.logger = configuration.logger || new NullLogger();
-    this.additionalHeaders = configuration.additionalHeaders;
+    this.headers = configuration.headers;
   }
 
   public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
@@ -121,34 +118,40 @@ export class RestClient {
       headers['X-Tenant-Org-Id'] = this.tenantOrgId;
     }
 
-    headers = Object.assign(headers, this.additionalHeaders);
+    headers = Object.assign(headers, this.headers);
 
     return headers;
   }
 
   private request<T>(method: string, url: string, urlParameterMap?: object, body?: object, queryStringParameters?: object): Promise<T> {
     const requestUrl = prepareUrl(this.baseUrl, url, urlParameterMap, queryStringParameters);
+    const request = {
+      method: method,
+      url: requestUrl.toString(),
+      body: JSON.stringify(body),
+      headers: this.getHeaders()
+    };
 
     this.logger.log(`Request: ${method} ${url} ...`);
     if (body) {
       this.logger.log('Request Body:', body);
     }
 
-    return this.fetch!(requestUrl.toString(), {
-      method: method,
-      body: JSON.stringify(body),
-      headers: this.getHeaders()
+    return this.fetch!(request.url, {
+      method: request.method,
+      body: request.body,
+      headers: request.headers
     }).then((response) => {
         return response.json().then((json) => {
           if (response.status > 399) {
             this.logger.error(`HTTP request was unsuccessful: HTTP response code was ${response.status} ${response.statusText}`);
-            throw this.buildBitmovinError(response, json);
+            throw buildBitmovinError(request, response, json);
           }
           return json;
         }, () => {
           if (response.status !== 204) {
             this.logger.error(`Response body was empty or could not be parsed`);
-            throw this.buildBitmovinError(response);
+            throw buildBitmovinError(request, response);
           }
           return {data: {}};
         });
@@ -157,31 +160,5 @@ export class RestClient {
       this.logger.log('Response body:', responseJson);
       return result;
     });
-  }
-
-  private buildBitmovinError(response: any, errorResponse?: any): BitmovinError {
-    let message: string = `HTTP request was unsuccessful: HTTP response code was ${response.status} ${response.statusText}.`;
-    let developerMessage: string | undefined;
-    let code: number | undefined;
-    let details: any;
-    let requestId: string | undefined;
-
-    if (errorResponse !== undefined && errorResponse.data !== undefined) {
-      if (errorResponse.data.message !== undefined) {
-        message = errorResponse.data.message;
-      }
-      developerMessage = errorResponse.data.developerMessage;
-      code = errorResponse.data.code;
-      details = errorResponse.data.details;
-      requestId = errorResponse.requestId;
-    } else {
-      if (response.headers.get('content-length') === '0') {
-        message += ' The response did not contain a body';
-      } else {
-        message += ' The response body could not be parsed';
-      }
-    }
-
-    return new BitmovinError(message, response.status, developerMessage, requestId, code, details);
   }
 }

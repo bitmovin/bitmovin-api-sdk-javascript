@@ -54,10 +54,10 @@ export class CmafMuxing extends Muxing {
 
   /**
    * Number of media frames per CMAF chunk. Defaults to: Length of a segment in frames. Minimum: 1. Maximum: Length of a segment in frames.
-   * @type {any}
+   * @type {number}
    * @memberof CmafMuxing
    */
-  public framesPerCmafChunk?: any;
+  public framesPerCmafChunk?: number;
 
   constructor(obj: Partial<CmafMuxing>) {
     super(obj);
