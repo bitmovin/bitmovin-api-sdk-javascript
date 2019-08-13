@@ -2,8 +2,9 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import EncodingStatisticsLive from '../../../../models/EncodingStatisticsLive';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { EncodingStatisticsLiveListQueryParams, EncodingStatisticsLiveListQueryParamsBuilder } from './EncodingStatisticsLiveListQueryParams';
-import { EncodingStatisticsLiveListByDateRangeQueryParams, EncodingStatisticsLiveListByDateRangeQueryParamsBuilder } from './EncodingStatisticsLiveListByDateRangeQueryParams';
+import {EncodingStatisticsLiveListQueryParams, EncodingStatisticsLiveListQueryParamsBuilder} from './EncodingStatisticsLiveListQueryParams';
+import {EncodingStatisticsLiveListByDateRangeQueryParams, EncodingStatisticsLiveListByDateRangeQueryParamsBuilder} from './EncodingStatisticsLiveListByDateRangeQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * LiveApi - object-oriented interface
@@ -26,13 +27,13 @@ export default class LiveApi extends BaseAPI {
   public list(queryParameters?: EncodingStatisticsLiveListQueryParams | ((q: EncodingStatisticsLiveListQueryParamsBuilder) => EncodingStatisticsLiveListQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsLive>> {
     let queryParams: EncodingStatisticsLiveListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EncodingStatisticsLiveListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EncodingStatisticsLiveListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsLive(i));
       }
       return paginationResponse;
@@ -54,13 +55,13 @@ export default class LiveApi extends BaseAPI {
     };
     let queryParams: EncodingStatisticsLiveListByDateRangeQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EncodingStatisticsLiveListByDateRangeQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EncodingStatisticsLiveListByDateRangeQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsLive(i));
       }
       return paginationResponse;

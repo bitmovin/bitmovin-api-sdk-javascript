@@ -3,7 +3,8 @@ import Configuration from '../../../../../../common/Configuration';
 import AudioAdaptationSet from '../../../../../../models/AudioAdaptationSet';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { AudioAdaptationSetListQueryParams, AudioAdaptationSetListQueryParamsBuilder } from './AudioAdaptationSetListQueryParams';
+import {AudioAdaptationSetListQueryParams, AudioAdaptationSetListQueryParamsBuilder} from './AudioAdaptationSetListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * AudioApi - object-oriented interface
@@ -88,13 +89,13 @@ export default class AudioApi extends BaseAPI {
     };
     let queryParams: AudioAdaptationSetListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AudioAdaptationSetListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AudioAdaptationSetListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioAdaptationSet>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AudioAdaptationSet(i));
       }
       return paginationResponse;

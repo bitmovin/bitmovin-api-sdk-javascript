@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import SubtitlesMediaInfo from '../../../../../models/SubtitlesMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { SubtitlesMediaInfoListQueryParams, SubtitlesMediaInfoListQueryParamsBuilder } from './SubtitlesMediaInfoListQueryParams';
+import {SubtitlesMediaInfoListQueryParams, SubtitlesMediaInfoListQueryParamsBuilder} from './SubtitlesMediaInfoListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * SubtitlesApi - object-oriented interface
@@ -80,13 +81,13 @@ export default class SubtitlesApi extends BaseAPI {
     };
     let queryParams: SubtitlesMediaInfoListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SubtitlesMediaInfoListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SubtitlesMediaInfoListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SubtitlesMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/subtitles', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SubtitlesMediaInfo>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SubtitlesMediaInfo(i));
       }
       return paginationResponse;

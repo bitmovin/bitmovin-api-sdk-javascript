@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import S3Input from '../../../models/S3Input';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { S3InputListQueryParams, S3InputListQueryParamsBuilder } from './S3InputListQueryParams';
+import {S3InputListQueryParams, S3InputListQueryParamsBuilder} from './S3InputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * S3Api - object-oriented interface
@@ -71,13 +72,13 @@ export default class S3Api extends BaseAPI {
   public list(queryParameters?: S3InputListQueryParams | ((q: S3InputListQueryParamsBuilder) => S3InputListQueryParamsBuilder)): Promise<PaginationResponse<S3Input>> {
     let queryParams: S3InputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new S3InputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new S3InputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Input>>('/encoding/inputs/s3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<S3Input>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new S3Input(i));
       }
       return paginationResponse;

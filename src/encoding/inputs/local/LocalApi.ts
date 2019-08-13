@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LocalInput from '../../../models/LocalInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { LocalInputListQueryParams, LocalInputListQueryParamsBuilder } from './LocalInputListQueryParams';
+import {LocalInputListQueryParams, LocalInputListQueryParamsBuilder} from './LocalInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * LocalApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class LocalApi extends BaseAPI {
   public list(queryParameters?: LocalInputListQueryParams | ((q: LocalInputListQueryParamsBuilder) => LocalInputListQueryParamsBuilder)): Promise<PaginationResponse<LocalInput>> {
     let queryParams: LocalInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new LocalInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new LocalInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LocalInput>>('/encoding/inputs/local', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<LocalInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new LocalInput(i));
       }
       return paginationResponse;

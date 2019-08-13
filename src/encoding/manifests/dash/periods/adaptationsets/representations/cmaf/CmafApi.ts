@@ -6,7 +6,8 @@ import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashCmafRepresentation from '../../../../../../../models/DashCmafRepresentation';
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import { DashCmafRepresentationListQueryParams, DashCmafRepresentationListQueryParamsBuilder } from './DashCmafRepresentationListQueryParams';
+import {DashCmafRepresentationListQueryParams, DashCmafRepresentationListQueryParamsBuilder} from './DashCmafRepresentationListQueryParams';
+import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * CmafApi - object-oriented interface
@@ -103,13 +104,13 @@ export default class CmafApi extends BaseAPI {
     };
     let queryParams: DashCmafRepresentationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DashCmafRepresentationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DashCmafRepresentationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashCmafRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashCmafRepresentation>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DashCmafRepresentation(i));
       }
       return paginationResponse;

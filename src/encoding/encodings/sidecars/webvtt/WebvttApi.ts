@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttSidecarFile from '../../../../models/WebVttSidecarFile';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * WebvttApi - object-oriented interface

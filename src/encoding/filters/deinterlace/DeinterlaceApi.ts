@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DeinterlaceFilter from '../../../models/DeinterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { DeinterlaceFilterListQueryParams, DeinterlaceFilterListQueryParamsBuilder } from './DeinterlaceFilterListQueryParams';
+import {DeinterlaceFilterListQueryParams, DeinterlaceFilterListQueryParamsBuilder} from './DeinterlaceFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * DeinterlaceApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class DeinterlaceApi extends BaseAPI {
   public list(queryParameters?: DeinterlaceFilterListQueryParams | ((q: DeinterlaceFilterListQueryParamsBuilder) => DeinterlaceFilterListQueryParamsBuilder)): Promise<PaginationResponse<DeinterlaceFilter>> {
     let queryParams: DeinterlaceFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DeinterlaceFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DeinterlaceFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DeinterlaceFilter>>('/encoding/filters/deinterlace', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DeinterlaceFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DeinterlaceFilter(i));
       }
       return paginationResponse;

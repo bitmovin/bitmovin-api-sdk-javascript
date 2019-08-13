@@ -3,7 +3,8 @@ import Configuration from '../../../../common/Configuration';
 import AwsAccountRegionSettings from '../../../../models/AwsAccountRegionSettings';
 import AwsCloudRegion from '../../../../models/AwsCloudRegion';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { AwsAccountRegionSettingsListQueryParams, AwsAccountRegionSettingsListQueryParamsBuilder } from './AwsAccountRegionSettingsListQueryParams';
+import {AwsAccountRegionSettingsListQueryParams, AwsAccountRegionSettingsListQueryParamsBuilder} from './AwsAccountRegionSettingsListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * RegionsApi - object-oriented interface
@@ -82,13 +83,13 @@ export default class RegionsApi extends BaseAPI {
     };
     let queryParams: AwsAccountRegionSettingsListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AwsAccountRegionSettingsListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AwsAccountRegionSettingsListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccountRegionSettings>>('/encoding/infrastructure/aws/{infrastructure_id}/regions', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AwsAccountRegionSettings>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AwsAccountRegionSettings(i));
       }
       return paginationResponse;

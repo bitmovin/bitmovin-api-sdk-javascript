@@ -4,6 +4,7 @@ import EventsApi from './events/EventsApi';
 import StreamsApi from './streams/StreamsApi';
 import SrtApi from './srt/SrtApi';
 import LiveEncodingStats from '../../../../models/LiveEncodingStats';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * LiveStatisticsApi - object-oriented interface

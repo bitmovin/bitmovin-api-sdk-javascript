@@ -1,7 +1,8 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import AnalyticsImpressionDetails from '../../models/AnalyticsImpressionDetails';
-import AnalyticsLicense from '../../models/AnalyticsLicense';
+import AnalyticsLicenseKey from '../../models/AnalyticsLicenseKey';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * ImpressionsApi - object-oriented interface
@@ -18,15 +19,15 @@ export default class ImpressionsApi extends BaseAPI {
   /**
    * @summary Impression Details
    * @param {string} impressionId Impression id
-   * @param {AnalyticsLicense} analyticsLicense Analytics license
+   * @param {AnalyticsLicenseKey} analyticsLicenseKey Analytics license
    * @throws {RequiredError}
    * @memberof ImpressionsApi
    */
-  public create(impressionId: string, analyticsLicense?: AnalyticsLicense): Promise<AnalyticsImpressionDetails> {
+  public create(impressionId: string, analyticsLicenseKey?: AnalyticsLicenseKey): Promise<AnalyticsImpressionDetails> {
     const pathParamMap = {
       impression_id: impressionId
     };
-    return this.restClient.post<AnalyticsImpressionDetails>('/analytics/impressions/{impression_id}', pathParamMap, analyticsLicense).then((response) => {
+    return this.restClient.post<AnalyticsImpressionDetails>('/analytics/impressions/{impression_id}', pathParamMap, analyticsLicenseKey).then((response) => {
       return new AnalyticsImpressionDetails(response);
     });
   }

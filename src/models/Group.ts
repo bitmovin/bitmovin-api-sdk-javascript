@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**

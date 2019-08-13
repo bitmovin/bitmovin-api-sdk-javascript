@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import WidevineDrm from '../../../../../../models/WidevineDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { WidevineDrmListQueryParams, WidevineDrmListQueryParamsBuilder } from './WidevineDrmListQueryParams';
+import {WidevineDrmListQueryParams, WidevineDrmListQueryParamsBuilder} from './WidevineDrmListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * WidevineApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class WidevineApi extends BaseAPI {
     };
     let queryParams: WidevineDrmListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new WidevineDrmListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new WidevineDrmListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WidevineDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/widevine', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WidevineDrm>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new WidevineDrm(i));
       }
       return paginationResponse;

@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Tenant from '../../../../models/Tenant';
 import PaginationResponse from '../../../../models/PaginationResponse';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * TenantsApi - object-oriented interface
@@ -86,7 +87,7 @@ export default class TenantsApi extends BaseAPI {
     };
     return this.restClient.get<PaginationResponse<Tenant>>('/account/organizations/{organization_id}/groups/{group_id}/tenants', pathParamMap).then((response) => {
       const paginationResponse = new PaginationResponse<Tenant>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Tenant(i));
       }
       return paginationResponse;

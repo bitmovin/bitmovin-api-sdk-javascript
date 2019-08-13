@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import Mp4Api from './mp4/Mp4Api';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * RepresentationsApi - object-oriented interface

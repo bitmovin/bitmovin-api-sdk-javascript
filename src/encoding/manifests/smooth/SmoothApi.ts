@@ -8,7 +8,8 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import SmoothStreamingManifest from '../../../models/SmoothStreamingManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { SmoothStreamingManifestListQueryParams, SmoothStreamingManifestListQueryParamsBuilder } from './SmoothStreamingManifestListQueryParams';
+import {SmoothStreamingManifestListQueryParams, SmoothStreamingManifestListQueryParamsBuilder} from './SmoothStreamingManifestListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * SmoothApi - object-oriented interface
@@ -81,13 +82,13 @@ export default class SmoothApi extends BaseAPI {
   public list(queryParameters?: SmoothStreamingManifestListQueryParams | ((q: SmoothStreamingManifestListQueryParamsBuilder) => SmoothStreamingManifestListQueryParamsBuilder)): Promise<PaginationResponse<SmoothStreamingManifest>> {
     let queryParams: SmoothStreamingManifestListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SmoothStreamingManifestListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SmoothStreamingManifestListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothStreamingManifest>>('/encoding/manifests/smooth', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SmoothStreamingManifest>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SmoothStreamingManifest(i));
       }
       return paginationResponse;

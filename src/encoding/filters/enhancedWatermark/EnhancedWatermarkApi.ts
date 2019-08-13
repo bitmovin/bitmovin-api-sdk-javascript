@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EnhancedWatermarkFilter from '../../../models/EnhancedWatermarkFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { EnhancedWatermarkFilterListQueryParams, EnhancedWatermarkFilterListQueryParamsBuilder } from './EnhancedWatermarkFilterListQueryParams';
+import {EnhancedWatermarkFilterListQueryParams, EnhancedWatermarkFilterListQueryParamsBuilder} from './EnhancedWatermarkFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * EnhancedWatermarkApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class EnhancedWatermarkApi extends BaseAPI {
   public list(queryParameters?: EnhancedWatermarkFilterListQueryParams | ((q: EnhancedWatermarkFilterListQueryParamsBuilder) => EnhancedWatermarkFilterListQueryParamsBuilder)): Promise<PaginationResponse<EnhancedWatermarkFilter>> {
     let queryParams: EnhancedWatermarkFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EnhancedWatermarkFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EnhancedWatermarkFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EnhancedWatermarkFilter>>('/encoding/filters/enhanced-watermark', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EnhancedWatermarkFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EnhancedWatermarkFilter(i));
       }
       return paginationResponse;

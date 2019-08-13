@@ -9,9 +9,9 @@ import TrimmingApi from './trimming/TrimmingApi';
 import SubtitlesApi from './subtitles/SubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
 import InputStream from '../../../models/InputStream';
-import { InputStreamTypeMap } from '../../../models/typeMappings'
 import PaginationResponse from '../../../models/PaginationResponse';
-import { InputStreamListQueryParams, InputStreamListQueryParamsBuilder } from './InputStreamListQueryParams';
+import {InputStreamListQueryParams, InputStreamListQueryParamsBuilder} from './InputStreamListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * InputStreamsApi - object-oriented interface
@@ -54,9 +54,7 @@ export default class InputStreamsApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<InputStream>('/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}', pathParamMap).then((response) => {
-      // `ts-ignore` is necessary to compile, because our models don't have the property `type`
-      // @ts-ignore
-      return new InputStreamTypeMap[response.type](response);
+      return new InputStream(response);
     });
   }
 
@@ -73,14 +71,14 @@ export default class InputStreamsApi extends BaseAPI {
     };
     let queryParams: InputStreamListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new InputStreamListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new InputStreamListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<InputStream>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new InputStreamTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, InputStream)));
       }
       return paginationResponse;
     });

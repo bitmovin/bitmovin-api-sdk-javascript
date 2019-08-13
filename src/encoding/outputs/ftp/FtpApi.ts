@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import FtpOutput from '../../../models/FtpOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { FtpOutputListQueryParams, FtpOutputListQueryParamsBuilder } from './FtpOutputListQueryParams';
+import {FtpOutputListQueryParams, FtpOutputListQueryParamsBuilder} from './FtpOutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * FtpApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class FtpApi extends BaseAPI {
   public list(queryParameters?: FtpOutputListQueryParams | ((q: FtpOutputListQueryParamsBuilder) => FtpOutputListQueryParamsBuilder)): Promise<PaginationResponse<FtpOutput>> {
     let queryParams: FtpOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new FtpOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new FtpOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FtpOutput>>('/encoding/outputs/ftp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FtpOutput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new FtpOutput(i));
       }
       return paginationResponse;

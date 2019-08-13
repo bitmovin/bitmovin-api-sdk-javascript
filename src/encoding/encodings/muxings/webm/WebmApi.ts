@@ -5,7 +5,8 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebmMuxing from '../../../../models/WebmMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { WebmMuxingListQueryParams, WebmMuxingListQueryParamsBuilder } from './WebmMuxingListQueryParams';
+import {WebmMuxingListQueryParams, WebmMuxingListQueryParamsBuilder} from './WebmMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * WebmApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class WebmApi extends BaseAPI {
     };
     let queryParams: WebmMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new WebmMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new WebmMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WebmMuxing>>('/encoding/encodings/{encoding_id}/muxings/webm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WebmMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new WebmMuxing(i));
       }
       return paginationResponse;

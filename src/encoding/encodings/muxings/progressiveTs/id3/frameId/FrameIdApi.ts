@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FrameIdId3Tag from '../../../../../../models/FrameIdId3Tag';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { FrameIdId3TagListQueryParams, FrameIdId3TagListQueryParamsBuilder } from './FrameIdId3TagListQueryParams';
+import {FrameIdId3TagListQueryParams, FrameIdId3TagListQueryParamsBuilder} from './FrameIdId3TagListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * FrameIdApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class FrameIdApi extends BaseAPI {
     };
     let queryParams: FrameIdId3TagListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new FrameIdId3TagListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new FrameIdId3TagListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FrameIdId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FrameIdId3Tag>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new FrameIdId3Tag(i));
       }
       return paginationResponse;

@@ -2,7 +2,8 @@
  * @export
  * @enum {string}
  */
-export enum AnalyticsOperator {
+export enum AnalyticsQueryOperator {
+  IN = 'IN',
   EQ = 'EQ',
   NE = 'NE',
   LT = 'LT',
@@ -13,5 +14,5 @@ export enum AnalyticsOperator {
   NOTCONTAINS = 'NOTCONTAINS'
 }
 
-export default AnalyticsOperator;
+export default AnalyticsQueryOperator;
 

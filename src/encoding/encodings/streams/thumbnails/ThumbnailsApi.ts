@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Thumbnail from '../../../../models/Thumbnail';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { ThumbnailListQueryParams, ThumbnailListQueryParamsBuilder } from './ThumbnailListQueryParams';
+import {ThumbnailListQueryParams, ThumbnailListQueryParamsBuilder} from './ThumbnailListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ThumbnailsApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class ThumbnailsApi extends BaseAPI {
     };
     let queryParams: ThumbnailListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ThumbnailListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ThumbnailListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Thumbnail>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Thumbnail>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Thumbnail(i));
       }
       return paginationResponse;

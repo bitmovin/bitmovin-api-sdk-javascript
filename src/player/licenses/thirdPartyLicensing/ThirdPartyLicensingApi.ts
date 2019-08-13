@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PlayerThirdPartyLicensing from '../../../models/PlayerThirdPartyLicensing';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * ThirdPartyLicensingApi - object-oriented interface

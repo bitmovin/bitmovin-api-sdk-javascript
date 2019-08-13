@@ -3,6 +3,7 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
 import AnalyticsSumQueryRequest from '../../../models/AnalyticsSumQueryRequest';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * SumApi - object-oriented interface

@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import EncodingStreamInputDetails from '../../../../models/EncodingStreamInputDetails';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * InputApi - object-oriented interface

@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import SegmentedRawMuxing from '../../../../models/SegmentedRawMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { SegmentedRawMuxingListQueryParams, SegmentedRawMuxingListQueryParamsBuilder } from './SegmentedRawMuxingListQueryParams';
+import {SegmentedRawMuxingListQueryParams, SegmentedRawMuxingListQueryParamsBuilder} from './SegmentedRawMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SegmentedRawApi - object-oriented interface
@@ -83,13 +84,13 @@ export default class SegmentedRawApi extends BaseAPI {
     };
     let queryParams: SegmentedRawMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SegmentedRawMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SegmentedRawMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SegmentedRawMuxing>>('/encoding/encodings/{encoding_id}/muxings/segmented-raw', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SegmentedRawMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SegmentedRawMuxing(i));
       }
       return paginationResponse;

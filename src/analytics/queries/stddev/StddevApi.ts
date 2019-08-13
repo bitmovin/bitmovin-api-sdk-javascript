@@ -3,6 +3,7 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
 import AnalyticsStddevQueryRequest from '../../../models/AnalyticsStddevQueryRequest';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * StddevApi - object-oriented interface

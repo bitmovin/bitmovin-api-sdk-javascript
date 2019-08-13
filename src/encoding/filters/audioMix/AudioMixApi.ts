@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AudioMixFilter from '../../../models/AudioMixFilter';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { AudioMixFilterListQueryParams, AudioMixFilterListQueryParamsBuilder } from './AudioMixFilterListQueryParams';
+import {AudioMixFilterListQueryParams, AudioMixFilterListQueryParamsBuilder} from './AudioMixFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * AudioMixApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class AudioMixApi extends BaseAPI {
   public list(queryParameters?: AudioMixFilterListQueryParams | ((q: AudioMixFilterListQueryParamsBuilder) => AudioMixFilterListQueryParamsBuilder)): Promise<PaginationResponse<AudioMixFilter>> {
     let queryParams: AudioMixFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AudioMixFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AudioMixFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMixFilter>>('/encoding/filters/audio-mix', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioMixFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AudioMixFilter(i));
       }
       return paginationResponse;

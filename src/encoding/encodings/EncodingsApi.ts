@@ -17,7 +17,8 @@ import RescheduleEncodingRequest from '../../models/RescheduleEncodingRequest';
 import StartEncodingRequest from '../../models/StartEncodingRequest';
 import Task from '../../models/Task';
 import PaginationResponse from '../../models/PaginationResponse';
-import { EncodingListQueryParams, EncodingListQueryParamsBuilder } from './EncodingListQueryParams';
+import {EncodingListQueryParams, EncodingListQueryParamsBuilder} from './EncodingListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * EncodingsApi - object-oriented interface
@@ -115,13 +116,13 @@ export default class EncodingsApi extends BaseAPI {
   public list(queryParameters?: EncodingListQueryParams | ((q: EncodingListQueryParamsBuilder) => EncodingListQueryParamsBuilder)): Promise<PaginationResponse<Encoding>> {
     let queryParams: EncodingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EncodingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EncodingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Encoding>>('/encoding/encodings', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Encoding>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Encoding(i));
       }
       return paginationResponse;

@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import AnalyticsAvgConcurrentViewersResponse from '../../../models/AnalyticsAvgConcurrentViewersResponse';
 import AnalyticsMetricsQueryRequest from '../../../models/AnalyticsMetricsQueryRequest';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * AvgConcurrentviewersApi - object-oriented interface

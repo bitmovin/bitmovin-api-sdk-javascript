@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import StreamDvbSubSubtitle from '../../../../../models/StreamDvbSubSubtitle';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * DvbsubApi - object-oriented interface

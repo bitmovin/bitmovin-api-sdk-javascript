@@ -6,6 +6,7 @@ import Vp8Api from './vp8/Vp8Api';
 import Vp9Api from './vp9/Vp9Api';
 import Av1Api from './av1/Av1Api';
 import MjpegApi from './mjpeg/MjpegApi';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * VideoApi - object-oriented interface

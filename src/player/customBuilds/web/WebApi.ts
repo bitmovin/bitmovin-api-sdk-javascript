@@ -7,6 +7,7 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import CustomPlayerBuildDetails from '../../../models/CustomPlayerBuildDetails';
 import CustomPlayerBuildStatus from '../../../models/CustomPlayerBuildStatus';
 import PaginationResponse from '../../../models/PaginationResponse';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * WebApi - object-oriented interface
@@ -61,7 +62,7 @@ export default class WebApi extends BaseAPI {
   public list(): Promise<PaginationResponse<CustomPlayerBuildDetails>> {
     return this.restClient.get<PaginationResponse<CustomPlayerBuildDetails>>('/player/custom-builds/web', {}).then((response) => {
       const paginationResponse = new PaginationResponse<CustomPlayerBuildDetails>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CustomPlayerBuildDetails(i));
       }
       return paginationResponse;

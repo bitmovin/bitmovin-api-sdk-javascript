@@ -3,7 +3,8 @@ import Configuration from '../../../../../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../../../../../models/BitmovinResponse';
 import ContentProtection from '../../../../../../../../../models/ContentProtection';
 import PaginationResponse from '../../../../../../../../../models/PaginationResponse';
-import { ContentProtectionListQueryParams, ContentProtectionListQueryParamsBuilder } from './ContentProtectionListQueryParams';
+import {ContentProtectionListQueryParams, ContentProtectionListQueryParamsBuilder} from './ContentProtectionListQueryParams';
+import {getType, map} from '../../../../../../../../../common/Mapper';
 
 /**
  * ContentprotectionApi - object-oriented interface
@@ -104,13 +105,13 @@ export default class ContentprotectionApi extends BaseAPI {
     };
     let queryParams: ContentProtectionListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ContentProtectionListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ContentProtectionListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ContentProtection>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ContentProtection>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ContentProtection(i));
       }
       return paginationResponse;

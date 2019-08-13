@@ -1,11 +1,11 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
-import BitmovinResource from '../../../../models/BitmovinResource';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttConfiguration from '../../../../models/WebVttConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { WebVttConfigurationListQueryParams, WebVttConfigurationListQueryParamsBuilder } from './WebVttConfigurationListQueryParams';
+import {WebVttConfigurationListQueryParams, WebVttConfigurationListQueryParamsBuilder} from './WebVttConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * WebvttApi - object-oriented interface
@@ -72,13 +72,13 @@ export default class WebvttApi extends BaseAPI {
   public list(queryParameters?: WebVttConfigurationListQueryParams | ((q: WebVttConfigurationListQueryParamsBuilder) => WebVttConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<WebVttConfiguration>> {
     let queryParams: WebVttConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new WebVttConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new WebVttConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt/', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<WebVttConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new WebVttConfiguration(i));
       }
       return paginationResponse;

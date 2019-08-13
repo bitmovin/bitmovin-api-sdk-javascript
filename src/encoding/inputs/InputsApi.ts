@@ -21,9 +21,9 @@ import UdpApi from './udp/UdpApi';
 import UdpMulticastApi from './udpMulticast/UdpMulticastApi';
 import ZixiApi from './zixi/ZixiApi';
 import Input from '../../models/Input';
-import { InputTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import { InputListQueryParams, InputListQueryParamsBuilder } from './InputListQueryParams';
+import {InputListQueryParams, InputListQueryParamsBuilder} from './InputListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * InputsApi - object-oriented interface
@@ -86,14 +86,14 @@ export default class InputsApi extends BaseAPI {
   public list(queryParameters?: InputListQueryParams | ((q: InputListQueryParamsBuilder) => InputListQueryParamsBuilder)): Promise<PaginationResponse<Input>> {
     let queryParams: InputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new InputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new InputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Input>>('/encoding/inputs', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Input>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new InputTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Input)));
       }
       return paginationResponse;
     });

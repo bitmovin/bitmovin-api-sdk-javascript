@@ -4,7 +4,8 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashMp4Representation from '../../../../../../../models/DashMp4Representation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
-import { DashMp4RepresentationListQueryParams, DashMp4RepresentationListQueryParamsBuilder } from './DashMp4RepresentationListQueryParams';
+import {DashMp4RepresentationListQueryParams, DashMp4RepresentationListQueryParamsBuilder} from './DashMp4RepresentationListQueryParams';
+import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * Mp4Api - object-oriented interface
@@ -99,13 +100,13 @@ export default class Mp4Api extends BaseAPI {
     };
     let queryParams: DashMp4RepresentationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DashMp4RepresentationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DashMp4RepresentationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashMp4Representation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/mp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashMp4Representation>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DashMp4Representation(i));
       }
       return paginationResponse;

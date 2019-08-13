@@ -2,8 +2,9 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import SrtStatistics from '../../../../../models/SrtStatistics';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { SrtStatisticsListQueryParams, SrtStatisticsListQueryParamsBuilder } from './SrtStatisticsListQueryParams';
-import { SrtStatisticsListBySrtInputIdQueryParams, SrtStatisticsListBySrtInputIdQueryParamsBuilder } from './SrtStatisticsListBySrtInputIdQueryParams';
+import {SrtStatisticsListQueryParams, SrtStatisticsListQueryParamsBuilder} from './SrtStatisticsListQueryParams';
+import {SrtStatisticsListBySrtInputIdQueryParams, SrtStatisticsListBySrtInputIdQueryParamsBuilder} from './SrtStatisticsListBySrtInputIdQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * SrtApi - object-oriented interface
@@ -30,13 +31,13 @@ export default class SrtApi extends BaseAPI {
     };
     let queryParams: SrtStatisticsListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SrtStatisticsListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SrtStatisticsListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtStatistics>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/srt', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SrtStatistics>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SrtStatistics(i));
       }
       return paginationResponse;
@@ -58,13 +59,13 @@ export default class SrtApi extends BaseAPI {
     };
     let queryParams: SrtStatisticsListBySrtInputIdQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SrtStatisticsListBySrtInputIdQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SrtStatisticsListBySrtInputIdQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtStatistics>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/srt/{srt_input_id}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SrtStatistics>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SrtStatistics(i));
       }
       return paginationResponse;

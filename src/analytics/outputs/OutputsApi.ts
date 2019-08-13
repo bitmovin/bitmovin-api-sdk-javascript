@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import S3RoleBasedApi from './s3RoleBased/S3RoleBasedApi';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * OutputsApi - object-oriented interface

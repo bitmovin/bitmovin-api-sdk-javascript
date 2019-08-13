@@ -2,8 +2,9 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import EncodingStatisticsVod from '../../../../models/EncodingStatisticsVod';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { EncodingStatisticsVodListQueryParams, EncodingStatisticsVodListQueryParamsBuilder } from './EncodingStatisticsVodListQueryParams';
-import { EncodingStatisticsVodListByDateRangeQueryParams, EncodingStatisticsVodListByDateRangeQueryParamsBuilder } from './EncodingStatisticsVodListByDateRangeQueryParams';
+import {EncodingStatisticsVodListQueryParams, EncodingStatisticsVodListQueryParamsBuilder} from './EncodingStatisticsVodListQueryParams';
+import {EncodingStatisticsVodListByDateRangeQueryParams, EncodingStatisticsVodListByDateRangeQueryParamsBuilder} from './EncodingStatisticsVodListByDateRangeQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * VodApi - object-oriented interface
@@ -26,13 +27,13 @@ export default class VodApi extends BaseAPI {
   public list(queryParameters?: EncodingStatisticsVodListQueryParams | ((q: EncodingStatisticsVodListQueryParamsBuilder) => EncodingStatisticsVodListQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsVod>> {
     let queryParams: EncodingStatisticsVodListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EncodingStatisticsVodListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EncodingStatisticsVodListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsVod>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsVod(i));
       }
       return paginationResponse;
@@ -54,13 +55,13 @@ export default class VodApi extends BaseAPI {
     };
     let queryParams: EncodingStatisticsVodListByDateRangeQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EncodingStatisticsVodListByDateRangeQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EncodingStatisticsVodListByDateRangeQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingStatisticsVod>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsVod(i));
       }
       return paginationResponse;

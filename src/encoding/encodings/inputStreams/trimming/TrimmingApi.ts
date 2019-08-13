@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import TimeBasedApi from './timeBased/TimeBasedApi';
 import TimecodeTrackApi from './timecodeTrack/TimecodeTrackApi';
 import H264PictureTimingApi from './h264PictureTiming/H264PictureTimingApi';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * TrimmingApi - object-oriented interface

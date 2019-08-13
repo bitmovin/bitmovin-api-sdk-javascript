@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import SrtInput from '../../../models/SrtInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { SrtInputListQueryParams, SrtInputListQueryParamsBuilder } from './SrtInputListQueryParams';
+import {SrtInputListQueryParams, SrtInputListQueryParamsBuilder} from './SrtInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * SrtApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class SrtApi extends BaseAPI {
   public list(queryParameters?: SrtInputListQueryParams | ((q: SrtInputListQueryParamsBuilder) => SrtInputListQueryParamsBuilder)): Promise<PaginationResponse<SrtInput>> {
     let queryParams: SrtInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SrtInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SrtInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtInput>>('/encoding/inputs/srt', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SrtInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SrtInput(i));
       }
       return paginationResponse;

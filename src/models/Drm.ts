@@ -15,6 +15,18 @@ import WidevineDrm from './WidevineDrm';
  * @class Drm
  */
 export class Drm extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'WIDEVINE': 'WidevineDrm',
+    'PLAYREADY': 'PlayReadyDrm',
+    'PRIMETIME': 'PrimeTimeDrm',
+    'FAIRPLAY': 'FairPlayDrm',
+    'MARLIN': 'MarlinDrm',
+    'CLEARKEY': 'ClearKeyDrm',
+    'AES': 'AesEncryptionDrm',
+    'CENC': 'CencDrm'
+  };
+
   /**
    * @type {EncodingOutput[]}
    * @memberof Drm

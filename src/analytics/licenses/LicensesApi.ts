@@ -4,6 +4,7 @@ import DomainsApi from './domains/DomainsApi';
 import AnalyticsLicense from '../../models/AnalyticsLicense';
 import AnalyticsLicenseUpdateRequest from '../../models/AnalyticsLicenseUpdateRequest';
 import PaginationResponse from '../../models/PaginationResponse';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * LicensesApi - object-oriented interface
@@ -54,7 +55,7 @@ export default class LicensesApi extends BaseAPI {
   public list(): Promise<PaginationResponse<AnalyticsLicense>> {
     return this.restClient.get<PaginationResponse<AnalyticsLicense>>('/analytics/licenses', {}).then((response) => {
       const paginationResponse = new PaginationResponse<AnalyticsLicense>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AnalyticsLicense(i));
       }
       return paginationResponse;

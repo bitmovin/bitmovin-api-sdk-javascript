@@ -23,11 +23,11 @@ export class AnalyticsLicense extends BitmovinResponse {
   public licenseKey?: string;
 
   /**
-   * Creation date of the Analytics License
-   * @type {string}
+   * Creation date of the Analytics License in UTC format
+   * @type {Date}
    * @memberof AnalyticsLicense
    */
-  public createdAt?: string;
+  public createdAt?: Date;
 
   /**
    * Maximum number of impressions
@@ -75,7 +75,7 @@ export class AnalyticsLicense extends BitmovinResponse {
     super(obj);
     this.name = map(obj.name);
     this.licenseKey = map(obj.licenseKey);
-    this.createdAt = map(obj.createdAt);
+    this.createdAt = map(obj.createdAt, Date);
     this.maxImpressions = map(obj.maxImpressions);
     this.impressions = map(obj.impressions);
     this.domains = map<AnalyticsLicenseDomain>(obj.domains, AnalyticsLicenseDomain);

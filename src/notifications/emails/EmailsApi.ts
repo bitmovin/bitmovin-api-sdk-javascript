@@ -3,7 +3,8 @@ import Configuration from '../../common/Configuration';
 import EncodingApi from './encoding/EncodingApi';
 import Notification from '../../models/Notification';
 import PaginationResponse from '../../models/PaginationResponse';
-import { NotificationListQueryParams, NotificationListQueryParamsBuilder } from './NotificationListQueryParams';
+import {NotificationListQueryParams, NotificationListQueryParamsBuilder} from './NotificationListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * EmailsApi - object-oriented interface
@@ -28,13 +29,13 @@ export default class EmailsApi extends BaseAPI {
   public list(queryParameters?: NotificationListQueryParams | ((q: NotificationListQueryParamsBuilder) => NotificationListQueryParamsBuilder)): Promise<PaginationResponse<Notification>> {
     let queryParams: NotificationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new NotificationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new NotificationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Notification>>('/notifications/emails', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Notification>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Notification(i));
       }
       return paginationResponse;

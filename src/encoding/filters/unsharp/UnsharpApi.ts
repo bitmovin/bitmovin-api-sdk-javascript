@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import UnsharpFilter from '../../../models/UnsharpFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { UnsharpFilterListQueryParams, UnsharpFilterListQueryParamsBuilder } from './UnsharpFilterListQueryParams';
+import {UnsharpFilterListQueryParams, UnsharpFilterListQueryParamsBuilder} from './UnsharpFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * UnsharpApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class UnsharpApi extends BaseAPI {
   public list(queryParameters?: UnsharpFilterListQueryParams | ((q: UnsharpFilterListQueryParamsBuilder) => UnsharpFilterListQueryParamsBuilder)): Promise<PaginationResponse<UnsharpFilter>> {
     let queryParams: UnsharpFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new UnsharpFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new UnsharpFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UnsharpFilter>>('/encoding/filters/unsharp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<UnsharpFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new UnsharpFilter(i));
       }
       return paginationResponse;

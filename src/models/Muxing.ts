@@ -22,6 +22,22 @@ import WebmMuxing from './WebmMuxing';
  * @class Muxing
  */
 export class Muxing extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'FMP4': 'Fmp4Muxing',
+    'CMAF': 'CmafMuxing',
+    'MP4': 'Mp4Muxing',
+    'TS': 'TsMuxing',
+    'WEBM': 'WebmMuxing',
+    'MP3': 'Mp3Muxing',
+    'PROGRESSIVE_WEBM': 'ProgressiveWebmMuxing',
+    'PROGRESSIVE_MOV': 'ProgressiveMovMuxing',
+    'PROGRESSIVE_TS': 'ProgressiveTsMuxing',
+    'BROADCAST_TS': 'BroadcastTsMuxing',
+    'CHUNKED_TEXT': 'ChunkedTextMuxing',
+    'TEXT': 'TextMuxing'
+  };
+
   /**
    * @type {MuxingStream[]}
    * @memberof Muxing

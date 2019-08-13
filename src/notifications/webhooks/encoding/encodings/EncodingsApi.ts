@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import FinishedApi from './finished/FinishedApi';
 import ErrorApi from './error/ErrorApi';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * EncodingsApi - object-oriented interface

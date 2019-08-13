@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3AudioConfiguration from '../../../../models/Mp3AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { Mp3AudioConfigurationListQueryParams, Mp3AudioConfigurationListQueryParamsBuilder } from './Mp3AudioConfigurationListQueryParams';
+import {Mp3AudioConfigurationListQueryParams, Mp3AudioConfigurationListQueryParamsBuilder} from './Mp3AudioConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Mp3Api - object-oriented interface
@@ -71,13 +72,13 @@ export default class Mp3Api extends BaseAPI {
   public list(queryParameters?: Mp3AudioConfigurationListQueryParams | ((q: Mp3AudioConfigurationListQueryParamsBuilder) => Mp3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Mp3AudioConfiguration>> {
     let queryParams: Mp3AudioConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Mp3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Mp3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Mp3AudioConfiguration>>('/encoding/configurations/audio/mp3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Mp3AudioConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Mp3AudioConfiguration(i));
       }
       return paginationResponse;

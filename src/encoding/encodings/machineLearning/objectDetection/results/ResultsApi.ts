@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import ByTimestampApi from './byTimestamp/ByTimestampApi';
 import ObjectDetectionResult from '../../../../../models/ObjectDetectionResult';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { ObjectDetectionResultListQueryParams, ObjectDetectionResultListQueryParamsBuilder } from './ObjectDetectionResultListQueryParams';
+import {ObjectDetectionResultListQueryParams, ObjectDetectionResultListQueryParamsBuilder} from './ObjectDetectionResultListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ResultsApi - object-oriented interface
@@ -34,13 +35,13 @@ export default class ResultsApi extends BaseAPI {
     };
     let queryParams: ObjectDetectionResultListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ObjectDetectionResultListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ObjectDetectionResultListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ObjectDetectionResult>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ObjectDetectionResult>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ObjectDetectionResult(i));
       }
       return paginationResponse;

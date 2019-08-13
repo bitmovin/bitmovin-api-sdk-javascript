@@ -4,9 +4,9 @@ import RawApi from './raw/RawApi';
 import FrameIdApi from './frameId/FrameIdApi';
 import PlainTextApi from './plainText/PlainTextApi';
 import Id3Tag from '../../../../../models/Id3Tag';
-import { Id3TagTypeMap } from '../../../../../models/typeMappings'
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { Id3TagListQueryParams, Id3TagListQueryParamsBuilder } from './Id3TagListQueryParams';
+import {Id3TagListQueryParams, Id3TagListQueryParamsBuilder} from './Id3TagListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * Id3Api - object-oriented interface
@@ -41,14 +41,14 @@ export default class Id3Api extends BaseAPI {
     };
     let queryParams: Id3TagListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Id3TagListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Id3TagListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Id3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Id3Tag>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Id3TagTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Id3Tag)));
       }
       return paginationResponse;
     });

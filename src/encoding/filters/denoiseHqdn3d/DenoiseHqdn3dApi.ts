@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DenoiseHqdn3dFilter from '../../../models/DenoiseHqdn3dFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { DenoiseHqdn3dFilterListQueryParams, DenoiseHqdn3dFilterListQueryParamsBuilder } from './DenoiseHqdn3dFilterListQueryParams';
+import {DenoiseHqdn3dFilterListQueryParams, DenoiseHqdn3dFilterListQueryParamsBuilder} from './DenoiseHqdn3dFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * DenoiseHqdn3dApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
   public list(queryParameters?: DenoiseHqdn3dFilterListQueryParams | ((q: DenoiseHqdn3dFilterListQueryParamsBuilder) => DenoiseHqdn3dFilterListQueryParamsBuilder)): Promise<PaginationResponse<DenoiseHqdn3dFilter>> {
     let queryParams: DenoiseHqdn3dFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DenoiseHqdn3dFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DenoiseHqdn3dFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DenoiseHqdn3dFilter>>('/encoding/filters/denoise-hqdn3d', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DenoiseHqdn3dFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DenoiseHqdn3dFilter(i));
       }
       return paginationResponse;

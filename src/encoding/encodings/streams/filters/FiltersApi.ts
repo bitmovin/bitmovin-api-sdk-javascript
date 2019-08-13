@@ -4,7 +4,8 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import BitmovinResponseList from '../../../../models/BitmovinResponseList';
 import StreamFilter from '../../../../models/StreamFilter';
 import StreamFilterList from '../../../../models/StreamFilterList';
-import { StreamFilterListListQueryParams, StreamFilterListListQueryParamsBuilder } from './StreamFilterListListQueryParams';
+import {StreamFilterListListQueryParams, StreamFilterListListQueryParamsBuilder} from './StreamFilterListListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * FiltersApi - object-oriented interface
@@ -87,9 +88,9 @@ export default class FiltersApi extends BaseAPI {
     };
     let queryParams: StreamFilterListListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StreamFilterListListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StreamFilterListListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<StreamFilterList>('/encoding/encodings/{encoding_id}/streams/{stream_id}/filters', pathParamMap, queryParams).then((response) => {
       return new StreamFilterList(response);

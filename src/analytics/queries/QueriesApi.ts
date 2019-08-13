@@ -9,6 +9,7 @@ import StddevApi from './stddev/StddevApi';
 import PercentileApi from './percentile/PercentileApi';
 import VarianceApi from './variance/VarianceApi';
 import MedianApi from './median/MedianApi';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * QueriesApi - object-oriented interface

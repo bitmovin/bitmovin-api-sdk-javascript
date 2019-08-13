@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * AgentDeploymentApi - object-oriented interface

@@ -2,8 +2,9 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import DailyStatistics from '../../../models/DailyStatistics';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { DailyStatisticsListQueryParams, DailyStatisticsListQueryParamsBuilder } from './DailyStatisticsListQueryParams';
-import { DailyStatisticsListByDateRangeQueryParams, DailyStatisticsListByDateRangeQueryParamsBuilder } from './DailyStatisticsListByDateRangeQueryParams';
+import {DailyStatisticsListQueryParams, DailyStatisticsListQueryParamsBuilder} from './DailyStatisticsListQueryParams';
+import {DailyStatisticsListByDateRangeQueryParams, DailyStatisticsListByDateRangeQueryParamsBuilder} from './DailyStatisticsListByDateRangeQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * DailyApi - object-oriented interface
@@ -26,13 +27,13 @@ export default class DailyApi extends BaseAPI {
   public list(queryParameters?: DailyStatisticsListQueryParams | ((q: DailyStatisticsListQueryParamsBuilder) => DailyStatisticsListQueryParamsBuilder)): Promise<PaginationResponse<DailyStatistics>> {
     let queryParams: DailyStatisticsListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DailyStatisticsListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DailyStatisticsListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DailyStatistics>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatistics(i));
       }
       return paginationResponse;
@@ -54,13 +55,13 @@ export default class DailyApi extends BaseAPI {
     };
     let queryParams: DailyStatisticsListByDateRangeQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DailyStatisticsListByDateRangeQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DailyStatisticsListByDateRangeQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DailyStatistics>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatistics(i));
       }
       return paginationResponse;

@@ -2,8 +2,8 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import CencApi from './cenc/CencApi';
 import Drm from '../../../../../models/Drm';
-import { DrmTypeMap } from '../../../../../models/typeMappings'
 import PaginationResponse from '../../../../../models/PaginationResponse';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * DrmApi - object-oriented interface
@@ -33,8 +33,8 @@ export default class DrmApi extends BaseAPI {
     };
     return this.restClient.get<PaginationResponse<Drm>>('/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}/drm', pathParamMap).then((response) => {
       const paginationResponse = new PaginationResponse<Drm>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DrmTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Drm)));
       }
       return paginationResponse;
     });

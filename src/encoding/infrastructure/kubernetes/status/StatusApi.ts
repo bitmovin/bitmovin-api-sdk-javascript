@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * StatusApi - object-oriented interface

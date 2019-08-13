@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import HlsManifestDefault from '../../../../models/HlsManifestDefault';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * DefaultApi - object-oriented interface

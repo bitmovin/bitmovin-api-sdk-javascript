@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import UdpMulticastInput from '../../../models/UdpMulticastInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { UdpMulticastInputListQueryParams, UdpMulticastInputListQueryParamsBuilder } from './UdpMulticastInputListQueryParams';
+import {UdpMulticastInputListQueryParams, UdpMulticastInputListQueryParamsBuilder} from './UdpMulticastInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * UdpMulticastApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class UdpMulticastApi extends BaseAPI {
   public list(queryParameters?: UdpMulticastInputListQueryParams | ((q: UdpMulticastInputListQueryParamsBuilder) => UdpMulticastInputListQueryParamsBuilder)): Promise<PaginationResponse<UdpMulticastInput>> {
     let queryParams: UdpMulticastInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new UdpMulticastInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new UdpMulticastInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UdpMulticastInput>>('/encoding/inputs/udp-multicast', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<UdpMulticastInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new UdpMulticastInput(i));
       }
       return paginationResponse;

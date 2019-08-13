@@ -5,7 +5,8 @@ import CaptionsApi from './captions/CaptionsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import CmafMuxing from '../../../../models/CmafMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { CmafMuxingListQueryParams, CmafMuxingListQueryParamsBuilder } from './CmafMuxingListQueryParams';
+import {CmafMuxingListQueryParams, CmafMuxingListQueryParamsBuilder} from './CmafMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * CmafApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class CmafApi extends BaseAPI {
     };
     let queryParams: CmafMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new CmafMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new CmafMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CmafMuxing>>('/encoding/encodings/{encoding_id}/muxings/cmaf', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CmafMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CmafMuxing(i));
       }
       return paginationResponse;

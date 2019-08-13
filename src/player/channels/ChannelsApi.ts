@@ -3,6 +3,7 @@ import Configuration from '../../common/Configuration';
 import VersionsApi from './versions/VersionsApi';
 import PlayerChannel from '../../models/PlayerChannel';
 import PaginationResponse from '../../models/PaginationResponse';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * ChannelsApi - object-oriented interface
@@ -26,7 +27,7 @@ export default class ChannelsApi extends BaseAPI {
   public list(): Promise<PaginationResponse<PlayerChannel>> {
     return this.restClient.get<PaginationResponse<PlayerChannel>>('/player/channels', {}).then((response) => {
       const paginationResponse = new PaginationResponse<PlayerChannel>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new PlayerChannel(i));
       }
       return paginationResponse;

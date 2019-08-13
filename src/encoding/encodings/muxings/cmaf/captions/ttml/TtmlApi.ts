@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
 import TtmlEmbed from '../../../../../../models/TtmlEmbed';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * TtmlApi - object-oriented interface

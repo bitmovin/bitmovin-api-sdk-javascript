@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import GenericS3Output from '../../../models/GenericS3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { GenericS3OutputListQueryParams, GenericS3OutputListQueryParamsBuilder } from './GenericS3OutputListQueryParams';
+import {GenericS3OutputListQueryParams, GenericS3OutputListQueryParamsBuilder} from './GenericS3OutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * GenericS3Api - object-oriented interface
@@ -70,13 +71,13 @@ export default class GenericS3Api extends BaseAPI {
   public list(queryParameters?: GenericS3OutputListQueryParams | ((q: GenericS3OutputListQueryParamsBuilder) => GenericS3OutputListQueryParamsBuilder)): Promise<PaginationResponse<GenericS3Output>> {
     let queryParams: GenericS3OutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new GenericS3OutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new GenericS3OutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GenericS3Output>>('/encoding/outputs/generic-s3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<GenericS3Output>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new GenericS3Output(i));
       }
       return paginationResponse;

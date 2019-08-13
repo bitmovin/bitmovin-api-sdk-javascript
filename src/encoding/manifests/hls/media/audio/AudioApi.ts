@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import AudioMediaInfo from '../../../../../models/AudioMediaInfo';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { AudioMediaInfoListQueryParams, AudioMediaInfoListQueryParamsBuilder } from './AudioMediaInfoListQueryParams';
+import {AudioMediaInfoListQueryParams, AudioMediaInfoListQueryParamsBuilder} from './AudioMediaInfoListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * AudioApi - object-oriented interface
@@ -80,13 +81,13 @@ export default class AudioApi extends BaseAPI {
     };
     let queryParams: AudioMediaInfoListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AudioMediaInfoListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AudioMediaInfoListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/audio', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AudioMediaInfo>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AudioMediaInfo(i));
       }
       return paginationResponse;

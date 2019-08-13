@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Sprite from '../../../../models/Sprite';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { SpriteListQueryParams, SpriteListQueryParamsBuilder } from './SpriteListQueryParams';
+import {SpriteListQueryParams, SpriteListQueryParamsBuilder} from './SpriteListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SpritesApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class SpritesApi extends BaseAPI {
     };
     let queryParams: SpriteListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SpriteListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SpriteListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Sprite>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Sprite>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Sprite(i));
       }
       return paginationResponse;

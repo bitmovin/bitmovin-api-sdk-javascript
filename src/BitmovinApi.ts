@@ -6,6 +6,7 @@ import EncodingApi from './encoding/EncodingApi';
 import GeneralApi from './general/GeneralApi';
 import NotificationsApi from './notifications/NotificationsApi';
 import PlayerApi from './player/PlayerApi';
+import {getType, map} from './common/Mapper';
 
 /**
  * BitmovinApi - object-oriented interface

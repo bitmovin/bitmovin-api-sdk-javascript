@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import AkamaiNetStorageOutput from '../../../models/AkamaiNetStorageOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { AkamaiNetStorageOutputListQueryParams, AkamaiNetStorageOutputListQueryParamsBuilder } from './AkamaiNetStorageOutputListQueryParams';
+import {AkamaiNetStorageOutputListQueryParams, AkamaiNetStorageOutputListQueryParamsBuilder} from './AkamaiNetStorageOutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * AkamaiNetstorageApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class AkamaiNetstorageApi extends BaseAPI {
   public list(queryParameters?: AkamaiNetStorageOutputListQueryParams | ((q: AkamaiNetStorageOutputListQueryParamsBuilder) => AkamaiNetStorageOutputListQueryParamsBuilder)): Promise<PaginationResponse<AkamaiNetStorageOutput>> {
     let queryParams: AkamaiNetStorageOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AkamaiNetStorageOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AkamaiNetStorageOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AkamaiNetStorageOutput>>('/encoding/outputs/akamai-netstorage', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AkamaiNetStorageOutput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AkamaiNetStorageOutput(i));
       }
       return paginationResponse;

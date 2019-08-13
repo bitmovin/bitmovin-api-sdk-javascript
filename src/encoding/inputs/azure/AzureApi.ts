@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import AzureInput from '../../../models/AzureInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { AzureInputListQueryParams, AzureInputListQueryParamsBuilder } from './AzureInputListQueryParams';
+import {AzureInputListQueryParams, AzureInputListQueryParamsBuilder} from './AzureInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * AzureApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class AzureApi extends BaseAPI {
   public list(queryParameters?: AzureInputListQueryParams | ((q: AzureInputListQueryParamsBuilder) => AzureInputListQueryParamsBuilder)): Promise<PaginationResponse<AzureInput>> {
     let queryParams: AzureInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AzureInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AzureInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AzureInput>>('/encoding/inputs/azure', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AzureInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AzureInput(i));
       }
       return paginationResponse;

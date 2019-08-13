@@ -10,6 +10,13 @@ import RawId3Tag from './RawId3Tag';
  * @class Id3Tag
  */
 export class Id3Tag extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'RAW': 'RawId3Tag',
+    'FRAME_ID': 'FrameIdId3Tag',
+    'PLAIN_TEXT': 'PlaintextId3Tag'
+  };
+
   /**
    * @type {Id3TagPositionMode}
    * @memberof Id3Tag

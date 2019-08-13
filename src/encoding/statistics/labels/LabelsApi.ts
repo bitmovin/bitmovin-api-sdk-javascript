@@ -3,8 +3,9 @@ import Configuration from '../../../common/Configuration';
 import DailyApi from './daily/DailyApi';
 import StatisticsPerLabel from '../../../models/StatisticsPerLabel';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { StatisticsPerLabelListQueryParams, StatisticsPerLabelListQueryParamsBuilder } from './StatisticsPerLabelListQueryParams';
-import { StatisticsPerLabelListByDateRangeQueryParams, StatisticsPerLabelListByDateRangeQueryParamsBuilder } from './StatisticsPerLabelListByDateRangeQueryParams';
+import {StatisticsPerLabelListQueryParams, StatisticsPerLabelListQueryParamsBuilder} from './StatisticsPerLabelListQueryParams';
+import {StatisticsPerLabelListByDateRangeQueryParams, StatisticsPerLabelListByDateRangeQueryParamsBuilder} from './StatisticsPerLabelListByDateRangeQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * LabelsApi - object-oriented interface
@@ -29,13 +30,13 @@ export default class LabelsApi extends BaseAPI {
   public list(queryParameters?: StatisticsPerLabelListQueryParams | ((q: StatisticsPerLabelListQueryParamsBuilder) => StatisticsPerLabelListQueryParamsBuilder)): Promise<PaginationResponse<StatisticsPerLabel>> {
     let queryParams: StatisticsPerLabelListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StatisticsPerLabelListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StatisticsPerLabelListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<StatisticsPerLabel>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new StatisticsPerLabel(i));
       }
       return paginationResponse;
@@ -57,13 +58,13 @@ export default class LabelsApi extends BaseAPI {
     };
     let queryParams: StatisticsPerLabelListByDateRangeQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StatisticsPerLabelListByDateRangeQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StatisticsPerLabelListByDateRangeQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<StatisticsPerLabel>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new StatisticsPerLabel(i));
       }
       return paginationResponse;

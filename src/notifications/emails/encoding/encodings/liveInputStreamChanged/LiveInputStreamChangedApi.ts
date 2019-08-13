@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import EmailNotificationWithStreamConditions from '../../../../../models/EmailNotificationWithStreamConditions';
 import EmailNotificationWithStreamConditionsRequest from '../../../../../models/EmailNotificationWithStreamConditionsRequest';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * LiveInputStreamChangedApi - object-oriented interface

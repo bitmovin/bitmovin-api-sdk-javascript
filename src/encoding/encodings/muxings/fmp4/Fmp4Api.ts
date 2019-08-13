@@ -5,7 +5,8 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Fmp4Muxing from '../../../../models/Fmp4Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { Fmp4MuxingListQueryParams, Fmp4MuxingListQueryParamsBuilder } from './Fmp4MuxingListQueryParams';
+import {Fmp4MuxingListQueryParams, Fmp4MuxingListQueryParamsBuilder} from './Fmp4MuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Fmp4Api - object-oriented interface
@@ -86,13 +87,13 @@ export default class Fmp4Api extends BaseAPI {
     };
     let queryParams: Fmp4MuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Fmp4MuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Fmp4MuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Fmp4Muxing>>('/encoding/encodings/{encoding_id}/muxings/fmp4', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Fmp4Muxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Fmp4Muxing(i));
       }
       return paginationResponse;

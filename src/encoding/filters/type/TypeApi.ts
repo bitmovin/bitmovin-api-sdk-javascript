@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import FilterTypeResponse from '../../../models/FilterTypeResponse';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * TypeApi - object-oriented interface

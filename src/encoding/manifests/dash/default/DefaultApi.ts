@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import DashManifestDefault from '../../../../models/DashManifestDefault';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * DefaultApi - object-oriented interface

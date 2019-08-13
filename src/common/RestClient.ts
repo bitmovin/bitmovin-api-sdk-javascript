@@ -7,12 +7,47 @@ import Configuration from './Configuration';
 import Logger from './Logger';
 import NullLogger from './NullLogger';
 import {buildBitmovinError} from './BitmovinErrorBuilder';
+import BitmovinError from './BitmovinError';
 
 (e6p as any).polyfill();
 
 const BASE_URL = 'https://api.bitmovin.com/v1'.replace(/\/+$/, '');
 
 export type FetchAPI = (url: string, init?: any) => Promise<Response>;
+
+function preRequestBodyHandling(body: any) {
+  if (body == undefined) {
+    return;
+  }
+  // Check self
+  if ('typeMap' in body.constructor) {
+    setType(body);
+  }
+
+  // Check properties
+  for (const property of Object.keys(body)) {
+    if (body[property] == undefined) {
+      continue;
+    }
+    if ('typeMap' in body[property].constructor) {
+      preRequestBodyHandling(body[property]);
+    } else if (Array.isArray(body[property])) {
+      body[property].forEach((element) => {
+        if (element && 'typeMap' in element.constructor) {
+          preRequestBodyHandling(element);
+        }
+      });
+    }
+  }
+}
+
+function getType(body: any) {
+  return Object.keys(body.constructor.typeMap).find(key => body.constructor.typeMap[key] === body.constructor.name);
+}
+
+function setType(body: any) {
+  body.type = getType(body);
+}
 
 function queryParams(params) {
   if (!params) {
@@ -39,7 +74,7 @@ function prepareUrl(baseUrl: string, url: string, urlParameterMap: any, queryStr
     for (const key of Object.keys(urlParameterMap)) {
       // Convert to ISO string if the parameter is a Date
       if (urlParameterMap[key] instanceof Date) {
-        urlParameterMap[key] = urlParameterMap[key].toISOString();
+        urlParameterMap[key] = (urlParameterMap[key] as Date).toISOString().slice(0, 10);
       }
 
       modifiedUrl = modifiedUrl.replace(new RegExp(`{${key}}`), urlParameterMap[key]);
@@ -123,8 +158,11 @@ export class RestClient {
     return headers;
   }
 
-  private request<T>(method: string, url: string, urlParameterMap?: object, body?: object, queryStringParameters?: object): Promise<T> {
+  private request<T>(method: string, url: string, urlParameterMap?: object, body?: any, queryStringParameters?: object): Promise<T> {
     const requestUrl = prepareUrl(this.baseUrl, url, urlParameterMap, queryStringParameters);
+
+    preRequestBodyHandling(body);
+
     const request = {
       method: method,
       url: requestUrl.toString(),
@@ -142,19 +180,39 @@ export class RestClient {
       body: request.body,
       headers: request.headers
     }).then((response) => {
-        return response.json().then((json) => {
+      return response.text().then((text) => {
+        if (text.length === 0) {
+          if (response.status > 399) {
+            this.logger.error(`Response body was empty or could not be parsed`);
+            throw buildBitmovinError(request, response);
+          }
+          return {data: {}};
+        }
+        try {
+          const json = JSON.parse(text);
           if (response.status > 399) {
             this.logger.error(`HTTP request was unsuccessful: HTTP response code was ${response.status} ${response.statusText}`);
             throw buildBitmovinError(request, response, json);
           }
           return json;
-        }, () => {
+        } catch (e) {
+          if (e instanceof BitmovinError) {
+            throw e;
+          }
+
           if (response.status !== 204) {
             this.logger.error(`Response body was empty or could not be parsed`);
             throw buildBitmovinError(request, response);
           }
           return {data: {}};
-        });
+        }
+      }, () => {
+        if (response.status !== 204) {
+          this.logger.error(`Response body was empty or could not be parsed`);
+          throw buildBitmovinError(request, response);
+        }
+        return {data: {}};
+      });
     }).then((responseJson) => {
       const result = responseJson.data.result;
       this.logger.log('Response body:', responseJson);

@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import OpusAudioConfiguration from '../../../../models/OpusAudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { OpusAudioConfigurationListQueryParams, OpusAudioConfigurationListQueryParamsBuilder } from './OpusAudioConfigurationListQueryParams';
+import {OpusAudioConfigurationListQueryParams, OpusAudioConfigurationListQueryParamsBuilder} from './OpusAudioConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * OpusApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class OpusApi extends BaseAPI {
   public list(queryParameters?: OpusAudioConfigurationListQueryParams | ((q: OpusAudioConfigurationListQueryParamsBuilder) => OpusAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<OpusAudioConfiguration>> {
     let queryParams: OpusAudioConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new OpusAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new OpusAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<OpusAudioConfiguration>>('/encoding/configurations/audio/opus', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<OpusAudioConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new OpusAudioConfiguration(i));
       }
       return paginationResponse;

@@ -2,7 +2,7 @@
  * @export
  * @enum {string}
  */
-export enum ScheduledContentInsertionStatus {
+export enum ScheduledInsertableContentStatus {
   CREATED = 'CREATED',
   SCHEDULED = 'SCHEDULED',
   TO_BE_DESCHEDULED = 'TO_BE_DESCHEDULED',
@@ -10,5 +10,5 @@ export enum ScheduledContentInsertionStatus {
   ERROR = 'ERROR'
 }
 
-export default ScheduledContentInsertionStatus;
+export default ScheduledInsertableContentStatus;
 

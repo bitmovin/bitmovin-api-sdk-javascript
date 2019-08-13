@@ -18,6 +18,21 @@ import SftpOutput from './SftpOutput';
  * @class Output
  */
 export class Output extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'AKAMAI_NETSTORAGE': 'AkamaiNetStorageOutput',
+    'AZURE': 'AzureOutput',
+    'GENERIC_S3': 'GenericS3Output',
+    'GCS': 'GcsOutput',
+    'FTP': 'FtpOutput',
+    'LOCAL': 'LocalOutput',
+    'S3': 'S3Output',
+    'S3_ROLE_BASED': 'S3RoleBasedOutput',
+    'SFTP': 'SftpOutput',
+    'AKAMAI_MSL': 'AkamaiMslOutput',
+    'LIVE_MEDIA_INGEST': 'LiveMediaIngestOutput'
+  };
+
   /**
    * @type {AclEntry[]}
    * @memberof Output

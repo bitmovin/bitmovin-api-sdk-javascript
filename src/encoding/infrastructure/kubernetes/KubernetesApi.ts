@@ -8,7 +8,8 @@ import PrewarmedDeploymentApi from './prewarmedDeployment/PrewarmedDeploymentApi
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import KubernetesCluster from '../../../models/KubernetesCluster';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { KubernetesClusterListQueryParams, KubernetesClusterListQueryParamsBuilder } from './KubernetesClusterListQueryParams';
+import {KubernetesClusterListQueryParams, KubernetesClusterListQueryParamsBuilder} from './KubernetesClusterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * KubernetesApi - object-oriented interface
@@ -83,13 +84,13 @@ export default class KubernetesApi extends BaseAPI {
   public list(queryParameters?: KubernetesClusterListQueryParams | ((q: KubernetesClusterListQueryParamsBuilder) => KubernetesClusterListQueryParamsBuilder)): Promise<PaginationResponse<KubernetesCluster>> {
     let queryParams: KubernetesClusterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new KubernetesClusterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new KubernetesClusterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<KubernetesCluster>>('/encoding/infrastructure/kubernetes', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<KubernetesCluster>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new KubernetesCluster(i));
       }
       return paginationResponse;

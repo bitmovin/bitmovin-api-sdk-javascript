@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import RegionsApi from './regions/RegionsApi';
 import AwsAccount from '../../../models/AwsAccount';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { AwsAccountListQueryParams, AwsAccountListQueryParamsBuilder } from './AwsAccountListQueryParams';
+import {AwsAccountListQueryParams, AwsAccountListQueryParamsBuilder} from './AwsAccountListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * AwsApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class AwsApi extends BaseAPI {
   public list(queryParameters?: AwsAccountListQueryParams | ((q: AwsAccountListQueryParamsBuilder) => AwsAccountListQueryParamsBuilder)): Promise<PaginationResponse<AwsAccount>> {
     let queryParams: AwsAccountListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AwsAccountListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AwsAccountListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccount>>('/encoding/infrastructure/aws', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AwsAccount>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AwsAccount(i));
       }
       return paginationResponse;

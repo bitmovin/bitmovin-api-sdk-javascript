@@ -1,25 +1,26 @@
 import {Link, Message} from '../models';
+import {map} from './Mapper';
 
 export class BitmovinError extends Error {
   public details?: Message[];
   public links?: Link[];
 
-  private shortMessage: string;
-  private developerMessage?: string;
-  private requestId?: string;
-  private errorCode?: number;
-  private httpStatusCode: number;
+  public shortMessage: string;
+  public developerMessage?: string;
+  public requestId?: string;
+  public errorCode?: number;
+  public httpStatusCode: number;
 
   constructor(message: string, httpStatusCode: number, shortMessage: string, developerMessage?: string, requestId?: string, errorCode?: number, details?: Message[], links?: Link[]) {
     super(message);
     this.name = 'BitmovinError';
-    this.shortMessage = shortMessage;
-    this.httpStatusCode = httpStatusCode;
-    this.developerMessage = developerMessage;
-    this.requestId = requestId;
-    this.errorCode = errorCode;
-    this.details = details;
-    this.links = links;
+    this.shortMessage = map(shortMessage);
+    this.httpStatusCode = map(httpStatusCode);
+    this.developerMessage = map(developerMessage);
+    this.requestId = map(requestId);
+    this.errorCode = map(errorCode);
+    this.details = map<Message>(details, Message);
+    this.links = map<Link>(links, Link);
 
     // Maintain stack trace if possible
     if (typeof (Error as any).captureStackTrace === 'function') {

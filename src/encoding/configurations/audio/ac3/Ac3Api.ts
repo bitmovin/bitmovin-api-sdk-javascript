@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import Ac3AudioConfiguration from '../../../../models/Ac3AudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { Ac3AudioConfigurationListQueryParams, Ac3AudioConfigurationListQueryParamsBuilder } from './Ac3AudioConfigurationListQueryParams';
+import {Ac3AudioConfigurationListQueryParams, Ac3AudioConfigurationListQueryParamsBuilder} from './Ac3AudioConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Ac3Api - object-oriented interface
@@ -71,13 +72,13 @@ export default class Ac3Api extends BaseAPI {
   public list(queryParameters?: Ac3AudioConfigurationListQueryParams | ((q: Ac3AudioConfigurationListQueryParamsBuilder) => Ac3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Ac3AudioConfiguration>> {
     let queryParams: Ac3AudioConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Ac3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Ac3AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Ac3AudioConfiguration>>('/encoding/configurations/audio/ac3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Ac3AudioConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Ac3AudioConfiguration(i));
       }
       return paginationResponse;

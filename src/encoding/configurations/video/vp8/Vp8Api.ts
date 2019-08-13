@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Vp8VideoConfiguration from '../../../../models/Vp8VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { Vp8VideoConfigurationListQueryParams, Vp8VideoConfigurationListQueryParamsBuilder } from './Vp8VideoConfigurationListQueryParams';
+import {Vp8VideoConfigurationListQueryParams, Vp8VideoConfigurationListQueryParamsBuilder} from './Vp8VideoConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Vp8Api - object-oriented interface
@@ -70,13 +71,13 @@ export default class Vp8Api extends BaseAPI {
   public list(queryParameters?: Vp8VideoConfigurationListQueryParams | ((q: Vp8VideoConfigurationListQueryParamsBuilder) => Vp8VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Vp8VideoConfiguration>> {
     let queryParams: Vp8VideoConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Vp8VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Vp8VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Vp8VideoConfiguration>>('/encoding/configurations/video/vp8', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Vp8VideoConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Vp8VideoConfiguration(i));
       }
       return paginationResponse;

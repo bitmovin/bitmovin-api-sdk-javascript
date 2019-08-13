@@ -2,7 +2,8 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import NotificationStateEntry from '../../models/NotificationStateEntry';
 import PaginationResponse from '../../models/PaginationResponse';
-import { NotificationStateEntryListQueryParams, NotificationStateEntryListQueryParamsBuilder } from './NotificationStateEntryListQueryParams';
+import {NotificationStateEntryListQueryParams, NotificationStateEntryListQueryParamsBuilder} from './NotificationStateEntryListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * StatesApi - object-oriented interface
@@ -31,13 +32,13 @@ export default class StatesApi extends BaseAPI {
     };
     let queryParams: NotificationStateEntryListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new NotificationStateEntryListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new NotificationStateEntryListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/states/{resource_id}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<NotificationStateEntry>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new NotificationStateEntry(i));
       }
       return paginationResponse;

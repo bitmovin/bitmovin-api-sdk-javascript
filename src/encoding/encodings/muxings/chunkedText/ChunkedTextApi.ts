@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ChunkedTextMuxing from '../../../../models/ChunkedTextMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { ChunkedTextMuxingListQueryParams, ChunkedTextMuxingListQueryParamsBuilder } from './ChunkedTextMuxingListQueryParams';
+import {ChunkedTextMuxingListQueryParams, ChunkedTextMuxingListQueryParamsBuilder} from './ChunkedTextMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ChunkedTextApi - object-oriented interface
@@ -83,13 +84,13 @@ export default class ChunkedTextApi extends BaseAPI {
     };
     let queryParams: ChunkedTextMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ChunkedTextMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ChunkedTextMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ChunkedTextMuxing>>('/encoding/encodings/{encoding_id}/muxings/chunked-text', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ChunkedTextMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ChunkedTextMuxing(i));
       }
       return paginationResponse;

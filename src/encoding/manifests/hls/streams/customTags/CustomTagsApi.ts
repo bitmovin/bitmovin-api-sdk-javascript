@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomTag from '../../../../../models/CustomTag';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { CustomTagListQueryParams, CustomTagListQueryParamsBuilder } from './CustomTagListQueryParams';
+import {CustomTagListQueryParams, CustomTagListQueryParamsBuilder} from './CustomTagListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * CustomTagsApi - object-oriented interface
@@ -88,13 +89,13 @@ export default class CustomTagsApi extends BaseAPI {
     };
     let queryParams: CustomTagListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new CustomTagListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new CustomTagListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CustomTag>>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CustomTag>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CustomTag(i));
       }
       return paginationResponse;

@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import CustomPlayerBuildDownload from '../../../../models/CustomPlayerBuildDownload';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * DownloadApi - object-oriented interface

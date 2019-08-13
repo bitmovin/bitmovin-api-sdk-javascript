@@ -5,7 +5,8 @@ import IframeApi from './iframe/IframeApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import StreamInfo from '../../../../models/StreamInfo';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { StreamInfoListQueryParams, StreamInfoListQueryParamsBuilder } from './StreamInfoListQueryParams';
+import {StreamInfoListQueryParams, StreamInfoListQueryParamsBuilder} from './StreamInfoListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * StreamsApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class StreamsApi extends BaseAPI {
     };
     let queryParams: StreamInfoListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StreamInfoListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StreamInfoListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StreamInfo>>('/encoding/manifests/hls/{manifest_id}/streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<StreamInfo>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new StreamInfo(i));
       }
       return paginationResponse;

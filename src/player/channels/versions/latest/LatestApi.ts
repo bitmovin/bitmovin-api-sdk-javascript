@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import PlayerVersion from '../../../../models/PlayerVersion';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * LatestApi - object-oriented interface

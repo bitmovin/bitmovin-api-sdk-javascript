@@ -5,7 +5,8 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveWebmMuxing from '../../../../models/ProgressiveWebmMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { ProgressiveWebmMuxingListQueryParams, ProgressiveWebmMuxingListQueryParamsBuilder } from './ProgressiveWebmMuxingListQueryParams';
+import {ProgressiveWebmMuxingListQueryParams, ProgressiveWebmMuxingListQueryParamsBuilder} from './ProgressiveWebmMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ProgressiveWebmApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class ProgressiveWebmApi extends BaseAPI {
     };
     let queryParams: ProgressiveWebmMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ProgressiveWebmMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ProgressiveWebmMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ProgressiveWebmMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-webm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ProgressiveWebmMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ProgressiveWebmMuxing(i));
       }
       return paginationResponse;

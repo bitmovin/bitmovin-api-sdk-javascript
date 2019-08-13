@@ -3,6 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import EmailNotification from '../../../../../models/EmailNotification';
 import EncodingErrorEmailNotification from '../../../../../models/EncodingErrorEmailNotification';
 import PaginationResponse from '../../../../../models/PaginationResponse';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ErrorApi - object-oriented interface
@@ -25,7 +26,7 @@ export default class ErrorApi extends BaseAPI {
   public create(encodingErrorEmailNotification?: EncodingErrorEmailNotification): Promise<PaginationResponse<EncodingErrorEmailNotification>> {
     return this.restClient.post<PaginationResponse<EncodingErrorEmailNotification>>('/notifications/emails/encoding/encodings/error', {}, encodingErrorEmailNotification).then((response) => {
       const paginationResponse = new PaginationResponse<EncodingErrorEmailNotification>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingErrorEmailNotification(i));
       }
       return paginationResponse;

@@ -6,7 +6,8 @@ import BitmovinResource from '../../../../models/BitmovinResource';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ObjectDetectionConfiguration from '../../../../models/ObjectDetectionConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { ObjectDetectionConfigurationListQueryParams, ObjectDetectionConfigurationListQueryParamsBuilder } from './ObjectDetectionConfigurationListQueryParams';
+import {ObjectDetectionConfigurationListQueryParams, ObjectDetectionConfigurationListQueryParamsBuilder} from './ObjectDetectionConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ObjectDetectionApi - object-oriented interface
@@ -87,13 +88,13 @@ export default class ObjectDetectionApi extends BaseAPI {
     };
     let queryParams: ObjectDetectionConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ObjectDetectionConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ObjectDetectionConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ObjectDetectionConfiguration>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ObjectDetectionConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ObjectDetectionConfiguration(i));
       }
       return paginationResponse;

@@ -1,8 +1,12 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import ScheduleApi from './schedule/ScheduleApi';
+import ScheduledApi from './scheduled/ScheduledApi';
+import StopApi from './stop/StopApi';
 import InsertableContent from '../../../../models/InsertableContent';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { InsertableContentListQueryParams, InsertableContentListQueryParamsBuilder } from './InsertableContentListQueryParams';
+import {InsertableContentListQueryParams, InsertableContentListQueryParamsBuilder} from './InsertableContentListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * InsertableContentApi - object-oriented interface
@@ -11,9 +15,15 @@ import { InsertableContentListQueryParams, InsertableContentListQueryParamsBuild
  * @extends {BaseAPI}
  */
 export default class InsertableContentApi extends BaseAPI {
+  public schedule: ScheduleApi;
+  public scheduled: ScheduledApi;
+  public stop: StopApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.schedule = new ScheduleApi(configuration);
+    this.scheduled = new ScheduledApi(configuration);
+    this.stop = new StopApi(configuration);
   }
 
   /**
@@ -45,13 +55,13 @@ export default class InsertableContentApi extends BaseAPI {
     };
     let queryParams: InsertableContentListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new InsertableContentListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new InsertableContentListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InsertableContent>>('/encoding/encodings/{encoding_id}/live/insertable-content', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<InsertableContent>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new InsertableContent(i));
       }
       return paginationResponse;

@@ -2,7 +2,8 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import StreamInfos from '../../../../../models/StreamInfos';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { StreamInfosListQueryParams, StreamInfosListQueryParamsBuilder } from './StreamInfosListQueryParams';
+import {StreamInfosListQueryParams, StreamInfosListQueryParamsBuilder} from './StreamInfosListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * StreamsApi - object-oriented interface
@@ -29,13 +30,13 @@ export default class StreamsApi extends BaseAPI {
     };
     let queryParams: StreamInfosListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StreamInfosListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StreamInfosListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StreamInfos>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/streams', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<StreamInfos>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new StreamInfos(i));
       }
       return paginationResponse;

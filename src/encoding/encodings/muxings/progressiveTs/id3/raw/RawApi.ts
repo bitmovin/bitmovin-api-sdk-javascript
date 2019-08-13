@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import RawId3Tag from '../../../../../../models/RawId3Tag';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { RawId3TagListQueryParams, RawId3TagListQueryParamsBuilder } from './RawId3TagListQueryParams';
+import {RawId3TagListQueryParams, RawId3TagListQueryParamsBuilder} from './RawId3TagListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * RawApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class RawApi extends BaseAPI {
     };
     let queryParams: RawId3TagListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new RawId3TagListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new RawId3TagListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RawId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<RawId3Tag>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new RawId3Tag(i));
       }
       return paginationResponse;

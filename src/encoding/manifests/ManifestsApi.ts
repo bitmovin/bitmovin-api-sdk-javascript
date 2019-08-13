@@ -6,7 +6,8 @@ import HlsApi from './hls/HlsApi';
 import SmoothApi from './smooth/SmoothApi';
 import Manifest from '../../models/Manifest';
 import PaginationResponse from '../../models/PaginationResponse';
-import { ManifestListQueryParams, ManifestListQueryParamsBuilder } from './ManifestListQueryParams';
+import {ManifestListQueryParams, ManifestListQueryParamsBuilder} from './ManifestListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * ManifestsApi - object-oriented interface
@@ -37,13 +38,13 @@ export default class ManifestsApi extends BaseAPI {
   public list(queryParameters?: ManifestListQueryParams | ((q: ManifestListQueryParamsBuilder) => ManifestListQueryParamsBuilder)): Promise<PaginationResponse<Manifest>> {
     let queryParams: ManifestListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ManifestListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ManifestListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Manifest>>('/encoding/manifests', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Manifest>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Manifest(i));
       }
       return paginationResponse;

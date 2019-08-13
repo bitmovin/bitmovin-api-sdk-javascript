@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Cea608CaptionInputStream from '../../../../../models/Cea608CaptionInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { Cea608CaptionInputStreamListQueryParams, Cea608CaptionInputStreamListQueryParamsBuilder } from './Cea608CaptionInputStreamListQueryParams';
+import {Cea608CaptionInputStreamListQueryParams, Cea608CaptionInputStreamListQueryParamsBuilder} from './Cea608CaptionInputStreamListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * Cea608Api - object-oriented interface
@@ -80,13 +81,13 @@ export default class Cea608Api extends BaseAPI {
     };
     let queryParams: Cea608CaptionInputStreamListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new Cea608CaptionInputStreamListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new Cea608CaptionInputStreamListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Cea608CaptionInputStream>>('/encoding/encodings/{encoding_id}/input-streams/captions/cea608', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Cea608CaptionInputStream>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Cea608CaptionInputStream(i));
       }
       return paginationResponse;

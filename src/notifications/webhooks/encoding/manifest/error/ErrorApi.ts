@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import Webhook from '../../../../../models/Webhook';
 import PaginationResponse from '../../../../../models/PaginationResponse';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ErrorApi - object-oriented interface
@@ -24,7 +25,7 @@ export default class ErrorApi extends BaseAPI {
   public create(webhook?: Webhook): Promise<PaginationResponse<Webhook>> {
     return this.restClient.post<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/manifest/error', {}, webhook).then((response) => {
       const paginationResponse = new PaginationResponse<Webhook>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Webhook(i));
       }
       return paginationResponse;

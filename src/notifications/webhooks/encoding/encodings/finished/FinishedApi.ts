@@ -4,8 +4,9 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Webhook from '../../../../../models/Webhook';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { WebhookListQueryParams, WebhookListQueryParamsBuilder } from './WebhookListQueryParams';
-import { WebhookListByEncodingIdQueryParams, WebhookListByEncodingIdQueryParamsBuilder } from './WebhookListByEncodingIdQueryParams';
+import {WebhookListQueryParams, WebhookListQueryParamsBuilder} from './WebhookListQueryParams';
+import {WebhookListByEncodingIdQueryParams, WebhookListByEncodingIdQueryParamsBuilder} from './WebhookListByEncodingIdQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * FinishedApi - object-oriented interface
@@ -122,13 +123,13 @@ export default class FinishedApi extends BaseAPI {
   public list(queryParameters?: WebhookListQueryParams | ((q: WebhookListQueryParamsBuilder) => WebhookListQueryParamsBuilder)): Promise<PaginationResponse<Webhook>> {
     let queryParams: WebhookListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new WebhookListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new WebhookListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/finished', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Webhook>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Webhook(i));
       }
       return paginationResponse;
@@ -148,13 +149,13 @@ export default class FinishedApi extends BaseAPI {
     };
     let queryParams: WebhookListByEncodingIdQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new WebhookListByEncodingIdQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new WebhookListByEncodingIdQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/{encoding_id}/finished', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Webhook>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Webhook(i));
       }
       return paginationResponse;

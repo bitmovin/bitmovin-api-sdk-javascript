@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import AndConjunction from './AndConjunction';
 import Condition from './Condition';
 import OrConjunction from './OrConjunction';
@@ -8,6 +7,13 @@ import OrConjunction from './OrConjunction';
  * @class AbstractCondition
  */
 export class AbstractCondition {
+
+  protected static readonly typeMap: any = {
+    'CONDITION': 'Condition',
+    'AND': 'AndConjunction',
+    'OR': 'OrConjunction'
+  };
+
   constructor(obj: Partial<AbstractCondition>) {
   }
 }

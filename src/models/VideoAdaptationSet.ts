@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import Accessibility from './Accessibility';
 import AdaptationSet from './AdaptationSet';
 import AdaptationSetRole from './AdaptationSetRole';

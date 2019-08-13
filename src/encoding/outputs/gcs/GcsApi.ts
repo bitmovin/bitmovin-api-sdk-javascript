@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import GcsOutput from '../../../models/GcsOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { GcsOutputListQueryParams, GcsOutputListQueryParamsBuilder } from './GcsOutputListQueryParams';
+import {GcsOutputListQueryParams, GcsOutputListQueryParamsBuilder} from './GcsOutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * GcsApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class GcsApi extends BaseAPI {
   public list(queryParameters?: GcsOutputListQueryParams | ((q: GcsOutputListQueryParamsBuilder) => GcsOutputListQueryParamsBuilder)): Promise<PaginationResponse<GcsOutput>> {
     let queryParams: GcsOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new GcsOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new GcsOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GcsOutput>>('/encoding/outputs/gcs', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<GcsOutput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new GcsOutput(i));
       }
       return paginationResponse;

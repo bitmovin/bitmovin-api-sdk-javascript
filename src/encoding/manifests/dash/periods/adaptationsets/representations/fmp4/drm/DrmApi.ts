@@ -4,7 +4,8 @@ import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import DashFmp4DrmRepresentation from '../../../../../../../../models/DashFmp4DrmRepresentation';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
-import { DashFmp4DrmRepresentationListQueryParams, DashFmp4DrmRepresentationListQueryParamsBuilder } from './DashFmp4DrmRepresentationListQueryParams';
+import {DashFmp4DrmRepresentationListQueryParams, DashFmp4DrmRepresentationListQueryParamsBuilder} from './DashFmp4DrmRepresentationListQueryParams';
+import {getType, map} from '../../../../../../../../common/Mapper';
 
 /**
  * DrmApi - object-oriented interface
@@ -99,13 +100,13 @@ export default class DrmApi extends BaseAPI {
     };
     let queryParams: DashFmp4DrmRepresentationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DashFmp4DrmRepresentationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DashFmp4DrmRepresentationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashFmp4DrmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashFmp4DrmRepresentation>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DashFmp4DrmRepresentation(i));
       }
       return paginationResponse;

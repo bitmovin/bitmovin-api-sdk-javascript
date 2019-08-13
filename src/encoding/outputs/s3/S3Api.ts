@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import S3Output from '../../../models/S3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { S3OutputListQueryParams, S3OutputListQueryParamsBuilder } from './S3OutputListQueryParams';
+import {S3OutputListQueryParams, S3OutputListQueryParamsBuilder} from './S3OutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * S3Api - object-oriented interface
@@ -70,13 +71,13 @@ export default class S3Api extends BaseAPI {
   public list(queryParameters?: S3OutputListQueryParams | ((q: S3OutputListQueryParamsBuilder) => S3OutputListQueryParamsBuilder)): Promise<PaginationResponse<S3Output>> {
     let queryParams: S3OutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new S3OutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new S3OutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Output>>('/encoding/outputs/s3', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<S3Output>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new S3Output(i));
       }
       return paginationResponse;

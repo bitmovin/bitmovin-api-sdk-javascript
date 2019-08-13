@@ -15,9 +15,9 @@ import UnsharpApi from './unsharp/UnsharpApi';
 import ScaleApi from './scale/ScaleApi';
 import TypeApi from './type/TypeApi';
 import Filter from '../../models/Filter';
-import { FilterTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import { FilterListQueryParams, FilterListQueryParamsBuilder } from './FilterListQueryParams';
+import {FilterListQueryParams, FilterListQueryParamsBuilder} from './FilterListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * FiltersApi - object-oriented interface
@@ -68,14 +68,14 @@ export default class FiltersApi extends BaseAPI {
   public list(queryParameters?: FilterListQueryParams | ((q: FilterListQueryParamsBuilder) => FilterListQueryParamsBuilder)): Promise<PaginationResponse<Filter>> {
     let queryParams: FilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new FilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new FilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Filter>>('/encoding/filters', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Filter>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new FilterTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Filter)));
       }
       return paginationResponse;
     });

@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import CustomWebPlayerBuildDomain from '../../../../models/CustomWebPlayerBuildDomain';
 import PaginationResponse from '../../../../models/PaginationResponse';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * DomainsApi - object-oriented interface
@@ -66,7 +67,7 @@ export default class DomainsApi extends BaseAPI {
   public list(): Promise<PaginationResponse<CustomWebPlayerBuildDomain>> {
     return this.restClient.get<PaginationResponse<CustomWebPlayerBuildDomain>>('/player/custom-builds/web/domains', {}).then((response) => {
       const paginationResponse = new PaginationResponse<CustomWebPlayerBuildDomain>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CustomWebPlayerBuildDomain(i));
       }
       return paginationResponse;

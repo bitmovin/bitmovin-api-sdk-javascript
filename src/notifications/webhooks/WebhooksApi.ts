@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import EncodingApi from './encoding/EncodingApi';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * WebhooksApi - object-oriented interface

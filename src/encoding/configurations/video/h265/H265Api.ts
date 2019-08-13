@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import H265VideoConfiguration from '../../../../models/H265VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { H265VideoConfigurationListQueryParams, H265VideoConfigurationListQueryParamsBuilder } from './H265VideoConfigurationListQueryParams';
+import {H265VideoConfigurationListQueryParams, H265VideoConfigurationListQueryParamsBuilder} from './H265VideoConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * H265Api - object-oriented interface
@@ -71,13 +72,13 @@ export default class H265Api extends BaseAPI {
   public list(queryParameters?: H265VideoConfigurationListQueryParams | ((q: H265VideoConfigurationListQueryParamsBuilder) => H265VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<H265VideoConfiguration>> {
     let queryParams: H265VideoConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new H265VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new H265VideoConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<H265VideoConfiguration>>('/encoding/configurations/video/h265', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<H265VideoConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new H265VideoConfiguration(i));
       }
       return paginationResponse;

@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomXmlElement from '../../../../../models/CustomXmlElement';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { CustomXmlElementListQueryParams, CustomXmlElementListQueryParamsBuilder } from './CustomXmlElementListQueryParams';
+import {CustomXmlElementListQueryParams, CustomXmlElementListQueryParamsBuilder} from './CustomXmlElementListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * CustomXmlElementsApi - object-oriented interface
@@ -88,13 +89,13 @@ export default class CustomXmlElementsApi extends BaseAPI {
     };
     let queryParams: CustomXmlElementListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new CustomXmlElementListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new CustomXmlElementListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CustomXmlElement>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CustomXmlElement>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CustomXmlElement(i));
       }
       return paginationResponse;

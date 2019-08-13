@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FairPlayDrm from '../../../../../../models/FairPlayDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { FairPlayDrmListQueryParams, FairPlayDrmListQueryParamsBuilder } from './FairPlayDrmListQueryParams';
+import {FairPlayDrmListQueryParams, FairPlayDrmListQueryParamsBuilder} from './FairPlayDrmListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * FairplayApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class FairplayApi extends BaseAPI {
     };
     let queryParams: FairPlayDrmListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new FairPlayDrmListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new FairPlayDrmListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FairPlayDrm>>('/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FairPlayDrm>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new FairPlayDrm(i));
       }
       return paginationResponse;

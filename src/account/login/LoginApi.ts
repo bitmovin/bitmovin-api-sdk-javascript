@@ -2,6 +2,7 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import AccountInformation from '../../models/AccountInformation';
 import Login from '../../models/Login';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * LoginApi - object-oriented interface

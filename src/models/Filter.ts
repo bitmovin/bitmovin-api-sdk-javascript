@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import AudioMixFilter from './AudioMixFilter';
 import AudioVolumeFilter from './AudioVolumeFilter';
 import BitmovinResource from './BitmovinResource';
@@ -19,6 +18,23 @@ import WatermarkFilter from './WatermarkFilter';
  * @class Filter
  */
 export class Filter extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'CROP': 'CropFilter',
+    'WATERMARK': 'WatermarkFilter',
+    'ENHANCED_WATERMARK': 'EnhancedWatermarkFilter',
+    'ROTATE': 'RotateFilter',
+    'DEINTERLACE': 'DeinterlaceFilter',
+    'AUDIO_MIX': 'AudioMixFilter',
+    'DENOISE_HQDN3D': 'DenoiseHqdn3dFilter',
+    'TEXT': 'TextFilter',
+    'UNSHARP': 'UnsharpFilter',
+    'SCALE': 'ScaleFilter',
+    'INTERLACE': 'InterlaceFilter',
+    'AUDIO_VOLUME': 'AudioVolumeFilter',
+    'EBU_R128_SINGLE_PASS': 'EbuR128SinglePassFilter'
+  };
+
   constructor(obj: Partial<Filter>) {
     super(obj);
   }

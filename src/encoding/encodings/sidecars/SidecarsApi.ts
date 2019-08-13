@@ -5,7 +5,8 @@ import WebvttApi from './webvtt/WebvttApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import SidecarFile from '../../../models/SidecarFile';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { SidecarFileListQueryParams, SidecarFileListQueryParamsBuilder } from './SidecarFileListQueryParams';
+import {SidecarFileListQueryParams, SidecarFileListQueryParamsBuilder} from './SidecarFileListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * SidecarsApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class SidecarsApi extends BaseAPI {
     };
     let queryParams: SidecarFileListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SidecarFileListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SidecarFileListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SidecarFile>>('/encoding/encodings/{encoding_id}/sidecars', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SidecarFile>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SidecarFile(i));
       }
       return paginationResponse;

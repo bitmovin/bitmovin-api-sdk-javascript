@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import Bif from '../../../../models/Bif';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { BifListQueryParams, BifListQueryParamsBuilder } from './BifListQueryParams';
+import {BifListQueryParams, BifListQueryParamsBuilder} from './BifListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * BifsApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class BifsApi extends BaseAPI {
     };
     let queryParams: BifListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new BifListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new BifListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Bif>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Bif>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Bif(i));
       }
       return paginationResponse;

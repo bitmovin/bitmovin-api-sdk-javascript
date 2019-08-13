@@ -13,9 +13,9 @@ import AkamaiMslApi from './akamaiMsl/AkamaiMslApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import LiveMediaIngestApi from './liveMediaIngest/LiveMediaIngestApi';
 import Output from '../../models/Output';
-import { OutputTypeMap } from '../../models/typeMappings'
 import PaginationResponse from '../../models/PaginationResponse';
-import { OutputListQueryParams, OutputListQueryParamsBuilder } from './OutputListQueryParams';
+import {OutputListQueryParams, OutputListQueryParamsBuilder} from './OutputListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * OutputsApi - object-oriented interface
@@ -62,14 +62,14 @@ export default class OutputsApi extends BaseAPI {
   public list(queryParameters?: OutputListQueryParams | ((q: OutputListQueryParamsBuilder) => OutputListQueryParamsBuilder)): Promise<PaginationResponse<Output>> {
     let queryParams: OutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new OutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new OutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Output>>('/encoding/outputs', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Output>(response);
-      if (paginationResponse.items) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new OutputTypeMap[i.type](i));
+      if (Array.isArray(paginationResponse.items)) {
+        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Output)));
       }
       return paginationResponse;
     });

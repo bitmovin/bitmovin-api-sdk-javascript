@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PlaintextId3Tag from '../../../../../../models/PlaintextId3Tag';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { PlaintextId3TagListQueryParams, PlaintextId3TagListQueryParamsBuilder } from './PlaintextId3TagListQueryParams';
+import {PlaintextId3TagListQueryParams, PlaintextId3TagListQueryParamsBuilder} from './PlaintextId3TagListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * PlainTextApi - object-oriented interface
@@ -91,13 +92,13 @@ export default class PlainTextApi extends BaseAPI {
     };
     let queryParams: PlaintextId3TagListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new PlaintextId3TagListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new PlaintextId3TagListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PlaintextId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<PlaintextId3Tag>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new PlaintextId3Tag(i));
       }
       return paginationResponse;

@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import AkamaiNetStorageInput from './AkamaiNetStorageInput';
 import AsperaInput from './AsperaInput';
 import AzureInput from './AzureInput';
@@ -25,6 +24,29 @@ import ZixiInput from './ZixiInput';
  * @class Input
  */
 export class Input extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'AKAMAI_NETSTORAGE': 'AkamaiNetStorageInput',
+    'ASPERA': 'AsperaInput',
+    'AZURE': 'AzureInput',
+    'REDUNDANT_RTMP': 'RedundantRtmpInput',
+    'FTP': 'FtpInput',
+    'GENERIC_S3': 'GenericS3Input',
+    'GCS': 'GcsInput',
+    'HTTP': 'HttpInput',
+    'HTTPS': 'HttpsInput',
+    'LOCAL': 'LocalInput',
+    'RTMP': 'RtmpInput',
+    'S3': 'S3Input',
+    'S3_ROLE_BASED': 'S3RoleBasedInput',
+    'SFTP': 'SftpInput',
+    'TCP': 'TcpInput',
+    'UDP': 'UdpInput',
+    'UDP_MULTICAST': 'UdpMulticastInput',
+    'ZIXI': 'ZixiInput',
+    'SRT': 'SrtInput'
+  };
+
   constructor(obj: Partial<Input>) {
     super(obj);
   }

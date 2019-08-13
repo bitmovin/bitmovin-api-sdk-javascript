@@ -7,7 +7,8 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveTsMuxing from '../../../../models/ProgressiveTsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { ProgressiveTsMuxingListQueryParams, ProgressiveTsMuxingListQueryParamsBuilder } from './ProgressiveTsMuxingListQueryParams';
+import {ProgressiveTsMuxingListQueryParams, ProgressiveTsMuxingListQueryParamsBuilder} from './ProgressiveTsMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ProgressiveTsApi - object-oriented interface
@@ -92,13 +93,13 @@ export default class ProgressiveTsApi extends BaseAPI {
     };
     let queryParams: ProgressiveTsMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ProgressiveTsMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ProgressiveTsMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ProgressiveTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ProgressiveTsMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ProgressiveTsMuxing(i));
       }
       return paginationResponse;

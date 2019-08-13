@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import DvbTeletextApi from './dvbTeletext/DvbTeletextApi';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SubtitlesApi - object-oriented interface

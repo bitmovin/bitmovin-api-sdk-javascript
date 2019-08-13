@@ -7,7 +7,8 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import DashManifest from '../../../models/DashManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { DashManifestListQueryParams, DashManifestListQueryParamsBuilder } from './DashManifestListQueryParams';
+import {DashManifestListQueryParams, DashManifestListQueryParamsBuilder} from './DashManifestListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * DashApi - object-oriented interface
@@ -78,13 +79,13 @@ export default class DashApi extends BaseAPI {
   public list(queryParameters?: DashManifestListQueryParams | ((q: DashManifestListQueryParamsBuilder) => DashManifestListQueryParamsBuilder)): Promise<PaginationResponse<DashManifest>> {
     let queryParams: DashManifestListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new DashManifestListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new DashManifestListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashManifest>>('/encoding/manifests/dash', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<DashManifest>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new DashManifest(i));
       }
       return paginationResponse;

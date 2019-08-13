@@ -3,6 +3,7 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsMaxQueryRequest from '../../../models/AnalyticsMaxQueryRequest';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * MaxApi - object-oriented interface

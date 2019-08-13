@@ -5,7 +5,8 @@ import EncodingsApi from './encodings/EncodingsApi';
 import LabelsApi from './labels/LabelsApi';
 import Statistics from '../../models/Statistics';
 import PaginationResponse from '../../models/PaginationResponse';
-import { StatisticsListQueryParams, StatisticsListQueryParamsBuilder } from './StatisticsListQueryParams';
+import {StatisticsListQueryParams, StatisticsListQueryParamsBuilder} from './StatisticsListQueryParams';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * StatisticsApi - object-oriented interface
@@ -51,13 +52,13 @@ export default class StatisticsApi extends BaseAPI {
     };
     let queryParams: StatisticsListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new StatisticsListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new StatisticsListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Statistics>>('/encoding/statistics/{from}/{to}', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<Statistics>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Statistics(i));
       }
       return paginationResponse;

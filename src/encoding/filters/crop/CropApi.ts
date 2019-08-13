@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import CropFilter from '../../../models/CropFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { CropFilterListQueryParams, CropFilterListQueryParamsBuilder } from './CropFilterListQueryParams';
+import {CropFilterListQueryParams, CropFilterListQueryParamsBuilder} from './CropFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * CropApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class CropApi extends BaseAPI {
   public list(queryParameters?: CropFilterListQueryParams | ((q: CropFilterListQueryParamsBuilder) => CropFilterListQueryParamsBuilder)): Promise<PaginationResponse<CropFilter>> {
     let queryParams: CropFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new CropFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new CropFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CropFilter>>('/encoding/filters/crop', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<CropFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new CropFilter(i));
       }
       return paginationResponse;

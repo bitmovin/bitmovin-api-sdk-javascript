@@ -3,7 +3,8 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import SmoothManifestContentProtection from '../../../../models/SmoothManifestContentProtection';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { SmoothManifestContentProtectionListQueryParams, SmoothManifestContentProtectionListQueryParamsBuilder } from './SmoothManifestContentProtectionListQueryParams';
+import {SmoothManifestContentProtectionListQueryParams, SmoothManifestContentProtectionListQueryParamsBuilder} from './SmoothManifestContentProtectionListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ContentprotectionApi - object-oriented interface
@@ -80,13 +81,13 @@ export default class ContentprotectionApi extends BaseAPI {
     };
     let queryParams: SmoothManifestContentProtectionListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SmoothManifestContentProtectionListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SmoothManifestContentProtectionListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothManifestContentProtection>>('/encoding/manifests/smooth/{manifest_id}/contentprotection', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SmoothManifestContentProtection>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SmoothManifestContentProtection(i));
       }
       return paginationResponse;

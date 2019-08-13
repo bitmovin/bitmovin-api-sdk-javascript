@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import TextFilter from '../../../models/TextFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { TextFilterListQueryParams, TextFilterListQueryParamsBuilder } from './TextFilterListQueryParams';
+import {TextFilterListQueryParams, TextFilterListQueryParamsBuilder} from './TextFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * TextApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class TextApi extends BaseAPI {
   public list(queryParameters?: TextFilterListQueryParams | ((q: TextFilterListQueryParamsBuilder) => TextFilterListQueryParamsBuilder)): Promise<PaginationResponse<TextFilter>> {
     let queryParams: TextFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new TextFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new TextFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TextFilter>>('/encoding/filters/text', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TextFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new TextFilter(i));
       }
       return paginationResponse;

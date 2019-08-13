@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import ProgressiveWebmMuxingInformation from '../../../../../models/ProgressiveWebmMuxingInformation';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * InformationApi - object-oriented interface

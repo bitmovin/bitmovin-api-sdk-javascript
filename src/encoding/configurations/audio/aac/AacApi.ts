@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AacAudioConfiguration from '../../../../models/AacAudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { AacAudioConfigurationListQueryParams, AacAudioConfigurationListQueryParamsBuilder } from './AacAudioConfigurationListQueryParams';
+import {AacAudioConfigurationListQueryParams, AacAudioConfigurationListQueryParamsBuilder} from './AacAudioConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * AacApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class AacApi extends BaseAPI {
   public list(queryParameters?: AacAudioConfigurationListQueryParams | ((q: AacAudioConfigurationListQueryParamsBuilder) => AacAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<AacAudioConfiguration>> {
     let queryParams: AacAudioConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new AacAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AacAudioConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AacAudioConfiguration>>('/encoding/configurations/audio/aac', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<AacAudioConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new AacAudioConfiguration(i));
       }
       return paginationResponse;

@@ -5,7 +5,8 @@ import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TsMuxing from '../../../../models/TsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { TsMuxingListQueryParams, TsMuxingListQueryParamsBuilder } from './TsMuxingListQueryParams';
+import {TsMuxingListQueryParams, TsMuxingListQueryParamsBuilder} from './TsMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * TsApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class TsApi extends BaseAPI {
     };
     let queryParams: TsMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new TsMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new TsMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TsMuxing>>('/encoding/encodings/{encoding_id}/muxings/ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TsMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new TsMuxing(i));
       }
       return paginationResponse;

@@ -3,7 +3,8 @@ import Configuration from '../../../../common/Configuration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import FileInputStream from '../../../../models/FileInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { FileInputStreamListQueryParams, FileInputStreamListQueryParamsBuilder } from './FileInputStreamListQueryParams';
+import {FileInputStreamListQueryParams, FileInputStreamListQueryParamsBuilder} from './FileInputStreamListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * FileApi - object-oriented interface
@@ -80,13 +81,13 @@ export default class FileApi extends BaseAPI {
     };
     let queryParams: FileInputStreamListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new FileInputStreamListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new FileInputStreamListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FileInputStream>>('/encoding/encodings/{encoding_id}/input-streams/file', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<FileInputStream>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new FileInputStream(i));
       }
       return paginationResponse;

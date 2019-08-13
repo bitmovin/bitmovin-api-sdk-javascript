@@ -3,7 +3,8 @@ import Configuration from '../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import ZixiInput from '../../../models/ZixiInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { ZixiInputListQueryParams, ZixiInputListQueryParamsBuilder } from './ZixiInputListQueryParams';
+import {ZixiInputListQueryParams, ZixiInputListQueryParamsBuilder} from './ZixiInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * ZixiApi - object-oriented interface
@@ -70,13 +71,13 @@ export default class ZixiApi extends BaseAPI {
   public list(queryParameters?: ZixiInputListQueryParams | ((q: ZixiInputListQueryParamsBuilder) => ZixiInputListQueryParamsBuilder)): Promise<PaginationResponse<ZixiInput>> {
     let queryParams: ZixiInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new ZixiInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new ZixiInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ZixiInput>>('/encoding/inputs/zixi', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<ZixiInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new ZixiInput(i));
       }
       return paginationResponse;

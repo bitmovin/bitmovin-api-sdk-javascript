@@ -3,9 +3,11 @@ import Configuration from '../common/Configuration';
 import ExportsApi from './exports/ExportsApi';
 import ImpressionsApi from './impressions/ImpressionsApi';
 import MetricsApi from './metrics/MetricsApi';
+import AdsApi from './ads/AdsApi';
 import QueriesApi from './queries/QueriesApi';
 import LicensesApi from './licenses/LicensesApi';
 import OutputsApi from './outputs/OutputsApi';
+import {getType, map} from '../common/Mapper';
 
 /**
  * AnalyticsApi - object-oriented interface
@@ -17,6 +19,7 @@ export default class AnalyticsApi extends BaseAPI {
   public exports: ExportsApi;
   public impressions: ImpressionsApi;
   public metrics: MetricsApi;
+  public ads: AdsApi;
   public queries: QueriesApi;
   public licenses: LicensesApi;
   public outputs: OutputsApi;
@@ -26,6 +29,7 @@ export default class AnalyticsApi extends BaseAPI {
     this.exports = new ExportsApi(configuration);
     this.impressions = new ImpressionsApi(configuration);
     this.metrics = new MetricsApi(configuration);
+    this.ads = new AdsApi(configuration);
     this.queries = new QueriesApi(configuration);
     this.licenses = new LicensesApi(configuration);
     this.outputs = new OutputsApi(configuration);

@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import MjpegVideoConfiguration from '../../../../models/MjpegVideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { MjpegVideoConfigurationListQueryParams, MjpegVideoConfigurationListQueryParamsBuilder } from './MjpegVideoConfigurationListQueryParams';
+import {MjpegVideoConfigurationListQueryParams, MjpegVideoConfigurationListQueryParamsBuilder} from './MjpegVideoConfigurationListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * MjpegApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class MjpegApi extends BaseAPI {
   public list(queryParameters?: MjpegVideoConfigurationListQueryParams | ((q: MjpegVideoConfigurationListQueryParamsBuilder) => MjpegVideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<MjpegVideoConfiguration>> {
     let queryParams: MjpegVideoConfigurationListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new MjpegVideoConfigurationListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new MjpegVideoConfigurationListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<MjpegVideoConfiguration>>('/encoding/configurations/video/mjpeg', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<MjpegVideoConfiguration>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new MjpegVideoConfiguration(i));
       }
       return paginationResponse;

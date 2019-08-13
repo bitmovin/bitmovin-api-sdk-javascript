@@ -1,11 +1,10 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import InsertableContentApi from './insertableContent/InsertableContentApi';
-import ScheduledContentInsertionApi from './scheduledContentInsertion/ScheduledContentInsertionApi';
-import StopInsertedContentApi from './stopInsertedContent/StopInsertedContentApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LiveEncoding from '../../../models/LiveEncoding';
 import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * LiveApi - object-oriented interface
@@ -15,14 +14,10 @@ import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
  */
 export default class LiveApi extends BaseAPI {
   public insertableContent: InsertableContentApi;
-  public scheduledContentInsertion: ScheduledContentInsertionApi;
-  public stopInsertedContent: StopInsertedContentApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.insertableContent = new InsertableContentApi(configuration);
-    this.scheduledContentInsertion = new ScheduledContentInsertionApi(configuration);
-    this.stopInsertedContent = new StopInsertedContentApi(configuration);
   }
 
   /**

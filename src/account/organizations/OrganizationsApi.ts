@@ -1,10 +1,10 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import SubOrganizationsApi from './subOrganizations/SubOrganizationsApi';
 import GroupsApi from './groups/GroupsApi';
-import BitmovinResource from '../../models/BitmovinResource';
-import BitmovinResponse from '../../models/BitmovinResponse';
 import Organization from '../../models/Organization';
 import PaginationResponse from '../../models/PaginationResponse';
+import {getType, map} from '../../common/Mapper';
 
 /**
  * OrganizationsApi - object-oriented interface
@@ -13,10 +13,12 @@ import PaginationResponse from '../../models/PaginationResponse';
  * @extends {BaseAPI}
  */
 export default class OrganizationsApi extends BaseAPI {
+  public subOrganizations: SubOrganizationsApi;
   public groups: GroupsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.subOrganizations = new SubOrganizationsApi(configuration);
     this.groups = new GroupsApi(configuration);
   }
 
@@ -33,23 +35,8 @@ export default class OrganizationsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Organization
-   * @param {string} organizationId Id of the organization
-   * @throws {RequiredError}
-   * @memberof OrganizationsApi
-   */
-  public delete(organizationId: string): Promise<BitmovinResponse> {
-    const pathParamMap = {
-      organization_id: organizationId
-    };
-    return this.restClient.delete<BitmovinResponse>('/account/organizations/{organization_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
-    });
-  }
-
-  /**
    * @summary Organization Details
-   * @param {string} organizationId Id of the organization
+   * @param {string} organizationId ID of the organization
    * @throws {RequiredError}
    * @memberof OrganizationsApi
    */
@@ -70,7 +57,7 @@ export default class OrganizationsApi extends BaseAPI {
   public list(): Promise<PaginationResponse<Organization>> {
     return this.restClient.get<PaginationResponse<Organization>>('/account/organizations', {}).then((response) => {
       const paginationResponse = new PaginationResponse<Organization>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new Organization(i));
       }
       return paginationResponse;

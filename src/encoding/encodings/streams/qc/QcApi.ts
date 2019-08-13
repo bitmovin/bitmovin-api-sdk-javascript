@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import PsnrApi from './psnr/PsnrApi';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * QcApi - object-oriented interface

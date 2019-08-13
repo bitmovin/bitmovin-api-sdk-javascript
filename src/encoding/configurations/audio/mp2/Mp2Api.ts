@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp2AudioConfiguration from '../../../../models/Mp2AudioConfiguration';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Mp2Api - object-oriented interface

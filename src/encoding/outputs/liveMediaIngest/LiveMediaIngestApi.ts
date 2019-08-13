@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LiveMediaIngestOutput from '../../../models/LiveMediaIngestOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { LiveMediaIngestOutputListQueryParams, LiveMediaIngestOutputListQueryParamsBuilder } from './LiveMediaIngestOutputListQueryParams';
+import {LiveMediaIngestOutputListQueryParams, LiveMediaIngestOutputListQueryParamsBuilder} from './LiveMediaIngestOutputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * LiveMediaIngestApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class LiveMediaIngestApi extends BaseAPI {
   public list(queryParameters?: LiveMediaIngestOutputListQueryParams | ((q: LiveMediaIngestOutputListQueryParamsBuilder) => LiveMediaIngestOutputListQueryParamsBuilder)): Promise<PaginationResponse<LiveMediaIngestOutput>> {
     let queryParams: LiveMediaIngestOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new LiveMediaIngestOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new LiveMediaIngestOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LiveMediaIngestOutput>>('/encoding/outputs/live-media-ingest', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<LiveMediaIngestOutput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new LiveMediaIngestOutput(i));
       }
       return paginationResponse;

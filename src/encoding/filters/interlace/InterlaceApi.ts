@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import InterlaceFilter from '../../../models/InterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { InterlaceFilterListQueryParams, InterlaceFilterListQueryParamsBuilder } from './InterlaceFilterListQueryParams';
+import {InterlaceFilterListQueryParams, InterlaceFilterListQueryParamsBuilder} from './InterlaceFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * InterlaceApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class InterlaceApi extends BaseAPI {
   public list(queryParameters?: InterlaceFilterListQueryParams | ((q: InterlaceFilterListQueryParamsBuilder) => InterlaceFilterListQueryParamsBuilder)): Promise<PaginationResponse<InterlaceFilter>> {
     let queryParams: InterlaceFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new InterlaceFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new InterlaceFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InterlaceFilter>>('/encoding/filters/interlace', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<InterlaceFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new InterlaceFilter(i));
       }
       return paginationResponse;

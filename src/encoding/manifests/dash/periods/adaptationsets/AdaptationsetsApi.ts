@@ -5,6 +5,7 @@ import VideoApi from './video/VideoApi';
 import SubtitleApi from './subtitle/SubtitleApi';
 import RepresentationsApi from './representations/RepresentationsApi';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * AdaptationsetsApi - object-oriented interface

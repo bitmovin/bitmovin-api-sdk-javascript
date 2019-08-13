@@ -3,7 +3,8 @@ import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import VttMediaInfo from '../../../../../models/VttMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
-import { VttMediaInfoListQueryParams, VttMediaInfoListQueryParamsBuilder } from './VttMediaInfoListQueryParams';
+import {VttMediaInfoListQueryParams, VttMediaInfoListQueryParamsBuilder} from './VttMediaInfoListQueryParams';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * VttApi - object-oriented interface
@@ -80,13 +81,13 @@ export default class VttApi extends BaseAPI {
     };
     let queryParams: VttMediaInfoListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new VttMediaInfoListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new VttMediaInfoListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<VttMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/vtt', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<VttMediaInfo>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new VttMediaInfo(i));
       }
       return paginationResponse;

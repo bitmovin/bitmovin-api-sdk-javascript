@@ -1,6 +1,6 @@
 import {map} from '../common/Mapper';
+import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
-import AnalyticsBaseFilter from './AnalyticsBaseFilter';
 import AnalyticsInterval from './AnalyticsInterval';
 import AnalyticsOrderByEntry from './AnalyticsOrderByEntry';
 import AnalyticsQueryTimeframe from './AnalyticsQueryTimeframe';
@@ -18,10 +18,10 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
   public licenseKey: string;
 
   /**
-   * @type {AnalyticsBaseFilter[]}
+   * @type {AnalyticsAbstractFilter[]}
    * @memberof AnalyticsQueryRequest
    */
-  public filters?: AnalyticsBaseFilter[];
+  public filters?: AnalyticsAbstractFilter[];
 
   /**
    * @type {AnalyticsOrderByEntry[]}
@@ -64,7 +64,7 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
   constructor(obj: Partial<AnalyticsQueryRequest>) {
     super(obj);
     this.licenseKey = map(obj.licenseKey);
-    this.filters = map<AnalyticsBaseFilter>(obj.filters, AnalyticsBaseFilter);
+    this.filters = map<AnalyticsAbstractFilter>(obj.filters, AnalyticsAbstractFilter);
     this.orderBy = map<AnalyticsOrderByEntry>(obj.orderBy, AnalyticsOrderByEntry);
     this.dimension = map(obj.dimension);
     this.interval = map(obj.interval);

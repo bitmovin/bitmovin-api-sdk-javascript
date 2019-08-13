@@ -5,7 +5,8 @@ import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import BroadcastTsMuxing from '../../../../models/BroadcastTsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import { BroadcastTsMuxingListQueryParams, BroadcastTsMuxingListQueryParamsBuilder } from './BroadcastTsMuxingListQueryParams';
+import {BroadcastTsMuxingListQueryParams, BroadcastTsMuxingListQueryParamsBuilder} from './BroadcastTsMuxingListQueryParams';
+import {getType, map} from '../../../../common/Mapper';
 
 /**
  * BroadcastTsApi - object-oriented interface
@@ -86,13 +87,13 @@ export default class BroadcastTsApi extends BaseAPI {
     };
     let queryParams: BroadcastTsMuxingListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new BroadcastTsMuxingListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new BroadcastTsMuxingListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<BroadcastTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<BroadcastTsMuxing>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new BroadcastTsMuxing(i));
       }
       return paginationResponse;

@@ -2,7 +2,8 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import TcpInput from '../../../models/TcpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { TcpInputListQueryParams, TcpInputListQueryParamsBuilder } from './TcpInputListQueryParams';
+import {TcpInputListQueryParams, TcpInputListQueryParamsBuilder} from './TcpInputListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * TcpApi - object-oriented interface
@@ -40,13 +41,13 @@ export default class TcpApi extends BaseAPI {
   public list(queryParameters?: TcpInputListQueryParams | ((q: TcpInputListQueryParamsBuilder) => TcpInputListQueryParamsBuilder)): Promise<PaginationResponse<TcpInput>> {
     let queryParams: TcpInputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new TcpInputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new TcpInputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TcpInput>>('/encoding/inputs/tcp', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<TcpInput>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new TcpInput(i));
       }
       return paginationResponse;

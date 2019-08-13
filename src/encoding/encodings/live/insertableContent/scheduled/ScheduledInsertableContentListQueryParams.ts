@@ -1,23 +1,23 @@
 
-export interface ScheduledContentInsertionListQueryParams {
+export interface ScheduledInsertableContentListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
-     * @memberof ScheduledContentInsertionListQueryParams
+     * @memberof ScheduledInsertableContentListQueryParams
      */
     offset?: number | undefined;
 
     /**
      * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
-     * @memberof ScheduledContentInsertionListQueryParams
+     * @memberof ScheduledInsertableContentListQueryParams
      */
     limit?: number | undefined;
 }
 
-export class ScheduledContentInsertionListQueryParamsBuilder {
-    private internalParams: ScheduledContentInsertionListQueryParams = {};
+export class ScheduledInsertableContentListQueryParamsBuilder {
+    private internalParams: ScheduledInsertableContentListQueryParams = {};
 
     /**
      *

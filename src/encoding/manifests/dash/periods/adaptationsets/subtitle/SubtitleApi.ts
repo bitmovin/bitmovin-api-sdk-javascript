@@ -3,7 +3,8 @@ import Configuration from '../../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import SubtitleAdaptationSet from '../../../../../../models/SubtitleAdaptationSet';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
-import { SubtitleAdaptationSetListQueryParams, SubtitleAdaptationSetListQueryParamsBuilder } from './SubtitleAdaptationSetListQueryParams';
+import {SubtitleAdaptationSetListQueryParams, SubtitleAdaptationSetListQueryParamsBuilder} from './SubtitleAdaptationSetListQueryParams';
+import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * SubtitleApi - object-oriented interface
@@ -88,13 +89,13 @@ export default class SubtitleApi extends BaseAPI {
     };
     let queryParams: SubtitleAdaptationSetListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new SubtitleAdaptationSetListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new SubtitleAdaptationSetListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SubtitleAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle', pathParamMap, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<SubtitleAdaptationSet>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new SubtitleAdaptationSet(i));
       }
       return paginationResponse;

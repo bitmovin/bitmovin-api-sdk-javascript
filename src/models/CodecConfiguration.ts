@@ -1,4 +1,3 @@
-import {map} from '../common/Mapper';
 import AacAudioConfiguration from './AacAudioConfiguration';
 import Ac3AudioConfiguration from './Ac3AudioConfiguration';
 import Av1VideoConfiguration from './Av1VideoConfiguration';
@@ -21,6 +20,25 @@ import Vp9VideoConfiguration from './Vp9VideoConfiguration';
  * @class CodecConfiguration
  */
 export class CodecConfiguration extends BitmovinResource {
+
+  protected static readonly typeMap: any = {
+    'AAC': 'AacAudioConfiguration',
+    'HE_AAC_V1': 'HeAacV1AudioConfiguration',
+    'HE_AAC_V2': 'HeAacV2AudioConfiguration',
+    'H264': 'H264VideoConfiguration',
+    'H265': 'H265VideoConfiguration',
+    'VP9': 'Vp9VideoConfiguration',
+    'VP8': 'Vp8VideoConfiguration',
+    'MP2': 'Mp2AudioConfiguration',
+    'MP3': 'Mp3AudioConfiguration',
+    'AC3': 'Ac3AudioConfiguration',
+    'EAC3': 'Eac3AudioConfiguration',
+    'OPUS': 'OpusAudioConfiguration',
+    'VORBIS': 'VorbisAudioConfiguration',
+    'MJPEG': 'MjpegVideoConfiguration',
+    'AV1': 'Av1VideoConfiguration'
+  };
+
   constructor(obj: Partial<CodecConfiguration>) {
     super(obj);
   }

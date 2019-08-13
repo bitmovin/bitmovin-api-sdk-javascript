@@ -3,6 +3,7 @@ import Configuration from '../common/Configuration';
 import ChannelsApi from './channels/ChannelsApi';
 import LicensesApi from './licenses/LicensesApi';
 import CustomBuildsApi from './customBuilds/CustomBuildsApi';
+import {getType, map} from '../common/Mapper';
 
 /**
  * PlayerApi - object-oriented interface

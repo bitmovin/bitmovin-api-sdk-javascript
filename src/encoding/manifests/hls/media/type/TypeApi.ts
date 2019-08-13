@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import MediaInfoTypeResponse from '../../../../../models/MediaInfoTypeResponse';
+import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * TypeApi - object-oriented interface

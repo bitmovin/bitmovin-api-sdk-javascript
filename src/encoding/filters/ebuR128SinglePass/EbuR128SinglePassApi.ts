@@ -4,7 +4,8 @@ import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EbuR128SinglePassFilter from '../../../models/EbuR128SinglePassFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
-import { EbuR128SinglePassFilterListQueryParams, EbuR128SinglePassFilterListQueryParamsBuilder } from './EbuR128SinglePassFilterListQueryParams';
+import {EbuR128SinglePassFilterListQueryParams, EbuR128SinglePassFilterListQueryParamsBuilder} from './EbuR128SinglePassFilterListQueryParams';
+import {getType, map} from '../../../common/Mapper';
 
 /**
  * EbuR128SinglePassApi - object-oriented interface
@@ -71,13 +72,13 @@ export default class EbuR128SinglePassApi extends BaseAPI {
   public list(queryParameters?: EbuR128SinglePassFilterListQueryParams | ((q: EbuR128SinglePassFilterListQueryParamsBuilder) => EbuR128SinglePassFilterListQueryParamsBuilder)): Promise<PaginationResponse<EbuR128SinglePassFilter>> {
     let queryParams: EbuR128SinglePassFilterListQueryParams = {};
     if (typeof queryParameters === 'function') {
-        queryParams = queryParameters(new EbuR128SinglePassFilterListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new EbuR128SinglePassFilterListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
-        queryParams = queryParameters;
+      queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EbuR128SinglePassFilter>>('/encoding/filters/ebu-r128-single-pass', {}, queryParams).then((response) => {
       const paginationResponse = new PaginationResponse<EbuR128SinglePassFilter>(response);
-      if (paginationResponse.items) {
+      if (Array.isArray(paginationResponse.items)) {
         paginationResponse.items = paginationResponse.items.map((i: any) => new EbuR128SinglePassFilter(i));
       }
       return paginationResponse;

@@ -3,6 +3,7 @@ import AbstractCondition from './AbstractCondition';
 import AppliedStreamSettings from './AppliedStreamSettings';
 import BitmovinResource from './BitmovinResource';
 import DecodingErrorMode from './DecodingErrorMode';
+import EncodingMode from './EncodingMode';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import StreamInput from './StreamInput';
@@ -70,6 +71,13 @@ export class Stream extends BitmovinResource {
   public mode?: StreamMode;
 
   /**
+   * The encoding mode of the stream which was applied by the assigned codec configuration
+   * @type {EncodingMode}
+   * @memberof Stream
+   */
+  public selectedEncodingMode?: EncodingMode;
+
+  /**
    * Settings to configure Per-Title on stream level
    * @type {StreamPerTitleSettings}
    * @memberof Stream
@@ -106,6 +114,7 @@ export class Stream extends BitmovinResource {
     this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
     this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring);
     this.mode = map(obj.mode);
+    this.selectedEncodingMode = map(obj.selectedEncodingMode);
     this.perTitleSettings = map<StreamPerTitleSettings>(obj.perTitleSettings, StreamPerTitleSettings);
     this.metadata = map<StreamMetadata>(obj.metadata, StreamMetadata);
     this.decodingErrorMode = map(obj.decodingErrorMode);
