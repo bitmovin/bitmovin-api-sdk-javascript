@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import CencDrm from '../../../../../../models/CencDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {CencDrmListQueryParams, CencDrmListQueryParamsBuilder} from './CencDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * CencApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class CencApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CencDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<CencDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new CencDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<CencDrm>(response, CencDrm);;
     });
   }
 }

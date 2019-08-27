@@ -4,7 +4,6 @@ import AwsAccountRegionSettings from '../../../../models/AwsAccountRegionSetting
 import AwsCloudRegion from '../../../../models/AwsCloudRegion';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {AwsAccountRegionSettingsListQueryParams, AwsAccountRegionSettingsListQueryParamsBuilder} from './AwsAccountRegionSettingsListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * RegionsApi - object-oriented interface
@@ -88,11 +87,7 @@ export default class RegionsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccountRegionSettings>>('/encoding/infrastructure/aws/{infrastructure_id}/regions', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AwsAccountRegionSettings>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AwsAccountRegionSettings(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AwsAccountRegionSettings>(response, AwsAccountRegionSettings);;
     });
   }
 }

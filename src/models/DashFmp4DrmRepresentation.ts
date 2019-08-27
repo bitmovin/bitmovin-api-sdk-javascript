@@ -13,11 +13,12 @@ export class DashFmp4DrmRepresentation extends DashFmp4Representation {
    * @type {string}
    * @memberof DashFmp4DrmRepresentation
    */
-  public drmId: string;
+  public drmId?: string;
 
   constructor(obj: Partial<DashFmp4DrmRepresentation>) {
     super(obj);
-    this.drmId = map(obj.drmId);
+
+    this.drmId = obj.drmId;
   }
 }
 

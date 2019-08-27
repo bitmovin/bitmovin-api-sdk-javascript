@@ -5,7 +5,6 @@ import BitmovinResponseList from '../../../../models/BitmovinResponseList';
 import StreamFilter from '../../../../models/StreamFilter';
 import StreamFilterList from '../../../../models/StreamFilterList';
 import {StreamFilterListListQueryParams, StreamFilterListListQueryParamsBuilder} from './StreamFilterListListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * FiltersApi - object-oriented interface

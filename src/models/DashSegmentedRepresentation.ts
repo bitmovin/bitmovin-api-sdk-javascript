@@ -12,7 +12,7 @@ export class DashSegmentedRepresentation extends DashRepresentation {
    * @type {DashRepresentationType}
    * @memberof DashSegmentedRepresentation
    */
-  public type: DashRepresentationType;
+  public type?: DashRepresentationType;
 
   /**
    * @type {DashRepresentationTypeMode}
@@ -25,7 +25,7 @@ export class DashSegmentedRepresentation extends DashRepresentation {
    * @type {string}
    * @memberof DashSegmentedRepresentation
    */
-  public segmentPath: string;
+  public segmentPath?: string;
 
   /**
    * Number of the first segment
@@ -57,13 +57,14 @@ export class DashSegmentedRepresentation extends DashRepresentation {
 
   constructor(obj: Partial<DashSegmentedRepresentation>) {
     super(obj);
-    this.type = map(obj.type);
-    this.mode = map(obj.mode);
-    this.segmentPath = map(obj.segmentPath);
-    this.startSegmentNumber = map(obj.startSegmentNumber);
-    this.endSegmentNumber = map(obj.endSegmentNumber);
-    this.startKeyframeId = map(obj.startKeyframeId);
-    this.endKeyframeId = map(obj.endKeyframeId);
+
+    this.type = obj.type;
+    this.mode = obj.mode;
+    this.segmentPath = obj.segmentPath;
+    this.startSegmentNumber = obj.startSegmentNumber;
+    this.endSegmentNumber = obj.endSegmentNumber;
+    this.startKeyframeId = obj.startKeyframeId;
+    this.endKeyframeId = obj.endKeyframeId;
   }
 }
 

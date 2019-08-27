@@ -6,7 +6,6 @@ import Webhook from '../../../../../models/Webhook';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {WebhookListQueryParams, WebhookListQueryParamsBuilder} from './WebhookListQueryParams';
 import {WebhookListByEncodingIdQueryParams, WebhookListByEncodingIdQueryParamsBuilder} from './WebhookListByEncodingIdQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * FinishedApi - object-oriented interface
@@ -128,11 +127,7 @@ export default class FinishedApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/finished', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Webhook>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Webhook(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Webhook>(response, Webhook);;
     });
   }
 
@@ -154,11 +149,7 @@ export default class FinishedApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/{encoding_id}/finished', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Webhook>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Webhook(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Webhook>(response, Webhook);;
     });
   }
 }

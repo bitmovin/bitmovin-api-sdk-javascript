@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsContainsFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsContainsFilter
+   */
+  public operator: 'CONTAINS' = 'CONTAINS';
+
+  /**
    * @type {any}
    * @memberof AnalyticsContainsFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AnalyticsContainsFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

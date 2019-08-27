@@ -59,14 +59,15 @@ export class Notification extends BitmovinResponse {
 
   constructor(obj: Partial<Notification>) {
     super(obj);
-    this.resolve = map(obj.resolve);
-    this.resourceId = map(obj.resourceId);
-    this.triggeredAt = map(obj.triggeredAt, Date);
-    this.type = map(obj.type);
-    this.eventType = map(obj.eventType);
-    this.category = map(obj.category);
-    this.resourceType = map(obj.resourceType);
-    this.muted = map(obj.muted);
+
+    this.resolve = obj.resolve;
+    this.resourceId = obj.resourceId;
+    this.triggeredAt = map<Date>(obj.triggeredAt, Date);
+    this.type = obj.type;
+    this.eventType = obj.eventType;
+    this.category = obj.category;
+    this.resourceType = obj.resourceType;
+    this.muted = obj.muted;
   }
 }
 

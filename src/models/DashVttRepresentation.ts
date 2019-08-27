@@ -11,11 +11,12 @@ export class DashVttRepresentation extends BitmovinResource {
    * @type {string}
    * @memberof DashVttRepresentation
    */
-  public vttUrl: string;
+  public vttUrl?: string;
 
   constructor(obj: Partial<DashVttRepresentation>) {
     super(obj);
-    this.vttUrl = map(obj.vttUrl);
+
+    this.vttUrl = obj.vttUrl;
   }
 }
 

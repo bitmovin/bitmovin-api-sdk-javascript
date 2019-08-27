@@ -1,9 +1,8 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import AdAnalyticsMedianQueryRequest from '../../../../models/AdAnalyticsMedianQueryRequest';
-import AnalyticsQueryRequest from '../../../../models/AnalyticsQueryRequest';
+import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * MedianApi - object-oriented interface

@@ -24,8 +24,9 @@ export class SmoothStreamingManifest extends Manifest {
 
   constructor(obj: Partial<SmoothStreamingManifest>) {
     super(obj);
-    this.serverManifestName = map(obj.serverManifestName);
-    this.clientManifestName = map(obj.clientManifestName);
+
+    this.serverManifestName = obj.serverManifestName;
+    this.clientManifestName = obj.clientManifestName;
   }
 }
 

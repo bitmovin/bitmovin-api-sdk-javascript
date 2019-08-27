@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import UdpMulticastInput from '../../../models/UdpMulticastInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {UdpMulticastInputListQueryParams, UdpMulticastInputListQueryParamsBuilder} from './UdpMulticastInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * UdpMulticastApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class UdpMulticastApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UdpMulticastInput>>('/encoding/inputs/udp-multicast', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<UdpMulticastInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new UdpMulticastInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<UdpMulticastInput>(response, UdpMulticastInput);;
     });
   }
 }

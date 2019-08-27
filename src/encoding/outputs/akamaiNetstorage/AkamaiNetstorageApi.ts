@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AkamaiNetStorageOutput from '../../../models/AkamaiNetStorageOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {AkamaiNetStorageOutputListQueryParams, AkamaiNetStorageOutputListQueryParamsBuilder} from './AkamaiNetStorageOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AkamaiNetstorageApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class AkamaiNetstorageApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AkamaiNetStorageOutput>>('/encoding/outputs/akamai-netstorage', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AkamaiNetStorageOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AkamaiNetStorageOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AkamaiNetStorageOutput>(response, AkamaiNetStorageOutput);;
     });
   }
 }

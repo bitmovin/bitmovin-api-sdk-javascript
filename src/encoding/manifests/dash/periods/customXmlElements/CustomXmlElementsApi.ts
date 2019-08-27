@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomXmlElement from '../../../../../models/CustomXmlElement';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {CustomXmlElementListQueryParams, CustomXmlElementListQueryParamsBuilder} from './CustomXmlElementListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * CustomXmlElementsApi - object-oriented interface
@@ -94,11 +93,7 @@ export default class CustomXmlElementsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CustomXmlElement>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<CustomXmlElement>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new CustomXmlElement(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<CustomXmlElement>(response, CustomXmlElement);;
     });
   }
 }

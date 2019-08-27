@@ -14,11 +14,18 @@ import IvSize from './IvSize';
  */
 export class CencDrm extends Drm {
   /**
+   * Discriminator property for Drm
+   * @type {string}
+   * @memberof CencDrm
+   */
+  public type: 'CENC' = 'CENC';
+
+  /**
    * 16 byte encryption key, 32 hexadecimal characters (required)
    * @type {string}
    * @memberof CencDrm
    */
-  public key: string;
+  public key?: string;
 
   /**
    * 16 byte encryption key id. Required for any other DRM but FairPlay
@@ -32,7 +39,7 @@ export class CencDrm extends Drm {
    * @type {EncryptionMode}
    * @memberof CencDrm
    */
-  public encryptionMode: EncryptionMode;
+  public encryptionMode?: EncryptionMode;
 
   /**
    * Size of the initialization vector
@@ -78,11 +85,12 @@ export class CencDrm extends Drm {
 
   constructor(obj: Partial<CencDrm>) {
     super(obj);
-    this.key = map(obj.key);
-    this.kid = map(obj.kid);
-    this.encryptionMode = map(obj.encryptionMode);
-    this.ivSize = map(obj.ivSize);
-    this.enablePiffCompatibility = map(obj.enablePiffCompatibility);
+
+    this.key = obj.key;
+    this.kid = obj.kid;
+    this.encryptionMode = obj.encryptionMode;
+    this.ivSize = obj.ivSize;
+    this.enablePiffCompatibility = obj.enablePiffCompatibility;
     this.widevine = map<CencWidevine>(obj.widevine, CencWidevine);
     this.playReady = map<CencPlayReady>(obj.playReady, CencPlayReady);
     this.marlin = map<CencMarlin>(obj.marlin, CencMarlin);

@@ -36,10 +36,11 @@ export class BroadcastTsMuxingConfiguration {
   public audioStreams?: BroadcastTsAudioInputStreamConfiguration[];
 
   constructor(obj: Partial<BroadcastTsMuxingConfiguration>) {
+
     this.transport = map<BroadcastTsTransportConfiguration>(obj.transport, BroadcastTsTransportConfiguration);
     this.program = map<BroadcastTsProgramConfiguration>(obj.program, BroadcastTsProgramConfiguration);
-    this.videoStreams = map<BroadcastTsVideoInputStreamConfiguration>(obj.videoStreams, BroadcastTsVideoInputStreamConfiguration);
-    this.audioStreams = map<BroadcastTsAudioInputStreamConfiguration>(obj.audioStreams, BroadcastTsAudioInputStreamConfiguration);
+    this.videoStreams = map<BroadcastTsVideoInputStreamConfiguration>(obj.videoStreams, BroadcastTsVideoInputStreamConfiguration) || [];
+    this.audioStreams = map<BroadcastTsAudioInputStreamConfiguration>(obj.audioStreams, BroadcastTsAudioInputStreamConfiguration) || [];
   }
 }
 

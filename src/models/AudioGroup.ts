@@ -10,18 +10,19 @@ export class AudioGroup {
    * @type {string}
    * @memberof AudioGroup
    */
-  public name: string;
+  public name?: string;
 
   /**
    * Priority of the audio group (required)
    * @type {number}
    * @memberof AudioGroup
    */
-  public priority: number;
+  public priority?: number;
 
   constructor(obj: Partial<AudioGroup>) {
-    this.name = map(obj.name);
-    this.priority = map(obj.priority);
+
+    this.name = obj.name;
+    this.priority = obj.priority;
   }
 }
 

@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import S3RoleBasedOutput from '../../../models/S3RoleBasedOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {S3RoleBasedOutputListQueryParams, S3RoleBasedOutputListQueryParamsBuilder} from './S3RoleBasedOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * S3RoleBasedApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class S3RoleBasedApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3RoleBasedOutput>>('/encoding/outputs/s3-role-based', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<S3RoleBasedOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new S3RoleBasedOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<S3RoleBasedOutput>(response, S3RoleBasedOutput);;
     });
   }
 }

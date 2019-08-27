@@ -6,8 +6,16 @@ import AbstractConjunction from './AbstractConjunction';
  * @class OrConjunction
  */
 export class OrConjunction extends AbstractConjunction {
+  /**
+   * Discriminator property for AbstractCondition
+   * @type {string}
+   * @memberof OrConjunction
+   */
+  public type: 'OR' = 'OR';
+
   constructor(obj: Partial<OrConjunction>) {
     super(obj);
+
   }
 }
 

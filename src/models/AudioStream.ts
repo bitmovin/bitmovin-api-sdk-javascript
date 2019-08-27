@@ -50,12 +50,13 @@ export class AudioStream extends MediaStream {
 
   constructor(obj: Partial<AudioStream>) {
     super(obj);
-    this.sampleRate = map(obj.sampleRate);
-    this.bitrate = map(obj.bitrate);
-    this.rate = map(obj.rate);
-    this.channelFormat = map(obj.channelFormat);
-    this.language = map(obj.language);
-    this.hearingImpaired = map(obj.hearingImpaired);
+
+    this.sampleRate = obj.sampleRate;
+    this.bitrate = obj.bitrate;
+    this.rate = obj.rate;
+    this.channelFormat = obj.channelFormat;
+    this.language = obj.language;
+    this.hearingImpaired = obj.hearingImpaired;
   }
 }
 

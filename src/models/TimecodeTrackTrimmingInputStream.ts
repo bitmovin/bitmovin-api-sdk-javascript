@@ -7,6 +7,13 @@ import InputStream from './InputStream';
  */
 export class TimecodeTrackTrimmingInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof TimecodeTrackTrimmingInputStream
+   */
+  public type: 'TRIMMING_TIME_CODE_TRACK' = 'TRIMMING_TIME_CODE_TRACK';
+
+  /**
    * The id of the ingest input stream that should be trimmed
    * @type {string}
    * @memberof TimecodeTrackTrimmingInputStream
@@ -29,9 +36,10 @@ export class TimecodeTrackTrimmingInputStream extends InputStream {
 
   constructor(obj: Partial<TimecodeTrackTrimmingInputStream>) {
     super(obj);
-    this.inputStreamId = map(obj.inputStreamId);
-    this.startTimeCode = map(obj.startTimeCode);
-    this.endTimeCode = map(obj.endTimeCode);
+
+    this.inputStreamId = obj.inputStreamId;
+    this.startTimeCode = obj.startTimeCode;
+    this.endTimeCode = obj.endTimeCode;
   }
 }
 

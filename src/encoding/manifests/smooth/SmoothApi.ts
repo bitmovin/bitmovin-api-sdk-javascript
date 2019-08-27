@@ -9,7 +9,6 @@ import SmoothStreamingManifest from '../../../models/SmoothStreamingManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {SmoothStreamingManifestListQueryParams, SmoothStreamingManifestListQueryParamsBuilder} from './SmoothStreamingManifestListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * SmoothApi - object-oriented interface
@@ -87,11 +86,7 @@ export default class SmoothApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothStreamingManifest>>('/encoding/manifests/smooth', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SmoothStreamingManifest>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SmoothStreamingManifest(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SmoothStreamingManifest>(response, SmoothStreamingManifest);;
     });
   }
 

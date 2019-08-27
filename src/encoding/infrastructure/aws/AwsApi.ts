@@ -4,7 +4,6 @@ import RegionsApi from './regions/RegionsApi';
 import AwsAccount from '../../../models/AwsAccount';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {AwsAccountListQueryParams, AwsAccountListQueryParamsBuilder} from './AwsAccountListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AwsApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class AwsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccount>>('/encoding/infrastructure/aws', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AwsAccount>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AwsAccount(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AwsAccount>(response, AwsAccount);;
     });
   }
 }

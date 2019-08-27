@@ -15,7 +15,8 @@ export class SubtitlesMediaInfo extends StandardMediaInfo {
 
   constructor(obj: Partial<SubtitlesMediaInfo>) {
     super(obj);
-    this.forced = map(obj.forced);
+
+    this.forced = obj.forced;
   }
 }
 

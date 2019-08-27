@@ -6,7 +6,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import StreamInfo from '../../../../models/StreamInfo';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {StreamInfoListQueryParams, StreamInfoListQueryParamsBuilder} from './StreamInfoListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * StreamsApi - object-oriented interface
@@ -92,11 +91,7 @@ export default class StreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StreamInfo>>('/encoding/manifests/hls/{manifest_id}/streams', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<StreamInfo>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new StreamInfo(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<StreamInfo>(response, StreamInfo);;
     });
   }
 }

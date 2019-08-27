@@ -3,7 +3,6 @@ import Configuration from '../../../../../common/Configuration';
 import ScheduledInsertableContent from '../../../../../models/ScheduledInsertableContent';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {ScheduledInsertableContentListQueryParams, ScheduledInsertableContentListQueryParamsBuilder} from './ScheduledInsertableContentListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ScheduledApi - object-oriented interface
@@ -35,11 +34,7 @@ export default class ScheduledApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ScheduledInsertableContent>>('/encoding/encodings/{encoding_id}/live/insertable-content/scheduled', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ScheduledInsertableContent>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ScheduledInsertableContent(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ScheduledInsertableContent>(response, ScheduledInsertableContent);;
     });
   }
 }

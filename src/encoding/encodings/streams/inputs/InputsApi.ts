@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import StreamDetails from '../../../../models/StreamDetails';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * InputsApi - object-oriented interface
@@ -29,11 +28,7 @@ export default class InputsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.get<PaginationResponse<StreamDetails>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs', pathParamMap).then((response) => {
-      const paginationResponse = new PaginationResponse<StreamDetails>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new StreamDetails(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<StreamDetails>(response, StreamDetails);;
     });
   }
 }

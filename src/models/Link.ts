@@ -10,7 +10,7 @@ export class Link {
    * @type {string}
    * @memberof Link
    */
-  public href: string;
+  public href?: string;
 
   /**
    * Short description of the linked page
@@ -20,8 +20,9 @@ export class Link {
   public title?: string;
 
   constructor(obj: Partial<Link>) {
-    this.href = map(obj.href);
-    this.title = map(obj.title);
+
+    this.href = obj.href;
+    this.title = obj.title;
   }
 }
 

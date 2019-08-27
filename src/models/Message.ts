@@ -13,14 +13,14 @@ export class Message extends BitmovinResponse {
    * @type {MessageType}
    * @memberof Message
    */
-  public type: MessageType;
+  public type?: MessageType;
 
   /**
    * Message text (required)
    * @type {string}
    * @memberof Message
    */
-  public text: string;
+  public text?: string;
 
   /**
    * Name of the field to which the message is referring to
@@ -52,12 +52,13 @@ export class Message extends BitmovinResponse {
 
   constructor(obj: Partial<Message>) {
     super(obj);
-    this.type = map(obj.type);
-    this.text = map(obj.text);
-    this.field = map(obj.field);
-    this.links = map<Link>(obj.links, Link);
-    this.more = map(obj.more);
-    this.date = map(obj.date, Date);
+
+    this.type = obj.type;
+    this.text = obj.text;
+    this.field = obj.field;
+    this.links = map<Link>(obj.links, Link) || [];
+    this.more = obj.more;
+    this.date = map<Date>(obj.date, Date);
   }
 }
 

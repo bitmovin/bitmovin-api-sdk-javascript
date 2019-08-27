@@ -3,7 +3,6 @@ import Configuration from '../../common/Configuration';
 import AnalyticsExportTask from '../../models/AnalyticsExportTask';
 import PaginationResponse from '../../models/PaginationResponse';
 import {AnalyticsExportTaskListQueryParams, AnalyticsExportTaskListQueryParamsBuilder} from './AnalyticsExportTaskListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * ExportsApi - object-oriented interface
@@ -58,11 +57,7 @@ export default class ExportsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AnalyticsExportTask>>('/analytics/exports', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AnalyticsExportTask>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AnalyticsExportTask(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AnalyticsExportTask>(response, AnalyticsExportTask);;
     });
   }
 }

@@ -4,7 +4,6 @@ import LiveApi from './live/LiveApi';
 import VodApi from './vod/VodApi';
 import LiveStatisticsApi from './liveStatistics/LiveStatisticsApi';
 import EncodingStats from '../../../models/EncodingStats';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * EncodingsApi - object-oriented interface

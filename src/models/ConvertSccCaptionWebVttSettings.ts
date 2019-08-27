@@ -27,9 +27,10 @@ export class ConvertSccCaptionWebVttSettings {
   public removeColor?: boolean;
 
   constructor(obj: Partial<ConvertSccCaptionWebVttSettings>) {
-    this.positionMode = map(obj.positionMode);
-    this.removeFlash = map(obj.removeFlash);
-    this.removeColor = map(obj.removeColor);
+
+    this.positionMode = obj.positionMode;
+    this.removeFlash = obj.removeFlash;
+    this.removeColor = obj.removeColor;
   }
 }
 

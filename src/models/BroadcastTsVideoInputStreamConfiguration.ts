@@ -23,8 +23,9 @@ export class BroadcastTsVideoInputStreamConfiguration extends BroadcastTsInputSt
 
   constructor(obj: Partial<BroadcastTsVideoInputStreamConfiguration>) {
     super(obj);
-    this.insertAccessUnitDelimiterInAvc = map(obj.insertAccessUnitDelimiterInAvc);
-    this.maxDecodeDelay = map(obj.maxDecodeDelay);
+
+    this.insertAccessUnitDelimiterInAvc = obj.insertAccessUnitDelimiterInAvc;
+    this.maxDecodeDelay = obj.maxDecodeDelay;
   }
 }
 

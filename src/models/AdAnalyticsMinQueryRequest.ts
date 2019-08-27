@@ -11,6 +11,7 @@ import AnalyticsInterval from './AnalyticsInterval';
 export class AdAnalyticsMinQueryRequest extends AdAnalyticsQueryRequest {
   constructor(obj: Partial<AdAnalyticsMinQueryRequest>) {
     super(obj);
+
   }
 }
 

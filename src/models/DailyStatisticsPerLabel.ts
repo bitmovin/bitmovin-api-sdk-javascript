@@ -11,18 +11,19 @@ export class DailyStatisticsPerLabel {
    * @type {Date}
    * @memberof DailyStatisticsPerLabel
    */
-  public date: Date;
+  public date?: Date;
 
   /**
    * List of labels and their aggregated statistics (required)
    * @type {DailyStatistics[]}
    * @memberof DailyStatisticsPerLabel
    */
-  public labels: DailyStatistics[];
+  public labels?: DailyStatistics[];
 
   constructor(obj: Partial<DailyStatisticsPerLabel>) {
-    this.date = map(obj.date, Date);
-    this.labels = map<DailyStatistics>(obj.labels, DailyStatistics);
+
+    this.date = map<Date>(obj.date, Date);
+    this.labels = map<DailyStatistics>(obj.labels, DailyStatistics) || [];
   }
 }
 

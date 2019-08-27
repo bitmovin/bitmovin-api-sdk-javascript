@@ -17,11 +17,12 @@ export class BackupSrtInputs {
    * @type {SrtInput[]}
    * @memberof BackupSrtInputs
    */
-  public srtInputs: SrtInput[];
+  public srtInputs?: SrtInput[];
 
   constructor(obj: Partial<BackupSrtInputs>) {
-    this.delayThreshold = map(obj.delayThreshold);
-    this.srtInputs = map<SrtInput>(obj.srtInputs, SrtInput);
+
+    this.delayThreshold = obj.delayThreshold;
+    this.srtInputs = map<SrtInput>(obj.srtInputs, SrtInput) || [];
   }
 }
 

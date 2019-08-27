@@ -4,7 +4,6 @@ import AudioAdaptationSet from '../../../../../../models/AudioAdaptationSet';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {AudioAdaptationSetListQueryParams, AudioAdaptationSetListQueryParamsBuilder} from './AudioAdaptationSetListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * AudioApi - object-oriented interface
@@ -94,11 +93,7 @@ export default class AudioApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioAdaptationSet>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AudioAdaptationSet>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AudioAdaptationSet(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AudioAdaptationSet>(response, AudioAdaptationSet);;
     });
   }
 }

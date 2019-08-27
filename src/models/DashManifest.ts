@@ -40,10 +40,11 @@ export class DashManifest extends Manifest {
 
   constructor(obj: Partial<DashManifest>) {
     super(obj);
-    this.profile = map(obj.profile);
-    this.manifestName = map(obj.manifestName);
-    this.namespaces = map<XmlNamespace>(obj.namespaces, XmlNamespace);
-    this.utcTimings = map<UtcTiming>(obj.utcTimings, UtcTiming);
+
+    this.profile = obj.profile;
+    this.manifestName = obj.manifestName;
+    this.namespaces = map<XmlNamespace>(obj.namespaces, XmlNamespace) || [];
+    this.utcTimings = map<UtcTiming>(obj.utcTimings, UtcTiming) || [];
   }
 }
 

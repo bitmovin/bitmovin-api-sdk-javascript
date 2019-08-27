@@ -6,7 +6,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Period from '../../../../models/Period';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {PeriodListQueryParams, PeriodListQueryParamsBuilder} from './PeriodListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * PeriodsApi - object-oriented interface
@@ -92,11 +91,7 @@ export default class PeriodsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Period>>('/encoding/manifests/dash/{manifest_id}/periods', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Period>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Period(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Period>(response, Period);;
     });
   }
 }

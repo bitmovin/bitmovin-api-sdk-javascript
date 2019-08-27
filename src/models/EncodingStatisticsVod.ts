@@ -11,19 +11,20 @@ export class EncodingStatisticsVod extends EncodingStatistics {
    * @type {number}
    * @memberof EncodingStatisticsVod
    */
-  public timeEnqueued: number;
+  public timeEnqueued?: number;
 
   /**
    * The realtime factor. (required)
    * @type {number}
    * @memberof EncodingStatisticsVod
    */
-  public realTimeFactor: number;
+  public realTimeFactor?: number;
 
   constructor(obj: Partial<EncodingStatisticsVod>) {
     super(obj);
-    this.timeEnqueued = map(obj.timeEnqueued);
-    this.realTimeFactor = map(obj.realTimeFactor);
+
+    this.timeEnqueued = obj.timeEnqueued;
+    this.realTimeFactor = obj.realTimeFactor;
   }
 }
 

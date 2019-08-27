@@ -20,7 +20,7 @@ export class BillableEncodingMinutes {
    * @type {CodecConfigType}
    * @memberof BillableEncodingMinutes
    */
-  public codec: CodecConfigType;
+  public codec?: CodecConfigType;
 
   /**
    * @type {StatisticsPerTitleStream}
@@ -41,10 +41,11 @@ export class BillableEncodingMinutes {
   public billableMinutes?: BillableEncodingMinutesDetails;
 
   constructor(obj: Partial<BillableEncodingMinutes>) {
-    this.encodingMode = map(obj.encodingMode);
-    this.codec = map(obj.codec);
-    this.perTitleResultStream = map(obj.perTitleResultStream);
-    this.psnrMode = map(obj.psnrMode);
+
+    this.encodingMode = obj.encodingMode;
+    this.codec = obj.codec;
+    this.perTitleResultStream = obj.perTitleResultStream;
+    this.psnrMode = obj.psnrMode;
     this.billableMinutes = map<BillableEncodingMinutesDetails>(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }

@@ -4,7 +4,6 @@ import DailyStatisticsPerLabel from '../../../../models/DailyStatisticsPerLabel'
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {DailyStatisticsPerLabelListQueryParams, DailyStatisticsPerLabelListQueryParamsBuilder} from './DailyStatisticsPerLabelListQueryParams';
 import {DailyStatisticsPerLabelListByDateRangeQueryParams, DailyStatisticsPerLabelListByDateRangeQueryParamsBuilder} from './DailyStatisticsPerLabelListByDateRangeQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * DailyApi - object-oriented interface
@@ -32,11 +31,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatisticsPerLabel>>('/encoding/statistics/labels/daily', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DailyStatisticsPerLabel>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatisticsPerLabel(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);;
     });
   }
 
@@ -60,11 +55,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatisticsPerLabel>>('/encoding/statistics/labels/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DailyStatisticsPerLabel>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatisticsPerLabel(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);;
     });
   }
 }

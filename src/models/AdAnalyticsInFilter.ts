@@ -8,14 +8,22 @@ import AdAnalyticsAttribute from './AdAnalyticsAttribute';
  */
 export class AdAnalyticsInFilter extends AdAnalyticsAbstractFilter {
   /**
+   * Discriminator property for AdAnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AdAnalyticsInFilter
+   */
+  public operator: 'IN' = 'IN';
+
+  /**
    * @type {any[]}
    * @memberof AdAnalyticsInFilter
    */
-  public value: any[];
+  public value?: any[];
 
   constructor(obj: Partial<AdAnalyticsInFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value || [];
   }
 }
 

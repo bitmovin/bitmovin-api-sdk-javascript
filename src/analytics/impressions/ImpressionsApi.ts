@@ -2,7 +2,6 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import AnalyticsImpressionDetails from '../../models/AnalyticsImpressionDetails';
 import AnalyticsLicenseKey from '../../models/AnalyticsLicenseKey';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * ImpressionsApi - object-oriented interface

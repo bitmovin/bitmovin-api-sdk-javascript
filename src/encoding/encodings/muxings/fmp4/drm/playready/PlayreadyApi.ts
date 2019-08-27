@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PlayReadyDrm from '../../../../../../models/PlayReadyDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {PlayReadyDrmListQueryParams, PlayReadyDrmListQueryParamsBuilder} from './PlayReadyDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * PlayreadyApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class PlayreadyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PlayReadyDrm>>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/playready', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<PlayReadyDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PlayReadyDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PlayReadyDrm>(response, PlayReadyDrm);;
     });
   }
 }

@@ -3,7 +3,6 @@ import Configuration from '../../../../common/Configuration';
 import Acl from '../../../../models/Acl';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * PermissionsApi - object-oriented interface
@@ -67,11 +66,7 @@ export default class PermissionsApi extends BaseAPI {
       group_id: groupId
     };
     return this.restClient.get<PaginationResponse<Acl>>('/account/organizations/{organization_id}/groups/{group_id}/permissions', pathParamMap).then((response) => {
-      const paginationResponse = new PaginationResponse<Acl>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Acl(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Acl>(response, Acl);;
     });
   }
 }

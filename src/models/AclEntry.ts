@@ -16,11 +16,12 @@ export class AclEntry {
    * @type {AclPermission}
    * @memberof AclEntry
    */
-  public permission: AclPermission;
+  public permission?: AclPermission;
 
   constructor(obj: Partial<AclEntry>) {
-    this.scope = map(obj.scope);
-    this.permission = map(obj.permission);
+
+    this.scope = obj.scope;
+    this.permission = obj.permission;
   }
 }
 

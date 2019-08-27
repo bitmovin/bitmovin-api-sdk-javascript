@@ -32,14 +32,14 @@ export class VideoStream extends MediaStream {
    * @type {number}
    * @memberof VideoStream
    */
-  public width: number;
+  public width?: number;
 
   /**
    * Height of the video (required)
    * @type {number}
    * @memberof VideoStream
    */
-  public height: number;
+  public height?: number;
 
   /**
    * Pixel aspect ratio of the video. Default is 1.0
@@ -57,13 +57,14 @@ export class VideoStream extends MediaStream {
 
   constructor(obj: Partial<VideoStream>) {
     super(obj);
-    this.fps = map(obj.fps);
-    this.bitrate = map(obj.bitrate);
-    this.rate = map(obj.rate);
-    this.width = map(obj.width);
-    this.height = map(obj.height);
-    this.par = map(obj.par);
-    this.rotation = map(obj.rotation);
+
+    this.fps = obj.fps;
+    this.bitrate = obj.bitrate;
+    this.rate = obj.rate;
+    this.width = obj.width;
+    this.height = obj.height;
+    this.par = obj.par;
+    this.rotation = obj.rotation;
   }
 }
 

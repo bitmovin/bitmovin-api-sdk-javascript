@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import TcpInput from '../../../models/TcpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {TcpInputListQueryParams, TcpInputListQueryParamsBuilder} from './TcpInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * TcpApi - object-oriented interface
@@ -46,11 +45,7 @@ export default class TcpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TcpInput>>('/encoding/inputs/tcp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TcpInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TcpInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TcpInput>(response, TcpInput);;
     });
   }
 }

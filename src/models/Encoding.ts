@@ -73,15 +73,16 @@ export class Encoding extends BitmovinResource {
 
   constructor(obj: Partial<Encoding>) {
     super(obj);
-    this.cloudRegion = map(obj.cloudRegion);
-    this.encoderVersion = map(obj.encoderVersion);
-    this.infrastructureId = map(obj.infrastructureId);
+
+    this.cloudRegion = obj.cloudRegion;
+    this.encoderVersion = obj.encoderVersion;
+    this.infrastructureId = obj.infrastructureId;
     this.infrastructure = map<InfrastructureSettings>(obj.infrastructure, InfrastructureSettings);
-    this.selectedEncoderVersion = map(obj.selectedEncoderVersion);
-    this.selectedEncodingMode = map(obj.selectedEncodingMode);
-    this.selectedCloudRegion = map(obj.selectedCloudRegion);
-    this.status = map(obj.status);
-    this.labels = map(obj.labels);
+    this.selectedEncoderVersion = obj.selectedEncoderVersion;
+    this.selectedEncodingMode = obj.selectedEncodingMode;
+    this.selectedCloudRegion = obj.selectedCloudRegion;
+    this.status = obj.status;
+    this.labels = obj.labels || [];
   }
 }
 

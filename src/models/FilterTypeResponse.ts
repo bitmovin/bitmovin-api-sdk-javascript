@@ -14,7 +14,8 @@ export class FilterTypeResponse {
   public type?: FilterType;
 
   constructor(obj: Partial<FilterTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

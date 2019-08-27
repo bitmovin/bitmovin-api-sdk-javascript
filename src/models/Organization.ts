@@ -12,7 +12,7 @@ export class Organization extends BitmovinResource {
    * @type {OrganizationType}
    * @memberof Organization
    */
-  public type: OrganizationType;
+  public type?: OrganizationType;
 
   /**
    * ID of the parent organization
@@ -32,14 +32,15 @@ export class Organization extends BitmovinResource {
    * @type {ResourceLimitContainer[]}
    * @memberof Organization
    */
-  public limitsPerResource: ResourceLimitContainer[];
+  public limitsPerResource?: ResourceLimitContainer[];
 
   constructor(obj: Partial<Organization>) {
     super(obj);
-    this.type = map(obj.type);
-    this.parentId = map(obj.parentId);
-    this.labelColor = map(obj.labelColor);
-    this.limitsPerResource = map<ResourceLimitContainer>(obj.limitsPerResource, ResourceLimitContainer);
+
+    this.type = obj.type;
+    this.parentId = obj.parentId;
+    this.labelColor = obj.labelColor;
+    this.limitsPerResource = map<ResourceLimitContainer>(obj.limitsPerResource, ResourceLimitContainer) || [];
   }
 }
 

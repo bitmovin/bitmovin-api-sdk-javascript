@@ -97,18 +97,19 @@ export class ColorConfig {
   public inputColorRange?: InputColorRange;
 
   constructor(obj: Partial<ColorConfig>) {
-    this.copyChromaLocationFlag = map(obj.copyChromaLocationFlag);
-    this.copyColorSpaceFlag = map(obj.copyColorSpaceFlag);
-    this.copyColorPrimariesFlag = map(obj.copyColorPrimariesFlag);
-    this.copyColorRangeFlag = map(obj.copyColorRangeFlag);
-    this.copyColorTransferFlag = map(obj.copyColorTransferFlag);
-    this.chromaLocation = map(obj.chromaLocation);
-    this.colorSpace = map(obj.colorSpace);
-    this.colorPrimaries = map(obj.colorPrimaries);
-    this.colorRange = map(obj.colorRange);
-    this.colorTransfer = map(obj.colorTransfer);
-    this.inputColorSpace = map(obj.inputColorSpace);
-    this.inputColorRange = map(obj.inputColorRange);
+
+    this.copyChromaLocationFlag = obj.copyChromaLocationFlag;
+    this.copyColorSpaceFlag = obj.copyColorSpaceFlag;
+    this.copyColorPrimariesFlag = obj.copyColorPrimariesFlag;
+    this.copyColorRangeFlag = obj.copyColorRangeFlag;
+    this.copyColorTransferFlag = obj.copyColorTransferFlag;
+    this.chromaLocation = obj.chromaLocation;
+    this.colorSpace = obj.colorSpace;
+    this.colorPrimaries = obj.colorPrimaries;
+    this.colorRange = obj.colorRange;
+    this.colorTransfer = obj.colorTransfer;
+    this.inputColorSpace = obj.inputColorSpace;
+    this.inputColorRange = obj.inputColorRange;
   }
 }
 

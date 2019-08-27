@@ -41,11 +41,12 @@ export class BillableEncodingMinutesDetails {
   public UHD?: number;
 
   constructor(obj: Partial<BillableEncodingMinutesDetails>) {
-    this.UNKNOWN = map(obj.UNKNOWN);
-    this.AUDIO = map(obj.AUDIO);
-    this.SD = map(obj.SD);
-    this.HD = map(obj.HD);
-    this.UHD = map(obj.UHD);
+
+    this.UNKNOWN = obj.UNKNOWN;
+    this.AUDIO = obj.AUDIO;
+    this.SD = obj.SD;
+    this.HD = obj.HD;
+    this.UHD = obj.UHD;
   }
 }
 

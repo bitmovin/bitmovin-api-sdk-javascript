@@ -18,7 +18,8 @@ export class ProgressiveTsMuxingInformation extends ProgressiveMuxingInformation
 
   constructor(obj: Partial<ProgressiveTsMuxingInformation>) {
     super(obj);
-    this.byteRanges = map<ProgressiveTsMuxingInformationByteRanges>(obj.byteRanges, ProgressiveTsMuxingInformationByteRanges);
+
+    this.byteRanges = map<ProgressiveTsMuxingInformationByteRanges>(obj.byteRanges, ProgressiveTsMuxingInformationByteRanges) || [];
   }
 }
 

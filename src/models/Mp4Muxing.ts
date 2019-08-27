@@ -14,6 +14,13 @@ import TimeCode from './TimeCode';
  */
 export class Mp4Muxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof Mp4Muxing
+   */
+  public type: 'MP4' = 'MP4';
+
+  /**
    * Name of the new Video
    * @type {string}
    * @memberof Mp4Muxing
@@ -48,10 +55,11 @@ export class Mp4Muxing extends Muxing {
 
   constructor(obj: Partial<Mp4Muxing>) {
     super(obj);
-    this.filename = map(obj.filename);
-    this.fragmentDuration = map(obj.fragmentDuration);
+
+    this.filename = obj.filename;
+    this.fragmentDuration = obj.fragmentDuration;
     this.timeCode = map<TimeCode>(obj.timeCode, TimeCode);
-    this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
+    this.fragmentedMP4MuxingManifestType = obj.fragmentedMP4MuxingManifestType;
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }
 }

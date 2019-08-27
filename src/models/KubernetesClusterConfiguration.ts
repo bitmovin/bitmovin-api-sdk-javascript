@@ -10,18 +10,19 @@ export class KubernetesClusterConfiguration {
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */
-  public parallelEncodings: number;
+  public parallelEncodings?: number;
 
   /**
    * Number of worker nodes used for each encoding on the Kubernetes cluster (required)
    * @type {number}
    * @memberof KubernetesClusterConfiguration
    */
-  public workersPerEncoding: number;
+  public workersPerEncoding?: number;
 
   constructor(obj: Partial<KubernetesClusterConfiguration>) {
-    this.parallelEncodings = map(obj.parallelEncodings);
-    this.workersPerEncoding = map(obj.workersPerEncoding);
+
+    this.parallelEncodings = obj.parallelEncodings;
+    this.workersPerEncoding = obj.workersPerEncoding;
   }
 }
 

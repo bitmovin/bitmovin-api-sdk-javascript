@@ -14,6 +14,7 @@ export class StreamPerTitleSettings {
   public fixedResolutionAndBitrateSettings?: StreamPerTitleFixedResolutionAndBitrateSettings;
 
   constructor(obj: Partial<StreamPerTitleSettings>) {
+
     this.fixedResolutionAndBitrateSettings = map<StreamPerTitleFixedResolutionAndBitrateSettings>(obj.fixedResolutionAndBitrateSettings, StreamPerTitleFixedResolutionAndBitrateSettings);
   }
 }

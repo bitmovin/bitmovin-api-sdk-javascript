@@ -11,11 +11,12 @@ export class CustomWebPlayerBuildDomain extends BitmovinResource {
    * @type {string}
    * @memberof CustomWebPlayerBuildDomain
    */
-  public domain: string;
+  public domain?: string;
 
   constructor(obj: Partial<CustomWebPlayerBuildDomain>) {
     super(obj);
-    this.domain = map(obj.domain);
+
+    this.domain = obj.domain;
   }
 }
 

@@ -3,7 +3,6 @@ import Configuration from '../../../../common/Configuration';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AdAnalyticsVarianceQueryRequest from '../../../../models/AdAnalyticsVarianceQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * VarianceApi - object-oriented interface

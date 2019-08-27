@@ -13,26 +13,27 @@ export class Acl extends BitmovinResource {
    * @type {string}
    * @memberof Acl
    */
-  public resource: string;
+  public resource?: string;
 
   /**
    * @type {Policy}
    * @memberof Acl
    */
-  public policy: Policy;
+  public policy?: Policy;
 
   /**
    * Permissions to assign. (required)
    * @type {Permission[]}
    * @memberof Acl
    */
-  public permissions: Permission[];
+  public permissions?: Permission[];
 
   constructor(obj: Partial<Acl>) {
     super(obj);
-    this.resource = map(obj.resource);
-    this.policy = map(obj.policy);
-    this.permissions = map(obj.permissions);
+
+    this.resource = obj.resource;
+    this.policy = obj.policy;
+    this.permissions = obj.permissions || [];
   }
 }
 

@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsMedianQueryRequest from '../../../models/AnalyticsMedianQueryRequest';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * MedianApi - object-oriented interface

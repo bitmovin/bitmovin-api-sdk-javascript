@@ -18,7 +18,6 @@ import StartEncodingRequest from '../../models/StartEncodingRequest';
 import Task from '../../models/Task';
 import PaginationResponse from '../../models/PaginationResponse';
 import {EncodingListQueryParams, EncodingListQueryParamsBuilder} from './EncodingListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * EncodingsApi - object-oriented interface
@@ -121,11 +120,7 @@ export default class EncodingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Encoding>>('/encoding/encodings', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Encoding>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Encoding(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Encoding>(response, Encoding);;
     });
   }
 

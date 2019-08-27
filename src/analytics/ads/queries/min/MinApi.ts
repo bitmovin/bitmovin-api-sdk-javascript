@@ -3,7 +3,6 @@ import Configuration from '../../../../common/Configuration';
 import AdAnalyticsMinQueryRequest from '../../../../models/AdAnalyticsMinQueryRequest';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * MinApi - object-oriented interface

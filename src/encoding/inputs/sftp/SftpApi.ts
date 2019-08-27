@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import SftpInput from '../../../models/SftpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {SftpInputListQueryParams, SftpInputListQueryParamsBuilder} from './SftpInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * SftpApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class SftpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SftpInput>>('/encoding/inputs/sftp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SftpInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SftpInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SftpInput>(response, SftpInput);;
     });
   }
 }

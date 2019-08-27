@@ -14,7 +14,8 @@ export class AnalyticsLicenseDomain extends BitmovinResponse {
 
   constructor(obj: Partial<AnalyticsLicenseDomain>) {
     super(obj);
-    this.url = map(obj.url);
+
+    this.url = obj.url;
   }
 }
 

@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import InterlaceFilter from '../../../models/InterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {InterlaceFilterListQueryParams, InterlaceFilterListQueryParamsBuilder} from './InterlaceFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * InterlaceApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class InterlaceApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InterlaceFilter>>('/encoding/filters/interlace', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<InterlaceFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new InterlaceFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<InterlaceFilter>(response, InterlaceFilter);;
     });
   }
 }

@@ -10,18 +10,19 @@ export class Login {
    * @type {string}
    * @memberof Login
    */
-  public eMail: string;
+  public eMail?: string;
 
   /**
    * Password of the account. (required)
    * @type {string}
    * @memberof Login
    */
-  public password: string;
+  public password?: string;
 
   constructor(obj: Partial<Login>) {
-    this.eMail = map(obj.eMail);
-    this.password = map(obj.password);
+
+    this.eMail = obj.eMail;
+    this.password = obj.password;
   }
 }
 

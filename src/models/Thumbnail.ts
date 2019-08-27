@@ -13,7 +13,7 @@ export class Thumbnail extends BitmovinResource {
    * @type {number}
    * @memberof Thumbnail
    */
-  public height: number;
+  public height?: number;
 
   /**
    *  Pattern which describes the thumbnail filenames. For example with thumbnail-%number%.png as pattern and 3 positions: thumbnail-3_0.png, thumbnail-5_0.png and thumbnail-25_5.png. (The number represents the position in the source video in seconds, in the previous example the first filename represents the thumbnail at 3s, the second one at 5s and the third one at 25.5s).
@@ -51,12 +51,13 @@ export class Thumbnail extends BitmovinResource {
 
   constructor(obj: Partial<Thumbnail>) {
     super(obj);
-    this.height = map(obj.height);
-    this.pattern = map(obj.pattern);
-    this.interval = map(obj.interval);
-    this.positions = map(obj.positions);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.unit = map(obj.unit);
+
+    this.height = obj.height;
+    this.pattern = obj.pattern;
+    this.interval = obj.interval;
+    this.positions = obj.positions || [];
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.unit = obj.unit;
   }
 }
 

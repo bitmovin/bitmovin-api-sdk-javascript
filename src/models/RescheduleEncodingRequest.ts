@@ -13,7 +13,8 @@ export class RescheduleEncodingRequest {
   public infrastructureId?: string;
 
   constructor(obj: Partial<RescheduleEncodingRequest>) {
-    this.infrastructureId = map(obj.infrastructureId);
+
+    this.infrastructureId = obj.infrastructureId;
   }
 }
 

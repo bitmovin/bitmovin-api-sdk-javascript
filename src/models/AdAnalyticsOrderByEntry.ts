@@ -17,11 +17,12 @@ export class AdAnalyticsOrderByEntry {
    * @type {AnalyticsOrder}
    * @memberof AdAnalyticsOrderByEntry
    */
-  public order: AnalyticsOrder;
+  public order?: AnalyticsOrder;
 
   constructor(obj: Partial<AdAnalyticsOrderByEntry>) {
-    this.name = map(obj.name);
-    this.order = map(obj.order);
+
+    this.name = obj.name;
+    this.order = obj.order;
   }
 }
 

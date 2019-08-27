@@ -15,13 +15,30 @@ import VorbisAudioConfiguration from './VorbisAudioConfiguration';
 import Vp8VideoConfiguration from './Vp8VideoConfiguration';
 import Vp9VideoConfiguration from './Vp9VideoConfiguration';
 
+export type CodecConfigurationUnion =
+  AacAudioConfiguration |
+  HeAacV1AudioConfiguration |
+  HeAacV2AudioConfiguration |
+  H264VideoConfiguration |
+  H265VideoConfiguration |
+  Vp9VideoConfiguration |
+  Vp8VideoConfiguration |
+  Mp2AudioConfiguration |
+  Mp3AudioConfiguration |
+  Ac3AudioConfiguration |
+  Eac3AudioConfiguration |
+  OpusAudioConfiguration |
+  VorbisAudioConfiguration |
+  MjpegVideoConfiguration |
+  Av1VideoConfiguration;
+
 /**
  * @export
  * @class CodecConfiguration
  */
 export class CodecConfiguration extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'AAC': 'AacAudioConfiguration',
     'HE_AAC_V1': 'HeAacV1AudioConfiguration',
     'HE_AAC_V2': 'HeAacV2AudioConfiguration',
@@ -41,6 +58,7 @@ export class CodecConfiguration extends BitmovinResource {
 
   constructor(obj: Partial<CodecConfiguration>) {
     super(obj);
+
   }
 }
 

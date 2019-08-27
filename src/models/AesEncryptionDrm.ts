@@ -9,11 +9,18 @@ import EncodingOutput from './EncodingOutput';
  */
 export class AesEncryptionDrm extends Drm {
   /**
+   * Discriminator property for Drm
+   * @type {string}
+   * @memberof AesEncryptionDrm
+   */
+  public type: 'AES' = 'AES';
+
+  /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)
    * @type {string}
    * @memberof AesEncryptionDrm
    */
-  public key: string;
+  public key?: string;
 
   /**
    * 16 byte initialization vector
@@ -33,14 +40,15 @@ export class AesEncryptionDrm extends Drm {
    * @type {AesEncryptionMethod}
    * @memberof AesEncryptionDrm
    */
-  public method: AesEncryptionMethod;
+  public method?: AesEncryptionMethod;
 
   constructor(obj: Partial<AesEncryptionDrm>) {
     super(obj);
-    this.key = map(obj.key);
-    this.iv = map(obj.iv);
-    this.keyFileUri = map(obj.keyFileUri);
-    this.method = map(obj.method);
+
+    this.key = obj.key;
+    this.iv = obj.iv;
+    this.keyFileUri = obj.keyFileUri;
+    this.method = obj.method;
   }
 }
 

@@ -11,15 +11,23 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class TextMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof TextMuxing
+   */
+  public type: 'TEXT' = 'TEXT';
+
+  /**
    * The output file name (required)
    * @type {string}
    * @memberof TextMuxing
    */
-  public filename: string;
+  public filename?: string;
 
   constructor(obj: Partial<TextMuxing>) {
     super(obj);
-    this.filename = map(obj.filename);
+
+    this.filename = obj.filename;
   }
 }
 

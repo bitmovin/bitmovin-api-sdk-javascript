@@ -32,14 +32,14 @@ export class AwsAccountRegionSettings extends BitmovinResource {
    * @type {string}
    * @memberof AwsAccountRegionSettings
    */
-  public securityGroupId: string;
+  public securityGroupId?: string;
 
   /**
    * Id of the subnet for encoding instances (required)
    * @type {string}
    * @memberof AwsAccountRegionSettings
    */
-  public subnetId: string;
+  public subnetId?: string;
 
   /**
    * Which machine types are allowed to be deployed. Leave empty for no machine type restrictions.
@@ -57,13 +57,14 @@ export class AwsAccountRegionSettings extends BitmovinResource {
 
   constructor(obj: Partial<AwsAccountRegionSettings>) {
     super(obj);
-    this.limitParallelEncodings = map(obj.limitParallelEncodings);
-    this.maximumAmountOfCoordinatorsAndWorkersInRegion = map(obj.maximumAmountOfCoordinatorsAndWorkersInRegion);
-    this.maxMoneyToSpendPerMonth = map(obj.maxMoneyToSpendPerMonth);
-    this.securityGroupId = map(obj.securityGroupId);
-    this.subnetId = map(obj.subnetId);
-    this.machineTypes = map(obj.machineTypes);
-    this.sshPort = map(obj.sshPort);
+
+    this.limitParallelEncodings = obj.limitParallelEncodings;
+    this.maximumAmountOfCoordinatorsAndWorkersInRegion = obj.maximumAmountOfCoordinatorsAndWorkersInRegion;
+    this.maxMoneyToSpendPerMonth = obj.maxMoneyToSpendPerMonth;
+    this.securityGroupId = obj.securityGroupId;
+    this.subnetId = obj.subnetId;
+    this.machineTypes = obj.machineTypes || [];
+    this.sshPort = obj.sshPort;
   }
 }
 

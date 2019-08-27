@@ -7,6 +7,13 @@ import InputStream from './InputStream';
  */
 export class H264PictureTimingTrimmingInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof H264PictureTimingTrimmingInputStream
+   */
+  public type: 'TRIMMING_H264_PICTURE_TIMING' = 'TRIMMING_H264_PICTURE_TIMING';
+
+  /**
    * The id of the ingest input stream that should be trimmed
    * @type {string}
    * @memberof H264PictureTimingTrimmingInputStream
@@ -29,9 +36,10 @@ export class H264PictureTimingTrimmingInputStream extends InputStream {
 
   constructor(obj: Partial<H264PictureTimingTrimmingInputStream>) {
     super(obj);
-    this.inputStreamId = map(obj.inputStreamId);
-    this.startPicTiming = map(obj.startPicTiming);
-    this.endPicTiming = map(obj.endPicTiming);
+
+    this.inputStreamId = obj.inputStreamId;
+    this.startPicTiming = obj.startPicTiming;
+    this.endPicTiming = obj.endPicTiming;
   }
 }
 

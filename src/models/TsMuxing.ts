@@ -12,11 +12,18 @@ import TsMuxingConfiguration from './TsMuxingConfiguration';
  */
 export class TsMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof TsMuxing
+   */
+  public type: 'TS' = 'TS';
+
+  /**
    * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof TsMuxing
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   /**
    * Segment naming policy
@@ -55,11 +62,12 @@ export class TsMuxing extends Muxing {
 
   constructor(obj: Partial<TsMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
-    this.startOffset = map(obj.startOffset);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
+
+    this.segmentLength = obj.segmentLength;
+    this.segmentNaming = obj.segmentNaming;
+    this.segmentNamingTemplate = obj.segmentNamingTemplate;
+    this.startOffset = obj.startOffset;
+    this.segmentsMuxed = obj.segmentsMuxed;
     this.configuration = map<TsMuxingConfiguration>(obj.configuration, TsMuxingConfiguration);
   }
 }

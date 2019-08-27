@@ -9,6 +9,13 @@ import VerticalLowPassFilteringMode from './VerticalLowPassFilteringMode';
  */
 export class InterlaceFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof InterlaceFilter
+   */
+  public type: 'INTERLACE' = 'INTERLACE';
+
+  /**
    * @type {InterlaceMode}
    * @memberof InterlaceFilter
    */
@@ -22,8 +29,9 @@ export class InterlaceFilter extends Filter {
 
   constructor(obj: Partial<InterlaceFilter>) {
     super(obj);
-    this.mode = map(obj.mode);
-    this.verticalLowPassFilteringMode = map(obj.verticalLowPassFilteringMode);
+
+    this.mode = obj.mode;
+    this.verticalLowPassFilteringMode = obj.verticalLowPassFilteringMode;
   }
 }
 

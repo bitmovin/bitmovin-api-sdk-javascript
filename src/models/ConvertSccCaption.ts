@@ -15,26 +15,26 @@ export class ConvertSccCaption extends BitmovinResource {
    * @type {InputPath}
    * @memberof ConvertSccCaption
    */
-  public input: InputPath;
+  public input?: InputPath;
 
   /**
    * @type {EncodingOutput[]}
    * @memberof ConvertSccCaption
    */
-  public outputs: EncodingOutput[];
+  public outputs?: EncodingOutput[];
 
   /**
    * Name of the captions file (required)
    * @type {string}
    * @memberof ConvertSccCaption
    */
-  public fileName: string;
+  public fileName?: string;
 
   /**
    * @type {StreamCaptionOutputFormat}
    * @memberof ConvertSccCaption
    */
-  public outputFormat: StreamCaptionOutputFormat;
+  public outputFormat?: StreamCaptionOutputFormat;
 
   /**
    * Optional settings when converting SCC to WebVTT
@@ -45,10 +45,11 @@ export class ConvertSccCaption extends BitmovinResource {
 
   constructor(obj: Partial<ConvertSccCaption>) {
     super(obj);
+
     this.input = map<InputPath>(obj.input, InputPath);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.fileName = map(obj.fileName);
-    this.outputFormat = map(obj.outputFormat);
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.fileName = obj.fileName;
+    this.outputFormat = obj.outputFormat;
     this.webVttSettings = map<ConvertSccCaptionWebVttSettings>(obj.webVttSettings, ConvertSccCaptionWebVttSettings);
   }
 }

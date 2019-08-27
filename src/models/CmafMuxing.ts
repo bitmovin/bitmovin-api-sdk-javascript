@@ -11,11 +11,18 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class CmafMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof CmafMuxing
+   */
+  public type: 'CMAF' = 'CMAF';
+
+  /**
    * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof CmafMuxing
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   /**
    * Segment naming policy
@@ -61,13 +68,14 @@ export class CmafMuxing extends Muxing {
 
   constructor(obj: Partial<CmafMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
-    this.initSegmentName = map(obj.initSegmentName);
-    this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
-    this.framesPerCmafChunk = map(obj.framesPerCmafChunk);
+
+    this.segmentLength = obj.segmentLength;
+    this.segmentNaming = obj.segmentNaming;
+    this.segmentNamingTemplate = obj.segmentNamingTemplate;
+    this.initSegmentName = obj.initSegmentName;
+    this.initSegmentNameTemplate = obj.initSegmentNameTemplate;
+    this.segmentsMuxed = obj.segmentsMuxed;
+    this.framesPerCmafChunk = obj.framesPerCmafChunk;
   }
 }
 

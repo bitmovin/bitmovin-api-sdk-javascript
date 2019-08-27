@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import LiveMediaIngestOutput from '../../../models/LiveMediaIngestOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {LiveMediaIngestOutputListQueryParams, LiveMediaIngestOutputListQueryParamsBuilder} from './LiveMediaIngestOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * LiveMediaIngestApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class LiveMediaIngestApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LiveMediaIngestOutput>>('/encoding/outputs/live-media-ingest', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<LiveMediaIngestOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new LiveMediaIngestOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<LiveMediaIngestOutput>(response, LiveMediaIngestOutput);;
     });
   }
 }

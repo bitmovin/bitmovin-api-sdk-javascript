@@ -15,14 +15,14 @@ export class SegmentedRawMuxing extends Muxing {
    * @type {number}
    * @memberof SegmentedRawMuxing
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   /**
    * Segment naming policy (required)
    * @type {string}
    * @memberof SegmentedRawMuxing
    */
-  public segmentNaming: string;
+  public segmentNaming?: string;
 
   /**
    * Number of segments which have been encoded
@@ -33,9 +33,10 @@ export class SegmentedRawMuxing extends Muxing {
 
   constructor(obj: Partial<SegmentedRawMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
+
+    this.segmentLength = obj.segmentLength;
+    this.segmentNaming = obj.segmentNaming;
+    this.segmentsMuxed = obj.segmentsMuxed;
   }
 }
 

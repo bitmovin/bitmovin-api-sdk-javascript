@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import TimecodeTrackTrimmingInputStream from '../../../../../models/TimecodeTrackTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {TimecodeTrackTrimmingInputStreamListQueryParams, TimecodeTrackTrimmingInputStreamListQueryParamsBuilder} from './TimecodeTrackTrimmingInputStreamListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * TimecodeTrackApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class TimecodeTrackApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TimecodeTrackTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/timecode-track', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TimecodeTrackTrimmingInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TimecodeTrackTrimmingInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TimecodeTrackTrimmingInputStream>(response, TimecodeTrackTrimmingInputStream);;
     });
   }
 }

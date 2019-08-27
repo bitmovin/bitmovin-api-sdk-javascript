@@ -20,8 +20,9 @@ export class CencFairPlay {
   public uri?: string;
 
   constructor(obj: Partial<CencFairPlay>) {
-    this.iv = map(obj.iv);
-    this.uri = map(obj.uri);
+
+    this.iv = obj.iv;
+    this.uri = obj.uri;
   }
 }
 

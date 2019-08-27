@@ -5,7 +5,6 @@ import LoginApi from './login/LoginApi';
 import LimitsApi from './limits/LimitsApi';
 import ApiKeysApi from './apiKeys/ApiKeysApi';
 import OrganizationsApi from './organizations/OrganizationsApi';
-import {getType, map} from '../common/Mapper';
 
 /**
  * AccountApi - object-oriented interface

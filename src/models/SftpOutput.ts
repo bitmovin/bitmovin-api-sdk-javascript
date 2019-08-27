@@ -9,11 +9,18 @@ import TransferVersion from './TransferVersion';
  */
 export class SftpOutput extends Output {
   /**
+   * Discriminator property for Output
+   * @type {string}
+   * @memberof SftpOutput
+   */
+  public type: 'SFTP' = 'SFTP';
+
+  /**
    * Host Url or IP of the SFTP server (required)
    * @type {string}
    * @memberof SftpOutput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Port to use, standard for SFTP: 22
@@ -59,13 +66,14 @@ export class SftpOutput extends Output {
 
   constructor(obj: Partial<SftpOutput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.passive = map(obj.passive);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
-    this.transferVersion = map(obj.transferVersion);
-    this.maxConcurrentConnections = map(obj.maxConcurrentConnections);
+
+    this.host = obj.host;
+    this.port = obj.port;
+    this.passive = obj.passive;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.transferVersion = obj.transferVersion;
+    this.maxConcurrentConnections = obj.maxConcurrentConnections;
   }
 }
 

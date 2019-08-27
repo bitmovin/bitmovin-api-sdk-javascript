@@ -11,6 +11,7 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
 export class AnalyticsMinQueryRequest extends AnalyticsQueryRequest {
   constructor(obj: Partial<AnalyticsMinQueryRequest>) {
     super(obj);
+
   }
 }
 

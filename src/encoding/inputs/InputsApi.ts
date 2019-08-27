@@ -23,7 +23,6 @@ import ZixiApi from './zixi/ZixiApi';
 import Input from '../../models/Input';
 import PaginationResponse from '../../models/PaginationResponse';
 import {InputListQueryParams, InputListQueryParamsBuilder} from './InputListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * InputsApi - object-oriented interface
@@ -91,11 +90,7 @@ export default class InputsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Input>>('/encoding/inputs', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Input>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Input)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Input>(response, Input);;
     });
   }
 }

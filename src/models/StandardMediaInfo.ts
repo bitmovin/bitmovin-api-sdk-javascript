@@ -11,11 +11,12 @@ export class StandardMediaInfo extends SegmentsMediaInfo {
    * @type {string}
    * @memberof StandardMediaInfo
    */
-  public uri: string;
+  public uri?: string;
 
   constructor(obj: Partial<StandardMediaInfo>) {
     super(obj);
-    this.uri = map(obj.uri);
+
+    this.uri = obj.uri;
   }
 }
 

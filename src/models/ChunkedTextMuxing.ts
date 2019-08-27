@@ -11,11 +11,18 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class ChunkedTextMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof ChunkedTextMuxing
+   */
+  public type: 'CHUNKED_TEXT' = 'CHUNKED_TEXT';
+
+  /**
    * Length of the segments in seconds (required)
    * @type {number}
    * @memberof ChunkedTextMuxing
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   /**
    * Segment naming template
@@ -40,10 +47,11 @@ export class ChunkedTextMuxing extends Muxing {
 
   constructor(obj: Partial<ChunkedTextMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
+
+    this.segmentLength = obj.segmentLength;
+    this.segmentNaming = obj.segmentNaming;
+    this.segmentNamingTemplate = obj.segmentNamingTemplate;
+    this.segmentsMuxed = obj.segmentsMuxed;
   }
 }
 

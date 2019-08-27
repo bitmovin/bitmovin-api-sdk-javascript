@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsAvgQueryRequest from '../../../models/AnalyticsAvgQueryRequest';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AvgApi - object-oriented interface

@@ -10,18 +10,19 @@ export class AnalyticsExportTaskOutputTarget {
    * @type {string}
    * @memberof AnalyticsExportTaskOutputTarget
    */
-  public outputPath: string;
+  public outputPath?: string;
 
   /**
    * Id of the output that should be used (required)
    * @type {string}
    * @memberof AnalyticsExportTaskOutputTarget
    */
-  public outputId: string;
+  public outputId?: string;
 
   constructor(obj: Partial<AnalyticsExportTaskOutputTarget>) {
-    this.outputPath = map(obj.outputPath);
-    this.outputId = map(obj.outputId);
+
+    this.outputPath = obj.outputPath;
+    this.outputId = obj.outputId;
   }
 }
 

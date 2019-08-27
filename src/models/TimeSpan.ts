@@ -10,18 +10,19 @@ export class TimeSpan {
    * @type {number}
    * @memberof TimeSpan
    */
-  public from: number;
+  public from?: number;
 
   /**
    * End offset of the time frame in milliseconds (required)
    * @type {number}
    * @memberof TimeSpan
    */
-  public to: number;
+  public to?: number;
 
   constructor(obj: Partial<TimeSpan>) {
-    this.from = map(obj.from);
-    this.to = map(obj.to);
+
+    this.from = obj.from;
+    this.to = obj.to;
   }
 }
 

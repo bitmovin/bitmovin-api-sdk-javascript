@@ -12,10 +12,11 @@ export class StreamDvbSubSubtitle extends BitmovinResource {
    * @type {StreamInput}
    * @memberof StreamDvbSubSubtitle
    */
-  public inputStream: StreamInput;
+  public inputStream?: StreamInput;
 
   constructor(obj: Partial<StreamDvbSubSubtitle>) {
     super(obj);
+
     this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
   }
 }

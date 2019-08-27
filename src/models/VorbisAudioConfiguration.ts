@@ -8,6 +8,13 @@ import VorbisChannelLayout from './VorbisChannelLayout';
  */
 export class VorbisAudioConfiguration extends AudioConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof VorbisAudioConfiguration
+   */
+  public type: 'VORBIS' = 'VORBIS';
+
+  /**
    * Channel layout of the audio codec configuration
    * @type {VorbisChannelLayout}
    * @memberof VorbisAudioConfiguration
@@ -16,7 +23,8 @@ export class VorbisAudioConfiguration extends AudioConfiguration {
 
   constructor(obj: Partial<VorbisAudioConfiguration>) {
     super(obj);
-    this.channelLayout = map(obj.channelLayout);
+
+    this.channelLayout = obj.channelLayout;
   }
 }
 

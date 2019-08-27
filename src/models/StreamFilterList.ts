@@ -11,10 +11,11 @@ export class StreamFilterList {
    * @type {StreamFilter[]}
    * @memberof StreamFilterList
    */
-  public filters: StreamFilter[];
+  public filters?: StreamFilter[];
 
   constructor(obj: Partial<StreamFilterList>) {
-    this.filters = map<StreamFilter>(obj.filters, StreamFilter);
+
+    this.filters = map<StreamFilter>(obj.filters, StreamFilter) || [];
   }
 }
 

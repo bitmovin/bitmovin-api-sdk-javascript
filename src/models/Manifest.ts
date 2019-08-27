@@ -19,12 +19,13 @@ export class Manifest extends BitmovinResource {
    * @type {EncodingOutput[]}
    * @memberof Manifest
    */
-  public outputs: EncodingOutput[];
+  public outputs?: EncodingOutput[];
 
   constructor(obj: Partial<Manifest>) {
     super(obj);
-    this.type = map(obj.type);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+
+    this.type = obj.type;
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
   }
 }
 

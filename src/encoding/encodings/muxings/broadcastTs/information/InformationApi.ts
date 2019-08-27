@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import BroadcastTsMuxingInformation from '../../../../../models/BroadcastTsMuxingInformation';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * InformationApi - object-oriented interface

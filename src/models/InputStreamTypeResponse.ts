@@ -14,7 +14,8 @@ export class InputStreamTypeResponse {
   public type?: InputStreamType;
 
   constructor(obj: Partial<InputStreamTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import EbuR128SinglePassFilter from '../../../models/EbuR128SinglePassFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {EbuR128SinglePassFilterListQueryParams, EbuR128SinglePassFilterListQueryParamsBuilder} from './EbuR128SinglePassFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * EbuR128SinglePassApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class EbuR128SinglePassApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EbuR128SinglePassFilter>>('/encoding/filters/ebu-r128-single-pass', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EbuR128SinglePassFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EbuR128SinglePassFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EbuR128SinglePassFilter>(response, EbuR128SinglePassFilter);;
     });
   }
 }

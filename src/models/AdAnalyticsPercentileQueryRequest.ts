@@ -1,15 +1,15 @@
 import {map} from '../common/Mapper';
-import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
-import AnalyticsAttribute from './AnalyticsAttribute';
+import AdAnalyticsAbstractFilter from './AdAnalyticsAbstractFilter';
+import AdAnalyticsAttribute from './AdAnalyticsAttribute';
+import AdAnalyticsOrderByEntry from './AdAnalyticsOrderByEntry';
+import AdAnalyticsQueryRequest from './AdAnalyticsQueryRequest';
 import AnalyticsInterval from './AnalyticsInterval';
-import AnalyticsOrderByEntry from './AnalyticsOrderByEntry';
-import AnalyticsQueryRequest from './AnalyticsQueryRequest';
 
 /**
  * @export
  * @class AdAnalyticsPercentileQueryRequest
  */
-export class AdAnalyticsPercentileQueryRequest extends AnalyticsQueryRequest {
+export class AdAnalyticsPercentileQueryRequest extends AdAnalyticsQueryRequest {
   /**
    * The percentage (0-99) used for percentile queries.
    * @type {number}
@@ -19,7 +19,8 @@ export class AdAnalyticsPercentileQueryRequest extends AnalyticsQueryRequest {
 
   constructor(obj: Partial<AdAnalyticsPercentileQueryRequest>) {
     super(obj);
-    this.percentile = map(obj.percentile);
+
+    this.percentile = obj.percentile;
   }
 }
 

@@ -20,8 +20,9 @@ export class Scheduling {
   public prewarmedInstancePoolIds?: string[];
 
   constructor(obj: Partial<Scheduling>) {
-    this.priority = map(obj.priority);
-    this.prewarmedInstancePoolIds = map(obj.prewarmedInstancePoolIds);
+
+    this.priority = obj.priority;
+    this.prewarmedInstancePoolIds = obj.prewarmedInstancePoolIds || [];
   }
 }
 

@@ -14,14 +14,14 @@ export class SidecarFile extends BitmovinResource {
    * @type {string}
    * @memberof SidecarFile
    */
-  public inputId: string;
+  public inputId?: string;
 
   /**
    * Path to sidecar file (required)
    * @type {string}
    * @memberof SidecarFile
    */
-  public inputPath: string;
+  public inputPath?: string;
 
   /**
    * @type {EncodingOutput[]}
@@ -37,10 +37,11 @@ export class SidecarFile extends BitmovinResource {
 
   constructor(obj: Partial<SidecarFile>) {
     super(obj);
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.errorMode = map(obj.errorMode);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.errorMode = obj.errorMode;
   }
 }
 

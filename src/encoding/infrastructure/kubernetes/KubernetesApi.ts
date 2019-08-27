@@ -9,7 +9,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import KubernetesCluster from '../../../models/KubernetesCluster';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {KubernetesClusterListQueryParams, KubernetesClusterListQueryParamsBuilder} from './KubernetesClusterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * KubernetesApi - object-oriented interface
@@ -89,11 +88,7 @@ export default class KubernetesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<KubernetesCluster>>('/encoding/infrastructure/kubernetes', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<KubernetesCluster>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new KubernetesCluster(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<KubernetesCluster>(response, KubernetesCluster);;
     });
   }
 }

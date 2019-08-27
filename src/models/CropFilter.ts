@@ -8,6 +8,13 @@ import PositionUnit from './PositionUnit';
  */
 export class CropFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof CropFilter
+   */
+  public type: 'CROP' = 'CROP';
+
+  /**
    * Amount of pixels which will be cropped of the input video from the left side.
    * @type {number}
    * @memberof CropFilter
@@ -43,11 +50,12 @@ export class CropFilter extends Filter {
 
   constructor(obj: Partial<CropFilter>) {
     super(obj);
-    this.left = map(obj.left);
-    this.right = map(obj.right);
-    this.top = map(obj.top);
-    this.bottom = map(obj.bottom);
-    this.unit = map(obj.unit);
+
+    this.left = obj.left;
+    this.right = obj.right;
+    this.top = obj.top;
+    this.bottom = obj.bottom;
+    this.unit = obj.unit;
   }
 }
 

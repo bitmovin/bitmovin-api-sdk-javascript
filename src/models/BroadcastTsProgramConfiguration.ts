@@ -27,9 +27,10 @@ export class BroadcastTsProgramConfiguration {
   public insertProgramClockRefOnPes?: boolean;
 
   constructor(obj: Partial<BroadcastTsProgramConfiguration>) {
-    this.programNumber = map(obj.programNumber);
-    this.pidForPMT = map(obj.pidForPMT);
-    this.insertProgramClockRefOnPes = map(obj.insertProgramClockRefOnPes);
+
+    this.programNumber = obj.programNumber;
+    this.pidForPMT = obj.pidForPMT;
+    this.insertProgramClockRefOnPes = obj.insertProgramClockRefOnPes;
   }
 }
 

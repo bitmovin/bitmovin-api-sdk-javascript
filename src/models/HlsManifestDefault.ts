@@ -15,7 +15,7 @@ export class HlsManifestDefault extends HlsManifest {
    * @type {string}
    * @memberof HlsManifestDefault
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * The version of the default manifest generator
@@ -26,8 +26,9 @@ export class HlsManifestDefault extends HlsManifest {
 
   constructor(obj: Partial<HlsManifestDefault>) {
     super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.version = map(obj.version);
+
+    this.encodingId = obj.encodingId;
+    this.version = obj.version;
   }
 }
 

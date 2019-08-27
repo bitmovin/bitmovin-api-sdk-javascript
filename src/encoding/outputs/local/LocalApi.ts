@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import LocalOutput from '../../../models/LocalOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {LocalOutputListQueryParams, LocalOutputListQueryParamsBuilder} from './LocalOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * LocalApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class LocalApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LocalOutput>>('/encoding/outputs/local', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<LocalOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new LocalOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<LocalOutput>(response, LocalOutput);;
     });
   }
 }

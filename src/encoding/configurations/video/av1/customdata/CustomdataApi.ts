@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import CustomData from '../../../../../models/CustomData';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * CustomdataApi - object-oriented interface

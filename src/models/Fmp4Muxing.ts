@@ -11,11 +11,18 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class Fmp4Muxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof Fmp4Muxing
+   */
+  public type: 'FMP4' = 'FMP4';
+
+  /**
    * Length of the fragments in seconds (required)
    * @type {number}
    * @memberof Fmp4Muxing
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   /**
    * Segment naming policy
@@ -61,13 +68,14 @@ export class Fmp4Muxing extends Muxing {
 
   constructor(obj: Partial<Fmp4Muxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.segmentNaming = map(obj.segmentNaming);
-    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
-    this.initSegmentName = map(obj.initSegmentName);
-    this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
-    this.writeDurationPerSample = map(obj.writeDurationPerSample);
-    this.segmentsMuxed = map(obj.segmentsMuxed);
+
+    this.segmentLength = obj.segmentLength;
+    this.segmentNaming = obj.segmentNaming;
+    this.segmentNamingTemplate = obj.segmentNamingTemplate;
+    this.initSegmentName = obj.initSegmentName;
+    this.initSegmentNameTemplate = obj.initSegmentNameTemplate;
+    this.writeDurationPerSample = obj.writeDurationPerSample;
+    this.segmentsMuxed = obj.segmentsMuxed;
   }
 }
 

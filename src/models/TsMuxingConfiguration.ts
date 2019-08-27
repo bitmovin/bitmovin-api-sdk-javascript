@@ -41,11 +41,12 @@ export class TsMuxingConfiguration {
   public audioStreams?: TsAudioStreamConfiguration[];
 
   constructor(obj: Partial<TsMuxingConfiguration>) {
-    this.programNumber = map(obj.programNumber);
+
+    this.programNumber = obj.programNumber;
     this.pmt = map<TsProgramMapTableConfiguration>(obj.pmt, TsProgramMapTableConfiguration);
     this.pcr = map<TsProgramClockReferenceConfiguration>(obj.pcr, TsProgramClockReferenceConfiguration);
-    this.videoStreams = map<TsVideoStreamConfiguration>(obj.videoStreams, TsVideoStreamConfiguration);
-    this.audioStreams = map<TsAudioStreamConfiguration>(obj.audioStreams, TsAudioStreamConfiguration);
+    this.videoStreams = map<TsVideoStreamConfiguration>(obj.videoStreams, TsVideoStreamConfiguration) || [];
+    this.audioStreams = map<TsAudioStreamConfiguration>(obj.audioStreams, TsAudioStreamConfiguration) || [];
   }
 }
 

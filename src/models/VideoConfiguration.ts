@@ -72,15 +72,16 @@ export class VideoConfiguration extends CodecConfiguration {
 
   constructor(obj: Partial<VideoConfiguration>) {
     super(obj);
-    this.width = map(obj.width);
-    this.height = map(obj.height);
-    this.bitrate = map(obj.bitrate);
-    this.rate = map(obj.rate);
-    this.pixelFormat = map(obj.pixelFormat);
+
+    this.width = obj.width;
+    this.height = obj.height;
+    this.bitrate = obj.bitrate;
+    this.rate = obj.rate;
+    this.pixelFormat = obj.pixelFormat;
     this.colorConfig = map<ColorConfig>(obj.colorConfig, ColorConfig);
-    this.sampleAspectRatioNumerator = map(obj.sampleAspectRatioNumerator);
-    this.sampleAspectRatioDenominator = map(obj.sampleAspectRatioDenominator);
-    this.encodingMode = map(obj.encodingMode);
+    this.sampleAspectRatioNumerator = obj.sampleAspectRatioNumerator;
+    this.sampleAspectRatioDenominator = obj.sampleAspectRatioDenominator;
+    this.encodingMode = obj.encodingMode;
   }
 }
 

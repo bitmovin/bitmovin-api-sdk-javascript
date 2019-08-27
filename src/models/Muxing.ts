@@ -17,13 +17,27 @@ import TextMuxing from './TextMuxing';
 import TsMuxing from './TsMuxing';
 import WebmMuxing from './WebmMuxing';
 
+export type MuxingUnion =
+  Fmp4Muxing |
+  CmafMuxing |
+  Mp4Muxing |
+  TsMuxing |
+  WebmMuxing |
+  Mp3Muxing |
+  ProgressiveWebmMuxing |
+  ProgressiveMovMuxing |
+  ProgressiveTsMuxing |
+  BroadcastTsMuxing |
+  ChunkedTextMuxing |
+  TextMuxing;
+
 /**
  * @export
  * @class Muxing
  */
 export class Muxing extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'FMP4': 'Fmp4Muxing',
     'CMAF': 'CmafMuxing',
     'MP4': 'Mp4Muxing',
@@ -42,7 +56,7 @@ export class Muxing extends BitmovinResource {
    * @type {MuxingStream[]}
    * @memberof Muxing
    */
-  public streams: MuxingStream[];
+  public streams?: MuxingStream[];
 
   /**
    * @type {EncodingOutput[]}
@@ -87,13 +101,14 @@ export class Muxing extends BitmovinResource {
 
   constructor(obj: Partial<Muxing>) {
     super(obj);
-    this.streams = map<MuxingStream>(obj.streams, MuxingStream);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.avgBitrate = map(obj.avgBitrate);
-    this.minBitrate = map(obj.minBitrate);
-    this.maxBitrate = map(obj.maxBitrate);
-    this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring);
-    this.streamConditionsMode = map(obj.streamConditionsMode);
+
+    this.streams = map<MuxingStream>(obj.streams, MuxingStream) || [];
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.avgBitrate = obj.avgBitrate;
+    this.minBitrate = obj.minBitrate;
+    this.maxBitrate = obj.maxBitrate;
+    this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring) || [];
+    this.streamConditionsMode = obj.streamConditionsMode;
   }
 }
 

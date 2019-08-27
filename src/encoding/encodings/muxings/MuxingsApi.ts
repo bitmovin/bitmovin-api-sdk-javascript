@@ -17,7 +17,6 @@ import Muxing from '../../../models/Muxing';
 import StreamMode from '../../../models/StreamMode';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {MuxingListQueryParams, MuxingListQueryParamsBuilder} from './MuxingListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * MuxingsApi - object-oriented interface
@@ -75,11 +74,7 @@ export default class MuxingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Muxing>>('/encoding/encodings/{encoding_id}/muxings', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Muxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Muxing)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Muxing>(response, Muxing);;
     });
   }
 }

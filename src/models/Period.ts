@@ -22,8 +22,9 @@ export class Period extends BitmovinResponse {
 
   constructor(obj: Partial<Period>) {
     super(obj);
-    this.start = map(obj.start);
-    this.duration = map(obj.duration);
+
+    this.start = obj.start;
+    this.duration = obj.duration;
   }
 }
 

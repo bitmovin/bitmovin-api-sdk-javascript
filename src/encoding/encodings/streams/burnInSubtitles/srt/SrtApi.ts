@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import BurnInSubtitleSrt from '../../../../../models/BurnInSubtitleSrt';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {BurnInSubtitleSrtListQueryParams, BurnInSubtitleSrtListQueryParamsBuilder} from './BurnInSubtitleSrtListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * SrtApi - object-oriented interface
@@ -94,11 +93,7 @@ export default class SrtApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<BurnInSubtitleSrt>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<BurnInSubtitleSrt>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new BurnInSubtitleSrt(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<BurnInSubtitleSrt>(response, BurnInSubtitleSrt);;
     });
   }
 }

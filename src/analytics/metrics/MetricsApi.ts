@@ -3,7 +3,6 @@ import Configuration from '../../common/Configuration';
 import MaxConcurrentviewersApi from './maxConcurrentviewers/MaxConcurrentviewersApi';
 import AvgConcurrentviewersApi from './avgConcurrentviewers/AvgConcurrentviewersApi';
 import AvgDroppedFramesApi from './avgDroppedFrames/AvgDroppedFramesApi';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * MetricsApi - object-oriented interface

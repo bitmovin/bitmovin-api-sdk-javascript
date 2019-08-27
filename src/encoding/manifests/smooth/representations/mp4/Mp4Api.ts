@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import SmoothStreamingRepresentation from '../../../../../models/SmoothStreamingRepresentation';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {SmoothStreamingRepresentationListQueryParams, SmoothStreamingRepresentationListQueryParamsBuilder} from './SmoothStreamingRepresentationListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * Mp4Api - object-oriented interface
@@ -86,11 +85,7 @@ export default class Mp4Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothStreamingRepresentation>>('/encoding/manifests/smooth/{manifest_id}/representations/mp4', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SmoothStreamingRepresentation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SmoothStreamingRepresentation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SmoothStreamingRepresentation>(response, SmoothStreamingRepresentation);;
     });
   }
 }

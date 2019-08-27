@@ -6,7 +6,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3Muxing from '../../../../models/Mp3Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Mp3MuxingListQueryParams, Mp3MuxingListQueryParamsBuilder} from './Mp3MuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Mp3Api - object-oriented interface
@@ -92,11 +91,7 @@ export default class Mp3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Mp3Muxing>>('/encoding/encodings/{encoding_id}/muxings/mp3', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Mp3Muxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Mp3Muxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Mp3Muxing>(response, Mp3Muxing);;
     });
   }
 }

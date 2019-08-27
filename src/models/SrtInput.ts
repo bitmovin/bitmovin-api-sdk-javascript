@@ -9,11 +9,18 @@ import SrtMode from './SrtMode';
  */
 export class SrtInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof SrtInput
+   */
+  public type: 'SRT' = 'SRT';
+
+  /**
    * The SRT mode to use (required)
    * @type {SrtMode}
    * @memberof SrtInput
    */
-  public mode: SrtMode;
+  public mode?: SrtMode;
 
   /**
    * The name or IP of the host providing the SRT stream (only used in CALLER mode)
@@ -27,7 +34,7 @@ export class SrtInput extends Input {
    * @type {number}
    * @memberof SrtInput
    */
-  public port: number;
+  public port?: number;
 
   /**
    * The path parameter of the SRT stream
@@ -65,13 +72,14 @@ export class SrtInput extends Input {
 
   constructor(obj: Partial<SrtInput>) {
     super(obj);
-    this.mode = map(obj.mode);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.path = map(obj.path);
-    this.latency = map(obj.latency);
-    this.passphrase = map(obj.passphrase);
-    this.keyLength = map(obj.keyLength);
+
+    this.mode = obj.mode;
+    this.host = obj.host;
+    this.port = obj.port;
+    this.path = obj.path;
+    this.latency = obj.latency;
+    this.passphrase = obj.passphrase;
+    this.keyLength = obj.keyLength;
     this.backupSrtInputs = map<BackupSrtInputs>(obj.backupSrtInputs, BackupSrtInputs);
   }
 }

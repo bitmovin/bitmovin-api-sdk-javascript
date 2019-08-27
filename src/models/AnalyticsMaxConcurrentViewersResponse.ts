@@ -26,9 +26,10 @@ export class AnalyticsMaxConcurrentViewersResponse {
   public columnLabels?: AnalyticsColumnLabel[];
 
   constructor(obj: Partial<AnalyticsMaxConcurrentViewersResponse>) {
-    this.rows = map(obj.rows);
-    this.rowCount = map(obj.rowCount);
-    this.columnLabels = map<AnalyticsColumnLabel>(obj.columnLabels, AnalyticsColumnLabel);
+
+    this.rows = obj.rows || [];
+    this.rowCount = obj.rowCount;
+    this.columnLabels = map<AnalyticsColumnLabel>(obj.columnLabels, AnalyticsColumnLabel) || [];
   }
 }
 

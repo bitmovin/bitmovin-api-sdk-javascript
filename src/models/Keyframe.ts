@@ -11,7 +11,7 @@ export class Keyframe extends BitmovinResource {
    * @type {number}
    * @memberof Keyframe
    */
-  public time: number;
+  public time?: number;
 
   /**
    * Instructs the encoder to cut the segment at this position
@@ -22,8 +22,9 @@ export class Keyframe extends BitmovinResource {
 
   constructor(obj: Partial<Keyframe>) {
     super(obj);
-    this.time = map(obj.time);
-    this.segmentCut = map(obj.segmentCut);
+
+    this.time = obj.time;
+    this.segmentCut = obj.segmentCut;
   }
 }
 

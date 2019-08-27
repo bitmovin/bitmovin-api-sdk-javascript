@@ -3,7 +3,6 @@ import Configuration from '../../../../common/Configuration';
 import AdAnalyticsCountQueryRequest from '../../../../models/AdAnalyticsCountQueryRequest';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * CountApi - object-oriented interface

@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import KubernetesClusterConfiguration from '../../../../models/KubernetesClusterConfiguration';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ConfigurationApi - object-oriented interface

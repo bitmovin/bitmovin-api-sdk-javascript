@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import QueriesApi from './queries/QueriesApi';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * AdsApi - object-oriented interface

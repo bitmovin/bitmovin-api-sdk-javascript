@@ -19,13 +19,34 @@ import UdpInput from './UdpInput';
 import UdpMulticastInput from './UdpMulticastInput';
 import ZixiInput from './ZixiInput';
 
+export type InputUnion =
+  AkamaiNetStorageInput |
+  AsperaInput |
+  AzureInput |
+  RedundantRtmpInput |
+  FtpInput |
+  GenericS3Input |
+  GcsInput |
+  HttpInput |
+  HttpsInput |
+  LocalInput |
+  RtmpInput |
+  S3Input |
+  S3RoleBasedInput |
+  SftpInput |
+  TcpInput |
+  UdpInput |
+  UdpMulticastInput |
+  ZixiInput |
+  SrtInput;
+
 /**
  * @export
  * @class Input
  */
 export class Input extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'AKAMAI_NETSTORAGE': 'AkamaiNetStorageInput',
     'ASPERA': 'AsperaInput',
     'AZURE': 'AzureInput',
@@ -49,6 +70,7 @@ export class Input extends BitmovinResource {
 
   constructor(obj: Partial<Input>) {
     super(obj);
+
   }
 }
 

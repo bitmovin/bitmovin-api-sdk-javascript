@@ -13,13 +13,28 @@ import TextFilter from './TextFilter';
 import UnsharpFilter from './UnsharpFilter';
 import WatermarkFilter from './WatermarkFilter';
 
+export type FilterUnion =
+  CropFilter |
+  WatermarkFilter |
+  EnhancedWatermarkFilter |
+  RotateFilter |
+  DeinterlaceFilter |
+  AudioMixFilter |
+  DenoiseHqdn3dFilter |
+  TextFilter |
+  UnsharpFilter |
+  ScaleFilter |
+  InterlaceFilter |
+  AudioVolumeFilter |
+  EbuR128SinglePassFilter;
+
 /**
  * @export
  * @class Filter
  */
 export class Filter extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'CROP': 'CropFilter',
     'WATERMARK': 'WatermarkFilter',
     'ENHANCED_WATERMARK': 'EnhancedWatermarkFilter',
@@ -37,6 +52,7 @@ export class Filter extends BitmovinResource {
 
   constructor(obj: Partial<Filter>) {
     super(obj);
+
   }
 }
 

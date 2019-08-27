@@ -6,7 +6,6 @@ import ThirdPartyLicensingApi from './thirdPartyLicensing/ThirdPartyLicensingApi
 import PlayerLicense from '../../models/PlayerLicense';
 import PaginationResponse from '../../models/PaginationResponse';
 import {PlayerLicenseListQueryParams, PlayerLicenseListQueryParamsBuilder} from './PlayerLicenseListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * LicensesApi - object-oriented interface
@@ -67,11 +66,7 @@ export default class LicensesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PlayerLicense>>('/player/licenses', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<PlayerLicense>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PlayerLicense(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PlayerLicense>(response, PlayerLicense);;
     });
   }
 }

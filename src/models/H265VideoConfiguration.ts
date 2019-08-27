@@ -29,6 +29,13 @@ import VideoFormat from './VideoFormat';
  */
 export class H265VideoConfiguration extends VideoConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof H265VideoConfiguration
+   */
+  public type: 'H265' = 'H265';
+
+  /**
    * Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
    * @type {PresetConfiguration}
    * @memberof H265VideoConfiguration
@@ -46,7 +53,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
    * @type {ProfileH265}
    * @memberof H265VideoConfiguration
    */
-  public profile: ProfileH265;
+  public profile?: ProfileH265;
 
   /**
    * Sets the amount of b frames
@@ -682,100 +689,101 @@ export class H265VideoConfiguration extends VideoConfiguration {
 
   constructor(obj: Partial<H265VideoConfiguration>) {
     super(obj);
-    this.presetConfiguration = map(obj.presetConfiguration);
-    this.crf = map(obj.crf);
-    this.profile = map(obj.profile);
-    this.bframes = map(obj.bframes);
-    this.refFrames = map(obj.refFrames);
-    this.qp = map(obj.qp);
-    this.maxBitrate = map(obj.maxBitrate);
-    this.minBitrate = map(obj.minBitrate);
-    this.bufsize = map(obj.bufsize);
-    this.minGop = map(obj.minGop);
-    this.maxGop = map(obj.maxGop);
-    this.openGop = map(obj.openGop);
-    this.minKeyframeInterval = map(obj.minKeyframeInterval);
-    this.maxKeyframeInterval = map(obj.maxKeyframeInterval);
-    this.level = map(obj.level);
-    this.rcLookahead = map(obj.rcLookahead);
-    this.bAdapt = map(obj.bAdapt);
-    this.maxCTUSize = map(obj.maxCTUSize);
-    this.tuIntraDepth = map(obj.tuIntraDepth);
-    this.tuInterDepth = map(obj.tuInterDepth);
-    this.motionSearch = map(obj.motionSearch);
-    this.subMe = map(obj.subMe);
-    this.motionSearchRange = map(obj.motionSearchRange);
-    this.weightPredictionOnPSlice = map(obj.weightPredictionOnPSlice);
-    this.weightPredictionOnBSlice = map(obj.weightPredictionOnBSlice);
-    this.sao = map(obj.sao);
-    this.masterDisplay = map(obj.masterDisplay);
-    this.maxContentLightLevel = map(obj.maxContentLightLevel);
-    this.maxPictureAverageLightLevel = map(obj.maxPictureAverageLightLevel);
-    this.hdr = map(obj.hdr);
-    this.sceneCutThreshold = map(obj.sceneCutThreshold);
-    this.adaptiveQuantizationMode = map(obj.adaptiveQuantizationMode);
-    this.enableHlgSignaling = map(obj.enableHlgSignaling);
-    this.videoFormat = map(obj.videoFormat);
-    this.psyRateDistortionOptimization = map(obj.psyRateDistortionOptimization);
-    this.psyRateDistortionOptimizedQuantization = map(obj.psyRateDistortionOptimizedQuantization);
-    this.enableHrdSignaling = map(obj.enableHrdSignaling);
-    this.cutree = map(obj.cutree);
-    this.minCodingUnitSize = map(obj.minCodingUnitSize);
-    this.lookaheadSlices = map(obj.lookaheadSlices);
-    this.limitReferences = map(obj.limitReferences);
-    this.rectangularMotionPartitionsAnalysis = map(obj.rectangularMotionPartitionsAnalysis);
-    this.asymetricMotionPartitionsAnalysis = map(obj.asymetricMotionPartitionsAnalysis);
-    this.limitModes = map(obj.limitModes);
-    this.maxMerge = map(obj.maxMerge);
-    this.earlySkip = map(obj.earlySkip);
-    this.recursionSkip = map(obj.recursionSkip);
-    this.fastSearchForAngularIntraPredictions = map(obj.fastSearchForAngularIntraPredictions);
-    this.evaluationOfIntraModesInBSlices = map(obj.evaluationOfIntraModesInBSlices);
-    this.signHide = map(obj.signHide);
-    this.rateDistortionLevelForModeDecision = map(obj.rateDistortionLevelForModeDecision);
-    this.rateDistortionLevelForQuantization = map(obj.rateDistortionLevelForQuantization);
-    this.qpMin = map(obj.qpMin);
-    this.qpMax = map(obj.qpMax);
-    this.wavefrontParallelProcessing = map(obj.wavefrontParallelProcessing);
-    this.slices = map(obj.slices);
-    this.copyPicture = map(obj.copyPicture);
-    this.levelHighTier = map(obj.levelHighTier);
-    this.skipSplitRateDistortionAnalysis = map(obj.skipSplitRateDistortionAnalysis);
-    this.codingUnitLossless = map(obj.codingUnitLossless);
-    this.transformSkip = map(obj.transformSkip);
-    this.refineRateDistortionCost = map(obj.refineRateDistortionCost);
-    this.limitTransformUnitDepthRecursion = map(obj.limitTransformUnitDepthRecursion);
-    this.noiseReductionIntra = map(obj.noiseReductionIntra);
-    this.noiseReductionInter = map(obj.noiseReductionInter);
-    this.rateDistortionPenalty = map(obj.rateDistortionPenalty);
-    this.maximumTransformUnitSize = map(obj.maximumTransformUnitSize);
-    this.dynamicRateDistortionStrength = map(obj.dynamicRateDistortionStrength);
-    this.ssimRateDistortionOptimization = map(obj.ssimRateDistortionOptimization);
-    this.temporalMotionVectorPredictors = map(obj.temporalMotionVectorPredictors);
-    this.analyzeSourceFramePixels = map(obj.analyzeSourceFramePixels);
-    this.strongIntraSmoothing = map(obj.strongIntraSmoothing);
-    this.constrainedIntraPrediction = map(obj.constrainedIntraPrediction);
-    this.scenecutBias = map(obj.scenecutBias);
-    this.allowedRADLBeforeIDR = map(obj.allowedRADLBeforeIDR);
-    this.gopLookahead = map(obj.gopLookahead);
-    this.bframeBias = map(obj.bframeBias);
-    this.forceFlush = map(obj.forceFlush);
-    this.adaptiveQuantizationStrength = map(obj.adaptiveQuantizationStrength);
-    this.adaptiveQuantizationMotion = map(obj.adaptiveQuantizationMotion);
-    this.quantizationGroupSize = map(obj.quantizationGroupSize);
-    this.strictCbr = map(obj.strictCbr);
-    this.qpOffsetChromaCb = map(obj.qpOffsetChromaCb);
-    this.qpOffsetChromaCr = map(obj.qpOffsetChromaCr);
-    this.ipRatio = map(obj.ipRatio);
-    this.pbRatio = map(obj.pbRatio);
-    this.quantizerCurveCompressionFactor = map(obj.quantizerCurveCompressionFactor);
-    this.qpStep = map(obj.qpStep);
-    this.grainOptimizedRateControl = map(obj.grainOptimizedRateControl);
-    this.blurQuants = map(obj.blurQuants);
-    this.blurComplexity = map(obj.blurComplexity);
-    this.saoNonDeblock = map(obj.saoNonDeblock);
-    this.limitSao = map(obj.limitSao);
-    this.lowpassDct = map(obj.lowpassDct);
+
+    this.presetConfiguration = obj.presetConfiguration;
+    this.crf = obj.crf;
+    this.profile = obj.profile;
+    this.bframes = obj.bframes;
+    this.refFrames = obj.refFrames;
+    this.qp = obj.qp;
+    this.maxBitrate = obj.maxBitrate;
+    this.minBitrate = obj.minBitrate;
+    this.bufsize = obj.bufsize;
+    this.minGop = obj.minGop;
+    this.maxGop = obj.maxGop;
+    this.openGop = obj.openGop;
+    this.minKeyframeInterval = obj.minKeyframeInterval;
+    this.maxKeyframeInterval = obj.maxKeyframeInterval;
+    this.level = obj.level;
+    this.rcLookahead = obj.rcLookahead;
+    this.bAdapt = obj.bAdapt;
+    this.maxCTUSize = obj.maxCTUSize;
+    this.tuIntraDepth = obj.tuIntraDepth;
+    this.tuInterDepth = obj.tuInterDepth;
+    this.motionSearch = obj.motionSearch;
+    this.subMe = obj.subMe;
+    this.motionSearchRange = obj.motionSearchRange;
+    this.weightPredictionOnPSlice = obj.weightPredictionOnPSlice;
+    this.weightPredictionOnBSlice = obj.weightPredictionOnBSlice;
+    this.sao = obj.sao;
+    this.masterDisplay = obj.masterDisplay;
+    this.maxContentLightLevel = obj.maxContentLightLevel;
+    this.maxPictureAverageLightLevel = obj.maxPictureAverageLightLevel;
+    this.hdr = obj.hdr;
+    this.sceneCutThreshold = obj.sceneCutThreshold;
+    this.adaptiveQuantizationMode = obj.adaptiveQuantizationMode;
+    this.enableHlgSignaling = obj.enableHlgSignaling;
+    this.videoFormat = obj.videoFormat;
+    this.psyRateDistortionOptimization = obj.psyRateDistortionOptimization;
+    this.psyRateDistortionOptimizedQuantization = obj.psyRateDistortionOptimizedQuantization;
+    this.enableHrdSignaling = obj.enableHrdSignaling;
+    this.cutree = obj.cutree;
+    this.minCodingUnitSize = obj.minCodingUnitSize;
+    this.lookaheadSlices = obj.lookaheadSlices;
+    this.limitReferences = obj.limitReferences;
+    this.rectangularMotionPartitionsAnalysis = obj.rectangularMotionPartitionsAnalysis;
+    this.asymetricMotionPartitionsAnalysis = obj.asymetricMotionPartitionsAnalysis;
+    this.limitModes = obj.limitModes;
+    this.maxMerge = obj.maxMerge;
+    this.earlySkip = obj.earlySkip;
+    this.recursionSkip = obj.recursionSkip;
+    this.fastSearchForAngularIntraPredictions = obj.fastSearchForAngularIntraPredictions;
+    this.evaluationOfIntraModesInBSlices = obj.evaluationOfIntraModesInBSlices;
+    this.signHide = obj.signHide;
+    this.rateDistortionLevelForModeDecision = obj.rateDistortionLevelForModeDecision;
+    this.rateDistortionLevelForQuantization = obj.rateDistortionLevelForQuantization;
+    this.qpMin = obj.qpMin;
+    this.qpMax = obj.qpMax;
+    this.wavefrontParallelProcessing = obj.wavefrontParallelProcessing;
+    this.slices = obj.slices;
+    this.copyPicture = obj.copyPicture;
+    this.levelHighTier = obj.levelHighTier;
+    this.skipSplitRateDistortionAnalysis = obj.skipSplitRateDistortionAnalysis;
+    this.codingUnitLossless = obj.codingUnitLossless;
+    this.transformSkip = obj.transformSkip;
+    this.refineRateDistortionCost = obj.refineRateDistortionCost;
+    this.limitTransformUnitDepthRecursion = obj.limitTransformUnitDepthRecursion;
+    this.noiseReductionIntra = obj.noiseReductionIntra;
+    this.noiseReductionInter = obj.noiseReductionInter;
+    this.rateDistortionPenalty = obj.rateDistortionPenalty;
+    this.maximumTransformUnitSize = obj.maximumTransformUnitSize;
+    this.dynamicRateDistortionStrength = obj.dynamicRateDistortionStrength;
+    this.ssimRateDistortionOptimization = obj.ssimRateDistortionOptimization;
+    this.temporalMotionVectorPredictors = obj.temporalMotionVectorPredictors;
+    this.analyzeSourceFramePixels = obj.analyzeSourceFramePixels;
+    this.strongIntraSmoothing = obj.strongIntraSmoothing;
+    this.constrainedIntraPrediction = obj.constrainedIntraPrediction;
+    this.scenecutBias = obj.scenecutBias;
+    this.allowedRADLBeforeIDR = obj.allowedRADLBeforeIDR;
+    this.gopLookahead = obj.gopLookahead;
+    this.bframeBias = obj.bframeBias;
+    this.forceFlush = obj.forceFlush;
+    this.adaptiveQuantizationStrength = obj.adaptiveQuantizationStrength;
+    this.adaptiveQuantizationMotion = obj.adaptiveQuantizationMotion;
+    this.quantizationGroupSize = obj.quantizationGroupSize;
+    this.strictCbr = obj.strictCbr;
+    this.qpOffsetChromaCb = obj.qpOffsetChromaCb;
+    this.qpOffsetChromaCr = obj.qpOffsetChromaCr;
+    this.ipRatio = obj.ipRatio;
+    this.pbRatio = obj.pbRatio;
+    this.quantizerCurveCompressionFactor = obj.quantizerCurveCompressionFactor;
+    this.qpStep = obj.qpStep;
+    this.grainOptimizedRateControl = obj.grainOptimizedRateControl;
+    this.blurQuants = obj.blurQuants;
+    this.blurComplexity = obj.blurComplexity;
+    this.saoNonDeblock = obj.saoNonDeblock;
+    this.limitSao = obj.limitSao;
+    this.lowpassDct = obj.lowpassDct;
   }
 }
 

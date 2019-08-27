@@ -12,6 +12,13 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class ProgressiveTsMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof ProgressiveTsMuxing
+   */
+  public type: 'PROGRESSIVE_TS' = 'PROGRESSIVE_TS';
+
+  /**
    * Length of the segments in seconds
    * @type {number}
    * @memberof ProgressiveTsMuxing
@@ -41,9 +48,10 @@ export class ProgressiveTsMuxing extends Muxing {
 
   constructor(obj: Partial<ProgressiveTsMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.filename = map(obj.filename);
-    this.startOffset = map(obj.startOffset);
+
+    this.segmentLength = obj.segmentLength;
+    this.filename = obj.filename;
+    this.startOffset = obj.startOffset;
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }
 }

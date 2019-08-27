@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import PlayerLicenseAnalytics from '../../../models/PlayerLicenseAnalytics';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AnalyticsApi - object-oriented interface

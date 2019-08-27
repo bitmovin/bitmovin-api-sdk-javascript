@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PrimeTimeDrm from '../../../../../../models/PrimeTimeDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {PrimeTimeDrmListQueryParams, PrimeTimeDrmListQueryParamsBuilder} from './PrimeTimeDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * PrimetimeApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class PrimetimeApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PrimeTimeDrm>>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/primetime', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<PrimeTimeDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PrimeTimeDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PrimeTimeDrm>(response, PrimeTimeDrm);;
     });
   }
 }

@@ -9,6 +9,7 @@ import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
 export class Mp4MuxingInformation extends ProgressiveMuxingInformation {
   constructor(obj: Partial<Mp4MuxingInformation>) {
     super(obj);
+
   }
 }
 

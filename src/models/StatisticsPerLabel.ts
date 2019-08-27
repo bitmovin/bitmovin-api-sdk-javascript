@@ -13,7 +13,7 @@ export class StatisticsPerLabel extends Statistics {
    * @type {string}
    * @memberof StatisticsPerLabel
    */
-  public label: string;
+  public label?: string;
 
   /**
    * The billable minutes.
@@ -45,11 +45,12 @@ export class StatisticsPerLabel extends Statistics {
 
   constructor(obj: Partial<StatisticsPerLabel>) {
     super(obj);
-    this.label = map(obj.label);
-    this.billableMinutes = map(obj.billableMinutes);
-    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes);
-    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
-    this.billableFeatureMinutes = map<BillableEncodingFeatureMinutes>(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes);
+
+    this.label = obj.label;
+    this.billableMinutes = obj.billableMinutes;
+    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes) || [];
+    this.billableTransmuxingMinutes = obj.billableTransmuxingMinutes;
+    this.billableFeatureMinutes = map<BillableEncodingFeatureMinutes>(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes) || [];
   }
 }
 

@@ -3,7 +3,6 @@ import Configuration from '../../../../common/Configuration';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AdAnalyticsSumQueryRequest from '../../../../models/AdAnalyticsSumQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SumApi - object-oriented interface

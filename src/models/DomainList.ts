@@ -13,7 +13,8 @@ export class DomainList {
   public domains?: Domain[];
 
   constructor(obj: Partial<DomainList>) {
-    this.domains = map<Domain>(obj.domains, Domain);
+
+    this.domains = map<Domain>(obj.domains, Domain) || [];
   }
 }
 

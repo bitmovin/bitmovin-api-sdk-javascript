@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import GenericS3Output from '../../../models/GenericS3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {GenericS3OutputListQueryParams, GenericS3OutputListQueryParamsBuilder} from './GenericS3OutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * GenericS3Api - object-oriented interface
@@ -76,11 +75,7 @@ export default class GenericS3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GenericS3Output>>('/encoding/outputs/generic-s3', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<GenericS3Output>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new GenericS3Output(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<GenericS3Output>(response, GenericS3Output);;
     });
   }
 }

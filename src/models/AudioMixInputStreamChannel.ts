@@ -17,7 +17,7 @@ export class AudioMixInputStreamChannel {
    * @type {AudioMixChannelType}
    * @memberof AudioMixInputStreamChannel
    */
-  public outputChannelType: AudioMixChannelType;
+  public outputChannelType?: AudioMixChannelType;
 
   /**
    * Number of this output channel. If type is 'CHANNEL_NUMBER', this must be set.
@@ -27,9 +27,10 @@ export class AudioMixInputStreamChannel {
   public outputChannelNumber?: number;
 
   constructor(obj: Partial<AudioMixInputStreamChannel>) {
-    this.inputStreamId = map(obj.inputStreamId);
-    this.outputChannelType = map(obj.outputChannelType);
-    this.outputChannelNumber = map(obj.outputChannelNumber);
+
+    this.inputStreamId = obj.inputStreamId;
+    this.outputChannelType = obj.outputChannelType;
+    this.outputChannelNumber = obj.outputChannelNumber;
   }
 }
 

@@ -7,7 +7,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp4Muxing from '../../../../models/Mp4Muxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Mp4MuxingListQueryParams, Mp4MuxingListQueryParamsBuilder} from './Mp4MuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Mp4Api - object-oriented interface
@@ -95,11 +94,7 @@ export default class Mp4Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Mp4Muxing>>('/encoding/encodings/{encoding_id}/muxings/mp4', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Mp4Muxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Mp4Muxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Mp4Muxing>(response, Mp4Muxing);;
     });
   }
 }

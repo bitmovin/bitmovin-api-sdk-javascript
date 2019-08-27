@@ -13,7 +13,8 @@ export class BitmovinResponse {
   public id?: string;
 
   constructor(obj: Partial<BitmovinResponse>) {
-    this.id = map(obj.id);
+
+    this.id = obj.id;
   }
 }
 

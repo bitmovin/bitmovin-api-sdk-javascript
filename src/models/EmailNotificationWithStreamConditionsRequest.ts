@@ -17,7 +17,7 @@ export class EmailNotificationWithStreamConditionsRequest {
    * @type {string[]}
    * @memberof EmailNotificationWithStreamConditionsRequest
    */
-  public emails: string[];
+  public emails?: string[];
 
   /**
    * @type {boolean}
@@ -32,9 +32,10 @@ export class EmailNotificationWithStreamConditionsRequest {
   public conditions?: AbstractCondition;
 
   constructor(obj: Partial<EmailNotificationWithStreamConditionsRequest>) {
-    this.resolve = map(obj.resolve);
-    this.emails = map(obj.emails);
-    this.muted = map(obj.muted);
+
+    this.resolve = obj.resolve;
+    this.emails = obj.emails || [];
+    this.muted = obj.muted;
     this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
   }
 }

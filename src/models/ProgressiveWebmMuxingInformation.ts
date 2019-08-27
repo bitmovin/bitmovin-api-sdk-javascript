@@ -9,6 +9,7 @@ import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
 export class ProgressiveWebmMuxingInformation extends ProgressiveMuxingInformation {
   constructor(obj: Partial<ProgressiveWebmMuxingInformation>) {
     super(obj);
+
   }
 }
 

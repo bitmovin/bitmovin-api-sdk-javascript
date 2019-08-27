@@ -42,11 +42,12 @@ export class StreamInput {
   public inputStreamId?: string;
 
   constructor(obj: Partial<StreamInput>) {
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.selectionMode = map(obj.selectionMode);
-    this.position = map(obj.position);
-    this.inputStreamId = map(obj.inputStreamId);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
+    this.selectionMode = obj.selectionMode;
+    this.position = obj.position;
+    this.inputStreamId = obj.inputStreamId;
   }
 }
 

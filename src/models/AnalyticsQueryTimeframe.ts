@@ -20,8 +20,9 @@ export class AnalyticsQueryTimeframe {
   public end?: Date;
 
   constructor(obj: Partial<AnalyticsQueryTimeframe>) {
-    this.start = map(obj.start, Date);
-    this.end = map(obj.end, Date);
+
+    this.start = map<Date>(obj.start, Date);
+    this.end = map<Date>(obj.end, Date);
   }
 }
 

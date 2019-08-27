@@ -10,6 +10,13 @@ import PictureFieldParity from './PictureFieldParity';
  */
 export class DeinterlaceFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof DeinterlaceFilter
+   */
+  public type: 'DEINTERLACE' = 'DEINTERLACE';
+
+  /**
    * @type {PictureFieldParity}
    * @memberof DeinterlaceFilter
    */
@@ -29,9 +36,10 @@ export class DeinterlaceFilter extends Filter {
 
   constructor(obj: Partial<DeinterlaceFilter>) {
     super(obj);
-    this.parity = map(obj.parity);
-    this.mode = map(obj.mode);
-    this.frameSelectionMode = map(obj.frameSelectionMode);
+
+    this.parity = obj.parity;
+    this.mode = obj.mode;
+    this.frameSelectionMode = obj.frameSelectionMode;
   }
 }
 

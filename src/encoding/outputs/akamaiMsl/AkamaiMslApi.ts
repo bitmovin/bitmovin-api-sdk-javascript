@@ -5,7 +5,6 @@ import AkamaiMslOutput from '../../../models/AkamaiMslOutput';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {AkamaiMslOutputListQueryParams, AkamaiMslOutputListQueryParamsBuilder} from './AkamaiMslOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AkamaiMslApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class AkamaiMslApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AkamaiMslOutput>>('/encoding/outputs/akamai-msl', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AkamaiMslOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AkamaiMslOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AkamaiMslOutput>(response, AkamaiMslOutput);;
     });
   }
 }

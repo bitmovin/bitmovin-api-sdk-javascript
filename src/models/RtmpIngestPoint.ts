@@ -10,18 +10,19 @@ export class RtmpIngestPoint {
    * @type {string}
    * @memberof RtmpIngestPoint
    */
-  public applicationName: string;
+  public applicationName?: string;
 
   /**
    * The stream key for the backup input (required)
    * @type {string}
    * @memberof RtmpIngestPoint
    */
-  public streamKey: string;
+  public streamKey?: string;
 
   constructor(obj: Partial<RtmpIngestPoint>) {
-    this.applicationName = map(obj.applicationName);
-    this.streamKey = map(obj.streamKey);
+
+    this.applicationName = obj.applicationName;
+    this.streamKey = obj.streamKey;
   }
 }
 

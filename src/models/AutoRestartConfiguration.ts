@@ -48,12 +48,13 @@ export class AutoRestartConfiguration {
   public scheduleExpression?: string;
 
   constructor(obj: Partial<AutoRestartConfiguration>) {
-    this.segmentsWrittenTimeout = map(obj.segmentsWrittenTimeout);
-    this.bytesWrittenTimeout = map(obj.bytesWrittenTimeout);
-    this.framesWrittenTimeout = map(obj.framesWrittenTimeout);
-    this.hlsManifestsUpdateTimeout = map(obj.hlsManifestsUpdateTimeout);
-    this.dashManifestsUpdateTimeout = map(obj.dashManifestsUpdateTimeout);
-    this.scheduleExpression = map(obj.scheduleExpression);
+
+    this.segmentsWrittenTimeout = obj.segmentsWrittenTimeout;
+    this.bytesWrittenTimeout = obj.bytesWrittenTimeout;
+    this.framesWrittenTimeout = obj.framesWrittenTimeout;
+    this.hlsManifestsUpdateTimeout = obj.hlsManifestsUpdateTimeout;
+    this.dashManifestsUpdateTimeout = obj.dashManifestsUpdateTimeout;
+    this.scheduleExpression = obj.scheduleExpression;
   }
 }
 

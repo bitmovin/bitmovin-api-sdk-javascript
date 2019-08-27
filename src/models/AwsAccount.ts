@@ -11,27 +11,28 @@ export class AwsAccount extends BitmovinResource {
    * @type {string}
    * @memberof AwsAccount
    */
-  public accessKey: string;
+  public accessKey?: string;
 
   /**
    * Amazon secret key (required)
    * @type {string}
    * @memberof AwsAccount
    */
-  public secretKey: string;
+  public secretKey?: string;
 
   /**
    * Amazon account number (12 digits as per AWS spec) (required)
    * @type {string}
    * @memberof AwsAccount
    */
-  public accountNumber: string;
+  public accountNumber?: string;
 
   constructor(obj: Partial<AwsAccount>) {
     super(obj);
-    this.accessKey = map(obj.accessKey);
-    this.secretKey = map(obj.secretKey);
-    this.accountNumber = map(obj.accountNumber);
+
+    this.accessKey = obj.accessKey;
+    this.secretKey = obj.secretKey;
+    this.accountNumber = obj.accountNumber;
   }
 }
 

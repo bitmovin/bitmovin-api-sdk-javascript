@@ -11,7 +11,7 @@ export class AudioConfiguration extends CodecConfiguration {
    * @type {number}
    * @memberof AudioConfiguration
    */
-  public bitrate: number;
+  public bitrate?: number;
 
   /**
    * Audio sampling rate Hz
@@ -22,8 +22,9 @@ export class AudioConfiguration extends CodecConfiguration {
 
   constructor(obj: Partial<AudioConfiguration>) {
     super(obj);
-    this.bitrate = map(obj.bitrate);
-    this.rate = map(obj.rate);
+
+    this.bitrate = obj.bitrate;
+    this.rate = obj.rate;
   }
 }
 

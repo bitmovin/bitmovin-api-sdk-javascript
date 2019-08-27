@@ -11,11 +11,12 @@ export class CustomXmlElement extends BitmovinResponse {
    * @type {string}
    * @memberof CustomXmlElement
    */
-  public data: string;
+  public data?: string;
 
   constructor(obj: Partial<CustomXmlElement>) {
     super(obj);
-    this.data = map(obj.data);
+
+    this.data = obj.data;
   }
 }
 

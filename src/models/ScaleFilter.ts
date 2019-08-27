@@ -8,6 +8,13 @@ import ScalingAlgorithm from './ScalingAlgorithm';
  */
 export class ScaleFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof ScaleFilter
+   */
+  public type: 'SCALE' = 'SCALE';
+
+  /**
    * The width of the output frame in pixel. If not set: codec configuration width will be used.
    * @type {number}
    * @memberof ScaleFilter
@@ -43,11 +50,12 @@ export class ScaleFilter extends Filter {
 
   constructor(obj: Partial<ScaleFilter>) {
     super(obj);
-    this.width = map(obj.width);
-    this.height = map(obj.height);
-    this.scalingAlgorithm = map(obj.scalingAlgorithm);
-    this.sampleAspectRatioNumerator = map(obj.sampleAspectRatioNumerator);
-    this.sampleAspectRatioDenominator = map(obj.sampleAspectRatioDenominator);
+
+    this.width = obj.width;
+    this.height = obj.height;
+    this.scalingAlgorithm = obj.scalingAlgorithm;
+    this.sampleAspectRatioNumerator = obj.sampleAspectRatioNumerator;
+    this.sampleAspectRatioDenominator = obj.sampleAspectRatioDenominator;
   }
 }
 

@@ -18,6 +18,7 @@ export class WebVttSidecarFile extends SidecarFile {
 
   constructor(obj: Partial<WebVttSidecarFile>) {
     super(obj);
+
     this.segmentation = map<WebVttSidecarFileSegmentation>(obj.segmentation, WebVttSidecarFileSegmentation);
   }
 }

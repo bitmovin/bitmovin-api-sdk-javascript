@@ -40,28 +40,28 @@ export class StreamInfo extends BitmovinResource {
    * @type {string}
    * @memberof StreamInfo
    */
-  public closedCaptions: string;
+  public closedCaptions?: string;
 
   /**
    * Id of the encoding. (required)
    * @type {string}
    * @memberof StreamInfo
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * Id of the stream. (required)
    * @type {string}
    * @memberof StreamInfo
    */
-  public streamId: string;
+  public streamId?: string;
 
   /**
    * Id of the muxing. (required)
    * @type {string}
    * @memberof StreamInfo
    */
-  public muxingId: string;
+  public muxingId?: string;
 
   /**
    * Id of the DRM.
@@ -75,14 +75,14 @@ export class StreamInfo extends BitmovinResource {
    * @type {string}
    * @memberof StreamInfo
    */
-  public segmentPath: string;
+  public segmentPath?: string;
 
   /**
    * The URI of the playlist file. (required)
    * @type {string}
    * @memberof StreamInfo
    */
-  public uri: string;
+  public uri?: string;
 
   /**
    * Number of the first segment. Default is 0.
@@ -114,21 +114,22 @@ export class StreamInfo extends BitmovinResource {
 
   constructor(obj: Partial<StreamInfo>) {
     super(obj);
-    this.audio = map(obj.audio);
+
+    this.audio = obj.audio;
     this.audioGroups = map<AudioGroupConfiguration>(obj.audioGroups, AudioGroupConfiguration);
-    this.video = map(obj.video);
-    this.subtitles = map(obj.subtitles);
-    this.closedCaptions = map(obj.closedCaptions);
-    this.encodingId = map(obj.encodingId);
-    this.streamId = map(obj.streamId);
-    this.muxingId = map(obj.muxingId);
-    this.drmId = map(obj.drmId);
-    this.segmentPath = map(obj.segmentPath);
-    this.uri = map(obj.uri);
-    this.startSegmentNumber = map(obj.startSegmentNumber);
-    this.endSegmentNumber = map(obj.endSegmentNumber);
-    this.forceFrameRateAttribute = map(obj.forceFrameRateAttribute);
-    this.forceVideoRangeAttribute = map(obj.forceVideoRangeAttribute);
+    this.video = obj.video;
+    this.subtitles = obj.subtitles;
+    this.closedCaptions = obj.closedCaptions;
+    this.encodingId = obj.encodingId;
+    this.streamId = obj.streamId;
+    this.muxingId = obj.muxingId;
+    this.drmId = obj.drmId;
+    this.segmentPath = obj.segmentPath;
+    this.uri = obj.uri;
+    this.startSegmentNumber = obj.startSegmentNumber;
+    this.endSegmentNumber = obj.endSegmentNumber;
+    this.forceFrameRateAttribute = obj.forceFrameRateAttribute;
+    this.forceVideoRangeAttribute = obj.forceVideoRangeAttribute;
   }
 }
 

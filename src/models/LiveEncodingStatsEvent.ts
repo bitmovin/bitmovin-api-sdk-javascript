@@ -11,16 +11,17 @@ export class LiveEncodingStatsEvent {
    * @type {Date}
    * @memberof LiveEncodingStatsEvent
    */
-  public time: Date;
+  public time?: Date;
 
   /**
    * @type {LiveEncodingStatsEventDetails}
    * @memberof LiveEncodingStatsEvent
    */
-  public details: LiveEncodingStatsEventDetails;
+  public details?: LiveEncodingStatsEventDetails;
 
   constructor(obj: Partial<LiveEncodingStatsEvent>) {
-    this.time = map(obj.time, Date);
+
+    this.time = map<Date>(obj.time, Date);
     this.details = map<LiveEncodingStatsEventDetails>(obj.details, LiveEncodingStatsEventDetails);
   }
 }

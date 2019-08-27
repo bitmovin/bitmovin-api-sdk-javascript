@@ -8,6 +8,13 @@ import InputStream from './InputStream';
  */
 export class ConcatenationInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof ConcatenationInputStream
+   */
+  public type: 'CONCATENATION' = 'CONCATENATION';
+
+  /**
    * Concatenation configuration for the output of this stream
    * @type {ConcatenationInputConfiguration[]}
    * @memberof ConcatenationInputStream
@@ -16,7 +23,8 @@ export class ConcatenationInputStream extends InputStream {
 
   constructor(obj: Partial<ConcatenationInputStream>) {
     super(obj);
-    this.concatenation = map<ConcatenationInputConfiguration>(obj.concatenation, ConcatenationInputConfiguration);
+
+    this.concatenation = map<ConcatenationInputConfiguration>(obj.concatenation, ConcatenationInputConfiguration) || [];
   }
 }
 

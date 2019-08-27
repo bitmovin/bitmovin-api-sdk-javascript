@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashVttRepresentation from '../../../../../../../models/DashVttRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
 import {DashVttRepresentationListQueryParams, DashVttRepresentationListQueryParamsBuilder} from './DashVttRepresentationListQueryParams';
-import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * VttApi - object-oriented interface
@@ -102,11 +101,7 @@ export default class VttApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashVttRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashVttRepresentation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashVttRepresentation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashVttRepresentation>(response, DashVttRepresentation);;
     });
   }
 }

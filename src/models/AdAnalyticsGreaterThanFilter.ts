@@ -8,14 +8,22 @@ import AdAnalyticsAttribute from './AdAnalyticsAttribute';
  */
 export class AdAnalyticsGreaterThanFilter extends AdAnalyticsAbstractFilter {
   /**
+   * Discriminator property for AdAnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AdAnalyticsGreaterThanFilter
+   */
+  public operator: 'GT' = 'GT';
+
+  /**
    * @type {any}
    * @memberof AdAnalyticsGreaterThanFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AdAnalyticsGreaterThanFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import VttMediaInfo from '../../../../../models/VttMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {VttMediaInfoListQueryParams, VttMediaInfoListQueryParamsBuilder} from './VttMediaInfoListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * VttApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class VttApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<VttMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/vtt', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<VttMediaInfo>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new VttMediaInfo(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<VttMediaInfo>(response, VttMediaInfo);;
     });
   }
 }

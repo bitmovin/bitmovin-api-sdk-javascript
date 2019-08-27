@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import MarlinDrm from '../../../../../../models/MarlinDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {MarlinDrmListQueryParams, MarlinDrmListQueryParamsBuilder} from './MarlinDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * MarlinApi - object-oriented interface
@@ -96,11 +95,7 @@ export default class MarlinApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<MarlinDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<MarlinDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new MarlinDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<MarlinDrm>(response, MarlinDrm);;
     });
   }
 }

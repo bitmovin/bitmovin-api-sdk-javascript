@@ -14,11 +14,11 @@ export class BitmovinError extends Error {
   constructor(message: string, httpStatusCode: number, shortMessage: string, developerMessage?: string, requestId?: string, errorCode?: number, details?: Message[], links?: Link[]) {
     super(message);
     this.name = 'BitmovinError';
-    this.shortMessage = map(shortMessage);
-    this.httpStatusCode = map(httpStatusCode);
-    this.developerMessage = map(developerMessage);
-    this.requestId = map(requestId);
-    this.errorCode = map(errorCode);
+    this.shortMessage = shortMessage;
+    this.httpStatusCode = httpStatusCode;
+    this.developerMessage = developerMessage;
+    this.requestId = requestId;
+    this.errorCode = errorCode;
     this.details = map<Message>(details, Message);
     this.links = map<Link>(links, Link);
 

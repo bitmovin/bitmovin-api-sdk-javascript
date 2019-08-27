@@ -10,7 +10,7 @@ export class AnalyticsLicenseUpdateRequest {
    * @type {string}
    * @memberof AnalyticsLicenseUpdateRequest
    */
-  public name: string;
+  public name?: string;
 
   /**
    * @type {boolean}
@@ -32,9 +32,10 @@ export class AnalyticsLicenseUpdateRequest {
   public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
 
   constructor(obj: Partial<AnalyticsLicenseUpdateRequest>) {
-    this.name = map(obj.name);
-    this.ignoreDNT = map(obj.ignoreDNT);
-    this.timeZone = map(obj.timeZone);
+
+    this.name = obj.name;
+    this.ignoreDNT = obj.ignoreDNT;
+    this.timeZone = obj.timeZone;
     this.customDataFieldLabels = map<AnalyticsLicenseCustomDataFieldLabels>(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
   }
 }

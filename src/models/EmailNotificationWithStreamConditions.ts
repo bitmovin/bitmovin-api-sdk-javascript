@@ -15,6 +15,7 @@ export class EmailNotificationWithStreamConditions extends EmailNotification {
 
   constructor(obj: Partial<EmailNotificationWithStreamConditions>) {
     super(obj);
+
     this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
   }
 }

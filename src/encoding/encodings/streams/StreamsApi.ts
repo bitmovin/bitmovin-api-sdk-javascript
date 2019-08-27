@@ -14,7 +14,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import Stream from '../../../models/Stream';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {StreamListQueryParams, StreamListQueryParamsBuilder} from './StreamListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * StreamsApi - object-oriented interface
@@ -116,11 +115,7 @@ export default class StreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Stream>>('/encoding/encodings/{encoding_id}/streams', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Stream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Stream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Stream>(response, Stream);;
     });
   }
 }

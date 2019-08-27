@@ -57,13 +57,14 @@ export class ProgressiveMuxingInformation {
   public audioTracks?: MuxingInformationAudioTrack[];
 
   constructor(obj: Partial<ProgressiveMuxingInformation>) {
-    this.mimeType = map(obj.mimeType);
-    this.fileSize = map(obj.fileSize);
-    this.containerFormat = map(obj.containerFormat);
-    this.containerBitrate = map(obj.containerBitrate);
-    this.duration = map(obj.duration);
-    this.videoTracks = map<MuxingInformationVideoTrack>(obj.videoTracks, MuxingInformationVideoTrack);
-    this.audioTracks = map<MuxingInformationAudioTrack>(obj.audioTracks, MuxingInformationAudioTrack);
+
+    this.mimeType = obj.mimeType;
+    this.fileSize = obj.fileSize;
+    this.containerFormat = obj.containerFormat;
+    this.containerBitrate = obj.containerBitrate;
+    this.duration = obj.duration;
+    this.videoTracks = map<MuxingInformationVideoTrack>(obj.videoTracks, MuxingInformationVideoTrack) || [];
+    this.audioTracks = map<MuxingInformationAudioTrack>(obj.audioTracks, MuxingInformationAudioTrack) || [];
   }
 }
 

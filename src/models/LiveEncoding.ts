@@ -27,9 +27,10 @@ export class LiveEncoding {
   public application?: string;
 
   constructor(obj: Partial<LiveEncoding>) {
-    this.streamKey = map(obj.streamKey);
-    this.encoderIp = map(obj.encoderIp);
-    this.application = map(obj.application);
+
+    this.streamKey = obj.streamKey;
+    this.encoderIp = obj.encoderIp;
+    this.application = obj.application;
   }
 }
 

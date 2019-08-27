@@ -7,13 +7,22 @@ import IngestInputStream from './IngestInputStream';
 import TimeBasedTrimmingInputStream from './TimeBasedTrimmingInputStream';
 import TimecodeTrackTrimmingInputStream from './TimecodeTrackTrimmingInputStream';
 
+export type InputStreamUnion =
+  IngestInputStream |
+  ConcatenationInputStream |
+  TimeBasedTrimmingInputStream |
+  TimecodeTrackTrimmingInputStream |
+  H264PictureTimingTrimmingInputStream |
+  AudioMixInputStream |
+  FileInputStream;
+
 /**
  * @export
  * @class InputStream
  */
 export class InputStream extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'INGEST': 'IngestInputStream',
     'CONCATENATION': 'ConcatenationInputStream',
     'TRIMMING_TIME_BASED': 'TimeBasedTrimmingInputStream',
@@ -25,6 +34,7 @@ export class InputStream extends BitmovinResource {
 
   constructor(obj: Partial<InputStream>) {
     super(obj);
+
   }
 }
 

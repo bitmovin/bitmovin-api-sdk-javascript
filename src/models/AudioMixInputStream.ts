@@ -9,6 +9,13 @@ import InputStream from './InputStream';
  */
 export class AudioMixInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof AudioMixInputStream
+   */
+  public type: 'AUDIO_MIX' = 'AUDIO_MIX';
+
+  /**
    * Channel layout of the audio mix input stream
    * @type {AudioMixInputChannelLayout}
    * @memberof AudioMixInputStream
@@ -23,8 +30,9 @@ export class AudioMixInputStream extends InputStream {
 
   constructor(obj: Partial<AudioMixInputStream>) {
     super(obj);
-    this.channelLayout = map(obj.channelLayout);
-    this.audioMixChannels = map<AudioMixInputStreamChannel>(obj.audioMixChannels, AudioMixInputStreamChannel);
+
+    this.channelLayout = obj.channelLayout;
+    this.audioMixChannels = map<AudioMixInputStreamChannel>(obj.audioMixChannels, AudioMixInputStreamChannel) || [];
   }
 }
 

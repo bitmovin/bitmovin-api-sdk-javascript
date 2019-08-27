@@ -8,14 +8,22 @@ import AdAnalyticsAttribute from './AdAnalyticsAttribute';
  */
 export class AdAnalyticsLessThanOrEqualFilter extends AdAnalyticsAbstractFilter {
   /**
+   * Discriminator property for AdAnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AdAnalyticsLessThanOrEqualFilter
+   */
+  public operator: 'LTE' = 'LTE';
+
+  /**
    * @type {any}
    * @memberof AdAnalyticsLessThanOrEqualFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AdAnalyticsLessThanOrEqualFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

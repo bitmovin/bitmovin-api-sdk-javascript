@@ -14,7 +14,7 @@ export class Webhook extends BitmovinResource {
    * @type {string}
    * @memberof Webhook
    */
-  public url: string;
+  public url?: string;
 
   /**
    * HTTP method used for the webhook
@@ -46,9 +46,10 @@ export class Webhook extends BitmovinResource {
 
   constructor(obj: Partial<Webhook>) {
     super(obj);
-    this.url = map(obj.url);
-    this.method = map(obj.method);
-    this.insecureSsl = map(obj.insecureSsl);
+
+    this.url = obj.url;
+    this.method = obj.method;
+    this.insecureSsl = obj.insecureSsl;
     this.encryption = map<WebhookEncryption>(obj.encryption, WebhookEncryption);
     this.signature = map<WebhookSignature>(obj.signature, WebhookSignature);
   }

@@ -41,11 +41,12 @@ export class Trimming {
   public endPicTiming?: string;
 
   constructor(obj: Partial<Trimming>) {
-    this.offset = map(obj.offset);
-    this.duration = map(obj.duration);
-    this.ignoreDurationIfInputTooShort = map(obj.ignoreDurationIfInputTooShort);
-    this.startPicTiming = map(obj.startPicTiming);
-    this.endPicTiming = map(obj.endPicTiming);
+
+    this.offset = obj.offset;
+    this.duration = obj.duration;
+    this.ignoreDurationIfInputTooShort = obj.ignoreDurationIfInputTooShort;
+    this.startPicTiming = obj.startPicTiming;
+    this.endPicTiming = obj.endPicTiming;
   }
 }
 

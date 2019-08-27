@@ -11,11 +11,12 @@ export class DashMp4DrmRepresentation extends DashMp4Representation {
    * @type {string}
    * @memberof DashMp4DrmRepresentation
    */
-  public drmId: string;
+  public drmId?: string;
 
   constructor(obj: Partial<DashMp4DrmRepresentation>) {
     super(obj);
-    this.drmId = map(obj.drmId);
+
+    this.drmId = obj.drmId;
   }
 }
 

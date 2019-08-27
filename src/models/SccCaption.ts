@@ -12,10 +12,11 @@ export class SccCaption extends BitmovinResource {
    * @type {InputPath}
    * @memberof SccCaption
    */
-  public input: InputPath;
+  public input?: InputPath;
 
   constructor(obj: Partial<SccCaption>) {
     super(obj);
+
     this.input = map<InputPath>(obj.input, InputPath);
   }
 }

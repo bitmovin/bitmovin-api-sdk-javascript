@@ -7,7 +7,6 @@ import SubtitlesApi from './subtitles/SubtitlesApi';
 import CodecConfiguration from '../../models/CodecConfiguration';
 import PaginationResponse from '../../models/PaginationResponse';
 import {CodecConfigurationListQueryParams, CodecConfigurationListQueryParamsBuilder} from './CodecConfigurationListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * ConfigurationsApi - object-oriented interface
@@ -43,11 +42,7 @@ export default class ConfigurationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CodecConfiguration>>('/encoding/configurations', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<CodecConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, CodecConfiguration)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<CodecConfiguration>(response, CodecConfiguration);;
     });
   }
 }

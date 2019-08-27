@@ -10,18 +10,19 @@ export class XmlNamespace {
    * @type {string}
    * @memberof XmlNamespace
    */
-  public prefix: string;
+  public prefix?: string;
 
   /**
    * Source of the XML Namespace reference (required)
    * @type {string}
    * @memberof XmlNamespace
    */
-  public uri: string;
+  public uri?: string;
 
   constructor(obj: Partial<XmlNamespace>) {
-    this.prefix = map(obj.prefix);
-    this.uri = map(obj.uri);
+
+    this.prefix = obj.prefix;
+    this.uri = obj.uri;
   }
 }
 

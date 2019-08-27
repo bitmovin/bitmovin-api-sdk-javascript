@@ -7,6 +7,13 @@ import Filter from './Filter';
  */
 export class EbuR128SinglePassFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof EbuR128SinglePassFilter
+   */
+  public type: 'EBU_R128_SINGLE_PASS' = 'EBU_R128_SINGLE_PASS';
+
+  /**
    * Set the targeted integrated loudness value. Range is from '-70.0' to '-5.0'. Default value is '-24.0'. Value is measured in LUFS (Loudness Units, referenced to Full Scale)
    * @type {number}
    * @memberof EbuR128SinglePassFilter
@@ -29,9 +36,10 @@ export class EbuR128SinglePassFilter extends Filter {
 
   constructor(obj: Partial<EbuR128SinglePassFilter>) {
     super(obj);
-    this.integratedLoudness = map(obj.integratedLoudness);
-    this.loudnessRange = map(obj.loudnessRange);
-    this.maximumTruePeakLevel = map(obj.maximumTruePeakLevel);
+
+    this.integratedLoudness = obj.integratedLoudness;
+    this.loudnessRange = obj.loudnessRange;
+    this.maximumTruePeakLevel = obj.maximumTruePeakLevel;
   }
 }
 

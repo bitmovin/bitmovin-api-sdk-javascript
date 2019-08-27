@@ -13,18 +13,19 @@ export class BurnInSubtitleSrt extends BitmovinResource {
    * @type {CaptionCharacterEncoding}
    * @memberof BurnInSubtitleSrt
    */
-  public characterEncoding: CaptionCharacterEncoding;
+  public characterEncoding?: CaptionCharacterEncoding;
 
   /**
    * The input location to get the SRT file from (required)
    * @type {InputPath}
    * @memberof BurnInSubtitleSrt
    */
-  public input: InputPath;
+  public input?: InputPath;
 
   constructor(obj: Partial<BurnInSubtitleSrt>) {
     super(obj);
-    this.characterEncoding = map(obj.characterEncoding);
+
+    this.characterEncoding = obj.characterEncoding;
     this.input = map<InputPath>(obj.input, InputPath);
   }
 }

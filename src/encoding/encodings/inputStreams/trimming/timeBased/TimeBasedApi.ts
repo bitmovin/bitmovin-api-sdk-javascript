@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import TimeBasedTrimmingInputStream from '../../../../../models/TimeBasedTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {TimeBasedTrimmingInputStreamListQueryParams, TimeBasedTrimmingInputStreamListQueryParamsBuilder} from './TimeBasedTrimmingInputStreamListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * TimeBasedApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class TimeBasedApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TimeBasedTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/time-based', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TimeBasedTrimmingInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TimeBasedTrimmingInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TimeBasedTrimmingInputStream>(response, TimeBasedTrimmingInputStream);;
     });
   }
 }

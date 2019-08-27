@@ -12,7 +12,7 @@ export class CustomPlayerBuildStatus {
    * @type {Status}
    * @memberof CustomPlayerBuildStatus
    */
-  public status: Status;
+  public status?: Status;
 
   /**
    * The estimated time span of the custom player build in seconds.
@@ -26,7 +26,7 @@ export class CustomPlayerBuildStatus {
    * @type {number}
    * @memberof CustomPlayerBuildStatus
    */
-  public progress: number;
+  public progress?: number;
 
   /**
    * @type {Message}
@@ -41,11 +41,12 @@ export class CustomPlayerBuildStatus {
   public subtasks?: string;
 
   constructor(obj: Partial<CustomPlayerBuildStatus>) {
-    this.status = map(obj.status);
-    this.eta = map(obj.eta);
-    this.progress = map(obj.progress);
+
+    this.status = obj.status;
+    this.eta = obj.eta;
+    this.progress = obj.progress;
     this.messages = map<Message>(obj.messages, Message);
-    this.subtasks = map(obj.subtasks);
+    this.subtasks = obj.subtasks;
   }
 }
 

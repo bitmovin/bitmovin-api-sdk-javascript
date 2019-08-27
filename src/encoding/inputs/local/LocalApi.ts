@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import LocalInput from '../../../models/LocalInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {LocalInputListQueryParams, LocalInputListQueryParamsBuilder} from './LocalInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * LocalApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class LocalApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LocalInput>>('/encoding/inputs/local', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<LocalInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new LocalInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<LocalInput>(response, LocalInput);;
     });
   }
 }

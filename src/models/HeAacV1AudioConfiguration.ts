@@ -8,6 +8,13 @@ import AudioConfiguration from './AudioConfiguration';
  */
 export class HeAacV1AudioConfiguration extends AudioConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof HeAacV1AudioConfiguration
+   */
+  public type: 'HE_AAC_V1' = 'HE_AAC_V1';
+
+  /**
    * Channel layout of the audio codec configuration
    * @type {AacChannelLayout}
    * @memberof HeAacV1AudioConfiguration
@@ -16,7 +23,8 @@ export class HeAacV1AudioConfiguration extends AudioConfiguration {
 
   constructor(obj: Partial<HeAacV1AudioConfiguration>) {
     super(obj);
-    this.channelLayout = map(obj.channelLayout);
+
+    this.channelLayout = obj.channelLayout;
   }
 }
 

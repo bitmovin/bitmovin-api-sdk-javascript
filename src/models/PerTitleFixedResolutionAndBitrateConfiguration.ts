@@ -28,9 +28,10 @@ export class PerTitleFixedResolutionAndBitrateConfiguration {
   public forcedRenditionAboveHighestFixedRepresentationCalculationMode?: PerTitleFixedResolutionAndBitrateConfigurationMode;
 
   constructor(obj: Partial<PerTitleFixedResolutionAndBitrateConfiguration>) {
-    this.forcedRenditionAboveHighestFixedRepresentation = map(obj.forcedRenditionAboveHighestFixedRepresentation);
-    this.forcedRenditionAboveHighestFixedRepresentationFactor = map(obj.forcedRenditionAboveHighestFixedRepresentationFactor);
-    this.forcedRenditionAboveHighestFixedRepresentationCalculationMode = map(obj.forcedRenditionAboveHighestFixedRepresentationCalculationMode);
+
+    this.forcedRenditionAboveHighestFixedRepresentation = obj.forcedRenditionAboveHighestFixedRepresentation;
+    this.forcedRenditionAboveHighestFixedRepresentationFactor = obj.forcedRenditionAboveHighestFixedRepresentationFactor;
+    this.forcedRenditionAboveHighestFixedRepresentationCalculationMode = obj.forcedRenditionAboveHighestFixedRepresentationCalculationMode;
   }
 }
 

@@ -10,13 +10,23 @@ import PlayReadyDrm from './PlayReadyDrm';
 import PrimeTimeDrm from './PrimeTimeDrm';
 import WidevineDrm from './WidevineDrm';
 
+export type DrmUnion =
+  WidevineDrm |
+  PlayReadyDrm |
+  PrimeTimeDrm |
+  FairPlayDrm |
+  MarlinDrm |
+  ClearKeyDrm |
+  AesEncryptionDrm |
+  CencDrm;
+
 /**
  * @export
  * @class Drm
  */
 export class Drm extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'WIDEVINE': 'WidevineDrm',
     'PLAYREADY': 'PlayReadyDrm',
     'PRIMETIME': 'PrimeTimeDrm',
@@ -35,7 +45,8 @@ export class Drm extends BitmovinResource {
 
   constructor(obj: Partial<Drm>) {
     super(obj);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
   }
 }
 

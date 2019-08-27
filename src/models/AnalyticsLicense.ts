@@ -73,14 +73,15 @@ export class AnalyticsLicense extends BitmovinResponse {
 
   constructor(obj: Partial<AnalyticsLicense>) {
     super(obj);
-    this.name = map(obj.name);
-    this.licenseKey = map(obj.licenseKey);
-    this.createdAt = map(obj.createdAt, Date);
-    this.maxImpressions = map(obj.maxImpressions);
-    this.impressions = map(obj.impressions);
-    this.domains = map<AnalyticsLicenseDomain>(obj.domains, AnalyticsLicenseDomain);
-    this.ignoreDNT = map(obj.ignoreDNT);
-    this.timeZone = map(obj.timeZone);
+
+    this.name = obj.name;
+    this.licenseKey = obj.licenseKey;
+    this.createdAt = map<Date>(obj.createdAt, Date);
+    this.maxImpressions = obj.maxImpressions;
+    this.impressions = obj.impressions;
+    this.domains = map<AnalyticsLicenseDomain>(obj.domains, AnalyticsLicenseDomain) || [];
+    this.ignoreDNT = obj.ignoreDNT;
+    this.timeZone = obj.timeZone;
     this.customDataFieldLabels = map<AnalyticsLicenseCustomDataFieldLabels>(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
   }
 }

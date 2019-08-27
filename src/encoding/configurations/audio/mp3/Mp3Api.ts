@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3AudioConfiguration from '../../../../models/Mp3AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Mp3AudioConfigurationListQueryParams, Mp3AudioConfigurationListQueryParamsBuilder} from './Mp3AudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Mp3Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class Mp3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Mp3AudioConfiguration>>('/encoding/configurations/audio/mp3', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Mp3AudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Mp3AudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Mp3AudioConfiguration>(response, Mp3AudioConfiguration);;
     });
   }
 }

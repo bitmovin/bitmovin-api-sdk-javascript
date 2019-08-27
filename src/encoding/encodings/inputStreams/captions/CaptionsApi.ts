@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import Cea608Api from './cea608/Cea608Api';
 import Cea708Api from './cea708/Cea708Api';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * CaptionsApi - object-oriented interface

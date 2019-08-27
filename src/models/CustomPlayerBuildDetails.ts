@@ -11,19 +11,20 @@ export class CustomPlayerBuildDetails extends BitmovinResource {
    * @type {string}
    * @memberof CustomPlayerBuildDetails
    */
-  public playerVersion: string;
+  public playerVersion?: string;
 
   /**
    * The domains that the player is locked to. If not set the player will only work with 'localhost'. Not more than 49 additional domains can be added. (required)
    * @type {string[]}
    * @memberof CustomPlayerBuildDetails
    */
-  public domains: string[];
+  public domains?: string[];
 
   constructor(obj: Partial<CustomPlayerBuildDetails>) {
     super(obj);
-    this.playerVersion = map(obj.playerVersion);
-    this.domains = map(obj.domains);
+
+    this.playerVersion = obj.playerVersion;
+    this.domains = obj.domains || [];
   }
 }
 

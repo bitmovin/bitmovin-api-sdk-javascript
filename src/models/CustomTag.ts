@@ -12,7 +12,7 @@ export class CustomTag extends BitmovinResource {
    * @type {PositionMode}
    * @memberof CustomTag
    */
-  public positionMode: PositionMode;
+  public positionMode?: PositionMode;
 
   /**
    * Id of keyframe where the custom tag should be inserted. Required, when KEYFRAME is selected as position mode.
@@ -40,15 +40,16 @@ export class CustomTag extends BitmovinResource {
    * @type {string}
    * @memberof CustomTag
    */
-  public data: string;
+  public data?: string;
 
   constructor(obj: Partial<CustomTag>) {
     super(obj);
-    this.positionMode = map(obj.positionMode);
-    this.keyframeId = map(obj.keyframeId);
-    this.time = map(obj.time);
-    this.segment = map(obj.segment);
-    this.data = map(obj.data);
+
+    this.positionMode = obj.positionMode;
+    this.keyframeId = obj.keyframeId;
+    this.time = obj.time;
+    this.segment = obj.segment;
+    this.data = obj.data;
   }
 }
 

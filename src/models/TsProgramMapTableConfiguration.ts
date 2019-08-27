@@ -13,7 +13,8 @@ export class TsProgramMapTableConfiguration {
   public pid?: number;
 
   constructor(obj: Partial<TsProgramMapTableConfiguration>) {
-    this.pid = map(obj.pid);
+
+    this.pid = obj.pid;
   }
 }
 

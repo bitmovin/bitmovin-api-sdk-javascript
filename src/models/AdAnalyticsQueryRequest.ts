@@ -15,7 +15,7 @@ export class AdAnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    * @type {string}
    * @memberof AdAnalyticsQueryRequest
    */
-  public licenseKey: string;
+  public licenseKey?: string;
 
   /**
    * @type {AdAnalyticsAbstractFilter[]}
@@ -33,7 +33,7 @@ export class AdAnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    * @type {AdAnalyticsAttribute}
    * @memberof AdAnalyticsQueryRequest
    */
-  public dimension: AdAnalyticsAttribute;
+  public dimension?: AdAnalyticsAttribute;
 
   /**
    * @type {AnalyticsInterval}
@@ -63,14 +63,15 @@ export class AdAnalyticsQueryRequest extends AnalyticsQueryTimeframe {
 
   constructor(obj: Partial<AdAnalyticsQueryRequest>) {
     super(obj);
-    this.licenseKey = map(obj.licenseKey);
-    this.filters = map<AdAnalyticsAbstractFilter>(obj.filters, AdAnalyticsAbstractFilter);
-    this.orderBy = map<AdAnalyticsOrderByEntry>(obj.orderBy, AdAnalyticsOrderByEntry);
-    this.dimension = map(obj.dimension);
-    this.interval = map(obj.interval);
-    this.groupBy = map(obj.groupBy);
-    this.limit = map(obj.limit);
-    this.offset = map(obj.offset);
+
+    this.licenseKey = obj.licenseKey;
+    this.filters = map<AdAnalyticsAbstractFilter>(obj.filters, AdAnalyticsAbstractFilter) || [];
+    this.orderBy = map<AdAnalyticsOrderByEntry>(obj.orderBy, AdAnalyticsOrderByEntry) || [];
+    this.dimension = obj.dimension;
+    this.interval = obj.interval;
+    this.groupBy = obj.groupBy || [];
+    this.limit = obj.limit;
+    this.offset = obj.offset;
   }
 }
 

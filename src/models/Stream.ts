@@ -20,7 +20,7 @@ export class Stream extends BitmovinResource {
    * @type {StreamInput[]}
    * @memberof Stream
    */
-  public inputStreams: StreamInput[];
+  public inputStreams?: StreamInput[];
 
   /**
    * @type {EncodingOutput[]}
@@ -40,7 +40,7 @@ export class Stream extends BitmovinResource {
    * @type {string}
    * @memberof Stream
    */
-  public codecConfigId: string;
+  public codecConfigId?: string;
 
   /**
    * Number of encoded segments. Available after encoding finishes.
@@ -106,18 +106,19 @@ export class Stream extends BitmovinResource {
 
   constructor(obj: Partial<Stream>) {
     super(obj);
-    this.inputStreams = map<StreamInput>(obj.inputStreams, StreamInput);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.createQualityMetaData = map(obj.createQualityMetaData);
-    this.codecConfigId = map(obj.codecConfigId);
-    this.segmentsEncoded = map(obj.segmentsEncoded);
+
+    this.inputStreams = map<StreamInput>(obj.inputStreams, StreamInput) || [];
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.createQualityMetaData = obj.createQualityMetaData;
+    this.codecConfigId = obj.codecConfigId;
+    this.segmentsEncoded = obj.segmentsEncoded;
     this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
-    this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring);
-    this.mode = map(obj.mode);
-    this.selectedEncodingMode = map(obj.selectedEncodingMode);
+    this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring) || [];
+    this.mode = obj.mode;
+    this.selectedEncodingMode = obj.selectedEncodingMode;
     this.perTitleSettings = map<StreamPerTitleSettings>(obj.perTitleSettings, StreamPerTitleSettings);
     this.metadata = map<StreamMetadata>(obj.metadata, StreamMetadata);
-    this.decodingErrorMode = map(obj.decodingErrorMode);
+    this.decodingErrorMode = obj.decodingErrorMode;
     this.appliedSettings = map<AppliedStreamSettings>(obj.appliedSettings, AppliedStreamSettings);
   }
 }

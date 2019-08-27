@@ -6,7 +6,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveMovMuxing from '../../../../models/ProgressiveMovMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {ProgressiveMovMuxingListQueryParams, ProgressiveMovMuxingListQueryParamsBuilder} from './ProgressiveMovMuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ProgressiveMovApi - object-oriented interface
@@ -92,11 +91,7 @@ export default class ProgressiveMovApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ProgressiveMovMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-mov', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ProgressiveMovMuxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ProgressiveMovMuxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ProgressiveMovMuxing>(response, ProgressiveMovMuxing);;
     });
   }
 }

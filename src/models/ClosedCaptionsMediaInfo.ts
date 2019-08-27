@@ -11,7 +11,7 @@ export class ClosedCaptionsMediaInfo extends SegmentsMediaInfo {
    * @type {string}
    * @memberof ClosedCaptionsMediaInfo
    */
-  public instreamId: string;
+  public instreamId?: string;
 
   /**
    * A value of true indicates that the Rendition contains content which is considered essential to play.
@@ -22,8 +22,9 @@ export class ClosedCaptionsMediaInfo extends SegmentsMediaInfo {
 
   constructor(obj: Partial<ClosedCaptionsMediaInfo>) {
     super(obj);
-    this.instreamId = map(obj.instreamId);
-    this.forced = map(obj.forced);
+
+    this.instreamId = obj.instreamId;
+    this.forced = obj.forced;
   }
 }
 

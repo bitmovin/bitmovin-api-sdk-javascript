@@ -3,7 +3,6 @@ import Configuration from '../../common/Configuration';
 import AccountApiKey from '../../models/AccountApiKey';
 import BitmovinResponse from '../../models/BitmovinResponse';
 import PaginationResponse from '../../models/PaginationResponse';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * ApiKeysApi - object-oriented interface
@@ -65,11 +64,7 @@ export default class ApiKeysApi extends BaseAPI {
    */
   public list(): Promise<PaginationResponse<AccountApiKey>> {
     return this.restClient.get<PaginationResponse<AccountApiKey>>('/account/api-keys', {}).then((response) => {
-      const paginationResponse = new PaginationResponse<AccountApiKey>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AccountApiKey(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AccountApiKey>(response, AccountApiKey);;
     });
   }
 }

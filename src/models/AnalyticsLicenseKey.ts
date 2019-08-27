@@ -10,10 +10,11 @@ export class AnalyticsLicenseKey {
    * @type {string}
    * @memberof AnalyticsLicenseKey
    */
-  public licenseKey: string;
+  public licenseKey?: string;
 
   constructor(obj: Partial<AnalyticsLicenseKey>) {
-    this.licenseKey = map(obj.licenseKey);
+
+    this.licenseKey = obj.licenseKey;
   }
 }
 

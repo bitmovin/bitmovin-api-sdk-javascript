@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsEqualFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsEqualFilter
+   */
+  public operator: 'EQ' = 'EQ';
+
+  /**
    * @type {any}
    * @memberof AnalyticsEqualFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AnalyticsEqualFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

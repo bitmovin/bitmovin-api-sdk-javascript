@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsGreaterThanFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsGreaterThanFilter
+   */
+  public operator: 'GT' = 'GT';
+
+  /**
    * @type {any}
    * @memberof AnalyticsGreaterThanFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AnalyticsGreaterThanFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

@@ -27,9 +27,10 @@ export class ConcatenationInputConfiguration {
   public position?: number;
 
   constructor(obj: Partial<ConcatenationInputConfiguration>) {
-    this.inputStreamId = map(obj.inputStreamId);
-    this.isMain = map(obj.isMain);
-    this.position = map(obj.position);
+
+    this.inputStreamId = obj.inputStreamId;
+    this.isMain = obj.isMain;
+    this.position = obj.position;
   }
 }
 

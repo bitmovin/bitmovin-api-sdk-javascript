@@ -11,11 +11,12 @@ export class AccountApiKey extends BitmovinResource {
    * @type {string}
    * @memberof AccountApiKey
    */
-  public value: string;
+  public value?: string;
 
   constructor(obj: Partial<AccountApiKey>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

@@ -10,10 +10,11 @@ export class ManifestResource {
    * @type {string}
    * @memberof ManifestResource
    */
-  public manifestId: string;
+  public manifestId?: string;
 
   constructor(obj: Partial<ManifestResource>) {
-    this.manifestId = map(obj.manifestId);
+
+    this.manifestId = obj.manifestId;
   }
 }
 

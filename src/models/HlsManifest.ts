@@ -14,7 +14,7 @@ export class HlsManifest extends Manifest {
    * @type {string}
    * @memberof HlsManifest
    */
-  public manifestName: string;
+  public manifestName?: string;
 
   /**
    * If this is set, the EXT-X-VERSION tags of the Media Playlists are set to the provided version
@@ -32,9 +32,10 @@ export class HlsManifest extends Manifest {
 
   constructor(obj: Partial<HlsManifest>) {
     super(obj);
-    this.manifestName = map(obj.manifestName);
-    this.hlsMediaPlaylistVersion = map(obj.hlsMediaPlaylistVersion);
-    this.hlsMasterPlaylistVersion = map(obj.hlsMasterPlaylistVersion);
+
+    this.manifestName = obj.manifestName;
+    this.hlsMediaPlaylistVersion = obj.hlsMediaPlaylistVersion;
+    this.hlsMasterPlaylistVersion = obj.hlsMasterPlaylistVersion;
   }
 }
 

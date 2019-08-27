@@ -20,8 +20,9 @@ export class TsProgramClockReferenceConfiguration {
   public interval?: number;
 
   constructor(obj: Partial<TsProgramClockReferenceConfiguration>) {
-    this.pid = map(obj.pid);
-    this.interval = map(obj.interval);
+
+    this.pid = obj.pid;
+    this.interval = obj.interval;
   }
 }
 

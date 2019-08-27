@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsNotEqualFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsNotEqualFilter
+   */
+  public operator: 'NE' = 'NE';
+
+  /**
    * @type {any}
    * @memberof AnalyticsNotEqualFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AnalyticsNotEqualFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

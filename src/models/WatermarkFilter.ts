@@ -8,11 +8,18 @@ import PositionUnit from './PositionUnit';
  */
 export class WatermarkFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof WatermarkFilter
+   */
+  public type: 'WATERMARK' = 'WATERMARK';
+
+  /**
    * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
    * @type {string}
    * @memberof WatermarkFilter
    */
-  public image: string;
+  public image?: string;
 
   /**
    * Distance from the left edge of the input video to the left edge of the watermark image. May not be set if 'right' is set.
@@ -50,12 +57,13 @@ export class WatermarkFilter extends Filter {
 
   constructor(obj: Partial<WatermarkFilter>) {
     super(obj);
-    this.image = map(obj.image);
-    this.left = map(obj.left);
-    this.right = map(obj.right);
-    this.top = map(obj.top);
-    this.bottom = map(obj.bottom);
-    this.unit = map(obj.unit);
+
+    this.image = obj.image;
+    this.left = obj.left;
+    this.right = obj.right;
+    this.top = obj.top;
+    this.bottom = obj.bottom;
+    this.unit = obj.unit;
   }
 }
 

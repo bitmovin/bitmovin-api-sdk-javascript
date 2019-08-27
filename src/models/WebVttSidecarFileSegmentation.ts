@@ -11,10 +11,11 @@ export class WebVttSidecarFileSegmentation {
    * @type {number}
    * @memberof WebVttSidecarFileSegmentation
    */
-  public segmentLength: number;
+  public segmentLength?: number;
 
   constructor(obj: Partial<WebVttSidecarFileSegmentation>) {
-    this.segmentLength = map(obj.segmentLength);
+
+    this.segmentLength = obj.segmentLength;
   }
 }
 

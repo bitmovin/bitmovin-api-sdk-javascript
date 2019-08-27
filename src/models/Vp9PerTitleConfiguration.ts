@@ -17,7 +17,8 @@ export class Vp9PerTitleConfiguration extends PerTitleConfiguration {
 
   constructor(obj: Partial<Vp9PerTitleConfiguration>) {
     super(obj);
-    this.targetQualityCrf = map(obj.targetQualityCrf);
+
+    this.targetQualityCrf = obj.targetQualityCrf;
   }
 }
 

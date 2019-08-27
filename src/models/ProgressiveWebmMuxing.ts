@@ -12,6 +12,13 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class ProgressiveWebmMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof ProgressiveWebmMuxing
+   */
+  public type: 'PROGRESSIVE_WEBM' = 'PROGRESSIVE_WEBM';
+
+  /**
    * Name of the new Video
    * @type {string}
    * @memberof ProgressiveWebmMuxing
@@ -27,7 +34,8 @@ export class ProgressiveWebmMuxing extends Muxing {
 
   constructor(obj: Partial<ProgressiveWebmMuxing>) {
     super(obj);
-    this.filename = map(obj.filename);
+
+    this.filename = obj.filename;
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }
 }

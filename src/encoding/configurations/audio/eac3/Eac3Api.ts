@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Eac3AudioConfiguration from '../../../../models/Eac3AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Eac3AudioConfigurationListQueryParams, Eac3AudioConfigurationListQueryParamsBuilder} from './Eac3AudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Eac3Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class Eac3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Eac3AudioConfiguration>>('/encoding/configurations/audio/eac3', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Eac3AudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Eac3AudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Eac3AudioConfiguration>(response, Eac3AudioConfiguration);;
     });
   }
 }

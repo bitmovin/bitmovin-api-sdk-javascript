@@ -11,18 +11,19 @@ export class CustomPlayerBuildDownload {
    * @type {string}
    * @memberof CustomPlayerBuildDownload
    */
-  public downloadLink: string;
+  public downloadLink?: string;
 
   /**
    * Until this date the download link is valid and can be downloaded. (required)
    * @type {Date}
    * @memberof CustomPlayerBuildDownload
    */
-  public expiresAt: Date;
+  public expiresAt?: Date;
 
   constructor(obj: Partial<CustomPlayerBuildDownload>) {
-    this.downloadLink = map(obj.downloadLink);
-    this.expiresAt = map(obj.expiresAt, Date);
+
+    this.downloadLink = obj.downloadLink;
+    this.expiresAt = map<Date>(obj.expiresAt, Date);
   }
 }
 

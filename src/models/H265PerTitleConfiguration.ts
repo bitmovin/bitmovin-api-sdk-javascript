@@ -38,10 +38,11 @@ export class H265PerTitleConfiguration extends PerTitleConfiguration {
 
   constructor(obj: Partial<H265PerTitleConfiguration>) {
     super(obj);
-    this.targetQualityCrf = map(obj.targetQualityCrf);
-    this.codecMinBitrateFactor = map(obj.codecMinBitrateFactor);
-    this.codecMaxBitrateFactor = map(obj.codecMaxBitrateFactor);
-    this.codecBufsizeFactor = map(obj.codecBufsizeFactor);
+
+    this.targetQualityCrf = obj.targetQualityCrf;
+    this.codecMinBitrateFactor = obj.codecMinBitrateFactor;
+    this.codecMaxBitrateFactor = obj.codecMaxBitrateFactor;
+    this.codecBufsizeFactor = obj.codecBufsizeFactor;
   }
 }
 

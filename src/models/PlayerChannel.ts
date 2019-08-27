@@ -15,7 +15,8 @@ export class PlayerChannel extends BitmovinResponse {
 
   constructor(obj: Partial<PlayerChannel>) {
     super(obj);
-    this.name = map(obj.name);
+
+    this.name = obj.name;
   }
 }
 

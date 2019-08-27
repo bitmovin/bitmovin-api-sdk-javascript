@@ -15,7 +15,8 @@ export class AbstractConjunction extends AbstractCondition {
 
   constructor(obj: Partial<AbstractConjunction>) {
     super(obj);
-    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
+
+    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition) || [];
   }
 }
 

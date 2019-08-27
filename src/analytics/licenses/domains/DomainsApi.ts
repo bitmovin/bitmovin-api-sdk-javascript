@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Domain from '../../../models/Domain';
 import DomainList from '../../../models/DomainList';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DomainsApi - object-oriented interface

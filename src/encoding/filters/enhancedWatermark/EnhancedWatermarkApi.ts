@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import EnhancedWatermarkFilter from '../../../models/EnhancedWatermarkFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {EnhancedWatermarkFilterListQueryParams, EnhancedWatermarkFilterListQueryParamsBuilder} from './EnhancedWatermarkFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * EnhancedWatermarkApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class EnhancedWatermarkApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EnhancedWatermarkFilter>>('/encoding/filters/enhanced-watermark', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EnhancedWatermarkFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EnhancedWatermarkFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EnhancedWatermarkFilter>(response, EnhancedWatermarkFilter);;
     });
   }
 }

@@ -12,10 +12,11 @@ export class TtmlEmbed extends BitmovinResource {
    * @type {StreamInput}
    * @memberof TtmlEmbed
    */
-  public inputStream: StreamInput;
+  public inputStream?: StreamInput;
 
   constructor(obj: Partial<TtmlEmbed>) {
     super(obj);
+
     this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
   }
 }

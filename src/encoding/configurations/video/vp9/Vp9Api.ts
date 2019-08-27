@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Vp9VideoConfiguration from '../../../../models/Vp9VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Vp9VideoConfigurationListQueryParams, Vp9VideoConfigurationListQueryParamsBuilder} from './Vp9VideoConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * Vp9Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class Vp9Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Vp9VideoConfiguration>>('/encoding/configurations/video/vp9', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Vp9VideoConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Vp9VideoConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Vp9VideoConfiguration>(response, Vp9VideoConfiguration);;
     });
   }
 }

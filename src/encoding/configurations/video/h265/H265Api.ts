@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import H265VideoConfiguration from '../../../../models/H265VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {H265VideoConfigurationListQueryParams, H265VideoConfigurationListQueryParamsBuilder} from './H265VideoConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * H265Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class H265Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<H265VideoConfiguration>>('/encoding/configurations/video/h265', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<H265VideoConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new H265VideoConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<H265VideoConfiguration>(response, H265VideoConfiguration);;
     });
   }
 }

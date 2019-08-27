@@ -5,7 +5,6 @@ import StandardMediaInfo from '../../../../../models/StandardMediaInfo';
 import VideoMediaInfo from '../../../../../models/VideoMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {VideoMediaInfoListQueryParams, VideoMediaInfoListQueryParamsBuilder} from './VideoMediaInfoListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * VideoApi - object-oriented interface
@@ -87,11 +86,7 @@ export default class VideoApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<VideoMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/video', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<VideoMediaInfo>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new VideoMediaInfo(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<VideoMediaInfo>(response, VideoMediaInfo);;
     });
   }
 }

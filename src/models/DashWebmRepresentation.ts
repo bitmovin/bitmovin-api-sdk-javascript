@@ -9,6 +9,7 @@ import DashSegmentedRepresentation from './DashSegmentedRepresentation';
 export class DashWebmRepresentation extends DashSegmentedRepresentation {
   constructor(obj: Partial<DashWebmRepresentation>) {
     super(obj);
+
   }
 }
 

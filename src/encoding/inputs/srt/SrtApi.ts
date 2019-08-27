@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import SrtInput from '../../../models/SrtInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {SrtInputListQueryParams, SrtInputListQueryParamsBuilder} from './SrtInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * SrtApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class SrtApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtInput>>('/encoding/inputs/srt', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SrtInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SrtInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SrtInput>(response, SrtInput);;
     });
   }
 }

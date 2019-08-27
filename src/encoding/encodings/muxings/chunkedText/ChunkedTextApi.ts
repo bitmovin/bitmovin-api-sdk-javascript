@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ChunkedTextMuxing from '../../../../models/ChunkedTextMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {ChunkedTextMuxingListQueryParams, ChunkedTextMuxingListQueryParamsBuilder} from './ChunkedTextMuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ChunkedTextApi - object-oriented interface
@@ -89,11 +88,7 @@ export default class ChunkedTextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ChunkedTextMuxing>>('/encoding/encodings/{encoding_id}/muxings/chunked-text', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ChunkedTextMuxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ChunkedTextMuxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ChunkedTextMuxing>(response, ChunkedTextMuxing);;
     });
   }
 }

@@ -41,13 +41,14 @@ export class PaginationResponse<T> {
    */
   public items?: T[];
 
-  constructor(obj: Partial<PaginationResponse<T>>) {
-    this.totalCount = map(obj.totalCount);
-    this.offset = map(obj.offset);
-    this.limit = map(obj.limit);
-    this.previous = map(obj.previous);
-    this.next = map(obj.next);
-    this.items = map(obj.items);
+  constructor(obj: Partial<PaginationResponse<T>>, type: new(obj: any) => T) {
+
+    this.totalCount = obj.totalCount;
+    this.offset = obj.offset;
+    this.limit = obj.limit;
+    this.previous = obj.previous;
+    this.next = obj.next;
+    this.items = map<T>(obj.items, type) || [];
   }
 }
 

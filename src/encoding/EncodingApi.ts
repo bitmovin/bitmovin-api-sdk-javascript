@@ -9,7 +9,6 @@ import ManifestsApi from './manifests/ManifestsApi';
 import InfrastructureApi from './infrastructure/InfrastructureApi';
 import StatisticsApi from './statistics/StatisticsApi';
 import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
-import {getType, map} from '../common/Mapper';
 
 /**
  * EncodingApi - object-oriented interface

@@ -10,18 +10,19 @@ export class UtcTiming {
    * @type {string}
    * @memberof UtcTiming
    */
-  public value: string;
+  public value?: string;
 
   /**
    * The scheme id to use. Please refer to the DASH standard. (required)
    * @type {string}
    * @memberof UtcTiming
    */
-  public schemeIdUri: string;
+  public schemeIdUri?: string;
 
   constructor(obj: Partial<UtcTiming>) {
-    this.value = map(obj.value);
-    this.schemeIdUri = map(obj.schemeIdUri);
+
+    this.value = obj.value;
+    this.schemeIdUri = obj.schemeIdUri;
   }
 }
 

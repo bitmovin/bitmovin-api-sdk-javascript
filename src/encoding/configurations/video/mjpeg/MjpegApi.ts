@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import MjpegVideoConfiguration from '../../../../models/MjpegVideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {MjpegVideoConfigurationListQueryParams, MjpegVideoConfigurationListQueryParamsBuilder} from './MjpegVideoConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * MjpegApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class MjpegApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<MjpegVideoConfiguration>>('/encoding/configurations/video/mjpeg', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<MjpegVideoConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new MjpegVideoConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<MjpegVideoConfiguration>(response, MjpegVideoConfiguration);;
     });
   }
 }

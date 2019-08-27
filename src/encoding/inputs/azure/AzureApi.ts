@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AzureInput from '../../../models/AzureInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {AzureInputListQueryParams, AzureInputListQueryParamsBuilder} from './AzureInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AzureApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class AzureApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AzureInput>>('/encoding/inputs/azure', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AzureInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AzureInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AzureInput>(response, AzureInput);;
     });
   }
 }

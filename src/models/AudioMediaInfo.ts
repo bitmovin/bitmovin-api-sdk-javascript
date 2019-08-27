@@ -15,7 +15,8 @@ export class AudioMediaInfo extends StandardMediaInfo {
 
   constructor(obj: Partial<AudioMediaInfo>) {
     super(obj);
-    this.forced = map(obj.forced);
+
+    this.forced = obj.forced;
   }
 }
 

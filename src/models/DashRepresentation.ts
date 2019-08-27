@@ -11,19 +11,20 @@ export class DashRepresentation extends BitmovinResponse {
    * @type {string}
    * @memberof DashRepresentation
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * UUID of a muxing (required)
    * @type {string}
    * @memberof DashRepresentation
    */
-  public muxingId: string;
+  public muxingId?: string;
 
   constructor(obj: Partial<DashRepresentation>) {
     super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.muxingId = map(obj.muxingId);
+
+    this.encodingId = obj.encodingId;
+    this.muxingId = obj.muxingId;
   }
 }
 

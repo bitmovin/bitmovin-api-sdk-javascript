@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import RedundantRtmpInput from '../../../models/RedundantRtmpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {RedundantRtmpInputListQueryParams, RedundantRtmpInputListQueryParamsBuilder} from './RedundantRtmpInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * RedundantRtmpApi - object-oriented interface
@@ -74,11 +73,7 @@ export default class RedundantRtmpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RedundantRtmpInput>>('/encoding/inputs/redundant-rtmp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<RedundantRtmpInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new RedundantRtmpInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<RedundantRtmpInput>(response, RedundantRtmpInput);;
     });
   }
 }

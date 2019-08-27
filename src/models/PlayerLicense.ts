@@ -12,7 +12,7 @@ export class PlayerLicense extends BitmovinResponse {
    * @type {string}
    * @memberof PlayerLicense
    */
-  public name: string;
+  public name?: string;
 
   /**
    * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
@@ -65,14 +65,15 @@ export class PlayerLicense extends BitmovinResponse {
 
   constructor(obj: Partial<PlayerLicense>) {
     super(obj);
-    this.name = map(obj.name);
-    this.createdAt = map(obj.createdAt, Date);
-    this.licenseKey = map(obj.licenseKey);
-    this.impressions = map(obj.impressions);
-    this.maxImpressions = map(obj.maxImpressions);
-    this.thirdPartyLicensingEnabled = map(obj.thirdPartyLicensingEnabled);
-    this.domains = map<Domain>(obj.domains, Domain);
-    this.analyticsKey = map(obj.analyticsKey);
+
+    this.name = obj.name;
+    this.createdAt = map<Date>(obj.createdAt, Date);
+    this.licenseKey = obj.licenseKey;
+    this.impressions = obj.impressions;
+    this.maxImpressions = obj.maxImpressions;
+    this.thirdPartyLicensingEnabled = obj.thirdPartyLicensingEnabled;
+    this.domains = map<Domain>(obj.domains, Domain) || [];
+    this.analyticsKey = obj.analyticsKey;
   }
 }
 

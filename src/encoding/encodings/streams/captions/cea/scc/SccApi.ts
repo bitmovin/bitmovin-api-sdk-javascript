@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import SccCaption from '../../../../../../models/SccCaption';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {SccCaptionListQueryParams, SccCaptionListQueryParamsBuilder} from './SccCaptionListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * SccApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class SccApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SccCaption>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SccCaption>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SccCaption(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SccCaption>(response, SccCaption);;
     });
   }
 }

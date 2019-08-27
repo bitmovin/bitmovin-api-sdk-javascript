@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import RotateFilter from '../../../models/RotateFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {RotateFilterListQueryParams, RotateFilterListQueryParamsBuilder} from './RotateFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * RotateApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class RotateApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RotateFilter>>('/encoding/filters/rotate', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<RotateFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new RotateFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<RotateFilter>(response, RotateFilter);;
     });
   }
 }

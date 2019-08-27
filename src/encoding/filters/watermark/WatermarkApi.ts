@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import WatermarkFilter from '../../../models/WatermarkFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {WatermarkFilterListQueryParams, WatermarkFilterListQueryParamsBuilder} from './WatermarkFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * WatermarkApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class WatermarkApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WatermarkFilter>>('/encoding/filters/watermark', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<WatermarkFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new WatermarkFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<WatermarkFilter>(response, WatermarkFilter);;
     });
   }
 }

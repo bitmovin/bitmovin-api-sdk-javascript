@@ -6,7 +6,6 @@ import BitmovinResource from '../../../models/BitmovinResource';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Group from '../../../models/Group';
 import PaginationResponse from '../../../models/PaginationResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * GroupsApi - object-oriented interface
@@ -85,11 +84,7 @@ export default class GroupsApi extends BaseAPI {
       organization_id: organizationId
     };
     return this.restClient.get<PaginationResponse<Group>>('/account/organizations/{organization_id}/groups', pathParamMap).then((response) => {
-      const paginationResponse = new PaginationResponse<Group>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Group(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Group>(response, Group);;
     });
   }
 }

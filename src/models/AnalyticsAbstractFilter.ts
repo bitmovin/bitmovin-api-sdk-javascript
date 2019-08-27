@@ -10,13 +10,24 @@ import AnalyticsLessThanOrEqualFilter from './AnalyticsLessThanOrEqualFilter';
 import AnalyticsNotContainsFilter from './AnalyticsNotContainsFilter';
 import AnalyticsNotEqualFilter from './AnalyticsNotEqualFilter';
 
+export type AnalyticsAbstractFilterUnion =
+  AnalyticsInFilter |
+  AnalyticsEqualFilter |
+  AnalyticsNotEqualFilter |
+  AnalyticsLessThanFilter |
+  AnalyticsLessThanOrEqualFilter |
+  AnalyticsGreaterThanFilter |
+  AnalyticsGreaterThanOrEqualFilter |
+  AnalyticsContainsFilter |
+  AnalyticsNotContainsFilter;
+
 /**
  * @export
  * @class AnalyticsAbstractFilter
  */
 export class AnalyticsAbstractFilter {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'operator';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'IN': 'AnalyticsInFilter',
     'EQ': 'AnalyticsEqualFilter',
     'NE': 'AnalyticsNotEqualFilter',
@@ -32,10 +43,11 @@ export class AnalyticsAbstractFilter {
    * @type {AnalyticsAttribute}
    * @memberof AnalyticsAbstractFilter
    */
-  public name: AnalyticsAttribute;
+  public name?: AnalyticsAttribute;
 
   constructor(obj: Partial<AnalyticsAbstractFilter>) {
-    this.name = map(obj.name);
+
+    this.name = obj.name;
   }
 }
 

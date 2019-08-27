@@ -10,7 +10,7 @@ export class CustomAttribute {
    * @type {string}
    * @memberof CustomAttribute
    */
-  public key: string;
+  public key?: string;
 
   /**
    * value of the custom attribute
@@ -20,8 +20,9 @@ export class CustomAttribute {
   public value?: string;
 
   constructor(obj: Partial<CustomAttribute>) {
-    this.key = map(obj.key);
-    this.value = map(obj.value);
+
+    this.key = obj.key;
+    this.value = obj.value;
   }
 }
 

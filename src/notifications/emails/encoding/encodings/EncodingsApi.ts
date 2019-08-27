@@ -5,7 +5,6 @@ import ErrorApi from './error/ErrorApi';
 import EmailNotificationWithStreamConditions from '../../../../models/EmailNotificationWithStreamConditions';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EmailNotificationWithStreamConditionsListQueryParams, EmailNotificationWithStreamConditionsListQueryParamsBuilder} from './EmailNotificationWithStreamConditionsListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * EncodingsApi - object-oriented interface
@@ -41,11 +40,7 @@ export default class EncodingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EmailNotificationWithStreamConditions>>('/notifications/emails/encoding/encodings/{encoding_id}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EmailNotificationWithStreamConditions>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EmailNotificationWithStreamConditions(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EmailNotificationWithStreamConditions>(response, EmailNotificationWithStreamConditions);;
     });
   }
 }

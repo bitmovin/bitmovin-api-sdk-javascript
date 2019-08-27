@@ -1,6 +1,5 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * StopApi - object-oriented interface

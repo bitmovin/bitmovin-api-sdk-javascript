@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import AnalyticsMaxConcurrentViewersResponse from '../../../models/AnalyticsMaxConcurrentViewersResponse';
 import AnalyticsMetricsQueryRequest from '../../../models/AnalyticsMetricsQueryRequest';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * MaxConcurrentviewersApi - object-oriented interface

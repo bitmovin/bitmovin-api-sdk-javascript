@@ -3,7 +3,6 @@ import Configuration from '../../../../../common/Configuration';
 import LiveEncodingStatsEvent from '../../../../../models/LiveEncodingStatsEvent';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {LiveEncodingStatsEventListQueryParams, LiveEncodingStatsEventListQueryParamsBuilder} from './LiveEncodingStatsEventListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * EventsApi - object-oriented interface
@@ -35,11 +34,7 @@ export default class EventsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<LiveEncodingStatsEvent>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/events', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<LiveEncodingStatsEvent>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new LiveEncodingStatsEvent(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<LiveEncodingStatsEvent>(response, LiveEncodingStatsEvent);;
     });
   }
 }

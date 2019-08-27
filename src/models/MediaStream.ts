@@ -29,9 +29,10 @@ export class MediaStream extends BitmovinResponse {
 
   constructor(obj: Partial<MediaStream>) {
     super(obj);
-    this.position = map(obj.position);
-    this.duration = map(obj.duration);
-    this.codec = map(obj.codec);
+
+    this.position = obj.position;
+    this.duration = obj.duration;
+    this.codec = obj.codec;
   }
 }
 

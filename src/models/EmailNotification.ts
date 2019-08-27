@@ -10,11 +10,12 @@ export class EmailNotification extends Notification {
    * @type {string[]}
    * @memberof EmailNotification
    */
-  public emails: string[];
+  public emails?: string[];
 
   constructor(obj: Partial<EmailNotification>) {
     super(obj);
-    this.emails = map(obj.emails);
+
+    this.emails = obj.emails || [];
   }
 }
 

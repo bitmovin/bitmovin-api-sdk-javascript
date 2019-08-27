@@ -13,7 +13,8 @@ export class TimeCode {
   public timeCodeStart?: string;
 
   constructor(obj: Partial<TimeCode>) {
-    this.timeCodeStart = map(obj.timeCodeStart);
+
+    this.timeCodeStart = obj.timeCodeStart;
   }
 }
 

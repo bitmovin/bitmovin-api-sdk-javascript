@@ -11,17 +11,18 @@ export class ResourceLimitContainer {
    * @type {ResourceType}
    * @memberof ResourceLimitContainer
    */
-  public resource: ResourceType;
+  public resource?: ResourceType;
 
   /**
    * @type {ResourceLimit[]}
    * @memberof ResourceLimitContainer
    */
-  public limits: ResourceLimit[];
+  public limits?: ResourceLimit[];
 
   constructor(obj: Partial<ResourceLimitContainer>) {
-    this.resource = map(obj.resource);
-    this.limits = map<ResourceLimit>(obj.limits, ResourceLimit);
+
+    this.resource = obj.resource;
+    this.limits = map<ResourceLimit>(obj.limits, ResourceLimit) || [];
   }
 }
 

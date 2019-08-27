@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsNotContainsFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsNotContainsFilter
+   */
+  public operator: 'NOTCONTAINS' = 'NOTCONTAINS';
+
+  /**
    * @type {any}
    * @memberof AnalyticsNotContainsFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AnalyticsNotContainsFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

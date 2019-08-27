@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import CropFilter from '../../../models/CropFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {CropFilterListQueryParams, CropFilterListQueryParamsBuilder} from './CropFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * CropApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class CropApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CropFilter>>('/encoding/filters/crop', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<CropFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new CropFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<CropFilter>(response, CropFilter);;
     });
   }
 }

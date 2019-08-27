@@ -15,7 +15,6 @@ import LiveMediaIngestApi from './liveMediaIngest/LiveMediaIngestApi';
 import Output from '../../models/Output';
 import PaginationResponse from '../../models/PaginationResponse';
 import {OutputListQueryParams, OutputListQueryParamsBuilder} from './OutputListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * OutputsApi - object-oriented interface
@@ -67,11 +66,7 @@ export default class OutputsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Output>>('/encoding/outputs', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Output>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Output)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Output>(response, Output);;
     });
   }
 }

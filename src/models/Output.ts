@@ -13,13 +13,26 @@ import S3Output from './S3Output';
 import S3RoleBasedOutput from './S3RoleBasedOutput';
 import SftpOutput from './SftpOutput';
 
+export type OutputUnion =
+  AkamaiNetStorageOutput |
+  AzureOutput |
+  GenericS3Output |
+  GcsOutput |
+  FtpOutput |
+  LocalOutput |
+  S3Output |
+  S3RoleBasedOutput |
+  SftpOutput |
+  AkamaiMslOutput |
+  LiveMediaIngestOutput;
+
 /**
  * @export
  * @class Output
  */
 export class Output extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'AKAMAI_NETSTORAGE': 'AkamaiNetStorageOutput',
     'AZURE': 'AzureOutput',
     'GENERIC_S3': 'GenericS3Output',
@@ -41,7 +54,8 @@ export class Output extends BitmovinResource {
 
   constructor(obj: Partial<Output>) {
     super(obj);
-    this.acl = map<AclEntry>(obj.acl, AclEntry);
+
+    this.acl = map<AclEntry>(obj.acl, AclEntry) || [];
   }
 }
 

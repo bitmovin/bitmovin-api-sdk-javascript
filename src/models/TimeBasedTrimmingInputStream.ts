@@ -7,6 +7,13 @@ import InputStream from './InputStream';
  */
 export class TimeBasedTrimmingInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof TimeBasedTrimmingInputStream
+   */
+  public type: 'TRIMMING_TIME_BASED' = 'TRIMMING_TIME_BASED';
+
+  /**
    * The id of the ingest input stream that should be trimmed
    * @type {string}
    * @memberof TimeBasedTrimmingInputStream
@@ -29,9 +36,10 @@ export class TimeBasedTrimmingInputStream extends InputStream {
 
   constructor(obj: Partial<TimeBasedTrimmingInputStream>) {
     super(obj);
-    this.inputStreamId = map(obj.inputStreamId);
-    this.offset = map(obj.offset);
-    this.duration = map(obj.duration);
+
+    this.inputStreamId = obj.inputStreamId;
+    this.offset = obj.offset;
+    this.duration = obj.duration;
   }
 }
 

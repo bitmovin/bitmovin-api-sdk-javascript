@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import AsperaInput from '../../../models/AsperaInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {AsperaInputListQueryParams, AsperaInputListQueryParamsBuilder} from './AsperaInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AsperaApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class AsperaApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AsperaInput>>('/encoding/inputs/aspera', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AsperaInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AsperaInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AsperaInput>(response, AsperaInput);;
     });
   }
 }

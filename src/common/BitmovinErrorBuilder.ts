@@ -31,7 +31,7 @@ function appendRequestMessage(request: any) {
   message = appendLine(message, `  method: ${request.method}`);
   message = appendLine(message, `  url: ${request.url}`);
 
-  return request.body == undefined ? message : appendLine(message, `  body: ${JSON.stringify(request.body)}`);
+  return request.body == undefined ? message : appendLine(message, `  body: ${request.body}`);
 }
 
 function appendResponseMessage(response: any, errorResponse: any) {

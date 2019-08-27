@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import VorbisAudioConfiguration from '../../../../models/VorbisAudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {VorbisAudioConfigurationListQueryParams, VorbisAudioConfigurationListQueryParamsBuilder} from './VorbisAudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * VorbisApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class VorbisApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<VorbisAudioConfiguration>>('/encoding/configurations/audio/vorbis', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<VorbisAudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new VorbisAudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<VorbisAudioConfiguration>(response, VorbisAudioConfiguration);;
     });
   }
 }

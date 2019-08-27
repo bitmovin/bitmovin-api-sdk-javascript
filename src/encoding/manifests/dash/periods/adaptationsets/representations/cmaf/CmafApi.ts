@@ -7,7 +7,6 @@ import DashCmafRepresentation from '../../../../../../../models/DashCmafRepresen
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
 import {DashCmafRepresentationListQueryParams, DashCmafRepresentationListQueryParamsBuilder} from './DashCmafRepresentationListQueryParams';
-import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * CmafApi - object-oriented interface
@@ -109,11 +108,7 @@ export default class CmafApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashCmafRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashCmafRepresentation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashCmafRepresentation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashCmafRepresentation>(response, DashCmafRepresentation);;
     });
   }
 }

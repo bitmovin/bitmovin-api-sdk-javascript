@@ -17,7 +17,7 @@ export class SourceChannel {
    * @type {SourceChannelType}
    * @memberof SourceChannel
    */
-  public type: SourceChannelType;
+  public type?: SourceChannelType;
 
   /**
    * Number of this source channel. If type is 'CHANNEL_NUMBER', this must be set.
@@ -27,9 +27,10 @@ export class SourceChannel {
   public channelNumber?: number;
 
   constructor(obj: Partial<SourceChannel>) {
-    this.gain = map(obj.gain);
-    this.type = map(obj.type);
-    this.channelNumber = map(obj.channelNumber);
+
+    this.gain = obj.gain;
+    this.type = obj.type;
+    this.channelNumber = obj.channelNumber;
   }
 }
 

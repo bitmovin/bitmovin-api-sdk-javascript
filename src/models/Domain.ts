@@ -11,11 +11,12 @@ export class Domain extends BitmovinResource {
    * @type {string}
    * @memberof Domain
    */
-  public url: string;
+  public url?: string;
 
   constructor(obj: Partial<Domain>) {
     super(obj);
-    this.url = map(obj.url);
+
+    this.url = obj.url;
   }
 }
 

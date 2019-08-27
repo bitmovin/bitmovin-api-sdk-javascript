@@ -9,25 +9,32 @@ import Output from './Output';
  */
 export class GcsOutput extends Output {
   /**
+   * Discriminator property for Output
+   * @type {string}
+   * @memberof GcsOutput
+   */
+  public type: 'GCS' = 'GCS';
+
+  /**
    * GCS access key (required)
    * @type {string}
    * @memberof GcsOutput
    */
-  public accessKey: string;
+  public accessKey?: string;
 
   /**
    * GCS secret key (required)
    * @type {string}
    * @memberof GcsOutput
    */
-  public secretKey: string;
+  public secretKey?: string;
 
   /**
    * Name of the bucket (required)
    * @type {string}
    * @memberof GcsOutput
    */
-  public bucketName: string;
+  public bucketName?: string;
 
   /**
    * @type {GoogleCloudRegion}
@@ -37,10 +44,11 @@ export class GcsOutput extends Output {
 
   constructor(obj: Partial<GcsOutput>) {
     super(obj);
-    this.accessKey = map(obj.accessKey);
-    this.secretKey = map(obj.secretKey);
-    this.bucketName = map(obj.bucketName);
-    this.cloudRegion = map(obj.cloudRegion);
+
+    this.accessKey = obj.accessKey;
+    this.secretKey = obj.secretKey;
+    this.bucketName = obj.bucketName;
+    this.cloudRegion = obj.cloudRegion;
   }
 }
 

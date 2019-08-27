@@ -7,7 +7,6 @@ import SmoothApi from './smooth/SmoothApi';
 import Manifest from '../../models/Manifest';
 import PaginationResponse from '../../models/PaginationResponse';
 import {ManifestListQueryParams, ManifestListQueryParamsBuilder} from './ManifestListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * ManifestsApi - object-oriented interface
@@ -43,11 +42,7 @@ export default class ManifestsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Manifest>>('/encoding/manifests', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Manifest>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Manifest(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Manifest>(response, Manifest);;
     });
   }
 }

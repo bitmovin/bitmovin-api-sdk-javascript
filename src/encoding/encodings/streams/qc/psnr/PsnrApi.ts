@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PsnrQualityMetric from '../../../../../models/PsnrQualityMetric';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {PsnrQualityMetricListQueryParams, PsnrQualityMetricListQueryParamsBuilder} from './PsnrQualityMetricListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * PsnrApi - object-oriented interface
@@ -55,11 +54,7 @@ export default class PsnrApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PsnrQualityMetric>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<PsnrQualityMetric>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PsnrQualityMetric(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PsnrQualityMetric>(response, PsnrQualityMetric);;
     });
   }
 }

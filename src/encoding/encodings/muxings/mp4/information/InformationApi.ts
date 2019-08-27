@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import Mp4MuxingInformation from '../../../../../models/Mp4MuxingInformation';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * InformationApi - object-oriented interface

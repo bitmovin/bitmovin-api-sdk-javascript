@@ -20,8 +20,9 @@ export class Ignoring {
   public ignoredByDescription?: string;
 
   constructor(obj: Partial<Ignoring>) {
-    this.ignoredBy = map(obj.ignoredBy);
-    this.ignoredByDescription = map(obj.ignoredByDescription);
+
+    this.ignoredBy = obj.ignoredBy;
+    this.ignoredByDescription = obj.ignoredByDescription;
   }
 }
 

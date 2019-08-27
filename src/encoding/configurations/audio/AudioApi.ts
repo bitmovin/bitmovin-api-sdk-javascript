@@ -9,7 +9,6 @@ import Ac3Api from './ac3/Ac3Api';
 import Eac3Api from './eac3/Eac3Api';
 import Mp2Api from './mp2/Mp2Api';
 import Mp3Api from './mp3/Mp3Api';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AudioApi - object-oriented interface

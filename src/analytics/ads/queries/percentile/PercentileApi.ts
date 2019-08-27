@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import AdAnalyticsPercentileQueryRequest from '../../../../models/AdAnalyticsPercentileQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * PercentileApi - object-oriented interface

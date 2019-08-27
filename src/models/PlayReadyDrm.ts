@@ -9,6 +9,13 @@ import PlayReadyEncryptionMethod from './PlayReadyEncryptionMethod';
  */
 export class PlayReadyDrm extends Drm {
   /**
+   * Discriminator property for Drm
+   * @type {string}
+   * @memberof PlayReadyDrm
+   */
+  public type: 'PLAYREADY' = 'PLAYREADY';
+
+  /**
    * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
    * @type {string}
    * @memberof PlayReadyDrm
@@ -51,12 +58,13 @@ export class PlayReadyDrm extends Drm {
 
   constructor(obj: Partial<PlayReadyDrm>) {
     super(obj);
-    this.key = map(obj.key);
-    this.keySeed = map(obj.keySeed);
-    this.laUrl = map(obj.laUrl);
-    this.pssh = map(obj.pssh);
-    this.method = map(obj.method);
-    this.kid = map(obj.kid);
+
+    this.key = obj.key;
+    this.keySeed = obj.keySeed;
+    this.laUrl = obj.laUrl;
+    this.pssh = obj.pssh;
+    this.method = obj.method;
+    this.kid = obj.kid;
   }
 }
 

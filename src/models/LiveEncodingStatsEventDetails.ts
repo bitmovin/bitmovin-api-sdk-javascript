@@ -10,7 +10,7 @@ export class LiveEncodingStatsEventDetails {
    * @type {LiveEncodingEventName}
    * @memberof LiveEncodingStatsEventDetails
    */
-  public eventName: LiveEncodingEventName;
+  public eventName?: LiveEncodingEventName;
 
   /**
    * The Audio/Video Drift in seconds. The drift was corrected by the RESYNCING event (occurs at event: RESYNCING)
@@ -34,10 +34,11 @@ export class LiveEncodingStatsEventDetails {
   public errorMessage?: string;
 
   constructor(obj: Partial<LiveEncodingStatsEventDetails>) {
-    this.eventName = map(obj.eventName);
-    this.avDriftInSeconds = map(obj.avDriftInSeconds);
-    this.idleDurationInSeconds = map(obj.idleDurationInSeconds);
-    this.errorMessage = map(obj.errorMessage);
+
+    this.eventName = obj.eventName;
+    this.avDriftInSeconds = obj.avDriftInSeconds;
+    this.idleDurationInSeconds = obj.idleDurationInSeconds;
+    this.errorMessage = obj.errorMessage;
   }
 }
 

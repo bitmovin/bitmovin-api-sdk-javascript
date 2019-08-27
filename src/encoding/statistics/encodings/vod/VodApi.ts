@@ -4,7 +4,6 @@ import EncodingStatisticsVod from '../../../../models/EncodingStatisticsVod';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EncodingStatisticsVodListQueryParams, EncodingStatisticsVodListQueryParamsBuilder} from './EncodingStatisticsVodListQueryParams';
 import {EncodingStatisticsVodListByDateRangeQueryParams, EncodingStatisticsVodListByDateRangeQueryParamsBuilder} from './EncodingStatisticsVodListByDateRangeQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * VodApi - object-oriented interface
@@ -32,11 +31,7 @@ export default class VodApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EncodingStatisticsVod>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsVod(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);;
     });
   }
 
@@ -60,11 +55,7 @@ export default class VodApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EncodingStatisticsVod>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsVod(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);;
     });
   }
 }

@@ -11,11 +11,12 @@ export class IFramePlaylist extends BitmovinResource {
    * @type {string}
    * @memberof IFramePlaylist
    */
-  public filename: string;
+  public filename?: string;
 
   constructor(obj: Partial<IFramePlaylist>) {
     super(obj);
-    this.filename = map(obj.filename);
+
+    this.filename = obj.filename;
   }
 }
 

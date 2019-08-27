@@ -7,7 +7,6 @@ import AdsApi from './ads/AdsApi';
 import QueriesApi from './queries/QueriesApi';
 import LicensesApi from './licenses/LicensesApi';
 import OutputsApi from './outputs/OutputsApi';
-import {getType, map} from '../common/Mapper';
 
 /**
  * AnalyticsApi - object-oriented interface

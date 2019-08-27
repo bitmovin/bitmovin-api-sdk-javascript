@@ -14,7 +14,7 @@ export class SmoothManifestDefault extends SmoothStreamingManifest {
    * @type {string}
    * @memberof SmoothManifestDefault
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * The version of the default manifest generator
@@ -25,8 +25,9 @@ export class SmoothManifestDefault extends SmoothStreamingManifest {
 
   constructor(obj: Partial<SmoothManifestDefault>) {
     super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.version = map(obj.version);
+
+    this.encodingId = obj.encodingId;
+    this.version = obj.version;
   }
 }
 

@@ -10,25 +10,32 @@ import S3SignatureVersion from './S3SignatureVersion';
  */
 export class S3Output extends Output {
   /**
+   * Discriminator property for Output
+   * @type {string}
+   * @memberof S3Output
+   */
+  public type: 'S3' = 'S3';
+
+  /**
    * Amazon S3 bucket name (required)
    * @type {string}
    * @memberof S3Output
    */
-  public bucketName: string;
+  public bucketName?: string;
 
   /**
    * Amazon S3 access key (required)
    * @type {string}
    * @memberof S3Output
    */
-  public accessKey: string;
+  public accessKey?: string;
 
   /**
    * Amazon S3 secret key (required)
    * @type {string}
    * @memberof S3Output
    */
-  public secretKey: string;
+  public secretKey?: string;
 
   /**
    * If set a user defined tag (x-amz-meta-) with that key will be used to store the MD5 hash of the file.
@@ -51,12 +58,13 @@ export class S3Output extends Output {
 
   constructor(obj: Partial<S3Output>) {
     super(obj);
-    this.bucketName = map(obj.bucketName);
-    this.accessKey = map(obj.accessKey);
-    this.secretKey = map(obj.secretKey);
-    this.md5MetaTag = map(obj.md5MetaTag);
-    this.cloudRegion = map(obj.cloudRegion);
-    this.signatureVersion = map(obj.signatureVersion);
+
+    this.bucketName = obj.bucketName;
+    this.accessKey = obj.accessKey;
+    this.secretKey = obj.secretKey;
+    this.md5MetaTag = obj.md5MetaTag;
+    this.cloudRegion = obj.cloudRegion;
+    this.signatureVersion = obj.signatureVersion;
   }
 }
 

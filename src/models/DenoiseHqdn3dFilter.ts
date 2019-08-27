@@ -7,6 +7,13 @@ import Filter from './Filter';
  */
 export class DenoiseHqdn3dFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof DenoiseHqdn3dFilter
+   */
+  public type: 'DENOISE_HQDN3D' = 'DENOISE_HQDN3D';
+
+  /**
    * A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0.
    * @type {number}
    * @memberof DenoiseHqdn3dFilter
@@ -36,10 +43,11 @@ export class DenoiseHqdn3dFilter extends Filter {
 
   constructor(obj: Partial<DenoiseHqdn3dFilter>) {
     super(obj);
-    this.lumaSpatial = map(obj.lumaSpatial);
-    this.chromaSpatial = map(obj.chromaSpatial);
-    this.lumaTmp = map(obj.lumaTmp);
-    this.chromaTmp = map(obj.chromaTmp);
+
+    this.lumaSpatial = obj.lumaSpatial;
+    this.chromaSpatial = obj.chromaSpatial;
+    this.lumaTmp = obj.lumaTmp;
+    this.chromaTmp = obj.chromaTmp;
   }
 }
 

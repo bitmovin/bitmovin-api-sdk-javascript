@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import ZixiInput from '../../../models/ZixiInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {ZixiInputListQueryParams, ZixiInputListQueryParamsBuilder} from './ZixiInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * ZixiApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class ZixiApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ZixiInput>>('/encoding/inputs/zixi', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ZixiInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ZixiInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ZixiInput>(response, ZixiInput);;
     });
   }
 }

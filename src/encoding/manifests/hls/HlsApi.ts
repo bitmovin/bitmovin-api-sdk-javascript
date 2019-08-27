@@ -9,7 +9,6 @@ import HlsManifest from '../../../models/HlsManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {HlsManifestListQueryParams, HlsManifestListQueryParamsBuilder} from './HlsManifestListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * HlsApi - object-oriented interface
@@ -87,11 +86,7 @@ export default class HlsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<HlsManifest>>('/encoding/manifests/hls', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<HlsManifest>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new HlsManifest(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<HlsManifest>(response, HlsManifest);;
     });
   }
 

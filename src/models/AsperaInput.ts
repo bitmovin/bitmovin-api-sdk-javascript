@@ -7,6 +7,13 @@ import Input from './Input';
  */
 export class AsperaInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof AsperaInput
+   */
+  public type: 'ASPERA' = 'ASPERA';
+
+  /**
    * Minimal download bandwidth. Examples: 100k, 100m, 100g
    * @type {string}
    * @memberof AsperaInput
@@ -25,7 +32,7 @@ export class AsperaInput extends Input {
    * @type {string}
    * @memberof AsperaInput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Username to log into Aspera host (either password and user must be set or token)
@@ -50,12 +57,13 @@ export class AsperaInput extends Input {
 
   constructor(obj: Partial<AsperaInput>) {
     super(obj);
-    this.minBandwidth = map(obj.minBandwidth);
-    this.maxBandwidth = map(obj.maxBandwidth);
-    this.host = map(obj.host);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
-    this.token = map(obj.token);
+
+    this.minBandwidth = obj.minBandwidth;
+    this.maxBandwidth = obj.maxBandwidth;
+    this.host = obj.host;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.token = obj.token;
   }
 }
 

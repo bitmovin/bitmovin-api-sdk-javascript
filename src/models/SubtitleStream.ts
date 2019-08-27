@@ -22,8 +22,9 @@ export class SubtitleStream extends MediaStream {
 
   constructor(obj: Partial<SubtitleStream>) {
     super(obj);
-    this.language = map(obj.language);
-    this.hearingImpaired = map(obj.hearingImpaired);
+
+    this.language = obj.language;
+    this.hearingImpaired = obj.hearingImpaired;
   }
 }
 

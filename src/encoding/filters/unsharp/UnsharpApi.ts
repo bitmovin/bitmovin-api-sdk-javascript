@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import UnsharpFilter from '../../../models/UnsharpFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {UnsharpFilterListQueryParams, UnsharpFilterListQueryParamsBuilder} from './UnsharpFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * UnsharpApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class UnsharpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UnsharpFilter>>('/encoding/filters/unsharp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<UnsharpFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new UnsharpFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<UnsharpFilter>(response, UnsharpFilter);;
     });
   }
 }

@@ -11,34 +11,35 @@ export class PlayerThirdPartyLicensing {
    * @type {string}
    * @memberof PlayerThirdPartyLicensing
    */
-  public licenseCheckServer: string;
+  public licenseCheckServer?: string;
 
   /**
    * Timeout in ms (required)
    * @type {number}
    * @memberof PlayerThirdPartyLicensing
    */
-  public licenseCheckTimeout: number;
+  public licenseCheckTimeout?: number;
 
   /**
    * Specify if the Licensing Request should fail or not on Third Party Licensing Error (required)
    * @type {PlayerThirdPartyLicensingErrorAction}
    * @memberof PlayerThirdPartyLicensing
    */
-  public errorAction: PlayerThirdPartyLicensingErrorAction;
+  public errorAction?: PlayerThirdPartyLicensingErrorAction;
 
   /**
    * Specify if the Licensing Request should fail or not on Third Party Licensing timeout (required)
    * @type {PlayerThirdPartyLicensingErrorAction}
    * @memberof PlayerThirdPartyLicensing
    */
-  public timeoutAction: PlayerThirdPartyLicensingErrorAction;
+  public timeoutAction?: PlayerThirdPartyLicensingErrorAction;
 
   constructor(obj: Partial<PlayerThirdPartyLicensing>) {
-    this.licenseCheckServer = map(obj.licenseCheckServer);
-    this.licenseCheckTimeout = map(obj.licenseCheckTimeout);
-    this.errorAction = map(obj.errorAction);
-    this.timeoutAction = map(obj.timeoutAction);
+
+    this.licenseCheckServer = obj.licenseCheckServer;
+    this.licenseCheckTimeout = obj.licenseCheckTimeout;
+    this.errorAction = obj.errorAction;
+    this.timeoutAction = obj.timeoutAction;
   }
 }
 

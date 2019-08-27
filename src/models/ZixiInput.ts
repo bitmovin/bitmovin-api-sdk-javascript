@@ -7,6 +7,13 @@ import Input from './Input';
  */
 export class ZixiInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof ZixiInput
+   */
+  public type: 'ZIXI' = 'ZIXI';
+
+  /**
    * @type {string}
    * @memberof ZixiInput
    */
@@ -56,14 +63,15 @@ export class ZixiInput extends Input {
 
   constructor(obj: Partial<ZixiInput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.stream = map(obj.stream);
-    this.password = map(obj.password);
-    this.latency = map(obj.latency);
-    this.minBitrate = map(obj.minBitrate);
-    this.decryptionType = map(obj.decryptionType);
-    this.decryptionKey = map(obj.decryptionKey);
+
+    this.host = obj.host;
+    this.port = obj.port;
+    this.stream = obj.stream;
+    this.password = obj.password;
+    this.latency = obj.latency;
+    this.minBitrate = obj.minBitrate;
+    this.decryptionType = obj.decryptionType;
+    this.decryptionKey = obj.decryptionKey;
   }
 }
 

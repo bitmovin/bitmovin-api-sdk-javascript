@@ -30,6 +30,7 @@ export class PerTitle {
   public vp9Configuration?: Vp9PerTitleConfiguration;
 
   constructor(obj: Partial<PerTitle>) {
+
     this.h264Configuration = map<H264PerTitleConfiguration>(obj.h264Configuration, H264PerTitleConfiguration);
     this.h265Configuration = map<H265PerTitleConfiguration>(obj.h265Configuration, H265PerTitleConfiguration);
     this.vp9Configuration = map<Vp9PerTitleConfiguration>(obj.vp9Configuration, Vp9PerTitleConfiguration);

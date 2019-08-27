@@ -15,7 +15,7 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    * @type {string}
    * @memberof AnalyticsQueryRequest
    */
-  public licenseKey: string;
+  public licenseKey?: string;
 
   /**
    * @type {AnalyticsAbstractFilter[]}
@@ -33,7 +33,7 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    * @type {AnalyticsAttribute}
    * @memberof AnalyticsQueryRequest
    */
-  public dimension: AnalyticsAttribute;
+  public dimension?: AnalyticsAttribute;
 
   /**
    * @type {AnalyticsInterval}
@@ -63,14 +63,15 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
 
   constructor(obj: Partial<AnalyticsQueryRequest>) {
     super(obj);
-    this.licenseKey = map(obj.licenseKey);
-    this.filters = map<AnalyticsAbstractFilter>(obj.filters, AnalyticsAbstractFilter);
-    this.orderBy = map<AnalyticsOrderByEntry>(obj.orderBy, AnalyticsOrderByEntry);
-    this.dimension = map(obj.dimension);
-    this.interval = map(obj.interval);
-    this.groupBy = map(obj.groupBy);
-    this.limit = map(obj.limit);
-    this.offset = map(obj.offset);
+
+    this.licenseKey = obj.licenseKey;
+    this.filters = map<AnalyticsAbstractFilter>(obj.filters, AnalyticsAbstractFilter) || [];
+    this.orderBy = map<AnalyticsOrderByEntry>(obj.orderBy, AnalyticsOrderByEntry) || [];
+    this.dimension = obj.dimension;
+    this.interval = obj.interval;
+    this.groupBy = obj.groupBy || [];
+    this.limit = obj.limit;
+    this.offset = obj.offset;
   }
 }
 

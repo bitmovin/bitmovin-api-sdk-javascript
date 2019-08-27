@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import AnalyticsAvgDroppedFramesResponse from '../../../models/AnalyticsAvgDroppedFramesResponse';
 import AnalyticsMetricsQueryRequest from '../../../models/AnalyticsMetricsQueryRequest';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * AvgDroppedFramesApi - object-oriented interface

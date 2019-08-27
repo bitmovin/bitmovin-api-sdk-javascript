@@ -8,23 +8,31 @@ import EncodingOutput from './EncodingOutput';
  */
 export class MarlinDrm extends Drm {
   /**
-   * 16 byte key in hex (32 characters) (required)
+   * Discriminator property for Drm
    * @type {string}
    * @memberof MarlinDrm
    */
-  public key: string;
+  public type: 'MARLIN' = 'MARLIN';
 
   /**
    * 16 byte key in hex (32 characters) (required)
    * @type {string}
    * @memberof MarlinDrm
    */
-  public kid: string;
+  public key?: string;
+
+  /**
+   * 16 byte key in hex (32 characters) (required)
+   * @type {string}
+   * @memberof MarlinDrm
+   */
+  public kid?: string;
 
   constructor(obj: Partial<MarlinDrm>) {
     super(obj);
-    this.key = map(obj.key);
-    this.kid = map(obj.kid);
+
+    this.key = obj.key;
+    this.kid = obj.kid;
   }
 }
 

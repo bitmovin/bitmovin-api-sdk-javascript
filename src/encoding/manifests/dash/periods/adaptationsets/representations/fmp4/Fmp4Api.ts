@@ -7,7 +7,6 @@ import DashFmp4Representation from '../../../../../../../models/DashFmp4Represen
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
 import {DashFmp4RepresentationListQueryParams, DashFmp4RepresentationListQueryParamsBuilder} from './DashFmp4RepresentationListQueryParams';
-import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * Fmp4Api - object-oriented interface
@@ -109,11 +108,7 @@ export default class Fmp4Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashFmp4Representation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashFmp4Representation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashFmp4Representation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashFmp4Representation>(response, DashFmp4Representation);;
     });
   }
 }

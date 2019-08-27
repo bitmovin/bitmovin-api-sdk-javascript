@@ -11,11 +11,12 @@ export class DashMp4Representation extends DashRepresentation {
    * @type {string}
    * @memberof DashMp4Representation
    */
-  public filePath: string;
+  public filePath?: string;
 
   constructor(obj: Partial<DashMp4Representation>) {
     super(obj);
-    this.filePath = map(obj.filePath);
+
+    this.filePath = obj.filePath;
   }
 }
 

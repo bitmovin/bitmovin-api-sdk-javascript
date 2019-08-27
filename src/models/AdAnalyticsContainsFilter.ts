@@ -8,14 +8,22 @@ import AdAnalyticsAttribute from './AdAnalyticsAttribute';
  */
 export class AdAnalyticsContainsFilter extends AdAnalyticsAbstractFilter {
   /**
+   * Discriminator property for AdAnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AdAnalyticsContainsFilter
+   */
+  public operator: 'CONTAINS' = 'CONTAINS';
+
+  /**
    * @type {any}
    * @memberof AdAnalyticsContainsFilter
    */
-  public value: any;
+  public value?: any;
 
   constructor(obj: Partial<AdAnalyticsContainsFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value;
   }
 }
 

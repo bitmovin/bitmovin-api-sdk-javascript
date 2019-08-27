@@ -11,11 +11,12 @@ export class ContentProtection extends DashRepresentation {
    * @type {string}
    * @memberof ContentProtection
    */
-  public drmId: string;
+  public drmId?: string;
 
   constructor(obj: Partial<ContentProtection>) {
     super(obj);
-    this.drmId = map(obj.drmId);
+
+    this.drmId = obj.drmId;
   }
 }
 

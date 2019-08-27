@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PrewarmEncoderSettings from '../../../../models/PrewarmEncoderSettings';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {PrewarmEncoderSettingsListQueryParams, PrewarmEncoderSettingsListQueryParamsBuilder} from './PrewarmEncoderSettingsListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * PrewarmedDeploymentApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PrewarmEncoderSettings>>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<PrewarmEncoderSettings>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PrewarmEncoderSettings(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PrewarmEncoderSettings>(response, PrewarmEncoderSettings);;
     });
   }
 }

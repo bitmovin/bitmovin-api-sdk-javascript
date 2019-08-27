@@ -4,7 +4,6 @@ import AudioMediaInfo from '../../../../../models/AudioMediaInfo';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {AudioMediaInfoListQueryParams, AudioMediaInfoListQueryParamsBuilder} from './AudioMediaInfoListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * AudioApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class AudioApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/audio', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AudioMediaInfo>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AudioMediaInfo(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AudioMediaInfo>(response, AudioMediaInfo);;
     });
   }
 }

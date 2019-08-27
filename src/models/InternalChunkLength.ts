@@ -11,7 +11,7 @@ export class InternalChunkLength {
    * @type {ChunkLengthMode}
    * @memberof InternalChunkLength
    */
-  public mode: ChunkLengthMode;
+  public mode?: ChunkLengthMode;
 
   /**
    * Defines a custom internal chunk length in seconds to be used for encoding if mode is set to `CUSTOM`. Valid range is from 1 to 180 seconds
@@ -21,8 +21,9 @@ export class InternalChunkLength {
   public customChunkLength?: number;
 
   constructor(obj: Partial<InternalChunkLength>) {
-    this.mode = map(obj.mode);
-    this.customChunkLength = map(obj.customChunkLength);
+
+    this.mode = obj.mode;
+    this.customChunkLength = obj.customChunkLength;
   }
 }
 

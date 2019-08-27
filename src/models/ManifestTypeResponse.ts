@@ -14,7 +14,8 @@ export class ManifestTypeResponse {
   public type?: ManifestType;
 
   constructor(obj: Partial<ManifestTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

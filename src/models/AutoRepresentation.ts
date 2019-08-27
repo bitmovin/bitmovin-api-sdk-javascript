@@ -13,7 +13,8 @@ export class AutoRepresentation {
   public adoptConfigurationThreshold?: number;
 
   constructor(obj: Partial<AutoRepresentation>) {
-    this.adoptConfigurationThreshold = map(obj.adoptConfigurationThreshold);
+
+    this.adoptConfigurationThreshold = obj.adoptConfigurationThreshold;
   }
 }
 

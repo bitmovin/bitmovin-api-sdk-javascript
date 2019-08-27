@@ -8,6 +8,13 @@ import StreamSelectionMode from './StreamSelectionMode';
  */
 export class IngestInputStream extends InputStream {
   /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof IngestInputStream
+   */
+  public type: 'INGEST' = 'INGEST';
+
+  /**
    * Id of input
    * @type {string}
    * @memberof IngestInputStream
@@ -37,10 +44,11 @@ export class IngestInputStream extends InputStream {
 
   constructor(obj: Partial<IngestInputStream>) {
     super(obj);
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.selectionMode = map(obj.selectionMode);
-    this.position = map(obj.position);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
+    this.selectionMode = obj.selectionMode;
+    this.position = obj.position;
   }
 }
 

@@ -4,7 +4,6 @@ import DailyStatistics from '../../../models/DailyStatistics';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DailyStatisticsListQueryParams, DailyStatisticsListQueryParamsBuilder} from './DailyStatisticsListQueryParams';
 import {DailyStatisticsListByDateRangeQueryParams, DailyStatisticsListByDateRangeQueryParamsBuilder} from './DailyStatisticsListByDateRangeQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DailyApi - object-oriented interface
@@ -32,11 +31,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DailyStatistics>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatistics(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DailyStatistics>(response, DailyStatistics);;
     });
   }
 
@@ -60,11 +55,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DailyStatistics>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DailyStatistics(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DailyStatistics>(response, DailyStatistics);;
     });
   }
 }

@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import LatestApi from './latest/LatestApi';
 import PlayerVersion from '../../../models/PlayerVersion';
 import PaginationResponse from '../../../models/PaginationResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * VersionsApi - object-oriented interface
@@ -30,11 +29,7 @@ export default class VersionsApi extends BaseAPI {
       channel_name: channelName
     };
     return this.restClient.get<PaginationResponse<PlayerVersion>>('/player/channels/{channel_name}/versions', pathParamMap).then((response) => {
-      const paginationResponse = new PaginationResponse<PlayerVersion>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new PlayerVersion(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<PlayerVersion>(response, PlayerVersion);;
     });
   }
 }

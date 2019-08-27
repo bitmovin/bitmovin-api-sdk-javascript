@@ -13,14 +13,14 @@ export class Sprite extends BitmovinResource {
    * @type {number}
    * @memberof Sprite
    */
-  public height: number;
+  public height?: number;
 
   /**
    * Width of one thumbnail (required)
    * @type {number}
    * @memberof Sprite
    */
-  public width: number;
+  public width?: number;
 
   /**
    * @type {SpriteUnit}
@@ -40,7 +40,7 @@ export class Sprite extends BitmovinResource {
    * @type {string}
    * @memberof Sprite
    */
-  public spriteName: string;
+  public spriteName?: string;
 
   /**
    * Filename of the sprite image. If not set, spriteName will be used, but without an extension.
@@ -54,7 +54,7 @@ export class Sprite extends BitmovinResource {
    * @type {string}
    * @memberof Sprite
    */
-  public vttName: string;
+  public vttName?: string;
 
   /**
    * @type {EncodingOutput[]}
@@ -71,15 +71,16 @@ export class Sprite extends BitmovinResource {
 
   constructor(obj: Partial<Sprite>) {
     super(obj);
-    this.height = map(obj.height);
-    this.width = map(obj.width);
-    this.unit = map(obj.unit);
-    this.distance = map(obj.distance);
-    this.spriteName = map(obj.spriteName);
-    this.filename = map(obj.filename);
-    this.vttName = map(obj.vttName);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
-    this.imagesPerFile = map(obj.imagesPerFile);
+
+    this.height = obj.height;
+    this.width = obj.width;
+    this.unit = obj.unit;
+    this.distance = obj.distance;
+    this.spriteName = obj.spriteName;
+    this.filename = obj.filename;
+    this.vttName = obj.vttName;
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    this.imagesPerFile = obj.imagesPerFile;
   }
 }
 

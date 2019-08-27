@@ -20,8 +20,9 @@ export class InfrastructureSettings {
   public cloudRegion?: CloudRegion;
 
   constructor(obj: Partial<InfrastructureSettings>) {
-    this.infrastructureId = map(obj.infrastructureId);
-    this.cloudRegion = map(obj.cloudRegion);
+
+    this.infrastructureId = obj.infrastructureId;
+    this.cloudRegion = obj.cloudRegion;
   }
 }
 

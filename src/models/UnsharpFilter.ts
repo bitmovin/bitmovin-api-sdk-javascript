@@ -7,6 +7,13 @@ import Filter from './Filter';
  */
 export class UnsharpFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof UnsharpFilter
+   */
+  public type: 'UNSHARP' = 'UNSHARP';
+
+  /**
    * Must be an odd integer between 3 and 23
    * @type {number}
    * @memberof UnsharpFilter
@@ -50,12 +57,13 @@ export class UnsharpFilter extends Filter {
 
   constructor(obj: Partial<UnsharpFilter>) {
     super(obj);
-    this.lumaMatrixHorizontalSize = map(obj.lumaMatrixHorizontalSize);
-    this.lumaMatrixVerticalSize = map(obj.lumaMatrixVerticalSize);
-    this.lumaEffectStrength = map(obj.lumaEffectStrength);
-    this.chromaMatrixHorizontalSize = map(obj.chromaMatrixHorizontalSize);
-    this.chromaMatrixVerticalSize = map(obj.chromaMatrixVerticalSize);
-    this.chromaEffectStrength = map(obj.chromaEffectStrength);
+
+    this.lumaMatrixHorizontalSize = obj.lumaMatrixHorizontalSize;
+    this.lumaMatrixVerticalSize = obj.lumaMatrixVerticalSize;
+    this.lumaEffectStrength = obj.lumaEffectStrength;
+    this.chromaMatrixHorizontalSize = obj.chromaMatrixHorizontalSize;
+    this.chromaMatrixVerticalSize = obj.chromaMatrixVerticalSize;
+    this.chromaEffectStrength = obj.chromaEffectStrength;
   }
 }
 

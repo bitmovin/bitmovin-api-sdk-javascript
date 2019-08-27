@@ -10,7 +10,7 @@ export class LiveHlsManifest {
    * @type {string}
    * @memberof LiveHlsManifest
    */
-  public manifestId: string;
+  public manifestId?: string;
 
   /**
    * Timeshift in seconds
@@ -34,10 +34,11 @@ export class LiveHlsManifest {
   public insertProgramDateTime?: boolean;
 
   constructor(obj: Partial<LiveHlsManifest>) {
-    this.manifestId = map(obj.manifestId);
-    this.timeshift = map(obj.timeshift);
-    this.liveEdgeOffset = map(obj.liveEdgeOffset);
-    this.insertProgramDateTime = map(obj.insertProgramDateTime);
+
+    this.manifestId = obj.manifestId;
+    this.timeshift = obj.timeshift;
+    this.liveEdgeOffset = obj.liveEdgeOffset;
+    this.insertProgramDateTime = obj.insertProgramDateTime;
   }
 }
 

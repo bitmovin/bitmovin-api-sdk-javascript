@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttConfiguration from '../../../../models/WebVttConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {WebVttConfigurationListQueryParams, WebVttConfigurationListQueryParamsBuilder} from './WebVttConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * WebvttApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class WebvttApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt/', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<WebVttConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new WebVttConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<WebVttConfiguration>(response, WebVttConfiguration);;
     });
   }
 }

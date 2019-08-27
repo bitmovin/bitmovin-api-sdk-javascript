@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import SegmentedRawMuxing from '../../../../models/SegmentedRawMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {SegmentedRawMuxingListQueryParams, SegmentedRawMuxingListQueryParamsBuilder} from './SegmentedRawMuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SegmentedRawApi - object-oriented interface
@@ -89,11 +88,7 @@ export default class SegmentedRawApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SegmentedRawMuxing>>('/encoding/encodings/{encoding_id}/muxings/segmented-raw', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<SegmentedRawMuxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new SegmentedRawMuxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<SegmentedRawMuxing>(response, SegmentedRawMuxing);;
     });
   }
 }

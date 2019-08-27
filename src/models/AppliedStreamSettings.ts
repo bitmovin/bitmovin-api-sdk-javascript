@@ -20,8 +20,9 @@ export class AppliedStreamSettings {
   public height?: number;
 
   constructor(obj: Partial<AppliedStreamSettings>) {
-    this.width = map(obj.width);
-    this.height = map(obj.height);
+
+    this.width = obj.width;
+    this.height = obj.height;
   }
 }
 

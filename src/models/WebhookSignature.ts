@@ -11,7 +11,7 @@ export class WebhookSignature {
    * @type {SignatureType}
    * @memberof WebhookSignature
    */
-  public type: SignatureType;
+  public type?: SignatureType;
 
   /**
    * The key of the signature (required)
@@ -21,8 +21,9 @@ export class WebhookSignature {
   public key?: string;
 
   constructor(obj: Partial<WebhookSignature>) {
-    this.type = map(obj.type);
-    this.key = map(obj.key);
+
+    this.type = obj.type;
+    this.key = obj.key;
   }
 }
 

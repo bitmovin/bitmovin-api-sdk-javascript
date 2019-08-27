@@ -5,13 +5,18 @@ import Id3TagPositionMode from './Id3TagPositionMode';
 import PlaintextId3Tag from './PlaintextId3Tag';
 import RawId3Tag from './RawId3Tag';
 
+export type Id3TagUnion =
+  RawId3Tag |
+  FrameIdId3Tag |
+  PlaintextId3Tag;
+
 /**
  * @export
  * @class Id3Tag
  */
 export class Id3Tag extends BitmovinResource {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'RAW': 'RawId3Tag',
     'FRAME_ID': 'FrameIdId3Tag',
     'PLAIN_TEXT': 'PlaintextId3Tag'
@@ -39,9 +44,10 @@ export class Id3Tag extends BitmovinResource {
 
   constructor(obj: Partial<Id3Tag>) {
     super(obj);
-    this.positionMode = map(obj.positionMode);
-    this.frame = map(obj.frame);
-    this.time = map(obj.time);
+
+    this.positionMode = obj.positionMode;
+    this.frame = obj.frame;
+    this.time = obj.time;
   }
 }
 

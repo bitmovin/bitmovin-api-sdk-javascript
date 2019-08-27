@@ -8,14 +8,22 @@ import AnalyticsAttribute from './AnalyticsAttribute';
  */
 export class AnalyticsInFilter extends AnalyticsAbstractFilter {
   /**
+   * Discriminator property for AnalyticsAbstractFilter
+   * @type {string}
+   * @memberof AnalyticsInFilter
+   */
+  public operator: 'IN' = 'IN';
+
+  /**
    * @type {any[]}
    * @memberof AnalyticsInFilter
    */
-  public value: any[];
+  public value?: any[];
 
   constructor(obj: Partial<AnalyticsInFilter>) {
     super(obj);
-    this.value = map(obj.value);
+
+    this.value = obj.value || [];
   }
 }
 

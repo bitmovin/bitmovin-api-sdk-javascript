@@ -34,10 +34,11 @@ export class ObjectDetectionBoundingBox {
   public bottomRightY?: number;
 
   constructor(obj: Partial<ObjectDetectionBoundingBox>) {
-    this.topLeftX = map(obj.topLeftX);
-    this.topLeftY = map(obj.topLeftY);
-    this.bottomRightX = map(obj.bottomRightX);
-    this.bottomRightY = map(obj.bottomRightY);
+
+    this.topLeftX = obj.topLeftX;
+    this.topLeftY = obj.topLeftY;
+    this.bottomRightX = obj.bottomRightX;
+    this.bottomRightY = obj.bottomRightY;
   }
 }
 

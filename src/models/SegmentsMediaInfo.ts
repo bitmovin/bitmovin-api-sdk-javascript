@@ -11,28 +11,28 @@ export class SegmentsMediaInfo extends BasicMediaInfo {
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
-  public segmentPath: string;
+  public segmentPath?: string;
 
   /**
    * Id of the encoding. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * Id of the stream. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
-  public streamId: string;
+  public streamId?: string;
 
   /**
    * Id of the muxing. (required)
    * @type {string}
    * @memberof SegmentsMediaInfo
    */
-  public muxingId: string;
+  public muxingId?: string;
 
   /**
    * Id of the DRM.
@@ -57,13 +57,14 @@ export class SegmentsMediaInfo extends BasicMediaInfo {
 
   constructor(obj: Partial<SegmentsMediaInfo>) {
     super(obj);
-    this.segmentPath = map(obj.segmentPath);
-    this.encodingId = map(obj.encodingId);
-    this.streamId = map(obj.streamId);
-    this.muxingId = map(obj.muxingId);
-    this.drmId = map(obj.drmId);
-    this.startSegmentNumber = map(obj.startSegmentNumber);
-    this.endSegmentNumber = map(obj.endSegmentNumber);
+
+    this.segmentPath = obj.segmentPath;
+    this.encodingId = obj.encodingId;
+    this.streamId = obj.streamId;
+    this.muxingId = obj.muxingId;
+    this.drmId = obj.drmId;
+    this.startSegmentNumber = obj.startSegmentNumber;
+    this.endSegmentNumber = obj.endSegmentNumber;
   }
 }
 

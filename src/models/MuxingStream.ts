@@ -9,10 +9,11 @@ export class MuxingStream {
    * @type {string}
    * @memberof MuxingStream
    */
-  public streamId: string;
+  public streamId?: string;
 
   constructor(obj: Partial<MuxingStream>) {
-    this.streamId = map(obj.streamId);
+
+    this.streamId = obj.streamId;
   }
 }
 

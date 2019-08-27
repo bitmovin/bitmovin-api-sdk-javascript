@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TextMuxing from '../../../../models/TextMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {TextMuxingListQueryParams, TextMuxingListQueryParamsBuilder} from './TextMuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * TextApi - object-oriented interface
@@ -89,11 +88,7 @@ export default class TextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TextMuxing>>('/encoding/encodings/{encoding_id}/muxings/text', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TextMuxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TextMuxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TextMuxing>(response, TextMuxing);;
     });
   }
 }

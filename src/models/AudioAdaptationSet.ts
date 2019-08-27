@@ -14,11 +14,12 @@ export class AudioAdaptationSet extends AdaptationSet {
    * @type {string}
    * @memberof AudioAdaptationSet
    */
-  public lang: string;
+  public lang?: string;
 
   constructor(obj: Partial<AudioAdaptationSet>) {
     super(obj);
-    this.lang = map(obj.lang);
+
+    this.lang = obj.lang;
   }
 }
 

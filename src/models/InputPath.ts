@@ -10,18 +10,19 @@ export class InputPath {
    * @type {string}
    * @memberof InputPath
    */
-  public inputId: string;
+  public inputId?: string;
 
   /**
    * Path to media file (required)
    * @type {string}
    * @memberof InputPath
    */
-  public inputPath: string;
+  public inputPath?: string;
 
   constructor(obj: Partial<InputPath>) {
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
   }
 }
 

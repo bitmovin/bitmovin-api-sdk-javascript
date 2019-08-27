@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import DvbTeletextInputStream from '../../../../../models/DvbTeletextInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {DvbTeletextInputStreamListQueryParams, DvbTeletextInputStreamListQueryParamsBuilder} from './DvbTeletextInputStreamListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * DvbTeletextApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class DvbTeletextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DvbTeletextInputStream>>('/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DvbTeletextInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DvbTeletextInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DvbTeletextInputStream>(response, DvbTeletextInputStream);;
     });
   }
 }

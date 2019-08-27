@@ -48,13 +48,14 @@ export class SrtStatisticSend {
   public packetsRetransmitted?: number;
 
   constructor(obj: Partial<SrtStatisticSend>) {
-    this.bytes = map(obj.bytes);
-    this.bytesDropped = map(obj.bytesDropped);
-    this.mbitRate = map(obj.mbitRate);
-    this.packets = map(obj.packets);
-    this.packetsDropped = map(obj.packetsDropped);
-    this.packetsLost = map(obj.packetsLost);
-    this.packetsRetransmitted = map(obj.packetsRetransmitted);
+
+    this.bytes = obj.bytes;
+    this.bytesDropped = obj.bytesDropped;
+    this.mbitRate = obj.mbitRate;
+    this.packets = obj.packets;
+    this.packetsDropped = obj.packetsDropped;
+    this.packetsLost = obj.packetsLost;
+    this.packetsRetransmitted = obj.packetsRetransmitted;
   }
 }
 

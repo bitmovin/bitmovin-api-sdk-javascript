@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import AnalyticsMinQueryRequest from '../../../models/AnalyticsMinQueryRequest';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * MinApi - object-oriented interface

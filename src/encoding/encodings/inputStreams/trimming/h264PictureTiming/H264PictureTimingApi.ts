@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import H264PictureTimingTrimmingInputStream from '../../../../../models/H264PictureTimingTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {H264PictureTimingTrimmingInputStreamListQueryParams, H264PictureTimingTrimmingInputStreamListQueryParamsBuilder} from './H264PictureTimingTrimmingInputStreamListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * H264PictureTimingApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class H264PictureTimingApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<H264PictureTimingTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<H264PictureTimingTrimmingInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new H264PictureTimingTrimmingInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<H264PictureTimingTrimmingInputStream>(response, H264PictureTimingTrimmingInputStream);;
     });
   }
 }

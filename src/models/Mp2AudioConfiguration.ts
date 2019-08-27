@@ -8,6 +8,13 @@ import ChannelLayout from './ChannelLayout';
  */
 export class Mp2AudioConfiguration extends AudioConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof Mp2AudioConfiguration
+   */
+  public type: 'MP2' = 'MP2';
+
+  /**
    * Channel layout of the audio codec configuration
    * @type {ChannelLayout}
    * @memberof Mp2AudioConfiguration
@@ -16,7 +23,8 @@ export class Mp2AudioConfiguration extends AudioConfiguration {
 
   constructor(obj: Partial<Mp2AudioConfiguration>) {
     super(obj);
-    this.channelLayout = map(obj.channelLayout);
+
+    this.channelLayout = obj.channelLayout;
   }
 }
 

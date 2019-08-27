@@ -10,6 +10,7 @@ import CustomAttribute from './CustomAttribute';
 export class VideoAdaptationSet extends AdaptationSet {
   constructor(obj: Partial<VideoAdaptationSet>) {
     super(obj);
+
   }
 }
 

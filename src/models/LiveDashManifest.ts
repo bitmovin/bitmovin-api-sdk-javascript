@@ -10,7 +10,7 @@ export class LiveDashManifest {
    * @type {string}
    * @memberof LiveDashManifest
    */
-  public manifestId: string;
+  public manifestId?: string;
 
   /**
    * Timeshift in seconds
@@ -27,9 +27,10 @@ export class LiveDashManifest {
   public liveEdgeOffset?: number;
 
   constructor(obj: Partial<LiveDashManifest>) {
-    this.manifestId = map(obj.manifestId);
-    this.timeshift = map(obj.timeshift);
-    this.liveEdgeOffset = map(obj.liveEdgeOffset);
+
+    this.manifestId = obj.manifestId;
+    this.timeshift = obj.timeshift;
+    this.liveEdgeOffset = obj.liveEdgeOffset;
   }
 }
 

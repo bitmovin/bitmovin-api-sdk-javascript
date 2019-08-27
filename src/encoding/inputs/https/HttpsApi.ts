@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import HttpsInput from '../../../models/HttpsInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {HttpsInputListQueryParams, HttpsInputListQueryParamsBuilder} from './HttpsInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * HttpsApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class HttpsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<HttpsInput>>('/encoding/inputs/https', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<HttpsInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new HttpsInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<HttpsInput>(response, HttpsInput);;
     });
   }
 }

@@ -27,9 +27,10 @@ export class ApiErrorDefinition {
   public description?: string;
 
   constructor(obj: Partial<ApiErrorDefinition>) {
-    this.code = map(obj.code);
-    this.category = map(obj.category);
-    this.description = map(obj.description);
+
+    this.code = obj.code;
+    this.category = obj.category;
+    this.description = obj.description;
   }
 }
 

@@ -6,7 +6,6 @@ import StopApi from './stop/StopApi';
 import InsertableContent from '../../../../models/InsertableContent';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {InsertableContentListQueryParams, InsertableContentListQueryParamsBuilder} from './InsertableContentListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * InsertableContentApi - object-oriented interface
@@ -60,11 +59,7 @@ export default class InsertableContentApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InsertableContent>>('/encoding/encodings/{encoding_id}/live/insertable-content', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<InsertableContent>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new InsertableContent(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<InsertableContent>(response, InsertableContent);;
     });
   }
 }

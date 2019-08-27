@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import ClearKeyDrm from '../../../../../../models/ClearKeyDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {ClearKeyDrmListQueryParams, ClearKeyDrmListQueryParamsBuilder} from './ClearKeyDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * ClearkeyApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class ClearkeyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ClearKeyDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/clearkey', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ClearKeyDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ClearKeyDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ClearKeyDrm>(response, ClearKeyDrm);;
     });
   }
 }

@@ -4,7 +4,6 @@ import EncodingStatisticsLive from '../../../../models/EncodingStatisticsLive';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EncodingStatisticsLiveListQueryParams, EncodingStatisticsLiveListQueryParamsBuilder} from './EncodingStatisticsLiveListQueryParams';
 import {EncodingStatisticsLiveListByDateRangeQueryParams, EncodingStatisticsLiveListByDateRangeQueryParamsBuilder} from './EncodingStatisticsLiveListByDateRangeQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * LiveApi - object-oriented interface
@@ -32,11 +31,7 @@ export default class LiveApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsLive(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EncodingStatisticsLive>(response, EncodingStatisticsLive);;
     });
   }
 
@@ -60,11 +55,7 @@ export default class LiveApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsLive>>('/encoding/statistics/encodings/live/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<EncodingStatisticsLive>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new EncodingStatisticsLive(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<EncodingStatisticsLive>(response, EncodingStatisticsLive);;
     });
   }
 }

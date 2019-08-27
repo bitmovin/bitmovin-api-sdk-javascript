@@ -20,8 +20,9 @@ export class CencPlayReady {
   public pssh?: string;
 
   constructor(obj: Partial<CencPlayReady>) {
-    this.laUrl = map(obj.laUrl);
-    this.pssh = map(obj.pssh);
+
+    this.laUrl = obj.laUrl;
+    this.pssh = obj.pssh;
   }
 }
 

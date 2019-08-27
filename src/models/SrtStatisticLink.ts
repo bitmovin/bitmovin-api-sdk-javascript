@@ -24,9 +24,10 @@ export class SrtStatisticLink {
   public rtt?: number;
 
   constructor(obj: Partial<SrtStatisticLink>) {
-    this.bandwidth = map(obj.bandwidth);
-    this.maxBandwidth = map(obj.maxBandwidth);
-    this.rtt = map(obj.rtt);
+
+    this.bandwidth = obj.bandwidth;
+    this.maxBandwidth = obj.maxBandwidth;
+    this.rtt = obj.rtt;
   }
 }
 

@@ -8,6 +8,13 @@ import RtmpIngestPoint from './RtmpIngestPoint';
  */
 export class RedundantRtmpInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof RedundantRtmpInput
+   */
+  public type: 'REDUNDANT_RTMP' = 'REDUNDANT_RTMP';
+
+  /**
    * When there is no input signal present and this threshold in seconds is reached it will switch to another ingest point
    * @type {number}
    * @memberof RedundantRtmpInput
@@ -18,12 +25,13 @@ export class RedundantRtmpInput extends Input {
    * @type {RtmpIngestPoint[]}
    * @memberof RedundantRtmpInput
    */
-  public ingestPoints: RtmpIngestPoint[];
+  public ingestPoints?: RtmpIngestPoint[];
 
   constructor(obj: Partial<RedundantRtmpInput>) {
     super(obj);
-    this.delayThreshold = map(obj.delayThreshold);
-    this.ingestPoints = map<RtmpIngestPoint>(obj.ingestPoints, RtmpIngestPoint);
+
+    this.delayThreshold = obj.delayThreshold;
+    this.ingestPoints = map<RtmpIngestPoint>(obj.ingestPoints, RtmpIngestPoint) || [];
   }
 }
 

@@ -62,14 +62,15 @@ export class BroadcastTsTransportConfiguration {
   public initialProgramClockReference?: number;
 
   constructor(obj: Partial<BroadcastTsTransportConfiguration>) {
-    this.muxrate = map(obj.muxrate);
-    this.stopOnError = map(obj.stopOnError);
-    this.preventEmptyAdaptionFieldsInVideo = map(obj.preventEmptyAdaptionFieldsInVideo);
-    this.patRepetitionRatePerSec = map(obj.patRepetitionRatePerSec);
-    this.pmtRepetitionRatePerSec = map(obj.pmtRepetitionRatePerSec);
-    this.variableMuxRate = map(obj.variableMuxRate);
-    this.initialPresentationTimeStamp = map(obj.initialPresentationTimeStamp);
-    this.initialProgramClockReference = map(obj.initialProgramClockReference);
+
+    this.muxrate = obj.muxrate;
+    this.stopOnError = obj.stopOnError;
+    this.preventEmptyAdaptionFieldsInVideo = obj.preventEmptyAdaptionFieldsInVideo;
+    this.patRepetitionRatePerSec = obj.patRepetitionRatePerSec;
+    this.pmtRepetitionRatePerSec = obj.pmtRepetitionRatePerSec;
+    this.variableMuxRate = obj.variableMuxRate;
+    this.initialPresentationTimeStamp = obj.initialPresentationTimeStamp;
+    this.initialProgramClockReference = obj.initialProgramClockReference;
   }
 }
 

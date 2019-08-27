@@ -12,14 +12,14 @@ export class AccountInformation extends BitmovinResource {
    * @type {string}
    * @memberof AccountInformation
    */
-  public email: string;
+  public email?: string;
 
   /**
    * ApiKeys associated with the account (required)
    * @type {AccountApiKey[]}
    * @memberof AccountInformation
    */
-  public apiKeys: AccountApiKey[];
+  public apiKeys?: AccountApiKey[];
 
   /**
    * First name of the tenant.
@@ -51,12 +51,13 @@ export class AccountInformation extends BitmovinResource {
 
   constructor(obj: Partial<AccountInformation>) {
     super(obj);
-    this.email = map(obj.email);
-    this.apiKeys = map<AccountApiKey>(obj.apiKeys, AccountApiKey);
-    this.firstName = map(obj.firstName);
-    this.lastName = map(obj.lastName);
-    this.phone = map(obj.phone);
-    this.company = map(obj.company);
+
+    this.email = obj.email;
+    this.apiKeys = map<AccountApiKey>(obj.apiKeys, AccountApiKey) || [];
+    this.firstName = obj.firstName;
+    this.lastName = obj.lastName;
+    this.phone = obj.phone;
+    this.company = obj.company;
   }
 }
 

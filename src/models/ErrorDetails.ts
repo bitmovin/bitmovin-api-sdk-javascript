@@ -11,34 +11,35 @@ export class ErrorDetails {
    * @type {number}
    * @memberof ErrorDetails
    */
-  public code: number;
+  public code?: number;
 
   /**
    * Error group name (required)
    * @type {string}
    * @memberof ErrorDetails
    */
-  public category: string;
+  public category?: string;
 
   /**
    * Detailed error message (required)
    * @type {string}
    * @memberof ErrorDetails
    */
-  public text: string;
+  public text?: string;
 
   /**
    * Information if the encoding could potentially succeed when retrying. (required)
    * @type {RetryHint}
    * @memberof ErrorDetails
    */
-  public retryHint: RetryHint;
+  public retryHint?: RetryHint;
 
   constructor(obj: Partial<ErrorDetails>) {
-    this.code = map(obj.code);
-    this.category = map(obj.category);
-    this.text = map(obj.text);
-    this.retryHint = map(obj.retryHint);
+
+    this.code = obj.code;
+    this.category = obj.category;
+    this.text = obj.text;
+    this.retryHint = obj.retryHint;
   }
 }
 

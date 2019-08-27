@@ -14,7 +14,8 @@ export class CodecConfigTypeResponse {
   public type?: CodecConfigType;
 
   constructor(obj: Partial<CodecConfigTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

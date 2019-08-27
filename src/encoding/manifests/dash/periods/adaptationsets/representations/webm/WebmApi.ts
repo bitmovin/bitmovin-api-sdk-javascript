@@ -6,7 +6,6 @@ import DashSegmentedRepresentation from '../../../../../../../models/DashSegment
 import DashWebmRepresentation from '../../../../../../../models/DashWebmRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
 import {DashWebmRepresentationListQueryParams, DashWebmRepresentationListQueryParamsBuilder} from './DashWebmRepresentationListQueryParams';
-import {getType, map} from '../../../../../../../common/Mapper';
 
 /**
  * WebmApi - object-oriented interface
@@ -106,11 +105,7 @@ export default class WebmApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashWebmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashWebmRepresentation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashWebmRepresentation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashWebmRepresentation>(response, DashWebmRepresentation);;
     });
   }
 }

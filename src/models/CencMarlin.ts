@@ -5,6 +5,7 @@
  */
 export class CencMarlin {
   constructor(obj: Partial<CencMarlin>) {
+
   }
 }
 

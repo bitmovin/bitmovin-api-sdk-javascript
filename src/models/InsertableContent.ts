@@ -24,8 +24,9 @@ export class InsertableContent extends BitmovinResource {
 
   constructor(obj: Partial<InsertableContent>) {
     super(obj);
-    this.inputs = map<InsertableContentInput>(obj.inputs, InsertableContentInput);
-    this.status = map(obj.status);
+
+    this.inputs = map<InsertableContentInput>(obj.inputs, InsertableContentInput) || [];
+    this.status = obj.status;
   }
 }
 

@@ -14,11 +14,12 @@ export class SubtitleAdaptationSet extends AdaptationSet {
    * @type {string}
    * @memberof SubtitleAdaptationSet
    */
-  public lang: string;
+  public lang?: string;
 
   constructor(obj: Partial<SubtitleAdaptationSet>) {
     super(obj);
-    this.lang = map(obj.lang);
+
+    this.lang = obj.lang;
   }
 }
 

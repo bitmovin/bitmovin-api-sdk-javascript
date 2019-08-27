@@ -10,13 +10,24 @@ import AdAnalyticsLessThanOrEqualFilter from './AdAnalyticsLessThanOrEqualFilter
 import AdAnalyticsNotContainsFilter from './AdAnalyticsNotContainsFilter';
 import AdAnalyticsNotEqualFilter from './AdAnalyticsNotEqualFilter';
 
+export type AdAnalyticsAbstractFilterUnion =
+  AdAnalyticsInFilter |
+  AdAnalyticsEqualFilter |
+  AdAnalyticsNotEqualFilter |
+  AdAnalyticsLessThanFilter |
+  AdAnalyticsLessThanOrEqualFilter |
+  AdAnalyticsGreaterThanFilter |
+  AdAnalyticsGreaterThanOrEqualFilter |
+  AdAnalyticsContainsFilter |
+  AdAnalyticsNotContainsFilter;
+
 /**
  * @export
  * @class AdAnalyticsAbstractFilter
  */
 export class AdAnalyticsAbstractFilter {
-
-  protected static readonly typeMap: any = {
+  protected static readonly _discriminatorName = 'operator';
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
     'IN': 'AdAnalyticsInFilter',
     'EQ': 'AdAnalyticsEqualFilter',
     'NE': 'AdAnalyticsNotEqualFilter',
@@ -32,10 +43,11 @@ export class AdAnalyticsAbstractFilter {
    * @type {AdAnalyticsAttribute}
    * @memberof AdAnalyticsAbstractFilter
    */
-  public name: AdAnalyticsAttribute;
+  public name?: AdAnalyticsAttribute;
 
   constructor(obj: Partial<AdAnalyticsAbstractFilter>) {
-    this.name = map(obj.name);
+
+    this.name = obj.name;
   }
 }
 

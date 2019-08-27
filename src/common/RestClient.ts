@@ -2,52 +2,18 @@ import * as e6p from 'es6-promise';
 import * as urljoin from 'url-join';
 import * as isomorphicFetch from 'isomorphic-fetch';
 
-import {RequiredError} from './BaseAPI';
+import { RequiredError } from './BaseAPI';
 import Configuration from './Configuration';
 import Logger from './Logger';
 import NullLogger from './NullLogger';
-import {buildBitmovinError} from './BitmovinErrorBuilder';
+import { buildBitmovinError } from './BitmovinErrorBuilder';
 import BitmovinError from './BitmovinError';
 
 (e6p as any).polyfill();
 
-const BASE_URL = 'https://api.bitmovin.com/v1'.replace(/\/+$/, '');
+const BASE_URL = 'https://api.bitmovin.com/v1';
 
 export type FetchAPI = (url: string, init?: any) => Promise<Response>;
-
-function preRequestBodyHandling(body: any) {
-  if (body == undefined) {
-    return;
-  }
-  // Check self
-  if ('typeMap' in body.constructor) {
-    setType(body);
-  }
-
-  // Check properties
-  for (const property of Object.keys(body)) {
-    if (body[property] == undefined) {
-      continue;
-    }
-    if ('typeMap' in body[property].constructor) {
-      preRequestBodyHandling(body[property]);
-    } else if (Array.isArray(body[property])) {
-      body[property].forEach((element) => {
-        if (element && 'typeMap' in element.constructor) {
-          preRequestBodyHandling(element);
-        }
-      });
-    }
-  }
-}
-
-function getType(body: any) {
-  return Object.keys(body.constructor.typeMap).find(key => body.constructor.typeMap[key] === body.constructor.name);
-}
-
-function setType(body: any) {
-  body.type = getType(body);
-}
 
 function queryParams(params) {
   if (!params) {
@@ -93,6 +59,45 @@ function prepareUrl(baseUrl: string, url: string, urlParameterMap: any, queryStr
   }
 
   return new URL(modifiedUrl);
+}
+
+export function copyAndPrepareBody(value: any): any {
+  if (value == undefined || value == null) {
+    return undefined;
+  }
+
+  if (value instanceof Date) {
+    return value;
+  }
+
+  if (isPrimitive(value)) {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+    if (value.length == 0) {
+      return undefined;
+    }
+
+    return value.map((element) => copyAndPrepareBody(element));
+  }
+
+  const cloned = {};
+
+  for (const property of Object.keys(value)) {
+    const clonedProperty = copyAndPrepareBody(value[property]);
+    if (clonedProperty == undefined) {
+      continue;
+    }
+    cloned[property] = clonedProperty;
+  }
+
+  return cloned;
+}
+
+function isPrimitive(arg: any): boolean {
+  var type = typeof arg;
+  return arg == null || (type != 'object' && type != 'function');
 }
 
 export class RestClient {
@@ -161,7 +166,7 @@ export class RestClient {
   private request<T>(method: string, url: string, urlParameterMap?: object, body?: any, queryStringParameters?: object): Promise<T> {
     const requestUrl = prepareUrl(this.baseUrl, url, urlParameterMap, queryStringParameters);
 
-    preRequestBodyHandling(body);
+    body = copyAndPrepareBody(body);
 
     const request = {
       method: method,
@@ -186,7 +191,7 @@ export class RestClient {
             this.logger.error(`Response body was empty or could not be parsed`);
             throw buildBitmovinError(request, response);
           }
-          return {data: {}};
+          return { data: {} };
         }
         try {
           const json = JSON.parse(text);
@@ -204,14 +209,14 @@ export class RestClient {
             this.logger.error(`Response body was empty or could not be parsed`);
             throw buildBitmovinError(request, response);
           }
-          return {data: {}};
+          return { data: {} };
         }
       }, () => {
         if (response.status !== 204) {
           this.logger.error(`Response body was empty or could not be parsed`);
           throw buildBitmovinError(request, response);
         }
-        return {data: {}};
+        return { data: {} };
       });
     }).then((responseJson) => {
       const result = responseJson.data.result;

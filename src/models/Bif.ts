@@ -34,21 +34,22 @@ export class Bif extends BitmovinResource {
    * @type {string}
    * @memberof Bif
    */
-  public filename: string;
+  public filename?: string;
 
   /**
    * @type {EncodingOutput[]}
    * @memberof Bif
    */
-  public outputs: EncodingOutput[];
+  public outputs?: EncodingOutput[];
 
   constructor(obj: Partial<Bif>) {
     super(obj);
-    this.height = map(obj.height);
-    this.width = map(obj.width);
-    this.distance = map(obj.distance);
-    this.filename = map(obj.filename);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput);
+
+    this.height = obj.height;
+    this.width = obj.width;
+    this.distance = obj.distance;
+    this.filename = obj.filename;
+    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
   }
 }
 

@@ -10,18 +10,19 @@ export class TsStreamConfiguration {
    * @type {string}
    * @memberof TsStreamConfiguration
    */
-  public streamId: string;
+  public streamId?: string;
 
   /**
    * An integer value. MPEG Transport Stream Packet Identifier (PID) for this stream. (required)
    * @type {number}
    * @memberof TsStreamConfiguration
    */
-  public pid: number;
+  public pid?: number;
 
   constructor(obj: Partial<TsStreamConfiguration>) {
-    this.streamId = map(obj.streamId);
-    this.pid = map(obj.pid);
+
+    this.streamId = obj.streamId;
+    this.pid = obj.pid;
   }
 }
 

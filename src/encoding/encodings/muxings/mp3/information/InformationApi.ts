@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import Mp3MuxingInformation from '../../../../../models/Mp3MuxingInformation';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * InformationApi - object-oriented interface

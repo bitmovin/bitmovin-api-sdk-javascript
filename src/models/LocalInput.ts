@@ -7,15 +7,23 @@ import Input from './Input';
  */
 export class LocalInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof LocalInput
+   */
+  public type: 'LOCAL' = 'LOCAL';
+
+  /**
    * Path to your local storage (required)
    * @type {string}
    * @memberof LocalInput
    */
-  public path: string;
+  public path?: string;
 
   constructor(obj: Partial<LocalInput>) {
     super(obj);
-    this.path = map(obj.path);
+
+    this.path = obj.path;
   }
 }
 

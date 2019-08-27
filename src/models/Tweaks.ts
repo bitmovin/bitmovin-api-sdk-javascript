@@ -14,7 +14,8 @@ export class Tweaks {
   public audioVideoSyncMode?: AudioVideoSyncMode;
 
   constructor(obj: Partial<Tweaks>) {
-    this.audioVideoSyncMode = map(obj.audioVideoSyncMode);
+
+    this.audioVideoSyncMode = obj.audioVideoSyncMode;
   }
 }
 

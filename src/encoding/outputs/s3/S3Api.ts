@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import S3Output from '../../../models/S3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {S3OutputListQueryParams, S3OutputListQueryParamsBuilder} from './S3OutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * S3Api - object-oriented interface
@@ -76,11 +75,7 @@ export default class S3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Output>>('/encoding/outputs/s3', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<S3Output>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new S3Output(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<S3Output>(response, S3Output);;
     });
   }
 }

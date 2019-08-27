@@ -4,7 +4,6 @@ import InsertableContentApi from './insertableContent/InsertableContentApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LiveEncoding from '../../../models/LiveEncoding';
 import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * LiveApi - object-oriented interface

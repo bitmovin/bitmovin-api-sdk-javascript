@@ -23,8 +23,9 @@ export class ObjectDetectionTimestampResult extends BitmovinResponse {
 
   constructor(obj: Partial<ObjectDetectionTimestampResult>) {
     super(obj);
-    this.timestamp = map(obj.timestamp);
-    this.objects = map<ObjectDetectionResult>(obj.objects, ObjectDetectionResult);
+
+    this.timestamp = obj.timestamp;
+    this.objects = map<ObjectDetectionResult>(obj.objects, ObjectDetectionResult) || [];
   }
 }
 

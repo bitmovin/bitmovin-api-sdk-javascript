@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import GcsInput from '../../../models/GcsInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {GcsInputListQueryParams, GcsInputListQueryParamsBuilder} from './GcsInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * GcsApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class GcsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GcsInput>>('/encoding/inputs/gcs', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<GcsInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new GcsInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<GcsInput>(response, GcsInput);;
     });
   }
 }

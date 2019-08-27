@@ -17,7 +17,6 @@ import TypeApi from './type/TypeApi';
 import Filter from '../../models/Filter';
 import PaginationResponse from '../../models/PaginationResponse';
 import {FilterListQueryParams, FilterListQueryParamsBuilder} from './FilterListQueryParams';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * FiltersApi - object-oriented interface
@@ -73,11 +72,7 @@ export default class FiltersApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Filter>>('/encoding/filters', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Filter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Filter)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Filter>(response, Filter);;
     });
   }
 }

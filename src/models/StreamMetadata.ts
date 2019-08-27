@@ -13,7 +13,8 @@ export class StreamMetadata {
   public language?: string;
 
   constructor(obj: Partial<StreamMetadata>) {
-    this.language = map(obj.language);
+
+    this.language = obj.language;
   }
 }
 

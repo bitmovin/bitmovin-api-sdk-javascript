@@ -12,6 +12,13 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class ProgressiveMovMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof ProgressiveMovMuxing
+   */
+  public type: 'PROGRESSIVE_MOV' = 'PROGRESSIVE_MOV';
+
+  /**
    * The output file name
    * @type {string}
    * @memberof ProgressiveMovMuxing
@@ -27,7 +34,8 @@ export class ProgressiveMovMuxing extends Muxing {
 
   constructor(obj: Partial<ProgressiveMovMuxing>) {
     super(obj);
-    this.filename = map(obj.filename);
+
+    this.filename = obj.filename;
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }
 }

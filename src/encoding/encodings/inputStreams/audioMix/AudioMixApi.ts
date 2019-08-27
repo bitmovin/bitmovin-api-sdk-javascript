@@ -4,7 +4,6 @@ import AudioMixInputStream from '../../../../models/AudioMixInputStream';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {AudioMixInputStreamListQueryParams, AudioMixInputStreamListQueryParamsBuilder} from './AudioMixInputStreamListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * AudioMixApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class AudioMixApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMixInputStream>>('/encoding/encodings/{encoding_id}/input-streams/audio-mix', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AudioMixInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AudioMixInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AudioMixInputStream>(response, AudioMixInputStream);;
     });
   }
 }

@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import UdpInput from '../../../models/UdpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {UdpInputListQueryParams, UdpInputListQueryParamsBuilder} from './UdpInputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * UdpApi - object-oriented interface
@@ -46,11 +45,7 @@ export default class UdpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UdpInput>>('/encoding/inputs/udp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<UdpInput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new UdpInput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<UdpInput>(response, UdpInput);;
     });
   }
 }

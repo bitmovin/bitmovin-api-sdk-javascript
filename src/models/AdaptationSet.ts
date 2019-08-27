@@ -32,9 +32,10 @@ export class AdaptationSet extends BitmovinResponse {
 
   constructor(obj: Partial<AdaptationSet>) {
     super(obj);
-    this.customAttributes = map<CustomAttribute>(obj.customAttributes, CustomAttribute);
-    this.roles = map(obj.roles);
-    this.accessibilities = map<Accessibility>(obj.accessibilities, Accessibility);
+
+    this.customAttributes = map<CustomAttribute>(obj.customAttributes, CustomAttribute) || [];
+    this.roles = obj.roles || [];
+    this.accessibilities = map<Accessibility>(obj.accessibilities, Accessibility) || [];
   }
 }
 

@@ -13,6 +13,13 @@ import StreamConditionsMode from './StreamConditionsMode';
  */
 export class BroadcastTsMuxing extends Muxing {
   /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof BroadcastTsMuxing
+   */
+  public type: 'BROADCAST_TS' = 'BROADCAST_TS';
+
+  /**
    * Length of the segments in seconds.
    * @type {number}
    * @memberof BroadcastTsMuxing
@@ -41,8 +48,9 @@ export class BroadcastTsMuxing extends Muxing {
 
   constructor(obj: Partial<BroadcastTsMuxing>) {
     super(obj);
-    this.segmentLength = map(obj.segmentLength);
-    this.filename = map(obj.filename);
+
+    this.segmentLength = obj.segmentLength;
+    this.filename = obj.filename;
     this.configuration = map<BroadcastTsMuxingConfiguration>(obj.configuration, BroadcastTsMuxingConfiguration);
     this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
   }

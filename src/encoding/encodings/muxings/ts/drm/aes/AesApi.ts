@@ -5,7 +5,6 @@ import AesEncryptionDrm from '../../../../../../models/AesEncryptionDrm';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {AesEncryptionDrmListQueryParams, AesEncryptionDrmListQueryParamsBuilder} from './AesEncryptionDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * AesApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class AesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AesEncryptionDrm>>('/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AesEncryptionDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AesEncryptionDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AesEncryptionDrm>(response, AesEncryptionDrm);;
     });
   }
 }

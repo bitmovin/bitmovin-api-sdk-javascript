@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import DvbsubApi from './dvbsub/DvbsubApi';
 import SrtApi from './srt/SrtApi';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * BurnInSubtitlesApi - object-oriented interface

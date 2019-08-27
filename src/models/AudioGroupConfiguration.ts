@@ -12,18 +12,19 @@ export class AudioGroupConfiguration {
    * @type {VariantStreamDroppingMode}
    * @memberof AudioGroupConfiguration
    */
-  public droppingMode: VariantStreamDroppingMode;
+  public droppingMode?: VariantStreamDroppingMode;
 
   /**
    * Audio groups (required)
    * @type {AudioGroup[]}
    * @memberof AudioGroupConfiguration
    */
-  public groups: AudioGroup[];
+  public groups?: AudioGroup[];
 
   constructor(obj: Partial<AudioGroupConfiguration>) {
-    this.droppingMode = map(obj.droppingMode);
-    this.groups = map<AudioGroup>(obj.groups, AudioGroup);
+
+    this.droppingMode = obj.droppingMode;
+    this.groups = map<AudioGroup>(obj.groups, AudioGroup) || [];
   }
 }
 

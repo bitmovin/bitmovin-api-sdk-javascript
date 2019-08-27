@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import IFramePlaylist from '../../../../../models/IFramePlaylist';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {IFramePlaylistListQueryParams, IFramePlaylistListQueryParamsBuilder} from './IFramePlaylistListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * IframeApi - object-oriented interface
@@ -94,11 +93,7 @@ export default class IframeApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<IFramePlaylist>>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<IFramePlaylist>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new IFramePlaylist(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<IFramePlaylist>(response, IFramePlaylist);;
     });
   }
 }

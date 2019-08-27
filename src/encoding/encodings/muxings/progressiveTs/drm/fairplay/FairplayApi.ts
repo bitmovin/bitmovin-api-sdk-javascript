@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FairPlayDrm from '../../../../../../models/FairPlayDrm';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {FairPlayDrmListQueryParams, FairPlayDrmListQueryParamsBuilder} from './FairPlayDrmListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * FairplayApi - object-oriented interface
@@ -97,11 +96,7 @@ export default class FairplayApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FairPlayDrm>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/drm/fairplay', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<FairPlayDrm>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new FairPlayDrm(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<FairPlayDrm>(response, FairPlayDrm);;
     });
   }
 }

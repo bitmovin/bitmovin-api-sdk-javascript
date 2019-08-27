@@ -5,7 +5,6 @@ import StatisticsPerLabel from '../../../models/StatisticsPerLabel';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {StatisticsPerLabelListQueryParams, StatisticsPerLabelListQueryParamsBuilder} from './StatisticsPerLabelListQueryParams';
 import {StatisticsPerLabelListByDateRangeQueryParams, StatisticsPerLabelListByDateRangeQueryParamsBuilder} from './StatisticsPerLabelListByDateRangeQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * LabelsApi - object-oriented interface
@@ -35,11 +34,7 @@ export default class LabelsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<StatisticsPerLabel>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new StatisticsPerLabel(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);;
     });
   }
 
@@ -63,11 +58,7 @@ export default class LabelsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<StatisticsPerLabel>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new StatisticsPerLabel(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);;
     });
   }
 }

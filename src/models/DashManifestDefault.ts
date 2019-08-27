@@ -17,7 +17,7 @@ export class DashManifestDefault extends DashManifest {
    * @type {string}
    * @memberof DashManifestDefault
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * The version of the default manifest generator
@@ -28,8 +28,9 @@ export class DashManifestDefault extends DashManifest {
 
   constructor(obj: Partial<DashManifestDefault>) {
     super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.version = map(obj.version);
+
+    this.encodingId = obj.encodingId;
+    this.version = obj.version;
   }
 }
 

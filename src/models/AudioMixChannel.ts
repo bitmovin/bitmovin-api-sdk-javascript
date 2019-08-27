@@ -11,18 +11,19 @@ export class AudioMixChannel {
    * @type {number}
    * @memberof AudioMixChannel
    */
-  public channelNumber: number;
+  public channelNumber?: number;
 
   /**
    * List of source channels to be mixed (required)
    * @type {SourceChannel[]}
    * @memberof AudioMixChannel
    */
-  public sourceChannels: SourceChannel[];
+  public sourceChannels?: SourceChannel[];
 
   constructor(obj: Partial<AudioMixChannel>) {
-    this.channelNumber = map(obj.channelNumber);
-    this.sourceChannels = map<SourceChannel>(obj.sourceChannels, SourceChannel);
+
+    this.channelNumber = obj.channelNumber;
+    this.sourceChannels = map<SourceChannel>(obj.sourceChannels, SourceChannel) || [];
   }
 }
 

@@ -4,7 +4,6 @@ import CustomdataApi from './customdata/CustomdataApi';
 import FtpOutput from '../../../models/FtpOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {FtpOutputListQueryParams, FtpOutputListQueryParamsBuilder} from './FtpOutputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * FtpApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class FtpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FtpOutput>>('/encoding/outputs/ftp', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<FtpOutput>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new FtpOutput(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<FtpOutput>(response, FtpOutput);;
     });
   }
 }

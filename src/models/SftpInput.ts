@@ -7,11 +7,18 @@ import Input from './Input';
  */
 export class SftpInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof SftpInput
+   */
+  public type: 'SFTP' = 'SFTP';
+
+  /**
    * Host Url or IP of the SFTP server (required)
    * @type {string}
    * @memberof SftpInput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Port to use, standard for SFTP: 22
@@ -43,11 +50,12 @@ export class SftpInput extends Input {
 
   constructor(obj: Partial<SftpInput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.passive = map(obj.passive);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
+
+    this.host = obj.host;
+    this.port = obj.port;
+    this.passive = obj.passive;
+    this.username = obj.username;
+    this.password = obj.password;
   }
 }
 

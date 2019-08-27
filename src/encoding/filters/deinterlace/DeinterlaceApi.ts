@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import DeinterlaceFilter from '../../../models/DeinterlaceFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DeinterlaceFilterListQueryParams, DeinterlaceFilterListQueryParamsBuilder} from './DeinterlaceFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DeinterlaceApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class DeinterlaceApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DeinterlaceFilter>>('/encoding/filters/deinterlace', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DeinterlaceFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DeinterlaceFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DeinterlaceFilter>(response, DeinterlaceFilter);;
     });
   }
 }

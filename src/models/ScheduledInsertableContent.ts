@@ -37,10 +37,11 @@ export class ScheduledInsertableContent extends BitmovinResource {
 
   constructor(obj: Partial<ScheduledInsertableContent>) {
     super(obj);
-    this.contentId = map(obj.contentId);
-    this.runAt = map(obj.runAt, Date);
-    this.durationInSeconds = map(obj.durationInSeconds);
-    this.status = map(obj.status);
+
+    this.contentId = obj.contentId;
+    this.runAt = map<Date>(obj.runAt, Date);
+    this.durationInSeconds = obj.durationInSeconds;
+    this.status = obj.status;
   }
 }
 

@@ -9,6 +9,13 @@ import TextFilterFont from './TextFilterFont';
  */
 export class TextFilter extends Filter {
   /**
+   * Discriminator property for Filter
+   * @type {string}
+   * @memberof TextFilter
+   */
+  public type: 'TEXT' = 'TEXT';
+
+  /**
    * @type {TextFilterFont}
    * @memberof TextFilter
    */
@@ -124,35 +131,36 @@ export class TextFilter extends Filter {
    * @type {string}
    * @memberof TextFilter
    */
-  public x: string;
+  public x?: string;
 
   /**
    * Y position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
    * @type {string}
    * @memberof TextFilter
    */
-  public y: string;
+  public y?: string;
 
   constructor(obj: Partial<TextFilter>) {
     super(obj);
-    this.font = map(obj.font);
-    this.box = map(obj.box);
-    this.boxBorderWidth = map(obj.boxBorderWidth);
-    this.boxColor = map(obj.boxColor);
-    this.lineSpacing = map(obj.lineSpacing);
-    this.borderWidth = map(obj.borderWidth);
-    this.fixBounds = map(obj.fixBounds);
-    this.fontColor = map(obj.fontColor);
-    this.fontSize = map(obj.fontSize);
-    this.fontSizeExpression = map(obj.fontSizeExpression);
-    this.alpha = map(obj.alpha);
-    this.shadowColor = map(obj.shadowColor);
-    this.shadowX = map(obj.shadowX);
-    this.shadowY = map(obj.shadowY);
-    this.timecode = map(obj.timecode);
-    this.text = map(obj.text);
-    this.x = map(obj.x);
-    this.y = map(obj.y);
+
+    this.font = obj.font;
+    this.box = obj.box;
+    this.boxBorderWidth = obj.boxBorderWidth;
+    this.boxColor = obj.boxColor;
+    this.lineSpacing = obj.lineSpacing;
+    this.borderWidth = obj.borderWidth;
+    this.fixBounds = obj.fixBounds;
+    this.fontColor = obj.fontColor;
+    this.fontSize = obj.fontSize;
+    this.fontSizeExpression = obj.fontSizeExpression;
+    this.alpha = obj.alpha;
+    this.shadowColor = obj.shadowColor;
+    this.shadowX = obj.shadowX;
+    this.shadowY = obj.shadowY;
+    this.timecode = obj.timecode;
+    this.text = obj.text;
+    this.x = obj.x;
+    this.y = obj.y;
   }
 }
 

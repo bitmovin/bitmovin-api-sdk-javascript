@@ -11,21 +11,21 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * Id of the muxing. (required)
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */
-  public muxingId: string;
+  public muxingId?: string;
 
   /**
    * The Smooth Streaming ismv or isma file that will be referenced in the manifest. (required)
    * @type {string}
    * @memberof SmoothStreamingRepresentation
    */
-  public mediaFile: string;
+  public mediaFile?: string;
 
   /**
    * Language of the MP4 file
@@ -50,12 +50,13 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
 
   constructor(obj: Partial<SmoothStreamingRepresentation>) {
     super(obj);
-    this.encodingId = map(obj.encodingId);
-    this.muxingId = map(obj.muxingId);
-    this.mediaFile = map(obj.mediaFile);
-    this.language = map(obj.language);
-    this.trackName = map(obj.trackName);
-    this.priority = map(obj.priority);
+
+    this.encodingId = obj.encodingId;
+    this.muxingId = obj.muxingId;
+    this.mediaFile = obj.mediaFile;
+    this.language = obj.language;
+    this.trackName = obj.trackName;
+    this.priority = obj.priority;
   }
 }
 

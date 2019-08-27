@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import DenoiseHqdn3dFilter from '../../../models/DenoiseHqdn3dFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DenoiseHqdn3dFilterListQueryParams, DenoiseHqdn3dFilterListQueryParamsBuilder} from './DenoiseHqdn3dFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DenoiseHqdn3dApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DenoiseHqdn3dFilter>>('/encoding/filters/denoise-hqdn3d', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DenoiseHqdn3dFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DenoiseHqdn3dFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DenoiseHqdn3dFilter>(response, DenoiseHqdn3dFilter);;
     });
   }
 }

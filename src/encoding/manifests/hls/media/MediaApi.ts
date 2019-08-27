@@ -7,7 +7,6 @@ import AudioApi from './audio/AudioApi';
 import SubtitlesApi from './subtitles/SubtitlesApi';
 import VttApi from './vtt/VttApi';
 import ClosedCaptionsApi from './closedCaptions/ClosedCaptionsApi';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * MediaApi - object-oriented interface

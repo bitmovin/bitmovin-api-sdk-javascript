@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Cea608CaptionInputStream from '../../../../../models/Cea608CaptionInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {Cea608CaptionInputStreamListQueryParams, Cea608CaptionInputStreamListQueryParamsBuilder} from './Cea608CaptionInputStreamListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * Cea608Api - object-oriented interface
@@ -86,11 +85,7 @@ export default class Cea608Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Cea608CaptionInputStream>>('/encoding/encodings/{encoding_id}/input-streams/captions/cea608', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Cea608CaptionInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Cea608CaptionInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Cea608CaptionInputStream>(response, Cea608CaptionInputStream);;
     });
   }
 }

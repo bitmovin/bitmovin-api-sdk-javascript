@@ -7,11 +7,18 @@ import Input from './Input';
  */
 export class FtpInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof FtpInput
+   */
+  public type: 'FTP' = 'FTP';
+
+  /**
    * Host URL or IP of the FTP server (required)
    * @type {string}
    * @memberof FtpInput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Port to use, standard for FTP: 21
@@ -50,12 +57,13 @@ export class FtpInput extends Input {
 
   constructor(obj: Partial<FtpInput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.passive = map(obj.passive);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
-    this.remoteVerificationEnabled = map(obj.remoteVerificationEnabled);
+
+    this.host = obj.host;
+    this.port = obj.port;
+    this.passive = obj.passive;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.remoteVerificationEnabled = obj.remoteVerificationEnabled;
   }
 }
 

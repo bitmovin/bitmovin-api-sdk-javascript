@@ -11,6 +11,7 @@ import AnalyticsInterval from './AnalyticsInterval';
 export class AdAnalyticsSumQueryRequest extends AdAnalyticsQueryRequest {
   constructor(obj: Partial<AdAnalyticsSumQueryRequest>) {
     super(obj);
+
   }
 }
 

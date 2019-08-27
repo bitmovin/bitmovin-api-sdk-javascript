@@ -9,11 +9,18 @@ import TransferVersion from './TransferVersion';
  */
 export class FtpOutput extends Output {
   /**
+   * Discriminator property for Output
+   * @type {string}
+   * @memberof FtpOutput
+   */
+  public type: 'FTP' = 'FTP';
+
+  /**
    * Host URL or IP of the FTP server (required)
    * @type {string}
    * @memberof FtpOutput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Port to use, standard for FTP: 21
@@ -59,13 +66,14 @@ export class FtpOutput extends Output {
 
   constructor(obj: Partial<FtpOutput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.passive = map(obj.passive);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
-    this.transferVersion = map(obj.transferVersion);
-    this.maxConcurrentConnections = map(obj.maxConcurrentConnections);
+
+    this.host = obj.host;
+    this.port = obj.port;
+    this.passive = obj.passive;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.transferVersion = obj.transferVersion;
+    this.maxConcurrentConnections = obj.maxConcurrentConnections;
   }
 }
 

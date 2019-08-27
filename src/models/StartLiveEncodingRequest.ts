@@ -15,7 +15,7 @@ export class StartLiveEncodingRequest {
    * @type {string}
    * @memberof StartLiveEncodingRequest
    */
-  public streamKey: string;
+  public streamKey?: string;
 
   /**
    * List of Hls manifests to use for this live encoding
@@ -53,10 +53,11 @@ export class StartLiveEncodingRequest {
   public autoRestartConfiguration?: AutoRestartConfiguration;
 
   constructor(obj: Partial<StartLiveEncodingRequest>) {
-    this.streamKey = map(obj.streamKey);
-    this.hlsManifests = map<LiveHlsManifest>(obj.hlsManifests, LiveHlsManifest);
-    this.dashManifests = map<LiveDashManifest>(obj.dashManifests, LiveDashManifest);
-    this.liveEncodingMode = map(obj.liveEncodingMode);
+
+    this.streamKey = obj.streamKey;
+    this.hlsManifests = map<LiveHlsManifest>(obj.hlsManifests, LiveHlsManifest) || [];
+    this.dashManifests = map<LiveDashManifest>(obj.dashManifests, LiveDashManifest) || [];
+    this.liveEncodingMode = obj.liveEncodingMode;
     this.reuploadSettings = map<ReuploadSettings>(obj.reuploadSettings, ReuploadSettings);
     this.autoRestartConfiguration = map<AutoRestartConfiguration>(obj.autoRestartConfiguration, AutoRestartConfiguration);
   }

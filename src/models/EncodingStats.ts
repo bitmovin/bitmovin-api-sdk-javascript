@@ -21,7 +21,7 @@ export class EncodingStats {
    * @type {string}
    * @memberof EncodingStats
    */
-  public encodingId: string;
+  public encodingId?: string;
 
   /**
    * Total bytes encoded
@@ -63,7 +63,7 @@ export class EncodingStats {
    * @type {number}
    * @memberof EncodingStats
    */
-  public billableTransmuxingMinutes: number;
+  public billableTransmuxingMinutes?: number;
 
   /**
    * Billable feature minutes
@@ -77,14 +77,14 @@ export class EncodingStats {
    * @type {StatisticsPerStream[]}
    * @memberof EncodingStats
    */
-  public streams: StatisticsPerStream[];
+  public streams?: StatisticsPerStream[];
 
   /**
    * Detailed statistics per muxing (required)
    * @type {StatisticsPerMuxing[]}
    * @memberof EncodingStats
    */
-  public muxings: StatisticsPerMuxing[];
+  public muxings?: StatisticsPerMuxing[];
 
   /**
    * Detailed statistics per feature
@@ -94,18 +94,19 @@ export class EncodingStats {
   public features?: BillableEncodingFeatureMinutes[];
 
   constructor(obj: Partial<EncodingStats>) {
-    this.date = map(obj.date, Date);
-    this.encodingId = map(obj.encodingId);
-    this.bytesEncoded = map(obj.bytesEncoded);
-    this.timeEncoded = map(obj.timeEncoded);
-    this.downloadedSize = map(obj.downloadedSize);
-    this.billableMinutes = map(obj.billableMinutes);
-    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes);
-    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
-    this.billableFeatureMinutes = map(obj.billableFeatureMinutes);
-    this.streams = map<StatisticsPerStream>(obj.streams, StatisticsPerStream);
-    this.muxings = map<StatisticsPerMuxing>(obj.muxings, StatisticsPerMuxing);
-    this.features = map<BillableEncodingFeatureMinutes>(obj.features, BillableEncodingFeatureMinutes);
+
+    this.date = map<Date>(obj.date, Date);
+    this.encodingId = obj.encodingId;
+    this.bytesEncoded = obj.bytesEncoded;
+    this.timeEncoded = obj.timeEncoded;
+    this.downloadedSize = obj.downloadedSize;
+    this.billableMinutes = obj.billableMinutes;
+    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes) || [];
+    this.billableTransmuxingMinutes = obj.billableTransmuxingMinutes;
+    this.billableFeatureMinutes = obj.billableFeatureMinutes;
+    this.streams = map<StatisticsPerStream>(obj.streams, StatisticsPerStream) || [];
+    this.muxings = map<StatisticsPerMuxing>(obj.muxings, StatisticsPerMuxing) || [];
+    this.features = map<BillableEncodingFeatureMinutes>(obj.features, BillableEncodingFeatureMinutes) || [];
   }
 }
 

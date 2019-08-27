@@ -82,15 +82,16 @@ export class StartEncodingRequest {
   public perTitle?: PerTitle;
 
   constructor(obj: Partial<StartEncodingRequest>) {
+
     this.trimming = map<Trimming>(obj.trimming, Trimming);
     this.scheduling = map<Scheduling>(obj.scheduling, Scheduling);
     this.tweaks = map<Tweaks>(obj.tweaks, Tweaks);
-    this.handleVariableInputFps = map(obj.handleVariableInputFps);
-    this.encodingMode = map(obj.encodingMode);
-    this.previewDashManifests = map<ManifestResource>(obj.previewDashManifests, ManifestResource);
-    this.previewHlsManifests = map<ManifestResource>(obj.previewHlsManifests, ManifestResource);
-    this.vodDashManifests = map<ManifestResource>(obj.vodDashManifests, ManifestResource);
-    this.vodHlsManifests = map<ManifestResource>(obj.vodHlsManifests, ManifestResource);
+    this.handleVariableInputFps = obj.handleVariableInputFps;
+    this.encodingMode = obj.encodingMode;
+    this.previewDashManifests = map<ManifestResource>(obj.previewDashManifests, ManifestResource) || [];
+    this.previewHlsManifests = map<ManifestResource>(obj.previewHlsManifests, ManifestResource) || [];
+    this.vodDashManifests = map<ManifestResource>(obj.vodDashManifests, ManifestResource) || [];
+    this.vodHlsManifests = map<ManifestResource>(obj.vodHlsManifests, ManifestResource) || [];
     this.perTitle = map<PerTitle>(obj.perTitle, PerTitle);
   }
 }

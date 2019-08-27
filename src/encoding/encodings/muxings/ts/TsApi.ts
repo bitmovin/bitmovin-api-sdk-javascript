@@ -6,7 +6,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TsMuxing from '../../../../models/TsMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {TsMuxingListQueryParams, TsMuxingListQueryParamsBuilder} from './TsMuxingListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * TsApi - object-oriented interface
@@ -92,11 +91,7 @@ export default class TsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TsMuxing>>('/encoding/encodings/{encoding_id}/muxings/ts', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TsMuxing>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TsMuxing(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TsMuxing>(response, TsMuxing);;
     });
   }
 }

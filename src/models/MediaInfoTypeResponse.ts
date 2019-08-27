@@ -14,7 +14,8 @@ export class MediaInfoTypeResponse {
   public type?: MediaInfoType;
 
   constructor(obj: Partial<MediaInfoTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

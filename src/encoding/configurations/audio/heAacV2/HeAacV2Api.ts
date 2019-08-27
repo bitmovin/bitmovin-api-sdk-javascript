@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import HeAacV2AudioConfiguration from '../../../../models/HeAacV2AudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {HeAacV2AudioConfigurationListQueryParams, HeAacV2AudioConfigurationListQueryParamsBuilder} from './HeAacV2AudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * HeAacV2Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class HeAacV2Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<HeAacV2AudioConfiguration>>('/encoding/configurations/audio/he-aac-v2', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<HeAacV2AudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new HeAacV2AudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<HeAacV2AudioConfiguration>(response, HeAacV2AudioConfiguration);;
     });
   }
 }

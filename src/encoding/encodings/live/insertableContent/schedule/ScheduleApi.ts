@@ -2,7 +2,6 @@ import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import ScheduledInsertableContent from '../../../../../models/ScheduledInsertableContent';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ScheduleApi - object-oriented interface

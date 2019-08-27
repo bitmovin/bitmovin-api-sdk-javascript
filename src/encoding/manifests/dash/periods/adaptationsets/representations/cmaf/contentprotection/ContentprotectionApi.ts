@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import ContentProtection from '../../../../../../../../models/ContentProtection';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
 import {ContentProtectionListQueryParams, ContentProtectionListQueryParamsBuilder} from './ContentProtectionListQueryParams';
-import {getType, map} from '../../../../../../../../common/Mapper';
 
 /**
  * ContentprotectionApi - object-oriented interface
@@ -110,11 +109,7 @@ export default class ContentprotectionApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ContentProtection>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}/contentprotection', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ContentProtection>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ContentProtection(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ContentProtection>(response, ContentProtection);;
     });
   }
 }

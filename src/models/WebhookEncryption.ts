@@ -11,18 +11,19 @@ export class WebhookEncryption {
    * @type {EncryptionType}
    * @memberof WebhookEncryption
    */
-  public type: EncryptionType;
+  public type?: EncryptionType;
 
   /**
    * The key of the encryption (required)
    * @type {string}
    * @memberof WebhookEncryption
    */
-  public key: string;
+  public key?: string;
 
   constructor(obj: Partial<WebhookEncryption>) {
-    this.type = map(obj.type);
-    this.key = map(obj.key);
+
+    this.type = obj.type;
+    this.key = obj.key;
   }
 }
 

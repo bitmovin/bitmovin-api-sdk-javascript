@@ -11,7 +11,6 @@ import CaptionsApi from './captions/CaptionsApi';
 import InputStream from '../../../models/InputStream';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {InputStreamListQueryParams, InputStreamListQueryParamsBuilder} from './InputStreamListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * InputStreamsApi - object-oriented interface
@@ -76,11 +75,7 @@ export default class InputStreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<InputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, InputStream)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<InputStream>(response, InputStream);;
     });
   }
 }

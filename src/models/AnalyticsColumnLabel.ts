@@ -18,8 +18,9 @@ export class AnalyticsColumnLabel {
   public label?: string;
 
   constructor(obj: Partial<AnalyticsColumnLabel>) {
-    this.key = map(obj.key);
-    this.label = map(obj.label);
+
+    this.key = obj.key;
+    this.label = obj.label;
   }
 }
 

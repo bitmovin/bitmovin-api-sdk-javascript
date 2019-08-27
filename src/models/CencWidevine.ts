@@ -10,10 +10,11 @@ export class CencWidevine {
    * @type {string}
    * @memberof CencWidevine
    */
-  public pssh: string;
+  public pssh?: string;
 
   constructor(obj: Partial<CencWidevine>) {
-    this.pssh = map(obj.pssh);
+
+    this.pssh = obj.pssh;
   }
 }
 

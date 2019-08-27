@@ -9,32 +9,39 @@ import S3SignatureVersion from './S3SignatureVersion';
  */
 export class GenericS3Output extends Output {
   /**
+   * Discriminator property for Output
+   * @type {string}
+   * @memberof GenericS3Output
+   */
+  public type: 'GENERIC_S3' = 'GENERIC_S3';
+
+  /**
    * Your generic S3 access key (required)
    * @type {string}
    * @memberof GenericS3Output
    */
-  public accessKey: string;
+  public accessKey?: string;
 
   /**
    * Your generic S3 secret key (required)
    * @type {string}
    * @memberof GenericS3Output
    */
-  public secretKey: string;
+  public secretKey?: string;
 
   /**
    * Name of the bucket (required)
    * @type {string}
    * @memberof GenericS3Output
    */
-  public bucketName: string;
+  public bucketName?: string;
 
   /**
    * The Generic S3 server hostname (or IP address) (required)
    * @type {string}
    * @memberof GenericS3Output
    */
-  public host: string;
+  public host?: string;
 
   /**
    * The port on which the Generic S3 server is running on (if not provided 8000 will be used)
@@ -59,13 +66,14 @@ export class GenericS3Output extends Output {
 
   constructor(obj: Partial<GenericS3Output>) {
     super(obj);
-    this.accessKey = map(obj.accessKey);
-    this.secretKey = map(obj.secretKey);
-    this.bucketName = map(obj.bucketName);
-    this.host = map(obj.host);
-    this.port = map(obj.port);
-    this.ssl = map(obj.ssl);
-    this.signatureVersion = map(obj.signatureVersion);
+
+    this.accessKey = obj.accessKey;
+    this.secretKey = obj.secretKey;
+    this.bucketName = obj.bucketName;
+    this.host = obj.host;
+    this.port = obj.port;
+    this.ssl = obj.ssl;
+    this.signatureVersion = obj.signatureVersion;
   }
 }
 

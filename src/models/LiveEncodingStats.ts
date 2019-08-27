@@ -12,7 +12,7 @@ export class LiveEncodingStats {
    * @type {LiveEncodingStatus}
    * @memberof LiveEncodingStats
    */
-  public status: LiveEncodingStatus;
+  public status?: LiveEncodingStatus;
 
   /**
    * List of events
@@ -29,9 +29,10 @@ export class LiveEncodingStats {
   public statistics?: StreamInfos[];
 
   constructor(obj: Partial<LiveEncodingStats>) {
-    this.status = map(obj.status);
-    this.events = map<LiveEncodingStatsEvent>(obj.events, LiveEncodingStatsEvent);
-    this.statistics = map<StreamInfos>(obj.statistics, StreamInfos);
+
+    this.status = obj.status;
+    this.events = map<LiveEncodingStatsEvent>(obj.events, LiveEncodingStatsEvent) || [];
+    this.statistics = map<StreamInfos>(obj.statistics, StreamInfos) || [];
   }
 }
 

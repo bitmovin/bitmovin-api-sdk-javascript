@@ -11,11 +11,12 @@ export class Tenant extends BitmovinResource {
    * @type {string}
    * @memberof Tenant
    */
-  public eMail: string;
+  public eMail?: string;
 
   constructor(obj: Partial<Tenant>) {
     super(obj);
-    this.eMail = map(obj.eMail);
+
+    this.eMail = obj.eMail;
   }
 }
 

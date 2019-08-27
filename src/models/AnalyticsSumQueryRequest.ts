@@ -11,6 +11,7 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
 export class AnalyticsSumQueryRequest extends AnalyticsQueryRequest {
   constructor(obj: Partial<AnalyticsSumQueryRequest>) {
     super(obj);
+
   }
 }
 

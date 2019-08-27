@@ -11,14 +11,14 @@ export class VttMediaInfo extends BasicMediaInfo {
    * @type {string}
    * @memberof VttMediaInfo
    */
-  public vttUrl: string;
+  public vttUrl?: string;
 
   /**
    * The URI of the Rendition (required)
    * @type {string}
    * @memberof VttMediaInfo
    */
-  public uri: string;
+  public uri?: string;
 
   /**
    * A value of true indicates that the Rendition contains content which is considered essential to play.
@@ -29,9 +29,10 @@ export class VttMediaInfo extends BasicMediaInfo {
 
   constructor(obj: Partial<VttMediaInfo>) {
     super(obj);
-    this.vttUrl = map(obj.vttUrl);
-    this.uri = map(obj.uri);
-    this.forced = map(obj.forced);
+
+    this.vttUrl = obj.vttUrl;
+    this.uri = obj.uri;
+    this.forced = obj.forced;
   }
 }
 

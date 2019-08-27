@@ -10,10 +10,11 @@ export class PlayerLicenseAnalytics {
    * @type {string}
    * @memberof PlayerLicenseAnalytics
    */
-  public analyticsKey: string;
+  public analyticsKey?: string;
 
   constructor(obj: Partial<PlayerLicenseAnalytics>) {
-    this.analyticsKey = map(obj.analyticsKey);
+
+    this.analyticsKey = obj.analyticsKey;
   }
 }
 

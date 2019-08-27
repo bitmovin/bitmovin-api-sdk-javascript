@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import DashCmafDrmRepresentation from '../../../../../../../../models/DashCmafDrmRepresentation';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
 import {DashCmafDrmRepresentationListQueryParams, DashCmafDrmRepresentationListQueryParamsBuilder} from './DashCmafDrmRepresentationListQueryParams';
-import {getType, map} from '../../../../../../../../common/Mapper';
 
 /**
  * DrmApi - object-oriented interface
@@ -105,11 +104,7 @@ export default class DrmApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashCmafDrmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashCmafDrmRepresentation>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashCmafDrmRepresentation(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashCmafDrmRepresentation>(response, DashCmafDrmRepresentation);;
     });
   }
 }

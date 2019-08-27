@@ -9,7 +9,6 @@ import NotificationStateEntry from '../models/NotificationStateEntry';
 import PaginationResponse from '../models/PaginationResponse';
 import {NotificationListQueryParams, NotificationListQueryParamsBuilder} from './NotificationListQueryParams';
 import {NotificationStateEntryListByNotificationIdQueryParams, NotificationStateEntryListByNotificationIdQueryParamsBuilder} from './NotificationStateEntryListByNotificationIdQueryParams';
-import {getType, map} from '../common/Mapper';
 
 /**
  * NotificationsApi - object-oriented interface
@@ -73,11 +72,7 @@ export default class NotificationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Notification>>('/notifications', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Notification>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Notification(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Notification>(response, Notification);;
     });
   }
 
@@ -99,11 +94,7 @@ export default class NotificationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/states', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<NotificationStateEntry>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new NotificationStateEntry(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<NotificationStateEntry>(response, NotificationStateEntry);;
     });
   }
 

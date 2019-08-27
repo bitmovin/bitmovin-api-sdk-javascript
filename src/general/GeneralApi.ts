@@ -1,7 +1,6 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
 import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
-import {getType, map} from '../common/Mapper';
 
 /**
  * GeneralApi - object-oriented interface

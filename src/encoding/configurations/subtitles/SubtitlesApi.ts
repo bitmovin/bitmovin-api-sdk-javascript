@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import WebvttApi from './webvtt/WebvttApi';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * SubtitlesApi - object-oriented interface

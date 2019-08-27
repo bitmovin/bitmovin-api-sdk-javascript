@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import Keyframe from '../../../models/Keyframe';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {KeyframeListQueryParams, KeyframeListQueryParamsBuilder} from './KeyframeListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * KeyframesApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class KeyframesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Keyframe>>('/encoding/encodings/{encoding_id}/keyframes', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Keyframe>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Keyframe(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Keyframe>(response, Keyframe);;
     });
   }
 }

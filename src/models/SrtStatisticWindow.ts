@@ -24,9 +24,10 @@ export class SrtStatisticWindow {
   public flow?: number;
 
   constructor(obj: Partial<SrtStatisticWindow>) {
-    this.congestion = map(obj.congestion);
-    this.flight = map(obj.flight);
-    this.flow = map(obj.flow);
+
+    this.congestion = obj.congestion;
+    this.flight = obj.flight;
+    this.flow = obj.flow;
   }
 }
 

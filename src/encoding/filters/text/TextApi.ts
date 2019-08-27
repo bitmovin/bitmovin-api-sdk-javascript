@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import TextFilter from '../../../models/TextFilter';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {TextFilterListQueryParams, TextFilterListQueryParamsBuilder} from './TextFilterListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * TextApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class TextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TextFilter>>('/encoding/filters/text', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<TextFilter>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new TextFilter(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<TextFilter>(response, TextFilter);;
     });
   }
 }

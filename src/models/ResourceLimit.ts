@@ -9,13 +9,13 @@ export class ResourceLimit {
    * @type {string}
    * @memberof ResourceLimit
    */
-  public name: string;
+  public name?: string;
 
   /**
    * @type {string}
    * @memberof ResourceLimit
    */
-  public value: string;
+  public value?: string;
 
   /**
    * Specifies the remaining limit value for limits divided to sub-organizations. This property is returned only for parent organizations and only for mentioned limits.
@@ -25,9 +25,10 @@ export class ResourceLimit {
   public effectiveValue?: string;
 
   constructor(obj: Partial<ResourceLimit>) {
-    this.name = map(obj.name);
-    this.value = map(obj.value);
-    this.effectiveValue = map(obj.effectiveValue);
+
+    this.name = obj.name;
+    this.value = obj.value;
+    this.effectiveValue = obj.effectiveValue;
   }
 }
 

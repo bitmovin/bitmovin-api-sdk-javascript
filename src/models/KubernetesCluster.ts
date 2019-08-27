@@ -28,9 +28,10 @@ export class KubernetesCluster extends BitmovinResource {
 
   constructor(obj: Partial<KubernetesCluster>) {
     super(obj);
-    this.online = map(obj.online);
-    this.connected = map(obj.connected);
-    this.agentDeploymentDownloadUrl = map(obj.agentDeploymentDownloadUrl);
+
+    this.online = obj.online;
+    this.connected = obj.connected;
+    this.agentDeploymentDownloadUrl = obj.agentDeploymentDownloadUrl;
   }
 }
 

@@ -19,7 +19,8 @@ export class AnalyticsPercentileQueryRequest extends AnalyticsQueryRequest {
 
   constructor(obj: Partial<AnalyticsPercentileQueryRequest>) {
     super(obj);
-    this.percentile = map(obj.percentile);
+
+    this.percentile = obj.percentile;
   }
 }
 

@@ -13,11 +13,12 @@ export class DashCmafDrmRepresentation extends DashCmafRepresentation {
    * @type {string}
    * @memberof DashCmafDrmRepresentation
    */
-  public drmId: string;
+  public drmId?: string;
 
   constructor(obj: Partial<DashCmafDrmRepresentation>) {
     super(obj);
-    this.drmId = map(obj.drmId);
+
+    this.drmId = obj.drmId;
   }
 }
 

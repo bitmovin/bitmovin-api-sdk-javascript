@@ -4,7 +4,6 @@ import SubOrganizationsApi from './subOrganizations/SubOrganizationsApi';
 import GroupsApi from './groups/GroupsApi';
 import Organization from '../../models/Organization';
 import PaginationResponse from '../../models/PaginationResponse';
-import {getType, map} from '../../common/Mapper';
 
 /**
  * OrganizationsApi - object-oriented interface
@@ -56,11 +55,7 @@ export default class OrganizationsApi extends BaseAPI {
    */
   public list(): Promise<PaginationResponse<Organization>> {
     return this.restClient.get<PaginationResponse<Organization>>('/account/organizations', {}).then((response) => {
-      const paginationResponse = new PaginationResponse<Organization>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Organization(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Organization>(response, Organization);;
     });
   }
 }

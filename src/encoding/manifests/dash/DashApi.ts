@@ -8,7 +8,6 @@ import DashManifest from '../../../models/DashManifest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DashManifestListQueryParams, DashManifestListQueryParamsBuilder} from './DashManifestListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DashApi - object-oriented interface
@@ -84,11 +83,7 @@ export default class DashApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashManifest>>('/encoding/manifests/dash', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<DashManifest>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new DashManifest(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<DashManifest>(response, DashManifest);;
     });
   }
 

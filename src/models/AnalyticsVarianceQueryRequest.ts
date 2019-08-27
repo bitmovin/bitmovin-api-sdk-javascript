@@ -11,6 +11,7 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
 export class AnalyticsVarianceQueryRequest extends AnalyticsQueryRequest {
   constructor(obj: Partial<AnalyticsVarianceQueryRequest>) {
     super(obj);
+
   }
 }
 

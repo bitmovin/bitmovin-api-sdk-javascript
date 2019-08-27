@@ -8,6 +8,13 @@ import AudioConfiguration from './AudioConfiguration';
  */
 export class AacAudioConfiguration extends AudioConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof AacAudioConfiguration
+   */
+  public type: 'AAC' = 'AAC';
+
+  /**
    * Channel layout of the audio codec configuration
    * @type {AacChannelLayout}
    * @memberof AacAudioConfiguration
@@ -16,7 +23,8 @@ export class AacAudioConfiguration extends AudioConfiguration {
 
   constructor(obj: Partial<AacAudioConfiguration>) {
     super(obj);
-    this.channelLayout = map(obj.channelLayout);
+
+    this.channelLayout = obj.channelLayout;
   }
 }
 

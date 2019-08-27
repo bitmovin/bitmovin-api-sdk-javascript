@@ -13,7 +13,8 @@ export class Cea608708SubtitleConfiguration {
   public passthroughActivated?: boolean;
 
   constructor(obj: Partial<Cea608708SubtitleConfiguration>) {
-    this.passthroughActivated = map(obj.passthroughActivated);
+
+    this.passthroughActivated = obj.passthroughActivated;
   }
 }
 

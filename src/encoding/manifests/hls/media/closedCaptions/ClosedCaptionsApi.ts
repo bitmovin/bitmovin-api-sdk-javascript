@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import ClosedCaptionsMediaInfo from '../../../../../models/ClosedCaptionsMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {ClosedCaptionsMediaInfoListQueryParams, ClosedCaptionsMediaInfoListQueryParamsBuilder} from './ClosedCaptionsMediaInfoListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * ClosedCaptionsApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ClosedCaptionsMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/closed-captions', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ClosedCaptionsMediaInfo>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ClosedCaptionsMediaInfo(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ClosedCaptionsMediaInfo>(response, ClosedCaptionsMediaInfo);;
     });
   }
 }

@@ -11,7 +11,7 @@ export class StreamInfos {
    * @type {Date}
    * @memberof StreamInfos
    */
-  public time: Date;
+  public time?: Date;
 
   /**
    * Details about billable minutes for each resolution category
@@ -21,8 +21,9 @@ export class StreamInfos {
   public streamInfos?: StreamInfosDetails[];
 
   constructor(obj: Partial<StreamInfos>) {
-    this.time = map(obj.time, Date);
-    this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails);
+
+    this.time = map<Date>(obj.time, Date);
+    this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails) || [];
   }
 }
 

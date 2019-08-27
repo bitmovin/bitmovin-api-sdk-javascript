@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConvertSccCaption from '../../../../models/ConvertSccCaption';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {ConvertSccCaptionListQueryParams, ConvertSccCaptionListQueryParamsBuilder} from './ConvertSccCaptionListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * SccApi - object-oriented interface
@@ -89,11 +88,7 @@ export default class SccApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ConvertSccCaption>>('/encoding/encodings/{encoding_id}/captions/scc', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ConvertSccCaption>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ConvertSccCaption(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ConvertSccCaption>(response, ConvertSccCaption);;
     });
   }
 }

@@ -11,7 +11,7 @@ export class BasicMediaInfo extends BitmovinResponse {
    * @type {string}
    * @memberof BasicMediaInfo
    */
-  public groupId: string;
+  public groupId?: string;
 
   /**
    * Primary language in the rendition.
@@ -32,7 +32,7 @@ export class BasicMediaInfo extends BitmovinResponse {
    * @type {string}
    * @memberof BasicMediaInfo
    */
-  public name: string;
+  public name?: string;
 
   /**
    * If set to true, the client SHOULD play this Rendition of the content in the absence of information from the user.
@@ -57,13 +57,14 @@ export class BasicMediaInfo extends BitmovinResponse {
 
   constructor(obj: Partial<BasicMediaInfo>) {
     super(obj);
-    this.groupId = map(obj.groupId);
-    this.language = map(obj.language);
-    this.assocLanguage = map(obj.assocLanguage);
-    this.name = map(obj.name);
-    this.isDefault = map(obj.isDefault);
-    this.autoselect = map(obj.autoselect);
-    this.characteristics = map(obj.characteristics);
+
+    this.groupId = obj.groupId;
+    this.language = obj.language;
+    this.assocLanguage = obj.assocLanguage;
+    this.name = obj.name;
+    this.isDefault = obj.isDefault;
+    this.autoselect = obj.autoselect;
+    this.characteristics = obj.characteristics || [];
   }
 }
 

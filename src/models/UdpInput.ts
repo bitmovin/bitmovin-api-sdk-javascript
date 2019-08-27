@@ -5,8 +5,16 @@ import Input from './Input';
  * @class UdpInput
  */
 export class UdpInput extends Input {
+  /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof UdpInput
+   */
+  public type: 'UDP' = 'UDP';
+
   constructor(obj: Partial<UdpInput>) {
     super(obj);
+
   }
 }
 

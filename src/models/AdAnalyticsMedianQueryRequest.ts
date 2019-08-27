@@ -1,16 +1,17 @@
-import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
-import AnalyticsAttribute from './AnalyticsAttribute';
+import AdAnalyticsAbstractFilter from './AdAnalyticsAbstractFilter';
+import AdAnalyticsAttribute from './AdAnalyticsAttribute';
+import AdAnalyticsOrderByEntry from './AdAnalyticsOrderByEntry';
+import AdAnalyticsQueryRequest from './AdAnalyticsQueryRequest';
 import AnalyticsInterval from './AnalyticsInterval';
-import AnalyticsOrderByEntry from './AnalyticsOrderByEntry';
-import AnalyticsQueryRequest from './AnalyticsQueryRequest';
 
 /**
  * @export
  * @class AdAnalyticsMedianQueryRequest
  */
-export class AdAnalyticsMedianQueryRequest extends AnalyticsQueryRequest {
+export class AdAnalyticsMedianQueryRequest extends AdAnalyticsQueryRequest {
   constructor(obj: Partial<AdAnalyticsMedianQueryRequest>) {
     super(obj);
+
   }
 }
 

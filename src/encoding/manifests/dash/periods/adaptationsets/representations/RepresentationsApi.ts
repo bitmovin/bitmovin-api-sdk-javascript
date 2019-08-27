@@ -5,7 +5,6 @@ import Fmp4Api from './fmp4/Fmp4Api';
 import CmafApi from './cmaf/CmafApi';
 import Mp4Api from './mp4/Mp4Api';
 import WebmApi from './webm/WebmApi';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * RepresentationsApi - object-oriented interface

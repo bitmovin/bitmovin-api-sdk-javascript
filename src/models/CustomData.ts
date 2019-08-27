@@ -20,8 +20,9 @@ export class CustomData {
   public createdAt?: Date;
 
   constructor(obj: Partial<CustomData>) {
-    this.customData = map(obj.customData);
-    this.createdAt = map(obj.createdAt, Date);
+
+    this.customData = obj.customData;
+    this.createdAt = map<Date>(obj.createdAt, Date);
   }
 }
 

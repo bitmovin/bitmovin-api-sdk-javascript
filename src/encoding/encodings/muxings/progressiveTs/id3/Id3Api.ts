@@ -6,7 +6,6 @@ import PlainTextApi from './plainText/PlainTextApi';
 import Id3Tag from '../../../../../models/Id3Tag';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {Id3TagListQueryParams, Id3TagListQueryParamsBuilder} from './Id3TagListQueryParams';
-import {getType, map} from '../../../../../common/Mapper';
 
 /**
  * Id3Api - object-oriented interface
@@ -46,11 +45,7 @@ export default class Id3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Id3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<Id3Tag>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => map(i, getType(i, Id3Tag)));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Id3Tag>(response, Id3Tag);;
     });
   }
 }

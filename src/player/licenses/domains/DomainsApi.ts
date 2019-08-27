@@ -3,7 +3,6 @@ import Configuration from '../../../common/Configuration';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Domain from '../../../models/Domain';
 import PaginationResponse from '../../../models/PaginationResponse';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * DomainsApi - object-oriented interface
@@ -61,11 +60,7 @@ export default class DomainsApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.get<PaginationResponse<Domain>>('/player/licenses/{license_id}/domains', pathParamMap).then((response) => {
-      const paginationResponse = new PaginationResponse<Domain>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new Domain(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<Domain>(response, Domain);;
     });
   }
 }

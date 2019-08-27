@@ -10,18 +10,19 @@ export class StreamFilter {
    * @type {string}
    * @memberof StreamFilter
    */
-  public id: string;
+  public id?: string;
 
   /**
    * Defines the order in which filters are applied. Filters are applied in ascending order. (required)
    * @type {number}
    * @memberof StreamFilter
    */
-  public position: number;
+  public position?: number;
 
   constructor(obj: Partial<StreamFilter>) {
-    this.id = map(obj.id);
-    this.position = map(obj.position);
+
+    this.id = obj.id;
+    this.position = obj.position;
   }
 }
 

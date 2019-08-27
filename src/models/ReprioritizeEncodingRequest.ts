@@ -10,10 +10,11 @@ export class ReprioritizeEncodingRequest {
    * @type {number}
    * @memberof ReprioritizeEncodingRequest
    */
-  public priority: number;
+  public priority?: number;
 
   constructor(obj: Partial<ReprioritizeEncodingRequest>) {
-    this.priority = map(obj.priority);
+
+    this.priority = obj.priority;
   }
 }
 

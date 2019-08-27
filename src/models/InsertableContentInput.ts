@@ -10,14 +10,14 @@ export class InsertableContentInput {
    * @type {string}
    * @memberof InsertableContentInput
    */
-  public inputId: string;
+  public inputId?: string;
 
   /**
    * Path to the file on the input (required)
    * @type {string}
    * @memberof InsertableContentInput
    */
-  public inputPath: string;
+  public inputPath?: string;
 
   /**
    * Description of this input
@@ -27,9 +27,10 @@ export class InsertableContentInput {
   public description?: string;
 
   constructor(obj: Partial<InsertableContentInput>) {
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.description = map(obj.description);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
+    this.description = obj.description;
   }
 }
 

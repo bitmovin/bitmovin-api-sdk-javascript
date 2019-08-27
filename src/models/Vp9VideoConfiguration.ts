@@ -14,6 +14,13 @@ import Vp9Quality from './Vp9Quality';
  */
 export class Vp9VideoConfiguration extends VideoConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof Vp9VideoConfiguration
+   */
+  public type: 'VP9' = 'VP9';
+
+  /**
    * Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
    * @type {PresetConfiguration}
    * @memberof Vp9VideoConfiguration
@@ -236,38 +243,39 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
 
   constructor(obj: Partial<Vp9VideoConfiguration>) {
     super(obj);
-    this.presetConfiguration = map(obj.presetConfiguration);
-    this.crf = map(obj.crf);
-    this.lagInFrames = map(obj.lagInFrames);
-    this.errorResiliencyEnabled = map(obj.errorResiliencyEnabled);
-    this.tileColumns = map(obj.tileColumns);
-    this.tileRows = map(obj.tileRows);
-    this.frameParallel = map(obj.frameParallel);
-    this.maxIntraRate = map(obj.maxIntraRate);
-    this.qpMin = map(obj.qpMin);
-    this.qpMax = map(obj.qpMax);
-    this.rateUndershootPct = map(obj.rateUndershootPct);
-    this.rateOvershootPct = map(obj.rateOvershootPct);
-    this.clientBufferSize = map(obj.clientBufferSize);
-    this.clientInitialBufferSize = map(obj.clientInitialBufferSize);
-    this.biasPct = map(obj.biasPct);
-    this.noiseSensitivity = map(obj.noiseSensitivity);
-    this.cpuUsed = map(obj.cpuUsed);
-    this.automaticAltRefFramesEnabled = map(obj.automaticAltRefFramesEnabled);
-    this.targetLevel = map(obj.targetLevel);
-    this.rowMultiThreadingEnabled = map(obj.rowMultiThreadingEnabled);
-    this.sharpness = map(obj.sharpness);
-    this.minGop = map(obj.minGop);
-    this.maxGop = map(obj.maxGop);
-    this.minKeyframeInterval = map(obj.minKeyframeInterval);
-    this.maxKeyframeInterval = map(obj.maxKeyframeInterval);
-    this.quality = map(obj.quality);
-    this.lossless = map(obj.lossless);
-    this.staticThresh = map(obj.staticThresh);
-    this.aqMode = map(obj.aqMode);
-    this.arnrMaxFrames = map(obj.arnrMaxFrames);
-    this.arnrStrength = map(obj.arnrStrength);
-    this.arnrType = map(obj.arnrType);
+
+    this.presetConfiguration = obj.presetConfiguration;
+    this.crf = obj.crf;
+    this.lagInFrames = obj.lagInFrames;
+    this.errorResiliencyEnabled = obj.errorResiliencyEnabled;
+    this.tileColumns = obj.tileColumns;
+    this.tileRows = obj.tileRows;
+    this.frameParallel = obj.frameParallel;
+    this.maxIntraRate = obj.maxIntraRate;
+    this.qpMin = obj.qpMin;
+    this.qpMax = obj.qpMax;
+    this.rateUndershootPct = obj.rateUndershootPct;
+    this.rateOvershootPct = obj.rateOvershootPct;
+    this.clientBufferSize = obj.clientBufferSize;
+    this.clientInitialBufferSize = obj.clientInitialBufferSize;
+    this.biasPct = obj.biasPct;
+    this.noiseSensitivity = obj.noiseSensitivity;
+    this.cpuUsed = obj.cpuUsed;
+    this.automaticAltRefFramesEnabled = obj.automaticAltRefFramesEnabled;
+    this.targetLevel = obj.targetLevel;
+    this.rowMultiThreadingEnabled = obj.rowMultiThreadingEnabled;
+    this.sharpness = obj.sharpness;
+    this.minGop = obj.minGop;
+    this.maxGop = obj.maxGop;
+    this.minKeyframeInterval = obj.minKeyframeInterval;
+    this.maxKeyframeInterval = obj.maxKeyframeInterval;
+    this.quality = obj.quality;
+    this.lossless = obj.lossless;
+    this.staticThresh = obj.staticThresh;
+    this.aqMode = obj.aqMode;
+    this.arnrMaxFrames = obj.arnrMaxFrames;
+    this.arnrStrength = obj.arnrStrength;
+    this.arnrType = obj.arnrType;
   }
 }
 

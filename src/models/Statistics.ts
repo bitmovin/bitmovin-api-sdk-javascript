@@ -10,18 +10,19 @@ export class Statistics {
    * @type {number}
    * @memberof Statistics
    */
-  public bytesEncodedTotal: number;
+  public bytesEncodedTotal?: number;
 
   /**
    * Time in seconds encoded for all contained daily statistics. (required)
    * @type {number}
    * @memberof Statistics
    */
-  public timeEncodedTotal: number;
+  public timeEncodedTotal?: number;
 
   constructor(obj: Partial<Statistics>) {
-    this.bytesEncodedTotal = map(obj.bytesEncodedTotal);
-    this.timeEncodedTotal = map(obj.timeEncodedTotal);
+
+    this.bytesEncodedTotal = obj.bytesEncodedTotal;
+    this.timeEncodedTotal = obj.timeEncodedTotal;
   }
 }
 

@@ -12,21 +12,21 @@ export class ResponseErrorData {
    * @type {number}
    * @memberof ResponseErrorData
    */
-  public code: number;
+  public code?: number;
 
   /**
    * General error message (required)
    * @type {string}
    * @memberof ResponseErrorData
    */
-  public message: string;
+  public message?: string;
 
   /**
    * More detailed message meant for developers (required)
    * @type {string}
    * @memberof ResponseErrorData
    */
-  public developerMessage: string;
+  public developerMessage?: string;
 
   /**
    * collection of links to webpages containing further information on the topic
@@ -43,11 +43,12 @@ export class ResponseErrorData {
   public details?: Message[];
 
   constructor(obj: Partial<ResponseErrorData>) {
-    this.code = map(obj.code);
-    this.message = map(obj.message);
-    this.developerMessage = map(obj.developerMessage);
-    this.links = map<Link>(obj.links, Link);
-    this.details = map<Message>(obj.details, Message);
+
+    this.code = obj.code;
+    this.message = obj.message;
+    this.developerMessage = obj.developerMessage;
+    this.links = map<Link>(obj.links, Link) || [];
+    this.details = map<Message>(obj.details, Message) || [];
   }
 }
 

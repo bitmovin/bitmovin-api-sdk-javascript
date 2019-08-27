@@ -7,11 +7,18 @@ import Input from './Input';
  */
 export class HttpsInput extends Input {
   /**
+   * Discriminator property for Input
+   * @type {string}
+   * @memberof HttpsInput
+   */
+  public type: 'HTTPS' = 'HTTPS';
+
+  /**
    * Host Url or IP of the HTTP server (required)
    * @type {string}
    * @memberof HttpsInput
    */
-  public host: string;
+  public host?: string;
 
   /**
    * Basic Auth Username, if required
@@ -36,10 +43,11 @@ export class HttpsInput extends Input {
 
   constructor(obj: Partial<HttpsInput>) {
     super(obj);
-    this.host = map(obj.host);
-    this.username = map(obj.username);
-    this.password = map(obj.password);
-    this.port = map(obj.port);
+
+    this.host = obj.host;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.port = obj.port;
   }
 }
 

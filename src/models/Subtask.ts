@@ -13,7 +13,7 @@ export class Subtask extends BitmovinResponse {
    * @type {Status}
    * @memberof Subtask
    */
-  public status: Status;
+  public status?: Status;
 
   /**
    * Progress in percent
@@ -27,7 +27,7 @@ export class Subtask extends BitmovinResponse {
    * @type {string}
    * @memberof Subtask
    */
-  public name: string;
+  public name?: string;
 
   /**
    * Task specific messages
@@ -87,17 +87,18 @@ export class Subtask extends BitmovinResponse {
 
   constructor(obj: Partial<Subtask>) {
     super(obj);
-    this.status = map(obj.status);
-    this.progress = map(obj.progress);
-    this.name = map(obj.name);
-    this.messages = map<Message>(obj.messages, Message);
-    this.createdAt = map(obj.createdAt, Date);
-    this.updatedAt = map(obj.updatedAt, Date);
-    this.startedAt = map(obj.startedAt, Date);
-    this.queuedAt = map(obj.queuedAt, Date);
-    this.runningAt = map(obj.runningAt, Date);
-    this.finishedAt = map(obj.finishedAt, Date);
-    this.errorAt = map(obj.errorAt, Date);
+
+    this.status = obj.status;
+    this.progress = obj.progress;
+    this.name = obj.name;
+    this.messages = map<Message>(obj.messages, Message) || [];
+    this.createdAt = map<Date>(obj.createdAt, Date);
+    this.updatedAt = map<Date>(obj.updatedAt, Date);
+    this.startedAt = map<Date>(obj.startedAt, Date);
+    this.queuedAt = map<Date>(obj.queuedAt, Date);
+    this.runningAt = map<Date>(obj.runningAt, Date);
+    this.finishedAt = map<Date>(obj.finishedAt, Date);
+    this.errorAt = map<Date>(obj.errorAt, Date);
   }
 }
 

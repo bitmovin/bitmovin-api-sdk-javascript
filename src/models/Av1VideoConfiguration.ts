@@ -12,6 +12,13 @@ import VideoConfiguration from './VideoConfiguration';
  */
 export class Av1VideoConfiguration extends VideoConfiguration {
   /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof Av1VideoConfiguration
+   */
+  public type: 'AV1' = 'AV1';
+
+  /**
    * @type {Av1KeyPlacementMode}
    * @memberof Av1VideoConfiguration
    */
@@ -186,31 +193,32 @@ export class Av1VideoConfiguration extends VideoConfiguration {
 
   constructor(obj: Partial<Av1VideoConfiguration>) {
     super(obj);
-    this.keyPlacementMode = map(obj.keyPlacementMode);
-    this.adaptiveQuantMode = map(obj.adaptiveQuantMode);
-    this.lagInFrames = map(obj.lagInFrames);
-    this.minQ = map(obj.minQ);
-    this.maxQ = map(obj.maxQ);
-    this.undershootPct = map(obj.undershootPct);
-    this.overshootPct = map(obj.overshootPct);
-    this.clientBufferSize = map(obj.clientBufferSize);
-    this.clientInitialBufferSize = map(obj.clientInitialBufferSize);
-    this.clientOptimalBufferSize = map(obj.clientOptimalBufferSize);
-    this.tileColumns = map(obj.tileColumns);
-    this.tileRows = map(obj.tileRows);
-    this.isAutomaticAltRefFramesEnabled = map(obj.isAutomaticAltRefFramesEnabled);
-    this.arnrMaxFrames = map(obj.arnrMaxFrames);
-    this.arnrStrength = map(obj.arnrStrength);
-    this.maxIntraRate = map(obj.maxIntraRate);
-    this.isLossless = map(obj.isLossless);
-    this.isFrameParallel = map(obj.isFrameParallel);
-    this.sharpness = map(obj.sharpness);
-    this.isFrameBoostEnabled = map(obj.isFrameBoostEnabled);
-    this.noiseSensitivity = map(obj.noiseSensitivity);
-    this.minGfInterval = map(obj.minGfInterval);
-    this.maxGfInterval = map(obj.maxGfInterval);
-    this.numTileGroups = map(obj.numTileGroups);
-    this.mtuSize = map(obj.mtuSize);
+
+    this.keyPlacementMode = obj.keyPlacementMode;
+    this.adaptiveQuantMode = obj.adaptiveQuantMode;
+    this.lagInFrames = obj.lagInFrames;
+    this.minQ = obj.minQ;
+    this.maxQ = obj.maxQ;
+    this.undershootPct = obj.undershootPct;
+    this.overshootPct = obj.overshootPct;
+    this.clientBufferSize = obj.clientBufferSize;
+    this.clientInitialBufferSize = obj.clientInitialBufferSize;
+    this.clientOptimalBufferSize = obj.clientOptimalBufferSize;
+    this.tileColumns = obj.tileColumns;
+    this.tileRows = obj.tileRows;
+    this.isAutomaticAltRefFramesEnabled = obj.isAutomaticAltRefFramesEnabled;
+    this.arnrMaxFrames = obj.arnrMaxFrames;
+    this.arnrStrength = obj.arnrStrength;
+    this.maxIntraRate = obj.maxIntraRate;
+    this.isLossless = obj.isLossless;
+    this.isFrameParallel = obj.isFrameParallel;
+    this.sharpness = obj.sharpness;
+    this.isFrameBoostEnabled = obj.isFrameBoostEnabled;
+    this.noiseSensitivity = obj.noiseSensitivity;
+    this.minGfInterval = obj.minGfInterval;
+    this.maxGfInterval = obj.maxGfInterval;
+    this.numTileGroups = obj.numTileGroups;
+    this.mtuSize = obj.mtuSize;
   }
 }
 

@@ -13,21 +13,21 @@ export class AnalyticsExportTask extends BitmovinResponse {
    * @type {Date}
    * @memberof AnalyticsExportTask
    */
-  public startTime: Date;
+  public startTime?: Date;
 
   /**
    * End of timeframe which is exported in UTC format (required)
    * @type {Date}
    * @memberof AnalyticsExportTask
    */
-  public endTime: Date;
+  public endTime?: Date;
 
   /**
    * Name of the export task (required)
    * @type {string}
    * @memberof AnalyticsExportTask
    */
-  public name: string;
+  public name?: string;
 
   /**
    * Export task description
@@ -41,13 +41,13 @@ export class AnalyticsExportTask extends BitmovinResponse {
    * @type {string}
    * @memberof AnalyticsExportTask
    */
-  public licenseKey: string;
+  public licenseKey?: string;
 
   /**
    * @type {AnalyticsExportTaskOutputTarget}
    * @memberof AnalyticsExportTask
    */
-  public output: AnalyticsExportTaskOutputTarget;
+  public output?: AnalyticsExportTaskOutputTarget;
 
   /**
    * Progress of the export task
@@ -78,16 +78,17 @@ export class AnalyticsExportTask extends BitmovinResponse {
 
   constructor(obj: Partial<AnalyticsExportTask>) {
     super(obj);
-    this.startTime = map(obj.startTime, Date);
-    this.endTime = map(obj.endTime, Date);
-    this.name = map(obj.name);
-    this.description = map(obj.description);
-    this.licenseKey = map(obj.licenseKey);
+
+    this.startTime = map<Date>(obj.startTime, Date);
+    this.endTime = map<Date>(obj.endTime, Date);
+    this.name = obj.name;
+    this.description = obj.description;
+    this.licenseKey = obj.licenseKey;
     this.output = map<AnalyticsExportTaskOutputTarget>(obj.output, AnalyticsExportTaskOutputTarget);
-    this.progress = map(obj.progress);
-    this.status = map(obj.status);
-    this.startedAt = map(obj.startedAt, Date);
-    this.finishedAt = map(obj.finishedAt, Date);
+    this.progress = obj.progress;
+    this.status = obj.status;
+    this.startedAt = map<Date>(obj.startedAt, Date);
+    this.finishedAt = map<Date>(obj.finishedAt, Date);
   }
 }
 

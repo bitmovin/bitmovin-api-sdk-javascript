@@ -4,7 +4,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConcatenationInputStream from '../../../../models/ConcatenationInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {ConcatenationInputStreamListQueryParams, ConcatenationInputStreamListQueryParamsBuilder} from './ConcatenationInputStreamListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * ConcatenationApi - object-oriented interface
@@ -86,11 +85,7 @@ export default class ConcatenationApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ConcatenationInputStream>>('/encoding/encodings/{encoding_id}/input-streams/concatenation', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ConcatenationInputStream>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ConcatenationInputStream(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ConcatenationInputStream>(response, ConcatenationInputStream);;
     });
   }
 }

@@ -14,7 +14,8 @@ export class InputTypeResponse {
   public type?: InputType;
 
   constructor(obj: Partial<InputTypeResponse>) {
-    this.type = map(obj.type);
+
+    this.type = obj.type;
   }
 }
 

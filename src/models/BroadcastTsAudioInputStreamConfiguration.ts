@@ -23,8 +23,9 @@ export class BroadcastTsAudioInputStreamConfiguration extends BroadcastTsInputSt
 
   constructor(obj: Partial<BroadcastTsAudioInputStreamConfiguration>) {
     super(obj);
-    this.useATSCBufferModel = map(obj.useATSCBufferModel);
-    this.language = map(obj.language);
+
+    this.useATSCBufferModel = obj.useATSCBufferModel;
+    this.language = obj.language;
   }
 }
 

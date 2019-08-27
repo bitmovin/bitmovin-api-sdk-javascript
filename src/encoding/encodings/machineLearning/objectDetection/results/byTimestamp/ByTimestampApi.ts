@@ -3,7 +3,6 @@ import Configuration from '../../../../../../common/Configuration';
 import ObjectDetectionTimestampResult from '../../../../../../models/ObjectDetectionTimestampResult';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {ObjectDetectionTimestampResultListQueryParams, ObjectDetectionTimestampResultListQueryParamsBuilder} from './ObjectDetectionTimestampResultListQueryParams';
-import {getType, map} from '../../../../../../common/Mapper';
 
 /**
  * ByTimestampApi - object-oriented interface
@@ -37,11 +36,7 @@ export default class ByTimestampApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ObjectDetectionTimestampResult>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results/by-timestamp', pathParamMap, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<ObjectDetectionTimestampResult>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new ObjectDetectionTimestampResult(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<ObjectDetectionTimestampResult>(response, ObjectDetectionTimestampResult);;
     });
   }
 }

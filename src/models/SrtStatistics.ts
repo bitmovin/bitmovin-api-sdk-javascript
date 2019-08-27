@@ -83,13 +83,14 @@ export class SrtStatistics {
   public send?: SrtStatisticSend;
 
   constructor(obj: Partial<SrtStatistics>) {
-    this.id = map(obj.id);
-    this.createdAt = map(obj.createdAt, Date);
-    this.encodingId = map(obj.encodingId);
-    this.srtInputId = map(obj.srtInputId);
-    this.srtInputSelected = map(obj.srtInputSelected);
-    this.orgId = map(obj.orgId);
-    this.userId = map(obj.userId);
+
+    this.id = obj.id;
+    this.createdAt = map<Date>(obj.createdAt, Date);
+    this.encodingId = obj.encodingId;
+    this.srtInputId = obj.srtInputId;
+    this.srtInputSelected = obj.srtInputSelected;
+    this.orgId = obj.orgId;
+    this.userId = obj.userId;
     this.link = map<SrtStatisticLink>(obj.link, SrtStatisticLink);
     this.window = map<SrtStatisticWindow>(obj.window, SrtStatisticWindow);
     this.recv = map<SrtStatisticRecv>(obj.recv, SrtStatisticRecv);

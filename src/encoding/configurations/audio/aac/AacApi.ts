@@ -5,7 +5,6 @@ import AacAudioConfiguration from '../../../../models/AacAudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {AacAudioConfigurationListQueryParams, AacAudioConfigurationListQueryParamsBuilder} from './AacAudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * AacApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class AacApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AacAudioConfiguration>>('/encoding/configurations/audio/aac', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<AacAudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new AacAudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<AacAudioConfiguration>(response, AacAudioConfiguration);;
     });
   }
 }

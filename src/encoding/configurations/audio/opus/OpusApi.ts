@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../../models/BitmovinResponse';
 import OpusAudioConfiguration from '../../../../models/OpusAudioConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {OpusAudioConfigurationListQueryParams, OpusAudioConfigurationListQueryParamsBuilder} from './OpusAudioConfigurationListQueryParams';
-import {getType, map} from '../../../../common/Mapper';
 
 /**
  * OpusApi - object-oriented interface
@@ -77,11 +76,7 @@ export default class OpusApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<OpusAudioConfiguration>>('/encoding/configurations/audio/opus', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<OpusAudioConfiguration>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new OpusAudioConfiguration(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<OpusAudioConfiguration>(response, OpusAudioConfiguration);;
     });
   }
 }

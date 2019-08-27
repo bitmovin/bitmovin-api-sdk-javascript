@@ -44,11 +44,12 @@ export class DvbTeletextInputStream extends InputStream {
 
   constructor(obj: Partial<DvbTeletextInputStream>) {
     super(obj);
-    this.inputId = map(obj.inputId);
-    this.inputPath = map(obj.inputPath);
-    this.selectionMode = map(obj.selectionMode);
-    this.position = map(obj.position);
-    this.page = map(obj.page);
+
+    this.inputId = obj.inputId;
+    this.inputPath = obj.inputPath;
+    this.selectionMode = obj.selectionMode;
+    this.position = obj.position;
+    this.page = obj.page;
   }
 }
 

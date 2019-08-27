@@ -5,7 +5,6 @@ import BitmovinResponse from '../../../models/BitmovinResponse';
 import S3Input from '../../../models/S3Input';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {S3InputListQueryParams, S3InputListQueryParamsBuilder} from './S3InputListQueryParams';
-import {getType, map} from '../../../common/Mapper';
 
 /**
  * S3Api - object-oriented interface
@@ -77,11 +76,7 @@ export default class S3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Input>>('/encoding/inputs/s3', {}, queryParams).then((response) => {
-      const paginationResponse = new PaginationResponse<S3Input>(response);
-      if (Array.isArray(paginationResponse.items)) {
-        paginationResponse.items = paginationResponse.items.map((i: any) => new S3Input(i));
-      }
-      return paginationResponse;
+      return new PaginationResponse<S3Input>(response, S3Input);;
     });
   }
 }

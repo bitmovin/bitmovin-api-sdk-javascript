@@ -15,7 +15,8 @@ export class WebVttConfiguration extends BitmovinResource {
 
   constructor(obj: Partial<WebVttConfiguration>) {
     super(obj);
-    this.appendOptionalZeroHour = map(obj.appendOptionalZeroHour);
+
+    this.appendOptionalZeroHour = obj.appendOptionalZeroHour;
   }
 }
 

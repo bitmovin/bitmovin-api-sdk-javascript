@@ -27,9 +27,10 @@ export class ReuploadSettings {
   public muxingInitFileInterval?: number;
 
   constructor(obj: Partial<ReuploadSettings>) {
-    this.dashManifestInterval = map(obj.dashManifestInterval);
-    this.hlsManifestInterval = map(obj.hlsManifestInterval);
-    this.muxingInitFileInterval = map(obj.muxingInitFileInterval);
+
+    this.dashManifestInterval = obj.dashManifestInterval;
+    this.hlsManifestInterval = obj.hlsManifestInterval;
+    this.muxingInitFileInterval = obj.muxingInitFileInterval;
   }
 }
 
