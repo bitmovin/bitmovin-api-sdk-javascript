@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import ScheduledInsertableContentStatus from './ScheduledInsertableContentStatus';
 
@@ -35,13 +35,15 @@ export class ScheduledInsertableContent extends BitmovinResource {
    */
   public status?: ScheduledInsertableContentStatus;
 
-  constructor(obj: Partial<ScheduledInsertableContent>) {
+  constructor(obj?: Partial<ScheduledInsertableContent>) {
     super(obj);
-
-    this.contentId = obj.contentId;
-    this.runAt = map<Date>(obj.runAt, Date);
-    this.durationInSeconds = obj.durationInSeconds;
-    this.status = obj.status;
+    if(!obj) {
+      return;
+    }
+    this.contentId = map(obj.contentId);
+    this.runAt = map(obj.runAt, Date);
+    this.durationInSeconds = map(obj.durationInSeconds);
+    this.status = map(obj.status);
   }
 }
 

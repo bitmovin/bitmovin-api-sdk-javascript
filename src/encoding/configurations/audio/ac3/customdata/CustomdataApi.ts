@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import CustomData from '../../../../../models/CustomData';
 
 /**
@@ -17,7 +18,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary AC3 Codec Configuration Custom Data
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(configurationId: string): Promise<CustomData> {
@@ -25,7 +26,7 @@ export default class CustomdataApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<CustomData>('/encoding/configurations/audio/ac3/{configuration_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

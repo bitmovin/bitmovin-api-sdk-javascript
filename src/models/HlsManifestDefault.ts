@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import HlsManifest from './HlsManifest';
 import HlsManifestDefaultVersion from './HlsManifestDefaultVersion';
@@ -24,11 +24,13 @@ export class HlsManifestDefault extends HlsManifest {
    */
   public version?: HlsManifestDefaultVersion;
 
-  constructor(obj: Partial<HlsManifestDefault>) {
+  constructor(obj?: Partial<HlsManifestDefault>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.version = obj.version;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.version = map(obj.version);
   }
 }
 

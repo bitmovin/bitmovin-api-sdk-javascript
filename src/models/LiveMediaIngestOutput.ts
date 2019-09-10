@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * Live Media and Metadata Ingest Protocol. See https://tools.ietf.org/html/draft-mekuria-mmediaingest-01.
@@ -13,7 +14,7 @@ export class LiveMediaIngestOutput extends Output {
    * @type {string}
    * @memberof LiveMediaIngestOutput
    */
-  public type: 'LIVE_MEDIA_INGEST' = 'LIVE_MEDIA_INGEST';
+  public type: OutputType.LIVE_MEDIA_INGEST = OutputType.LIVE_MEDIA_INGEST;
 
   /**
    * URL specifying the publishing point for the output. Can use either http or https. (required)
@@ -22,10 +23,12 @@ export class LiveMediaIngestOutput extends Output {
    */
   public publishingPoint?: string;
 
-  constructor(obj: Partial<LiveMediaIngestOutput>) {
+  constructor(obj?: Partial<LiveMediaIngestOutput>) {
     super(obj);
-
-    this.publishingPoint = obj.publishingPoint;
+    if(!obj) {
+      return;
+    }
+    this.publishingPoint = map(obj.publishingPoint);
   }
 }
 

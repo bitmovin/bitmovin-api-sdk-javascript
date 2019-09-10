@@ -1,4 +1,5 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
+import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
 import EncodingMode from './EncodingMode';
 import PixelFormat from './PixelFormat';
@@ -17,7 +18,7 @@ export class Vp8VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof Vp8VideoConfiguration
    */
-  public type: 'VP8' = 'VP8';
+  public type: CodecConfigType.VP8 = CodecConfigType.VP8;
 
   /**
    * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
@@ -148,28 +149,30 @@ export class Vp8VideoConfiguration extends VideoConfiguration {
    */
   public arnrType?: Vp8ArnrType;
 
-  constructor(obj: Partial<Vp8VideoConfiguration>) {
+  constructor(obj?: Partial<Vp8VideoConfiguration>) {
     super(obj);
-
-    this.crf = obj.crf;
-    this.lagInFrames = obj.lagInFrames;
-    this.maxIntraRate = obj.maxIntraRate;
-    this.qpMin = obj.qpMin;
-    this.qpMax = obj.qpMax;
-    this.rateUndershootPct = obj.rateUndershootPct;
-    this.rateOvershootPct = obj.rateOvershootPct;
-    this.cpuUsed = obj.cpuUsed;
-    this.noiseSensitivity = obj.noiseSensitivity;
-    this.sharpness = obj.sharpness;
-    this.minGop = obj.minGop;
-    this.maxGop = obj.maxGop;
-    this.minKeyframeInterval = obj.minKeyframeInterval;
-    this.maxKeyframeInterval = obj.maxKeyframeInterval;
-    this.quality = obj.quality;
-    this.staticThresh = obj.staticThresh;
-    this.arnrMaxFrames = obj.arnrMaxFrames;
-    this.arnrStrength = obj.arnrStrength;
-    this.arnrType = obj.arnrType;
+    if(!obj) {
+      return;
+    }
+    this.crf = map(obj.crf);
+    this.lagInFrames = map(obj.lagInFrames);
+    this.maxIntraRate = map(obj.maxIntraRate);
+    this.qpMin = map(obj.qpMin);
+    this.qpMax = map(obj.qpMax);
+    this.rateUndershootPct = map(obj.rateUndershootPct);
+    this.rateOvershootPct = map(obj.rateOvershootPct);
+    this.cpuUsed = map(obj.cpuUsed);
+    this.noiseSensitivity = map(obj.noiseSensitivity);
+    this.sharpness = map(obj.sharpness);
+    this.minGop = map(obj.minGop);
+    this.maxGop = map(obj.maxGop);
+    this.minKeyframeInterval = map(obj.minKeyframeInterval);
+    this.maxKeyframeInterval = map(obj.maxKeyframeInterval);
+    this.quality = map(obj.quality);
+    this.staticThresh = map(obj.staticThresh);
+    this.arnrMaxFrames = map(obj.arnrMaxFrames);
+    this.arnrStrength = map(obj.arnrStrength);
+    this.arnrType = map(obj.arnrType);
   }
 }
 

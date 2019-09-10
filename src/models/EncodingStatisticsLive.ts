@@ -5,9 +5,11 @@ import EncodingStatistics from './EncodingStatistics';
  * @class EncodingStatisticsLive
  */
 export class EncodingStatisticsLive extends EncodingStatistics {
-  constructor(obj: Partial<EncodingStatisticsLive>) {
+  constructor(obj?: Partial<EncodingStatisticsLive>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

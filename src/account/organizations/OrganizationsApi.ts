@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import SubOrganizationsApi from './subOrganizations/SubOrganizationsApi';
 import GroupsApi from './groups/GroupsApi';
 import Organization from '../../models/Organization';
@@ -24,19 +25,19 @@ export default class OrganizationsApi extends BaseAPI {
   /**
    * @summary Add Organization
    * @param {Organization} organization Orgnaization Details
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof OrganizationsApi
    */
   public create(organization?: Organization): Promise<Organization> {
     return this.restClient.post<Organization>('/account/organizations', {}, organization).then((response) => {
-      return new Organization(response);
+      return map(response, Organization);
     });
   }
 
   /**
    * @summary Organization Details
    * @param {string} organizationId ID of the organization
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof OrganizationsApi
    */
   public get(organizationId: string): Promise<Organization> {
@@ -44,18 +45,18 @@ export default class OrganizationsApi extends BaseAPI {
       organization_id: organizationId
     };
     return this.restClient.get<Organization>('/account/organizations/{organization_id}', pathParamMap).then((response) => {
-      return new Organization(response);
+      return map(response, Organization);
     });
   }
 
   /**
    * @summary List Organizations
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof OrganizationsApi
    */
   public list(): Promise<PaginationResponse<Organization>> {
     return this.restClient.get<PaginationResponse<Organization>>('/account/organizations', {}).then((response) => {
-      return new PaginationResponse<Organization>(response, Organization);;
+      return new PaginationResponse<Organization>(response, Organization);
     });
   }
 }

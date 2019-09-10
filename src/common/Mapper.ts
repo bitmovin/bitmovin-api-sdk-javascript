@@ -2,20 +2,25 @@ import * as models from '../models';
 
 export type Callable<T> = new (obj: any) => T;
 
-export function map<T>(value: any, clazz: Callable<T>): any | T[] | T {
-  if (typeof clazz !== 'function') {
-    return value;
-  }
-
-  if (Array.isArray(value)) {
-    return value.map(item => mapInternal(item, clazz));
-  }
-
+export function map<T>(value: T | undefined, clazz?: Callable<T>): T {
   return mapInternal(value, clazz)
 }
 
-function mapInternal<T>(value: any, clazz: Callable<T>): T {
+export function mapArray<T>(value: T[] | undefined, clazz?: Callable<T>): T[] {
+  if(!value)
+  {
+    return [];
+  }
+
+  return value.map(item => mapInternal(item, clazz));
+}
+
+function mapInternal<T>(value: any, clazz?: Callable<T>): T {
   if (!value) {
+    return value;
+  }
+
+  if (!clazz || typeof clazz !== 'function') {
     return value;
   }
 

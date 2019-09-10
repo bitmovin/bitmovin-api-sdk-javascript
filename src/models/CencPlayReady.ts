@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class CencPlayReady {
    */
   public pssh?: string;
 
-  constructor(obj: Partial<CencPlayReady>) {
-
-    this.laUrl = obj.laUrl;
-    this.pssh = obj.pssh;
+  constructor(obj?: Partial<CencPlayReady>) {
+    if(!obj) {
+      return;
+    }
+    this.laUrl = map(obj.laUrl);
+    this.pssh = map(obj.pssh);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import StreamInfos from '../../../../../models/StreamInfos';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {StreamInfosListQueryParams, StreamInfosListQueryParamsBuilder} from './StreamInfosListQueryParams';
@@ -20,7 +21,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary List Stream Infos of Live Statistics from an Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public list(encodingId: string, queryParameters?: StreamInfosListQueryParams | ((q: StreamInfosListQueryParamsBuilder) => StreamInfosListQueryParamsBuilder)): Promise<PaginationResponse<StreamInfos>> {
@@ -34,7 +35,7 @@ export default class StreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StreamInfos>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/streams', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<StreamInfos>(response, StreamInfos);;
+      return new PaginationResponse<StreamInfos>(response, StreamInfos);
     });
   }
 }

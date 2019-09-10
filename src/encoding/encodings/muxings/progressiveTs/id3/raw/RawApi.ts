@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import RawId3Tag from '../../../../../../models/RawId3Tag';
@@ -25,7 +26,7 @@ export default class RawApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {RawId3Tag} rawId3Tag The Raw ID3 Tag to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RawApi
    */
   public create(encodingId: string, muxingId: string, rawId3Tag?: RawId3Tag): Promise<RawId3Tag> {
@@ -34,7 +35,7 @@ export default class RawApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.post<RawId3Tag>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw', pathParamMap, rawId3Tag).then((response) => {
-      return new RawId3Tag(response);
+      return map(response, RawId3Tag);
     });
   }
 
@@ -43,7 +44,7 @@ export default class RawApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {string} id3TagId ID of the RAW ID3 Tag
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RawApi
    */
   public delete(encodingId: string, muxingId: string, id3TagId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class RawApi extends BaseAPI {
       id3_tag_id: id3TagId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw/{id3_tag_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class RawApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {string} id3TagId ID of the Raw ID3 Tag
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RawApi
    */
   public get(encodingId: string, muxingId: string, id3TagId: string): Promise<RawId3Tag> {
@@ -72,7 +73,7 @@ export default class RawApi extends BaseAPI {
       id3_tag_id: id3TagId
     };
     return this.restClient.get<RawId3Tag>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw/{id3_tag_id}', pathParamMap).then((response) => {
-      return new RawId3Tag(response);
+      return map(response, RawId3Tag);
     });
   }
 
@@ -81,7 +82,7 @@ export default class RawApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RawApi
    */
   public list(encodingId: string, muxingId: string, queryParameters?: RawId3TagListQueryParams | ((q: RawId3TagListQueryParamsBuilder) => RawId3TagListQueryParamsBuilder)): Promise<PaginationResponse<RawId3Tag>> {
@@ -96,7 +97,7 @@ export default class RawApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RawId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/raw', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<RawId3Tag>(response, RawId3Tag);;
+      return new PaginationResponse<RawId3Tag>(response, RawId3Tag);
     });
   }
 }

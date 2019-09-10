@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 import S3SignatureVersion from './S3SignatureVersion';
 
 /**
@@ -12,7 +13,7 @@ export class GenericS3Input extends Input {
    * @type {string}
    * @memberof GenericS3Input
    */
-  public type: 'GENERIC_S3' = 'GENERIC_S3';
+  public type: InputType.GENERIC_S3 = InputType.GENERIC_S3;
 
   /**
    * Your generic S3 bucket name (required)
@@ -63,16 +64,18 @@ export class GenericS3Input extends Input {
    */
   public secretKey?: string;
 
-  constructor(obj: Partial<GenericS3Input>) {
+  constructor(obj?: Partial<GenericS3Input>) {
     super(obj);
-
-    this.bucketName = obj.bucketName;
-    this.host = obj.host;
-    this.port = obj.port;
-    this.ssl = obj.ssl;
-    this.signatureVersion = obj.signatureVersion;
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
+    if(!obj) {
+      return;
+    }
+    this.bucketName = map(obj.bucketName);
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.ssl = map(obj.ssl);
+    this.signatureVersion = map(obj.signatureVersion);
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
   }
 }
 

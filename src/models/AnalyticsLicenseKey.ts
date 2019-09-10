@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class AnalyticsLicenseKey {
    */
   public licenseKey?: string;
 
-  constructor(obj: Partial<AnalyticsLicenseKey>) {
-
-    this.licenseKey = obj.licenseKey;
+  constructor(obj?: Partial<AnalyticsLicenseKey>) {
+    if(!obj) {
+      return;
+    }
+    this.licenseKey = map(obj.licenseKey);
   }
 }
 

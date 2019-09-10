@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SourceChannelType from './SourceChannelType';
 
 /**
@@ -26,11 +26,13 @@ export class SourceChannel {
    */
   public channelNumber?: number;
 
-  constructor(obj: Partial<SourceChannel>) {
-
-    this.gain = obj.gain;
-    this.type = obj.type;
-    this.channelNumber = obj.channelNumber;
+  constructor(obj?: Partial<SourceChannel>) {
+    if(!obj) {
+      return;
+    }
+    this.gain = map(obj.gain);
+    this.type = map(obj.type);
+    this.channelNumber = map(obj.channelNumber);
   }
 }
 

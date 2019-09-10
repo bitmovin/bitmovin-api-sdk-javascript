@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class TsApi extends BaseAPI {
    * @summary Add TS Segment Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {TsMuxing} tsMuxing The TS Segment Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TsApi
    */
   public create(encodingId: string, tsMuxing?: TsMuxing): Promise<TsMuxing> {
@@ -35,7 +36,7 @@ export default class TsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<TsMuxing>('/encoding/encodings/{encoding_id}/muxings/ts', pathParamMap, tsMuxing).then((response) => {
-      return new TsMuxing(response);
+      return map(response, TsMuxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class TsApi extends BaseAPI {
    * @summary Delete TS Segment Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the ts segment muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TsApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class TsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class TsApi extends BaseAPI {
    * @summary TS Segment Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the ts segment muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TsApi
    */
   public get(encodingId: string, muxingId: string): Promise<TsMuxing> {
@@ -69,7 +70,7 @@ export default class TsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<TsMuxing>('/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}', pathParamMap).then((response) => {
-      return new TsMuxing(response);
+      return map(response, TsMuxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class TsApi extends BaseAPI {
    * @summary List TS Segment Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TsApi
    */
   public list(encodingId: string, queryParameters?: TsMuxingListQueryParams | ((q: TsMuxingListQueryParamsBuilder) => TsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<TsMuxing>> {
@@ -91,7 +92,7 @@ export default class TsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TsMuxing>>('/encoding/encodings/{encoding_id}/muxings/ts', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<TsMuxing>(response, TsMuxing);;
+      return new PaginationResponse<TsMuxing>(response, TsMuxing);
     });
   }
 }

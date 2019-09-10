@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class SftpInput extends Input {
    * @type {string}
    * @memberof SftpInput
    */
-  public type: 'SFTP' = 'SFTP';
+  public type: InputType.SFTP = InputType.SFTP;
 
   /**
    * Host Url or IP of the SFTP server (required)
@@ -48,14 +49,16 @@ export class SftpInput extends Input {
    */
   public password?: string;
 
-  constructor(obj: Partial<SftpInput>) {
+  constructor(obj?: Partial<SftpInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
-    this.passive = obj.passive;
-    this.username = obj.username;
-    this.password = obj.password;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.passive = map(obj.passive);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
   }
 }
 

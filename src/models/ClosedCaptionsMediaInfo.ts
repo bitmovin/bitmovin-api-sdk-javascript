@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SegmentsMediaInfo from './SegmentsMediaInfo';
 
 /**
@@ -20,11 +20,13 @@ export class ClosedCaptionsMediaInfo extends SegmentsMediaInfo {
    */
   public forced?: boolean;
 
-  constructor(obj: Partial<ClosedCaptionsMediaInfo>) {
+  constructor(obj?: Partial<ClosedCaptionsMediaInfo>) {
     super(obj);
-
-    this.instreamId = obj.instreamId;
-    this.forced = obj.forced;
+    if(!obj) {
+      return;
+    }
+    this.instreamId = map(obj.instreamId);
+    this.forced = map(obj.forced);
   }
 }
 

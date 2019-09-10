@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import PositionUnit from './PositionUnit';
 
 /**
@@ -12,7 +13,7 @@ export class CropFilter extends Filter {
    * @type {string}
    * @memberof CropFilter
    */
-  public type: 'CROP' = 'CROP';
+  public type: FilterType.CROP = FilterType.CROP;
 
   /**
    * Amount of pixels which will be cropped of the input video from the left side.
@@ -48,14 +49,16 @@ export class CropFilter extends Filter {
    */
   public unit?: PositionUnit;
 
-  constructor(obj: Partial<CropFilter>) {
+  constructor(obj?: Partial<CropFilter>) {
     super(obj);
-
-    this.left = obj.left;
-    this.right = obj.right;
-    this.top = obj.top;
-    this.bottom = obj.bottom;
-    this.unit = obj.unit;
+    if(!obj) {
+      return;
+    }
+    this.left = map(obj.left);
+    this.right = map(obj.right);
+    this.top = map(obj.top);
+    this.bottom = map(obj.bottom);
+    this.unit = map(obj.unit);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MediaInfoType from './MediaInfoType';
 
 /**
@@ -13,9 +13,11 @@ export class MediaInfoTypeResponse {
    */
   public type?: MediaInfoType;
 
-  constructor(obj: Partial<MediaInfoTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<MediaInfoTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

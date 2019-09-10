@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import ErrorDetails from './ErrorDetails';
 import Message from './Message';
@@ -87,20 +87,22 @@ export class Task extends BitmovinResponse {
    */
   public error?: ErrorDetails;
 
-  constructor(obj: Partial<Task>) {
+  constructor(obj?: Partial<Task>) {
     super(obj);
-
-    this.status = obj.status;
-    this.eta = obj.eta;
-    this.progress = obj.progress;
-    this.subtasks = map<Subtask>(obj.subtasks, Subtask) || [];
-    this.messages = map<Message>(obj.messages, Message) || [];
-    this.createdAt = map<Date>(obj.createdAt, Date);
-    this.queuedAt = map<Date>(obj.queuedAt, Date);
-    this.runningAt = map<Date>(obj.runningAt, Date);
-    this.finishedAt = map<Date>(obj.finishedAt, Date);
-    this.errorAt = map<Date>(obj.errorAt, Date);
-    this.error = map<ErrorDetails>(obj.error, ErrorDetails);
+    if(!obj) {
+      return;
+    }
+    this.status = map(obj.status);
+    this.eta = map(obj.eta);
+    this.progress = map(obj.progress);
+    this.subtasks = mapArray(obj.subtasks, Subtask);
+    this.messages = mapArray(obj.messages, Message);
+    this.createdAt = map(obj.createdAt, Date);
+    this.queuedAt = map(obj.queuedAt, Date);
+    this.runningAt = map(obj.runningAt, Date);
+    this.finishedAt = map(obj.finishedAt, Date);
+    this.errorAt = map(obj.errorAt, Date);
+    this.error = map(obj.error, ErrorDetails);
   }
 }
 

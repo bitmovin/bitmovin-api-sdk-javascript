@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -27,12 +27,14 @@ export class MediaStream extends BitmovinResponse {
    */
   public codec?: string;
 
-  constructor(obj: Partial<MediaStream>) {
+  constructor(obj?: Partial<MediaStream>) {
     super(obj);
-
-    this.position = obj.position;
-    this.duration = obj.duration;
-    this.codec = obj.codec;
+    if(!obj) {
+      return;
+    }
+    this.position = map(obj.position);
+    this.duration = map(obj.duration);
+    this.codec = map(obj.codec);
   }
 }
 

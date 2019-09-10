@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import DashManifestDefault from '../../../../models/DashManifestDefault';
 
 /**
@@ -17,12 +18,12 @@ export default class DefaultApi extends BaseAPI {
   /**
    * @summary Create DASH Manifest Default
    * @param {DashManifestDefault} dashManifestDefault The DASH Manifest Default to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DefaultApi
    */
   public create(dashManifestDefault?: DashManifestDefault): Promise<DashManifestDefault> {
     return this.restClient.post<DashManifestDefault>('/encoding/manifests/dash/default', {}, dashManifestDefault).then((response) => {
-      return new DashManifestDefault(response);
+      return map(response, DashManifestDefault);
     });
   }
 }

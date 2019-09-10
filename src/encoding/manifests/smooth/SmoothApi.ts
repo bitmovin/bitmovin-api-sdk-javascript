@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import DefaultApi from './default/DefaultApi';
 import CustomdataApi from './customdata/CustomdataApi';
 import RepresentationsApi from './representations/RepresentationsApi';
@@ -33,19 +34,19 @@ export default class SmoothApi extends BaseAPI {
   /**
    * @summary Create Smooth Streaming Manifest
    * @param {SmoothStreamingManifest} smoothStreamingManifest The Smooth Streaming Manifest to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public create(smoothStreamingManifest?: SmoothStreamingManifest): Promise<SmoothStreamingManifest> {
     return this.restClient.post<SmoothStreamingManifest>('/encoding/manifests/smooth', {}, smoothStreamingManifest).then((response) => {
-      return new SmoothStreamingManifest(response);
+      return map(response, SmoothStreamingManifest);
     });
   }
 
   /**
    * @summary Delete Smooth Streaming Manifest
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public delete(manifestId: string): Promise<BitmovinResponse> {
@@ -53,14 +54,14 @@ export default class SmoothApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Smooth Streaming Manifest Details
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public get(manifestId: string): Promise<SmoothStreamingManifest> {
@@ -68,14 +69,14 @@ export default class SmoothApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<SmoothStreamingManifest>('/encoding/manifests/smooth/{manifest_id}', pathParamMap).then((response) => {
-      return new SmoothStreamingManifest(response);
+      return map(response, SmoothStreamingManifest);
     });
   }
 
   /**
    * @summary List Smooth Streaming Manifests
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public list(queryParameters?: SmoothStreamingManifestListQueryParams | ((q: SmoothStreamingManifestListQueryParamsBuilder) => SmoothStreamingManifestListQueryParamsBuilder)): Promise<PaginationResponse<SmoothStreamingManifest>> {
@@ -86,14 +87,14 @@ export default class SmoothApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothStreamingManifest>>('/encoding/manifests/smooth', {}, queryParams).then((response) => {
-      return new PaginationResponse<SmoothStreamingManifest>(response, SmoothStreamingManifest);;
+      return new PaginationResponse<SmoothStreamingManifest>(response, SmoothStreamingManifest);
     });
   }
 
   /**
    * @summary Start Smooth Streaming Manifest Creation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public start(manifestId: string): Promise<BitmovinResponse> {
@@ -101,14 +102,14 @@ export default class SmoothApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Smooth Streaming Manifest Creation Status
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public status(manifestId: string): Promise<Task> {
@@ -116,14 +117,14 @@ export default class SmoothApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<Task>('/encoding/manifests/smooth/{manifest_id}/status', pathParamMap).then((response) => {
-      return new Task(response);
+      return map(response, Task);
     });
   }
 
   /**
    * @summary Stop Smooth Streaming Manifest Creation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SmoothApi
    */
   public stop(manifestId: string): Promise<BitmovinResponse> {
@@ -131,7 +132,7 @@ export default class SmoothApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/stop', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

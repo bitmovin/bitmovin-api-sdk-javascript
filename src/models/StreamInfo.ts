@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioGroupConfiguration from './AudioGroupConfiguration';
 import BitmovinResource from './BitmovinResource';
 
@@ -112,24 +112,26 @@ export class StreamInfo extends BitmovinResource {
    */
   public forceVideoRangeAttribute?: boolean;
 
-  constructor(obj: Partial<StreamInfo>) {
+  constructor(obj?: Partial<StreamInfo>) {
     super(obj);
-
-    this.audio = obj.audio;
-    this.audioGroups = map<AudioGroupConfiguration>(obj.audioGroups, AudioGroupConfiguration);
-    this.video = obj.video;
-    this.subtitles = obj.subtitles;
-    this.closedCaptions = obj.closedCaptions;
-    this.encodingId = obj.encodingId;
-    this.streamId = obj.streamId;
-    this.muxingId = obj.muxingId;
-    this.drmId = obj.drmId;
-    this.segmentPath = obj.segmentPath;
-    this.uri = obj.uri;
-    this.startSegmentNumber = obj.startSegmentNumber;
-    this.endSegmentNumber = obj.endSegmentNumber;
-    this.forceFrameRateAttribute = obj.forceFrameRateAttribute;
-    this.forceVideoRangeAttribute = obj.forceVideoRangeAttribute;
+    if(!obj) {
+      return;
+    }
+    this.audio = map(obj.audio);
+    this.audioGroups = map(obj.audioGroups, AudioGroupConfiguration);
+    this.video = map(obj.video);
+    this.subtitles = map(obj.subtitles);
+    this.closedCaptions = map(obj.closedCaptions);
+    this.encodingId = map(obj.encodingId);
+    this.streamId = map(obj.streamId);
+    this.muxingId = map(obj.muxingId);
+    this.drmId = map(obj.drmId);
+    this.segmentPath = map(obj.segmentPath);
+    this.uri = map(obj.uri);
+    this.startSegmentNumber = map(obj.startSegmentNumber);
+    this.endSegmentNumber = map(obj.endSegmentNumber);
+    this.forceFrameRateAttribute = map(obj.forceFrameRateAttribute);
+    this.forceVideoRangeAttribute = map(obj.forceVideoRangeAttribute);
   }
 }
 

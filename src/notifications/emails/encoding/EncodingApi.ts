@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import EncodingsApi from './encodings/EncodingsApi';
 import EmailNotification from '../../../models/EmailNotification';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,7 +23,7 @@ export default class EncodingApi extends BaseAPI {
   /**
    * @summary List Email Notifications (All Encodings)
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingApi
    */
   public list(queryParameters?: EmailNotificationListQueryParams | ((q: EmailNotificationListQueryParamsBuilder) => EmailNotificationListQueryParamsBuilder)): Promise<PaginationResponse<EmailNotification>> {
@@ -33,7 +34,7 @@ export default class EncodingApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EmailNotification>>('/notifications/emails/encoding', {}, queryParams).then((response) => {
-      return new PaginationResponse<EmailNotification>(response, EmailNotification);;
+      return new PaginationResponse<EmailNotification>(response, EmailNotification);
     });
   }
 }

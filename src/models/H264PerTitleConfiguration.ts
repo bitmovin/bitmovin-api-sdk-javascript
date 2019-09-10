@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AutoRepresentation from './AutoRepresentation';
 import PerTitleConfiguration from './PerTitleConfiguration';
 import PerTitleFixedResolutionAndBitrateConfiguration from './PerTitleFixedResolutionAndBitrateConfiguration';
@@ -36,13 +36,15 @@ export class H264PerTitleConfiguration extends PerTitleConfiguration {
    */
   public codecBufsizeFactor?: number;
 
-  constructor(obj: Partial<H264PerTitleConfiguration>) {
+  constructor(obj?: Partial<H264PerTitleConfiguration>) {
     super(obj);
-
-    this.targetQualityCrf = obj.targetQualityCrf;
-    this.codecMinBitrateFactor = obj.codecMinBitrateFactor;
-    this.codecMaxBitrateFactor = obj.codecMaxBitrateFactor;
-    this.codecBufsizeFactor = obj.codecBufsizeFactor;
+    if(!obj) {
+      return;
+    }
+    this.targetQualityCrf = map(obj.targetQualityCrf);
+    this.codecMinBitrateFactor = map(obj.codecMinBitrateFactor);
+    this.codecMaxBitrateFactor = map(obj.codecMaxBitrateFactor);
+    this.codecBufsizeFactor = map(obj.codecBufsizeFactor);
   }
 }
 

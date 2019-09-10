@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingStatistics from './EncodingStatistics';
 
 /**
@@ -20,11 +20,13 @@ export class EncodingStatisticsVod extends EncodingStatistics {
    */
   public realTimeFactor?: number;
 
-  constructor(obj: Partial<EncodingStatisticsVod>) {
+  constructor(obj?: Partial<EncodingStatisticsVod>) {
     super(obj);
-
-    this.timeEnqueued = obj.timeEnqueued;
-    this.realTimeFactor = obj.realTimeFactor;
+    if(!obj) {
+      return;
+    }
+    this.timeEnqueued = map(obj.timeEnqueued);
+    this.realTimeFactor = map(obj.realTimeFactor);
   }
 }
 

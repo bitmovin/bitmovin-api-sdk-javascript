@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import ClosedCaptionsMediaInfo from '../../../../../models/ClosedCaptionsMediaInfo';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
    * @summary Add Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {ClosedCaptionsMediaInfo} closedCaptionsMediaInfo The Closed Captions Media to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClosedCaptionsApi
    */
   public create(manifestId: string, closedCaptionsMediaInfo?: ClosedCaptionsMediaInfo): Promise<ClosedCaptionsMediaInfo> {
@@ -29,7 +30,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<ClosedCaptionsMediaInfo>('/encoding/manifests/hls/{manifest_id}/media/closed-captions', pathParamMap, closedCaptionsMediaInfo).then((response) => {
-      return new ClosedCaptionsMediaInfo(response);
+      return map(response, ClosedCaptionsMediaInfo);
     });
   }
 
@@ -37,7 +38,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
    * @summary Delete Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the closed captions media.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClosedCaptionsApi
    */
   public delete(manifestId: string, mediaId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
       media_id: mediaId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
    * @summary Closed Captions Media Details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the closed captions media.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClosedCaptionsApi
    */
   public get(manifestId: string, mediaId: string): Promise<ClosedCaptionsMediaInfo> {
@@ -63,7 +64,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
       media_id: mediaId
     };
     return this.restClient.get<ClosedCaptionsMediaInfo>('/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}', pathParamMap).then((response) => {
-      return new ClosedCaptionsMediaInfo(response);
+      return map(response, ClosedCaptionsMediaInfo);
     });
   }
 
@@ -71,7 +72,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
    * @summary List all Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClosedCaptionsApi
    */
   public list(manifestId: string, queryParameters?: ClosedCaptionsMediaInfoListQueryParams | ((q: ClosedCaptionsMediaInfoListQueryParamsBuilder) => ClosedCaptionsMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<ClosedCaptionsMediaInfo>> {
@@ -85,7 +86,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ClosedCaptionsMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/closed-captions', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ClosedCaptionsMediaInfo>(response, ClosedCaptionsMediaInfo);;
+      return new PaginationResponse<ClosedCaptionsMediaInfo>(response, ClosedCaptionsMediaInfo);
     });
   }
 }

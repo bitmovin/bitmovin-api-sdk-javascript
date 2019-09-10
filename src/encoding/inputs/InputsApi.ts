@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import TypeApi from './type/TypeApi';
 import RtmpApi from './rtmp/RtmpApi';
 import RedundantRtmpApi from './redundantRtmp/RedundantRtmpApi';
@@ -79,7 +80,7 @@ export default class InputsApi extends BaseAPI {
   /**
    * @summary List all Inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InputsApi
    */
   public list(queryParameters?: InputListQueryParams | ((q: InputListQueryParamsBuilder) => InputListQueryParamsBuilder)): Promise<PaginationResponse<Input>> {
@@ -90,7 +91,7 @@ export default class InputsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Input>>('/encoding/inputs', {}, queryParams).then((response) => {
-      return new PaginationResponse<Input>(response, Input);;
+      return new PaginationResponse<Input>(response, Input);
     });
   }
 }

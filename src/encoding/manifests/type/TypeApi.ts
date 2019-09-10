@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import ManifestTypeResponse from '../../../models/ManifestTypeResponse';
 
 /**
@@ -17,7 +18,7 @@ export default class TypeApi extends BaseAPI {
   /**
    * @summary Get Manifest Type
    * @param {string} manifestId UUID of the manifest
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TypeApi
    */
   public get(manifestId: string): Promise<ManifestTypeResponse> {
@@ -25,7 +26,7 @@ export default class TypeApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<ManifestTypeResponse>('/encoding/manifests/{manifest_id}/type', pathParamMap).then((response) => {
-      return new ManifestTypeResponse(response);
+      return map(response, ManifestTypeResponse);
     });
   }
 }

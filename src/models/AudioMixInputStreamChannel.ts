@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioMixChannelType from './AudioMixChannelType';
 
 /**
@@ -26,11 +26,13 @@ export class AudioMixInputStreamChannel {
    */
   public outputChannelNumber?: number;
 
-  constructor(obj: Partial<AudioMixInputStreamChannel>) {
-
-    this.inputStreamId = obj.inputStreamId;
-    this.outputChannelType = obj.outputChannelType;
-    this.outputChannelNumber = obj.outputChannelNumber;
+  constructor(obj?: Partial<AudioMixInputStreamChannel>) {
+    if(!obj) {
+      return;
+    }
+    this.inputStreamId = map(obj.inputStreamId);
+    this.outputChannelType = map(obj.outputChannelType);
+    this.outputChannelNumber = map(obj.outputChannelNumber);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import LiveApi from './live/LiveApi';
 import VodApi from './vod/VodApi';
 import LiveStatisticsApi from './liveStatistics/LiveStatisticsApi';
@@ -26,7 +27,7 @@ export default class EncodingsApi extends BaseAPI {
   /**
    * @summary Get Statistics from an Encoding
    * @param {string} encodingId Id of the encoding
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public get(encodingId: string): Promise<EncodingStats> {
@@ -34,7 +35,7 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.get<EncodingStats>('/encoding/statistics/encodings/{encoding_id}', pathParamMap).then((response) => {
-      return new EncodingStats(response);
+      return map(response, EncodingStats);
     });
   }
 }

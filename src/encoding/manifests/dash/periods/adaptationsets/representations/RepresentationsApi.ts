@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import VttApi from './vtt/VttApi';
 import Fmp4Api from './fmp4/Fmp4Api';
 import CmafApi from './cmaf/CmafApi';

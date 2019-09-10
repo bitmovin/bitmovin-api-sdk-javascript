@@ -1,7 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
+import DeinterlaceAutoEnable from './DeinterlaceAutoEnable';
 import DeinterlaceFrameSelectionMode from './DeinterlaceFrameSelectionMode';
 import DeinterlaceMode from './DeinterlaceMode';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import PictureFieldParity from './PictureFieldParity';
 
 /**
@@ -14,7 +16,7 @@ export class DeinterlaceFilter extends Filter {
    * @type {string}
    * @memberof DeinterlaceFilter
    */
-  public type: 'DEINTERLACE' = 'DEINTERLACE';
+  public type: FilterType.DEINTERLACE = FilterType.DEINTERLACE;
 
   /**
    * @type {PictureFieldParity}
@@ -34,12 +36,21 @@ export class DeinterlaceFilter extends Filter {
    */
   public frameSelectionMode?: DeinterlaceFrameSelectionMode;
 
-  constructor(obj: Partial<DeinterlaceFilter>) {
-    super(obj);
+  /**
+   * @type {DeinterlaceAutoEnable}
+   * @memberof DeinterlaceFilter
+   */
+  public autoEnable?: DeinterlaceAutoEnable;
 
-    this.parity = obj.parity;
-    this.mode = obj.mode;
-    this.frameSelectionMode = obj.frameSelectionMode;
+  constructor(obj?: Partial<DeinterlaceFilter>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.parity = map(obj.parity);
+    this.mode = map(obj.mode);
+    this.frameSelectionMode = map(obj.frameSelectionMode);
+    this.autoEnable = map(obj.autoEnable);
   }
 }
 

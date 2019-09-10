@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import LiveEncodingStatsEventDetails from './LiveEncodingStatsEventDetails';
 
 /**
@@ -19,10 +19,12 @@ export class LiveEncodingStatsEvent {
    */
   public details?: LiveEncodingStatsEventDetails;
 
-  constructor(obj: Partial<LiveEncodingStatsEvent>) {
-
-    this.time = map<Date>(obj.time, Date);
-    this.details = map<LiveEncodingStatsEventDetails>(obj.details, LiveEncodingStatsEventDetails);
+  constructor(obj?: Partial<LiveEncodingStatsEvent>) {
+    if(!obj) {
+      return;
+    }
+    this.time = map(obj.time, Date);
+    this.details = map(obj.details, LiveEncodingStatsEventDetails);
   }
 }
 

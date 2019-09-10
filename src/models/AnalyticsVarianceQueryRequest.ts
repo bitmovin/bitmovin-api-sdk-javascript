@@ -9,9 +9,11 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  * @class AnalyticsVarianceQueryRequest
  */
 export class AnalyticsVarianceQueryRequest extends AnalyticsQueryRequest {
-  constructor(obj: Partial<AnalyticsVarianceQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsVarianceQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

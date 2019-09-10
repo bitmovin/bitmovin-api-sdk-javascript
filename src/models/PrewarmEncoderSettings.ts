@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import LogLevel from './LogLevel';
 
@@ -34,13 +34,15 @@ export class PrewarmEncoderSettings extends BitmovinResource {
    */
   public logLevel?: LogLevel;
 
-  constructor(obj: Partial<PrewarmEncoderSettings>) {
+  constructor(obj?: Partial<PrewarmEncoderSettings>) {
     super(obj);
-
-    this.encoderVersion = obj.encoderVersion;
-    this.minPrewarmed = obj.minPrewarmed;
-    this.maxPrewarmed = obj.maxPrewarmed;
-    this.logLevel = obj.logLevel;
+    if(!obj) {
+      return;
+    }
+    this.encoderVersion = map(obj.encoderVersion);
+    this.minPrewarmed = map(obj.minPrewarmed);
+    this.maxPrewarmed = map(obj.maxPrewarmed);
+    this.logLevel = map(obj.logLevel);
   }
 }
 

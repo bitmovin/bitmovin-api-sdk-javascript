@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AccountApiKey from './AccountApiKey';
 import BitmovinResource from './BitmovinResource';
 
@@ -49,15 +49,17 @@ export class AccountInformation extends BitmovinResource {
    */
   public company?: string;
 
-  constructor(obj: Partial<AccountInformation>) {
+  constructor(obj?: Partial<AccountInformation>) {
     super(obj);
-
-    this.email = obj.email;
-    this.apiKeys = map<AccountApiKey>(obj.apiKeys, AccountApiKey) || [];
-    this.firstName = obj.firstName;
-    this.lastName = obj.lastName;
-    this.phone = obj.phone;
-    this.company = obj.company;
+    if(!obj) {
+      return;
+    }
+    this.email = map(obj.email);
+    this.apiKeys = mapArray(obj.apiKeys, AccountApiKey);
+    this.firstName = map(obj.firstName);
+    this.lastName = map(obj.lastName);
+    this.phone = map(obj.phone);
+    this.company = map(obj.company);
   }
 }
 

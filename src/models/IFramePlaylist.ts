@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,12 @@ export class IFramePlaylist extends BitmovinResource {
    */
   public filename?: string;
 
-  constructor(obj: Partial<IFramePlaylist>) {
+  constructor(obj?: Partial<IFramePlaylist>) {
     super(obj);
-
-    this.filename = obj.filename;
+    if(!obj) {
+      return;
+    }
+    this.filename = map(obj.filename);
   }
 }
 

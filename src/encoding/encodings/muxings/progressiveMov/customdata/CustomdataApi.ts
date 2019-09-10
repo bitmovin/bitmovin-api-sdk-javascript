@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import CustomData from '../../../../../models/CustomData';
 
 /**
@@ -18,7 +19,7 @@ export default class CustomdataApi extends BaseAPI {
    * @summary Progressive MOV Muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(encodingId: string, muxingId: string): Promise<CustomData> {
@@ -27,7 +28,7 @@ export default class CustomdataApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

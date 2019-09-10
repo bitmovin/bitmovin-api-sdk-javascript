@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DashRepresentation from './DashRepresentation';
 
 /**
@@ -13,10 +13,12 @@ export class ContentProtection extends DashRepresentation {
    */
   public drmId?: string;
 
-  constructor(obj: Partial<ContentProtection>) {
+  constructor(obj?: Partial<ContentProtection>) {
     super(obj);
-
-    this.drmId = obj.drmId;
+    if(!obj) {
+      return;
+    }
+    this.drmId = map(obj.drmId);
   }
 }
 

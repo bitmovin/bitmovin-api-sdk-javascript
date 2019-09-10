@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import AzureOutput from '../../../models/AzureOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class AzureApi extends BaseAPI {
   /**
    * @summary Create Azure Output
    * @param {AzureOutput} azureOutput The Azure output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AzureApi
    */
   public create(azureOutput?: AzureOutput): Promise<AzureOutput> {
     return this.restClient.post<AzureOutput>('/encoding/outputs/azure', {}, azureOutput).then((response) => {
-      return new AzureOutput(response);
+      return map(response, AzureOutput);
     });
   }
 
   /**
    * @summary Delete Azure Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AzureApi
    */
   public delete(outputId: string): Promise<AzureOutput> {
@@ -42,14 +43,14 @@ export default class AzureApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<AzureOutput>('/encoding/outputs/azure/{output_id}', pathParamMap).then((response) => {
-      return new AzureOutput(response);
+      return map(response, AzureOutput);
     });
   }
 
   /**
    * @summary Azure Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AzureApi
    */
   public get(outputId: string): Promise<AzureOutput> {
@@ -57,14 +58,14 @@ export default class AzureApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<AzureOutput>('/encoding/outputs/azure/{output_id}', pathParamMap).then((response) => {
-      return new AzureOutput(response);
+      return map(response, AzureOutput);
     });
   }
 
   /**
    * @summary List Azure Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AzureApi
    */
   public list(queryParameters?: AzureOutputListQueryParams | ((q: AzureOutputListQueryParamsBuilder) => AzureOutputListQueryParamsBuilder)): Promise<PaginationResponse<AzureOutput>> {
@@ -75,7 +76,7 @@ export default class AzureApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AzureOutput>>('/encoding/outputs/azure', {}, queryParams).then((response) => {
-      return new PaginationResponse<AzureOutput>(response, AzureOutput);;
+      return new PaginationResponse<AzureOutput>(response, AzureOutput);
     });
   }
 }

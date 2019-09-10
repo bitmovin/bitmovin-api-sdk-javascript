@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 import SpriteUnit from './SpriteUnit';
@@ -69,18 +69,20 @@ export class Sprite extends BitmovinResource {
    */
   public imagesPerFile?: number;
 
-  constructor(obj: Partial<Sprite>) {
+  constructor(obj?: Partial<Sprite>) {
     super(obj);
-
-    this.height = obj.height;
-    this.width = obj.width;
-    this.unit = obj.unit;
-    this.distance = obj.distance;
-    this.spriteName = obj.spriteName;
-    this.filename = obj.filename;
-    this.vttName = obj.vttName;
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
-    this.imagesPerFile = obj.imagesPerFile;
+    if(!obj) {
+      return;
+    }
+    this.height = map(obj.height);
+    this.width = map(obj.width);
+    this.unit = map(obj.unit);
+    this.distance = map(obj.distance);
+    this.spriteName = map(obj.spriteName);
+    this.filename = map(obj.filename);
+    this.vttName = map(obj.vttName);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.imagesPerFile = map(obj.imagesPerFile);
   }
 }
 

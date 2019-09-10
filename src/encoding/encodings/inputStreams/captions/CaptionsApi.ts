@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import Cea608Api from './cea608/Cea608Api';
 import Cea708Api from './cea708/Cea708Api';
 

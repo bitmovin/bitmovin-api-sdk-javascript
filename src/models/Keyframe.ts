@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -20,11 +20,13 @@ export class Keyframe extends BitmovinResource {
    */
   public segmentCut?: boolean;
 
-  constructor(obj: Partial<Keyframe>) {
+  constructor(obj?: Partial<Keyframe>) {
     super(obj);
-
-    this.time = obj.time;
-    this.segmentCut = obj.segmentCut;
+    if(!obj) {
+      return;
+    }
+    this.time = map(obj.time);
+    this.segmentCut = map(obj.segmentCut);
   }
 }
 

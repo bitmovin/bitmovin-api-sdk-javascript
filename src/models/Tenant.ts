@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,12 @@ export class Tenant extends BitmovinResource {
    */
   public eMail?: string;
 
-  constructor(obj: Partial<Tenant>) {
+  constructor(obj?: Partial<Tenant>) {
     super(obj);
-
-    this.eMail = obj.eMail;
+    if(!obj) {
+      return;
+    }
+    this.eMail = map(obj.eMail);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import GcsOutput from '../../../models/GcsOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class GcsApi extends BaseAPI {
   /**
    * @summary Create GCS Output
    * @param {GcsOutput} gcsOutput The GCS output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GcsApi
    */
   public create(gcsOutput?: GcsOutput): Promise<GcsOutput> {
     return this.restClient.post<GcsOutput>('/encoding/outputs/gcs', {}, gcsOutput).then((response) => {
-      return new GcsOutput(response);
+      return map(response, GcsOutput);
     });
   }
 
   /**
    * @summary Delete GCS Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GcsApi
    */
   public delete(outputId: string): Promise<GcsOutput> {
@@ -42,14 +43,14 @@ export default class GcsApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<GcsOutput>('/encoding/outputs/gcs/{output_id}', pathParamMap).then((response) => {
-      return new GcsOutput(response);
+      return map(response, GcsOutput);
     });
   }
 
   /**
    * @summary GCS Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GcsApi
    */
   public get(outputId: string): Promise<GcsOutput> {
@@ -57,14 +58,14 @@ export default class GcsApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<GcsOutput>('/encoding/outputs/gcs/{output_id}', pathParamMap).then((response) => {
-      return new GcsOutput(response);
+      return map(response, GcsOutput);
     });
   }
 
   /**
    * @summary List GCS Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GcsApi
    */
   public list(queryParameters?: GcsOutputListQueryParams | ((q: GcsOutputListQueryParamsBuilder) => GcsOutputListQueryParamsBuilder)): Promise<PaginationResponse<GcsOutput>> {
@@ -75,7 +76,7 @@ export default class GcsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GcsOutput>>('/encoding/outputs/gcs', {}, queryParams).then((response) => {
-      return new PaginationResponse<GcsOutput>(response, GcsOutput);;
+      return new PaginationResponse<GcsOutput>(response, GcsOutput);
     });
   }
 }

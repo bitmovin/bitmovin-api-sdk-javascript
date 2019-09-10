@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import AwsAccountRegionSettings from '../../../../models/AwsAccountRegionSettings';
 import AwsCloudRegion from '../../../../models/AwsCloudRegion';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -22,7 +23,7 @@ export default class RegionsApi extends BaseAPI {
    * @param {string} infrastructureId Id of the AWS account
    * @param {AwsCloudRegion} region AWS region.
    * @param {AwsAccountRegionSettings} awsAccountRegionSettings The AWS Region Settings to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RegionsApi
    */
   public create(infrastructureId: string, region: AwsCloudRegion, awsAccountRegionSettings?: AwsAccountRegionSettings): Promise<AwsAccountRegionSettings> {
@@ -31,7 +32,7 @@ export default class RegionsApi extends BaseAPI {
       region: region
     };
     return this.restClient.post<AwsAccountRegionSettings>('/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}', pathParamMap, awsAccountRegionSettings).then((response) => {
-      return new AwsAccountRegionSettings(response);
+      return map(response, AwsAccountRegionSettings);
     });
   }
 
@@ -39,7 +40,7 @@ export default class RegionsApi extends BaseAPI {
    * @summary Delete AWS Region Settings
    * @param {string} infrastructureId Id of the AWS account
    * @param {AwsCloudRegion} region AWS region.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RegionsApi
    */
   public delete(infrastructureId: string, region: AwsCloudRegion): Promise<AwsAccountRegionSettings> {
@@ -48,7 +49,7 @@ export default class RegionsApi extends BaseAPI {
       region: region
     };
     return this.restClient.delete<AwsAccountRegionSettings>('/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}', pathParamMap).then((response) => {
-      return new AwsAccountRegionSettings(response);
+      return map(response, AwsAccountRegionSettings);
     });
   }
 
@@ -56,7 +57,7 @@ export default class RegionsApi extends BaseAPI {
    * @summary AWS Region Settings Details
    * @param {string} infrastructureId Id of the AWS account
    * @param {AwsCloudRegion} region AWS region.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RegionsApi
    */
   public get(infrastructureId: string, region: AwsCloudRegion): Promise<AwsAccountRegionSettings> {
@@ -65,7 +66,7 @@ export default class RegionsApi extends BaseAPI {
       region: region
     };
     return this.restClient.get<AwsAccountRegionSettings>('/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}', pathParamMap).then((response) => {
-      return new AwsAccountRegionSettings(response);
+      return map(response, AwsAccountRegionSettings);
     });
   }
 
@@ -73,7 +74,7 @@ export default class RegionsApi extends BaseAPI {
    * @summary List AWS Region Settings
    * @param {string} infrastructureId Id of the AWS account
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RegionsApi
    */
   public list(infrastructureId: string, queryParameters?: AwsAccountRegionSettingsListQueryParams | ((q: AwsAccountRegionSettingsListQueryParamsBuilder) => AwsAccountRegionSettingsListQueryParamsBuilder)): Promise<PaginationResponse<AwsAccountRegionSettings>> {
@@ -87,7 +88,7 @@ export default class RegionsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccountRegionSettings>>('/encoding/infrastructure/aws/{infrastructure_id}/regions', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<AwsAccountRegionSettings>(response, AwsAccountRegionSettings);;
+      return new PaginationResponse<AwsAccountRegionSettings>(response, AwsAccountRegionSettings);
     });
   }
 }

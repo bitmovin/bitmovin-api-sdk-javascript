@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class H264PictureTimingTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof H264PictureTimingTrimmingInputStream
    */
-  public type: 'TRIMMING_H264_PICTURE_TIMING' = 'TRIMMING_H264_PICTURE_TIMING';
+  public type: InputStreamType.TRIMMING_H264_PICTURE_TIMING = InputStreamType.TRIMMING_H264_PICTURE_TIMING;
 
   /**
    * The id of the ingest input stream that should be trimmed
@@ -34,12 +35,14 @@ export class H264PictureTimingTrimmingInputStream extends InputStream {
    */
   public endPicTiming?: string;
 
-  constructor(obj: Partial<H264PictureTimingTrimmingInputStream>) {
+  constructor(obj?: Partial<H264PictureTimingTrimmingInputStream>) {
     super(obj);
-
-    this.inputStreamId = obj.inputStreamId;
-    this.startPicTiming = obj.startPicTiming;
-    this.endPicTiming = obj.endPicTiming;
+    if(!obj) {
+      return;
+    }
+    this.inputStreamId = map(obj.inputStreamId);
+    this.startPicTiming = map(obj.startPicTiming);
+    this.endPicTiming = map(obj.endPicTiming);
   }
 }
 

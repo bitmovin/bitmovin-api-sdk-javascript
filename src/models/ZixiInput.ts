@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class ZixiInput extends Input {
    * @type {string}
    * @memberof ZixiInput
    */
-  public type: 'ZIXI' = 'ZIXI';
+  public type: InputType.ZIXI = InputType.ZIXI;
 
   /**
    * @type {string}
@@ -61,17 +62,19 @@ export class ZixiInput extends Input {
    */
   public decryptionKey?: string;
 
-  constructor(obj: Partial<ZixiInput>) {
+  constructor(obj?: Partial<ZixiInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
-    this.stream = obj.stream;
-    this.password = obj.password;
-    this.latency = obj.latency;
-    this.minBitrate = obj.minBitrate;
-    this.decryptionType = obj.decryptionType;
-    this.decryptionKey = obj.decryptionKey;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.stream = map(obj.stream);
+    this.password = map(obj.password);
+    this.latency = map(obj.latency);
+    this.minBitrate = map(obj.minBitrate);
+    this.decryptionType = map(obj.decryptionType);
+    this.decryptionKey = map(obj.decryptionKey);
   }
 }
 

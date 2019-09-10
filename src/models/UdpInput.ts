@@ -1,4 +1,5 @@
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -10,11 +11,13 @@ export class UdpInput extends Input {
    * @type {string}
    * @memberof UdpInput
    */
-  public type: 'UDP' = 'UDP';
+  public type: InputType.UDP = InputType.UDP;
 
-  constructor(obj: Partial<UdpInput>) {
+  constructor(obj?: Partial<UdpInput>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

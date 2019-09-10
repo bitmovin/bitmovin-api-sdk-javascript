@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttConfiguration from '../../../../models/WebVttConfiguration';
@@ -23,19 +24,19 @@ export default class WebvttApi extends BaseAPI {
   /**
    * @summary Create WebVtt Subtitle Configuration
    * @param {WebVttConfiguration} webVttConfiguration The WebVtt Subtitle Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public create(webVttConfiguration?: WebVttConfiguration): Promise<WebVttConfiguration> {
     return this.restClient.post<WebVttConfiguration>('/encoding/configurations/subtitles/webvtt/', {}, webVttConfiguration).then((response) => {
-      return new WebVttConfiguration(response);
+      return map(response, WebVttConfiguration);
     });
   }
 
   /**
    * @summary Delete WebVtt Subtitle Configuration
    * @param {string} configurationId Id of the subtitle configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class WebvttApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/subtitles/webvtt/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary WebVtt Subtitle Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public get(configurationId: string): Promise<WebVttConfiguration> {
@@ -58,14 +59,14 @@ export default class WebvttApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<WebVttConfiguration>('/encoding/configurations/subtitles/webvtt/{configuration_id}', pathParamMap).then((response) => {
-      return new WebVttConfiguration(response);
+      return map(response, WebVttConfiguration);
     });
   }
 
   /**
    * @summary List WebVtt Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public list(queryParameters?: WebVttConfigurationListQueryParams | ((q: WebVttConfigurationListQueryParamsBuilder) => WebVttConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<WebVttConfiguration>> {
@@ -76,7 +77,7 @@ export default class WebvttApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt/', {}, queryParams).then((response) => {
-      return new PaginationResponse<WebVttConfiguration>(response, WebVttConfiguration);;
+      return new PaginationResponse<WebVttConfiguration>(response, WebVttConfiguration);
     });
   }
 }

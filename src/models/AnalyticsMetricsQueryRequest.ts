@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
 import AnalyticsInterval from './AnalyticsInterval';
@@ -55,16 +55,18 @@ export class AnalyticsMetricsQueryRequest extends AnalyticsQueryTimeframe {
    */
   public offset?: number;
 
-  constructor(obj: Partial<AnalyticsMetricsQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsMetricsQueryRequest>) {
     super(obj);
-
-    this.licenseKey = obj.licenseKey;
-    this.filters = map<AnalyticsAbstractFilter>(obj.filters, AnalyticsAbstractFilter) || [];
-    this.orderBy = map<AnalyticsOrderByEntry>(obj.orderBy, AnalyticsOrderByEntry) || [];
-    this.interval = obj.interval;
-    this.groupBy = obj.groupBy || [];
-    this.limit = obj.limit;
-    this.offset = obj.offset;
+    if(!obj) {
+      return;
+    }
+    this.licenseKey = map(obj.licenseKey);
+    this.filters = mapArray(obj.filters, AnalyticsAbstractFilter);
+    this.orderBy = mapArray(obj.orderBy, AnalyticsOrderByEntry);
+    this.interval = map(obj.interval);
+    this.groupBy = mapArray(obj.groupBy);
+    this.limit = map(obj.limit);
+    this.offset = map(obj.offset);
   }
 }
 

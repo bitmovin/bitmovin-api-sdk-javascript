@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FairPlayDrm from '../../../../../../models/FairPlayDrm';
@@ -25,7 +26,7 @@ export default class FairplayApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the progressive TS fragment.
    * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FairplayApi
    */
   public create(encodingId: string, muxingId: string, fairPlayDrm?: FairPlayDrm): Promise<FairPlayDrm> {
@@ -34,7 +35,7 @@ export default class FairplayApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.post<FairPlayDrm>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/drm/fairplay', pathParamMap, fairPlayDrm).then((response) => {
-      return new FairPlayDrm(response);
+      return map(response, FairPlayDrm);
     });
   }
 
@@ -43,7 +44,7 @@ export default class FairplayApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the progressive TS fragment.
    * @param {string} drmId Id of the FairPlay DRM configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FairplayApi
    */
   public delete(encodingId: string, muxingId: string, drmId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class FairplayApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/drm/fairplay/{drm_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class FairplayApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the progressive TS fragment.
    * @param {string} drmId Id of the FairPlay DRM configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FairplayApi
    */
   public get(encodingId: string, muxingId: string, drmId: string): Promise<FairPlayDrm> {
@@ -72,7 +73,7 @@ export default class FairplayApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.get<FairPlayDrm>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/drm/fairplay/{drm_id}', pathParamMap).then((response) => {
-      return new FairPlayDrm(response);
+      return map(response, FairPlayDrm);
     });
   }
 
@@ -81,7 +82,7 @@ export default class FairplayApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the progressive TS fragment.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FairplayApi
    */
   public list(encodingId: string, muxingId: string, queryParameters?: FairPlayDrmListQueryParams | ((q: FairPlayDrmListQueryParamsBuilder) => FairPlayDrmListQueryParamsBuilder)): Promise<PaginationResponse<FairPlayDrm>> {
@@ -96,7 +97,7 @@ export default class FairplayApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FairPlayDrm>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/drm/fairplay', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<FairPlayDrm>(response, FairPlayDrm);;
+      return new PaginationResponse<FairPlayDrm>(response, FairPlayDrm);
     });
   }
 }

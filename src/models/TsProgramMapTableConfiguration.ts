@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class TsProgramMapTableConfiguration {
    */
   public pid?: number;
 
-  constructor(obj: Partial<TsProgramMapTableConfiguration>) {
-
-    this.pid = obj.pid;
+  constructor(obj?: Partial<TsProgramMapTableConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.pid = map(obj.pid);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import FileInputStream from '../../../../models/FileInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class FileApi extends BaseAPI {
    * @summary Add File input stream
    * @param {string} encodingId Id of the encoding.
    * @param {FileInputStream} fileInputStream The File input stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FileApi
    */
   public create(encodingId: string, fileInputStream?: FileInputStream): Promise<FileInputStream> {
@@ -29,7 +30,7 @@ export default class FileApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<FileInputStream>('/encoding/encodings/{encoding_id}/input-streams/file', pathParamMap, fileInputStream).then((response) => {
-      return new FileInputStream(response);
+      return map(response, FileInputStream);
     });
   }
 
@@ -37,7 +38,7 @@ export default class FileApi extends BaseAPI {
    * @summary Delete File stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the File input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FileApi
    */
   public delete(encodingId: string, inputStreamId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class FileApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/input-streams/file/{input_stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class FileApi extends BaseAPI {
    * @summary File input stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the File input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FileApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<FileInputStream> {
@@ -63,7 +64,7 @@ export default class FileApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<FileInputStream>('/encoding/encodings/{encoding_id}/input-streams/file/{input_stream_id}', pathParamMap).then((response) => {
-      return new FileInputStream(response);
+      return map(response, FileInputStream);
     });
   }
 
@@ -71,7 +72,7 @@ export default class FileApi extends BaseAPI {
    * @summary List File input stream
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FileApi
    */
   public list(encodingId: string, queryParameters?: FileInputStreamListQueryParams | ((q: FileInputStreamListQueryParamsBuilder) => FileInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<FileInputStream>> {
@@ -85,7 +86,7 @@ export default class FileApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FileInputStream>>('/encoding/encodings/{encoding_id}/input-streams/file', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<FileInputStream>(response, FileInputStream);;
+      return new PaginationResponse<FileInputStream>(response, FileInputStream);
     });
   }
 }

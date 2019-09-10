@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 
 /**
@@ -12,7 +13,7 @@ export class WidevineDrm extends Drm {
    * @type {string}
    * @memberof WidevineDrm
    */
-  public type: 'WIDEVINE' = 'WIDEVINE';
+  public type: DrmType.WIDEVINE = DrmType.WIDEVINE;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)
@@ -35,12 +36,14 @@ export class WidevineDrm extends Drm {
    */
   public pssh?: string;
 
-  constructor(obj: Partial<WidevineDrm>) {
+  constructor(obj?: Partial<WidevineDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.kid = obj.kid;
-    this.pssh = obj.pssh;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.kid = map(obj.kid);
+    this.pssh = map(obj.pssh);
   }
 }
 

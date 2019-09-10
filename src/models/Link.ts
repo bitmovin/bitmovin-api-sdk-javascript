@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class Link {
    */
   public title?: string;
 
-  constructor(obj: Partial<Link>) {
-
-    this.href = obj.href;
-    this.title = obj.title;
+  constructor(obj?: Partial<Link>) {
+    if(!obj) {
+      return;
+    }
+    this.href = map(obj.href);
+    this.title = map(obj.title);
   }
 }
 

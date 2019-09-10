@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioGroup from './AudioGroup';
 import VariantStreamDroppingMode from './VariantStreamDroppingMode';
 
@@ -21,10 +21,12 @@ export class AudioGroupConfiguration {
    */
   public groups?: AudioGroup[];
 
-  constructor(obj: Partial<AudioGroupConfiguration>) {
-
-    this.droppingMode = obj.droppingMode;
-    this.groups = map<AudioGroup>(obj.groups, AudioGroup) || [];
+  constructor(obj?: Partial<AudioGroupConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.droppingMode = map(obj.droppingMode);
+    this.groups = mapArray(obj.groups, AudioGroup);
   }
 }
 

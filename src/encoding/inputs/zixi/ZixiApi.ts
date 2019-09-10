@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import ZixiInput from '../../../models/ZixiInput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class ZixiApi extends BaseAPI {
   /**
    * @summary Create Zixi input
    * @param {ZixiInput} zixiInput The ZixiInput to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ZixiApi
    */
   public create(zixiInput?: ZixiInput): Promise<ZixiInput> {
     return this.restClient.post<ZixiInput>('/encoding/inputs/zixi', {}, zixiInput).then((response) => {
-      return new ZixiInput(response);
+      return map(response, ZixiInput);
     });
   }
 
   /**
    * @summary Delete Zixi input
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ZixiApi
    */
   public delete(inputId: string): Promise<ZixiInput> {
@@ -42,14 +43,14 @@ export default class ZixiApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.delete<ZixiInput>('/encoding/inputs/zixi/{input_id}', pathParamMap).then((response) => {
-      return new ZixiInput(response);
+      return map(response, ZixiInput);
     });
   }
 
   /**
    * @summary Zixi Input Details
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ZixiApi
    */
   public get(inputId: string): Promise<ZixiInput> {
@@ -57,14 +58,14 @@ export default class ZixiApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<ZixiInput>('/encoding/inputs/zixi/{input_id}', pathParamMap).then((response) => {
-      return new ZixiInput(response);
+      return map(response, ZixiInput);
     });
   }
 
   /**
    * @summary List Zixi inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ZixiApi
    */
   public list(queryParameters?: ZixiInputListQueryParams | ((q: ZixiInputListQueryParamsBuilder) => ZixiInputListQueryParamsBuilder)): Promise<PaginationResponse<ZixiInput>> {
@@ -75,7 +76,7 @@ export default class ZixiApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ZixiInput>>('/encoding/inputs/zixi', {}, queryParams).then((response) => {
-      return new PaginationResponse<ZixiInput>(response, ZixiInput);;
+      return new PaginationResponse<ZixiInput>(response, ZixiInput);
     });
   }
 }

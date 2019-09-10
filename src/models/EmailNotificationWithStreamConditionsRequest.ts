@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AbstractCondition from './AbstractCondition';
 
 /**
@@ -31,12 +31,14 @@ export class EmailNotificationWithStreamConditionsRequest {
    */
   public conditions?: AbstractCondition;
 
-  constructor(obj: Partial<EmailNotificationWithStreamConditionsRequest>) {
-
-    this.resolve = obj.resolve;
-    this.emails = obj.emails || [];
-    this.muted = obj.muted;
-    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition);
+  constructor(obj?: Partial<EmailNotificationWithStreamConditionsRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.resolve = map(obj.resolve);
+    this.emails = mapArray(obj.emails);
+    this.muted = map(obj.muted);
+    this.conditions = map(obj.conditions, AbstractCondition);
   }
 }
 

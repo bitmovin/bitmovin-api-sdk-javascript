@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import TtmlEmbed from '../../../../../../models/TtmlEmbed';
 
 /**
@@ -19,7 +20,7 @@ export default class TtmlApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
    * @param {string} captionsId Id of the captions configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TtmlApi
    */
   public delete(encodingId: string, muxingId: string, captionsId: string): Promise<TtmlEmbed> {
@@ -29,7 +30,7 @@ export default class TtmlApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.delete<TtmlEmbed>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}', pathParamMap).then((response) => {
-      return new TtmlEmbed(response);
+      return map(response, TtmlEmbed);
     });
   }
 
@@ -38,7 +39,7 @@ export default class TtmlApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
    * @param {string} captionsId Id of the captions.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TtmlApi
    */
   public get(encodingId: string, muxingId: string, captionsId: string): Promise<TtmlEmbed> {
@@ -48,7 +49,7 @@ export default class TtmlApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.get<TtmlEmbed>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}', pathParamMap).then((response) => {
-      return new TtmlEmbed(response);
+      return map(response, TtmlEmbed);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class KubernetesClusterConfiguration {
    */
   public workersPerEncoding?: number;
 
-  constructor(obj: Partial<KubernetesClusterConfiguration>) {
-
-    this.parallelEncodings = obj.parallelEncodings;
-    this.workersPerEncoding = obj.workersPerEncoding;
+  constructor(obj?: Partial<KubernetesClusterConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.parallelEncodings = map(obj.parallelEncodings);
+    this.workersPerEncoding = map(obj.workersPerEncoding);
   }
 }
 

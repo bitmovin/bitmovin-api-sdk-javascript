@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import ObjectDetectionResult from './ObjectDetectionResult';
 
@@ -21,11 +21,13 @@ export class ObjectDetectionTimestampResult extends BitmovinResponse {
    */
   public objects?: ObjectDetectionResult[];
 
-  constructor(obj: Partial<ObjectDetectionTimestampResult>) {
+  constructor(obj?: Partial<ObjectDetectionTimestampResult>) {
     super(obj);
-
-    this.timestamp = obj.timestamp;
-    this.objects = map<ObjectDetectionResult>(obj.objects, ObjectDetectionResult) || [];
+    if(!obj) {
+      return;
+    }
+    this.timestamp = map(obj.timestamp);
+    this.objects = mapArray(obj.objects, ObjectDetectionResult);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import AccountInformation from '../../models/AccountInformation';
 
 /**
@@ -16,12 +17,12 @@ export default class InformationApi extends BaseAPI {
 
   /**
    * @summary Current Account Information
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InformationApi
    */
   public get(): Promise<AccountInformation> {
     return this.restClient.get<AccountInformation>('/account/information', {}).then((response) => {
-      return new AccountInformation(response);
+      return map(response, AccountInformation);
     });
   }
 }

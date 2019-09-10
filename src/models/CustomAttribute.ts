@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class CustomAttribute {
    */
   public value?: string;
 
-  constructor(obj: Partial<CustomAttribute>) {
-
-    this.key = obj.key;
-    this.value = obj.value;
+  constructor(obj?: Partial<CustomAttribute>) {
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.value = map(obj.value);
   }
 }
 

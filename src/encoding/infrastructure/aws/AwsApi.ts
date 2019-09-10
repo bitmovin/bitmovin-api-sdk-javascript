@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import RegionsApi from './regions/RegionsApi';
 import AwsAccount from '../../../models/AwsAccount';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class AwsApi extends BaseAPI {
   /**
    * @summary Add AWS Account
    * @param {AwsAccount} awsAccount The AWS Account to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AwsApi
    */
   public create(awsAccount?: AwsAccount): Promise<AwsAccount> {
     return this.restClient.post<AwsAccount>('/encoding/infrastructure/aws', {}, awsAccount).then((response) => {
-      return new AwsAccount(response);
+      return map(response, AwsAccount);
     });
   }
 
   /**
    * @summary Delete AWS Account
    * @param {string} infrastructureId Id of the AWS account
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AwsApi
    */
   public delete(infrastructureId: string): Promise<AwsAccount> {
@@ -42,14 +43,14 @@ export default class AwsApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.delete<AwsAccount>('/encoding/infrastructure/aws/{infrastructure_id}', pathParamMap).then((response) => {
-      return new AwsAccount(response);
+      return map(response, AwsAccount);
     });
   }
 
   /**
    * @summary AWS Account Details
    * @param {string} infrastructureId Id of the AWS account
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AwsApi
    */
   public get(infrastructureId: string): Promise<AwsAccount> {
@@ -57,14 +58,14 @@ export default class AwsApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.get<AwsAccount>('/encoding/infrastructure/aws/{infrastructure_id}', pathParamMap).then((response) => {
-      return new AwsAccount(response);
+      return map(response, AwsAccount);
     });
   }
 
   /**
    * @summary List AWS Accounts
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AwsApi
    */
   public list(queryParameters?: AwsAccountListQueryParams | ((q: AwsAccountListQueryParamsBuilder) => AwsAccountListQueryParamsBuilder)): Promise<PaginationResponse<AwsAccount>> {
@@ -75,7 +76,7 @@ export default class AwsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AwsAccount>>('/encoding/infrastructure/aws', {}, queryParams).then((response) => {
-      return new PaginationResponse<AwsAccount>(response, AwsAccount);;
+      return new PaginationResponse<AwsAccount>(response, AwsAccount);
     });
   }
 }

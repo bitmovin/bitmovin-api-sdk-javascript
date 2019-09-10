@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Domain from '../../../models/Domain';
 import DomainList from '../../../models/DomainList';
@@ -20,7 +21,7 @@ export default class DomainsApi extends BaseAPI {
    * @summary Add Domain
    * @param {string} licenseId License id
    * @param {Domain} domain The domain to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DomainsApi
    */
   public create(licenseId: string, domain?: Domain): Promise<Domain> {
@@ -28,7 +29,7 @@ export default class DomainsApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.post<Domain>('/analytics/licenses/{license_id}/domains', pathParamMap, domain).then((response) => {
-      return new Domain(response);
+      return map(response, Domain);
     });
   }
 
@@ -36,7 +37,7 @@ export default class DomainsApi extends BaseAPI {
    * @summary Delete Domain
    * @param {string} licenseId License id
    * @param {string} domainId id of domain to delete
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DomainsApi
    */
   public delete(licenseId: string, domainId: string): Promise<BitmovinResponse> {
@@ -45,14 +46,14 @@ export default class DomainsApi extends BaseAPI {
       domain_id: domainId
     };
     return this.restClient.delete<BitmovinResponse>('/analytics/licenses/{license_id}/domains/{domain_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary List License Domains
    * @param {string} licenseId License id
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DomainsApi
    */
   public get(licenseId: string): Promise<DomainList> {
@@ -60,7 +61,7 @@ export default class DomainsApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.get<DomainList>('/analytics/licenses/{license_id}/domains', pathParamMap).then((response) => {
-      return new DomainList(response);
+      return map(response, DomainList);
     });
   }
 }

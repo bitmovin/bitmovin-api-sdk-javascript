@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class Cea608708SubtitleConfiguration {
    */
   public passthroughActivated?: boolean;
 
-  constructor(obj: Partial<Cea608708SubtitleConfiguration>) {
-
-    this.passthroughActivated = obj.passthroughActivated;
+  constructor(obj?: Partial<Cea608708SubtitleConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.passthroughActivated = map(obj.passthroughActivated);
   }
 }
 

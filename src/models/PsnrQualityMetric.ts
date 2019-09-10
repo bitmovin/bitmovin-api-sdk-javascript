@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import TimeSpan from './TimeSpan';
 
 /**
@@ -19,10 +19,12 @@ export class PsnrQualityMetric {
    */
   public psnr?: number;
 
-  constructor(obj: Partial<PsnrQualityMetric>) {
-
-    this.timeSpan = map<TimeSpan>(obj.timeSpan, TimeSpan);
-    this.psnr = obj.psnr;
+  constructor(obj?: Partial<PsnrQualityMetric>) {
+    if(!obj) {
+      return;
+    }
+    this.timeSpan = map(obj.timeSpan, TimeSpan);
+    this.psnr = map(obj.psnr);
   }
 }
 

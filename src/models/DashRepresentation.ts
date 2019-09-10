@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -20,11 +20,13 @@ export class DashRepresentation extends BitmovinResponse {
    */
   public muxingId?: string;
 
-  constructor(obj: Partial<DashRepresentation>) {
+  constructor(obj?: Partial<DashRepresentation>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.muxingId = obj.muxingId;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.muxingId = map(obj.muxingId);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import Link from './Link';
 import MessageType from './MessageType';
@@ -50,15 +50,17 @@ export class Message extends BitmovinResponse {
    */
   public date?: Date;
 
-  constructor(obj: Partial<Message>) {
+  constructor(obj?: Partial<Message>) {
     super(obj);
-
-    this.type = obj.type;
-    this.text = obj.text;
-    this.field = obj.field;
-    this.links = map<Link>(obj.links, Link) || [];
-    this.more = obj.more;
-    this.date = map<Date>(obj.date, Date);
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
+    this.text = map(obj.text);
+    this.field = map(obj.field);
+    this.links = mapArray(obj.links, Link);
+    this.more = map(obj.more);
+    this.date = map(obj.date, Date);
   }
 }
 

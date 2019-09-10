@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class AudioGroup {
    */
   public priority?: number;
 
-  constructor(obj: Partial<AudioGroup>) {
-
-    this.name = obj.name;
-    this.priority = obj.priority;
+  constructor(obj?: Partial<AudioGroup>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.priority = map(obj.priority);
   }
 }
 

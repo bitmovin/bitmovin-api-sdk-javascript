@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class RtmpIngestPoint {
    */
   public streamKey?: string;
 
-  constructor(obj: Partial<RtmpIngestPoint>) {
-
-    this.applicationName = obj.applicationName;
-    this.streamKey = obj.streamKey;
+  constructor(obj?: Partial<RtmpIngestPoint>) {
+    if(!obj) {
+      return;
+    }
+    this.applicationName = map(obj.applicationName);
+    this.streamKey = map(obj.streamKey);
   }
 }
 

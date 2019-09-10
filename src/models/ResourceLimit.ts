@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -24,11 +24,13 @@ export class ResourceLimit {
    */
   public effectiveValue?: string;
 
-  constructor(obj: Partial<ResourceLimit>) {
-
-    this.name = obj.name;
-    this.value = obj.value;
-    this.effectiveValue = obj.effectiveValue;
+  constructor(obj?: Partial<ResourceLimit>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.value = map(obj.value);
+    this.effectiveValue = map(obj.effectiveValue);
   }
 }
 

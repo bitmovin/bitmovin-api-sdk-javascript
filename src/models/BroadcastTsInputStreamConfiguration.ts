@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import RaiUnit from './RaiUnit';
 
 /**
@@ -40,13 +40,15 @@ export class BroadcastTsInputStreamConfiguration {
    */
   public setRaiOnAu?: RaiUnit;
 
-  constructor(obj: Partial<BroadcastTsInputStreamConfiguration>) {
-
-    this.streamId = obj.streamId;
-    this.packetIdentifier = obj.packetIdentifier;
-    this.startWithDiscontinuityIndicator = obj.startWithDiscontinuityIndicator;
-    this.alignPes = obj.alignPes;
-    this.setRaiOnAu = obj.setRaiOnAu;
+  constructor(obj?: Partial<BroadcastTsInputStreamConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
+    this.packetIdentifier = map(obj.packetIdentifier);
+    this.startWithDiscontinuityIndicator = map(obj.startWithDiscontinuityIndicator);
+    this.alignPes = map(obj.alignPes);
+    this.setRaiOnAu = map(obj.setRaiOnAu);
   }
 }
 

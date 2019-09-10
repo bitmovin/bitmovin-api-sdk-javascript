@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import StreamInfosDetails from './StreamInfosDetails';
 
 /**
@@ -20,10 +20,12 @@ export class StreamInfos {
    */
   public streamInfos?: StreamInfosDetails[];
 
-  constructor(obj: Partial<StreamInfos>) {
-
-    this.time = map<Date>(obj.time, Date);
-    this.streamInfos = map<StreamInfosDetails>(obj.streamInfos, StreamInfosDetails) || [];
+  constructor(obj?: Partial<StreamInfos>) {
+    if(!obj) {
+      return;
+    }
+    this.time = map(obj.time, Date);
+    this.streamInfos = mapArray(obj.streamInfos, StreamInfosDetails);
   }
 }
 

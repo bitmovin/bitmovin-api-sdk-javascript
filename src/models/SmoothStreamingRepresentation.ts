@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -48,15 +48,17 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
    */
   public priority?: number;
 
-  constructor(obj: Partial<SmoothStreamingRepresentation>) {
+  constructor(obj?: Partial<SmoothStreamingRepresentation>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.muxingId = obj.muxingId;
-    this.mediaFile = obj.mediaFile;
-    this.language = obj.language;
-    this.trackName = obj.trackName;
-    this.priority = obj.priority;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.muxingId = map(obj.muxingId);
+    this.mediaFile = map(obj.mediaFile);
+    this.language = map(obj.language);
+    this.trackName = map(obj.trackName);
+    this.priority = map(obj.priority);
   }
 }
 

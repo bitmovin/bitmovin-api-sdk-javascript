@@ -1,5 +1,6 @@
 import {BaseAPI} from './common/BaseAPI';
 import Configuration from './common/Configuration';
+import {map, mapArray} from './common/Mapper';
 import AccountApi from './account/AccountApi';
 import AnalyticsApi from './analytics/AnalyticsApi';
 import EncodingApi from './encoding/EncodingApi';

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SourceChannel from './SourceChannel';
 
 /**
@@ -20,10 +20,12 @@ export class AudioMixChannel {
    */
   public sourceChannels?: SourceChannel[];
 
-  constructor(obj: Partial<AudioMixChannel>) {
-
-    this.channelNumber = obj.channelNumber;
-    this.sourceChannels = map<SourceChannel>(obj.sourceChannels, SourceChannel) || [];
+  constructor(obj?: Partial<AudioMixChannel>) {
+    if(!obj) {
+      return;
+    }
+    this.channelNumber = map(obj.channelNumber);
+    this.sourceChannels = mapArray(obj.sourceChannels, SourceChannel);
   }
 }
 

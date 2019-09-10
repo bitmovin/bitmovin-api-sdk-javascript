@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -60,16 +60,18 @@ export class MuxingInformationAudioTrack {
    */
   public duration?: number;
 
-  constructor(obj: Partial<MuxingInformationAudioTrack>) {
-
-    this.index = obj.index;
-    this.codec = obj.codec;
-    this.codecIso = obj.codecIso;
-    this.bitRate = obj.bitRate;
-    this.rate = obj.rate;
-    this.sampleRate = obj.sampleRate;
-    this.channels = obj.channels;
-    this.duration = obj.duration;
+  constructor(obj?: Partial<MuxingInformationAudioTrack>) {
+    if(!obj) {
+      return;
+    }
+    this.index = map(obj.index);
+    this.codec = map(obj.codec);
+    this.codecIso = map(obj.codecIso);
+    this.bitRate = map(obj.bitRate);
+    this.rate = map(obj.rate);
+    this.sampleRate = map(obj.sampleRate);
+    this.channels = map(obj.channels);
+    this.duration = map(obj.duration);
   }
 }
 

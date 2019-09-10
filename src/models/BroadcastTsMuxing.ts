@@ -1,10 +1,11 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BroadcastTsMuxingConfiguration from './BroadcastTsMuxingConfiguration';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -17,7 +18,7 @@ export class BroadcastTsMuxing extends Muxing {
    * @type {string}
    * @memberof BroadcastTsMuxing
    */
-  public type: 'BROADCAST_TS' = 'BROADCAST_TS';
+  public type: MuxingType.BROADCAST_TS = MuxingType.BROADCAST_TS;
 
   /**
    * Length of the segments in seconds.
@@ -46,13 +47,15 @@ export class BroadcastTsMuxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
-  constructor(obj: Partial<BroadcastTsMuxing>) {
+  constructor(obj?: Partial<BroadcastTsMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.filename = obj.filename;
-    this.configuration = map<BroadcastTsMuxingConfiguration>(obj.configuration, BroadcastTsMuxingConfiguration);
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.filename = map(obj.filename);
+    this.configuration = map(obj.configuration, BroadcastTsMuxingConfiguration);
+    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import AnalyticsAvgDroppedFramesResponse from '../../../models/AnalyticsAvgDroppedFramesResponse';
 import AnalyticsMetricsQueryRequest from '../../../models/AnalyticsMetricsQueryRequest';
 
@@ -18,12 +19,12 @@ export default class AvgDroppedFramesApi extends BaseAPI {
   /**
    * @summary Get metrics data
    * @param {AnalyticsMetricsQueryRequest} analyticsMetricsQueryRequest Analytics metrics query object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AvgDroppedFramesApi
    */
   public create(analyticsMetricsQueryRequest?: AnalyticsMetricsQueryRequest): Promise<AnalyticsAvgDroppedFramesResponse> {
     return this.restClient.post<AnalyticsAvgDroppedFramesResponse>('/analytics/metrics/avg-dropped-frames', {}, analyticsMetricsQueryRequest).then((response) => {
-      return new AnalyticsAvgDroppedFramesResponse(response);
+      return map(response, AnalyticsAvgDroppedFramesResponse);
     });
   }
 }

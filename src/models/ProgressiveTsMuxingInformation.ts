@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MuxingInformationAudioTrack from './MuxingInformationAudioTrack';
 import MuxingInformationVideoTrack from './MuxingInformationVideoTrack';
 import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
@@ -16,10 +16,12 @@ export class ProgressiveTsMuxingInformation extends ProgressiveMuxingInformation
    */
   public byteRanges?: ProgressiveTsMuxingInformationByteRanges[];
 
-  constructor(obj: Partial<ProgressiveTsMuxingInformation>) {
+  constructor(obj?: Partial<ProgressiveTsMuxingInformation>) {
     super(obj);
-
-    this.byteRanges = map<ProgressiveTsMuxingInformationByteRanges>(obj.byteRanges, ProgressiveTsMuxingInformationByteRanges) || [];
+    if(!obj) {
+      return;
+    }
+    this.byteRanges = mapArray(obj.byteRanges, ProgressiveTsMuxingInformationByteRanges);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 
 /**
  * StopApi - object-oriented interface
@@ -16,7 +17,7 @@ export default class StopApi extends BaseAPI {
   /**
    * @summary Stops Currently Running Inserted Content
    * @param {string} encodingId Id of the encoding.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StopApi
    */
   public create(encodingId: string): Promise<Response> {
@@ -24,7 +25,7 @@ export default class StopApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<Response>('/encoding/encodings/{encoding_id}/live/insertable-content/stop', pathParamMap).then((response) => {
-      return response;
+      return map(response, );
     });
   }
 }

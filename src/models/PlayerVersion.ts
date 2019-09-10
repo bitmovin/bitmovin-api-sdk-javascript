@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -34,13 +34,15 @@ export class PlayerVersion extends BitmovinResponse {
    */
   public createdAt?: Date;
 
-  constructor(obj: Partial<PlayerVersion>) {
+  constructor(obj?: Partial<PlayerVersion>) {
     super(obj);
-
-    this.version = obj.version;
-    this.cdnUrl = obj.cdnUrl;
-    this.downloadUrl = obj.downloadUrl;
-    this.createdAt = map<Date>(obj.createdAt, Date);
+    if(!obj) {
+      return;
+    }
+    this.version = map(obj.version);
+    this.cdnUrl = map(obj.cdnUrl);
+    this.downloadUrl = map(obj.downloadUrl);
+    this.createdAt = map(obj.createdAt, Date);
   }
 }
 

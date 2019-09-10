@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import TypeApi from './type/TypeApi';
 import VideoApi from './video/VideoApi';
 import AudioApi from './audio/AudioApi';
@@ -31,7 +32,7 @@ export default class ConfigurationsApi extends BaseAPI {
   /**
    * @summary List all Codec Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ConfigurationsApi
    */
   public list(queryParameters?: CodecConfigurationListQueryParams | ((q: CodecConfigurationListQueryParamsBuilder) => CodecConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<CodecConfiguration>> {
@@ -42,7 +43,7 @@ export default class ConfigurationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CodecConfiguration>>('/encoding/configurations', {}, queryParams).then((response) => {
-      return new PaginationResponse<CodecConfiguration>(response, CodecConfiguration);;
+      return new PaginationResponse<CodecConfiguration>(response, CodecConfiguration);
     });
   }
 }

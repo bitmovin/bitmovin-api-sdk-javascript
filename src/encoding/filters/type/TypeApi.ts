@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import FilterTypeResponse from '../../../models/FilterTypeResponse';
 
 /**
@@ -17,7 +18,7 @@ export default class TypeApi extends BaseAPI {
   /**
    * @summary Get Filter Type
    * @param {string} filterId Id of the filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TypeApi
    */
   public get(filterId: string): Promise<FilterTypeResponse> {
@@ -25,7 +26,7 @@ export default class TypeApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<FilterTypeResponse>('/encoding/filters/{filter_id}/type', pathParamMap).then((response) => {
-      return new FilterTypeResponse(response);
+      return map(response, FilterTypeResponse);
     });
   }
 }

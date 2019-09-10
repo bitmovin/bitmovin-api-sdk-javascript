@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../common/Mapper';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashSegmentedRepresentation from '../../../../../../../models/DashSegmentedRepresentation';
@@ -27,7 +28,7 @@ export default class WebmApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {DashWebmRepresentation} dashWebmRepresentation The WebM representation to be added to the adaptation set
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public create(manifestId: string, periodId: string, adaptationsetId: string, dashWebmRepresentation?: DashWebmRepresentation): Promise<DashWebmRepresentation> {
@@ -37,7 +38,7 @@ export default class WebmApi extends BaseAPI {
       adaptationset_id: adaptationsetId
     };
     return this.restClient.post<DashWebmRepresentation>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm', pathParamMap, dashWebmRepresentation).then((response) => {
-      return new DashWebmRepresentation(response);
+      return map(response, DashWebmRepresentation);
     });
   }
 
@@ -47,7 +48,7 @@ export default class WebmApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the WebM representation to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public delete(manifestId: string, periodId: string, adaptationsetId: string, representationId: string): Promise<BitmovinResponse> {
@@ -58,7 +59,7 @@ export default class WebmApi extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -68,7 +69,7 @@ export default class WebmApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public get(manifestId: string, periodId: string, adaptationsetId: string, representationId: string): Promise<DashWebmRepresentation> {
@@ -79,7 +80,7 @@ export default class WebmApi extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.get<DashWebmRepresentation>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}', pathParamMap).then((response) => {
-      return new DashWebmRepresentation(response);
+      return map(response, DashWebmRepresentation);
     });
   }
 
@@ -89,7 +90,7 @@ export default class WebmApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashWebmRepresentationListQueryParams | ((q: DashWebmRepresentationListQueryParamsBuilder) => DashWebmRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashWebmRepresentation>> {
@@ -105,7 +106,7 @@ export default class WebmApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashWebmRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<DashWebmRepresentation>(response, DashWebmRepresentation);;
+      return new PaginationResponse<DashWebmRepresentation>(response, DashWebmRepresentation);
     });
   }
 }

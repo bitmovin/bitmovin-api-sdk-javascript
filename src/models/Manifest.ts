@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 import ManifestType from './ManifestType';
@@ -21,11 +21,13 @@ export class Manifest extends BitmovinResource {
    */
   public outputs?: EncodingOutput[];
 
-  constructor(obj: Partial<Manifest>) {
+  constructor(obj?: Partial<Manifest>) {
     super(obj);
-
-    this.type = obj.type;
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
   }
 }
 

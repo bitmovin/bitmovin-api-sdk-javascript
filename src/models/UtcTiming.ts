@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class UtcTiming {
    */
   public schemeIdUri?: string;
 
-  constructor(obj: Partial<UtcTiming>) {
-
-    this.value = obj.value;
-    this.schemeIdUri = obj.schemeIdUri;
+  constructor(obj?: Partial<UtcTiming>) {
+    if(!obj) {
+      return;
+    }
+    this.value = map(obj.value);
+    this.schemeIdUri = map(obj.schemeIdUri);
   }
 }
 

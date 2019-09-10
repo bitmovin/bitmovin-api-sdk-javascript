@@ -9,9 +9,11 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  * @class AnalyticsMedianQueryRequest
  */
 export class AnalyticsMedianQueryRequest extends AnalyticsQueryRequest {
-  constructor(obj: Partial<AnalyticsMedianQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsMedianQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

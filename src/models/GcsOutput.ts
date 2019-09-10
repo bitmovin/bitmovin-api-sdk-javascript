@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import GoogleCloudRegion from './GoogleCloudRegion';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * @export
@@ -13,7 +14,7 @@ export class GcsOutput extends Output {
    * @type {string}
    * @memberof GcsOutput
    */
-  public type: 'GCS' = 'GCS';
+  public type: OutputType.GCS = OutputType.GCS;
 
   /**
    * GCS access key (required)
@@ -42,13 +43,15 @@ export class GcsOutput extends Output {
    */
   public cloudRegion?: GoogleCloudRegion;
 
-  constructor(obj: Partial<GcsOutput>) {
+  constructor(obj?: Partial<GcsOutput>) {
     super(obj);
-
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
-    this.bucketName = obj.bucketName;
-    this.cloudRegion = obj.cloudRegion;
+    if(!obj) {
+      return;
+    }
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
+    this.bucketName = map(obj.bucketName);
+    this.cloudRegion = map(obj.cloudRegion);
   }
 }
 

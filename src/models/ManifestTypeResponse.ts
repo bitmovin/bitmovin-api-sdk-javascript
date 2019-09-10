@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ManifestType from './ManifestType';
 
 /**
@@ -13,9 +13,11 @@ export class ManifestTypeResponse {
    */
   public type?: ManifestType;
 
-  constructor(obj: Partial<ManifestTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<ManifestTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

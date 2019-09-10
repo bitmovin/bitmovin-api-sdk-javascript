@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import AnalyticsQueryRequest from '../../../models/AnalyticsQueryRequest';
 import AnalyticsResponse from '../../../models/AnalyticsResponse';
 import AnalyticsStddevQueryRequest from '../../../models/AnalyticsStddevQueryRequest';
@@ -19,12 +20,12 @@ export default class StddevApi extends BaseAPI {
   /**
    * @summary Stddev
    * @param {AnalyticsStddevQueryRequest} analyticsStddevQueryRequest Analytics Query Object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StddevApi
    */
   public create(analyticsStddevQueryRequest?: AnalyticsStddevQueryRequest): Promise<AnalyticsResponse> {
     return this.restClient.post<AnalyticsResponse>('/analytics/queries/stddev', {}, analyticsStddevQueryRequest).then((response) => {
-      return new AnalyticsResponse(response);
+      return map(response, AnalyticsResponse);
     });
   }
 }

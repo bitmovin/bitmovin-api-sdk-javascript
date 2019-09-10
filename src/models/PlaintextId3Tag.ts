@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Id3Tag from './Id3Tag';
 import Id3TagPositionMode from './Id3TagPositionMode';
+import Id3TagType from './Id3TagType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class PlaintextId3Tag extends Id3Tag {
    * @type {string}
    * @memberof PlaintextId3Tag
    */
-  public type: 'PLAIN_TEXT' = 'PLAIN_TEXT';
+  public type: Id3TagType.PLAIN_TEXT = Id3TagType.PLAIN_TEXT;
 
   /**
    * Plain Text Data (required)
@@ -28,11 +29,13 @@ export class PlaintextId3Tag extends Id3Tag {
    */
   public frameId?: string;
 
-  constructor(obj: Partial<PlaintextId3Tag>) {
+  constructor(obj?: Partial<PlaintextId3Tag>) {
     super(obj);
-
-    this.text = obj.text;
-    this.frameId = obj.frameId;
+    if(!obj) {
+      return;
+    }
+    this.text = map(obj.text);
+    this.frameId = map(obj.frameId);
   }
 }
 

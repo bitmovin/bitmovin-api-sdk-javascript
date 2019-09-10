@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -33,12 +33,14 @@ export class LiveHlsManifest {
    */
   public insertProgramDateTime?: boolean;
 
-  constructor(obj: Partial<LiveHlsManifest>) {
-
-    this.manifestId = obj.manifestId;
-    this.timeshift = obj.timeshift;
-    this.liveEdgeOffset = obj.liveEdgeOffset;
-    this.insertProgramDateTime = obj.insertProgramDateTime;
+  constructor(obj?: Partial<LiveHlsManifest>) {
+    if(!obj) {
+      return;
+    }
+    this.manifestId = map(obj.manifestId);
+    this.timeshift = map(obj.timeshift);
+    this.liveEdgeOffset = map(obj.liveEdgeOffset);
+    this.insertProgramDateTime = map(obj.insertProgramDateTime);
   }
 }
 

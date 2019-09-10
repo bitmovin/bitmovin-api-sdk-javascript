@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import WebVttSidecarFile from '../../../../models/WebVttSidecarFile';
 
@@ -19,7 +20,7 @@ export default class WebvttApi extends BaseAPI {
    * @summary Add WebVTT sidecar file
    * @param {string} encodingId Id of the encoding.
    * @param {WebVttSidecarFile} webVttSidecarFile The WebVTT Sidecar file to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public create(encodingId: string, webVttSidecarFile?: WebVttSidecarFile): Promise<WebVttSidecarFile> {
@@ -27,7 +28,7 @@ export default class WebvttApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<WebVttSidecarFile>('/encoding/encodings/{encoding_id}/sidecars/webvtt', pathParamMap, webVttSidecarFile).then((response) => {
-      return new WebVttSidecarFile(response);
+      return map(response, WebVttSidecarFile);
     });
   }
 
@@ -35,7 +36,7 @@ export default class WebvttApi extends BaseAPI {
    * @summary Delete Sidecar
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public delete(encodingId: string, sidecarId: string): Promise<BitmovinResponse> {
@@ -44,7 +45,7 @@ export default class WebvttApi extends BaseAPI {
       sidecar_id: sidecarId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -52,7 +53,7 @@ export default class WebvttApi extends BaseAPI {
    * @summary WebVTT Sidecar Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public get(encodingId: string, sidecarId: string): Promise<WebVttSidecarFile> {
@@ -61,7 +62,7 @@ export default class WebvttApi extends BaseAPI {
       sidecar_id: sidecarId
     };
     return this.restClient.get<WebVttSidecarFile>('/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}', pathParamMap).then((response) => {
-      return new WebVttSidecarFile(response);
+      return map(response, WebVttSidecarFile);
     });
   }
 }

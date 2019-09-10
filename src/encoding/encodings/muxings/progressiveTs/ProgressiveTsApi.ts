@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InformationApi from './information/InformationApi';
 import Id3Api from './id3/Id3Api';
@@ -33,7 +34,7 @@ export default class ProgressiveTsApi extends BaseAPI {
    * @summary Add Progressive TS Muxing
    * @param {string} encodingId ID of the encoding.
    * @param {ProgressiveTsMuxing} progressiveTsMuxing The Progressive TS Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
   public create(encodingId: string, progressiveTsMuxing?: ProgressiveTsMuxing): Promise<ProgressiveTsMuxing> {
@@ -41,7 +42,7 @@ export default class ProgressiveTsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<ProgressiveTsMuxing>('/encoding/encodings/{encoding_id}/muxings/progressive-ts', pathParamMap, progressiveTsMuxing).then((response) => {
-      return new ProgressiveTsMuxing(response);
+      return map(response, ProgressiveTsMuxing);
     });
   }
 
@@ -49,7 +50,7 @@ export default class ProgressiveTsApi extends BaseAPI {
    * @summary Delete Progressive TS Muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -58,7 +59,7 @@ export default class ProgressiveTsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -66,7 +67,7 @@ export default class ProgressiveTsApi extends BaseAPI {
    * @summary Progressive TS Muxing Details
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
   public get(encodingId: string, muxingId: string): Promise<ProgressiveTsMuxing> {
@@ -75,7 +76,7 @@ export default class ProgressiveTsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<ProgressiveTsMuxing>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}', pathParamMap).then((response) => {
-      return new ProgressiveTsMuxing(response);
+      return map(response, ProgressiveTsMuxing);
     });
   }
 
@@ -83,7 +84,7 @@ export default class ProgressiveTsApi extends BaseAPI {
    * @summary List Progressive TS Muxings
    * @param {string} encodingId ID of the Encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
   public list(encodingId: string, queryParameters?: ProgressiveTsMuxingListQueryParams | ((q: ProgressiveTsMuxingListQueryParamsBuilder) => ProgressiveTsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ProgressiveTsMuxing>> {
@@ -97,7 +98,7 @@ export default class ProgressiveTsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ProgressiveTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ProgressiveTsMuxing>(response, ProgressiveTsMuxing);;
+      return new PaginationResponse<ProgressiveTsMuxing>(response, ProgressiveTsMuxing);
     });
   }
 }

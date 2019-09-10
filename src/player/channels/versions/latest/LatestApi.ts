@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import PlayerVersion from '../../../../models/PlayerVersion';
 
 /**
@@ -17,7 +18,7 @@ export default class LatestApi extends BaseAPI {
   /**
    * @summary Get Latest Player Version for Channel
    * @param {string} channelName Name of the channel to get the player versions for.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LatestApi
    */
   public get(channelName: string): Promise<PlayerVersion> {
@@ -25,7 +26,7 @@ export default class LatestApi extends BaseAPI {
       channel_name: channelName
     };
     return this.restClient.get<PlayerVersion>('/player/channels/{channel_name}/versions/latest', pathParamMap).then((response) => {
-      return new PlayerVersion(response);
+      return map(response, PlayerVersion);
     });
   }
 }

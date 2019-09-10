@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioConfiguration from './AudioConfiguration';
 import ChannelLayout from './ChannelLayout';
+import CodecConfigType from './CodecConfigType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class Mp2AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof Mp2AudioConfiguration
    */
-  public type: 'MP2' = 'MP2';
+  public type: CodecConfigType.MP2 = CodecConfigType.MP2;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +22,12 @@ export class Mp2AudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: ChannelLayout;
 
-  constructor(obj: Partial<Mp2AudioConfiguration>) {
+  constructor(obj?: Partial<Mp2AudioConfiguration>) {
     super(obj);
-
-    this.channelLayout = obj.channelLayout;
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AdAnalyticsAbstractFilter from './AdAnalyticsAbstractFilter';
 import AdAnalyticsAttribute from './AdAnalyticsAttribute';
 import AdAnalyticsOrderByEntry from './AdAnalyticsOrderByEntry';
@@ -17,10 +17,12 @@ export class AdAnalyticsPercentileQueryRequest extends AdAnalyticsQueryRequest {
    */
   public percentile?: number;
 
-  constructor(obj: Partial<AdAnalyticsPercentileQueryRequest>) {
+  constructor(obj?: Partial<AdAnalyticsPercentileQueryRequest>) {
     super(obj);
-
-    this.percentile = obj.percentile;
+    if(!obj) {
+      return;
+    }
+    this.percentile = map(obj.percentile);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DashRepresentation from './DashRepresentation';
 
 /**
@@ -13,10 +13,12 @@ export class DashMp4Representation extends DashRepresentation {
    */
   public filePath?: string;
 
-  constructor(obj: Partial<DashMp4Representation>) {
+  constructor(obj?: Partial<DashMp4Representation>) {
     super(obj);
-
-    this.filePath = obj.filePath;
+    if(!obj) {
+      return;
+    }
+    this.filePath = map(obj.filePath);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -23,11 +23,13 @@ export class SrtStatisticLink {
    */
   public rtt?: number;
 
-  constructor(obj: Partial<SrtStatisticLink>) {
-
-    this.bandwidth = obj.bandwidth;
-    this.maxBandwidth = obj.maxBandwidth;
-    this.rtt = obj.rtt;
+  constructor(obj?: Partial<SrtStatisticLink>) {
+    if(!obj) {
+      return;
+    }
+    this.bandwidth = map(obj.bandwidth);
+    this.maxBandwidth = map(obj.maxBandwidth);
+    this.rtt = map(obj.rtt);
   }
 }
 

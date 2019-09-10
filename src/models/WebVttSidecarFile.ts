@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import SidecarErrorMode from './SidecarErrorMode';
 import SidecarFile from './SidecarFile';
@@ -16,10 +16,12 @@ export class WebVttSidecarFile extends SidecarFile {
    */
   public segmentation?: WebVttSidecarFileSegmentation;
 
-  constructor(obj: Partial<WebVttSidecarFile>) {
+  constructor(obj?: Partial<WebVttSidecarFile>) {
     super(obj);
-
-    this.segmentation = map<WebVttSidecarFileSegmentation>(obj.segmentation, WebVttSidecarFileSegmentation);
+    if(!obj) {
+      return;
+    }
+    this.segmentation = map(obj.segmentation, WebVttSidecarFileSegmentation);
   }
 }
 

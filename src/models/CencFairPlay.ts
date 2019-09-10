@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class CencFairPlay {
    */
   public uri?: string;
 
-  constructor(obj: Partial<CencFairPlay>) {
-
-    this.iv = obj.iv;
-    this.uri = obj.uri;
+  constructor(obj?: Partial<CencFairPlay>) {
+    if(!obj) {
+      return;
+    }
+    this.iv = map(obj.iv);
+    this.uri = map(obj.uri);
   }
 }
 

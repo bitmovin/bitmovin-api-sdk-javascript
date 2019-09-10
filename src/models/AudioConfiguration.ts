@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import CodecConfiguration from './CodecConfiguration';
 
 /**
@@ -20,11 +20,13 @@ export class AudioConfiguration extends CodecConfiguration {
    */
   public rate?: number;
 
-  constructor(obj: Partial<AudioConfiguration>) {
+  constructor(obj?: Partial<AudioConfiguration>) {
     super(obj);
-
-    this.bitrate = obj.bitrate;
-    this.rate = obj.rate;
+    if(!obj) {
+      return;
+    }
+    this.bitrate = map(obj.bitrate);
+    this.rate = map(obj.rate);
   }
 }
 

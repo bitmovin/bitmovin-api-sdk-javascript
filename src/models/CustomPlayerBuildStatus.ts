@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Message from './Message';
 import Status from './Status';
 
@@ -40,13 +40,15 @@ export class CustomPlayerBuildStatus {
    */
   public subtasks?: string;
 
-  constructor(obj: Partial<CustomPlayerBuildStatus>) {
-
-    this.status = obj.status;
-    this.eta = obj.eta;
-    this.progress = obj.progress;
-    this.messages = map<Message>(obj.messages, Message);
-    this.subtasks = obj.subtasks;
+  constructor(obj?: Partial<CustomPlayerBuildStatus>) {
+    if(!obj) {
+      return;
+    }
+    this.status = map(obj.status);
+    this.eta = map(obj.eta);
+    this.progress = map(obj.progress);
+    this.messages = map(obj.messages, Message);
+    this.subtasks = map(obj.subtasks);
   }
 }
 

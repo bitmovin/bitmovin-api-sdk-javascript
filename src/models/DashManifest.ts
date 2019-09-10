@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DashProfile from './DashProfile';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
@@ -38,13 +38,15 @@ export class DashManifest extends Manifest {
    */
   public utcTimings?: UtcTiming[];
 
-  constructor(obj: Partial<DashManifest>) {
+  constructor(obj?: Partial<DashManifest>) {
     super(obj);
-
-    this.profile = obj.profile;
-    this.manifestName = obj.manifestName;
-    this.namespaces = map<XmlNamespace>(obj.namespaces, XmlNamespace) || [];
-    this.utcTimings = map<UtcTiming>(obj.utcTimings, UtcTiming) || [];
+    if(!obj) {
+      return;
+    }
+    this.profile = map(obj.profile);
+    this.manifestName = map(obj.manifestName);
+    this.namespaces = mapArray(obj.namespaces, XmlNamespace);
+    this.utcTimings = mapArray(obj.utcTimings, UtcTiming);
   }
 }
 

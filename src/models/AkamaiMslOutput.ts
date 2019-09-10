@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import AkamaiMslStreamFormat from './AkamaiMslStreamFormat';
 import AkamaiMslVersion from './AkamaiMslVersion';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * @export
@@ -14,7 +15,7 @@ export class AkamaiMslOutput extends Output {
    * @type {string}
    * @memberof AkamaiMslOutput
    */
-  public type: 'AKAMAI_MSL' = 'AKAMAI_MSL';
+  public type: OutputType.AKAMAI_MSL = OutputType.AKAMAI_MSL;
 
   /**
    * The Akamai stream ID (required)
@@ -42,13 +43,15 @@ export class AkamaiMslOutput extends Output {
    */
   public mslVersion?: AkamaiMslVersion;
 
-  constructor(obj: Partial<AkamaiMslOutput>) {
+  constructor(obj?: Partial<AkamaiMslOutput>) {
     super(obj);
-
-    this.streamId = obj.streamId;
-    this.eventName = obj.eventName;
-    this.streamFormat = obj.streamFormat;
-    this.mslVersion = obj.mslVersion;
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
+    this.eventName = map(obj.eventName);
+    this.streamFormat = map(obj.streamFormat);
+    this.mslVersion = map(obj.mslVersion);
   }
 }
 

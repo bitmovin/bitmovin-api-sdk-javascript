@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioMixChannel from './AudioMixChannel';
 import AudioMixChannelLayout from './AudioMixChannelLayout';
 import Filter from './Filter';
+import FilterType from './FilterType';
 
 /**
  * @export
@@ -13,7 +14,7 @@ export class AudioMixFilter extends Filter {
    * @type {string}
    * @memberof AudioMixFilter
    */
-  public type: 'AUDIO_MIX' = 'AUDIO_MIX';
+  public type: FilterType.AUDIO_MIX = FilterType.AUDIO_MIX;
 
   /**
    * Channel layout of the audio codec configuration (required)
@@ -29,11 +30,13 @@ export class AudioMixFilter extends Filter {
    */
   public audioMixChannels?: AudioMixChannel[];
 
-  constructor(obj: Partial<AudioMixFilter>) {
+  constructor(obj?: Partial<AudioMixFilter>) {
     super(obj);
-
-    this.channelLayout = obj.channelLayout;
-    this.audioMixChannels = map<AudioMixChannel>(obj.audioMixChannels, AudioMixChannel) || [];
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
+    this.audioMixChannels = mapArray(obj.audioMixChannels, AudioMixChannel);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DashManifest from './DashManifest';
 import DashManifestDefaultVersion from './DashManifestDefaultVersion';
 import DashProfile from './DashProfile';
@@ -26,11 +26,13 @@ export class DashManifestDefault extends DashManifest {
    */
   public version?: DashManifestDefaultVersion;
 
-  constructor(obj: Partial<DashManifestDefault>) {
+  constructor(obj?: Partial<DashManifestDefault>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.version = obj.version;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.version = map(obj.version);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import DomainsApi from './domains/DomainsApi';
 import AnalyticsLicense from '../../models/AnalyticsLicense';
 import AnalyticsLicenseUpdateRequest from '../../models/AnalyticsLicenseUpdateRequest';
@@ -22,19 +23,19 @@ export default class LicensesApi extends BaseAPI {
   /**
    * @summary Create Analytics License
    * @param {AnalyticsLicense} analyticsLicense Analytics License to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public create(analyticsLicense?: AnalyticsLicense): Promise<AnalyticsLicense> {
     return this.restClient.post<AnalyticsLicense>('/analytics/licenses', {}, analyticsLicense).then((response) => {
-      return new AnalyticsLicense(response);
+      return map(response, AnalyticsLicense);
     });
   }
 
   /**
    * @summary Get License
    * @param {string} licenseId License id
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public get(licenseId: string): Promise<AnalyticsLicense> {
@@ -42,18 +43,18 @@ export default class LicensesApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.get<AnalyticsLicense>('/analytics/licenses/{license_id}', pathParamMap).then((response) => {
-      return new AnalyticsLicense(response);
+      return map(response, AnalyticsLicense);
     });
   }
 
   /**
    * @summary List Analytics Licenses
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public list(): Promise<PaginationResponse<AnalyticsLicense>> {
     return this.restClient.get<PaginationResponse<AnalyticsLicense>>('/analytics/licenses', {}).then((response) => {
-      return new PaginationResponse<AnalyticsLicense>(response, AnalyticsLicense);;
+      return new PaginationResponse<AnalyticsLicense>(response, AnalyticsLicense);
     });
   }
 
@@ -61,7 +62,7 @@ export default class LicensesApi extends BaseAPI {
    * @summary Update Analytics License
    * @param {string} licenseId License id
    * @param {AnalyticsLicenseUpdateRequest} analyticsLicenseUpdateRequest Analytics License details to be updated
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public update(licenseId: string, analyticsLicenseUpdateRequest?: AnalyticsLicenseUpdateRequest): Promise<AnalyticsLicense> {
@@ -69,7 +70,7 @@ export default class LicensesApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.put<AnalyticsLicense>('/analytics/licenses/{license_id}', pathParamMap, analyticsLicenseUpdateRequest).then((response) => {
-      return new AnalyticsLicense(response);
+      return map(response, AnalyticsLicense);
     });
   }
 }

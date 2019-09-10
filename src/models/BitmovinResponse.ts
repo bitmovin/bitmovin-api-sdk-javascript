@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class BitmovinResponse {
    */
   public id?: string;
 
-  constructor(obj: Partial<BitmovinResponse>) {
-
-    this.id = obj.id;
+  constructor(obj?: Partial<BitmovinResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.id = map(obj.id);
   }
 }
 

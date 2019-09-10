@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import DvbTeletextInputStream from '../../../../../models/DvbTeletextInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class DvbTeletextApi extends BaseAPI {
    * @summary Add DVB-Teletext Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {DvbTeletextInputStream} dvbTeletextInputStream The DVB-Teletext Input Stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DvbTeletextApi
    */
   public create(encodingId: string, dvbTeletextInputStream?: DvbTeletextInputStream): Promise<DvbTeletextInputStream> {
@@ -29,7 +30,7 @@ export default class DvbTeletextApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<DvbTeletextInputStream>('/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext', pathParamMap, dvbTeletextInputStream).then((response) => {
-      return new DvbTeletextInputStream(response);
+      return map(response, DvbTeletextInputStream);
     });
   }
 
@@ -37,7 +38,7 @@ export default class DvbTeletextApi extends BaseAPI {
    * @summary Delete DVB-Teletext Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the DVB-Teletext input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DvbTeletextApi
    */
   public delete(encodingId: string, inputStreamId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class DvbTeletextApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext/{input_stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class DvbTeletextApi extends BaseAPI {
    * @summary DVB-Teletext Input Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the DVB-Teletext input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DvbTeletextApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<DvbTeletextInputStream> {
@@ -63,7 +64,7 @@ export default class DvbTeletextApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<DvbTeletextInputStream>('/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext/{input_stream_id}', pathParamMap).then((response) => {
-      return new DvbTeletextInputStream(response);
+      return map(response, DvbTeletextInputStream);
     });
   }
 
@@ -71,7 +72,7 @@ export default class DvbTeletextApi extends BaseAPI {
    * @summary List DVB-Teletext Input Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DvbTeletextApi
    */
   public list(encodingId: string, queryParameters?: DvbTeletextInputStreamListQueryParams | ((q: DvbTeletextInputStreamListQueryParamsBuilder) => DvbTeletextInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<DvbTeletextInputStream>> {
@@ -85,7 +86,7 @@ export default class DvbTeletextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DvbTeletextInputStream>>('/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<DvbTeletextInputStream>(response, DvbTeletextInputStream);;
+      return new PaginationResponse<DvbTeletextInputStream>(response, DvbTeletextInputStream);
     });
   }
 }

@@ -7,9 +7,11 @@ import DashSegmentedRepresentation from './DashSegmentedRepresentation';
  * @class DashFmp4Representation
  */
 export class DashFmp4Representation extends DashSegmentedRepresentation {
-  constructor(obj: Partial<DashFmp4Representation>) {
+  constructor(obj?: Partial<DashFmp4Representation>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

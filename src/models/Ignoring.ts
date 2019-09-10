@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import IgnoredBy from './IgnoredBy';
 
 /**
@@ -19,10 +19,12 @@ export class Ignoring {
    */
   public ignoredByDescription?: string;
 
-  constructor(obj: Partial<Ignoring>) {
-
-    this.ignoredBy = obj.ignoredBy;
-    this.ignoredByDescription = obj.ignoredByDescription;
+  constructor(obj?: Partial<Ignoring>) {
+    if(!obj) {
+      return;
+    }
+    this.ignoredBy = map(obj.ignoredBy);
+    this.ignoredByDescription = map(obj.ignoredByDescription);
   }
 }
 

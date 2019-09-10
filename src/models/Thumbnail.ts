@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 import ThumbnailUnit from './ThumbnailUnit';
@@ -49,15 +49,17 @@ export class Thumbnail extends BitmovinResource {
    */
   public unit?: ThumbnailUnit;
 
-  constructor(obj: Partial<Thumbnail>) {
+  constructor(obj?: Partial<Thumbnail>) {
     super(obj);
-
-    this.height = obj.height;
-    this.pattern = obj.pattern;
-    this.interval = obj.interval;
-    this.positions = obj.positions || [];
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
-    this.unit = obj.unit;
+    if(!obj) {
+      return;
+    }
+    this.height = map(obj.height);
+    this.pattern = map(obj.pattern);
+    this.interval = map(obj.interval);
+    this.positions = mapArray(obj.positions);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.unit = map(obj.unit);
   }
 }
 

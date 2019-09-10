@@ -4,8 +4,10 @@
  * @class CencMarlin
  */
 export class CencMarlin {
-  constructor(obj: Partial<CencMarlin>) {
-
+  constructor(obj?: Partial<CencMarlin>) {
+    if(!obj) {
+      return;
+    }
   }
 }
 

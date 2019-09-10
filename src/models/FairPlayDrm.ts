@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 
 /**
@@ -12,7 +13,7 @@ export class FairPlayDrm extends Drm {
    * @type {string}
    * @memberof FairPlayDrm
    */
-  public type: 'FAIRPLAY' = 'FAIRPLAY';
+  public type: DrmType.FAIRPLAY = DrmType.FAIRPLAY;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)
@@ -35,12 +36,14 @@ export class FairPlayDrm extends Drm {
    */
   public uri?: string;
 
-  constructor(obj: Partial<FairPlayDrm>) {
+  constructor(obj?: Partial<FairPlayDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.iv = obj.iv;
-    this.uri = obj.uri;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.iv = map(obj.iv);
+    this.uri = map(obj.uri);
   }
 }
 

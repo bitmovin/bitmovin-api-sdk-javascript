@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BillableEncodingMinutesDetails from './BillableEncodingMinutesDetails';
 import CodecConfigType from './CodecConfigType';
 import EncodingMode from './EncodingMode';
@@ -40,13 +40,15 @@ export class BillableEncodingMinutes {
    */
   public billableMinutes?: BillableEncodingMinutesDetails;
 
-  constructor(obj: Partial<BillableEncodingMinutes>) {
-
-    this.encodingMode = obj.encodingMode;
-    this.codec = obj.codec;
-    this.perTitleResultStream = obj.perTitleResultStream;
-    this.psnrMode = obj.psnrMode;
-    this.billableMinutes = map<BillableEncodingMinutesDetails>(obj.billableMinutes, BillableEncodingMinutesDetails);
+  constructor(obj?: Partial<BillableEncodingMinutes>) {
+    if(!obj) {
+      return;
+    }
+    this.encodingMode = map(obj.encodingMode);
+    this.codec = map(obj.codec);
+    this.perTitleResultStream = map(obj.perTitleResultStream);
+    this.psnrMode = map(obj.psnrMode);
+    this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }
 

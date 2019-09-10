@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class AppliedStreamSettings {
    */
   public height?: number;
 
-  constructor(obj: Partial<AppliedStreamSettings>) {
-
-    this.width = obj.width;
-    this.height = obj.height;
+  constructor(obj?: Partial<AppliedStreamSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.width = map(obj.width);
+    this.height = map(obj.height);
   }
 }
 

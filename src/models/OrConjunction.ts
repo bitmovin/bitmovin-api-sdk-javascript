@@ -1,5 +1,6 @@
 import AbstractCondition from './AbstractCondition';
 import AbstractConjunction from './AbstractConjunction';
+import ConditionType from './ConditionType';
 
 /**
  * @export
@@ -11,11 +12,13 @@ export class OrConjunction extends AbstractConjunction {
    * @type {string}
    * @memberof OrConjunction
    */
-  public type: 'OR' = 'OR';
+  public type: ConditionType.OR = ConditionType.OR;
 
-  constructor(obj: Partial<OrConjunction>) {
+  constructor(obj?: Partial<OrConjunction>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

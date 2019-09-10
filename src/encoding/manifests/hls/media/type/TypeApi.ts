@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import MediaInfoTypeResponse from '../../../../../models/MediaInfoTypeResponse';
 
 /**
@@ -18,7 +19,7 @@ export default class TypeApi extends BaseAPI {
    * @summary HLS Media Type
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the video media.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TypeApi
    */
   public get(manifestId: string, mediaId: string): Promise<MediaInfoTypeResponse> {
@@ -27,7 +28,7 @@ export default class TypeApi extends BaseAPI {
       media_id: mediaId
     };
     return this.restClient.get<MediaInfoTypeResponse>('/encoding/manifests/hls/{manifest_id}/media/{media_id}/type', pathParamMap).then((response) => {
-      return new MediaInfoTypeResponse(response);
+      return map(response, MediaInfoTypeResponse);
     });
   }
 }

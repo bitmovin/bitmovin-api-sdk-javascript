@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class XmlNamespace {
    */
   public uri?: string;
 
-  constructor(obj: Partial<XmlNamespace>) {
-
-    this.prefix = obj.prefix;
-    this.uri = obj.uri;
+  constructor(obj?: Partial<XmlNamespace>) {
+    if(!obj) {
+      return;
+    }
+    this.prefix = map(obj.prefix);
+    this.uri = map(obj.uri);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import StatusApi from './status/StatusApi';
 import CustomdataApi from './customdata/CustomdataApi';
 import ConfigurationApi from './configuration/ConfigurationApi';
@@ -35,19 +36,19 @@ export default class KubernetesApi extends BaseAPI {
   /**
    * @summary Connect Kubernetes Cluster
    * @param {KubernetesCluster} kubernetesCluster The Kubernetes Cluster to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KubernetesApi
    */
   public create(kubernetesCluster?: KubernetesCluster): Promise<KubernetesCluster> {
     return this.restClient.post<KubernetesCluster>('/encoding/infrastructure/kubernetes', {}, kubernetesCluster).then((response) => {
-      return new KubernetesCluster(response);
+      return map(response, KubernetesCluster);
     });
   }
 
   /**
    * @summary Disconnect Kubernetes Cluster
    * @param {string} infrastructureId Id of the Kubernetes cluster
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KubernetesApi
    */
   public delete(infrastructureId: string): Promise<BitmovinResponse> {
@@ -55,14 +56,14 @@ export default class KubernetesApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/infrastructure/kubernetes/{infrastructure_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Kubernetes Cluster Details
    * @param {string} infrastructureId Id of the Kubernetes cluster
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KubernetesApi
    */
   public get(infrastructureId: string): Promise<KubernetesCluster> {
@@ -70,14 +71,14 @@ export default class KubernetesApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.get<KubernetesCluster>('/encoding/infrastructure/kubernetes/{infrastructure_id}', pathParamMap).then((response) => {
-      return new KubernetesCluster(response);
+      return map(response, KubernetesCluster);
     });
   }
 
   /**
    * @summary List Kubernetes Cluster
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KubernetesApi
    */
   public list(queryParameters?: KubernetesClusterListQueryParams | ((q: KubernetesClusterListQueryParamsBuilder) => KubernetesClusterListQueryParamsBuilder)): Promise<PaginationResponse<KubernetesCluster>> {
@@ -88,7 +89,7 @@ export default class KubernetesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<KubernetesCluster>>('/encoding/infrastructure/kubernetes', {}, queryParams).then((response) => {
-      return new PaginationResponse<KubernetesCluster>(response, KubernetesCluster);;
+      return new PaginationResponse<KubernetesCluster>(response, KubernetesCluster);
     });
   }
 }

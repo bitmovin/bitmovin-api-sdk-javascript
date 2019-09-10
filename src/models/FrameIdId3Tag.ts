@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Id3Tag from './Id3Tag';
 import Id3TagPositionMode from './Id3TagPositionMode';
+import Id3TagType from './Id3TagType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class FrameIdId3Tag extends Id3Tag {
    * @type {string}
    * @memberof FrameIdId3Tag
    */
-  public type: 'FRAME_ID' = 'FRAME_ID';
+  public type: Id3TagType.FRAME_ID = Id3TagType.FRAME_ID;
 
   /**
    * Base64 Encoded Data (required)
@@ -28,11 +29,13 @@ export class FrameIdId3Tag extends Id3Tag {
    */
   public frameId?: string;
 
-  constructor(obj: Partial<FrameIdId3Tag>) {
+  constructor(obj?: Partial<FrameIdId3Tag>) {
     super(obj);
-
-    this.bytes = obj.bytes;
-    this.frameId = obj.frameId;
+    if(!obj) {
+      return;
+    }
+    this.bytes = map(obj.bytes);
+    this.frameId = map(obj.frameId);
   }
 }
 

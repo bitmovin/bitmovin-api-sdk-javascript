@@ -1,9 +1,10 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -16,7 +17,7 @@ export class ProgressiveWebmMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveWebmMuxing
    */
-  public type: 'PROGRESSIVE_WEBM' = 'PROGRESSIVE_WEBM';
+  public type: MuxingType.PROGRESSIVE_WEBM = MuxingType.PROGRESSIVE_WEBM;
 
   /**
    * Name of the new Video
@@ -32,11 +33,13 @@ export class ProgressiveWebmMuxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
-  constructor(obj: Partial<ProgressiveWebmMuxing>) {
+  constructor(obj?: Partial<ProgressiveWebmMuxing>) {
     super(obj);
-
-    this.filename = obj.filename;
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+    if(!obj) {
+      return;
+    }
+    this.filename = map(obj.filename);
+    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
+import {map, mapArray} from '../common/Mapper';
 import WebhooksApi from './webhooks/WebhooksApi';
 import StatesApi from './states/StatesApi';
 import EmailsApi from './emails/EmailsApi';
@@ -31,7 +32,7 @@ export default class NotificationsApi extends BaseAPI {
   /**
    * @summary Delete Notification
    * @param {string} notificationId Id of the notification
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public delete(notificationId: string): Promise<BitmovinResponse> {
@@ -39,14 +40,14 @@ export default class NotificationsApi extends BaseAPI {
       notification_id: notificationId
     };
     return this.restClient.delete<BitmovinResponse>('/notifications/{notification_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Get Notification
    * @param {string} notificationId Id of the notification
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public get(notificationId: string): Promise<Notification> {
@@ -54,14 +55,14 @@ export default class NotificationsApi extends BaseAPI {
       notification_id: notificationId
     };
     return this.restClient.get<Notification>('/notifications/{notification_id}', pathParamMap).then((response) => {
-      return new Notification(response);
+      return map(response, Notification);
     });
   }
 
   /**
    * @summary List Notifications
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public list(queryParameters?: NotificationListQueryParams | ((q: NotificationListQueryParamsBuilder) => NotificationListQueryParamsBuilder)): Promise<PaginationResponse<Notification>> {
@@ -72,7 +73,7 @@ export default class NotificationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Notification>>('/notifications', {}, queryParams).then((response) => {
-      return new PaginationResponse<Notification>(response, Notification);;
+      return new PaginationResponse<Notification>(response, Notification);
     });
   }
 
@@ -80,7 +81,7 @@ export default class NotificationsApi extends BaseAPI {
    * @summary List Notification State History (All Resources)
    * @param {string} notificationId Id of the notification
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public listByNotificationId(notificationId: string, queryParameters?: NotificationStateEntryListByNotificationIdQueryParams | ((q: NotificationStateEntryListByNotificationIdQueryParamsBuilder) => NotificationStateEntryListByNotificationIdQueryParamsBuilder)): Promise<PaginationResponse<NotificationStateEntry>> {
@@ -94,14 +95,14 @@ export default class NotificationsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/states', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<NotificationStateEntry>(response, NotificationStateEntry);;
+      return new PaginationResponse<NotificationStateEntry>(response, NotificationStateEntry);
     });
   }
 
   /**
    * @summary Mute Notification
    * @param {string} notificationId Id of the notification
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public mute(notificationId: string): Promise<BitmovinResponse> {
@@ -109,14 +110,14 @@ export default class NotificationsApi extends BaseAPI {
       notification_id: notificationId
     };
     return this.restClient.post<BitmovinResponse>('/notifications/{notification_id}/mute', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Unmute Notification
    * @param {string} notificationId Id of the notification
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof NotificationsApi
    */
   public unmute(notificationId: string): Promise<BitmovinResponse> {
@@ -124,7 +125,7 @@ export default class NotificationsApi extends BaseAPI {
       notification_id: notificationId
     };
     return this.restClient.post<BitmovinResponse>('/notifications/{notification_id}/unmute', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
 import StreamSelectionMode from './StreamSelectionMode';
 
@@ -42,14 +42,16 @@ export class DvbTeletextInputStream extends InputStream {
    */
   public page?: number;
 
-  constructor(obj: Partial<DvbTeletextInputStream>) {
+  constructor(obj?: Partial<DvbTeletextInputStream>) {
     super(obj);
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.selectionMode = obj.selectionMode;
-    this.position = obj.position;
-    this.page = obj.page;
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.selectionMode = map(obj.selectionMode);
+    this.position = map(obj.position);
+    this.page = map(obj.page);
   }
 }
 

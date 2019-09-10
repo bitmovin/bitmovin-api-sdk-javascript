@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import AacAudioConfiguration from '../../../../models/AacAudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -23,19 +24,19 @@ export default class AacApi extends BaseAPI {
   /**
    * @summary Create AAC Codec Configuration
    * @param {AacAudioConfiguration} aacAudioConfiguration The AAC Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AacApi
    */
   public create(aacAudioConfiguration?: AacAudioConfiguration): Promise<AacAudioConfiguration> {
     return this.restClient.post<AacAudioConfiguration>('/encoding/configurations/audio/aac', {}, aacAudioConfiguration).then((response) => {
-      return new AacAudioConfiguration(response);
+      return map(response, AacAudioConfiguration);
     });
   }
 
   /**
    * @summary Delete AAC Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AacApi
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class AacApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/aac/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary AAC Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AacApi
    */
   public get(configurationId: string): Promise<AacAudioConfiguration> {
@@ -58,14 +59,14 @@ export default class AacApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<AacAudioConfiguration>('/encoding/configurations/audio/aac/{configuration_id}', pathParamMap).then((response) => {
-      return new AacAudioConfiguration(response);
+      return map(response, AacAudioConfiguration);
     });
   }
 
   /**
    * @summary List AAC Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AacApi
    */
   public list(queryParameters?: AacAudioConfigurationListQueryParams | ((q: AacAudioConfigurationListQueryParamsBuilder) => AacAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<AacAudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class AacApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AacAudioConfiguration>>('/encoding/configurations/audio/aac', {}, queryParams).then((response) => {
-      return new PaginationResponse<AacAudioConfiguration>(response, AacAudioConfiguration);;
+      return new PaginationResponse<AacAudioConfiguration>(response, AacAudioConfiguration);
     });
   }
 }

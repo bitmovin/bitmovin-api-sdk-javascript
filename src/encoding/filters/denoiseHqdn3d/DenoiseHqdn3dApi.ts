@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DenoiseHqdn3dFilter from '../../../models/DenoiseHqdn3dFilter';
@@ -23,19 +24,19 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
   /**
    * @summary Create Denoise hqdn3d Filter
    * @param {DenoiseHqdn3dFilter} denoiseHqdn3dFilter The Denoise hqdn3d Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DenoiseHqdn3dApi
    */
   public create(denoiseHqdn3dFilter?: DenoiseHqdn3dFilter): Promise<DenoiseHqdn3dFilter> {
     return this.restClient.post<DenoiseHqdn3dFilter>('/encoding/filters/denoise-hqdn3d', {}, denoiseHqdn3dFilter).then((response) => {
-      return new DenoiseHqdn3dFilter(response);
+      return map(response, DenoiseHqdn3dFilter);
     });
   }
 
   /**
    * @summary Delete Denoise hqdn3d Filter
    * @param {string} filterId Id of the denoise hqdn3d filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DenoiseHqdn3dApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/denoise-hqdn3d/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Denoise hqdn3d Filter Details
    * @param {string} filterId Id of the denoise hqdn3d filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DenoiseHqdn3dApi
    */
   public get(filterId: string): Promise<DenoiseHqdn3dFilter> {
@@ -58,14 +59,14 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<DenoiseHqdn3dFilter>('/encoding/filters/denoise-hqdn3d/{filter_id}', pathParamMap).then((response) => {
-      return new DenoiseHqdn3dFilter(response);
+      return map(response, DenoiseHqdn3dFilter);
     });
   }
 
   /**
    * @summary List Denoise hqdn3d Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DenoiseHqdn3dApi
    */
   public list(queryParameters?: DenoiseHqdn3dFilterListQueryParams | ((q: DenoiseHqdn3dFilterListQueryParamsBuilder) => DenoiseHqdn3dFilterListQueryParamsBuilder)): Promise<PaginationResponse<DenoiseHqdn3dFilter>> {
@@ -76,7 +77,7 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DenoiseHqdn3dFilter>>('/encoding/filters/denoise-hqdn3d', {}, queryParams).then((response) => {
-      return new PaginationResponse<DenoiseHqdn3dFilter>(response, DenoiseHqdn3dFilter);;
+      return new PaginationResponse<DenoiseHqdn3dFilter>(response, DenoiseHqdn3dFilter);
     });
   }
 }

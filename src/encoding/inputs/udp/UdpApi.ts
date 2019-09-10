@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import UdpInput from '../../../models/UdpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {UdpInputListQueryParams, UdpInputListQueryParamsBuilder} from './UdpInputListQueryParams';
@@ -19,7 +20,7 @@ export default class UdpApi extends BaseAPI {
   /**
    * @summary UDP Input Details
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof UdpApi
    */
   public get(inputId: string): Promise<UdpInput> {
@@ -27,14 +28,14 @@ export default class UdpApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<UdpInput>('/encoding/inputs/udp/{input_id}', pathParamMap).then((response) => {
-      return new UdpInput(response);
+      return map(response, UdpInput);
     });
   }
 
   /**
    * @summary List UDP inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof UdpApi
    */
   public list(queryParameters?: UdpInputListQueryParams | ((q: UdpInputListQueryParamsBuilder) => UdpInputListQueryParamsBuilder)): Promise<PaginationResponse<UdpInput>> {
@@ -45,7 +46,7 @@ export default class UdpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<UdpInput>>('/encoding/inputs/udp', {}, queryParams).then((response) => {
-      return new PaginationResponse<UdpInput>(response, UdpInput);;
+      return new PaginationResponse<UdpInput>(response, UdpInput);
     });
   }
 }

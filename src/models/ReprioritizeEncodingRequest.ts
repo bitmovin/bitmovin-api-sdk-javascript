@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class ReprioritizeEncodingRequest {
    */
   public priority?: number;
 
-  constructor(obj: Partial<ReprioritizeEncodingRequest>) {
-
-    this.priority = obj.priority;
+  constructor(obj?: Partial<ReprioritizeEncodingRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.priority = map(obj.priority);
   }
 }
 

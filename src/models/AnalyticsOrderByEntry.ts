@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAttribute from './AnalyticsAttribute';
 import AnalyticsOrder from './AnalyticsOrder';
 
@@ -19,10 +19,12 @@ export class AnalyticsOrderByEntry {
    */
   public order?: AnalyticsOrder;
 
-  constructor(obj: Partial<AnalyticsOrderByEntry>) {
-
-    this.name = obj.name;
-    this.order = obj.order;
+  constructor(obj?: Partial<AnalyticsOrderByEntry>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.order = map(obj.order);
   }
 }
 

@@ -9,9 +9,11 @@ import AnalyticsInterval from './AnalyticsInterval';
  * @class AdAnalyticsMedianQueryRequest
  */
 export class AdAnalyticsMedianQueryRequest extends AdAnalyticsQueryRequest {
-  constructor(obj: Partial<AdAnalyticsMedianQueryRequest>) {
+  constructor(obj?: Partial<AdAnalyticsMedianQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

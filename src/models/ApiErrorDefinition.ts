@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class ApiErrorDefinition {
    */
   public description?: string;
 
-  constructor(obj: Partial<ApiErrorDefinition>) {
-
-    this.code = obj.code;
-    this.category = obj.category;
-    this.description = obj.description;
+  constructor(obj?: Partial<ApiErrorDefinition>) {
+    if(!obj) {
+      return;
+    }
+    this.code = map(obj.code);
+    this.category = map(obj.category);
+    this.description = map(obj.description);
   }
 }
 

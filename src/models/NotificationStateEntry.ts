@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import NotificationStates from './NotificationStates';
 
@@ -40,14 +40,16 @@ export class NotificationStateEntry extends BitmovinResponse {
    */
   public triggeredAt?: Date;
 
-  constructor(obj: Partial<NotificationStateEntry>) {
+  constructor(obj?: Partial<NotificationStateEntry>) {
     super(obj);
-
-    this.state = obj.state;
-    this.muted = obj.muted;
-    this.notificationId = obj.notificationId;
-    this.resourceId = obj.resourceId;
-    this.triggeredAt = map<Date>(obj.triggeredAt, Date);
+    if(!obj) {
+      return;
+    }
+    this.state = map(obj.state);
+    this.muted = map(obj.muted);
+    this.notificationId = map(obj.notificationId);
+    this.resourceId = map(obj.resourceId);
+    this.triggeredAt = map(obj.triggeredAt, Date);
   }
 }
 

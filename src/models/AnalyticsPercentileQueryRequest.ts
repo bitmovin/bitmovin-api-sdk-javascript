@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
 import AnalyticsInterval from './AnalyticsInterval';
@@ -17,10 +17,12 @@ export class AnalyticsPercentileQueryRequest extends AnalyticsQueryRequest {
    */
   public percentile?: number;
 
-  constructor(obj: Partial<AnalyticsPercentileQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsPercentileQueryRequest>) {
     super(obj);
-
-    this.percentile = obj.percentile;
+    if(!obj) {
+      return;
+    }
+    this.percentile = map(obj.percentile);
   }
 }
 

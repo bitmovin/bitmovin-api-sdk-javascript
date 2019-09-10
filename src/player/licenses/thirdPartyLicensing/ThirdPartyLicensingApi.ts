@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import PlayerThirdPartyLicensing from '../../../models/PlayerThirdPartyLicensing';
 
@@ -19,7 +20,7 @@ export default class ThirdPartyLicensingApi extends BaseAPI {
    * @summary Enable Third Party Licensing
    * @param {string} licenseId Id of the Player License
    * @param {PlayerThirdPartyLicensing} playerThirdPartyLicensing Third Party Licensing settings to apply to Player License
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThirdPartyLicensingApi
    */
   public create(licenseId: string, playerThirdPartyLicensing?: PlayerThirdPartyLicensing): Promise<PlayerThirdPartyLicensing> {
@@ -27,14 +28,14 @@ export default class ThirdPartyLicensingApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.post<PlayerThirdPartyLicensing>('/player/licenses/{license_id}/third-party-licensing', pathParamMap, playerThirdPartyLicensing).then((response) => {
-      return new PlayerThirdPartyLicensing(response);
+      return map(response, PlayerThirdPartyLicensing);
     });
   }
 
   /**
    * @summary Delete Third Party Licensing Configuration
    * @param {string} licenseId Id of the Player License
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThirdPartyLicensingApi
    */
   public delete(licenseId: string): Promise<BitmovinResponse> {
@@ -42,14 +43,14 @@ export default class ThirdPartyLicensingApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.delete<BitmovinResponse>('/player/licenses/{license_id}/third-party-licensing', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Get Third Party Licensing Configuration
    * @param {string} licenseId Id of the Player License
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThirdPartyLicensingApi
    */
   public get(licenseId: string): Promise<PlayerThirdPartyLicensing> {
@@ -57,7 +58,7 @@ export default class ThirdPartyLicensingApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.get<PlayerThirdPartyLicensing>('/player/licenses/{license_id}/third-party-licensing', pathParamMap).then((response) => {
-      return new PlayerThirdPartyLicensing(response);
+      return map(response, PlayerThirdPartyLicensing);
     });
   }
 }

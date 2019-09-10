@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import InterlaceMode from './InterlaceMode';
 import VerticalLowPassFilteringMode from './VerticalLowPassFilteringMode';
 
@@ -13,7 +14,7 @@ export class InterlaceFilter extends Filter {
    * @type {string}
    * @memberof InterlaceFilter
    */
-  public type: 'INTERLACE' = 'INTERLACE';
+  public type: FilterType.INTERLACE = FilterType.INTERLACE;
 
   /**
    * @type {InterlaceMode}
@@ -27,11 +28,13 @@ export class InterlaceFilter extends Filter {
    */
   public verticalLowPassFilteringMode?: VerticalLowPassFilteringMode;
 
-  constructor(obj: Partial<InterlaceFilter>) {
+  constructor(obj?: Partial<InterlaceFilter>) {
     super(obj);
-
-    this.mode = obj.mode;
-    this.verticalLowPassFilteringMode = obj.verticalLowPassFilteringMode;
+    if(!obj) {
+      return;
+    }
+    this.mode = map(obj.mode);
+    this.verticalLowPassFilteringMode = map(obj.verticalLowPassFilteringMode);
   }
 }
 

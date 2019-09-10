@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class CustomData {
    */
   public createdAt?: Date;
 
-  constructor(obj: Partial<CustomData>) {
-
-    this.customData = obj.customData;
-    this.createdAt = map<Date>(obj.createdAt, Date);
+  constructor(obj?: Partial<CustomData>) {
+    if(!obj) {
+      return;
+    }
+    this.customData = map(obj.customData);
+    this.createdAt = map(obj.createdAt, Date);
   }
 }
 

@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 import TransferVersion from './TransferVersion';
 
 /**
@@ -13,7 +14,7 @@ export class SftpOutput extends Output {
    * @type {string}
    * @memberof SftpOutput
    */
-  public type: 'SFTP' = 'SFTP';
+  public type: OutputType.SFTP = OutputType.SFTP;
 
   /**
    * Host Url or IP of the SFTP server (required)
@@ -64,16 +65,18 @@ export class SftpOutput extends Output {
    */
   public maxConcurrentConnections?: number;
 
-  constructor(obj: Partial<SftpOutput>) {
+  constructor(obj?: Partial<SftpOutput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
-    this.passive = obj.passive;
-    this.username = obj.username;
-    this.password = obj.password;
-    this.transferVersion = obj.transferVersion;
-    this.maxConcurrentConnections = obj.maxConcurrentConnections;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.passive = map(obj.passive);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
+    this.transferVersion = map(obj.transferVersion);
+    this.maxConcurrentConnections = map(obj.maxConcurrentConnections);
   }
 }
 

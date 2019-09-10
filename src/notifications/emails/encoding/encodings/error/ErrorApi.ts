@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import EmailNotification from '../../../../../models/EmailNotification';
 import EncodingErrorEmailNotification from '../../../../../models/EncodingErrorEmailNotification';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -19,12 +20,12 @@ export default class ErrorApi extends BaseAPI {
   /**
    * @summary Add Encoding Error Email Notification (All Encodings)
    * @param {EncodingErrorEmailNotification} encodingErrorEmailNotification Add a new email notification if an encoding received an error
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public create(encodingErrorEmailNotification?: EncodingErrorEmailNotification): Promise<PaginationResponse<EncodingErrorEmailNotification>> {
     return this.restClient.post<PaginationResponse<EncodingErrorEmailNotification>>('/notifications/emails/encoding/encodings/error', {}, encodingErrorEmailNotification).then((response) => {
-      return new PaginationResponse<EncodingErrorEmailNotification>(response, EncodingErrorEmailNotification);;
+      return new PaginationResponse<EncodingErrorEmailNotification>(response, EncodingErrorEmailNotification);
     });
   }
 
@@ -32,7 +33,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary Add Encoding Error Email Notification (Specific Encoding)
    * @param {string} encodingId Id of the encoding resource
    * @param {EmailNotification} emailNotification The email notifications object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public createByEncodingId(encodingId: string, emailNotification?: EmailNotification): Promise<EmailNotification> {
@@ -40,7 +41,7 @@ export default class ErrorApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<EmailNotification>('/notifications/emails/encoding/encodings/{encoding_id}/error', pathParamMap, emailNotification).then((response) => {
-      return new EmailNotification(response);
+      return map(response, EmailNotification);
     });
   }
 
@@ -48,7 +49,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary Replace Encoding Error Email Notification
    * @param {string} notificationId Id of the email notification
    * @param {EmailNotification} emailNotification The email notification with the updated values
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public update(notificationId: string, emailNotification?: EmailNotification): Promise<EmailNotification> {
@@ -56,7 +57,7 @@ export default class ErrorApi extends BaseAPI {
       notification_id: notificationId
     };
     return this.restClient.put<EmailNotification>('/notifications/emails/encoding/encodings/error/{notification_id}', pathParamMap, emailNotification).then((response) => {
-      return new EmailNotification(response);
+      return map(response, EmailNotification);
     });
   }
 }

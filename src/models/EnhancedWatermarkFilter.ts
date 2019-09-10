@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import PositionUnit from './PositionUnit';
 
 /**
@@ -12,7 +13,7 @@ export class EnhancedWatermarkFilter extends Filter {
    * @type {string}
    * @memberof EnhancedWatermarkFilter
    */
-  public type: 'ENHANCED_WATERMARK' = 'ENHANCED_WATERMARK';
+  public type: FilterType.ENHANCED_WATERMARK = FilterType.ENHANCED_WATERMARK;
 
   /**
    * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
@@ -62,16 +63,34 @@ export class EnhancedWatermarkFilter extends Filter {
    */
   public opacity?: number;
 
-  constructor(obj: Partial<EnhancedWatermarkFilter>) {
-    super(obj);
+  /**
+   * Desired width of the watermark image, the unit of the parameter is specified separately by the parameter 'unit'. If both width and height are set the watermark size is fixed. If only one is set the aspect ratio of the image will be used to rescale it
+   * @type {number}
+   * @memberof EnhancedWatermarkFilter
+   */
+  public width?: number;
 
-    this.image = obj.image;
-    this.left = obj.left;
-    this.right = obj.right;
-    this.top = obj.top;
-    this.bottom = obj.bottom;
-    this.unit = obj.unit;
-    this.opacity = obj.opacity;
+  /**
+   * Desired height of the watermark image, the unit of the parameter is specified separately by the parameter 'unit'. If both width and height are set the watermark size is fixed. If only one is set the aspect ratio of the image will be used to rescale it
+   * @type {number}
+   * @memberof EnhancedWatermarkFilter
+   */
+  public height?: number;
+
+  constructor(obj?: Partial<EnhancedWatermarkFilter>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.image = map(obj.image);
+    this.left = map(obj.left);
+    this.right = map(obj.right);
+    this.top = map(obj.top);
+    this.bottom = map(obj.bottom);
+    this.unit = map(obj.unit);
+    this.opacity = map(obj.opacity);
+    this.width = map(obj.width);
+    this.height = map(obj.height);
   }
 }
 

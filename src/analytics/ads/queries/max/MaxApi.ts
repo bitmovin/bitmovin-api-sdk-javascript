@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import AdAnalyticsMaxQueryRequest from '../../../../models/AdAnalyticsMaxQueryRequest';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
@@ -19,12 +20,12 @@ export default class MaxApi extends BaseAPI {
   /**
    * @summary Max
    * @param {AdAnalyticsMaxQueryRequest} adAnalyticsMaxQueryRequest Analytics Query Object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof MaxApi
    */
   public create(adAnalyticsMaxQueryRequest?: AdAnalyticsMaxQueryRequest): Promise<AnalyticsResponse> {
     return this.restClient.post<AnalyticsResponse>('/analytics/ads/queries/max', {}, adAnalyticsMaxQueryRequest).then((response) => {
-      return new AnalyticsResponse(response);
+      return map(response, AnalyticsResponse);
     });
   }
 }

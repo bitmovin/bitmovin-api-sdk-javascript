@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class TimeSpan {
    */
   public to?: number;
 
-  constructor(obj: Partial<TimeSpan>) {
-
-    this.from = obj.from;
-    this.to = obj.to;
+  constructor(obj?: Partial<TimeSpan>) {
+    if(!obj) {
+      return;
+    }
+    this.from = map(obj.from);
+    this.to = map(obj.to);
   }
 }
 

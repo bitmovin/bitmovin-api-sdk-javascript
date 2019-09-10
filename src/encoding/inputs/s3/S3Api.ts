@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import S3Input from '../../../models/S3Input';
@@ -23,19 +24,19 @@ export default class S3Api extends BaseAPI {
   /**
    * @summary Create S3 Input
    * @param {S3Input} s3Input The S3 input to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public create(s3Input?: S3Input): Promise<S3Input> {
     return this.restClient.post<S3Input>('/encoding/inputs/s3', {}, s3Input).then((response) => {
-      return new S3Input(response);
+      return map(response, S3Input);
     });
   }
 
   /**
    * @summary Delete S3 Input
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public delete(inputId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class S3Api extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/inputs/s3/{input_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary S3 Input Details
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public get(inputId: string): Promise<S3Input> {
@@ -58,14 +59,14 @@ export default class S3Api extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<S3Input>('/encoding/inputs/s3/{input_id}', pathParamMap).then((response) => {
-      return new S3Input(response);
+      return map(response, S3Input);
     });
   }
 
   /**
    * @summary List S3 Inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public list(queryParameters?: S3InputListQueryParams | ((q: S3InputListQueryParamsBuilder) => S3InputListQueryParamsBuilder)): Promise<PaginationResponse<S3Input>> {
@@ -76,7 +77,7 @@ export default class S3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Input>>('/encoding/inputs/s3', {}, queryParams).then((response) => {
-      return new PaginationResponse<S3Input>(response, S3Input);;
+      return new PaginationResponse<S3Input>(response, S3Input);
     });
   }
 }

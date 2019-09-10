@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
 import BillableEncodingMinutes from './BillableEncodingMinutes';
 import StatisticsPerMuxing from './StatisticsPerMuxing';
@@ -93,20 +93,22 @@ export class EncodingStats {
    */
   public features?: BillableEncodingFeatureMinutes[];
 
-  constructor(obj: Partial<EncodingStats>) {
-
-    this.date = map<Date>(obj.date, Date);
-    this.encodingId = obj.encodingId;
-    this.bytesEncoded = obj.bytesEncoded;
-    this.timeEncoded = obj.timeEncoded;
-    this.downloadedSize = obj.downloadedSize;
-    this.billableMinutes = obj.billableMinutes;
-    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes) || [];
-    this.billableTransmuxingMinutes = obj.billableTransmuxingMinutes;
-    this.billableFeatureMinutes = obj.billableFeatureMinutes;
-    this.streams = map<StatisticsPerStream>(obj.streams, StatisticsPerStream) || [];
-    this.muxings = map<StatisticsPerMuxing>(obj.muxings, StatisticsPerMuxing) || [];
-    this.features = map<BillableEncodingFeatureMinutes>(obj.features, BillableEncodingFeatureMinutes) || [];
+  constructor(obj?: Partial<EncodingStats>) {
+    if(!obj) {
+      return;
+    }
+    this.date = map(obj.date, Date);
+    this.encodingId = map(obj.encodingId);
+    this.bytesEncoded = map(obj.bytesEncoded);
+    this.timeEncoded = map(obj.timeEncoded);
+    this.downloadedSize = map(obj.downloadedSize);
+    this.billableMinutes = map(obj.billableMinutes);
+    this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
+    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
+    this.billableFeatureMinutes = map(obj.billableFeatureMinutes);
+    this.streams = mapArray(obj.streams, StatisticsPerStream);
+    this.muxings = mapArray(obj.muxings, StatisticsPerMuxing);
+    this.features = mapArray(obj.features, BillableEncodingFeatureMinutes);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import DefaultApi from './default/DefaultApi';
 import CustomdataApi from './customdata/CustomdataApi';
 import PeriodsApi from './periods/PeriodsApi';
@@ -30,19 +31,19 @@ export default class DashApi extends BaseAPI {
   /**
    * @summary Create DASH Manifest
    * @param {DashManifest} dashManifest The DASH manifest to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public create(dashManifest?: DashManifest): Promise<DashManifest> {
     return this.restClient.post<DashManifest>('/encoding/manifests/dash', {}, dashManifest).then((response) => {
-      return new DashManifest(response);
+      return map(response, DashManifest);
     });
   }
 
   /**
    * @summary Delete DASH Manifest
    * @param {string} manifestId UUID of the DASH manifest to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public delete(manifestId: string): Promise<BitmovinResponse> {
@@ -50,14 +51,14 @@ export default class DashApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary DASH Manifest Details
    * @param {string} manifestId UUID of the dash manifest
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public get(manifestId: string): Promise<DashManifest> {
@@ -65,14 +66,14 @@ export default class DashApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<DashManifest>('/encoding/manifests/dash/{manifest_id}', pathParamMap).then((response) => {
-      return new DashManifest(response);
+      return map(response, DashManifest);
     });
   }
 
   /**
    * @summary List DASH Manifests
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public list(queryParameters?: DashManifestListQueryParams | ((q: DashManifestListQueryParamsBuilder) => DashManifestListQueryParamsBuilder)): Promise<PaginationResponse<DashManifest>> {
@@ -83,14 +84,14 @@ export default class DashApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashManifest>>('/encoding/manifests/dash', {}, queryParams).then((response) => {
-      return new PaginationResponse<DashManifest>(response, DashManifest);;
+      return new PaginationResponse<DashManifest>(response, DashManifest);
     });
   }
 
   /**
    * @summary Start DASH Manifest Creation
    * @param {string} manifestId Id of the DASH manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public start(manifestId: string): Promise<BitmovinResponse> {
@@ -98,14 +99,14 @@ export default class DashApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/start', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary DASH Manifest Creation Status
    * @param {string} manifestId Id of the DASH manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public status(manifestId: string): Promise<Task> {
@@ -113,14 +114,14 @@ export default class DashApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<Task>('/encoding/manifests/dash/{manifest_id}/status', pathParamMap).then((response) => {
-      return new Task(response);
+      return map(response, Task);
     });
   }
 
   /**
    * @summary Stop DASH Manifest Creation
    * @param {string} manifestId Id of the DASH manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DashApi
    */
   public stop(manifestId: string): Promise<BitmovinResponse> {
@@ -128,7 +129,7 @@ export default class DashApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/stop', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

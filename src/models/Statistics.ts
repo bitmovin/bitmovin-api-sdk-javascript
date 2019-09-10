@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class Statistics {
    */
   public timeEncodedTotal?: number;
 
-  constructor(obj: Partial<Statistics>) {
-
-    this.bytesEncodedTotal = obj.bytesEncodedTotal;
-    this.timeEncodedTotal = obj.timeEncodedTotal;
+  constructor(obj?: Partial<Statistics>) {
+    if(!obj) {
+      return;
+    }
+    this.bytesEncodedTotal = map(obj.bytesEncodedTotal);
+    this.timeEncodedTotal = map(obj.timeEncodedTotal);
   }
 }
 

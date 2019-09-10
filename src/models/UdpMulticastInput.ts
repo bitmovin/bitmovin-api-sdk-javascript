@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class UdpMulticastInput extends Input {
    * @type {string}
    * @memberof UdpMulticastInput
    */
-  public type: 'UDP_MULTICAST' = 'UDP_MULTICAST';
+  public type: InputType.UDP_MULTICAST = InputType.UDP_MULTICAST;
 
   /**
    * Host name or IP address to use (required)
@@ -27,11 +28,13 @@ export class UdpMulticastInput extends Input {
    */
   public port?: number;
 
-  constructor(obj: Partial<UdpMulticastInput>) {
+  constructor(obj?: Partial<UdpMulticastInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
   }
 }
 

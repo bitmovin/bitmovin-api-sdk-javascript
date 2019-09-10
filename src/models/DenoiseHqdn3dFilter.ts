@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class DenoiseHqdn3dFilter extends Filter {
    * @type {string}
    * @memberof DenoiseHqdn3dFilter
    */
-  public type: 'DENOISE_HQDN3D' = 'DENOISE_HQDN3D';
+  public type: FilterType.DENOISE_HQDN3D = FilterType.DENOISE_HQDN3D;
 
   /**
    * A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0.
@@ -41,13 +42,15 @@ export class DenoiseHqdn3dFilter extends Filter {
    */
   public chromaTmp?: number;
 
-  constructor(obj: Partial<DenoiseHqdn3dFilter>) {
+  constructor(obj?: Partial<DenoiseHqdn3dFilter>) {
     super(obj);
-
-    this.lumaSpatial = obj.lumaSpatial;
-    this.chromaSpatial = obj.chromaSpatial;
-    this.lumaTmp = obj.lumaTmp;
-    this.chromaTmp = obj.chromaTmp;
+    if(!obj) {
+      return;
+    }
+    this.lumaSpatial = map(obj.lumaSpatial);
+    this.chromaSpatial = map(obj.chromaSpatial);
+    this.lumaTmp = map(obj.lumaTmp);
+    this.chromaTmp = map(obj.chromaTmp);
   }
 }
 

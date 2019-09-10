@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import OutputType from './OutputType';
 
 /**
@@ -13,9 +13,11 @@ export class OutputTypeResponse {
    */
   public type?: OutputType;
 
-  constructor(obj: Partial<OutputTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<OutputTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

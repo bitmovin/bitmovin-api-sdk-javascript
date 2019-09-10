@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import H264PerTitleConfiguration from './H264PerTitleConfiguration';
 import H265PerTitleConfiguration from './H265PerTitleConfiguration';
 import Vp9PerTitleConfiguration from './Vp9PerTitleConfiguration';
@@ -29,11 +29,13 @@ export class PerTitle {
    */
   public vp9Configuration?: Vp9PerTitleConfiguration;
 
-  constructor(obj: Partial<PerTitle>) {
-
-    this.h264Configuration = map<H264PerTitleConfiguration>(obj.h264Configuration, H264PerTitleConfiguration);
-    this.h265Configuration = map<H265PerTitleConfiguration>(obj.h265Configuration, H265PerTitleConfiguration);
-    this.vp9Configuration = map<Vp9PerTitleConfiguration>(obj.vp9Configuration, Vp9PerTitleConfiguration);
+  constructor(obj?: Partial<PerTitle>) {
+    if(!obj) {
+      return;
+    }
+    this.h264Configuration = map(obj.h264Configuration, H264PerTitleConfiguration);
+    this.h265Configuration = map(obj.h265Configuration, H265PerTitleConfiguration);
+    this.vp9Configuration = map(obj.vp9Configuration, Vp9PerTitleConfiguration);
   }
 }
 

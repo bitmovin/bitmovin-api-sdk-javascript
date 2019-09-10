@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -103,22 +103,24 @@ export class MuxingInformationVideoTrack {
    */
   public aspectRatio?: string;
 
-  constructor(obj: Partial<MuxingInformationVideoTrack>) {
-
-    this.index = obj.index;
-    this.codec = obj.codec;
-    this.codecIso = obj.codecIso;
-    this.bitRate = obj.bitRate;
-    this.rate = obj.rate;
-    this.pixelFormat = obj.pixelFormat;
-    this.frameMode = obj.frameMode;
-    this.frameWidth = obj.frameWidth;
-    this.frameHeight = obj.frameHeight;
-    this.frameRate = obj.frameRate;
-    this.startTime = obj.startTime;
-    this.duration = obj.duration;
-    this.numberOfFrames = obj.numberOfFrames;
-    this.aspectRatio = obj.aspectRatio;
+  constructor(obj?: Partial<MuxingInformationVideoTrack>) {
+    if(!obj) {
+      return;
+    }
+    this.index = map(obj.index);
+    this.codec = map(obj.codec);
+    this.codecIso = map(obj.codecIso);
+    this.bitRate = map(obj.bitRate);
+    this.rate = map(obj.rate);
+    this.pixelFormat = map(obj.pixelFormat);
+    this.frameMode = map(obj.frameMode);
+    this.frameWidth = map(obj.frameWidth);
+    this.frameHeight = map(obj.frameHeight);
+    this.frameRate = map(obj.frameRate);
+    this.startTime = map(obj.startTime);
+    this.duration = map(obj.duration);
+    this.numberOfFrames = map(obj.numberOfFrames);
+    this.aspectRatio = map(obj.aspectRatio);
   }
 }
 

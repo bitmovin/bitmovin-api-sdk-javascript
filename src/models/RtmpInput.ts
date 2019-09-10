@@ -1,4 +1,5 @@
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -10,11 +11,13 @@ export class RtmpInput extends Input {
    * @type {string}
    * @memberof RtmpInput
    */
-  public type: 'RTMP' = 'RTMP';
+  public type: InputType.RTMP = InputType.RTMP;
 
-  constructor(obj: Partial<RtmpInput>) {
+  constructor(obj?: Partial<RtmpInput>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

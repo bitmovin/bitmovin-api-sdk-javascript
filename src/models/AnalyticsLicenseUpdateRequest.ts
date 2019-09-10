@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsLicenseCustomDataFieldLabels from './AnalyticsLicenseCustomDataFieldLabels';
 
 /**
@@ -31,12 +31,14 @@ export class AnalyticsLicenseUpdateRequest {
    */
   public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
 
-  constructor(obj: Partial<AnalyticsLicenseUpdateRequest>) {
-
-    this.name = obj.name;
-    this.ignoreDNT = obj.ignoreDNT;
-    this.timeZone = obj.timeZone;
-    this.customDataFieldLabels = map<AnalyticsLicenseCustomDataFieldLabels>(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
+  constructor(obj?: Partial<AnalyticsLicenseUpdateRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.ignoreDNT = map(obj.ignoreDNT);
+    this.timeZone = map(obj.timeZone);
+    this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
   }
 }
 

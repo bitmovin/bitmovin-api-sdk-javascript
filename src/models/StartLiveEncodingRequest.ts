@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AutoRestartConfiguration from './AutoRestartConfiguration';
 import EncodingMode from './EncodingMode';
 import LiveDashManifest from './LiveDashManifest';
@@ -52,14 +52,16 @@ export class StartLiveEncodingRequest {
    */
   public autoRestartConfiguration?: AutoRestartConfiguration;
 
-  constructor(obj: Partial<StartLiveEncodingRequest>) {
-
-    this.streamKey = obj.streamKey;
-    this.hlsManifests = map<LiveHlsManifest>(obj.hlsManifests, LiveHlsManifest) || [];
-    this.dashManifests = map<LiveDashManifest>(obj.dashManifests, LiveDashManifest) || [];
-    this.liveEncodingMode = obj.liveEncodingMode;
-    this.reuploadSettings = map<ReuploadSettings>(obj.reuploadSettings, ReuploadSettings);
-    this.autoRestartConfiguration = map<AutoRestartConfiguration>(obj.autoRestartConfiguration, AutoRestartConfiguration);
+  constructor(obj?: Partial<StartLiveEncodingRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.streamKey = map(obj.streamKey);
+    this.hlsManifests = mapArray(obj.hlsManifests, LiveHlsManifest);
+    this.dashManifests = mapArray(obj.dashManifests, LiveDashManifest);
+    this.liveEncodingMode = map(obj.liveEncodingMode);
+    this.reuploadSettings = map(obj.reuploadSettings, ReuploadSettings);
+    this.autoRestartConfiguration = map(obj.autoRestartConfiguration, AutoRestartConfiguration);
   }
 }
 

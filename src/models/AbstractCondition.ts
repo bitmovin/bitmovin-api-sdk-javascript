@@ -1,5 +1,6 @@
 import AndConjunction from './AndConjunction';
 import Condition from './Condition';
+import ConditionType from './ConditionType';
 import OrConjunction from './OrConjunction';
 
 export type AbstractConditionUnion =
@@ -13,14 +14,16 @@ export type AbstractConditionUnion =
  */
 export class AbstractCondition {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'CONDITION': 'Condition',
-    'AND': 'AndConjunction',
-    'OR': 'OrConjunction'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof ConditionType]: string; } = {
+    CONDITION: 'Condition',
+    AND: 'AndConjunction',
+    OR: 'OrConjunction'
   };
 
-  constructor(obj: Partial<AbstractCondition>) {
-
+  constructor(obj?: Partial<AbstractCondition>) {
+    if(!obj) {
+      return;
+    }
   }
 }
 

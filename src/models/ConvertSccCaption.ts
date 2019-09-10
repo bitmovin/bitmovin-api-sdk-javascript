@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import ConvertSccCaptionWebVttSettings from './ConvertSccCaptionWebVttSettings';
 import EncodingOutput from './EncodingOutput';
@@ -43,14 +43,16 @@ export class ConvertSccCaption extends BitmovinResource {
    */
   public webVttSettings?: ConvertSccCaptionWebVttSettings;
 
-  constructor(obj: Partial<ConvertSccCaption>) {
+  constructor(obj?: Partial<ConvertSccCaption>) {
     super(obj);
-
-    this.input = map<InputPath>(obj.input, InputPath);
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
-    this.fileName = obj.fileName;
-    this.outputFormat = obj.outputFormat;
-    this.webVttSettings = map<ConvertSccCaptionWebVttSettings>(obj.webVttSettings, ConvertSccCaptionWebVttSettings);
+    if(!obj) {
+      return;
+    }
+    this.input = map(obj.input, InputPath);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.fileName = map(obj.fileName);
+    this.outputFormat = map(obj.outputFormat);
+    this.webVttSettings = map(obj.webVttSettings, ConvertSccCaptionWebVttSettings);
   }
 }
 

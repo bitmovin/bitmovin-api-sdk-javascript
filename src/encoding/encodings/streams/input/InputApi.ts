@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import EncodingStreamInputDetails from '../../../../models/EncodingStreamInputDetails';
 
 /**
@@ -18,7 +19,7 @@ export default class InputApi extends BaseAPI {
    * @summary Stream Input Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InputApi
    */
   public get(encodingId: string, streamId: string): Promise<EncodingStreamInputDetails> {
@@ -27,7 +28,7 @@ export default class InputApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.get<EncodingStreamInputDetails>('/encoding/encodings/{encoding_id}/streams/{stream_id}/input', pathParamMap).then((response) => {
-      return new EncodingStreamInputDetails(response);
+      return map(response, EncodingStreamInputDetails);
     });
   }
 }

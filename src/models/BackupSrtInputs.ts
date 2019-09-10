@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SrtInput from './SrtInput';
 
 /**
@@ -19,10 +19,12 @@ export class BackupSrtInputs {
    */
   public srtInputs?: SrtInput[];
 
-  constructor(obj: Partial<BackupSrtInputs>) {
-
-    this.delayThreshold = obj.delayThreshold;
-    this.srtInputs = map<SrtInput>(obj.srtInputs, SrtInput) || [];
+  constructor(obj?: Partial<BackupSrtInputs>) {
+    if(!obj) {
+      return;
+    }
+    this.delayThreshold = map(obj.delayThreshold);
+    this.srtInputs = mapArray(obj.srtInputs, SrtInput);
   }
 }
 

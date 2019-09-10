@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class LocalOutput extends Output {
    * @type {string}
    * @memberof LocalOutput
    */
-  public type: 'LOCAL' = 'LOCAL';
+  public type: OutputType.LOCAL = OutputType.LOCAL;
 
   /**
    * Path to your local storage (required)
@@ -21,10 +22,12 @@ export class LocalOutput extends Output {
    */
   public path?: string;
 
-  constructor(obj: Partial<LocalOutput>) {
+  constructor(obj?: Partial<LocalOutput>) {
     super(obj);
-
-    this.path = obj.path;
+    if(!obj) {
+      return;
+    }
+    this.path = map(obj.path);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import OutputTypeResponse from '../../../models/OutputTypeResponse';
 
 /**
@@ -17,7 +18,7 @@ export default class TypeApi extends BaseAPI {
   /**
    * @summary Get Output Type
    * @param {string} outputId Id of the wanted output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TypeApi
    */
   public get(outputId: string): Promise<OutputTypeResponse> {
@@ -25,7 +26,7 @@ export default class TypeApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<OutputTypeResponse>('/encoding/outputs/{output_id}/type', pathParamMap).then((response) => {
-      return new OutputTypeResponse(response);
+      return map(response, OutputTypeResponse);
     });
   }
 }

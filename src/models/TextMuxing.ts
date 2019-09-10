@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -15,7 +16,7 @@ export class TextMuxing extends Muxing {
    * @type {string}
    * @memberof TextMuxing
    */
-  public type: 'TEXT' = 'TEXT';
+  public type: MuxingType.TEXT = MuxingType.TEXT;
 
   /**
    * The output file name (required)
@@ -24,10 +25,12 @@ export class TextMuxing extends Muxing {
    */
   public filename?: string;
 
-  constructor(obj: Partial<TextMuxing>) {
+  constructor(obj?: Partial<TextMuxing>) {
     super(obj);
-
-    this.filename = obj.filename;
+    if(!obj) {
+      return;
+    }
+    this.filename = map(obj.filename);
   }
 }
 

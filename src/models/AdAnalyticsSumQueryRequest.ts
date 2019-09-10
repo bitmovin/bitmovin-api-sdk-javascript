@@ -9,9 +9,11 @@ import AnalyticsInterval from './AnalyticsInterval';
  * @class AdAnalyticsSumQueryRequest
  */
 export class AdAnalyticsSumQueryRequest extends AdAnalyticsQueryRequest {
-  constructor(obj: Partial<AdAnalyticsSumQueryRequest>) {
+  constructor(obj?: Partial<AdAnalyticsSumQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

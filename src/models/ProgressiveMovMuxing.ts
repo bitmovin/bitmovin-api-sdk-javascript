@@ -1,9 +1,10 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -16,7 +17,7 @@ export class ProgressiveMovMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveMovMuxing
    */
-  public type: 'PROGRESSIVE_MOV' = 'PROGRESSIVE_MOV';
+  public type: MuxingType.PROGRESSIVE_MOV = MuxingType.PROGRESSIVE_MOV;
 
   /**
    * The output file name
@@ -32,11 +33,13 @@ export class ProgressiveMovMuxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
-  constructor(obj: Partial<ProgressiveMovMuxing>) {
+  constructor(obj?: Partial<ProgressiveMovMuxing>) {
     super(obj);
-
-    this.filename = obj.filename;
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+    if(!obj) {
+      return;
+    }
+    this.filename = map(obj.filename);
+    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomTagsApi from './customTags/CustomTagsApi';
 import TypeApi from './type/TypeApi';
 import VideoApi from './video/VideoApi';

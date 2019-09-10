@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AnalyticsNotEqualFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsNotEqualFilter
    */
-  public operator: 'NE' = 'NE';
+  public operator: AnalyticsQueryOperator.NE = AnalyticsQueryOperator.NE;
 
   /**
    * @type {any}
@@ -20,10 +21,12 @@ export class AnalyticsNotEqualFilter extends AnalyticsAbstractFilter {
    */
   public value?: any;
 
-  constructor(obj: Partial<AnalyticsNotEqualFilter>) {
+  constructor(obj?: Partial<AnalyticsNotEqualFilter>) {
     super(obj);
-
-    this.value = obj.value;
+    if(!obj) {
+      return;
+    }
+    this.value = map(obj.value);
   }
 }
 

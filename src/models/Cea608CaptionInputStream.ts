@@ -1,12 +1,20 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Cea608ChannelType from './Cea608ChannelType';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
  * @class Cea608CaptionInputStream
  */
 export class Cea608CaptionInputStream extends InputStream {
+  /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof Cea608CaptionInputStream
+   */
+  public type: InputStreamType.CAPTION_CEA608 = InputStreamType.CAPTION_CEA608;
+
   /**
    * Id of the Input (required)
    * @type {string}
@@ -28,12 +36,14 @@ export class Cea608CaptionInputStream extends InputStream {
    */
   public channel?: Cea608ChannelType;
 
-  constructor(obj: Partial<Cea608CaptionInputStream>) {
+  constructor(obj?: Partial<Cea608CaptionInputStream>) {
     super(obj);
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.channel = obj.channel;
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.channel = map(obj.channel);
   }
 }
 

@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 import TsMuxingConfiguration from './TsMuxingConfiguration';
 
@@ -16,7 +17,7 @@ export class TsMuxing extends Muxing {
    * @type {string}
    * @memberof TsMuxing
    */
-  public type: 'TS' = 'TS';
+  public type: MuxingType.TS = MuxingType.TS;
 
   /**
    * Length of the fragments in seconds (required)
@@ -60,15 +61,17 @@ export class TsMuxing extends Muxing {
    */
   public configuration?: TsMuxingConfiguration;
 
-  constructor(obj: Partial<TsMuxing>) {
+  constructor(obj?: Partial<TsMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.segmentNaming = obj.segmentNaming;
-    this.segmentNamingTemplate = obj.segmentNamingTemplate;
-    this.startOffset = obj.startOffset;
-    this.segmentsMuxed = obj.segmentsMuxed;
-    this.configuration = map<TsMuxingConfiguration>(obj.configuration, TsMuxingConfiguration);
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
+    this.startOffset = map(obj.startOffset);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
+    this.configuration = map(obj.configuration, TsMuxingConfiguration);
   }
 }
 

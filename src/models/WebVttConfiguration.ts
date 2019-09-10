@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,20 @@ export class WebVttConfiguration extends BitmovinResource {
    */
   public appendOptionalZeroHour?: boolean;
 
-  constructor(obj: Partial<WebVttConfiguration>) {
-    super(obj);
+  /**
+   * If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.
+   * @type {boolean}
+   * @memberof WebVttConfiguration
+   */
+  public ignoreRegion?: boolean;
 
-    this.appendOptionalZeroHour = obj.appendOptionalZeroHour;
+  constructor(obj?: Partial<WebVttConfiguration>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.appendOptionalZeroHour = map(obj.appendOptionalZeroHour);
+    this.ignoreRegion = map(obj.ignoreRegion);
   }
 }
 

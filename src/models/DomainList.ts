@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Domain from './Domain';
 
 /**
@@ -12,9 +12,11 @@ export class DomainList {
    */
   public domains?: Domain[];
 
-  constructor(obj: Partial<DomainList>) {
-
-    this.domains = map<Domain>(obj.domains, Domain) || [];
+  constructor(obj?: Partial<DomainList>) {
+    if(!obj) {
+      return;
+    }
+    this.domains = mapArray(obj.domains, Domain);
   }
 }
 

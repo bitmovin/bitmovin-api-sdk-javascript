@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PrewarmEncoderSettings from '../../../../models/PrewarmEncoderSettings';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
    * @summary Prewarm Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
    * @param {PrewarmEncoderSettings} prewarmEncoderSettings Settings for prewarming Encoders
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PrewarmedDeploymentApi
    */
   public create(infrastructureId: string, prewarmEncoderSettings?: PrewarmEncoderSettings): Promise<PrewarmEncoderSettings> {
@@ -29,7 +30,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.post<PrewarmEncoderSettings>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment', pathParamMap, prewarmEncoderSettings).then((response) => {
-      return new PrewarmEncoderSettings(response);
+      return map(response, PrewarmEncoderSettings);
     });
   }
 
@@ -37,7 +38,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
    * @summary Delete Prewarmed Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
    * @param {string} deploymentId Id of the prewarmed deployment.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PrewarmedDeploymentApi
    */
   public delete(infrastructureId: string, deploymentId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
       deployment_id: deploymentId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
    * @summary Get Prewarmed Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
    * @param {string} deploymentId Id of the prewarmed deployment.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PrewarmedDeploymentApi
    */
   public get(infrastructureId: string, deploymentId: string): Promise<PrewarmEncoderSettings> {
@@ -63,7 +64,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
       deployment_id: deploymentId
     };
     return this.restClient.get<PrewarmEncoderSettings>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}', pathParamMap).then((response) => {
-      return new PrewarmEncoderSettings(response);
+      return map(response, PrewarmEncoderSettings);
     });
   }
 
@@ -71,7 +72,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
    * @summary List Prewarmed Encoders
    * @param {string} infrastructureId Id of the kubernetes cluster.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PrewarmedDeploymentApi
    */
   public list(infrastructureId: string, queryParameters?: PrewarmEncoderSettingsListQueryParams | ((q: PrewarmEncoderSettingsListQueryParamsBuilder) => PrewarmEncoderSettingsListQueryParamsBuilder)): Promise<PaginationResponse<PrewarmEncoderSettings>> {
@@ -85,7 +86,7 @@ export default class PrewarmedDeploymentApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PrewarmEncoderSettings>>('/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<PrewarmEncoderSettings>(response, PrewarmEncoderSettings);;
+      return new PaginationResponse<PrewarmEncoderSettings>(response, PrewarmEncoderSettings);
     });
   }
 }

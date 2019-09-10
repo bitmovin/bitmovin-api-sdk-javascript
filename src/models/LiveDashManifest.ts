@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class LiveDashManifest {
    */
   public liveEdgeOffset?: number;
 
-  constructor(obj: Partial<LiveDashManifest>) {
-
-    this.manifestId = obj.manifestId;
-    this.timeshift = obj.timeshift;
-    this.liveEdgeOffset = obj.liveEdgeOffset;
+  constructor(obj?: Partial<LiveDashManifest>) {
+    if(!obj) {
+      return;
+    }
+    this.manifestId = map(obj.manifestId);
+    this.timeshift = map(obj.timeshift);
+    this.liveEdgeOffset = map(obj.liveEdgeOffset);
   }
 }
 

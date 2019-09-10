@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Tenant from '../../../../models/Tenant';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class TenantsApi extends BaseAPI {
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
    * @param {Tenant} tenant Tenant details
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TenantsApi
    */
   public create(organizationId: string, groupId: string, tenant?: Tenant): Promise<Tenant> {
@@ -30,7 +31,7 @@ export default class TenantsApi extends BaseAPI {
       group_id: groupId
     };
     return this.restClient.post<Tenant>('/account/organizations/{organization_id}/groups/{group_id}/tenants', pathParamMap, tenant).then((response) => {
-      return new Tenant(response);
+      return map(response, Tenant);
     });
   }
 
@@ -39,7 +40,7 @@ export default class TenantsApi extends BaseAPI {
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
    * @param {string} tenantId Id of the tenant.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TenantsApi
    */
   public delete(organizationId: string, groupId: string, tenantId: string): Promise<BitmovinResponse> {
@@ -49,7 +50,7 @@ export default class TenantsApi extends BaseAPI {
       tenant_id: tenantId
     };
     return this.restClient.delete<BitmovinResponse>('/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -58,7 +59,7 @@ export default class TenantsApi extends BaseAPI {
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
    * @param {string} tenantId Id of the tenant.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TenantsApi
    */
   public get(organizationId: string, groupId: string, tenantId: string): Promise<Tenant> {
@@ -68,7 +69,7 @@ export default class TenantsApi extends BaseAPI {
       tenant_id: tenantId
     };
     return this.restClient.get<Tenant>('/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}', pathParamMap).then((response) => {
-      return new Tenant(response);
+      return map(response, Tenant);
     });
   }
 
@@ -76,7 +77,7 @@ export default class TenantsApi extends BaseAPI {
    * @summary List Tenants
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TenantsApi
    */
   public list(organizationId: string, groupId: string): Promise<PaginationResponse<Tenant>> {
@@ -85,7 +86,7 @@ export default class TenantsApi extends BaseAPI {
       group_id: groupId
     };
     return this.restClient.get<PaginationResponse<Tenant>>('/account/organizations/{organization_id}/groups/{group_id}/tenants', pathParamMap).then((response) => {
-      return new PaginationResponse<Tenant>(response, Tenant);;
+      return new PaginationResponse<Tenant>(response, Tenant);
     });
   }
 }

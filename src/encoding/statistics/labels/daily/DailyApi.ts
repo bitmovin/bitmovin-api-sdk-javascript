@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import DailyStatisticsPerLabel from '../../../../models/DailyStatisticsPerLabel';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {DailyStatisticsPerLabelListQueryParams, DailyStatisticsPerLabelListQueryParamsBuilder} from './DailyStatisticsPerLabelListQueryParams';
@@ -20,7 +21,7 @@ export default class DailyApi extends BaseAPI {
   /**
    * @summary Get Daily Statistics per Label
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DailyApi
    */
   public list(queryParameters?: DailyStatisticsPerLabelListQueryParams | ((q: DailyStatisticsPerLabelListQueryParamsBuilder) => DailyStatisticsPerLabelListQueryParamsBuilder)): Promise<PaginationResponse<DailyStatisticsPerLabel>> {
@@ -31,7 +32,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatisticsPerLabel>>('/encoding/statistics/labels/daily', {}, queryParams).then((response) => {
-      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);;
+      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);
     });
   }
 
@@ -40,7 +41,7 @@ export default class DailyApi extends BaseAPI {
    * @param {Date} from Start date. Format: yyyy-MM-dd
    * @param {Date} to End date. Format: yyyy-MM-dd
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DailyApi
    */
   public listByDateRange(from: Date, to: Date, queryParameters?: DailyStatisticsPerLabelListByDateRangeQueryParams | ((q: DailyStatisticsPerLabelListByDateRangeQueryParamsBuilder) => DailyStatisticsPerLabelListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<DailyStatisticsPerLabel>> {
@@ -55,7 +56,7 @@ export default class DailyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DailyStatisticsPerLabel>>('/encoding/statistics/labels/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);;
+      return new PaginationResponse<DailyStatisticsPerLabel>(response, DailyStatisticsPerLabel);
     });
   }
 }

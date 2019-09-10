@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Vp9VideoConfiguration from '../../../../models/Vp9VideoConfiguration';
@@ -23,19 +24,19 @@ export default class Vp9Api extends BaseAPI {
   /**
    * @summary Create VP9 Codec Configuration
    * @param {Vp9VideoConfiguration} vp9VideoConfiguration The VP9 Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Vp9Api
    */
   public create(vp9VideoConfiguration?: Vp9VideoConfiguration): Promise<Vp9VideoConfiguration> {
     return this.restClient.post<Vp9VideoConfiguration>('/encoding/configurations/video/vp9', {}, vp9VideoConfiguration).then((response) => {
-      return new Vp9VideoConfiguration(response);
+      return map(response, Vp9VideoConfiguration);
     });
   }
 
   /**
    * @summary Delete VP9 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Vp9Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class Vp9Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/video/vp9/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary VP9 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Vp9Api
    */
   public get(configurationId: string): Promise<Vp9VideoConfiguration> {
@@ -58,14 +59,14 @@ export default class Vp9Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<Vp9VideoConfiguration>('/encoding/configurations/video/vp9/{configuration_id}', pathParamMap).then((response) => {
-      return new Vp9VideoConfiguration(response);
+      return map(response, Vp9VideoConfiguration);
     });
   }
 
   /**
    * @summary List VP9 Codec Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Vp9Api
    */
   public list(queryParameters?: Vp9VideoConfigurationListQueryParams | ((q: Vp9VideoConfigurationListQueryParamsBuilder) => Vp9VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Vp9VideoConfiguration>> {
@@ -76,7 +77,7 @@ export default class Vp9Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Vp9VideoConfiguration>>('/encoding/configurations/video/vp9', {}, queryParams).then((response) => {
-      return new PaginationResponse<Vp9VideoConfiguration>(response, Vp9VideoConfiguration);;
+      return new PaginationResponse<Vp9VideoConfiguration>(response, Vp9VideoConfiguration);
     });
   }
 }

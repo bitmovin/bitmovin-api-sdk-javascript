@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import PlayerThirdPartyLicensingErrorAction from './PlayerThirdPartyLicensingErrorAction';
 
 /**
@@ -34,12 +34,14 @@ export class PlayerThirdPartyLicensing {
    */
   public timeoutAction?: PlayerThirdPartyLicensingErrorAction;
 
-  constructor(obj: Partial<PlayerThirdPartyLicensing>) {
-
-    this.licenseCheckServer = obj.licenseCheckServer;
-    this.licenseCheckTimeout = obj.licenseCheckTimeout;
-    this.errorAction = obj.errorAction;
-    this.timeoutAction = obj.timeoutAction;
+  constructor(obj?: Partial<PlayerThirdPartyLicensing>) {
+    if(!obj) {
+      return;
+    }
+    this.licenseCheckServer = map(obj.licenseCheckServer);
+    this.licenseCheckTimeout = map(obj.licenseCheckTimeout);
+    this.errorAction = map(obj.errorAction);
+    this.timeoutAction = map(obj.timeoutAction);
   }
 }
 

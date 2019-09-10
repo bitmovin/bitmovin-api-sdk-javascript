@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class AsperaInput extends Input {
    * @type {string}
    * @memberof AsperaInput
    */
-  public type: 'ASPERA' = 'ASPERA';
+  public type: InputType.ASPERA = InputType.ASPERA;
 
   /**
    * Minimal download bandwidth. Examples: 100k, 100m, 100g
@@ -55,15 +56,17 @@ export class AsperaInput extends Input {
    */
   public token?: string;
 
-  constructor(obj: Partial<AsperaInput>) {
+  constructor(obj?: Partial<AsperaInput>) {
     super(obj);
-
-    this.minBandwidth = obj.minBandwidth;
-    this.maxBandwidth = obj.maxBandwidth;
-    this.host = obj.host;
-    this.username = obj.username;
-    this.password = obj.password;
-    this.token = obj.token;
+    if(!obj) {
+      return;
+    }
+    this.minBandwidth = map(obj.minBandwidth);
+    this.maxBandwidth = map(obj.maxBandwidth);
+    this.host = map(obj.host);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
+    this.token = map(obj.token);
   }
 }
 

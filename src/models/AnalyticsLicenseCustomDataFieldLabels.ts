@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -40,13 +40,15 @@ export class AnalyticsLicenseCustomDataFieldLabels {
    */
   public customData5?: string;
 
-  constructor(obj: Partial<AnalyticsLicenseCustomDataFieldLabels>) {
-
-    this.customData1 = obj.customData1;
-    this.customData2 = obj.customData2;
-    this.customData3 = obj.customData3;
-    this.customData4 = obj.customData4;
-    this.customData5 = obj.customData5;
+  constructor(obj?: Partial<AnalyticsLicenseCustomDataFieldLabels>) {
+    if(!obj) {
+      return;
+    }
+    this.customData1 = map(obj.customData1);
+    this.customData2 = map(obj.customData2);
+    this.customData3 = map(obj.customData3);
+    this.customData4 = map(obj.customData4);
+    this.customData5 = map(obj.customData5);
   }
 }
 

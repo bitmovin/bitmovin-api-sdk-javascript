@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class FtpInput extends Input {
    * @type {string}
    * @memberof FtpInput
    */
-  public type: 'FTP' = 'FTP';
+  public type: InputType.FTP = InputType.FTP;
 
   /**
    * Host URL or IP of the FTP server (required)
@@ -55,15 +56,17 @@ export class FtpInput extends Input {
    */
   public remoteVerificationEnabled?: boolean;
 
-  constructor(obj: Partial<FtpInput>) {
+  constructor(obj?: Partial<FtpInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
-    this.passive = obj.passive;
-    this.username = obj.username;
-    this.password = obj.password;
-    this.remoteVerificationEnabled = obj.remoteVerificationEnabled;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.passive = map(obj.passive);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
+    this.remoteVerificationEnabled = map(obj.remoteVerificationEnabled);
   }
 }
 

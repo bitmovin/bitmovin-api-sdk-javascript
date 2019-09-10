@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import InsertableContentInput from './InsertableContentInput';
 import InsertableContentStatus from './InsertableContentStatus';
@@ -22,11 +22,13 @@ export class InsertableContent extends BitmovinResource {
    */
   public status?: InsertableContentStatus;
 
-  constructor(obj: Partial<InsertableContent>) {
+  constructor(obj?: Partial<InsertableContent>) {
     super(obj);
-
-    this.inputs = map<InsertableContentInput>(obj.inputs, InsertableContentInput) || [];
-    this.status = obj.status;
+    if(!obj) {
+      return;
+    }
+    this.inputs = mapArray(obj.inputs, InsertableContentInput);
+    this.status = map(obj.status);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import RedundantRtmpInput from '../../../models/RedundantRtmpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -20,19 +21,19 @@ export default class RedundantRtmpApi extends BaseAPI {
   /**
    * @summary Create Redundant RTMP Input
    * @param {RedundantRtmpInput} redundantRtmpInput The Redundant RTMP input to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RedundantRtmpApi
    */
   public create(redundantRtmpInput?: RedundantRtmpInput): Promise<RedundantRtmpInput> {
     return this.restClient.post<RedundantRtmpInput>('/encoding/inputs/redundant-rtmp', {}, redundantRtmpInput).then((response) => {
-      return new RedundantRtmpInput(response);
+      return map(response, RedundantRtmpInput);
     });
   }
 
   /**
    * @summary Delete Redundant RTMP Input
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RedundantRtmpApi
    */
   public delete(inputId: string): Promise<BitmovinResponse> {
@@ -40,14 +41,14 @@ export default class RedundantRtmpApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/inputs/redundant-rtmp/{input_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Redundant RTMP Input Details
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RedundantRtmpApi
    */
   public get(inputId: string): Promise<RedundantRtmpInput> {
@@ -55,14 +56,14 @@ export default class RedundantRtmpApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<RedundantRtmpInput>('/encoding/inputs/redundant-rtmp/{input_id}', pathParamMap).then((response) => {
-      return new RedundantRtmpInput(response);
+      return map(response, RedundantRtmpInput);
     });
   }
 
   /**
    * @summary List Redundant RTMP Inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RedundantRtmpApi
    */
   public list(queryParameters?: RedundantRtmpInputListQueryParams | ((q: RedundantRtmpInputListQueryParamsBuilder) => RedundantRtmpInputListQueryParamsBuilder)): Promise<PaginationResponse<RedundantRtmpInput>> {
@@ -73,7 +74,7 @@ export default class RedundantRtmpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RedundantRtmpInput>>('/encoding/inputs/redundant-rtmp', {}, queryParams).then((response) => {
-      return new PaginationResponse<RedundantRtmpInput>(response, RedundantRtmpInput);;
+      return new PaginationResponse<RedundantRtmpInput>(response, RedundantRtmpInput);
     });
   }
 }

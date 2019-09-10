@@ -1,10 +1,11 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import FragmentedMp4MuxingManifestType from './FragmentedMp4MuxingManifestType';
 import Ignoring from './Ignoring';
 import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 import TimeCode from './TimeCode';
 
@@ -18,7 +19,7 @@ export class Mp4Muxing extends Muxing {
    * @type {string}
    * @memberof Mp4Muxing
    */
-  public type: 'MP4' = 'MP4';
+  public type: MuxingType.MP4 = MuxingType.MP4;
 
   /**
    * Name of the new Video
@@ -53,14 +54,16 @@ export class Mp4Muxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
-  constructor(obj: Partial<Mp4Muxing>) {
+  constructor(obj?: Partial<Mp4Muxing>) {
     super(obj);
-
-    this.filename = obj.filename;
-    this.fragmentDuration = obj.fragmentDuration;
-    this.timeCode = map<TimeCode>(obj.timeCode, TimeCode);
-    this.fragmentedMP4MuxingManifestType = obj.fragmentedMP4MuxingManifestType;
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+    if(!obj) {
+      return;
+    }
+    this.filename = map(obj.filename);
+    this.fragmentDuration = map(obj.fragmentDuration);
+    this.timeCode = map(obj.timeCode, TimeCode);
+    this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
+    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

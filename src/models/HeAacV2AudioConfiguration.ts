@@ -1,6 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AacChannelLayout from './AacChannelLayout';
 import AudioConfiguration from './AudioConfiguration';
+import CodecConfigType from './CodecConfigType';
+import HeAacV2Signaling from './HeAacV2Signaling';
 
 /**
  * @export
@@ -12,7 +14,7 @@ export class HeAacV2AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof HeAacV2AudioConfiguration
    */
-  public type: 'HE_AAC_V2' = 'HE_AAC_V2';
+  public type: CodecConfigType.HE_AAC_V2 = CodecConfigType.HE_AAC_V2;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +23,20 @@ export class HeAacV2AudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: AacChannelLayout;
 
-  constructor(obj: Partial<HeAacV2AudioConfiguration>) {
-    super(obj);
+  /**
+   * Sets the Spectral Band Replication (SBR) and Parameteric Stereo (PS) signaling style.
+   * @type {HeAacV2Signaling}
+   * @memberof HeAacV2AudioConfiguration
+   */
+  public signaling?: HeAacV2Signaling;
 
-    this.channelLayout = obj.channelLayout;
+  constructor(obj?: Partial<HeAacV2AudioConfiguration>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
+    this.signaling = map(obj.signaling);
   }
 }
 

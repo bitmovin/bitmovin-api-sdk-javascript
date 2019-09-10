@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MuxingType from './MuxingType';
 
 /**
@@ -47,14 +47,16 @@ export class StatisticsPerMuxing {
    */
   public muxingType?: MuxingType;
 
-  constructor(obj: Partial<StatisticsPerMuxing>) {
-
-    this.streamId = obj.streamId;
-    this.muxingId = obj.muxingId;
-    this.multiplicator = obj.multiplicator;
-    this.encodedBytes = obj.encodedBytes;
-    this.billableMinutes = obj.billableMinutes;
-    this.muxingType = obj.muxingType;
+  constructor(obj?: Partial<StatisticsPerMuxing>) {
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
+    this.muxingId = map(obj.muxingId);
+    this.multiplicator = map(obj.multiplicator);
+    this.encodedBytes = map(obj.encodedBytes);
+    this.billableMinutes = map(obj.billableMinutes);
+    this.muxingType = map(obj.muxingType);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Webhook from '../../../../../models/Webhook';
@@ -24,12 +25,12 @@ export default class ErrorApi extends BaseAPI {
   /**
    * @summary Add Encoding Error Webhook
    * @param {Webhook} webhook The Encoding Error Webhook to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public create(webhook?: Webhook): Promise<Webhook> {
     return this.restClient.post<Webhook>('/notifications/webhooks/encoding/encodings/error', {}, webhook).then((response) => {
-      return new Webhook(response);
+      return map(response, Webhook);
     });
   }
 
@@ -37,7 +38,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary Add Encoding Error Webhook for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
    * @param {Webhook} webhook The Encoding Error Webhook to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public createByEncodingId(encodingId: string, webhook?: Webhook): Promise<Webhook> {
@@ -45,7 +46,7 @@ export default class ErrorApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<Webhook>('/notifications/webhooks/encoding/encodings/{encoding_id}/error', pathParamMap, webhook).then((response) => {
-      return new Webhook(response);
+      return map(response, Webhook);
     });
   }
 
@@ -53,7 +54,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary Delete Encoding Error Webhook for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public deleteByEncodingIdAndWebhookId(encodingId: string, webhookId: string): Promise<BitmovinResponse> {
@@ -62,14 +63,14 @@ export default class ErrorApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.delete<BitmovinResponse>('/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Delete Encoding Error Webhook
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public deleteByWebhookId(webhookId: string): Promise<BitmovinResponse> {
@@ -77,7 +78,7 @@ export default class ErrorApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.delete<BitmovinResponse>('/notifications/webhooks/encoding/encodings/error/{webhook_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -85,7 +86,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary Encoding Error Webhook Details for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public getByEncodingIdAndWebhookId(encodingId: string, webhookId: string): Promise<Webhook> {
@@ -94,14 +95,14 @@ export default class ErrorApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.get<Webhook>('/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}', pathParamMap).then((response) => {
-      return new Webhook(response);
+      return map(response, Webhook);
     });
   }
 
   /**
    * @summary Encoding Error Webhook Details
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public getByWebhookId(webhookId: string): Promise<Webhook> {
@@ -109,14 +110,14 @@ export default class ErrorApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.get<Webhook>('/notifications/webhooks/encoding/encodings/error/{webhook_id}', pathParamMap).then((response) => {
-      return new Webhook(response);
+      return map(response, Webhook);
     });
   }
 
   /**
    * @summary List Encoding Error Webhooks
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public list(queryParameters?: WebhookListQueryParams | ((q: WebhookListQueryParamsBuilder) => WebhookListQueryParamsBuilder)): Promise<PaginationResponse<Webhook>> {
@@ -127,7 +128,7 @@ export default class ErrorApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/error', {}, queryParams).then((response) => {
-      return new PaginationResponse<Webhook>(response, Webhook);;
+      return new PaginationResponse<Webhook>(response, Webhook);
     });
   }
 
@@ -135,7 +136,7 @@ export default class ErrorApi extends BaseAPI {
    * @summary List Encoding Error Webhooks for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorApi
    */
   public listByEncodingId(encodingId: string, queryParameters?: WebhookListByEncodingIdQueryParams | ((q: WebhookListByEncodingIdQueryParamsBuilder) => WebhookListByEncodingIdQueryParamsBuilder)): Promise<PaginationResponse<Webhook>> {
@@ -149,7 +150,7 @@ export default class ErrorApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/encodings/{encoding_id}/error', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Webhook>(response, Webhook);;
+      return new PaginationResponse<Webhook>(response, Webhook);
     });
   }
 }

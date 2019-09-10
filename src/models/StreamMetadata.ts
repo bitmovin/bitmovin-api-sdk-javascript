@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class StreamMetadata {
    */
   public language?: string;
 
-  constructor(obj: Partial<StreamMetadata>) {
-
-    this.language = obj.language;
+  constructor(obj?: Partial<StreamMetadata>) {
+    if(!obj) {
+      return;
+    }
+    this.language = map(obj.language);
   }
 }
 

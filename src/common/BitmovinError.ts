@@ -1,5 +1,5 @@
 import {Link, Message} from '../models';
-import {map} from './Mapper';
+import {mapArray} from './Mapper';
 
 export class BitmovinError extends Error {
   public details?: Message[];
@@ -19,8 +19,8 @@ export class BitmovinError extends Error {
     this.developerMessage = developerMessage;
     this.requestId = requestId;
     this.errorCode = errorCode;
-    this.details = map<Message>(details, Message);
-    this.links = map<Link>(links, Link);
+    this.details = mapArray(details, Message);
+    this.links = mapArray(links, Link);
 
     // Maintain stack trace if possible
     if (typeof (Error as any).captureStackTrace === 'function') {

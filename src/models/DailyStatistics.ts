@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
 import BillableEncodingMinutes from './BillableEncodingMinutes';
 
@@ -63,16 +63,18 @@ export class DailyStatistics {
    */
   public billableFeatureMinutes?: BillableEncodingFeatureMinutes[];
 
-  constructor(obj: Partial<DailyStatistics>) {
-
-    this.date = map<Date>(obj.date, Date);
-    this.bytesEncoded = obj.bytesEncoded;
-    this.timeEncoded = obj.timeEncoded;
-    this.billableMinutes = obj.billableMinutes;
-    this.label = obj.label;
-    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes) || [];
-    this.billableTransmuxingMinutes = obj.billableTransmuxingMinutes;
-    this.billableFeatureMinutes = map<BillableEncodingFeatureMinutes>(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes) || [];
+  constructor(obj?: Partial<DailyStatistics>) {
+    if(!obj) {
+      return;
+    }
+    this.date = map(obj.date, Date);
+    this.bytesEncoded = map(obj.bytesEncoded);
+    this.timeEncoded = map(obj.timeEncoded);
+    this.billableMinutes = map(obj.billableMinutes);
+    this.label = map(obj.label);
+    this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
+    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
+    this.billableFeatureMinutes = mapArray(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes);
   }
 }
 

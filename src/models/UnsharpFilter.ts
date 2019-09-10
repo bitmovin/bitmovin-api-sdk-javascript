@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class UnsharpFilter extends Filter {
    * @type {string}
    * @memberof UnsharpFilter
    */
-  public type: 'UNSHARP' = 'UNSHARP';
+  public type: FilterType.UNSHARP = FilterType.UNSHARP;
 
   /**
    * Must be an odd integer between 3 and 23
@@ -55,15 +56,17 @@ export class UnsharpFilter extends Filter {
    */
   public chromaEffectStrength?: number;
 
-  constructor(obj: Partial<UnsharpFilter>) {
+  constructor(obj?: Partial<UnsharpFilter>) {
     super(obj);
-
-    this.lumaMatrixHorizontalSize = obj.lumaMatrixHorizontalSize;
-    this.lumaMatrixVerticalSize = obj.lumaMatrixVerticalSize;
-    this.lumaEffectStrength = obj.lumaEffectStrength;
-    this.chromaMatrixHorizontalSize = obj.chromaMatrixHorizontalSize;
-    this.chromaMatrixVerticalSize = obj.chromaMatrixVerticalSize;
-    this.chromaEffectStrength = obj.chromaEffectStrength;
+    if(!obj) {
+      return;
+    }
+    this.lumaMatrixHorizontalSize = map(obj.lumaMatrixHorizontalSize);
+    this.lumaMatrixVerticalSize = map(obj.lumaMatrixVerticalSize);
+    this.lumaEffectStrength = map(obj.lumaEffectStrength);
+    this.chromaMatrixHorizontalSize = map(obj.chromaMatrixHorizontalSize);
+    this.chromaMatrixVerticalSize = map(obj.chromaMatrixVerticalSize);
+    this.chromaEffectStrength = map(obj.chromaEffectStrength);
   }
 }
 

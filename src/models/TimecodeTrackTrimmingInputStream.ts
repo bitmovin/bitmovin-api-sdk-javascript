@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class TimecodeTrackTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof TimecodeTrackTrimmingInputStream
    */
-  public type: 'TRIMMING_TIME_CODE_TRACK' = 'TRIMMING_TIME_CODE_TRACK';
+  public type: InputStreamType.TRIMMING_TIME_CODE_TRACK = InputStreamType.TRIMMING_TIME_CODE_TRACK;
 
   /**
    * The id of the ingest input stream that should be trimmed
@@ -34,12 +35,14 @@ export class TimecodeTrackTrimmingInputStream extends InputStream {
    */
   public endTimeCode?: string;
 
-  constructor(obj: Partial<TimecodeTrackTrimmingInputStream>) {
+  constructor(obj?: Partial<TimecodeTrackTrimmingInputStream>) {
     super(obj);
-
-    this.inputStreamId = obj.inputStreamId;
-    this.startTimeCode = obj.startTimeCode;
-    this.endTimeCode = obj.endTimeCode;
+    if(!obj) {
+      return;
+    }
+    this.inputStreamId = map(obj.inputStreamId);
+    this.startTimeCode = map(obj.startTimeCode);
+    this.endTimeCode = map(obj.endTimeCode);
   }
 }
 

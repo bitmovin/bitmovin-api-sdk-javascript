@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import DailyApi from './daily/DailyApi';
 import EncodingsApi from './encodings/EncodingsApi';
 import LabelsApi from './labels/LabelsApi';
@@ -27,12 +28,12 @@ export default class StatisticsApi extends BaseAPI {
 
   /**
    * @summary Show Overall Statistics
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StatisticsApi
    */
   public get(): Promise<Statistics> {
     return this.restClient.get<Statistics>('/encoding/statistics', {}).then((response) => {
-      return new Statistics(response);
+      return map(response, Statistics);
     });
   }
 
@@ -41,7 +42,7 @@ export default class StatisticsApi extends BaseAPI {
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StatisticsApi
    */
   public list(from: Date, to: Date, queryParameters?: StatisticsListQueryParams | ((q: StatisticsListQueryParamsBuilder) => StatisticsListQueryParamsBuilder)): Promise<PaginationResponse<Statistics>> {
@@ -56,7 +57,7 @@ export default class StatisticsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Statistics>>('/encoding/statistics/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Statistics>(response, Statistics);;
+      return new PaginationResponse<Statistics>(response, Statistics);
     });
   }
 }

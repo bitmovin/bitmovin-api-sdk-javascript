@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Thumbnail from '../../../../models/Thumbnail';
@@ -25,7 +26,7 @@ export default class ThumbnailsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {Thumbnail} thumbnail The Thumbnail to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThumbnailsApi
    */
   public create(encodingId: string, streamId: string, thumbnail?: Thumbnail): Promise<Thumbnail> {
@@ -34,7 +35,7 @@ export default class ThumbnailsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<Thumbnail>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails', pathParamMap, thumbnail).then((response) => {
-      return new Thumbnail(response);
+      return map(response, Thumbnail);
     });
   }
 
@@ -43,7 +44,7 @@ export default class ThumbnailsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} thumbnailId Id of the thumbnail.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThumbnailsApi
    */
   public delete(encodingId: string, streamId: string, thumbnailId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class ThumbnailsApi extends BaseAPI {
       thumbnail_id: thumbnailId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class ThumbnailsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} thumbnailId Id of the thumbnail.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThumbnailsApi
    */
   public get(encodingId: string, streamId: string, thumbnailId: string): Promise<Thumbnail> {
@@ -72,7 +73,7 @@ export default class ThumbnailsApi extends BaseAPI {
       thumbnail_id: thumbnailId
     };
     return this.restClient.get<Thumbnail>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}', pathParamMap).then((response) => {
-      return new Thumbnail(response);
+      return map(response, Thumbnail);
     });
   }
 
@@ -81,7 +82,7 @@ export default class ThumbnailsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ThumbnailsApi
    */
   public list(encodingId: string, streamId: string, queryParameters?: ThumbnailListQueryParams | ((q: ThumbnailListQueryParamsBuilder) => ThumbnailListQueryParamsBuilder)): Promise<PaginationResponse<Thumbnail>> {
@@ -96,7 +97,7 @@ export default class ThumbnailsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Thumbnail>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Thumbnail>(response, Thumbnail);;
+      return new PaginationResponse<Thumbnail>(response, Thumbnail);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class ReuploadSettings {
    */
   public muxingInitFileInterval?: number;
 
-  constructor(obj: Partial<ReuploadSettings>) {
-
-    this.dashManifestInterval = obj.dashManifestInterval;
-    this.hlsManifestInterval = obj.hlsManifestInterval;
-    this.muxingInitFileInterval = obj.muxingInitFileInterval;
+  constructor(obj?: Partial<ReuploadSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.dashManifestInterval = map(obj.dashManifestInterval);
+    this.hlsManifestInterval = map(obj.hlsManifestInterval);
+    this.muxingInitFileInterval = map(obj.muxingInitFileInterval);
   }
 }
 

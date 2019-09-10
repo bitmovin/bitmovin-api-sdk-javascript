@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import TypeApi from './type/TypeApi';
 import S3Api from './s3/S3Api';
 import S3RoleBasedApi from './s3RoleBased/S3RoleBasedApi';
@@ -55,7 +56,7 @@ export default class OutputsApi extends BaseAPI {
   /**
    * @summary List all Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof OutputsApi
    */
   public list(queryParameters?: OutputListQueryParams | ((q: OutputListQueryParamsBuilder) => OutputListQueryParamsBuilder)): Promise<PaginationResponse<Output>> {
@@ -66,7 +67,7 @@ export default class OutputsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Output>>('/encoding/outputs', {}, queryParams).then((response) => {
-      return new PaginationResponse<Output>(response, Output);;
+      return new PaginationResponse<Output>(response, Output);
     });
   }
 }

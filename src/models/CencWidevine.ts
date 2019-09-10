@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class CencWidevine {
    */
   public pssh?: string;
 
-  constructor(obj: Partial<CencWidevine>) {
-
-    this.pssh = obj.pssh;
+  constructor(obj?: Partial<CencWidevine>) {
+    if(!obj) {
+      return;
+    }
+    this.pssh = map(obj.pssh);
   }
 }
 

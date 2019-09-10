@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp3AudioConfiguration from '../../../../models/Mp3AudioConfiguration';
@@ -23,19 +24,19 @@ export default class Mp3Api extends BaseAPI {
   /**
    * @summary Create MP3 Codec Configuration
    * @param {Mp3AudioConfiguration} mp3AudioConfiguration The MP3 Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp3Api
    */
   public create(mp3AudioConfiguration?: Mp3AudioConfiguration): Promise<Mp3AudioConfiguration> {
     return this.restClient.post<Mp3AudioConfiguration>('/encoding/configurations/audio/mp3', {}, mp3AudioConfiguration).then((response) => {
-      return new Mp3AudioConfiguration(response);
+      return map(response, Mp3AudioConfiguration);
     });
   }
 
   /**
    * @summary Delete MP3 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp3Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class Mp3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/mp3/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary MP3 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp3Api
    */
   public get(configurationId: string): Promise<Mp3AudioConfiguration> {
@@ -58,14 +59,14 @@ export default class Mp3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<Mp3AudioConfiguration>('/encoding/configurations/audio/mp3/{configuration_id}', pathParamMap).then((response) => {
-      return new Mp3AudioConfiguration(response);
+      return map(response, Mp3AudioConfiguration);
     });
   }
 
   /**
    * @summary List MP3 Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp3Api
    */
   public list(queryParameters?: Mp3AudioConfigurationListQueryParams | ((q: Mp3AudioConfigurationListQueryParamsBuilder) => Mp3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Mp3AudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class Mp3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Mp3AudioConfiguration>>('/encoding/configurations/audio/mp3', {}, queryParams).then((response) => {
-      return new PaginationResponse<Mp3AudioConfiguration>(response, Mp3AudioConfiguration);;
+      return new PaginationResponse<Mp3AudioConfiguration>(response, Mp3AudioConfiguration);
     });
   }
 }

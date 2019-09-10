@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
 import ManifestType from './ManifestType';
@@ -22,11 +22,13 @@ export class SmoothStreamingManifest extends Manifest {
    */
   public clientManifestName?: string;
 
-  constructor(obj: Partial<SmoothStreamingManifest>) {
+  constructor(obj?: Partial<SmoothStreamingManifest>) {
     super(obj);
-
-    this.serverManifestName = obj.serverManifestName;
-    this.clientManifestName = obj.clientManifestName;
+    if(!obj) {
+      return;
+    }
+    this.serverManifestName = map(obj.serverManifestName);
+    this.clientManifestName = map(obj.clientManifestName);
   }
 }
 

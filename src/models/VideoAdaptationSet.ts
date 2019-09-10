@@ -8,9 +8,11 @@ import CustomAttribute from './CustomAttribute';
  * @class VideoAdaptationSet
  */
 export class VideoAdaptationSet extends AdaptationSet {
-  constructor(obj: Partial<VideoAdaptationSet>) {
+  constructor(obj?: Partial<VideoAdaptationSet>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

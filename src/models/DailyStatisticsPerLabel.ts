@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DailyStatistics from './DailyStatistics';
 
 /**
@@ -20,10 +20,12 @@ export class DailyStatisticsPerLabel {
    */
   public labels?: DailyStatistics[];
 
-  constructor(obj: Partial<DailyStatisticsPerLabel>) {
-
-    this.date = map<Date>(obj.date, Date);
-    this.labels = map<DailyStatistics>(obj.labels, DailyStatistics) || [];
+  constructor(obj?: Partial<DailyStatisticsPerLabel>) {
+    if(!obj) {
+      return;
+    }
+    this.date = map(obj.date, Date);
+    this.labels = mapArray(obj.labels, DailyStatistics);
   }
 }
 

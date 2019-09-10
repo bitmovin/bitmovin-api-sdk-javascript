@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * The segmenting configuration for this WebVTT sidecar file. If this is set, the given vtt file will be chunked.
@@ -13,9 +13,11 @@ export class WebVttSidecarFileSegmentation {
    */
   public segmentLength?: number;
 
-  constructor(obj: Partial<WebVttSidecarFileSegmentation>) {
-
-    this.segmentLength = obj.segmentLength;
+  constructor(obj?: Partial<WebVttSidecarFileSegmentation>) {
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
   }
 }
 

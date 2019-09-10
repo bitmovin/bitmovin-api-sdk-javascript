@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -33,12 +33,14 @@ export class BillableEncodingFeatureMinutes {
    */
   public billableMinutes?: number;
 
-  constructor(obj: Partial<BillableEncodingFeatureMinutes>) {
-
-    this.featureType = obj.featureType;
-    this.encodedMinutes = obj.encodedMinutes;
-    this.featureMultiplier = obj.featureMultiplier;
-    this.billableMinutes = obj.billableMinutes;
+  constructor(obj?: Partial<BillableEncodingFeatureMinutes>) {
+    if(!obj) {
+      return;
+    }
+    this.featureType = map(obj.featureType);
+    this.encodedMinutes = map(obj.encodedMinutes);
+    this.featureMultiplier = map(obj.featureMultiplier);
+    this.billableMinutes = map(obj.billableMinutes);
   }
 }
 

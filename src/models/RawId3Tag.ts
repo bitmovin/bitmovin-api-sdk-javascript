@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Id3Tag from './Id3Tag';
 import Id3TagPositionMode from './Id3TagPositionMode';
+import Id3TagType from './Id3TagType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class RawId3Tag extends Id3Tag {
    * @type {string}
    * @memberof RawId3Tag
    */
-  public type: 'RAW' = 'RAW';
+  public type: Id3TagType.RAW = Id3TagType.RAW;
 
   /**
    * Base64 Encoded Data (required)
@@ -21,10 +22,12 @@ export class RawId3Tag extends Id3Tag {
    */
   public bytes?: string;
 
-  constructor(obj: Partial<RawId3Tag>) {
+  constructor(obj?: Partial<RawId3Tag>) {
     super(obj);
-
-    this.bytes = obj.bytes;
+    if(!obj) {
+      return;
+    }
+    this.bytes = map(obj.bytes);
   }
 }
 

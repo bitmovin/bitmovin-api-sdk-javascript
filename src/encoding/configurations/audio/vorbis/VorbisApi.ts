@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import VorbisAudioConfiguration from '../../../../models/VorbisAudioConfiguration';
@@ -23,19 +24,19 @@ export default class VorbisApi extends BaseAPI {
   /**
    * @summary Create Vorbis Codec Configuration
    * @param {VorbisAudioConfiguration} vorbisAudioConfiguration The Vorbis Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VorbisApi
    */
   public create(vorbisAudioConfiguration?: VorbisAudioConfiguration): Promise<VorbisAudioConfiguration> {
     return this.restClient.post<VorbisAudioConfiguration>('/encoding/configurations/audio/vorbis', {}, vorbisAudioConfiguration).then((response) => {
-      return new VorbisAudioConfiguration(response);
+      return map(response, VorbisAudioConfiguration);
     });
   }
 
   /**
    * @summary Delete Vorbis Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VorbisApi
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class VorbisApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/vorbis/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Vorbis Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VorbisApi
    */
   public get(configurationId: string): Promise<VorbisAudioConfiguration> {
@@ -58,14 +59,14 @@ export default class VorbisApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<VorbisAudioConfiguration>('/encoding/configurations/audio/vorbis/{configuration_id}', pathParamMap).then((response) => {
-      return new VorbisAudioConfiguration(response);
+      return map(response, VorbisAudioConfiguration);
     });
   }
 
   /**
    * @summary List Vorbis Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VorbisApi
    */
   public list(queryParameters?: VorbisAudioConfigurationListQueryParams | ((q: VorbisAudioConfigurationListQueryParamsBuilder) => VorbisAudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<VorbisAudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class VorbisApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<VorbisAudioConfiguration>>('/encoding/configurations/audio/vorbis', {}, queryParams).then((response) => {
-      return new PaginationResponse<VorbisAudioConfiguration>(response, VorbisAudioConfiguration);;
+      return new PaginationResponse<VorbisAudioConfiguration>(response, VorbisAudioConfiguration);
     });
   }
 }

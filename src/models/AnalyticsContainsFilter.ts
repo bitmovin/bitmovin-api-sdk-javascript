@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AnalyticsContainsFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsContainsFilter
    */
-  public operator: 'CONTAINS' = 'CONTAINS';
+  public operator: AnalyticsQueryOperator.CONTAINS = AnalyticsQueryOperator.CONTAINS;
 
   /**
    * @type {any}
@@ -20,10 +21,12 @@ export class AnalyticsContainsFilter extends AnalyticsAbstractFilter {
    */
   public value?: any;
 
-  constructor(obj: Partial<AnalyticsContainsFilter>) {
+  constructor(obj?: Partial<AnalyticsContainsFilter>) {
     super(obj);
-
-    this.value = obj.value;
+    if(!obj) {
+      return;
+    }
+    this.value = map(obj.value);
   }
 }
 

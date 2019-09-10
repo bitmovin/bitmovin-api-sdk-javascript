@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import TypeApi from './type/TypeApi';
 import AudioMixApi from './audioMix/AudioMixApi';
 import IngestApi from './ingest/IngestApi';
@@ -44,7 +45,7 @@ export default class InputStreamsApi extends BaseAPI {
    * @summary Input Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InputStreamsApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<InputStream> {
@@ -53,7 +54,7 @@ export default class InputStreamsApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<InputStream>('/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}', pathParamMap).then((response) => {
-      return new InputStream(response);
+      return map(response, InputStream);
     });
   }
 
@@ -61,7 +62,7 @@ export default class InputStreamsApi extends BaseAPI {
    * @summary List All Input Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InputStreamsApi
    */
   public list(encodingId: string, queryParameters?: InputStreamListQueryParams | ((q: InputStreamListQueryParamsBuilder) => InputStreamListQueryParamsBuilder)): Promise<PaginationResponse<InputStream>> {
@@ -75,7 +76,7 @@ export default class InputStreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InputStream>>('/encoding/encodings/{encoding_id}/input-streams', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<InputStream>(response, InputStream);;
+      return new PaginationResponse<InputStream>(response, InputStream);
     });
   }
 }

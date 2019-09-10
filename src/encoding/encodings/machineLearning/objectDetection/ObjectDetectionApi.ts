@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import ResultsApi from './results/ResultsApi';
 import BitmovinResource from '../../../../models/BitmovinResource';
@@ -28,7 +29,7 @@ export default class ObjectDetectionApi extends BaseAPI {
    * @summary Add object detection configuration to an encoding
    * @param {string} encodingId Id of the encoding
    * @param {ObjectDetectionConfiguration} objectDetectionConfiguration The object detection configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ObjectDetectionApi
    */
   public create(encodingId: string, objectDetectionConfiguration?: ObjectDetectionConfiguration): Promise<ObjectDetectionConfiguration> {
@@ -36,7 +37,7 @@ export default class ObjectDetectionApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<ObjectDetectionConfiguration>('/encoding/encodings/{encoding_id}/machine-learning/object-detection', pathParamMap, objectDetectionConfiguration).then((response) => {
-      return new ObjectDetectionConfiguration(response);
+      return map(response, ObjectDetectionConfiguration);
     });
   }
 
@@ -44,7 +45,7 @@ export default class ObjectDetectionApi extends BaseAPI {
    * @summary Delete object detection configuration
    * @param {string} encodingId Id of the encoding
    * @param {string} objectDetectionId Id of the object detection configuration to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ObjectDetectionApi
    */
   public delete(encodingId: string, objectDetectionId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class ObjectDetectionApi extends BaseAPI {
       object_detection_id: objectDetectionId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -61,7 +62,7 @@ export default class ObjectDetectionApi extends BaseAPI {
    * @summary Get object detection configuration details
    * @param {string} encodingId Id of the encoding
    * @param {string} objectDetectionId Id of the object detection configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ObjectDetectionApi
    */
   public get(encodingId: string, objectDetectionId: string): Promise<ObjectDetectionConfiguration> {
@@ -70,7 +71,7 @@ export default class ObjectDetectionApi extends BaseAPI {
       object_detection_id: objectDetectionId
     };
     return this.restClient.get<ObjectDetectionConfiguration>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}', pathParamMap).then((response) => {
-      return new ObjectDetectionConfiguration(response);
+      return map(response, ObjectDetectionConfiguration);
     });
   }
 
@@ -78,7 +79,7 @@ export default class ObjectDetectionApi extends BaseAPI {
    * @summary List object detection configurations of an encoding
    * @param {string} encodingId Id of the encoding
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ObjectDetectionApi
    */
   public list(encodingId: string, queryParameters?: ObjectDetectionConfigurationListQueryParams | ((q: ObjectDetectionConfigurationListQueryParamsBuilder) => ObjectDetectionConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<ObjectDetectionConfiguration>> {
@@ -92,7 +93,7 @@ export default class ObjectDetectionApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ObjectDetectionConfiguration>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ObjectDetectionConfiguration>(response, ObjectDetectionConfiguration);;
+      return new PaginationResponse<ObjectDetectionConfiguration>(response, ObjectDetectionConfiguration);
     });
   }
 }

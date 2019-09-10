@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Accessibility from './Accessibility';
 import AdaptationSetRole from './AdaptationSetRole';
 import BitmovinResponse from './BitmovinResponse';
@@ -30,12 +30,14 @@ export class AdaptationSet extends BitmovinResponse {
    */
   public accessibilities?: Accessibility[];
 
-  constructor(obj: Partial<AdaptationSet>) {
+  constructor(obj?: Partial<AdaptationSet>) {
     super(obj);
-
-    this.customAttributes = map<CustomAttribute>(obj.customAttributes, CustomAttribute) || [];
-    this.roles = obj.roles || [];
-    this.accessibilities = map<Accessibility>(obj.accessibilities, Accessibility) || [];
+    if(!obj) {
+      return;
+    }
+    this.customAttributes = mapArray(obj.customAttributes, CustomAttribute);
+    this.roles = mapArray(obj.roles);
+    this.accessibilities = mapArray(obj.accessibilities, Accessibility);
   }
 }
 

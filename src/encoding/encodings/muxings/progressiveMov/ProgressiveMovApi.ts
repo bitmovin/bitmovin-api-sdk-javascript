@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class ProgressiveMovApi extends BaseAPI {
    * @summary Add Progressive MOV Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {ProgressiveMovMuxing} progressiveMovMuxing The Progressive MOV Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveMovApi
    */
   public create(encodingId: string, progressiveMovMuxing?: ProgressiveMovMuxing): Promise<ProgressiveMovMuxing> {
@@ -35,7 +36,7 @@ export default class ProgressiveMovApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<ProgressiveMovMuxing>('/encoding/encodings/{encoding_id}/muxings/progressive-mov', pathParamMap, progressiveMovMuxing).then((response) => {
-      return new ProgressiveMovMuxing(response);
+      return map(response, ProgressiveMovMuxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class ProgressiveMovApi extends BaseAPI {
    * @summary Delete Progressive MOV Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveMovApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class ProgressiveMovApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class ProgressiveMovApi extends BaseAPI {
    * @summary Progressive MOV Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveMovApi
    */
   public get(encodingId: string, muxingId: string): Promise<ProgressiveMovMuxing> {
@@ -69,7 +70,7 @@ export default class ProgressiveMovApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<ProgressiveMovMuxing>('/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}', pathParamMap).then((response) => {
-      return new ProgressiveMovMuxing(response);
+      return map(response, ProgressiveMovMuxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class ProgressiveMovApi extends BaseAPI {
    * @summary List Progressive MOV Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ProgressiveMovApi
    */
   public list(encodingId: string, queryParameters?: ProgressiveMovMuxingListQueryParams | ((q: ProgressiveMovMuxingListQueryParamsBuilder) => ProgressiveMovMuxingListQueryParamsBuilder)): Promise<PaginationResponse<ProgressiveMovMuxing>> {
@@ -91,7 +92,7 @@ export default class ProgressiveMovApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ProgressiveMovMuxing>>('/encoding/encodings/{encoding_id}/muxings/progressive-mov', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ProgressiveMovMuxing>(response, ProgressiveMovMuxing);;
+      return new PaginationResponse<ProgressiveMovMuxing>(response, ProgressiveMovMuxing);
     });
   }
 }

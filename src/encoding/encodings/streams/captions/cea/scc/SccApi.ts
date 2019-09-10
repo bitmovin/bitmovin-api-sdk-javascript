@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import SccCaption from '../../../../../../models/SccCaption';
@@ -25,7 +26,7 @@ export default class SccApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {SccCaption} sccCaption The SCC captions to be embedded as 607/708 into Stream
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public create(encodingId: string, streamId: string, sccCaption?: SccCaption): Promise<SccCaption> {
@@ -34,7 +35,7 @@ export default class SccApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<SccCaption>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc', pathParamMap, sccCaption).then((response) => {
-      return new SccCaption(response);
+      return map(response, SccCaption);
     });
   }
 
@@ -43,7 +44,7 @@ export default class SccApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public delete(encodingId: string, streamId: string, captionsId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class SccApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class SccApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public get(encodingId: string, streamId: string, captionsId: string): Promise<SccCaption> {
@@ -72,7 +73,7 @@ export default class SccApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.get<SccCaption>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}', pathParamMap).then((response) => {
-      return new SccCaption(response);
+      return map(response, SccCaption);
     });
   }
 
@@ -81,7 +82,7 @@ export default class SccApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public list(encodingId: string, streamId: string, queryParameters?: SccCaptionListQueryParams | ((q: SccCaptionListQueryParamsBuilder) => SccCaptionListQueryParamsBuilder)): Promise<PaginationResponse<SccCaption>> {
@@ -96,7 +97,7 @@ export default class SccApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SccCaption>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<SccCaption>(response, SccCaption);;
+      return new PaginationResponse<SccCaption>(response, SccCaption);
     });
   }
 }

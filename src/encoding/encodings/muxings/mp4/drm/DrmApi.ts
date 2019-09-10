@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import PlayreadyApi from './playready/PlayreadyApi';
 import ClearkeyApi from './clearkey/ClearkeyApi';
 import WidevineApi from './widevine/WidevineApi';
@@ -34,7 +35,7 @@ export default class DrmApi extends BaseAPI {
    * @summary List all DRM configurations of MP4 Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DrmApi
    */
   public list(encodingId: string, muxingId: string): Promise<PaginationResponse<Drm>> {
@@ -43,7 +44,7 @@ export default class DrmApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<PaginationResponse<Drm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm', pathParamMap).then((response) => {
-      return new PaginationResponse<Drm>(response, Drm);;
+      return new PaginationResponse<Drm>(response, Drm);
     });
   }
 }

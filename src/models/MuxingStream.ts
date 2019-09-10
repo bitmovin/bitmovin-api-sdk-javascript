@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -11,9 +11,11 @@ export class MuxingStream {
    */
   public streamId?: string;
 
-  constructor(obj: Partial<MuxingStream>) {
-
-    this.streamId = obj.streamId;
+  constructor(obj?: Partial<MuxingStream>) {
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
   }
 }
 

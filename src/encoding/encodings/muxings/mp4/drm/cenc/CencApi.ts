@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import CencDrm from '../../../../../../models/CencDrm';
@@ -25,7 +26,7 @@ export default class CencApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4 fragment.
    * @param {CencDrm} cencDrm The CENC DRM to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CencApi
    */
   public create(encodingId: string, muxingId: string, cencDrm?: CencDrm): Promise<CencDrm> {
@@ -34,7 +35,7 @@ export default class CencApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.post<CencDrm>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc', pathParamMap, cencDrm).then((response) => {
-      return new CencDrm(response);
+      return map(response, CencDrm);
     });
   }
 
@@ -43,7 +44,7 @@ export default class CencApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @param {string} drmId Id of the cenc drm.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CencApi
    */
   public delete(encodingId: string, muxingId: string, drmId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class CencApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc/{drm_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class CencApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {string} drmId Id of the cenc drm.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CencApi
    */
   public get(encodingId: string, muxingId: string, drmId: string): Promise<CencDrm> {
@@ -72,7 +73,7 @@ export default class CencApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.get<CencDrm>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc/{drm_id}', pathParamMap).then((response) => {
-      return new CencDrm(response);
+      return map(response, CencDrm);
     });
   }
 
@@ -81,7 +82,7 @@ export default class CencApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CencApi
    */
   public list(encodingId: string, muxingId: string, queryParameters?: CencDrmListQueryParams | ((q: CencDrmListQueryParamsBuilder) => CencDrmListQueryParamsBuilder)): Promise<PaginationResponse<CencDrm>> {
@@ -96,7 +97,7 @@ export default class CencApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CencDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/cenc', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<CencDrm>(response, CencDrm);;
+      return new PaginationResponse<CencDrm>(response, CencDrm);
     });
   }
 }

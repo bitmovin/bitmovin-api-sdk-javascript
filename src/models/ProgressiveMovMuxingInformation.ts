@@ -7,9 +7,11 @@ import ProgressiveMuxingInformation from './ProgressiveMuxingInformation';
  * @class ProgressiveMovMuxingInformation
  */
 export class ProgressiveMovMuxingInformation extends ProgressiveMuxingInformation {
-  constructor(obj: Partial<ProgressiveMovMuxingInformation>) {
+  constructor(obj?: Partial<ProgressiveMovMuxingInformation>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

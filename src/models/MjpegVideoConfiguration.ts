@@ -1,4 +1,5 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
+import CodecConfigType from './CodecConfigType';
 import CodecConfiguration from './CodecConfiguration';
 import PixelFormat from './PixelFormat';
 
@@ -12,7 +13,7 @@ export class MjpegVideoConfiguration extends CodecConfiguration {
    * @type {string}
    * @memberof MjpegVideoConfiguration
    */
-  public type: 'MJPEG' = 'MJPEG';
+  public type: CodecConfigType.MJPEG = CodecConfigType.MJPEG;
 
   /**
    * Width of the encoded video
@@ -48,14 +49,16 @@ export class MjpegVideoConfiguration extends CodecConfiguration {
    */
   public pixelFormat?: PixelFormat;
 
-  constructor(obj: Partial<MjpegVideoConfiguration>) {
+  constructor(obj?: Partial<MjpegVideoConfiguration>) {
     super(obj);
-
-    this.width = obj.width;
-    this.height = obj.height;
-    this.rate = obj.rate;
-    this.qScale = obj.qScale;
-    this.pixelFormat = obj.pixelFormat;
+    if(!obj) {
+      return;
+    }
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.rate = map(obj.rate);
+    this.qScale = map(obj.qScale);
+    this.pixelFormat = map(obj.pixelFormat);
   }
 }
 

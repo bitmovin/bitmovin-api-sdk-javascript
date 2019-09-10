@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import IngestInputStream from '../../../../models/IngestInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class IngestApi extends BaseAPI {
    * @summary Add Ingest Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {IngestInputStream} ingestInputStream The Ingest Input Stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IngestApi
    */
   public create(encodingId: string, ingestInputStream?: IngestInputStream): Promise<IngestInputStream> {
@@ -29,7 +30,7 @@ export default class IngestApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<IngestInputStream>('/encoding/encodings/{encoding_id}/input-streams/ingest', pathParamMap, ingestInputStream).then((response) => {
-      return new IngestInputStream(response);
+      return map(response, IngestInputStream);
     });
   }
 
@@ -37,7 +38,7 @@ export default class IngestApi extends BaseAPI {
    * @summary Delete Ingest Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the ingest input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IngestApi
    */
   public delete(encodingId: string, inputStreamId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class IngestApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class IngestApi extends BaseAPI {
    * @summary Ingest Input Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the ingest input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IngestApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<IngestInputStream> {
@@ -63,7 +64,7 @@ export default class IngestApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<IngestInputStream>('/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}', pathParamMap).then((response) => {
-      return new IngestInputStream(response);
+      return map(response, IngestInputStream);
     });
   }
 
@@ -71,7 +72,7 @@ export default class IngestApi extends BaseAPI {
    * @summary List Ingest Input Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IngestApi
    */
   public list(encodingId: string, queryParameters?: IngestInputStreamListQueryParams | ((q: IngestInputStreamListQueryParamsBuilder) => IngestInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<IngestInputStream>> {
@@ -85,7 +86,7 @@ export default class IngestApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<IngestInputStream>>('/encoding/encodings/{encoding_id}/input-streams/ingest', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<IngestInputStream>(response, IngestInputStream);;
+      return new PaginationResponse<IngestInputStream>(response, IngestInputStream);
     });
   }
 }

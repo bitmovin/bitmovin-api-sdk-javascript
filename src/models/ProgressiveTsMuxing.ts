@@ -1,9 +1,10 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -16,7 +17,7 @@ export class ProgressiveTsMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveTsMuxing
    */
-  public type: 'PROGRESSIVE_TS' = 'PROGRESSIVE_TS';
+  public type: MuxingType.PROGRESSIVE_TS = MuxingType.PROGRESSIVE_TS;
 
   /**
    * Length of the segments in seconds
@@ -46,13 +47,15 @@ export class ProgressiveTsMuxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
-  constructor(obj: Partial<ProgressiveTsMuxing>) {
+  constructor(obj?: Partial<ProgressiveTsMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.filename = obj.filename;
-    this.startOffset = obj.startOffset;
-    this.internalChunkLength = map<InternalChunkLength>(obj.internalChunkLength, InternalChunkLength);
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.filename = map(obj.filename);
+    this.startOffset = map(obj.startOffset);
+    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

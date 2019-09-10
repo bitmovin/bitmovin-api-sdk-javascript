@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 import PlayReadyEncryptionMethod from './PlayReadyEncryptionMethod';
 
@@ -13,7 +14,7 @@ export class PlayReadyDrm extends Drm {
    * @type {string}
    * @memberof PlayReadyDrm
    */
-  public type: 'PLAYREADY' = 'PLAYREADY';
+  public type: DrmType.PLAYREADY = DrmType.PLAYREADY;
 
   /**
    * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
@@ -56,15 +57,17 @@ export class PlayReadyDrm extends Drm {
    */
   public kid?: string;
 
-  constructor(obj: Partial<PlayReadyDrm>) {
+  constructor(obj?: Partial<PlayReadyDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.keySeed = obj.keySeed;
-    this.laUrl = obj.laUrl;
-    this.pssh = obj.pssh;
-    this.method = obj.method;
-    this.kid = obj.kid;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.keySeed = map(obj.keySeed);
+    this.laUrl = map(obj.laUrl);
+    this.pssh = map(obj.pssh);
+    this.method = map(obj.method);
+    this.kid = map(obj.kid);
   }
 }
 

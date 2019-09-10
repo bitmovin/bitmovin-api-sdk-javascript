@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class PlayerLicenseAnalytics {
    */
   public analyticsKey?: string;
 
-  constructor(obj: Partial<PlayerLicenseAnalytics>) {
-
-    this.analyticsKey = obj.analyticsKey;
+  constructor(obj?: Partial<PlayerLicenseAnalytics>) {
+    if(!obj) {
+      return;
+    }
+    this.analyticsKey = map(obj.analyticsKey);
   }
 }
 

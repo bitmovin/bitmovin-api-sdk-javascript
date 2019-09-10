@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import LiveInputStreamChangedApi from './liveInputStreamChanged/LiveInputStreamChangedApi';
 import ErrorApi from './error/ErrorApi';
 import EmailNotificationWithStreamConditions from '../../../../models/EmailNotificationWithStreamConditions';
@@ -26,7 +27,7 @@ export default class EncodingsApi extends BaseAPI {
    * @summary List Email Notifications (Specific Encoding)
    * @param {string} encodingId Id of the encoding resource
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public list(encodingId: string, queryParameters?: EmailNotificationWithStreamConditionsListQueryParams | ((q: EmailNotificationWithStreamConditionsListQueryParamsBuilder) => EmailNotificationWithStreamConditionsListQueryParamsBuilder)): Promise<PaginationResponse<EmailNotificationWithStreamConditions>> {
@@ -40,7 +41,7 @@ export default class EncodingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EmailNotificationWithStreamConditions>>('/notifications/emails/encoding/encodings/{encoding_id}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<EmailNotificationWithStreamConditions>(response, EmailNotificationWithStreamConditions);;
+      return new PaginationResponse<EmailNotificationWithStreamConditions>(response, EmailNotificationWithStreamConditions);
     });
   }
 }

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomData from '../../../../models/CustomData';
 
 /**
@@ -17,7 +18,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary Kubernetes Cluster Custom Data
    * @param {string} infrastructureId Id of the Kubernetes cluster
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(infrastructureId: string): Promise<CustomData> {
@@ -25,7 +26,7 @@ export default class CustomdataApi extends BaseAPI {
       infrastructure_id: infrastructureId
     };
     return this.restClient.get<CustomData>('/encoding/infrastructure/kubernetes/{infrastructure_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

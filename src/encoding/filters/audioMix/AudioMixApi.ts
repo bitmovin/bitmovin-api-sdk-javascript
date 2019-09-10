@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import AudioMixFilter from '../../../models/AudioMixFilter';
 import BitmovinResponse from '../../../models/BitmovinResponse';
@@ -23,19 +24,19 @@ export default class AudioMixApi extends BaseAPI {
   /**
    * @summary Create Audio Mix Filter
    * @param {AudioMixFilter} audioMixFilter The Audio Mix Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioMixApi
    */
   public create(audioMixFilter?: AudioMixFilter): Promise<AudioMixFilter> {
     return this.restClient.post<AudioMixFilter>('/encoding/filters/audio-mix', {}, audioMixFilter).then((response) => {
-      return new AudioMixFilter(response);
+      return map(response, AudioMixFilter);
     });
   }
 
   /**
    * @summary Delete Audio Mix Filter
    * @param {string} filterId Id of the Audio Mix configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioMixApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class AudioMixApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/audio-mix/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Audio Mix Filter Details
    * @param {string} filterId Id of the Audio Mix configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioMixApi
    */
   public get(filterId: string): Promise<AudioMixFilter> {
@@ -58,14 +59,14 @@ export default class AudioMixApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<AudioMixFilter>('/encoding/filters/audio-mix/{filter_id}', pathParamMap).then((response) => {
-      return new AudioMixFilter(response);
+      return map(response, AudioMixFilter);
     });
   }
 
   /**
    * @summary List Audio Mix Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioMixApi
    */
   public list(queryParameters?: AudioMixFilterListQueryParams | ((q: AudioMixFilterListQueryParamsBuilder) => AudioMixFilterListQueryParamsBuilder)): Promise<PaginationResponse<AudioMixFilter>> {
@@ -76,7 +77,7 @@ export default class AudioMixApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMixFilter>>('/encoding/filters/audio-mix', {}, queryParams).then((response) => {
-      return new PaginationResponse<AudioMixFilter>(response, AudioMixFilter);;
+      return new PaginationResponse<AudioMixFilter>(response, AudioMixFilter);
     });
   }
 }

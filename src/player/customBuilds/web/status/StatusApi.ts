@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomPlayerBuildStatus from '../../../../models/CustomPlayerBuildStatus';
 
 /**
@@ -17,7 +18,7 @@ export default class StatusApi extends BaseAPI {
   /**
    * @summary Custom Web Player Build Status
    * @param {string} customBuildId Id of the custom player build
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StatusApi
    */
   public get(customBuildId: string): Promise<CustomPlayerBuildStatus> {
@@ -25,7 +26,7 @@ export default class StatusApi extends BaseAPI {
       custom_build_id: customBuildId
     };
     return this.restClient.get<CustomPlayerBuildStatus>('/player/custom-builds/web/{custom_build_id}/status', pathParamMap).then((response) => {
-      return new CustomPlayerBuildStatus(response);
+      return map(response, CustomPlayerBuildStatus);
     });
   }
 }

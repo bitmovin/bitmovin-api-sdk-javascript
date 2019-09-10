@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomData from '../../../../models/CustomData';
 
 /**
@@ -17,7 +18,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary S3 Role-based Output Custom Data
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(outputId: string): Promise<CustomData> {
@@ -25,7 +26,7 @@ export default class CustomdataApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<CustomData>('/analytics/outputs/s3-role-based/{output_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import ClearKeyDrm from '../../../../../../models/ClearKeyDrm';
@@ -25,7 +26,7 @@ export default class ClearkeyApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {ClearKeyDrm} clearKeyDrm The ClearKey DRM to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClearkeyApi
    */
   public create(encodingId: string, muxingId: string, clearKeyDrm?: ClearKeyDrm): Promise<ClearKeyDrm> {
@@ -34,7 +35,7 @@ export default class ClearkeyApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.post<ClearKeyDrm>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/clearkey', pathParamMap, clearKeyDrm).then((response) => {
-      return new ClearKeyDrm(response);
+      return map(response, ClearKeyDrm);
     });
   }
 
@@ -43,7 +44,7 @@ export default class ClearkeyApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the ClearKey DRM configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClearkeyApi
    */
   public delete(encodingId: string, muxingId: string, drmId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class ClearkeyApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/clearkey/{drm_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class ClearkeyApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the ClearKey DRM configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClearkeyApi
    */
   public get(encodingId: string, muxingId: string, drmId: string): Promise<ClearKeyDrm> {
@@ -72,7 +73,7 @@ export default class ClearkeyApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.get<ClearKeyDrm>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/clearkey/{drm_id}', pathParamMap).then((response) => {
-      return new ClearKeyDrm(response);
+      return map(response, ClearKeyDrm);
     });
   }
 
@@ -81,7 +82,7 @@ export default class ClearkeyApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ClearkeyApi
    */
   public list(encodingId: string, muxingId: string, queryParameters?: ClearKeyDrmListQueryParams | ((q: ClearKeyDrmListQueryParamsBuilder) => ClearKeyDrmListQueryParamsBuilder)): Promise<PaginationResponse<ClearKeyDrm>> {
@@ -96,7 +97,7 @@ export default class ClearkeyApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ClearKeyDrm>>('/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/clearkey', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ClearKeyDrm>(response, ClearKeyDrm);;
+      return new PaginationResponse<ClearKeyDrm>(response, ClearKeyDrm);
     });
   }
 }

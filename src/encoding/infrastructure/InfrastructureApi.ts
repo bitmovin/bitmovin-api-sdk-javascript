@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import KubernetesApi from './kubernetes/KubernetesApi';
 import AwsApi from './aws/AwsApi';
 

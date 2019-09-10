@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import Permission from './Permission';
 import Policy from './Policy';
@@ -28,12 +28,14 @@ export class Acl extends BitmovinResource {
    */
   public permissions?: Permission[];
 
-  constructor(obj: Partial<Acl>) {
+  constructor(obj?: Partial<Acl>) {
     super(obj);
-
-    this.resource = obj.resource;
-    this.policy = obj.policy;
-    this.permissions = obj.permissions || [];
+    if(!obj) {
+      return;
+    }
+    this.resource = map(obj.resource);
+    this.policy = map(obj.policy);
+    this.permissions = mapArray(obj.permissions);
   }
 }
 

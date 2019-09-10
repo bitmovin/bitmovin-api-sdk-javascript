@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAttribute from './AnalyticsAttribute';
 import AnalyticsContainsFilter from './AnalyticsContainsFilter';
 import AnalyticsEqualFilter from './AnalyticsEqualFilter';
@@ -9,6 +9,7 @@ import AnalyticsLessThanFilter from './AnalyticsLessThanFilter';
 import AnalyticsLessThanOrEqualFilter from './AnalyticsLessThanOrEqualFilter';
 import AnalyticsNotContainsFilter from './AnalyticsNotContainsFilter';
 import AnalyticsNotEqualFilter from './AnalyticsNotEqualFilter';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 export type AnalyticsAbstractFilterUnion =
   AnalyticsInFilter |
@@ -27,16 +28,16 @@ export type AnalyticsAbstractFilterUnion =
  */
 export class AnalyticsAbstractFilter {
   protected static readonly _discriminatorName = 'operator';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'IN': 'AnalyticsInFilter',
-    'EQ': 'AnalyticsEqualFilter',
-    'NE': 'AnalyticsNotEqualFilter',
-    'LT': 'AnalyticsLessThanFilter',
-    'LTE': 'AnalyticsLessThanOrEqualFilter',
-    'GT': 'AnalyticsGreaterThanFilter',
-    'GTE': 'AnalyticsGreaterThanOrEqualFilter',
-    'CONTAINS': 'AnalyticsContainsFilter',
-    'NOTCONTAINS': 'AnalyticsNotContainsFilter'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof AnalyticsQueryOperator]: string; } = {
+    IN: 'AnalyticsInFilter',
+    EQ: 'AnalyticsEqualFilter',
+    NE: 'AnalyticsNotEqualFilter',
+    LT: 'AnalyticsLessThanFilter',
+    LTE: 'AnalyticsLessThanOrEqualFilter',
+    GT: 'AnalyticsGreaterThanFilter',
+    GTE: 'AnalyticsGreaterThanOrEqualFilter',
+    CONTAINS: 'AnalyticsContainsFilter',
+    NOTCONTAINS: 'AnalyticsNotContainsFilter'
   };
 
   /**
@@ -45,9 +46,11 @@ export class AnalyticsAbstractFilter {
    */
   public name?: AnalyticsAttribute;
 
-  constructor(obj: Partial<AnalyticsAbstractFilter>) {
-
-    this.name = obj.name;
+  constructor(obj?: Partial<AnalyticsAbstractFilter>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
   }
 }
 

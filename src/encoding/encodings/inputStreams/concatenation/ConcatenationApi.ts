@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConcatenationInputStream from '../../../../models/ConcatenationInputStream';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class ConcatenationApi extends BaseAPI {
    * @summary Add Concatenation Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {ConcatenationInputStream} concatenationInputStream The Concatenation Input Stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ConcatenationApi
    */
   public create(encodingId: string, concatenationInputStream?: ConcatenationInputStream): Promise<ConcatenationInputStream> {
@@ -29,7 +30,7 @@ export default class ConcatenationApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<ConcatenationInputStream>('/encoding/encodings/{encoding_id}/input-streams/concatenation', pathParamMap, concatenationInputStream).then((response) => {
-      return new ConcatenationInputStream(response);
+      return map(response, ConcatenationInputStream);
     });
   }
 
@@ -37,7 +38,7 @@ export default class ConcatenationApi extends BaseAPI {
    * @summary Delete Concatenation Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the Concatenation input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ConcatenationApi
    */
   public delete(encodingId: string, inputStreamId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class ConcatenationApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class ConcatenationApi extends BaseAPI {
    * @summary Concatenation Input Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the concatenation input stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ConcatenationApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<ConcatenationInputStream> {
@@ -63,7 +64,7 @@ export default class ConcatenationApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<ConcatenationInputStream>('/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}', pathParamMap).then((response) => {
-      return new ConcatenationInputStream(response);
+      return map(response, ConcatenationInputStream);
     });
   }
 
@@ -71,7 +72,7 @@ export default class ConcatenationApi extends BaseAPI {
    * @summary List Concatenation Input Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ConcatenationApi
    */
   public list(encodingId: string, queryParameters?: ConcatenationInputStreamListQueryParams | ((q: ConcatenationInputStreamListQueryParamsBuilder) => ConcatenationInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<ConcatenationInputStream>> {
@@ -85,7 +86,7 @@ export default class ConcatenationApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ConcatenationInputStream>>('/encoding/encodings/{encoding_id}/input-streams/concatenation', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ConcatenationInputStream>(response, ConcatenationInputStream);;
+      return new PaginationResponse<ConcatenationInputStream>(response, ConcatenationInputStream);
     });
   }
 }

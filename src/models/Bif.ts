@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 
@@ -42,14 +42,16 @@ export class Bif extends BitmovinResource {
    */
   public outputs?: EncodingOutput[];
 
-  constructor(obj: Partial<Bif>) {
+  constructor(obj?: Partial<Bif>) {
     super(obj);
-
-    this.height = obj.height;
-    this.width = obj.width;
-    this.distance = obj.distance;
-    this.filename = obj.filename;
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    if(!obj) {
+      return;
+    }
+    this.height = map(obj.height);
+    this.width = map(obj.width);
+    this.distance = map(obj.distance);
+    this.filename = map(obj.filename);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
   }
 }
 

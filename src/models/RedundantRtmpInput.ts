@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 import RtmpIngestPoint from './RtmpIngestPoint';
 
 /**
@@ -12,7 +13,7 @@ export class RedundantRtmpInput extends Input {
    * @type {string}
    * @memberof RedundantRtmpInput
    */
-  public type: 'REDUNDANT_RTMP' = 'REDUNDANT_RTMP';
+  public type: InputType.REDUNDANT_RTMP = InputType.REDUNDANT_RTMP;
 
   /**
    * When there is no input signal present and this threshold in seconds is reached it will switch to another ingest point
@@ -27,11 +28,13 @@ export class RedundantRtmpInput extends Input {
    */
   public ingestPoints?: RtmpIngestPoint[];
 
-  constructor(obj: Partial<RedundantRtmpInput>) {
+  constructor(obj?: Partial<RedundantRtmpInput>) {
     super(obj);
-
-    this.delayThreshold = obj.delayThreshold;
-    this.ingestPoints = map<RtmpIngestPoint>(obj.ingestPoints, RtmpIngestPoint) || [];
+    if(!obj) {
+      return;
+    }
+    this.delayThreshold = map(obj.delayThreshold);
+    this.ingestPoints = mapArray(obj.ingestPoints, RtmpIngestPoint);
   }
 }
 

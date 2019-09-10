@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PsnrQualityMetric from '../../../../../models/PsnrQualityMetric';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class PsnrApi extends BaseAPI {
    * @summary Activate PSNR quality metrics for the selected stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PsnrApi
    */
   public create(encodingId: string, streamId: string): Promise<BitmovinResponse> {
@@ -30,7 +31,7 @@ export default class PsnrApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -39,7 +40,7 @@ export default class PsnrApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PsnrApi
    */
   public list(encodingId: string, streamId: string, queryParameters?: PsnrQualityMetricListQueryParams | ((q: PsnrQualityMetricListQueryParamsBuilder) => PsnrQualityMetricListQueryParamsBuilder)): Promise<PaginationResponse<PsnrQualityMetric>> {
@@ -54,7 +55,7 @@ export default class PsnrApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PsnrQualityMetric>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<PsnrQualityMetric>(response, PsnrQualityMetric);;
+      return new PaginationResponse<PsnrQualityMetric>(response, PsnrQualityMetric);
     });
   }
 }

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Eac3AudioConfiguration from '../../../../models/Eac3AudioConfiguration';
@@ -23,19 +24,19 @@ export default class Eac3Api extends BaseAPI {
   /**
    * @summary Create E-AC3 Codec Configuration
    * @param {Eac3AudioConfiguration} eac3AudioConfiguration The E-AC3 Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Eac3Api
    */
   public create(eac3AudioConfiguration?: Eac3AudioConfiguration): Promise<Eac3AudioConfiguration> {
     return this.restClient.post<Eac3AudioConfiguration>('/encoding/configurations/audio/eac3', {}, eac3AudioConfiguration).then((response) => {
-      return new Eac3AudioConfiguration(response);
+      return map(response, Eac3AudioConfiguration);
     });
   }
 
   /**
    * @summary Delete E-AC3 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Eac3Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class Eac3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/eac3/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary E-AC3 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Eac3Api
    */
   public get(configurationId: string): Promise<Eac3AudioConfiguration> {
@@ -58,14 +59,14 @@ export default class Eac3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<Eac3AudioConfiguration>('/encoding/configurations/audio/eac3/{configuration_id}', pathParamMap).then((response) => {
-      return new Eac3AudioConfiguration(response);
+      return map(response, Eac3AudioConfiguration);
     });
   }
 
   /**
    * @summary List E-AC3 Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Eac3Api
    */
   public list(queryParameters?: Eac3AudioConfigurationListQueryParams | ((q: Eac3AudioConfigurationListQueryParamsBuilder) => Eac3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Eac3AudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class Eac3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Eac3AudioConfiguration>>('/encoding/configurations/audio/eac3', {}, queryParams).then((response) => {
-      return new PaginationResponse<Eac3AudioConfiguration>(response, Eac3AudioConfiguration);;
+      return new PaginationResponse<Eac3AudioConfiguration>(response, Eac3AudioConfiguration);
     });
   }
 }

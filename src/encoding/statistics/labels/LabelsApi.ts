@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import DailyApi from './daily/DailyApi';
 import StatisticsPerLabel from '../../../models/StatisticsPerLabel';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -23,7 +24,7 @@ export default class LabelsApi extends BaseAPI {
   /**
    * @summary Get Statistics per Label
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LabelsApi
    */
   public list(queryParameters?: StatisticsPerLabelListQueryParams | ((q: StatisticsPerLabelListQueryParamsBuilder) => StatisticsPerLabelListQueryParamsBuilder)): Promise<PaginationResponse<StatisticsPerLabel>> {
@@ -34,7 +35,7 @@ export default class LabelsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/', {}, queryParams).then((response) => {
-      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);;
+      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);
     });
   }
 
@@ -43,7 +44,7 @@ export default class LabelsApi extends BaseAPI {
    * @param {Date} from Start date. Format: yyyy-MM-dd
    * @param {Date} to End date. Format: yyyy-MM-dd
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LabelsApi
    */
   public listByDateRange(from: Date, to: Date, queryParameters?: StatisticsPerLabelListByDateRangeQueryParams | ((q: StatisticsPerLabelListByDateRangeQueryParamsBuilder) => StatisticsPerLabelListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<StatisticsPerLabel>> {
@@ -58,7 +59,7 @@ export default class LabelsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);;
+      return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);
     });
   }
 }

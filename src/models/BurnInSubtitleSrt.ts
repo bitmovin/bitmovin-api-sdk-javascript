@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import CaptionCharacterEncoding from './CaptionCharacterEncoding';
 import InputPath from './InputPath';
@@ -22,11 +22,13 @@ export class BurnInSubtitleSrt extends BitmovinResource {
    */
   public input?: InputPath;
 
-  constructor(obj: Partial<BurnInSubtitleSrt>) {
+  constructor(obj?: Partial<BurnInSubtitleSrt>) {
     super(obj);
-
-    this.characterEncoding = obj.characterEncoding;
-    this.input = map<InputPath>(obj.input, InputPath);
+    if(!obj) {
+      return;
+    }
+    this.characterEncoding = map(obj.characterEncoding);
+    this.input = map(obj.input, InputPath);
   }
 }
 

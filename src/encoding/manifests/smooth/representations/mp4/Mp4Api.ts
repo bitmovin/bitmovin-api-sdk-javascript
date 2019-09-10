@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import SmoothStreamingRepresentation from '../../../../../models/SmoothStreamingRepresentation';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class Mp4Api extends BaseAPI {
    * @summary Add MP4 Representation to Smooth Streaming Manifest
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {SmoothStreamingRepresentation} smoothStreamingRepresentation The MP4 Representation to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp4Api
    */
   public create(manifestId: string, smoothStreamingRepresentation?: SmoothStreamingRepresentation): Promise<SmoothStreamingRepresentation> {
@@ -29,7 +30,7 @@ export default class Mp4Api extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<SmoothStreamingRepresentation>('/encoding/manifests/smooth/{manifest_id}/representations/mp4', pathParamMap, smoothStreamingRepresentation).then((response) => {
-      return new SmoothStreamingRepresentation(response);
+      return map(response, SmoothStreamingRepresentation);
     });
   }
 
@@ -37,7 +38,7 @@ export default class Mp4Api extends BaseAPI {
    * @summary Delete Smooth Streaming MP4 Representation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} representationId Id of the MP4 representation.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp4Api
    */
   public delete(manifestId: string, representationId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class Mp4Api extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class Mp4Api extends BaseAPI {
    * @summary Smooth Streaming MP4 Representation Details
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} representationId Id of the MP4 representation.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp4Api
    */
   public get(manifestId: string, representationId: string): Promise<SmoothStreamingRepresentation> {
@@ -63,7 +64,7 @@ export default class Mp4Api extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.get<SmoothStreamingRepresentation>('/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}', pathParamMap).then((response) => {
-      return new SmoothStreamingRepresentation(response);
+      return map(response, SmoothStreamingRepresentation);
     });
   }
 
@@ -71,7 +72,7 @@ export default class Mp4Api extends BaseAPI {
    * @summary List MP4 Representation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Mp4Api
    */
   public list(manifestId: string, queryParameters?: SmoothStreamingRepresentationListQueryParams | ((q: SmoothStreamingRepresentationListQueryParamsBuilder) => SmoothStreamingRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<SmoothStreamingRepresentation>> {
@@ -85,7 +86,7 @@ export default class Mp4Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothStreamingRepresentation>>('/encoding/manifests/smooth/{manifest_id}/representations/mp4', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<SmoothStreamingRepresentation>(response, SmoothStreamingRepresentation);;
+      return new PaginationResponse<SmoothStreamingRepresentation>(response, SmoothStreamingRepresentation);
     });
   }
 }

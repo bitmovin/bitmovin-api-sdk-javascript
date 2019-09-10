@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import TextFilterFont from './TextFilterFont';
 
 /**
@@ -13,7 +14,7 @@ export class TextFilter extends Filter {
    * @type {string}
    * @memberof TextFilter
    */
-  public type: 'TEXT' = 'TEXT';
+  public type: FilterType.TEXT = FilterType.TEXT;
 
   /**
    * @type {TextFilterFont}
@@ -140,27 +141,29 @@ export class TextFilter extends Filter {
    */
   public y?: string;
 
-  constructor(obj: Partial<TextFilter>) {
+  constructor(obj?: Partial<TextFilter>) {
     super(obj);
-
-    this.font = obj.font;
-    this.box = obj.box;
-    this.boxBorderWidth = obj.boxBorderWidth;
-    this.boxColor = obj.boxColor;
-    this.lineSpacing = obj.lineSpacing;
-    this.borderWidth = obj.borderWidth;
-    this.fixBounds = obj.fixBounds;
-    this.fontColor = obj.fontColor;
-    this.fontSize = obj.fontSize;
-    this.fontSizeExpression = obj.fontSizeExpression;
-    this.alpha = obj.alpha;
-    this.shadowColor = obj.shadowColor;
-    this.shadowX = obj.shadowX;
-    this.shadowY = obj.shadowY;
-    this.timecode = obj.timecode;
-    this.text = obj.text;
-    this.x = obj.x;
-    this.y = obj.y;
+    if(!obj) {
+      return;
+    }
+    this.font = map(obj.font);
+    this.box = map(obj.box);
+    this.boxBorderWidth = map(obj.boxBorderWidth);
+    this.boxColor = map(obj.boxColor);
+    this.lineSpacing = map(obj.lineSpacing);
+    this.borderWidth = map(obj.borderWidth);
+    this.fixBounds = map(obj.fixBounds);
+    this.fontColor = map(obj.fontColor);
+    this.fontSize = map(obj.fontSize);
+    this.fontSizeExpression = map(obj.fontSizeExpression);
+    this.alpha = map(obj.alpha);
+    this.shadowColor = map(obj.shadowColor);
+    this.shadowX = map(obj.shadowX);
+    this.shadowY = map(obj.shadowY);
+    this.timecode = map(obj.timecode);
+    this.text = map(obj.text);
+    this.x = map(obj.x);
+    this.y = map(obj.y);
   }
 }
 

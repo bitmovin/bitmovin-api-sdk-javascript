@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AwsCloudRegion from './AwsCloudRegion';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class S3RoleBasedInput extends Input {
    * @type {string}
    * @memberof S3RoleBasedInput
    */
-  public type: 'S3_ROLE_BASED' = 'S3_ROLE_BASED';
+  public type: InputType.S3_ROLE_BASED = InputType.S3_ROLE_BASED;
 
   /**
    * Amazon S3 bucket name (required)
@@ -41,13 +42,15 @@ export class S3RoleBasedInput extends Input {
    */
   public cloudRegion?: AwsCloudRegion;
 
-  constructor(obj: Partial<S3RoleBasedInput>) {
+  constructor(obj?: Partial<S3RoleBasedInput>) {
     super(obj);
-
-    this.bucketName = obj.bucketName;
-    this.roleArn = obj.roleArn;
-    this.externalId = obj.externalId;
-    this.cloudRegion = obj.cloudRegion;
+    if(!obj) {
+      return;
+    }
+    this.bucketName = map(obj.bucketName);
+    this.roleArn = map(obj.roleArn);
+    this.externalId = map(obj.externalId);
+    this.cloudRegion = map(obj.cloudRegion);
   }
 }
 

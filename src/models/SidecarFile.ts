@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 import SidecarErrorMode from './SidecarErrorMode';
@@ -35,13 +35,15 @@ export class SidecarFile extends BitmovinResource {
    */
   public errorMode?: SidecarErrorMode;
 
-  constructor(obj: Partial<SidecarFile>) {
+  constructor(obj?: Partial<SidecarFile>) {
     super(obj);
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
-    this.errorMode = obj.errorMode;
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.errorMode = map(obj.errorMode);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import InputPath from './InputPath';
 
@@ -14,10 +14,12 @@ export class SccCaption extends BitmovinResource {
    */
   public input?: InputPath;
 
-  constructor(obj: Partial<SccCaption>) {
+  constructor(obj?: Partial<SccCaption>) {
     super(obj);
-
-    this.input = map<InputPath>(obj.input, InputPath);
+    if(!obj) {
+      return;
+    }
+    this.input = map(obj.input, InputPath);
   }
 }
 

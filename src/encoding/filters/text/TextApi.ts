@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import TextFilter from '../../../models/TextFilter';
@@ -23,19 +24,19 @@ export default class TextApi extends BaseAPI {
   /**
    * @summary Create Text Filter
    * @param {TextFilter} textFilter The Text Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public create(textFilter?: TextFilter): Promise<TextFilter> {
     return this.restClient.post<TextFilter>('/encoding/filters/text', {}, textFilter).then((response) => {
-      return new TextFilter(response);
+      return map(response, TextFilter);
     });
   }
 
   /**
    * @summary Delete Text Filter
    * @param {string} filterId Id of the Text Filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class TextApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/text/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Text Filter Details
    * @param {string} filterId Id of the Text Filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public get(filterId: string): Promise<TextFilter> {
@@ -58,14 +59,14 @@ export default class TextApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<TextFilter>('/encoding/filters/text/{filter_id}', pathParamMap).then((response) => {
-      return new TextFilter(response);
+      return map(response, TextFilter);
     });
   }
 
   /**
    * @summary List Text Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public list(queryParameters?: TextFilterListQueryParams | ((q: TextFilterListQueryParamsBuilder) => TextFilterListQueryParamsBuilder)): Promise<PaginationResponse<TextFilter>> {
@@ -76,7 +77,7 @@ export default class TextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TextFilter>>('/encoding/filters/text', {}, queryParams).then((response) => {
-      return new PaginationResponse<TextFilter>(response, TextFilter);;
+      return new PaginationResponse<TextFilter>(response, TextFilter);
     });
   }
 }

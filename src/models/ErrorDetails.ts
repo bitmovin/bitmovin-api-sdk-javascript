@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import RetryHint from './RetryHint';
 
 /**
@@ -34,12 +34,14 @@ export class ErrorDetails {
    */
   public retryHint?: RetryHint;
 
-  constructor(obj: Partial<ErrorDetails>) {
-
-    this.code = obj.code;
-    this.category = obj.category;
-    this.text = obj.text;
-    this.retryHint = obj.retryHint;
+  constructor(obj?: Partial<ErrorDetails>) {
+    if(!obj) {
+      return;
+    }
+    this.code = map(obj.code);
+    this.category = map(obj.category);
+    this.text = map(obj.text);
+    this.retryHint = map(obj.retryHint);
   }
 }
 

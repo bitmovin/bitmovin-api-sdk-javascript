@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../common/Mapper';
 import CustomData from '../../../../../../../models/CustomData';
 
 /**
@@ -19,7 +20,7 @@ export default class CustomdataApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the Marlin DRM configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(encodingId: string, muxingId: string, drmId: string): Promise<CustomData> {
@@ -29,7 +30,7 @@ export default class CustomdataApi extends BaseAPI {
       drm_id: drmId
     };
     return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

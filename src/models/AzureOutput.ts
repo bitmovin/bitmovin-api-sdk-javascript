@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AzureOutput extends Output {
    * @type {string}
    * @memberof AzureOutput
    */
-  public type: 'AZURE' = 'AZURE';
+  public type: OutputType.AZURE = OutputType.AZURE;
 
   /**
    * Azure Account Name (required)
@@ -35,12 +36,14 @@ export class AzureOutput extends Output {
    */
   public container?: string;
 
-  constructor(obj: Partial<AzureOutput>) {
+  constructor(obj?: Partial<AzureOutput>) {
     super(obj);
-
-    this.accountName = obj.accountName;
-    this.accountKey = obj.accountKey;
-    this.container = obj.container;
+    if(!obj) {
+      return;
+    }
+    this.accountName = map(obj.accountName);
+    this.accountKey = map(obj.accountKey);
+    this.container = map(obj.container);
   }
 }
 

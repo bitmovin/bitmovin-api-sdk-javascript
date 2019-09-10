@@ -1,5 +1,6 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
+import {map, mapArray} from '../common/Mapper';
 import ExportsApi from './exports/ExportsApi';
 import ImpressionsApi from './impressions/ImpressionsApi';
 import MetricsApi from './metrics/MetricsApi';

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -20,11 +20,13 @@ export class CustomPlayerBuildDetails extends BitmovinResource {
    */
   public domains?: string[];
 
-  constructor(obj: Partial<CustomPlayerBuildDetails>) {
+  constructor(obj?: Partial<CustomPlayerBuildDetails>) {
     super(obj);
-
-    this.playerVersion = obj.playerVersion;
-    this.domains = obj.domains || [];
+    if(!obj) {
+      return;
+    }
+    this.playerVersion = map(obj.playerVersion);
+    this.domains = mapArray(obj.domains);
   }
 }
 

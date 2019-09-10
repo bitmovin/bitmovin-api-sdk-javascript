@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Av1AdaptiveQuantMode from './Av1AdaptiveQuantMode';
 import Av1KeyPlacementMode from './Av1KeyPlacementMode';
+import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
 import EncodingMode from './EncodingMode';
 import PixelFormat from './PixelFormat';
@@ -16,7 +17,7 @@ export class Av1VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof Av1VideoConfiguration
    */
-  public type: 'AV1' = 'AV1';
+  public type: CodecConfigType.AV1 = CodecConfigType.AV1;
 
   /**
    * @type {Av1KeyPlacementMode}
@@ -191,34 +192,36 @@ export class Av1VideoConfiguration extends VideoConfiguration {
    */
   public mtuSize?: number;
 
-  constructor(obj: Partial<Av1VideoConfiguration>) {
+  constructor(obj?: Partial<Av1VideoConfiguration>) {
     super(obj);
-
-    this.keyPlacementMode = obj.keyPlacementMode;
-    this.adaptiveQuantMode = obj.adaptiveQuantMode;
-    this.lagInFrames = obj.lagInFrames;
-    this.minQ = obj.minQ;
-    this.maxQ = obj.maxQ;
-    this.undershootPct = obj.undershootPct;
-    this.overshootPct = obj.overshootPct;
-    this.clientBufferSize = obj.clientBufferSize;
-    this.clientInitialBufferSize = obj.clientInitialBufferSize;
-    this.clientOptimalBufferSize = obj.clientOptimalBufferSize;
-    this.tileColumns = obj.tileColumns;
-    this.tileRows = obj.tileRows;
-    this.isAutomaticAltRefFramesEnabled = obj.isAutomaticAltRefFramesEnabled;
-    this.arnrMaxFrames = obj.arnrMaxFrames;
-    this.arnrStrength = obj.arnrStrength;
-    this.maxIntraRate = obj.maxIntraRate;
-    this.isLossless = obj.isLossless;
-    this.isFrameParallel = obj.isFrameParallel;
-    this.sharpness = obj.sharpness;
-    this.isFrameBoostEnabled = obj.isFrameBoostEnabled;
-    this.noiseSensitivity = obj.noiseSensitivity;
-    this.minGfInterval = obj.minGfInterval;
-    this.maxGfInterval = obj.maxGfInterval;
-    this.numTileGroups = obj.numTileGroups;
-    this.mtuSize = obj.mtuSize;
+    if(!obj) {
+      return;
+    }
+    this.keyPlacementMode = map(obj.keyPlacementMode);
+    this.adaptiveQuantMode = map(obj.adaptiveQuantMode);
+    this.lagInFrames = map(obj.lagInFrames);
+    this.minQ = map(obj.minQ);
+    this.maxQ = map(obj.maxQ);
+    this.undershootPct = map(obj.undershootPct);
+    this.overshootPct = map(obj.overshootPct);
+    this.clientBufferSize = map(obj.clientBufferSize);
+    this.clientInitialBufferSize = map(obj.clientInitialBufferSize);
+    this.clientOptimalBufferSize = map(obj.clientOptimalBufferSize);
+    this.tileColumns = map(obj.tileColumns);
+    this.tileRows = map(obj.tileRows);
+    this.isAutomaticAltRefFramesEnabled = map(obj.isAutomaticAltRefFramesEnabled);
+    this.arnrMaxFrames = map(obj.arnrMaxFrames);
+    this.arnrStrength = map(obj.arnrStrength);
+    this.maxIntraRate = map(obj.maxIntraRate);
+    this.isLossless = map(obj.isLossless);
+    this.isFrameParallel = map(obj.isFrameParallel);
+    this.sharpness = map(obj.sharpness);
+    this.isFrameBoostEnabled = map(obj.isFrameBoostEnabled);
+    this.noiseSensitivity = map(obj.noiseSensitivity);
+    this.minGfInterval = map(obj.minGfInterval);
+    this.maxGfInterval = map(obj.maxGfInterval);
+    this.numTileGroups = map(obj.numTileGroups);
+    this.mtuSize = map(obj.mtuSize);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AutoRepresentation from './AutoRepresentation';
 import PerTitleFixedResolutionAndBitrateConfiguration from './PerTitleFixedResolutionAndBitrateConfiguration';
 
@@ -55,15 +55,17 @@ export class PerTitleConfiguration {
    */
   public fixedResolutionAndBitrateConfiguration?: PerTitleFixedResolutionAndBitrateConfiguration;
 
-  constructor(obj: Partial<PerTitleConfiguration>) {
-
-    this.minBitrate = obj.minBitrate;
-    this.maxBitrate = obj.maxBitrate;
-    this.minBitrateStepSize = obj.minBitrateStepSize;
-    this.maxBitrateStepSize = obj.maxBitrateStepSize;
-    this.autoRepresentations = map<AutoRepresentation>(obj.autoRepresentations, AutoRepresentation);
-    this.complexityFactor = obj.complexityFactor;
-    this.fixedResolutionAndBitrateConfiguration = map<PerTitleFixedResolutionAndBitrateConfiguration>(obj.fixedResolutionAndBitrateConfiguration, PerTitleFixedResolutionAndBitrateConfiguration);
+  constructor(obj?: Partial<PerTitleConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.minBitrate = map(obj.minBitrate);
+    this.maxBitrate = map(obj.maxBitrate);
+    this.minBitrateStepSize = map(obj.minBitrateStepSize);
+    this.maxBitrateStepSize = map(obj.maxBitrateStepSize);
+    this.autoRepresentations = map(obj.autoRepresentations, AutoRepresentation);
+    this.complexityFactor = map(obj.complexityFactor);
+    this.fixedResolutionAndBitrateConfiguration = map(obj.fixedResolutionAndBitrateConfiguration, PerTitleFixedResolutionAndBitrateConfiguration);
   }
 }
 

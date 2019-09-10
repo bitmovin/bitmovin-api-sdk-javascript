@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EnhancedWatermarkFilter from '../../../models/EnhancedWatermarkFilter';
@@ -23,19 +24,19 @@ export default class EnhancedWatermarkApi extends BaseAPI {
   /**
    * @summary Create Enhanced Watermark Filter
    * @param {EnhancedWatermarkFilter} enhancedWatermarkFilter The Enhanced Watermark Filter to be created. Only one horizontal and one vertical distance parameter is allowed, either top or bottom, and either left or right. See example body.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EnhancedWatermarkApi
    */
   public create(enhancedWatermarkFilter?: EnhancedWatermarkFilter): Promise<EnhancedWatermarkFilter> {
     return this.restClient.post<EnhancedWatermarkFilter>('/encoding/filters/enhanced-watermark', {}, enhancedWatermarkFilter).then((response) => {
-      return new EnhancedWatermarkFilter(response);
+      return map(response, EnhancedWatermarkFilter);
     });
   }
 
   /**
    * @summary Delete Enhanced Watermark Filter
    * @param {string} filterId Id of the enhanced watermark configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EnhancedWatermarkApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class EnhancedWatermarkApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/enhanced-watermark/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Enhanced Watermark Filter Details
    * @param {string} filterId Id of the enhanced watermark configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EnhancedWatermarkApi
    */
   public get(filterId: string): Promise<EnhancedWatermarkFilter> {
@@ -58,14 +59,14 @@ export default class EnhancedWatermarkApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<EnhancedWatermarkFilter>('/encoding/filters/enhanced-watermark/{filter_id}', pathParamMap).then((response) => {
-      return new EnhancedWatermarkFilter(response);
+      return map(response, EnhancedWatermarkFilter);
     });
   }
 
   /**
    * @summary List Enhanced Watermark Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EnhancedWatermarkApi
    */
   public list(queryParameters?: EnhancedWatermarkFilterListQueryParams | ((q: EnhancedWatermarkFilterListQueryParamsBuilder) => EnhancedWatermarkFilterListQueryParamsBuilder)): Promise<PaginationResponse<EnhancedWatermarkFilter>> {
@@ -76,7 +77,7 @@ export default class EnhancedWatermarkApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EnhancedWatermarkFilter>>('/encoding/filters/enhanced-watermark', {}, queryParams).then((response) => {
-      return new PaginationResponse<EnhancedWatermarkFilter>(response, EnhancedWatermarkFilter);;
+      return new PaginationResponse<EnhancedWatermarkFilter>(response, EnhancedWatermarkFilter);
     });
   }
 }

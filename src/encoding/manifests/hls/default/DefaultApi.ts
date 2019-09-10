@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import HlsManifestDefault from '../../../../models/HlsManifestDefault';
 
 /**
@@ -17,12 +18,12 @@ export default class DefaultApi extends BaseAPI {
   /**
    * @summary Create HLS Manifest Default
    * @param {HlsManifestDefault} hlsManifestDefault The HLS Manifest to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DefaultApi
    */
   public create(hlsManifestDefault?: HlsManifestDefault): Promise<HlsManifestDefault> {
     return this.restClient.post<HlsManifestDefault>('/encoding/manifests/hls/default', {}, hlsManifestDefault).then((response) => {
-      return new HlsManifestDefault(response);
+      return map(response, HlsManifestDefault);
     });
   }
 }

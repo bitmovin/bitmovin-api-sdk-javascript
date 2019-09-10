@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -55,16 +55,18 @@ export class BasicMediaInfo extends BitmovinResponse {
    */
   public characteristics?: string[];
 
-  constructor(obj: Partial<BasicMediaInfo>) {
+  constructor(obj?: Partial<BasicMediaInfo>) {
     super(obj);
-
-    this.groupId = obj.groupId;
-    this.language = obj.language;
-    this.assocLanguage = obj.assocLanguage;
-    this.name = obj.name;
-    this.isDefault = obj.isDefault;
-    this.autoselect = obj.autoselect;
-    this.characteristics = obj.characteristics || [];
+    if(!obj) {
+      return;
+    }
+    this.groupId = map(obj.groupId);
+    this.language = map(obj.language);
+    this.assocLanguage = map(obj.assocLanguage);
+    this.name = map(obj.name);
+    this.isDefault = map(obj.isDefault);
+    this.autoselect = map(obj.autoselect);
+    this.characteristics = mapArray(obj.characteristics);
   }
 }
 

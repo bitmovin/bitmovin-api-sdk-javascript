@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashVttRepresentation from '../../../../../../../models/DashVttRepresentation';
 import PaginationResponse from '../../../../../../../models/PaginationResponse';
@@ -23,7 +24,7 @@ export default class VttApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {DashVttRepresentation} dashVttRepresentation The VTT representation to be added to the adaptation set
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VttApi
    */
   public create(manifestId: string, periodId: string, adaptationsetId: string, dashVttRepresentation?: DashVttRepresentation): Promise<DashVttRepresentation> {
@@ -33,7 +34,7 @@ export default class VttApi extends BaseAPI {
       adaptationset_id: adaptationsetId
     };
     return this.restClient.post<DashVttRepresentation>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt', pathParamMap, dashVttRepresentation).then((response) => {
-      return new DashVttRepresentation(response);
+      return map(response, DashVttRepresentation);
     });
   }
 
@@ -43,7 +44,7 @@ export default class VttApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the VTT representation to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VttApi
    */
   public delete(manifestId: string, periodId: string, adaptationsetId: string, representationId: string): Promise<BitmovinResponse> {
@@ -54,7 +55,7 @@ export default class VttApi extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -64,7 +65,7 @@ export default class VttApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the VTT representation
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VttApi
    */
   public get(manifestId: string, periodId: string, adaptationsetId: string, representationId: string): Promise<DashVttRepresentation> {
@@ -75,7 +76,7 @@ export default class VttApi extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.get<DashVttRepresentation>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}', pathParamMap).then((response) => {
-      return new DashVttRepresentation(response);
+      return map(response, DashVttRepresentation);
     });
   }
 
@@ -85,7 +86,7 @@ export default class VttApi extends BaseAPI {
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VttApi
    */
   public list(manifestId: string, periodId: string, adaptationsetId: string, queryParameters?: DashVttRepresentationListQueryParams | ((q: DashVttRepresentationListQueryParamsBuilder) => DashVttRepresentationListQueryParamsBuilder)): Promise<PaginationResponse<DashVttRepresentation>> {
@@ -101,7 +102,7 @@ export default class VttApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<DashVttRepresentation>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<DashVttRepresentation>(response, DashVttRepresentation);;
+      return new PaginationResponse<DashVttRepresentation>(response, DashVttRepresentation);
     });
   }
 }

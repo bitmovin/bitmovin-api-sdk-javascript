@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class InputPath {
    */
   public inputPath?: string;
 
-  constructor(obj: Partial<InputPath>) {
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
+  constructor(obj?: Partial<InputPath>) {
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MediaStream from './MediaStream';
 
 /**
@@ -55,16 +55,18 @@ export class VideoStream extends MediaStream {
    */
   public rotation?: number;
 
-  constructor(obj: Partial<VideoStream>) {
+  constructor(obj?: Partial<VideoStream>) {
     super(obj);
-
-    this.fps = obj.fps;
-    this.bitrate = obj.bitrate;
-    this.rate = obj.rate;
-    this.width = obj.width;
-    this.height = obj.height;
-    this.par = obj.par;
-    this.rotation = obj.rotation;
+    if(!obj) {
+      return;
+    }
+    this.fps = map(obj.fps);
+    this.bitrate = map(obj.bitrate);
+    this.rate = map(obj.rate);
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.par = map(obj.par);
+    this.rotation = map(obj.rotation);
   }
 }
 

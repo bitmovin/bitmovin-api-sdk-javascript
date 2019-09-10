@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 import TransferVersion from './TransferVersion';
 
 /**
@@ -13,7 +14,7 @@ export class FtpOutput extends Output {
    * @type {string}
    * @memberof FtpOutput
    */
-  public type: 'FTP' = 'FTP';
+  public type: OutputType.FTP = OutputType.FTP;
 
   /**
    * Host URL or IP of the FTP server (required)
@@ -64,16 +65,18 @@ export class FtpOutput extends Output {
    */
   public maxConcurrentConnections?: number;
 
-  constructor(obj: Partial<FtpOutput>) {
+  constructor(obj?: Partial<FtpOutput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.port = obj.port;
-    this.passive = obj.passive;
-    this.username = obj.username;
-    this.password = obj.password;
-    this.transferVersion = obj.transferVersion;
-    this.maxConcurrentConnections = obj.maxConcurrentConnections;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.passive = map(obj.passive);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
+    this.transferVersion = map(obj.transferVersion);
+    this.maxConcurrentConnections = map(obj.maxConcurrentConnections);
   }
 }
 

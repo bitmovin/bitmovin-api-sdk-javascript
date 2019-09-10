@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class Login {
    */
   public password?: string;
 
-  constructor(obj: Partial<Login>) {
-
-    this.eMail = obj.eMail;
-    this.password = obj.password;
+  constructor(obj?: Partial<Login>) {
+    if(!obj) {
+      return;
+    }
+    this.eMail = map(obj.eMail);
+    this.password = map(obj.password);
   }
 }
 

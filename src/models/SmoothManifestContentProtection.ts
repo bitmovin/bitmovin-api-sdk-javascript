@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -27,12 +27,14 @@ export class SmoothManifestContentProtection extends BitmovinResource {
    */
   public drmId?: string;
 
-  constructor(obj: Partial<SmoothManifestContentProtection>) {
+  constructor(obj?: Partial<SmoothManifestContentProtection>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.muxingId = obj.muxingId;
-    this.drmId = obj.drmId;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.muxingId = map(obj.muxingId);
+    this.drmId = map(obj.drmId);
   }
 }
 

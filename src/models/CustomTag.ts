@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import PositionMode from './PositionMode';
 
@@ -42,14 +42,16 @@ export class CustomTag extends BitmovinResource {
    */
   public data?: string;
 
-  constructor(obj: Partial<CustomTag>) {
+  constructor(obj?: Partial<CustomTag>) {
     super(obj);
-
-    this.positionMode = obj.positionMode;
-    this.keyframeId = obj.keyframeId;
-    this.time = obj.time;
-    this.segment = obj.segment;
-    this.data = obj.data;
+    if(!obj) {
+      return;
+    }
+    this.positionMode = map(obj.positionMode);
+    this.keyframeId = map(obj.keyframeId);
+    this.time = map(obj.time);
+    this.segment = map(obj.segment);
+    this.data = map(obj.data);
   }
 }
 

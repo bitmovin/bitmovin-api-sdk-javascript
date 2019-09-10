@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AdAnalyticsAbstractFilter from './AdAnalyticsAbstractFilter';
 import AdAnalyticsAttribute from './AdAnalyticsAttribute';
 import AdAnalyticsOrderByEntry from './AdAnalyticsOrderByEntry';
@@ -61,17 +61,19 @@ export class AdAnalyticsQueryRequest extends AnalyticsQueryTimeframe {
    */
   public offset?: number;
 
-  constructor(obj: Partial<AdAnalyticsQueryRequest>) {
+  constructor(obj?: Partial<AdAnalyticsQueryRequest>) {
     super(obj);
-
-    this.licenseKey = obj.licenseKey;
-    this.filters = map<AdAnalyticsAbstractFilter>(obj.filters, AdAnalyticsAbstractFilter) || [];
-    this.orderBy = map<AdAnalyticsOrderByEntry>(obj.orderBy, AdAnalyticsOrderByEntry) || [];
-    this.dimension = obj.dimension;
-    this.interval = obj.interval;
-    this.groupBy = obj.groupBy || [];
-    this.limit = obj.limit;
-    this.offset = obj.offset;
+    if(!obj) {
+      return;
+    }
+    this.licenseKey = map(obj.licenseKey);
+    this.filters = mapArray(obj.filters, AdAnalyticsAbstractFilter);
+    this.orderBy = mapArray(obj.orderBy, AdAnalyticsOrderByEntry);
+    this.dimension = map(obj.dimension);
+    this.interval = map(obj.interval);
+    this.groupBy = mapArray(obj.groupBy);
+    this.limit = map(obj.limit);
+    this.offset = map(obj.offset);
   }
 }
 

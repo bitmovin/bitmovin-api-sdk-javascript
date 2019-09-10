@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../common/Mapper';
 import CustomData from '../../../../../../../models/CustomData';
 
 /**
@@ -19,7 +20,7 @@ export default class CustomdataApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(encodingId: string, streamId: string, captionsId: string): Promise<CustomData> {
@@ -29,7 +30,7 @@ export default class CustomdataApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

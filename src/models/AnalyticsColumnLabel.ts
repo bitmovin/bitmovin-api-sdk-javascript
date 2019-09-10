@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -17,10 +17,12 @@ export class AnalyticsColumnLabel {
    */
   public label?: string;
 
-  constructor(obj: Partial<AnalyticsColumnLabel>) {
-
-    this.key = obj.key;
-    this.label = obj.label;
+  constructor(obj?: Partial<AnalyticsColumnLabel>) {
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.label = map(obj.label);
   }
 }
 

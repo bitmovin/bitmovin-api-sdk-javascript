@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import StreamDvbSubSubtitle from '../../../../../models/StreamDvbSubSubtitle';
 
 /**
@@ -19,7 +20,7 @@ export default class DvbsubApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {StreamDvbSubSubtitle} streamDvbSubSubtitle The Burn-In DVB-SUB Subtitle to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DvbsubApi
    */
   public create(encodingId: string, streamId: string, streamDvbSubSubtitle?: StreamDvbSubSubtitle): Promise<StreamDvbSubSubtitle> {
@@ -28,7 +29,7 @@ export default class DvbsubApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<StreamDvbSubSubtitle>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/dvbsub', pathParamMap, streamDvbSubSubtitle).then((response) => {
-      return new StreamDvbSubSubtitle(response);
+      return map(response, StreamDvbSubSubtitle);
     });
   }
 }

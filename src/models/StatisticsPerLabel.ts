@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
 import BillableEncodingMinutes from './BillableEncodingMinutes';
 import Statistics from './Statistics';
@@ -43,14 +43,16 @@ export class StatisticsPerLabel extends Statistics {
    */
   public billableFeatureMinutes?: BillableEncodingFeatureMinutes[];
 
-  constructor(obj: Partial<StatisticsPerLabel>) {
+  constructor(obj?: Partial<StatisticsPerLabel>) {
     super(obj);
-
-    this.label = obj.label;
-    this.billableMinutes = obj.billableMinutes;
-    this.billableEncodingMinutes = map<BillableEncodingMinutes>(obj.billableEncodingMinutes, BillableEncodingMinutes) || [];
-    this.billableTransmuxingMinutes = obj.billableTransmuxingMinutes;
-    this.billableFeatureMinutes = map<BillableEncodingFeatureMinutes>(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes) || [];
+    if(!obj) {
+      return;
+    }
+    this.label = map(obj.label);
+    this.billableMinutes = map(obj.billableMinutes);
+    this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
+    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
+    this.billableFeatureMinutes = mapArray(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes);
   }
 }
 

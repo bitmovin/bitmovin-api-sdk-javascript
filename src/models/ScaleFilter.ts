@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import ScalingAlgorithm from './ScalingAlgorithm';
 
 /**
@@ -12,7 +13,7 @@ export class ScaleFilter extends Filter {
    * @type {string}
    * @memberof ScaleFilter
    */
-  public type: 'SCALE' = 'SCALE';
+  public type: FilterType.SCALE = FilterType.SCALE;
 
   /**
    * The width of the output frame in pixel. If not set: codec configuration width will be used.
@@ -48,14 +49,16 @@ export class ScaleFilter extends Filter {
    */
   public sampleAspectRatioDenominator?: number;
 
-  constructor(obj: Partial<ScaleFilter>) {
+  constructor(obj?: Partial<ScaleFilter>) {
     super(obj);
-
-    this.width = obj.width;
-    this.height = obj.height;
-    this.scalingAlgorithm = obj.scalingAlgorithm;
-    this.sampleAspectRatioNumerator = obj.sampleAspectRatioNumerator;
-    this.sampleAspectRatioDenominator = obj.sampleAspectRatioDenominator;
+    if(!obj) {
+      return;
+    }
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.scalingAlgorithm = map(obj.scalingAlgorithm);
+    this.sampleAspectRatioNumerator = map(obj.sampleAspectRatioNumerator);
+    this.sampleAspectRatioDenominator = map(obj.sampleAspectRatioDenominator);
   }
 }
 

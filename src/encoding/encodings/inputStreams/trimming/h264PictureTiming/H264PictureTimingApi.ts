@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import H264PictureTimingTrimmingInputStream from '../../../../../models/H264PictureTimingTrimmingInputStream';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class H264PictureTimingApi extends BaseAPI {
    * @summary Add H264 Picture Timing Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {H264PictureTimingTrimmingInputStream} h264PictureTimingTrimmingInputStream The H264 Picture Timing Trimming Input Stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264PictureTimingApi
    */
   public create(encodingId: string, h264PictureTimingTrimmingInputStream?: H264PictureTimingTrimmingInputStream): Promise<H264PictureTimingTrimmingInputStream> {
@@ -29,7 +30,7 @@ export default class H264PictureTimingApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<H264PictureTimingTrimmingInputStream>('/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing', pathParamMap, h264PictureTimingTrimmingInputStream).then((response) => {
-      return new H264PictureTimingTrimmingInputStream(response);
+      return map(response, H264PictureTimingTrimmingInputStream);
     });
   }
 
@@ -37,7 +38,7 @@ export default class H264PictureTimingApi extends BaseAPI {
    * @summary Delete H264 Picture Timing Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the H264 Picture Timing Trimming Input Stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264PictureTimingApi
    */
   public delete(encodingId: string, inputStreamId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class H264PictureTimingApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class H264PictureTimingApi extends BaseAPI {
    * @summary H264 Picture Timing Trimming Input Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the H264 Picture Timing Trimming Input Stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264PictureTimingApi
    */
   public get(encodingId: string, inputStreamId: string): Promise<H264PictureTimingTrimmingInputStream> {
@@ -63,7 +64,7 @@ export default class H264PictureTimingApi extends BaseAPI {
       input_stream_id: inputStreamId
     };
     return this.restClient.get<H264PictureTimingTrimmingInputStream>('/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}', pathParamMap).then((response) => {
-      return new H264PictureTimingTrimmingInputStream(response);
+      return map(response, H264PictureTimingTrimmingInputStream);
     });
   }
 
@@ -71,7 +72,7 @@ export default class H264PictureTimingApi extends BaseAPI {
    * @summary List H264 Picture Timing Trimming Input Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264PictureTimingApi
    */
   public list(encodingId: string, queryParameters?: H264PictureTimingTrimmingInputStreamListQueryParams | ((q: H264PictureTimingTrimmingInputStreamListQueryParamsBuilder) => H264PictureTimingTrimmingInputStreamListQueryParamsBuilder)): Promise<PaginationResponse<H264PictureTimingTrimmingInputStream>> {
@@ -85,7 +86,7 @@ export default class H264PictureTimingApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<H264PictureTimingTrimmingInputStream>>('/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<H264PictureTimingTrimmingInputStream>(response, H264PictureTimingTrimmingInputStream);;
+      return new PaginationResponse<H264PictureTimingTrimmingInputStream>(response, H264PictureTimingTrimmingInputStream);
     });
   }
 }

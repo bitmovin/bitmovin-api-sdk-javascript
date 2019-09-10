@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,12 @@ export class AccountApiKey extends BitmovinResource {
    */
   public value?: string;
 
-  constructor(obj: Partial<AccountApiKey>) {
+  constructor(obj?: Partial<AccountApiKey>) {
     super(obj);
-
-    this.value = obj.value;
+    if(!obj) {
+      return;
+    }
+    this.value = map(obj.value);
   }
 }
 

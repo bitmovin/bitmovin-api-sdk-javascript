@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../../../../models/BitmovinResponse';
 import ContentProtection from '../../../../../../../../models/ContentProtection';
 import PaginationResponse from '../../../../../../../../models/PaginationResponse';
@@ -24,7 +25,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
    * @param {ContentProtection} contentProtection The content protection to be added to the WebM representation
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public create(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, contentProtection?: ContentProtection): Promise<ContentProtection> {
@@ -35,7 +36,7 @@ export default class ContentprotectionApi extends BaseAPI {
       representation_id: representationId
     };
     return this.restClient.post<ContentProtection>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}/contentprotection', pathParamMap, contentProtection).then((response) => {
-      return new ContentProtection(response);
+      return map(response, ContentProtection);
     });
   }
 
@@ -46,7 +47,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
    * @param {string} contentprotectionId Id of the DRM WebM content protection to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public delete(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, contentprotectionId: string): Promise<BitmovinResponse> {
@@ -58,7 +59,7 @@ export default class ContentprotectionApi extends BaseAPI {
       contentprotection_id: contentprotectionId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}/contentprotection/{contentprotection_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -69,7 +70,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
    * @param {string} contentprotectionId Id of the DRM WebM content protection
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public get(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, contentprotectionId: string): Promise<ContentProtection> {
@@ -81,7 +82,7 @@ export default class ContentprotectionApi extends BaseAPI {
       contentprotection_id: contentprotectionId
     };
     return this.restClient.get<ContentProtection>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}/contentprotection/{contentprotection_id}', pathParamMap).then((response) => {
-      return new ContentProtection(response);
+      return map(response, ContentProtection);
     });
   }
 
@@ -92,7 +93,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @param {string} adaptationsetId Id of the adaptation set
    * @param {string} representationId Id of the representation
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public list(manifestId: string, periodId: string, adaptationsetId: string, representationId: string, queryParameters?: ContentProtectionListQueryParams | ((q: ContentProtectionListQueryParamsBuilder) => ContentProtectionListQueryParamsBuilder)): Promise<PaginationResponse<ContentProtection>> {
@@ -109,7 +110,7 @@ export default class ContentprotectionApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ContentProtection>>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}/contentprotection', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ContentProtection>(response, ContentProtection);;
+      return new PaginationResponse<ContentProtection>(response, ContentProtection);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import WebhookEncryption from './WebhookEncryption';
 import WebhookHttpMethod from './WebhookHttpMethod';
@@ -44,14 +44,16 @@ export class Webhook extends BitmovinResource {
    */
   public signature?: WebhookSignature;
 
-  constructor(obj: Partial<Webhook>) {
+  constructor(obj?: Partial<Webhook>) {
     super(obj);
-
-    this.url = obj.url;
-    this.method = obj.method;
-    this.insecureSsl = obj.insecureSsl;
-    this.encryption = map<WebhookEncryption>(obj.encryption, WebhookEncryption);
-    this.signature = map<WebhookSignature>(obj.signature, WebhookSignature);
+    if(!obj) {
+      return;
+    }
+    this.url = map(obj.url);
+    this.method = map(obj.method);
+    this.insecureSsl = map(obj.insecureSsl);
+    this.encryption = map(obj.encryption, WebhookEncryption);
+    this.signature = map(obj.signature, WebhookSignature);
   }
 }
 

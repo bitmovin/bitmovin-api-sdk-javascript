@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioVideoSyncMode from './AudioVideoSyncMode';
 
 /**
@@ -13,9 +13,11 @@ export class Tweaks {
    */
   public audioVideoSyncMode?: AudioVideoSyncMode;
 
-  constructor(obj: Partial<Tweaks>) {
-
-    this.audioVideoSyncMode = obj.audioVideoSyncMode;
+  constructor(obj?: Partial<Tweaks>) {
+    if(!obj) {
+      return;
+    }
+    this.audioVideoSyncMode = map(obj.audioVideoSyncMode);
   }
 }
 

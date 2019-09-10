@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class BroadcastTsProgramConfiguration {
    */
   public insertProgramClockRefOnPes?: boolean;
 
-  constructor(obj: Partial<BroadcastTsProgramConfiguration>) {
-
-    this.programNumber = obj.programNumber;
-    this.pidForPMT = obj.pidForPMT;
-    this.insertProgramClockRefOnPes = obj.insertProgramClockRefOnPes;
+  constructor(obj?: Partial<BroadcastTsProgramConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.programNumber = map(obj.programNumber);
+    this.pidForPMT = map(obj.pidForPMT);
+    this.insertProgramClockRefOnPes = map(obj.insertProgramClockRefOnPes);
   }
 }
 

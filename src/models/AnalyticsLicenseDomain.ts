@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -12,10 +12,12 @@ export class AnalyticsLicenseDomain extends BitmovinResponse {
    */
   public url?: string;
 
-  constructor(obj: Partial<AnalyticsLicenseDomain>) {
+  constructor(obj?: Partial<AnalyticsLicenseDomain>) {
     super(obj);
-
-    this.url = obj.url;
+    if(!obj) {
+      return;
+    }
+    this.url = map(obj.url);
   }
 }
 

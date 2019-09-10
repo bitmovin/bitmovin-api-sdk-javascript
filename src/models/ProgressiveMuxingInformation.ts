@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MuxingInformationAudioTrack from './MuxingInformationAudioTrack';
 import MuxingInformationVideoTrack from './MuxingInformationVideoTrack';
 
@@ -56,15 +56,17 @@ export class ProgressiveMuxingInformation {
    */
   public audioTracks?: MuxingInformationAudioTrack[];
 
-  constructor(obj: Partial<ProgressiveMuxingInformation>) {
-
-    this.mimeType = obj.mimeType;
-    this.fileSize = obj.fileSize;
-    this.containerFormat = obj.containerFormat;
-    this.containerBitrate = obj.containerBitrate;
-    this.duration = obj.duration;
-    this.videoTracks = map<MuxingInformationVideoTrack>(obj.videoTracks, MuxingInformationVideoTrack) || [];
-    this.audioTracks = map<MuxingInformationAudioTrack>(obj.audioTracks, MuxingInformationAudioTrack) || [];
+  constructor(obj?: Partial<ProgressiveMuxingInformation>) {
+    if(!obj) {
+      return;
+    }
+    this.mimeType = map(obj.mimeType);
+    this.fileSize = map(obj.fileSize);
+    this.containerFormat = map(obj.containerFormat);
+    this.containerBitrate = map(obj.containerBitrate);
+    this.duration = map(obj.duration);
+    this.videoTracks = mapArray(obj.videoTracks, MuxingInformationVideoTrack);
+    this.audioTracks = mapArray(obj.audioTracks, MuxingInformationAudioTrack);
   }
 }
 

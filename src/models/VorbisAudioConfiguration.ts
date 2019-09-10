@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioConfiguration from './AudioConfiguration';
+import CodecConfigType from './CodecConfigType';
 import VorbisChannelLayout from './VorbisChannelLayout';
 
 /**
@@ -12,7 +13,7 @@ export class VorbisAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof VorbisAudioConfiguration
    */
-  public type: 'VORBIS' = 'VORBIS';
+  public type: CodecConfigType.VORBIS = CodecConfigType.VORBIS;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +22,12 @@ export class VorbisAudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: VorbisChannelLayout;
 
-  constructor(obj: Partial<VorbisAudioConfiguration>) {
+  constructor(obj?: Partial<VorbisAudioConfiguration>) {
     super(obj);
-
-    this.channelLayout = obj.channelLayout;
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
   }
 }
 

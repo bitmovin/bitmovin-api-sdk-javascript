@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -55,16 +55,18 @@ export class AwsAccountRegionSettings extends BitmovinResource {
    */
   public sshPort?: number;
 
-  constructor(obj: Partial<AwsAccountRegionSettings>) {
+  constructor(obj?: Partial<AwsAccountRegionSettings>) {
     super(obj);
-
-    this.limitParallelEncodings = obj.limitParallelEncodings;
-    this.maximumAmountOfCoordinatorsAndWorkersInRegion = obj.maximumAmountOfCoordinatorsAndWorkersInRegion;
-    this.maxMoneyToSpendPerMonth = obj.maxMoneyToSpendPerMonth;
-    this.securityGroupId = obj.securityGroupId;
-    this.subnetId = obj.subnetId;
-    this.machineTypes = obj.machineTypes || [];
-    this.sshPort = obj.sshPort;
+    if(!obj) {
+      return;
+    }
+    this.limitParallelEncodings = map(obj.limitParallelEncodings);
+    this.maximumAmountOfCoordinatorsAndWorkersInRegion = map(obj.maximumAmountOfCoordinatorsAndWorkersInRegion);
+    this.maxMoneyToSpendPerMonth = map(obj.maxMoneyToSpendPerMonth);
+    this.securityGroupId = map(obj.securityGroupId);
+    this.subnetId = map(obj.subnetId);
+    this.machineTypes = mapArray(obj.machineTypes);
+    this.sshPort = map(obj.sshPort);
   }
 }
 

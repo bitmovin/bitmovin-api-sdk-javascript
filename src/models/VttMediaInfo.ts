@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BasicMediaInfo from './BasicMediaInfo';
 
 /**
@@ -27,12 +27,14 @@ export class VttMediaInfo extends BasicMediaInfo {
    */
   public forced?: boolean;
 
-  constructor(obj: Partial<VttMediaInfo>) {
+  constructor(obj?: Partial<VttMediaInfo>) {
     super(obj);
-
-    this.vttUrl = obj.vttUrl;
-    this.uri = obj.uri;
-    this.forced = obj.forced;
+    if(!obj) {
+      return;
+    }
+    this.vttUrl = map(obj.vttUrl);
+    this.uri = map(obj.uri);
+    this.forced = map(obj.forced);
   }
 }
 

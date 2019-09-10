@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class AzureInput extends Input {
    * @type {string}
    * @memberof AzureInput
    */
-  public type: 'AZURE' = 'AZURE';
+  public type: InputType.AZURE = InputType.AZURE;
 
   /**
    * Azure Account Name (required)
@@ -34,12 +35,14 @@ export class AzureInput extends Input {
    */
   public container?: string;
 
-  constructor(obj: Partial<AzureInput>) {
+  constructor(obj?: Partial<AzureInput>) {
     super(obj);
-
-    this.accountName = obj.accountName;
-    this.accountKey = obj.accountKey;
-    this.container = obj.container;
+    if(!obj) {
+      return;
+    }
+    this.accountName = map(obj.accountName);
+    this.accountKey = map(obj.accountKey);
+    this.container = map(obj.container);
   }
 }
 

@@ -9,9 +9,11 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  * @class AnalyticsAvgQueryRequest
  */
 export class AnalyticsAvgQueryRequest extends AnalyticsQueryRequest {
-  constructor(obj: Partial<AnalyticsAvgQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsAvgQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

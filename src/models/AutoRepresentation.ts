@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class AutoRepresentation {
    */
   public adoptConfigurationThreshold?: number;
 
-  constructor(obj: Partial<AutoRepresentation>) {
-
-    this.adoptConfigurationThreshold = obj.adoptConfigurationThreshold;
+  constructor(obj?: Partial<AutoRepresentation>) {
+    if(!obj) {
+      return;
+    }
+    this.adoptConfigurationThreshold = map(obj.adoptConfigurationThreshold);
   }
 }
 

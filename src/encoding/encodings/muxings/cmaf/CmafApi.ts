@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import CaptionsApi from './captions/CaptionsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class CmafApi extends BaseAPI {
    * @summary Add CMAF muxing
    * @param {string} encodingId Id of the encoding.
    * @param {CmafMuxing} cmafMuxing The CMAF muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CmafApi
    */
   public create(encodingId: string, cmafMuxing?: CmafMuxing): Promise<CmafMuxing> {
@@ -35,7 +36,7 @@ export default class CmafApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<CmafMuxing>('/encoding/encodings/{encoding_id}/muxings/cmaf', pathParamMap, cmafMuxing).then((response) => {
-      return new CmafMuxing(response);
+      return map(response, CmafMuxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class CmafApi extends BaseAPI {
    * @summary Delete CMAF Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CmafApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class CmafApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class CmafApi extends BaseAPI {
    * @summary CMAF Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CmafApi
    */
   public get(encodingId: string, muxingId: string): Promise<CmafMuxing> {
@@ -69,7 +70,7 @@ export default class CmafApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<CmafMuxing>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}', pathParamMap).then((response) => {
-      return new CmafMuxing(response);
+      return map(response, CmafMuxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class CmafApi extends BaseAPI {
    * @summary List CMAF muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CmafApi
    */
   public list(encodingId: string, queryParameters?: CmafMuxingListQueryParams | ((q: CmafMuxingListQueryParamsBuilder) => CmafMuxingListQueryParamsBuilder)): Promise<PaginationResponse<CmafMuxing>> {
@@ -91,7 +92,7 @@ export default class CmafApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CmafMuxing>>('/encoding/encodings/{encoding_id}/muxings/cmaf', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<CmafMuxing>(response, CmafMuxing);;
+      return new PaginationResponse<CmafMuxing>(response, CmafMuxing);
     });
   }
 }

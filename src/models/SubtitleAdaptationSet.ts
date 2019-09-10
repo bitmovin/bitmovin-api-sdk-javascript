@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Accessibility from './Accessibility';
 import AdaptationSet from './AdaptationSet';
 import AdaptationSetRole from './AdaptationSetRole';
@@ -16,10 +16,12 @@ export class SubtitleAdaptationSet extends AdaptationSet {
    */
   public lang?: string;
 
-  constructor(obj: Partial<SubtitleAdaptationSet>) {
+  constructor(obj?: Partial<SubtitleAdaptationSet>) {
     super(obj);
-
-    this.lang = obj.lang;
+    if(!obj) {
+      return;
+    }
+    this.lang = map(obj.lang);
   }
 }
 

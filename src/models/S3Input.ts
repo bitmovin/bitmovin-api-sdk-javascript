@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AwsCloudRegion from './AwsCloudRegion';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class S3Input extends Input {
    * @type {string}
    * @memberof S3Input
    */
-  public type: 'S3' = 'S3';
+  public type: InputType.S3 = InputType.S3;
 
   /**
    * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
@@ -42,13 +43,15 @@ export class S3Input extends Input {
    */
   public secretKey?: string;
 
-  constructor(obj: Partial<S3Input>) {
+  constructor(obj?: Partial<S3Input>) {
     super(obj);
-
-    this.cloudRegion = obj.cloudRegion;
-    this.bucketName = obj.bucketName;
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
+    if(!obj) {
+      return;
+    }
+    this.cloudRegion = map(obj.cloudRegion);
+    this.bucketName = map(obj.bucketName);
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
   }
 }
 

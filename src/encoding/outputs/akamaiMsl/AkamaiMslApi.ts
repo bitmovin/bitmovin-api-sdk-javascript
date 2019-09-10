@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import AkamaiMslOutput from '../../../models/AkamaiMslOutput';
 import BitmovinResponse from '../../../models/BitmovinResponse';
@@ -23,19 +24,19 @@ export default class AkamaiMslApi extends BaseAPI {
   /**
    * @summary Create Akamai MSL Output
    * @param {AkamaiMslOutput} akamaiMslOutput The Akamai MSL output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiMslApi
    */
   public create(akamaiMslOutput?: AkamaiMslOutput): Promise<AkamaiMslOutput> {
     return this.restClient.post<AkamaiMslOutput>('/encoding/outputs/akamai-msl', {}, akamaiMslOutput).then((response) => {
-      return new AkamaiMslOutput(response);
+      return map(response, AkamaiMslOutput);
     });
   }
 
   /**
    * @summary Delete Akamai MSL Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiMslApi
    */
   public delete(outputId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class AkamaiMslApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/outputs/akamai-msl/{output_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Akamai MSL Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiMslApi
    */
   public get(outputId: string): Promise<AkamaiMslOutput> {
@@ -58,14 +59,14 @@ export default class AkamaiMslApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<AkamaiMslOutput>('/encoding/outputs/akamai-msl/{output_id}', pathParamMap).then((response) => {
-      return new AkamaiMslOutput(response);
+      return map(response, AkamaiMslOutput);
     });
   }
 
   /**
    * @summary List Akamai MSL Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiMslApi
    */
   public list(queryParameters?: AkamaiMslOutputListQueryParams | ((q: AkamaiMslOutputListQueryParamsBuilder) => AkamaiMslOutputListQueryParamsBuilder)): Promise<PaginationResponse<AkamaiMslOutput>> {
@@ -76,7 +77,7 @@ export default class AkamaiMslApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AkamaiMslOutput>>('/encoding/outputs/akamai-msl', {}, queryParams).then((response) => {
-      return new PaginationResponse<AkamaiMslOutput>(response, AkamaiMslOutput);;
+      return new PaginationResponse<AkamaiMslOutput>(response, AkamaiMslOutput);
     });
   }
 }

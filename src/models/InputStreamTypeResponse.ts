@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStreamType from './InputStreamType';
 
 /**
@@ -13,9 +13,11 @@ export class InputStreamTypeResponse {
    */
   public type?: InputStreamType;
 
-  constructor(obj: Partial<InputStreamTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<InputStreamTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

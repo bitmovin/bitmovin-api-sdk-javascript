@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ConcatenationInputConfiguration from './ConcatenationInputConfiguration';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class ConcatenationInputStream extends InputStream {
    * @type {string}
    * @memberof ConcatenationInputStream
    */
-  public type: 'CONCATENATION' = 'CONCATENATION';
+  public type: InputStreamType.CONCATENATION = InputStreamType.CONCATENATION;
 
   /**
    * Concatenation configuration for the output of this stream
@@ -21,10 +22,12 @@ export class ConcatenationInputStream extends InputStream {
    */
   public concatenation?: ConcatenationInputConfiguration[];
 
-  constructor(obj: Partial<ConcatenationInputStream>) {
+  constructor(obj?: Partial<ConcatenationInputStream>) {
     super(obj);
-
-    this.concatenation = map<ConcatenationInputConfiguration>(obj.concatenation, ConcatenationInputConfiguration) || [];
+    if(!obj) {
+      return;
+    }
+    this.concatenation = mapArray(obj.concatenation, ConcatenationInputConfiguration);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomData from '../../../../models/CustomData';
 
 /**
@@ -17,7 +18,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary Generic S3 Input Custom Data
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(inputId: string): Promise<CustomData> {
@@ -25,7 +26,7 @@ export default class CustomdataApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<CustomData>('/encoding/inputs/generic-s3/{input_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

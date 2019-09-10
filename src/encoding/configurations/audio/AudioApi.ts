@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import AacApi from './aac/AacApi';
 import HeAacV1Api from './heAacV1/HeAacV1Api';
 import HeAacV2Api from './heAacV2/HeAacV2Api';

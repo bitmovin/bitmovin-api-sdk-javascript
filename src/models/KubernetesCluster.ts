@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -26,12 +26,14 @@ export class KubernetesCluster extends BitmovinResource {
    */
   public agentDeploymentDownloadUrl?: string;
 
-  constructor(obj: Partial<KubernetesCluster>) {
+  constructor(obj?: Partial<KubernetesCluster>) {
     super(obj);
-
-    this.online = obj.online;
-    this.connected = obj.connected;
-    this.agentDeploymentDownloadUrl = obj.agentDeploymentDownloadUrl;
+    if(!obj) {
+      return;
+    }
+    this.online = map(obj.online);
+    this.connected = map(obj.connected);
+    this.agentDeploymentDownloadUrl = map(obj.agentDeploymentDownloadUrl);
   }
 }
 

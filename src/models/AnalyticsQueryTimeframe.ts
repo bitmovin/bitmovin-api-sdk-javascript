@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class AnalyticsQueryTimeframe {
    */
   public end?: Date;
 
-  constructor(obj: Partial<AnalyticsQueryTimeframe>) {
-
-    this.start = map<Date>(obj.start, Date);
-    this.end = map<Date>(obj.end, Date);
+  constructor(obj?: Partial<AnalyticsQueryTimeframe>) {
+    if(!obj) {
+      return;
+    }
+    this.start = map(obj.start, Date);
+    this.end = map(obj.end, Date);
   }
 }
 

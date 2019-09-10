@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import AccountInformation from '../../models/AccountInformation';
 import Login from '../../models/Login';
 
@@ -18,12 +19,12 @@ export default class LoginApi extends BaseAPI {
   /**
    * @summary Login
    * @param {Login} login Login Credentials
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LoginApi
    */
   public create(login?: Login): Promise<AccountInformation> {
     return this.restClient.post<AccountInformation>('/account/login', {}, login).then((response) => {
-      return new AccountInformation(response);
+      return map(response, AccountInformation);
     });
   }
 }

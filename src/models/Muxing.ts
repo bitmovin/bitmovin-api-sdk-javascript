@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import BroadcastTsMuxing from './BroadcastTsMuxing';
 import ChunkedTextMuxing from './ChunkedTextMuxing';
@@ -9,6 +9,7 @@ import Ignoring from './Ignoring';
 import Mp3Muxing from './Mp3Muxing';
 import Mp4Muxing from './Mp4Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
@@ -37,19 +38,19 @@ export type MuxingUnion =
  */
 export class Muxing extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'FMP4': 'Fmp4Muxing',
-    'CMAF': 'CmafMuxing',
-    'MP4': 'Mp4Muxing',
-    'TS': 'TsMuxing',
-    'WEBM': 'WebmMuxing',
-    'MP3': 'Mp3Muxing',
-    'PROGRESSIVE_WEBM': 'ProgressiveWebmMuxing',
-    'PROGRESSIVE_MOV': 'ProgressiveMovMuxing',
-    'PROGRESSIVE_TS': 'ProgressiveTsMuxing',
-    'BROADCAST_TS': 'BroadcastTsMuxing',
-    'CHUNKED_TEXT': 'ChunkedTextMuxing',
-    'TEXT': 'TextMuxing'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof MuxingType]: string; } = {
+    FMP4: 'Fmp4Muxing',
+    CMAF: 'CmafMuxing',
+    MP4: 'Mp4Muxing',
+    TS: 'TsMuxing',
+    WEBM: 'WebmMuxing',
+    MP3: 'Mp3Muxing',
+    PROGRESSIVE_WEBM: 'ProgressiveWebmMuxing',
+    PROGRESSIVE_MOV: 'ProgressiveMovMuxing',
+    PROGRESSIVE_TS: 'ProgressiveTsMuxing',
+    BROADCAST_TS: 'BroadcastTsMuxing',
+    CHUNKED_TEXT: 'ChunkedTextMuxing',
+    TEXT: 'TextMuxing'
   };
 
   /**
@@ -99,16 +100,18 @@ export class Muxing extends BitmovinResource {
    */
   public streamConditionsMode?: StreamConditionsMode;
 
-  constructor(obj: Partial<Muxing>) {
+  constructor(obj?: Partial<Muxing>) {
     super(obj);
-
-    this.streams = map<MuxingStream>(obj.streams, MuxingStream) || [];
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
-    this.avgBitrate = obj.avgBitrate;
-    this.minBitrate = obj.minBitrate;
-    this.maxBitrate = obj.maxBitrate;
-    this.ignoredBy = map<Ignoring>(obj.ignoredBy, Ignoring) || [];
-    this.streamConditionsMode = obj.streamConditionsMode;
+    if(!obj) {
+      return;
+    }
+    this.streams = mapArray(obj.streams, MuxingStream);
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.avgBitrate = map(obj.avgBitrate);
+    this.minBitrate = map(obj.minBitrate);
+    this.maxBitrate = map(obj.maxBitrate);
+    this.ignoredBy = mapArray(obj.ignoredBy, Ignoring);
+    this.streamConditionsMode = map(obj.streamConditionsMode);
   }
 }
 

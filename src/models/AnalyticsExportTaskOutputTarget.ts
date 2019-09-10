@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class AnalyticsExportTaskOutputTarget {
    */
   public outputId?: string;
 
-  constructor(obj: Partial<AnalyticsExportTaskOutputTarget>) {
-
-    this.outputPath = obj.outputPath;
-    this.outputId = obj.outputId;
+  constructor(obj?: Partial<AnalyticsExportTaskOutputTarget>) {
+    if(!obj) {
+      return;
+    }
+    this.outputPath = map(obj.outputPath);
+    this.outputId = map(obj.outputId);
   }
 }
 

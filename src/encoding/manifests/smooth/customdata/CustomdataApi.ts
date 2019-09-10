@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomData from '../../../../models/CustomData';
 
 /**
@@ -17,7 +18,7 @@ export default class CustomdataApi extends BaseAPI {
   /**
    * @summary Smooth Streaming Manifest Custom Data
    * @param {string} manifestId UUID of the Smooth Streaming manifest
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(manifestId: string): Promise<CustomData> {
@@ -25,7 +26,7 @@ export default class CustomdataApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<CustomData>('/encoding/manifests/smooth/{manifest_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

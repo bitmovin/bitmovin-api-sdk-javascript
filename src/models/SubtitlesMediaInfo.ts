@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import StandardMediaInfo from './StandardMediaInfo';
 
 /**
@@ -13,10 +13,12 @@ export class SubtitlesMediaInfo extends StandardMediaInfo {
    */
   public forced?: boolean;
 
-  constructor(obj: Partial<SubtitlesMediaInfo>) {
+  constructor(obj?: Partial<SubtitlesMediaInfo>) {
     super(obj);
-
-    this.forced = obj.forced;
+    if(!obj) {
+      return;
+    }
+    this.forced = map(obj.forced);
   }
 }
 

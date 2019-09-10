@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class EncodingStatistics {
    */
   public timeEncoded?: number;
 
-  constructor(obj: Partial<EncodingStatistics>) {
-
-    this.date = map<Date>(obj.date, Date);
-    this.bytesEncoded = obj.bytesEncoded;
-    this.timeEncoded = obj.timeEncoded;
+  constructor(obj?: Partial<EncodingStatistics>) {
+    if(!obj) {
+      return;
+    }
+    this.date = map(obj.date, Date);
+    this.bytesEncoded = map(obj.bytesEncoded);
+    this.timeEncoded = map(obj.timeEncoded);
   }
 }
 

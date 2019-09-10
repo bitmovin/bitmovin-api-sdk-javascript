@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../../common/Mapper';
 import CustomData from '../../../../../../../models/CustomData';
 
 /**
@@ -19,7 +20,7 @@ export default class CustomdataApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(encodingId: string, muxingId: string, id3TagId: string): Promise<CustomData> {
@@ -29,7 +30,7 @@ export default class CustomdataApi extends BaseAPI {
       id3_tag_id: id3TagId
     };
     return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id/{id3_tag_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

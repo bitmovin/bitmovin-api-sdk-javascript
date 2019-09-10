@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import Bif from '../../../../models/Bif';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -25,7 +26,7 @@ export default class BifsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {Bif} bif The Roku Bif file to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BifsApi
    */
   public create(encodingId: string, streamId: string, bif?: Bif): Promise<Bif> {
@@ -34,7 +35,7 @@ export default class BifsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<Bif>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs', pathParamMap, bif).then((response) => {
-      return new Bif(response);
+      return map(response, Bif);
     });
   }
 
@@ -43,7 +44,7 @@ export default class BifsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} bifId Id of the Bif.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BifsApi
    */
   public delete(encodingId: string, streamId: string, bifId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class BifsApi extends BaseAPI {
       bif_id: bifId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs/{bif_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class BifsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} bifId Id of the Bif configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BifsApi
    */
   public get(encodingId: string, streamId: string, bifId: string): Promise<Bif> {
@@ -72,7 +73,7 @@ export default class BifsApi extends BaseAPI {
       bif_id: bifId
     };
     return this.restClient.get<Bif>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs/{bif_id}', pathParamMap).then((response) => {
-      return new Bif(response);
+      return map(response, Bif);
     });
   }
 
@@ -81,7 +82,7 @@ export default class BifsApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BifsApi
    */
   public list(encodingId: string, streamId: string, queryParameters?: BifListQueryParams | ((q: BifListQueryParamsBuilder) => BifListQueryParamsBuilder)): Promise<PaginationResponse<Bif>> {
@@ -96,7 +97,7 @@ export default class BifsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Bif>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Bif>(response, Bif);;
+      return new PaginationResponse<Bif>(response, Bif);
     });
   }
 }

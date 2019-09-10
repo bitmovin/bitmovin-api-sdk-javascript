@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class TsProgramClockReferenceConfiguration {
    */
   public interval?: number;
 
-  constructor(obj: Partial<TsProgramClockReferenceConfiguration>) {
-
-    this.pid = obj.pid;
-    this.interval = obj.interval;
+  constructor(obj?: Partial<TsProgramClockReferenceConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.pid = map(obj.pid);
+    this.interval = map(obj.interval);
   }
 }
 

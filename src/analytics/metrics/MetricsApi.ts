@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import MaxConcurrentviewersApi from './maxConcurrentviewers/MaxConcurrentviewersApi';
 import AvgConcurrentviewersApi from './avgConcurrentviewers/AvgConcurrentviewersApi';
 import AvgDroppedFramesApi from './avgDroppedFrames/AvgDroppedFramesApi';

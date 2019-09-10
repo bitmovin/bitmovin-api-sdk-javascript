@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AdAnalyticsAttribute from './AdAnalyticsAttribute';
 import AdAnalyticsContainsFilter from './AdAnalyticsContainsFilter';
 import AdAnalyticsEqualFilter from './AdAnalyticsEqualFilter';
@@ -9,6 +9,7 @@ import AdAnalyticsLessThanFilter from './AdAnalyticsLessThanFilter';
 import AdAnalyticsLessThanOrEqualFilter from './AdAnalyticsLessThanOrEqualFilter';
 import AdAnalyticsNotContainsFilter from './AdAnalyticsNotContainsFilter';
 import AdAnalyticsNotEqualFilter from './AdAnalyticsNotEqualFilter';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 export type AdAnalyticsAbstractFilterUnion =
   AdAnalyticsInFilter |
@@ -27,16 +28,16 @@ export type AdAnalyticsAbstractFilterUnion =
  */
 export class AdAnalyticsAbstractFilter {
   protected static readonly _discriminatorName = 'operator';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'IN': 'AdAnalyticsInFilter',
-    'EQ': 'AdAnalyticsEqualFilter',
-    'NE': 'AdAnalyticsNotEqualFilter',
-    'LT': 'AdAnalyticsLessThanFilter',
-    'LTE': 'AdAnalyticsLessThanOrEqualFilter',
-    'GT': 'AdAnalyticsGreaterThanFilter',
-    'GTE': 'AdAnalyticsGreaterThanOrEqualFilter',
-    'CONTAINS': 'AdAnalyticsContainsFilter',
-    'NOTCONTAINS': 'AdAnalyticsNotContainsFilter'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof AnalyticsQueryOperator]: string; } = {
+    IN: 'AdAnalyticsInFilter',
+    EQ: 'AdAnalyticsEqualFilter',
+    NE: 'AdAnalyticsNotEqualFilter',
+    LT: 'AdAnalyticsLessThanFilter',
+    LTE: 'AdAnalyticsLessThanOrEqualFilter',
+    GT: 'AdAnalyticsGreaterThanFilter',
+    GTE: 'AdAnalyticsGreaterThanOrEqualFilter',
+    CONTAINS: 'AdAnalyticsContainsFilter',
+    NOTCONTAINS: 'AdAnalyticsNotContainsFilter'
   };
 
   /**
@@ -45,9 +46,11 @@ export class AdAnalyticsAbstractFilter {
    */
   public name?: AdAnalyticsAttribute;
 
-  constructor(obj: Partial<AdAnalyticsAbstractFilter>) {
-
-    this.name = obj.name;
+  constructor(obj?: Partial<AdAnalyticsAbstractFilter>) {
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
   }
 }
 

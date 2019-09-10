@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import OrganizationType from './OrganizationType';
 import ResourceLimitContainer from './ResourceLimitContainer';
@@ -34,13 +34,15 @@ export class Organization extends BitmovinResource {
    */
   public limitsPerResource?: ResourceLimitContainer[];
 
-  constructor(obj: Partial<Organization>) {
+  constructor(obj?: Partial<Organization>) {
     super(obj);
-
-    this.type = obj.type;
-    this.parentId = obj.parentId;
-    this.labelColor = obj.labelColor;
-    this.limitsPerResource = map<ResourceLimitContainer>(obj.limitsPerResource, ResourceLimitContainer) || [];
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
+    this.parentId = map(obj.parentId);
+    this.labelColor = map(obj.labelColor);
+    this.limitsPerResource = mapArray(obj.limitsPerResource, ResourceLimitContainer);
   }
 }
 

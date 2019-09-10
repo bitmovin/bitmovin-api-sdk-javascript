@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import ScheduledInsertableContent from '../../../../../models/ScheduledInsertableContent';
 
@@ -20,7 +21,7 @@ export default class ScheduleApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} contentId Id of the insertable content.
    * @param {ScheduledInsertableContent} scheduledInsertableContent The scheduled insertable content to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ScheduleApi
    */
   public create(encodingId: string, contentId: string, scheduledInsertableContent?: ScheduledInsertableContent): Promise<ScheduledInsertableContent> {
@@ -29,7 +30,7 @@ export default class ScheduleApi extends BaseAPI {
       content_id: contentId
     };
     return this.restClient.post<ScheduledInsertableContent>('/encoding/encodings/{encoding_id}/live/insertable-content/{content_id}/schedule', pathParamMap, scheduledInsertableContent).then((response) => {
-      return new ScheduledInsertableContent(response);
+      return map(response, ScheduledInsertableContent);
     });
   }
 
@@ -38,7 +39,7 @@ export default class ScheduleApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} contentId Id of the insertable content.
    * @param {string} scheduledContentId Id of the scheduled insertable content
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ScheduleApi
    */
   public delete(encodingId: string, contentId: string, scheduledContentId: string): Promise<BitmovinResponse> {
@@ -48,7 +49,7 @@ export default class ScheduleApi extends BaseAPI {
       scheduled_content_id: scheduledContentId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/live/insertable-content/{content_id}/schedule/{scheduled_content_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import TimeBasedApi from './timeBased/TimeBasedApi';
 import TimecodeTrackApi from './timecodeTrack/TimecodeTrackApi';
 import H264PictureTimingApi from './h264PictureTiming/H264PictureTimingApi';

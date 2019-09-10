@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class HttpInput extends Input {
    * @type {string}
    * @memberof HttpInput
    */
-  public type: 'HTTP' = 'HTTP';
+  public type: InputType.HTTP = InputType.HTTP;
 
   /**
    * Host Url or IP of the HTTP server (required)
@@ -41,13 +42,15 @@ export class HttpInput extends Input {
    */
   public port?: number;
 
-  constructor(obj: Partial<HttpInput>) {
+  constructor(obj?: Partial<HttpInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.username = obj.username;
-    this.password = obj.password;
-    this.port = obj.port;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
+    this.port = map(obj.port);
   }
 }
 

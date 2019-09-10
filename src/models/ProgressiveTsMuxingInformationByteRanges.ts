@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -33,12 +33,14 @@ export class ProgressiveTsMuxingInformationByteRanges {
    */
   public duration?: number;
 
-  constructor(obj: Partial<ProgressiveTsMuxingInformationByteRanges>) {
-
-    this.segmentNumber = obj.segmentNumber;
-    this.startBytes = obj.startBytes;
-    this.endBytes = obj.endBytes;
-    this.duration = obj.duration;
+  constructor(obj?: Partial<ProgressiveTsMuxingInformationByteRanges>) {
+    if(!obj) {
+      return;
+    }
+    this.segmentNumber = map(obj.segmentNumber);
+    this.startBytes = map(obj.startBytes);
+    this.endBytes = map(obj.endBytes);
+    this.duration = map(obj.duration);
   }
 }
 

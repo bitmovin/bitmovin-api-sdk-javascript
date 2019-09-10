@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import HlsVersion from './HlsVersion';
 import Manifest from './Manifest';
@@ -10,7 +10,7 @@ import ManifestType from './ManifestType';
  */
 export class HlsManifest extends Manifest {
   /**
-   * The filename of your manifest (required)
+   * The filename of your manifest. If this is not set, the `name` is used as output file name. Either one of `name` or `manifestName` is required. Be aware that spaces will be replaced with underlines (`_`) on the output.
    * @type {string}
    * @memberof HlsManifest
    */
@@ -30,12 +30,14 @@ export class HlsManifest extends Manifest {
    */
   public hlsMasterPlaylistVersion?: HlsVersion;
 
-  constructor(obj: Partial<HlsManifest>) {
+  constructor(obj?: Partial<HlsManifest>) {
     super(obj);
-
-    this.manifestName = obj.manifestName;
-    this.hlsMediaPlaylistVersion = obj.hlsMediaPlaylistVersion;
-    this.hlsMasterPlaylistVersion = obj.hlsMasterPlaylistVersion;
+    if(!obj) {
+      return;
+    }
+    this.manifestName = map(obj.manifestName);
+    this.hlsMediaPlaylistVersion = map(obj.hlsMediaPlaylistVersion);
+    this.hlsMasterPlaylistVersion = map(obj.hlsMasterPlaylistVersion);
   }
 }
 

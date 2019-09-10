@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Ac3ChannelLayout from './Ac3ChannelLayout';
 import AudioConfiguration from './AudioConfiguration';
+import CodecConfigType from './CodecConfigType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class Ac3AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof Ac3AudioConfiguration
    */
-  public type: 'AC3' = 'AC3';
+  public type: CodecConfigType.AC3 = CodecConfigType.AC3;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +22,20 @@ export class Ac3AudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: Ac3ChannelLayout;
 
-  constructor(obj: Partial<Ac3AudioConfiguration>) {
-    super(obj);
+  /**
+   * The highest frequency that will pass the audio encoder. This value is optional.
+   * @type {number}
+   * @memberof Ac3AudioConfiguration
+   */
+  public cutoffFrequency?: number;
 
-    this.channelLayout = obj.channelLayout;
+  constructor(obj?: Partial<Ac3AudioConfiguration>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
+    this.cutoffFrequency = map(obj.cutoffFrequency);
   }
 }
 

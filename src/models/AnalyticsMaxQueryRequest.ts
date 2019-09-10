@@ -9,9 +9,11 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  * @class AnalyticsMaxQueryRequest
  */
 export class AnalyticsMaxQueryRequest extends AnalyticsQueryRequest {
-  constructor(obj: Partial<AnalyticsMaxQueryRequest>) {
+  constructor(obj?: Partial<AnalyticsMaxQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

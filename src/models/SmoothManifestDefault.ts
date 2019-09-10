@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import ManifestType from './ManifestType';
 import SmoothManifestDefaultVersion from './SmoothManifestDefaultVersion';
@@ -23,11 +23,13 @@ export class SmoothManifestDefault extends SmoothStreamingManifest {
    */
   public version?: SmoothManifestDefaultVersion;
 
-  constructor(obj: Partial<SmoothManifestDefault>) {
+  constructor(obj?: Partial<SmoothManifestDefault>) {
     super(obj);
-
-    this.encodingId = obj.encodingId;
-    this.version = obj.version;
+    if(!obj) {
+      return;
+    }
+    this.encodingId = map(obj.encodingId);
+    this.version = map(obj.version);
   }
 }
 

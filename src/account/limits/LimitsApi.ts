@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import ResourceLimitContainer from '../../models/ResourceLimitContainer';
 import PaginationResponse from '../../models/PaginationResponse';
 
@@ -17,12 +18,12 @@ export default class LimitsApi extends BaseAPI {
 
   /**
    * @summary Organization Limits
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LimitsApi
    */
   public list(): Promise<PaginationResponse<ResourceLimitContainer>> {
     return this.restClient.get<PaginationResponse<ResourceLimitContainer>>('/account/limits', {}).then((response) => {
-      return new PaginationResponse<ResourceLimitContainer>(response, ResourceLimitContainer);;
+      return new PaginationResponse<ResourceLimitContainer>(response, ResourceLimitContainer);
     });
   }
 }

@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import AwsCloudRegion from './AwsCloudRegion';
 import Output from './Output';
+import OutputType from './OutputType';
 import S3SignatureVersion from './S3SignatureVersion';
 
 /**
@@ -14,7 +15,7 @@ export class S3Output extends Output {
    * @type {string}
    * @memberof S3Output
    */
-  public type: 'S3' = 'S3';
+  public type: OutputType.S3 = OutputType.S3;
 
   /**
    * Amazon S3 bucket name (required)
@@ -56,15 +57,17 @@ export class S3Output extends Output {
    */
   public signatureVersion?: S3SignatureVersion;
 
-  constructor(obj: Partial<S3Output>) {
+  constructor(obj?: Partial<S3Output>) {
     super(obj);
-
-    this.bucketName = obj.bucketName;
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
-    this.md5MetaTag = obj.md5MetaTag;
-    this.cloudRegion = obj.cloudRegion;
-    this.signatureVersion = obj.signatureVersion;
+    if(!obj) {
+      return;
+    }
+    this.bucketName = map(obj.bucketName);
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
+    this.md5MetaTag = map(obj.md5MetaTag);
+    this.cloudRegion = map(obj.cloudRegion);
+    this.signatureVersion = map(obj.signatureVersion);
   }
 }
 

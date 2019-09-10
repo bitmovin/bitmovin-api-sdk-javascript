@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MediaStream from './MediaStream';
 
 /**
@@ -20,11 +20,13 @@ export class SubtitleStream extends MediaStream {
    */
   public hearingImpaired?: boolean;
 
-  constructor(obj: Partial<SubtitleStream>) {
+  constructor(obj?: Partial<SubtitleStream>) {
     super(obj);
-
-    this.language = obj.language;
-    this.hearingImpaired = obj.hearingImpaired;
+    if(!obj) {
+      return;
+    }
+    this.language = map(obj.language);
+    this.hearingImpaired = map(obj.hearingImpaired);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Link from './Link';
 import Message from './Message';
 
@@ -42,13 +42,15 @@ export class ResponseErrorData {
    */
   public details?: Message[];
 
-  constructor(obj: Partial<ResponseErrorData>) {
-
-    this.code = obj.code;
-    this.message = obj.message;
-    this.developerMessage = obj.developerMessage;
-    this.links = map<Link>(obj.links, Link) || [];
-    this.details = map<Message>(obj.details, Message) || [];
+  constructor(obj?: Partial<ResponseErrorData>) {
+    if(!obj) {
+      return;
+    }
+    this.code = map(obj.code);
+    this.message = map(obj.message);
+    this.developerMessage = map(obj.developerMessage);
+    this.links = mapArray(obj.links, Link);
+    this.details = mapArray(obj.details, Message);
   }
 }
 

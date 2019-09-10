@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import HeAacV1AudioConfiguration from '../../../../models/HeAacV1AudioConfiguration';
@@ -23,19 +24,19 @@ export default class HeAacV1Api extends BaseAPI {
   /**
    * @summary Create HE-AAC v1 Codec Configuration
    * @param {HeAacV1AudioConfiguration} heAacV1AudioConfiguration The HE-AAC Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HeAacV1Api
    */
   public create(heAacV1AudioConfiguration?: HeAacV1AudioConfiguration): Promise<HeAacV1AudioConfiguration> {
     return this.restClient.post<HeAacV1AudioConfiguration>('/encoding/configurations/audio/he-aac-v1', {}, heAacV1AudioConfiguration).then((response) => {
-      return new HeAacV1AudioConfiguration(response);
+      return map(response, HeAacV1AudioConfiguration);
     });
   }
 
   /**
    * @summary Delete HE-AAC v1 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HeAacV1Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class HeAacV1Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/he-aac-v1/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary HE-AAC v1 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HeAacV1Api
    */
   public get(configurationId: string): Promise<HeAacV1AudioConfiguration> {
@@ -58,14 +59,14 @@ export default class HeAacV1Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<HeAacV1AudioConfiguration>('/encoding/configurations/audio/he-aac-v1/{configuration_id}', pathParamMap).then((response) => {
-      return new HeAacV1AudioConfiguration(response);
+      return map(response, HeAacV1AudioConfiguration);
     });
   }
 
   /**
    * @summary List HE-AAC v1 Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HeAacV1Api
    */
   public list(queryParameters?: HeAacV1AudioConfigurationListQueryParams | ((q: HeAacV1AudioConfigurationListQueryParamsBuilder) => HeAacV1AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<HeAacV1AudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class HeAacV1Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<HeAacV1AudioConfiguration>>('/encoding/configurations/audio/he-aac-v1', {}, queryParams).then((response) => {
-      return new PaginationResponse<HeAacV1AudioConfiguration>(response, HeAacV1AudioConfiguration);;
+      return new PaginationResponse<HeAacV1AudioConfiguration>(response, HeAacV1AudioConfiguration);
     });
   }
 }

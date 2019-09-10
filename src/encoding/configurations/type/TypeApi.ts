@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CodecConfigTypeResponse from '../../../models/CodecConfigTypeResponse';
 
 /**
@@ -17,7 +18,7 @@ export default class TypeApi extends BaseAPI {
   /**
    * @summary Get Codec Configuration Type
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TypeApi
    */
   public get(configurationId: string): Promise<CodecConfigTypeResponse> {
@@ -25,7 +26,7 @@ export default class TypeApi extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<CodecConfigTypeResponse>('/encoding/configurations/{configuration_id}/type', pathParamMap).then((response) => {
-      return new CodecConfigTypeResponse(response);
+      return map(response, CodecConfigTypeResponse);
     });
   }
 }

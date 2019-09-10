@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -13,10 +13,12 @@ export class CustomXmlElement extends BitmovinResponse {
    */
   public data?: string;
 
-  constructor(obj: Partial<CustomXmlElement>) {
+  constructor(obj?: Partial<CustomXmlElement>) {
     super(obj);
-
-    this.data = obj.data;
+    if(!obj) {
+      return;
+    }
+    this.data = map(obj.data);
   }
 }
 

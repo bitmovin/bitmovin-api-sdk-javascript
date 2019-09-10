@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import AkamaiNetStorageOutput from '../../../models/AkamaiNetStorageOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class AkamaiNetstorageApi extends BaseAPI {
   /**
    * @summary Create Akamai NetStorage Output
    * @param {AkamaiNetStorageOutput} akamaiNetStorageOutput The Akamai NetStorage output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiNetstorageApi
    */
   public create(akamaiNetStorageOutput?: AkamaiNetStorageOutput): Promise<AkamaiNetStorageOutput> {
     return this.restClient.post<AkamaiNetStorageOutput>('/encoding/outputs/akamai-netstorage', {}, akamaiNetStorageOutput).then((response) => {
-      return new AkamaiNetStorageOutput(response);
+      return map(response, AkamaiNetStorageOutput);
     });
   }
 
   /**
    * @summary Delete Akamai NetStorage Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiNetstorageApi
    */
   public delete(outputId: string): Promise<AkamaiNetStorageOutput> {
@@ -42,14 +43,14 @@ export default class AkamaiNetstorageApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<AkamaiNetStorageOutput>('/encoding/outputs/akamai-netstorage/{output_id}', pathParamMap).then((response) => {
-      return new AkamaiNetStorageOutput(response);
+      return map(response, AkamaiNetStorageOutput);
     });
   }
 
   /**
    * @summary Akamai NetStorage Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiNetstorageApi
    */
   public get(outputId: string): Promise<AkamaiNetStorageOutput> {
@@ -57,14 +58,14 @@ export default class AkamaiNetstorageApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<AkamaiNetStorageOutput>('/encoding/outputs/akamai-netstorage/{output_id}', pathParamMap).then((response) => {
-      return new AkamaiNetStorageOutput(response);
+      return map(response, AkamaiNetStorageOutput);
     });
   }
 
   /**
    * @summary List Akamai NetStorage Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AkamaiNetstorageApi
    */
   public list(queryParameters?: AkamaiNetStorageOutputListQueryParams | ((q: AkamaiNetStorageOutputListQueryParamsBuilder) => AkamaiNetStorageOutputListQueryParamsBuilder)): Promise<PaginationResponse<AkamaiNetStorageOutput>> {
@@ -75,7 +76,7 @@ export default class AkamaiNetstorageApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AkamaiNetStorageOutput>>('/encoding/outputs/akamai-netstorage', {}, queryParams).then((response) => {
-      return new PaginationResponse<AkamaiNetStorageOutput>(response, AkamaiNetStorageOutput);;
+      return new PaginationResponse<AkamaiNetStorageOutput>(response, AkamaiNetStorageOutput);
     });
   }
 }

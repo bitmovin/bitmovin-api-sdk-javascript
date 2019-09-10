@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
 import EncodingMode from './EncodingMode';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
@@ -131,26 +131,28 @@ export class StatisticsPerStream {
    */
   public psnrMultiplicator?: number;
 
-  constructor(obj: Partial<StatisticsPerStream>) {
-
-    this.streamId = obj.streamId;
-    this.codecConfigId = obj.codecConfigId;
-    this.multiplicator = obj.multiplicator;
-    this.encodedBytes = obj.encodedBytes;
-    this.encodedSeconds = obj.encodedSeconds;
-    this.billableMinutes = obj.billableMinutes;
-    this.width = obj.width;
-    this.height = obj.height;
-    this.rate = obj.rate;
-    this.bitrate = obj.bitrate;
-    this.codec = obj.codec;
-    this.resolution = obj.resolution;
-    this.encodingMode = obj.encodingMode;
-    this.encodingModeMultiplicator = obj.encodingModeMultiplicator;
-    this.perTitleResultStream = obj.perTitleResultStream;
-    this.perTitleMultiplicator = obj.perTitleMultiplicator;
-    this.psnrMode = obj.psnrMode;
-    this.psnrMultiplicator = obj.psnrMultiplicator;
+  constructor(obj?: Partial<StatisticsPerStream>) {
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
+    this.codecConfigId = map(obj.codecConfigId);
+    this.multiplicator = map(obj.multiplicator);
+    this.encodedBytes = map(obj.encodedBytes);
+    this.encodedSeconds = map(obj.encodedSeconds);
+    this.billableMinutes = map(obj.billableMinutes);
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.rate = map(obj.rate);
+    this.bitrate = map(obj.bitrate);
+    this.codec = map(obj.codec);
+    this.resolution = map(obj.resolution);
+    this.encodingMode = map(obj.encodingMode);
+    this.encodingModeMultiplicator = map(obj.encodingModeMultiplicator);
+    this.perTitleResultStream = map(obj.perTitleResultStream);
+    this.perTitleMultiplicator = map(obj.perTitleMultiplicator);
+    this.psnrMode = map(obj.psnrMode);
+    this.psnrMultiplicator = map(obj.psnrMultiplicator);
   }
 }
 

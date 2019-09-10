@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -15,7 +16,7 @@ export class WebmMuxing extends Muxing {
    * @type {string}
    * @memberof WebmMuxing
    */
-  public type: 'WEBM' = 'WEBM';
+  public type: MuxingType.WEBM = MuxingType.WEBM;
 
   /**
    * Length of the fragments in seconds (required)
@@ -52,14 +53,16 @@ export class WebmMuxing extends Muxing {
    */
   public initSegmentNameTemplate?: string;
 
-  constructor(obj: Partial<WebmMuxing>) {
+  constructor(obj?: Partial<WebmMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.segmentNaming = obj.segmentNaming;
-    this.segmentNamingTemplate = obj.segmentNamingTemplate;
-    this.initSegmentName = obj.initSegmentName;
-    this.initSegmentNameTemplate = obj.initSegmentNameTemplate;
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
+    this.initSegmentName = map(obj.initSegmentName);
+    this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
   }
 }
 

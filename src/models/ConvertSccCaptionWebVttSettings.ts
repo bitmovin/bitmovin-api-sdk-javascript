@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ConvertSccPositionMode from './ConvertSccPositionMode';
 
 /**
@@ -26,11 +26,13 @@ export class ConvertSccCaptionWebVttSettings {
    */
   public removeColor?: boolean;
 
-  constructor(obj: Partial<ConvertSccCaptionWebVttSettings>) {
-
-    this.positionMode = obj.positionMode;
-    this.removeFlash = obj.removeFlash;
-    this.removeColor = obj.removeColor;
+  constructor(obj?: Partial<ConvertSccCaptionWebVttSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.positionMode = map(obj.positionMode);
+    this.removeFlash = map(obj.removeFlash);
+    this.removeColor = map(obj.removeColor);
   }
 }
 

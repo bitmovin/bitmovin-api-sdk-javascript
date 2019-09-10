@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import FileInputStreamType from './FileInputStreamType';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class FileInputStream extends InputStream {
    * @type {string}
    * @memberof FileInputStream
    */
-  public type: 'FILE' = 'FILE';
+  public type: InputStreamType.FILE = InputStreamType.FILE;
 
   /**
    * Id of input (required)
@@ -34,12 +35,14 @@ export class FileInputStream extends InputStream {
    */
   public fileType?: FileInputStreamType;
 
-  constructor(obj: Partial<FileInputStream>) {
+  constructor(obj?: Partial<FileInputStream>) {
     super(obj);
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.fileType = obj.fileType;
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.fileType = map(obj.fileType);
   }
 }
 

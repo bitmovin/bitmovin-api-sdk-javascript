@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AdaptiveQuantMode from './AdaptiveQuantMode';
 import BAdapt from './BAdapt';
 import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
+import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
 import EncodingMode from './EncodingMode';
 import H264BPyramid from './H264BPyramid';
@@ -29,7 +30,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof H264VideoConfiguration
    */
-  public type: 'H264' = 'H264';
+  public type: CodecConfigType.H264 = CodecConfigType.H264;
 
   /**
    * Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
@@ -336,53 +337,55 @@ export class H264VideoConfiguration extends VideoConfiguration {
    */
   public psyTrellis?: number;
 
-  constructor(obj: Partial<H264VideoConfiguration>) {
+  constructor(obj?: Partial<H264VideoConfiguration>) {
     super(obj);
-
-    this.presetConfiguration = obj.presetConfiguration;
-    this.crf = obj.crf;
-    this.profile = obj.profile;
-    this.bframes = obj.bframes;
-    this.refFrames = obj.refFrames;
-    this.qpMin = obj.qpMin;
-    this.qpMax = obj.qpMax;
-    this.mvPredictionMode = obj.mvPredictionMode;
-    this.mvSearchRangeMax = obj.mvSearchRangeMax;
-    this.cabac = obj.cabac;
-    this.maxBitrate = obj.maxBitrate;
-    this.minBitrate = obj.minBitrate;
-    this.bufsize = obj.bufsize;
-    this.minGop = obj.minGop;
-    this.maxGop = obj.maxGop;
-    this.openGop = obj.openGop;
-    this.minKeyframeInterval = obj.minKeyframeInterval;
-    this.maxKeyframeInterval = obj.maxKeyframeInterval;
-    this.level = obj.level;
-    this.bAdaptiveStrategy = obj.bAdaptiveStrategy;
-    this.motionEstimationMethod = obj.motionEstimationMethod;
-    this.rcLookahead = obj.rcLookahead;
-    this.subMe = obj.subMe;
-    this.trellis = obj.trellis;
-    this.partitions = obj.partitions || [];
-    this.slices = obj.slices;
-    this.interlaceMode = obj.interlaceMode;
-    this.sceneCutThreshold = obj.sceneCutThreshold;
-    this.nalHrd = obj.nalHrd;
-    this.bPyramid = obj.bPyramid;
-    this.cea608708SubtitleConfig = map<Cea608708SubtitleConfiguration>(obj.cea608708SubtitleConfig, Cea608708SubtitleConfiguration);
-    this.deblockAlpha = obj.deblockAlpha;
-    this.deblockBeta = obj.deblockBeta;
-    this.adaptiveQuantizationMode = obj.adaptiveQuantizationMode;
-    this.adaptiveQuantizationStrength = obj.adaptiveQuantizationStrength;
-    this.mixedReferences = obj.mixedReferences;
-    this.adaptiveSpatialTransform = obj.adaptiveSpatialTransform;
-    this.fastSkipDetectionPFrames = obj.fastSkipDetectionPFrames;
-    this.weightedPredictionBFrames = obj.weightedPredictionBFrames;
-    this.weightedPredictionPFrames = obj.weightedPredictionPFrames;
-    this.macroblockTreeRatecontrol = obj.macroblockTreeRatecontrol;
-    this.quantizerCurveCompression = obj.quantizerCurveCompression;
-    this.psyRateDistortionOptimization = obj.psyRateDistortionOptimization;
-    this.psyTrellis = obj.psyTrellis;
+    if(!obj) {
+      return;
+    }
+    this.presetConfiguration = map(obj.presetConfiguration);
+    this.crf = map(obj.crf);
+    this.profile = map(obj.profile);
+    this.bframes = map(obj.bframes);
+    this.refFrames = map(obj.refFrames);
+    this.qpMin = map(obj.qpMin);
+    this.qpMax = map(obj.qpMax);
+    this.mvPredictionMode = map(obj.mvPredictionMode);
+    this.mvSearchRangeMax = map(obj.mvSearchRangeMax);
+    this.cabac = map(obj.cabac);
+    this.maxBitrate = map(obj.maxBitrate);
+    this.minBitrate = map(obj.minBitrate);
+    this.bufsize = map(obj.bufsize);
+    this.minGop = map(obj.minGop);
+    this.maxGop = map(obj.maxGop);
+    this.openGop = map(obj.openGop);
+    this.minKeyframeInterval = map(obj.minKeyframeInterval);
+    this.maxKeyframeInterval = map(obj.maxKeyframeInterval);
+    this.level = map(obj.level);
+    this.bAdaptiveStrategy = map(obj.bAdaptiveStrategy);
+    this.motionEstimationMethod = map(obj.motionEstimationMethod);
+    this.rcLookahead = map(obj.rcLookahead);
+    this.subMe = map(obj.subMe);
+    this.trellis = map(obj.trellis);
+    this.partitions = mapArray(obj.partitions);
+    this.slices = map(obj.slices);
+    this.interlaceMode = map(obj.interlaceMode);
+    this.sceneCutThreshold = map(obj.sceneCutThreshold);
+    this.nalHrd = map(obj.nalHrd);
+    this.bPyramid = map(obj.bPyramid);
+    this.cea608708SubtitleConfig = map(obj.cea608708SubtitleConfig, Cea608708SubtitleConfiguration);
+    this.deblockAlpha = map(obj.deblockAlpha);
+    this.deblockBeta = map(obj.deblockBeta);
+    this.adaptiveQuantizationMode = map(obj.adaptiveQuantizationMode);
+    this.adaptiveQuantizationStrength = map(obj.adaptiveQuantizationStrength);
+    this.mixedReferences = map(obj.mixedReferences);
+    this.adaptiveSpatialTransform = map(obj.adaptiveSpatialTransform);
+    this.fastSkipDetectionPFrames = map(obj.fastSkipDetectionPFrames);
+    this.weightedPredictionBFrames = map(obj.weightedPredictionBFrames);
+    this.weightedPredictionPFrames = map(obj.weightedPredictionPFrames);
+    this.macroblockTreeRatecontrol = map(obj.macroblockTreeRatecontrol);
+    this.quantizerCurveCompression = map(obj.quantizerCurveCompression);
+    this.psyRateDistortionOptimization = map(obj.psyRateDistortionOptimization);
+    this.psyTrellis = map(obj.psyTrellis);
   }
 }
 

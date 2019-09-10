@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import S3Output from '../../../models/S3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class S3Api extends BaseAPI {
   /**
    * @summary Create S3 Output
    * @param {S3Output} s3Output The S3 output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public create(s3Output?: S3Output): Promise<S3Output> {
     return this.restClient.post<S3Output>('/encoding/outputs/s3', {}, s3Output).then((response) => {
-      return new S3Output(response);
+      return map(response, S3Output);
     });
   }
 
   /**
    * @summary Delete S3 Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public delete(outputId: string): Promise<S3Output> {
@@ -42,14 +43,14 @@ export default class S3Api extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<S3Output>('/encoding/outputs/s3/{output_id}', pathParamMap).then((response) => {
-      return new S3Output(response);
+      return map(response, S3Output);
     });
   }
 
   /**
    * @summary S3 Output Details
    * @param {string} outputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public get(outputId: string): Promise<S3Output> {
@@ -57,14 +58,14 @@ export default class S3Api extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<S3Output>('/encoding/outputs/s3/{output_id}', pathParamMap).then((response) => {
-      return new S3Output(response);
+      return map(response, S3Output);
     });
   }
 
   /**
    * @summary List S3 Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof S3Api
    */
   public list(queryParameters?: S3OutputListQueryParams | ((q: S3OutputListQueryParamsBuilder) => S3OutputListQueryParamsBuilder)): Promise<PaginationResponse<S3Output>> {
@@ -75,7 +76,7 @@ export default class S3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<S3Output>>('/encoding/outputs/s3', {}, queryParams).then((response) => {
-      return new PaginationResponse<S3Output>(response, S3Output);;
+      return new PaginationResponse<S3Output>(response, S3Output);
     });
   }
 }

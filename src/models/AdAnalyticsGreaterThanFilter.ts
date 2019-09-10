@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AdAnalyticsAbstractFilter from './AdAnalyticsAbstractFilter';
 import AdAnalyticsAttribute from './AdAnalyticsAttribute';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AdAnalyticsGreaterThanFilter extends AdAnalyticsAbstractFilter {
    * @type {string}
    * @memberof AdAnalyticsGreaterThanFilter
    */
-  public operator: 'GT' = 'GT';
+  public operator: AnalyticsQueryOperator.GT = AnalyticsQueryOperator.GT;
 
   /**
    * @type {any}
@@ -20,10 +21,12 @@ export class AdAnalyticsGreaterThanFilter extends AdAnalyticsAbstractFilter {
    */
   public value?: any;
 
-  constructor(obj: Partial<AdAnalyticsGreaterThanFilter>) {
+  constructor(obj?: Partial<AdAnalyticsGreaterThanFilter>) {
     super(obj);
-
-    this.value = obj.value;
+    if(!obj) {
+      return;
+    }
+    this.value = map(obj.value);
   }
 }
 

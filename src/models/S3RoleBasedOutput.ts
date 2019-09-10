@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import AwsCloudRegion from './AwsCloudRegion';
 import Output from './Output';
+import OutputType from './OutputType';
 import S3SignatureVersion from './S3SignatureVersion';
 
 /**
@@ -14,7 +15,7 @@ export class S3RoleBasedOutput extends Output {
    * @type {string}
    * @memberof S3RoleBasedOutput
    */
-  public type: 'S3_ROLE_BASED' = 'S3_ROLE_BASED';
+  public type: OutputType.S3_ROLE_BASED = OutputType.S3_ROLE_BASED;
 
   /**
    * Amazon S3 bucket name (required)
@@ -57,15 +58,17 @@ export class S3RoleBasedOutput extends Output {
    */
   public signatureVersion?: S3SignatureVersion;
 
-  constructor(obj: Partial<S3RoleBasedOutput>) {
+  constructor(obj?: Partial<S3RoleBasedOutput>) {
     super(obj);
-
-    this.bucketName = obj.bucketName;
-    this.roleArn = obj.roleArn;
-    this.externalId = obj.externalId;
-    this.md5MetaTag = obj.md5MetaTag;
-    this.cloudRegion = obj.cloudRegion;
-    this.signatureVersion = obj.signatureVersion;
+    if(!obj) {
+      return;
+    }
+    this.bucketName = map(obj.bucketName);
+    this.roleArn = map(obj.roleArn);
+    this.externalId = map(obj.externalId);
+    this.md5MetaTag = map(obj.md5MetaTag);
+    this.cloudRegion = map(obj.cloudRegion);
+    this.signatureVersion = map(obj.signatureVersion);
   }
 }
 

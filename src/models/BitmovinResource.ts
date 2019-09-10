@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -41,14 +41,16 @@ export class BitmovinResource extends BitmovinResponse {
    */
   public customData?: { [key: string]: any; };
 
-  constructor(obj: Partial<BitmovinResource>) {
+  constructor(obj?: Partial<BitmovinResource>) {
     super(obj);
-
-    this.name = obj.name;
-    this.description = obj.description;
-    this.createdAt = map<Date>(obj.createdAt, Date);
-    this.modifiedAt = map<Date>(obj.modifiedAt, Date);
-    this.customData = obj.customData;
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.description = map(obj.description);
+    this.createdAt = map(obj.createdAt, Date);
+    this.modifiedAt = map(obj.modifiedAt, Date);
+    this.customData = map(obj.customData);
   }
 }
 

@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 import StreamSelectionMode from './StreamSelectionMode';
 
 /**
@@ -12,7 +13,7 @@ export class IngestInputStream extends InputStream {
    * @type {string}
    * @memberof IngestInputStream
    */
-  public type: 'INGEST' = 'INGEST';
+  public type: InputStreamType.INGEST = InputStreamType.INGEST;
 
   /**
    * Id of input
@@ -42,13 +43,15 @@ export class IngestInputStream extends InputStream {
    */
   public position?: number;
 
-  constructor(obj: Partial<IngestInputStream>) {
+  constructor(obj?: Partial<IngestInputStream>) {
     super(obj);
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.selectionMode = obj.selectionMode;
-    this.position = obj.position;
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.selectionMode = map(obj.selectionMode);
+    this.position = map(obj.position);
   }
 }
 

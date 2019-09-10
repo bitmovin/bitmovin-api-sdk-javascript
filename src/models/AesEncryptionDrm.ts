@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AesEncryptionMethod from './AesEncryptionMethod';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 
 /**
@@ -13,7 +14,7 @@ export class AesEncryptionDrm extends Drm {
    * @type {string}
    * @memberof AesEncryptionDrm
    */
-  public type: 'AES' = 'AES';
+  public type: DrmType.AES = DrmType.AES;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)
@@ -42,13 +43,15 @@ export class AesEncryptionDrm extends Drm {
    */
   public method?: AesEncryptionMethod;
 
-  constructor(obj: Partial<AesEncryptionDrm>) {
+  constructor(obj?: Partial<AesEncryptionDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.iv = obj.iv;
-    this.keyFileUri = obj.keyFileUri;
-    this.method = obj.method;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.iv = map(obj.iv);
+    this.keyFileUri = map(obj.keyFileUri);
+    this.method = map(obj.method);
   }
 }
 

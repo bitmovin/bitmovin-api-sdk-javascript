@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import ObjectDetectionBoundingBox from './ObjectDetectionBoundingBox';
 
@@ -35,13 +35,15 @@ export class ObjectDetectionResult extends BitmovinResponse {
    */
   public boundingBox?: ObjectDetectionBoundingBox;
 
-  constructor(obj: Partial<ObjectDetectionResult>) {
+  constructor(obj?: Partial<ObjectDetectionResult>) {
     super(obj);
-
-    this.detectedObject = obj.detectedObject;
-    this.timestamp = obj.timestamp;
-    this.score = obj.score;
-    this.boundingBox = map<ObjectDetectionBoundingBox>(obj.boundingBox, ObjectDetectionBoundingBox);
+    if(!obj) {
+      return;
+    }
+    this.detectedObject = map(obj.detectedObject);
+    this.timestamp = map(obj.timestamp);
+    this.score = map(obj.score);
+    this.boundingBox = map(obj.boundingBox, ObjectDetectionBoundingBox);
   }
 }
 

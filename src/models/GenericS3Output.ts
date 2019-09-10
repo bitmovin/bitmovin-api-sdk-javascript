@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 import S3SignatureVersion from './S3SignatureVersion';
 
 /**
@@ -13,7 +14,7 @@ export class GenericS3Output extends Output {
    * @type {string}
    * @memberof GenericS3Output
    */
-  public type: 'GENERIC_S3' = 'GENERIC_S3';
+  public type: OutputType.GENERIC_S3 = OutputType.GENERIC_S3;
 
   /**
    * Your generic S3 access key (required)
@@ -64,16 +65,18 @@ export class GenericS3Output extends Output {
    */
   public signatureVersion?: S3SignatureVersion;
 
-  constructor(obj: Partial<GenericS3Output>) {
+  constructor(obj?: Partial<GenericS3Output>) {
     super(obj);
-
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
-    this.bucketName = obj.bucketName;
-    this.host = obj.host;
-    this.port = obj.port;
-    this.ssl = obj.ssl;
-    this.signatureVersion = obj.signatureVersion;
+    if(!obj) {
+      return;
+    }
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
+    this.bucketName = map(obj.bucketName);
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.ssl = map(obj.ssl);
+    this.signatureVersion = map(obj.signatureVersion);
   }
 }
 

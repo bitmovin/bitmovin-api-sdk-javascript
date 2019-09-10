@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SrtStatisticLink from './SrtStatisticLink';
 import SrtStatisticRecv from './SrtStatisticRecv';
 import SrtStatisticSend from './SrtStatisticSend';
@@ -82,19 +82,21 @@ export class SrtStatistics {
    */
   public send?: SrtStatisticSend;
 
-  constructor(obj: Partial<SrtStatistics>) {
-
-    this.id = obj.id;
-    this.createdAt = map<Date>(obj.createdAt, Date);
-    this.encodingId = obj.encodingId;
-    this.srtInputId = obj.srtInputId;
-    this.srtInputSelected = obj.srtInputSelected;
-    this.orgId = obj.orgId;
-    this.userId = obj.userId;
-    this.link = map<SrtStatisticLink>(obj.link, SrtStatisticLink);
-    this.window = map<SrtStatisticWindow>(obj.window, SrtStatisticWindow);
-    this.recv = map<SrtStatisticRecv>(obj.recv, SrtStatisticRecv);
-    this.send = map<SrtStatisticSend>(obj.send, SrtStatisticSend);
+  constructor(obj?: Partial<SrtStatistics>) {
+    if(!obj) {
+      return;
+    }
+    this.id = map(obj.id);
+    this.createdAt = map(obj.createdAt, Date);
+    this.encodingId = map(obj.encodingId);
+    this.srtInputId = map(obj.srtInputId);
+    this.srtInputSelected = map(obj.srtInputSelected);
+    this.orgId = map(obj.orgId);
+    this.userId = map(obj.userId);
+    this.link = map(obj.link, SrtStatisticLink);
+    this.window = map(obj.window, SrtStatisticWindow);
+    this.recv = map(obj.recv, SrtStatisticRecv);
+    this.send = map(obj.send, SrtStatisticSend);
   }
 }
 

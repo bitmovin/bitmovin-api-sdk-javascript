@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import CropFilter from '../../../models/CropFilter';
@@ -23,19 +24,19 @@ export default class CropApi extends BaseAPI {
   /**
    * @summary Create Crop Filter
    * @param {CropFilter} cropFilter The Crop Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CropApi
    */
   public create(cropFilter?: CropFilter): Promise<CropFilter> {
     return this.restClient.post<CropFilter>('/encoding/filters/crop', {}, cropFilter).then((response) => {
-      return new CropFilter(response);
+      return map(response, CropFilter);
     });
   }
 
   /**
    * @summary Delete Crop Filter
    * @param {string} filterId Id of the Crop configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CropApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class CropApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/crop/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Crop Filter Details
    * @param {string} filterId Id of the Crop configuration.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CropApi
    */
   public get(filterId: string): Promise<CropFilter> {
@@ -58,14 +59,14 @@ export default class CropApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<CropFilter>('/encoding/filters/crop/{filter_id}', pathParamMap).then((response) => {
-      return new CropFilter(response);
+      return map(response, CropFilter);
     });
   }
 
   /**
    * @summary List Crop Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CropApi
    */
   public list(queryParameters?: CropFilterListQueryParams | ((q: CropFilterListQueryParamsBuilder) => CropFilterListQueryParamsBuilder)): Promise<PaginationResponse<CropFilter>> {
@@ -76,7 +77,7 @@ export default class CropApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CropFilter>>('/encoding/filters/crop', {}, queryParams).then((response) => {
-      return new PaginationResponse<CropFilter>(response, CropFilter);;
+      return new PaginationResponse<CropFilter>(response, CropFilter);
     });
   }
 }

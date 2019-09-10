@@ -1,4 +1,5 @@
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -10,11 +11,13 @@ export class TcpInput extends Input {
    * @type {string}
    * @memberof TcpInput
    */
-  public type: 'TCP' = 'TCP';
+  public type: InputType.TCP = InputType.TCP;
 
-  constructor(obj: Partial<TcpInput>) {
+  constructor(obj?: Partial<TcpInput>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

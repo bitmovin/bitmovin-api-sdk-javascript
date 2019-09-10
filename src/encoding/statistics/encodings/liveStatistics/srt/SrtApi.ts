@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import SrtStatistics from '../../../../../models/SrtStatistics';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 import {SrtStatisticsListQueryParams, SrtStatisticsListQueryParamsBuilder} from './SrtStatisticsListQueryParams';
@@ -21,7 +22,7 @@ export default class SrtApi extends BaseAPI {
    * @summary List Stream Infos of Live Statistics from an Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public list(encodingId: string, queryParameters?: SrtStatisticsListQueryParams | ((q: SrtStatisticsListQueryParamsBuilder) => SrtStatisticsListQueryParamsBuilder)): Promise<PaginationResponse<SrtStatistics>> {
@@ -35,7 +36,7 @@ export default class SrtApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtStatistics>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/srt', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<SrtStatistics>(response, SrtStatistics);;
+      return new PaginationResponse<SrtStatistics>(response, SrtStatistics);
     });
   }
 
@@ -44,7 +45,7 @@ export default class SrtApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} srtInputId Id of the SRT input.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public listBySrtInputId(encodingId: string, srtInputId: string, queryParameters?: SrtStatisticsListBySrtInputIdQueryParams | ((q: SrtStatisticsListBySrtInputIdQueryParamsBuilder) => SrtStatisticsListBySrtInputIdQueryParamsBuilder)): Promise<PaginationResponse<SrtStatistics>> {
@@ -59,7 +60,7 @@ export default class SrtApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SrtStatistics>>('/encoding/statistics/encodings/{encoding_id}/live-statistics/srt/{srt_input_id}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<SrtStatistics>(response, SrtStatistics);;
+      return new PaginationResponse<SrtStatistics>(response, SrtStatistics);
     });
   }
 }

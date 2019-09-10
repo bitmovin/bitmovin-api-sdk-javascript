@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import AnalyticsApi from './analytics/AnalyticsApi';
 import DomainsApi from './domains/DomainsApi';
 import ThirdPartyLicensingApi from './thirdPartyLicensing/ThirdPartyLicensingApi';
@@ -28,19 +29,19 @@ export default class LicensesApi extends BaseAPI {
   /**
    * @summary Create Player License
    * @param {PlayerLicense} playerLicense Player License to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public create(playerLicense?: PlayerLicense): Promise<PlayerLicense> {
     return this.restClient.post<PlayerLicense>('/player/licenses', {}, playerLicense).then((response) => {
-      return new PlayerLicense(response);
+      return map(response, PlayerLicense);
     });
   }
 
   /**
    * @summary Get License
    * @param {string} licenseId ID of the License
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public get(licenseId: string): Promise<PlayerLicense> {
@@ -48,14 +49,14 @@ export default class LicensesApi extends BaseAPI {
       license_id: licenseId
     };
     return this.restClient.get<PlayerLicense>('/player/licenses/{license_id}', pathParamMap).then((response) => {
-      return new PlayerLicense(response);
+      return map(response, PlayerLicense);
     });
   }
 
   /**
    * @summary List Player Licenses
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof LicensesApi
    */
   public list(queryParameters?: PlayerLicenseListQueryParams | ((q: PlayerLicenseListQueryParamsBuilder) => PlayerLicenseListQueryParamsBuilder)): Promise<PaginationResponse<PlayerLicense>> {
@@ -66,7 +67,7 @@ export default class LicensesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<PlayerLicense>>('/player/licenses', {}, queryParams).then((response) => {
-      return new PaginationResponse<PlayerLicense>(response, PlayerLicense);;
+      return new PaginationResponse<PlayerLicense>(response, PlayerLicense);
     });
   }
 }

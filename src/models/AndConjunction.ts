@@ -1,5 +1,6 @@
 import AbstractCondition from './AbstractCondition';
 import AbstractConjunction from './AbstractConjunction';
+import ConditionType from './ConditionType';
 
 /**
  * @export
@@ -11,11 +12,13 @@ export class AndConjunction extends AbstractConjunction {
    * @type {string}
    * @memberof AndConjunction
    */
-  public type: 'AND' = 'AND';
+  public type: ConditionType.AND = ConditionType.AND;
 
-  constructor(obj: Partial<AndConjunction>) {
+  constructor(obj?: Partial<AndConjunction>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

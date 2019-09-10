@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioConfiguration from './AudioConfiguration';
+import CodecConfigType from './CodecConfigType';
 import OpusChannelLayout from './OpusChannelLayout';
 
 /**
@@ -12,7 +13,7 @@ export class OpusAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof OpusAudioConfiguration
    */
-  public type: 'OPUS' = 'OPUS';
+  public type: CodecConfigType.OPUS = CodecConfigType.OPUS;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +22,12 @@ export class OpusAudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: OpusChannelLayout;
 
-  constructor(obj: Partial<OpusAudioConfiguration>) {
+  constructor(obj?: Partial<OpusAudioConfiguration>) {
     super(obj);
-
-    this.channelLayout = obj.channelLayout;
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class StreamFilter {
    */
   public position?: number;
 
-  constructor(obj: Partial<StreamFilter>) {
-
-    this.id = obj.id;
-    this.position = obj.position;
+  constructor(obj?: Partial<StreamFilter>) {
+    if(!obj) {
+      return;
+    }
+    this.id = map(obj.id);
+    this.position = map(obj.position);
   }
 }
 

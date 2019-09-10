@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -27,12 +27,14 @@ export class AwsAccount extends BitmovinResource {
    */
   public accountNumber?: string;
 
-  constructor(obj: Partial<AwsAccount>) {
+  constructor(obj?: Partial<AwsAccount>) {
     super(obj);
-
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
-    this.accountNumber = obj.accountNumber;
+    if(!obj) {
+      return;
+    }
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
+    this.accountNumber = map(obj.accountNumber);
   }
 }
 

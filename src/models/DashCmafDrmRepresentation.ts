@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import DashCmafRepresentation from './DashCmafRepresentation';
 import DashRepresentationType from './DashRepresentationType';
 import DashRepresentationTypeMode from './DashRepresentationTypeMode';
@@ -15,10 +15,12 @@ export class DashCmafDrmRepresentation extends DashCmafRepresentation {
    */
   public drmId?: string;
 
-  constructor(obj: Partial<DashCmafDrmRepresentation>) {
+  constructor(obj?: Partial<DashCmafDrmRepresentation>) {
     super(obj);
-
-    this.drmId = obj.drmId;
+    if(!obj) {
+      return;
+    }
+    this.drmId = map(obj.drmId);
   }
 }
 

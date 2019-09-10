@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class AkamaiNetStorageInput extends Input {
    * @type {string}
    * @memberof AkamaiNetStorageInput
    */
-  public type: 'AKAMAI_NETSTORAGE' = 'AKAMAI_NETSTORAGE';
+  public type: InputType.AKAMAI_NETSTORAGE = InputType.AKAMAI_NETSTORAGE;
 
   /**
    * Host to use for Akamai NetStorage transfers (required)
@@ -34,12 +35,14 @@ export class AkamaiNetStorageInput extends Input {
    */
   public password?: string;
 
-  constructor(obj: Partial<AkamaiNetStorageInput>) {
+  constructor(obj?: Partial<AkamaiNetStorageInput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.username = obj.username;
-    this.password = obj.password;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -40,13 +40,15 @@ export class Trimming {
    */
   public endPicTiming?: string;
 
-  constructor(obj: Partial<Trimming>) {
-
-    this.offset = obj.offset;
-    this.duration = obj.duration;
-    this.ignoreDurationIfInputTooShort = obj.ignoreDurationIfInputTooShort;
-    this.startPicTiming = obj.startPicTiming;
-    this.endPicTiming = obj.endPicTiming;
+  constructor(obj?: Partial<Trimming>) {
+    if(!obj) {
+      return;
+    }
+    this.offset = map(obj.offset);
+    this.duration = map(obj.duration);
+    this.ignoreDurationIfInputTooShort = map(obj.ignoreDurationIfInputTooShort);
+    this.startPicTiming = map(obj.startPicTiming);
+    this.endPicTiming = map(obj.endPicTiming);
   }
 }
 

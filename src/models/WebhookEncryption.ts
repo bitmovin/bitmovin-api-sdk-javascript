@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncryptionType from './EncryptionType';
 
 /**
@@ -20,10 +20,12 @@ export class WebhookEncryption {
    */
   public key?: string;
 
-  constructor(obj: Partial<WebhookEncryption>) {
-
-    this.type = obj.type;
-    this.key = obj.key;
+  constructor(obj?: Partial<WebhookEncryption>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
+    this.key = map(obj.key);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class ConcatenationInputConfiguration {
    */
   public position?: number;
 
-  constructor(obj: Partial<ConcatenationInputConfiguration>) {
-
-    this.inputStreamId = obj.inputStreamId;
-    this.isMain = obj.isMain;
-    this.position = obj.position;
+  constructor(obj?: Partial<ConcatenationInputConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.inputStreamId = map(obj.inputStreamId);
+    this.isMain = map(obj.isMain);
+    this.position = map(obj.position);
   }
 }
 

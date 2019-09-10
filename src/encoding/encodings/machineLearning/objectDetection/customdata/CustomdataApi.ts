@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import CustomData from '../../../../../models/CustomData';
 
 /**
@@ -18,7 +19,7 @@ export default class CustomdataApi extends BaseAPI {
    * @summary Get the custom data of an object detection configuration
    * @param {string} encodingId Id of the encoding
    * @param {string} objectDetectionId Id of the object detection configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public get(encodingId: string, objectDetectionId: string): Promise<CustomData> {
@@ -27,7 +28,7 @@ export default class CustomdataApi extends BaseAPI {
       object_detection_id: objectDetectionId
     };
     return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

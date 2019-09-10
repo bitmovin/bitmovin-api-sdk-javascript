@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import CloudRegion from './CloudRegion';
 
 /**
@@ -19,10 +19,12 @@ export class InfrastructureSettings {
    */
   public cloudRegion?: CloudRegion;
 
-  constructor(obj: Partial<InfrastructureSettings>) {
-
-    this.infrastructureId = obj.infrastructureId;
-    this.cloudRegion = obj.cloudRegion;
+  constructor(obj?: Partial<InfrastructureSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.infrastructureId = map(obj.infrastructureId);
+    this.cloudRegion = map(obj.cloudRegion);
   }
 }
 

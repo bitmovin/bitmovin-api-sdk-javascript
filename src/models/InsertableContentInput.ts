@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class InsertableContentInput {
    */
   public description?: string;
 
-  constructor(obj: Partial<InsertableContentInput>) {
-
-    this.inputId = obj.inputId;
-    this.inputPath = obj.inputPath;
-    this.description = obj.description;
+  constructor(obj?: Partial<InsertableContentInput>) {
+    if(!obj) {
+      return;
+    }
+    this.inputId = map(obj.inputId);
+    this.inputPath = map(obj.inputPath);
+    this.description = map(obj.description);
   }
 }
 

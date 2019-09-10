@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ResourceLimit from './ResourceLimit';
 import ResourceType from './ResourceType';
 
@@ -19,10 +19,12 @@ export class ResourceLimitContainer {
    */
   public limits?: ResourceLimit[];
 
-  constructor(obj: Partial<ResourceLimitContainer>) {
-
-    this.resource = obj.resource;
-    this.limits = map<ResourceLimit>(obj.limits, ResourceLimit) || [];
+  constructor(obj?: Partial<ResourceLimitContainer>) {
+    if(!obj) {
+      return;
+    }
+    this.resource = map(obj.resource);
+    this.limits = mapArray(obj.limits, ResourceLimit);
   }
 }
 

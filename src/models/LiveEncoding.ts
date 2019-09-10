@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -26,11 +26,13 @@ export class LiveEncoding {
    */
   public application?: string;
 
-  constructor(obj: Partial<LiveEncoding>) {
-
-    this.streamKey = obj.streamKey;
-    this.encoderIp = obj.encoderIp;
-    this.application = obj.application;
+  constructor(obj?: Partial<LiveEncoding>) {
+    if(!obj) {
+      return;
+    }
+    this.streamKey = map(obj.streamKey);
+    this.encoderIp = map(obj.encoderIp);
+    this.application = map(obj.application);
   }
 }
 

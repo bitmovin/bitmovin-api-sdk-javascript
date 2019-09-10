@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -29,12 +29,14 @@ export class StreamDetails {
    */
   public position?: number;
 
-  constructor(obj: Partial<StreamDetails>) {
-
-    this.id = obj.id;
-    this.codec = obj.codec;
-    this.duration = obj.duration;
-    this.position = obj.position;
+  constructor(obj?: Partial<StreamDetails>) {
+    if(!obj) {
+      return;
+    }
+    this.id = map(obj.id);
+    this.codec = map(obj.codec);
+    this.duration = map(obj.duration);
+    this.position = map(obj.position);
   }
 }
 

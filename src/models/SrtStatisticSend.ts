@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -47,15 +47,17 @@ export class SrtStatisticSend {
    */
   public packetsRetransmitted?: number;
 
-  constructor(obj: Partial<SrtStatisticSend>) {
-
-    this.bytes = obj.bytes;
-    this.bytesDropped = obj.bytesDropped;
-    this.mbitRate = obj.mbitRate;
-    this.packets = obj.packets;
-    this.packetsDropped = obj.packetsDropped;
-    this.packetsLost = obj.packetsLost;
-    this.packetsRetransmitted = obj.packetsRetransmitted;
+  constructor(obj?: Partial<SrtStatisticSend>) {
+    if(!obj) {
+      return;
+    }
+    this.bytes = map(obj.bytes);
+    this.bytesDropped = map(obj.bytesDropped);
+    this.mbitRate = map(obj.mbitRate);
+    this.packets = map(obj.packets);
+    this.packetsDropped = map(obj.packetsDropped);
+    this.packetsLost = map(obj.packetsLost);
+    this.packetsRetransmitted = map(obj.packetsRetransmitted);
   }
 }
 

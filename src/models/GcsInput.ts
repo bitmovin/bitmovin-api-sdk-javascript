@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import GoogleCloudRegion from './GoogleCloudRegion';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class GcsInput extends Input {
    * @type {string}
    * @memberof GcsInput
    */
-  public type: 'GCS' = 'GCS';
+  public type: InputType.GCS = InputType.GCS;
 
   /**
    * Name of the bucket (required)
@@ -42,13 +43,15 @@ export class GcsInput extends Input {
    */
   public secretKey?: string;
 
-  constructor(obj: Partial<GcsInput>) {
+  constructor(obj?: Partial<GcsInput>) {
     super(obj);
-
-    this.bucketName = obj.bucketName;
-    this.cloudRegion = obj.cloudRegion;
-    this.accessKey = obj.accessKey;
-    this.secretKey = obj.secretKey;
+    if(!obj) {
+      return;
+    }
+    this.bucketName = map(obj.bucketName);
+    this.cloudRegion = map(obj.cloudRegion);
+    this.accessKey = map(obj.accessKey);
+    this.secretKey = map(obj.secretKey);
   }
 }
 

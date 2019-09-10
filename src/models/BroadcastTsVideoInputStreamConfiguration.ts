@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BroadcastTsInputStreamConfiguration from './BroadcastTsInputStreamConfiguration';
 import RaiUnit from './RaiUnit';
 
@@ -21,11 +21,13 @@ export class BroadcastTsVideoInputStreamConfiguration extends BroadcastTsInputSt
    */
   public maxDecodeDelay?: number;
 
-  constructor(obj: Partial<BroadcastTsVideoInputStreamConfiguration>) {
+  constructor(obj?: Partial<BroadcastTsVideoInputStreamConfiguration>) {
     super(obj);
-
-    this.insertAccessUnitDelimiterInAvc = obj.insertAccessUnitDelimiterInAvc;
-    this.maxDecodeDelay = obj.maxDecodeDelay;
+    if(!obj) {
+      return;
+    }
+    this.insertAccessUnitDelimiterInAvc = map(obj.insertAccessUnitDelimiterInAvc);
+    this.maxDecodeDelay = map(obj.maxDecodeDelay);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import Keyframe from '../../../models/Keyframe';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class KeyframesApi extends BaseAPI {
    * @summary Create Keyframes
    * @param {string} encodingId Id of the encoding.
    * @param {Keyframe} keyframe The Keyframes to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KeyframesApi
    */
   public create(encodingId: string, keyframe?: Keyframe): Promise<Keyframe> {
@@ -29,7 +30,7 @@ export default class KeyframesApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<Keyframe>('/encoding/encodings/{encoding_id}/keyframes', pathParamMap, keyframe).then((response) => {
-      return new Keyframe(response);
+      return map(response, Keyframe);
     });
   }
 
@@ -37,7 +38,7 @@ export default class KeyframesApi extends BaseAPI {
    * @summary Delete Keyframe
    * @param {string} encodingId Id of the encoding.
    * @param {string} keyframeId Id of the keyframe.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KeyframesApi
    */
   public delete(encodingId: string, keyframeId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class KeyframesApi extends BaseAPI {
       keyframe_id: keyframeId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class KeyframesApi extends BaseAPI {
    * @summary Keyframe Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} keyframeId Id of the keyframe.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KeyframesApi
    */
   public get(encodingId: string, keyframeId: string): Promise<Keyframe> {
@@ -63,7 +64,7 @@ export default class KeyframesApi extends BaseAPI {
       keyframe_id: keyframeId
     };
     return this.restClient.get<Keyframe>('/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}', pathParamMap).then((response) => {
-      return new Keyframe(response);
+      return map(response, Keyframe);
     });
   }
 
@@ -71,7 +72,7 @@ export default class KeyframesApi extends BaseAPI {
    * @summary List all Keyframes
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof KeyframesApi
    */
   public list(encodingId: string, queryParameters?: KeyframeListQueryParams | ((q: KeyframeListQueryParamsBuilder) => KeyframeListQueryParamsBuilder)): Promise<PaginationResponse<Keyframe>> {
@@ -85,7 +86,7 @@ export default class KeyframesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Keyframe>>('/encoding/encodings/{encoding_id}/keyframes', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Keyframe>(response, Keyframe);;
+      return new PaginationResponse<Keyframe>(response, Keyframe);
     });
   }
 }

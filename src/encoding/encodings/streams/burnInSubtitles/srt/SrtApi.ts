@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import BurnInSubtitleSrt from '../../../../../models/BurnInSubtitleSrt';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -22,7 +23,7 @@ export default class SrtApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {BurnInSubtitleSrt} burnInSubtitleSrt The Burn-In SRT Subtitle to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public create(encodingId: string, streamId: string, burnInSubtitleSrt?: BurnInSubtitleSrt): Promise<BurnInSubtitleSrt> {
@@ -31,7 +32,7 @@ export default class SrtApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<BurnInSubtitleSrt>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt', pathParamMap, burnInSubtitleSrt).then((response) => {
-      return new BurnInSubtitleSrt(response);
+      return map(response, BurnInSubtitleSrt);
     });
   }
 
@@ -40,7 +41,7 @@ export default class SrtApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public delete(encodingId: string, streamId: string, subtitleId: string): Promise<BitmovinResponse> {
@@ -50,7 +51,7 @@ export default class SrtApi extends BaseAPI {
       subtitle_id: subtitleId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -59,7 +60,7 @@ export default class SrtApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public get(encodingId: string, streamId: string, subtitleId: string): Promise<BurnInSubtitleSrt> {
@@ -69,7 +70,7 @@ export default class SrtApi extends BaseAPI {
       subtitle_id: subtitleId
     };
     return this.restClient.get<BurnInSubtitleSrt>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}', pathParamMap).then((response) => {
-      return new BurnInSubtitleSrt(response);
+      return map(response, BurnInSubtitleSrt);
     });
   }
 
@@ -78,7 +79,7 @@ export default class SrtApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SrtApi
    */
   public list(encodingId: string, streamId: string, queryParameters?: BurnInSubtitleSrtListQueryParams | ((q: BurnInSubtitleSrtListQueryParamsBuilder) => BurnInSubtitleSrtListQueryParamsBuilder)): Promise<PaginationResponse<BurnInSubtitleSrt>> {
@@ -93,7 +94,7 @@ export default class SrtApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<BurnInSubtitleSrt>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<BurnInSubtitleSrt>(response, BurnInSubtitleSrt);;
+      return new PaginationResponse<BurnInSubtitleSrt>(response, BurnInSubtitleSrt);
     });
   }
 }

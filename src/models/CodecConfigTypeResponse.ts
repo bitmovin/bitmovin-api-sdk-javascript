@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
 
 /**
@@ -13,9 +13,11 @@ export class CodecConfigTypeResponse {
    */
   public type?: CodecConfigType;
 
-  constructor(obj: Partial<CodecConfigTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<CodecConfigTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

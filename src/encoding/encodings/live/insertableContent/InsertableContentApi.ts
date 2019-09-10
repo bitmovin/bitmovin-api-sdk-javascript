@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import ScheduleApi from './schedule/ScheduleApi';
 import ScheduledApi from './scheduled/ScheduledApi';
 import StopApi from './stop/StopApi';
@@ -29,7 +30,7 @@ export default class InsertableContentApi extends BaseAPI {
    * @summary Make Insertable Content Available For A Live Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {InsertableContent} insertableContent The insertable content to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InsertableContentApi
    */
   public create(encodingId: string, insertableContent?: InsertableContent): Promise<InsertableContent> {
@@ -37,7 +38,7 @@ export default class InsertableContentApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<InsertableContent>('/encoding/encodings/{encoding_id}/live/insertable-content', pathParamMap, insertableContent).then((response) => {
-      return new InsertableContent(response);
+      return map(response, InsertableContent);
     });
   }
 
@@ -45,7 +46,7 @@ export default class InsertableContentApi extends BaseAPI {
    * @summary List All Inseratble Content Available For A Live Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InsertableContentApi
    */
   public list(encodingId: string, queryParameters?: InsertableContentListQueryParams | ((q: InsertableContentListQueryParamsBuilder) => InsertableContentListQueryParamsBuilder)): Promise<PaginationResponse<InsertableContent>> {
@@ -59,7 +60,7 @@ export default class InsertableContentApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InsertableContent>>('/encoding/encodings/{encoding_id}/live/insertable-content', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<InsertableContent>(response, InsertableContent);;
+      return new PaginationResponse<InsertableContent>(response, InsertableContent);
     });
   }
 }

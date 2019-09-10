@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import DefaultApi from './default/DefaultApi';
 import CustomdataApi from './customdata/CustomdataApi';
 import StreamsApi from './streams/StreamsApi';
@@ -33,19 +34,19 @@ export default class HlsApi extends BaseAPI {
   /**
    * @summary Create HLS Manifest
    * @param {HlsManifest} hlsManifest The HLS Manifest to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public create(hlsManifest?: HlsManifest): Promise<HlsManifest> {
     return this.restClient.post<HlsManifest>('/encoding/manifests/hls', {}, hlsManifest).then((response) => {
-      return new HlsManifest(response);
+      return map(response, HlsManifest);
     });
   }
 
   /**
    * @summary Delete HLS Manifest
    * @param {string} manifestId Id of the hls manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public delete(manifestId: string): Promise<BitmovinResponse> {
@@ -53,14 +54,14 @@ export default class HlsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary HLS Manifest Details
    * @param {string} manifestId Id of the hls manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public get(manifestId: string): Promise<HlsManifest> {
@@ -68,14 +69,14 @@ export default class HlsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<HlsManifest>('/encoding/manifests/hls/{manifest_id}', pathParamMap).then((response) => {
-      return new HlsManifest(response);
+      return map(response, HlsManifest);
     });
   }
 
   /**
    * @summary List HLS Manifests
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public list(queryParameters?: HlsManifestListQueryParams | ((q: HlsManifestListQueryParamsBuilder) => HlsManifestListQueryParamsBuilder)): Promise<PaginationResponse<HlsManifest>> {
@@ -86,14 +87,14 @@ export default class HlsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<HlsManifest>>('/encoding/manifests/hls', {}, queryParams).then((response) => {
-      return new PaginationResponse<HlsManifest>(response, HlsManifest);;
+      return new PaginationResponse<HlsManifest>(response, HlsManifest);
     });
   }
 
   /**
    * @summary Start HLS Manifest Creation
    * @param {string} manifestId Id of the HLS manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public start(manifestId: string): Promise<BitmovinResponse> {
@@ -101,14 +102,14 @@ export default class HlsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/start', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary HLS Manifest Creation Status
    * @param {string} manifestId Id of the HLS manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public status(manifestId: string): Promise<Task> {
@@ -116,14 +117,14 @@ export default class HlsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.get<Task>('/encoding/manifests/hls/{manifest_id}/status', pathParamMap).then((response) => {
-      return new Task(response);
+      return map(response, Task);
     });
   }
 
   /**
    * @summary Stop HLS Manifest Creation
    * @param {string} manifestId Id of the HLS manifest.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof HlsApi
    */
   public stop(manifestId: string): Promise<BitmovinResponse> {
@@ -131,7 +132,7 @@ export default class HlsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/stop', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

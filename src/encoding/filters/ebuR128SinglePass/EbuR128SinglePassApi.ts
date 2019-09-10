@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import EbuR128SinglePassFilter from '../../../models/EbuR128SinglePassFilter';
@@ -23,19 +24,19 @@ export default class EbuR128SinglePassApi extends BaseAPI {
   /**
    * @summary Create EBU R128 Single Pass Filter
    * @param {EbuR128SinglePassFilter} ebuR128SinglePassFilter The EBU R128 Single Pass Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EbuR128SinglePassApi
    */
   public create(ebuR128SinglePassFilter?: EbuR128SinglePassFilter): Promise<EbuR128SinglePassFilter> {
     return this.restClient.post<EbuR128SinglePassFilter>('/encoding/filters/ebu-r128-single-pass', {}, ebuR128SinglePassFilter).then((response) => {
-      return new EbuR128SinglePassFilter(response);
+      return map(response, EbuR128SinglePassFilter);
     });
   }
 
   /**
    * @summary Delete EBU R128 Single Pass Filter
    * @param {string} filterId Id of the EBU R128 Single Pass filter.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EbuR128SinglePassApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class EbuR128SinglePassApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/ebu-r128-single-pass/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary EBU R128 Single Pass Filter Details
    * @param {string} filterId Id of the EBU R128 Single Pass filter.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EbuR128SinglePassApi
    */
   public get(filterId: string): Promise<EbuR128SinglePassFilter> {
@@ -58,14 +59,14 @@ export default class EbuR128SinglePassApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<EbuR128SinglePassFilter>('/encoding/filters/ebu-r128-single-pass/{filter_id}', pathParamMap).then((response) => {
-      return new EbuR128SinglePassFilter(response);
+      return map(response, EbuR128SinglePassFilter);
     });
   }
 
   /**
    * @summary List EBU R128 Single Pass Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EbuR128SinglePassApi
    */
   public list(queryParameters?: EbuR128SinglePassFilterListQueryParams | ((q: EbuR128SinglePassFilterListQueryParamsBuilder) => EbuR128SinglePassFilterListQueryParamsBuilder)): Promise<PaginationResponse<EbuR128SinglePassFilter>> {
@@ -76,7 +77,7 @@ export default class EbuR128SinglePassApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EbuR128SinglePassFilter>>('/encoding/filters/ebu-r128-single-pass', {}, queryParams).then((response) => {
-      return new PaginationResponse<EbuR128SinglePassFilter>(response, EbuR128SinglePassFilter);;
+      return new PaginationResponse<EbuR128SinglePassFilter>(response, EbuR128SinglePassFilter);
     });
   }
 }

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import TextMuxing from '../../../../models/TextMuxing';
@@ -24,7 +25,7 @@ export default class TextApi extends BaseAPI {
    * @summary Add Text Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {TextMuxing} textMuxing The Text Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public create(encodingId: string, textMuxing?: TextMuxing): Promise<TextMuxing> {
@@ -32,7 +33,7 @@ export default class TextApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<TextMuxing>('/encoding/encodings/{encoding_id}/muxings/text', pathParamMap, textMuxing).then((response) => {
-      return new TextMuxing(response);
+      return map(response, TextMuxing);
     });
   }
 
@@ -40,7 +41,7 @@ export default class TextApi extends BaseAPI {
    * @summary Delete Text Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Text muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -49,7 +50,7 @@ export default class TextApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/text/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -57,7 +58,7 @@ export default class TextApi extends BaseAPI {
    * @summary Text Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Text muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public get(encodingId: string, muxingId: string): Promise<TextMuxing> {
@@ -66,7 +67,7 @@ export default class TextApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<TextMuxing>('/encoding/encodings/{encoding_id}/muxings/text/{muxing_id}', pathParamMap).then((response) => {
-      return new TextMuxing(response);
+      return map(response, TextMuxing);
     });
   }
 
@@ -74,7 +75,7 @@ export default class TextApi extends BaseAPI {
    * @summary List Text Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof TextApi
    */
   public list(encodingId: string, queryParameters?: TextMuxingListQueryParams | ((q: TextMuxingListQueryParamsBuilder) => TextMuxingListQueryParamsBuilder)): Promise<PaginationResponse<TextMuxing>> {
@@ -88,7 +89,7 @@ export default class TextApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<TextMuxing>>('/encoding/encodings/{encoding_id}/muxings/text', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<TextMuxing>(response, TextMuxing);;
+      return new PaginationResponse<TextMuxing>(response, TextMuxing);
     });
   }
 }

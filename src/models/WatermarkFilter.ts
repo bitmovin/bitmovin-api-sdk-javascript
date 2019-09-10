@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Filter from './Filter';
+import FilterType from './FilterType';
 import PositionUnit from './PositionUnit';
 
 /**
@@ -12,7 +13,7 @@ export class WatermarkFilter extends Filter {
    * @type {string}
    * @memberof WatermarkFilter
    */
-  public type: 'WATERMARK' = 'WATERMARK';
+  public type: FilterType.WATERMARK = FilterType.WATERMARK;
 
   /**
    * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
@@ -55,15 +56,17 @@ export class WatermarkFilter extends Filter {
    */
   public unit?: PositionUnit;
 
-  constructor(obj: Partial<WatermarkFilter>) {
+  constructor(obj?: Partial<WatermarkFilter>) {
     super(obj);
-
-    this.image = obj.image;
-    this.left = obj.left;
-    this.right = obj.right;
-    this.top = obj.top;
-    this.bottom = obj.bottom;
-    this.unit = obj.unit;
+    if(!obj) {
+      return;
+    }
+    this.image = map(obj.image);
+    this.left = map(obj.left);
+    this.right = map(obj.right);
+    this.top = map(obj.top);
+    this.bottom = map(obj.bottom);
+    this.unit = map(obj.unit);
   }
 }
 

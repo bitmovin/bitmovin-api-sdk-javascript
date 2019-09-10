@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import GenericS3Output from '../../../models/GenericS3Output';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class GenericS3Api extends BaseAPI {
   /**
    * @summary Create Generic S3 Output
    * @param {GenericS3Output} genericS3Output The Generic S3 output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GenericS3Api
    */
   public create(genericS3Output?: GenericS3Output): Promise<GenericS3Output> {
     return this.restClient.post<GenericS3Output>('/encoding/outputs/generic-s3', {}, genericS3Output).then((response) => {
-      return new GenericS3Output(response);
+      return map(response, GenericS3Output);
     });
   }
 
   /**
    * @summary Delete Generic S3 Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GenericS3Api
    */
   public delete(outputId: string): Promise<GenericS3Output> {
@@ -42,14 +43,14 @@ export default class GenericS3Api extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<GenericS3Output>('/encoding/outputs/generic-s3/{output_id}', pathParamMap).then((response) => {
-      return new GenericS3Output(response);
+      return map(response, GenericS3Output);
     });
   }
 
   /**
    * @summary Generic S3 Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GenericS3Api
    */
   public get(outputId: string): Promise<GenericS3Output> {
@@ -57,14 +58,14 @@ export default class GenericS3Api extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<GenericS3Output>('/encoding/outputs/generic-s3/{output_id}', pathParamMap).then((response) => {
-      return new GenericS3Output(response);
+      return map(response, GenericS3Output);
     });
   }
 
   /**
    * @summary List Generic S3 Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GenericS3Api
    */
   public list(queryParameters?: GenericS3OutputListQueryParams | ((q: GenericS3OutputListQueryParamsBuilder) => GenericS3OutputListQueryParamsBuilder)): Promise<PaginationResponse<GenericS3Output>> {
@@ -75,7 +76,7 @@ export default class GenericS3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<GenericS3Output>>('/encoding/outputs/generic-s3', {}, queryParams).then((response) => {
-      return new PaginationResponse<GenericS3Output>(response, GenericS3Output);;
+      return new PaginationResponse<GenericS3Output>(response, GenericS3Output);
     });
   }
 }

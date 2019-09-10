@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AdAnalyticsSumQueryRequest from '../../../../models/AdAnalyticsSumQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
@@ -19,12 +20,12 @@ export default class SumApi extends BaseAPI {
   /**
    * @summary Sum
    * @param {AdAnalyticsSumQueryRequest} adAnalyticsSumQueryRequest Analytics Query Object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SumApi
    */
   public create(adAnalyticsSumQueryRequest?: AdAnalyticsSumQueryRequest): Promise<AnalyticsResponse> {
     return this.restClient.post<AnalyticsResponse>('/analytics/ads/queries/sum', {}, adAnalyticsSumQueryRequest).then((response) => {
-      return new AnalyticsResponse(response);
+      return map(response, AnalyticsResponse);
     });
   }
 }

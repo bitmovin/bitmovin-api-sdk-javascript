@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import LatestApi from './latest/LatestApi';
 import PlayerVersion from '../../../models/PlayerVersion';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class VersionsApi extends BaseAPI {
   /**
    * @summary List Player Versions for Channel
    * @param {string} channelName Name of the channel to get the player versions for.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VersionsApi
    */
   public list(channelName: string): Promise<PaginationResponse<PlayerVersion>> {
@@ -29,7 +30,7 @@ export default class VersionsApi extends BaseAPI {
       channel_name: channelName
     };
     return this.restClient.get<PaginationResponse<PlayerVersion>>('/player/channels/{channel_name}/versions', pathParamMap).then((response) => {
-      return new PaginationResponse<PlayerVersion>(response, PlayerVersion);;
+      return new PaginationResponse<PlayerVersion>(response, PlayerVersion);
     });
   }
 }

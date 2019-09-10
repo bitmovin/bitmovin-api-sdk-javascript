@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import FtpOutput from '../../../models/FtpOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -22,19 +23,19 @@ export default class FtpApi extends BaseAPI {
   /**
    * @summary Create FTP Output
    * @param {FtpOutput} ftpOutput The FTP output to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FtpApi
    */
   public create(ftpOutput?: FtpOutput): Promise<FtpOutput> {
     return this.restClient.post<FtpOutput>('/encoding/outputs/ftp', {}, ftpOutput).then((response) => {
-      return new FtpOutput(response);
+      return map(response, FtpOutput);
     });
   }
 
   /**
    * @summary Delete FTP Output
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FtpApi
    */
   public delete(outputId: string): Promise<FtpOutput> {
@@ -42,14 +43,14 @@ export default class FtpApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.delete<FtpOutput>('/encoding/outputs/ftp/{output_id}', pathParamMap).then((response) => {
-      return new FtpOutput(response);
+      return map(response, FtpOutput);
     });
   }
 
   /**
    * @summary FTP Output Details
    * @param {string} outputId Id of the output
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FtpApi
    */
   public get(outputId: string): Promise<FtpOutput> {
@@ -57,14 +58,14 @@ export default class FtpApi extends BaseAPI {
       output_id: outputId
     };
     return this.restClient.get<FtpOutput>('/encoding/outputs/ftp/{output_id}', pathParamMap).then((response) => {
-      return new FtpOutput(response);
+      return map(response, FtpOutput);
     });
   }
 
   /**
    * @summary List FTP Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FtpApi
    */
   public list(queryParameters?: FtpOutputListQueryParams | ((q: FtpOutputListQueryParamsBuilder) => FtpOutputListQueryParamsBuilder)): Promise<PaginationResponse<FtpOutput>> {
@@ -75,7 +76,7 @@ export default class FtpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FtpOutput>>('/encoding/outputs/ftp', {}, queryParams).then((response) => {
-      return new PaginationResponse<FtpOutput>(response, FtpOutput);;
+      return new PaginationResponse<FtpOutput>(response, FtpOutput);
     });
   }
 }

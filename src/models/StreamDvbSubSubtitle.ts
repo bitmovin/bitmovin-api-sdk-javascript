@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import StreamInput from './StreamInput';
 
@@ -14,10 +14,12 @@ export class StreamDvbSubSubtitle extends BitmovinResource {
    */
   public inputStream?: StreamInput;
 
-  constructor(obj: Partial<StreamDvbSubSubtitle>) {
+  constructor(obj?: Partial<StreamDvbSubSubtitle>) {
     super(obj);
-
-    this.inputStream = map<StreamInput>(obj.inputStream, StreamInput);
+    if(!obj) {
+      return;
+    }
+    this.inputStream = map(obj.inputStream, StreamInput);
   }
 }
 

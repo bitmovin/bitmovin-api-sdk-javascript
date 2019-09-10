@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class Fmp4Api extends BaseAPI {
    * @summary Add fMP4 Segment Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {Fmp4Muxing} fmp4Muxing The fMP4 Segment Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Fmp4Api
    */
   public create(encodingId: string, fmp4Muxing?: Fmp4Muxing): Promise<Fmp4Muxing> {
@@ -35,7 +36,7 @@ export default class Fmp4Api extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<Fmp4Muxing>('/encoding/encodings/{encoding_id}/muxings/fmp4', pathParamMap, fmp4Muxing).then((response) => {
-      return new Fmp4Muxing(response);
+      return map(response, Fmp4Muxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class Fmp4Api extends BaseAPI {
    * @summary Delete fMP4 Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Fmp4Api
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class Fmp4Api extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class Fmp4Api extends BaseAPI {
    * @summary fMP4 Segment Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Fmp4Api
    */
   public get(encodingId: string, muxingId: string): Promise<Fmp4Muxing> {
@@ -69,7 +70,7 @@ export default class Fmp4Api extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<Fmp4Muxing>('/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}', pathParamMap).then((response) => {
-      return new Fmp4Muxing(response);
+      return map(response, Fmp4Muxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class Fmp4Api extends BaseAPI {
    * @summary List fMP4 Segment Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Fmp4Api
    */
   public list(encodingId: string, queryParameters?: Fmp4MuxingListQueryParams | ((q: Fmp4MuxingListQueryParamsBuilder) => Fmp4MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Fmp4Muxing>> {
@@ -91,7 +92,7 @@ export default class Fmp4Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Fmp4Muxing>>('/encoding/encodings/{encoding_id}/muxings/fmp4', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Fmp4Muxing>(response, Fmp4Muxing);;
+      return new PaginationResponse<Fmp4Muxing>(response, Fmp4Muxing);
     });
   }
 }

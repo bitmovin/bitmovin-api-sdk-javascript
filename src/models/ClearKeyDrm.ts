@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 
 /**
@@ -12,7 +13,7 @@ export class ClearKeyDrm extends Drm {
    * @type {string}
    * @memberof ClearKeyDrm
    */
-  public type: 'CLEARKEY' = 'CLEARKEY';
+  public type: DrmType.CLEARKEY = DrmType.CLEARKEY;
 
   /**
    * 16 byte encryption key, 32 hexadecimal characters (required)
@@ -28,11 +29,13 @@ export class ClearKeyDrm extends Drm {
    */
   public kid?: string;
 
-  constructor(obj: Partial<ClearKeyDrm>) {
+  constructor(obj?: Partial<ClearKeyDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.kid = obj.kid;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.kid = map(obj.kid);
   }
 }
 

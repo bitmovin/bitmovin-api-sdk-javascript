@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class TimeBasedTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof TimeBasedTrimmingInputStream
    */
-  public type: 'TRIMMING_TIME_BASED' = 'TRIMMING_TIME_BASED';
+  public type: InputStreamType.TRIMMING_TIME_BASED = InputStreamType.TRIMMING_TIME_BASED;
 
   /**
    * The id of the ingest input stream that should be trimmed
@@ -34,12 +35,14 @@ export class TimeBasedTrimmingInputStream extends InputStream {
    */
   public duration?: number;
 
-  constructor(obj: Partial<TimeBasedTrimmingInputStream>) {
+  constructor(obj?: Partial<TimeBasedTrimmingInputStream>) {
     super(obj);
-
-    this.inputStreamId = obj.inputStreamId;
-    this.offset = obj.offset;
-    this.duration = obj.duration;
+    if(!obj) {
+      return;
+    }
+    this.inputStreamId = map(obj.inputStreamId);
+    this.offset = map(obj.offset);
+    this.duration = map(obj.duration);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import TypeApi from './type/TypeApi';
 import DashApi from './dash/DashApi';
 import HlsApi from './hls/HlsApi';
@@ -31,7 +32,7 @@ export default class ManifestsApi extends BaseAPI {
   /**
    * @summary List all Manifests
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ManifestsApi
    */
   public list(queryParameters?: ManifestListQueryParams | ((q: ManifestListQueryParamsBuilder) => ManifestListQueryParamsBuilder)): Promise<PaginationResponse<Manifest>> {
@@ -42,7 +43,7 @@ export default class ManifestsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Manifest>>('/encoding/manifests', {}, queryParams).then((response) => {
-      return new PaginationResponse<Manifest>(response, Manifest);;
+      return new PaginationResponse<Manifest>(response, Manifest);
     });
   }
 }

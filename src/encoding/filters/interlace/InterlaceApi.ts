@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import InterlaceFilter from '../../../models/InterlaceFilter';
@@ -23,19 +24,19 @@ export default class InterlaceApi extends BaseAPI {
   /**
    * @summary Create Interlace Filter
    * @param {InterlaceFilter} interlaceFilter The Interlace Filter to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InterlaceApi
    */
   public create(interlaceFilter?: InterlaceFilter): Promise<InterlaceFilter> {
     return this.restClient.post<InterlaceFilter>('/encoding/filters/interlace', {}, interlaceFilter).then((response) => {
-      return new InterlaceFilter(response);
+      return map(response, InterlaceFilter);
     });
   }
 
   /**
    * @summary Delete Interlace Filter
    * @param {string} filterId Id of the Interlace Filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InterlaceApi
    */
   public delete(filterId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class InterlaceApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/filters/interlace/{filter_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Interlace Filter Details
    * @param {string} filterId Id of the Interlace Filter
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InterlaceApi
    */
   public get(filterId: string): Promise<InterlaceFilter> {
@@ -58,14 +59,14 @@ export default class InterlaceApi extends BaseAPI {
       filter_id: filterId
     };
     return this.restClient.get<InterlaceFilter>('/encoding/filters/interlace/{filter_id}', pathParamMap).then((response) => {
-      return new InterlaceFilter(response);
+      return map(response, InterlaceFilter);
     });
   }
 
   /**
    * @summary List Interlace Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InterlaceApi
    */
   public list(queryParameters?: InterlaceFilterListQueryParams | ((q: InterlaceFilterListQueryParamsBuilder) => InterlaceFilterListQueryParamsBuilder)): Promise<PaginationResponse<InterlaceFilter>> {
@@ -76,7 +77,7 @@ export default class InterlaceApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<InterlaceFilter>>('/encoding/filters/interlace', {}, queryParams).then((response) => {
-      return new PaginationResponse<InterlaceFilter>(response, InterlaceFilter);;
+      return new PaginationResponse<InterlaceFilter>(response, InterlaceFilter);
     });
   }
 }

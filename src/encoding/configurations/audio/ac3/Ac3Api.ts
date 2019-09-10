@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import Ac3AudioConfiguration from '../../../../models/Ac3AudioConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -23,19 +24,19 @@ export default class Ac3Api extends BaseAPI {
   /**
    * @summary Create AC3 Codec Configuration
    * @param {Ac3AudioConfiguration} ac3AudioConfiguration The AC3 Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Ac3Api
    */
   public create(ac3AudioConfiguration?: Ac3AudioConfiguration): Promise<Ac3AudioConfiguration> {
     return this.restClient.post<Ac3AudioConfiguration>('/encoding/configurations/audio/ac3', {}, ac3AudioConfiguration).then((response) => {
-      return new Ac3AudioConfiguration(response);
+      return map(response, Ac3AudioConfiguration);
     });
   }
 
   /**
    * @summary Delete AC3 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Ac3Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class Ac3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/audio/ac3/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary AC3 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Ac3Api
    */
   public get(configurationId: string): Promise<Ac3AudioConfiguration> {
@@ -58,14 +59,14 @@ export default class Ac3Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<Ac3AudioConfiguration>('/encoding/configurations/audio/ac3/{configuration_id}', pathParamMap).then((response) => {
-      return new Ac3AudioConfiguration(response);
+      return map(response, Ac3AudioConfiguration);
     });
   }
 
   /**
    * @summary List AC3 Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof Ac3Api
    */
   public list(queryParameters?: Ac3AudioConfigurationListQueryParams | ((q: Ac3AudioConfigurationListQueryParamsBuilder) => Ac3AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Ac3AudioConfiguration>> {
@@ -76,7 +77,7 @@ export default class Ac3Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Ac3AudioConfiguration>>('/encoding/configurations/audio/ac3', {}, queryParams).then((response) => {
-      return new PaginationResponse<Ac3AudioConfiguration>(response, Ac3AudioConfiguration);;
+      return new PaginationResponse<Ac3AudioConfiguration>(response, Ac3AudioConfiguration);
     });
   }
 }

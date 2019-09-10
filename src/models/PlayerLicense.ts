@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import Domain from './Domain';
 
@@ -63,17 +63,19 @@ export class PlayerLicense extends BitmovinResponse {
    */
   public analyticsKey?: string;
 
-  constructor(obj: Partial<PlayerLicense>) {
+  constructor(obj?: Partial<PlayerLicense>) {
     super(obj);
-
-    this.name = obj.name;
-    this.createdAt = map<Date>(obj.createdAt, Date);
-    this.licenseKey = obj.licenseKey;
-    this.impressions = obj.impressions;
-    this.maxImpressions = obj.maxImpressions;
-    this.thirdPartyLicensingEnabled = obj.thirdPartyLicensingEnabled;
-    this.domains = map<Domain>(obj.domains, Domain) || [];
-    this.analyticsKey = obj.analyticsKey;
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.createdAt = map(obj.createdAt, Date);
+    this.licenseKey = map(obj.licenseKey);
+    this.impressions = map(obj.impressions);
+    this.maxImpressions = map(obj.maxImpressions);
+    this.thirdPartyLicensingEnabled = map(obj.thirdPartyLicensingEnabled);
+    this.domains = mapArray(obj.domains, Domain);
+    this.analyticsKey = map(obj.analyticsKey);
   }
 }
 

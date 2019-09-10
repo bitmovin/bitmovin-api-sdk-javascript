@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AbstractCondition from './AbstractCondition';
 import ConditionOperator from './ConditionOperator';
+import ConditionType from './ConditionType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class Condition extends AbstractCondition {
    * @type {string}
    * @memberof Condition
    */
-  public type: 'CONDITION' = 'CONDITION';
+  public type: ConditionType.CONDITION = ConditionType.CONDITION;
 
   /**
    * The attribute that should be used for the evaluation. Valid values include, depending on the context: - HEIGHT - WIDTH - BITRATE - FPS - ASPECTRATIO - INPUTSTREAM - LANGUAGE - CHANNELFORMAT - CHANNELLAYOUT - STREAMCOUNT - AUDIOSTREAMCOUNT - VIDEOSTREAMCOUNT - DURATION - CONNECTION_STATUS - CONNECTION_STATUS_JUST_CHANGED (required)
@@ -35,12 +36,14 @@ export class Condition extends AbstractCondition {
    */
   public value?: string;
 
-  constructor(obj: Partial<Condition>) {
+  constructor(obj?: Partial<Condition>) {
     super(obj);
-
-    this.attribute = obj.attribute;
-    this.operator = obj.operator;
-    this.value = obj.value;
+    if(!obj) {
+      return;
+    }
+    this.attribute = map(obj.attribute);
+    this.operator = map(obj.operator);
+    this.value = map(obj.value);
   }
 }
 

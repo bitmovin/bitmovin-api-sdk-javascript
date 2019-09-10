@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SegmentsMediaInfo from './SegmentsMediaInfo';
 
 /**
@@ -13,10 +13,12 @@ export class StandardMediaInfo extends SegmentsMediaInfo {
    */
   public uri?: string;
 
-  constructor(obj: Partial<StandardMediaInfo>) {
+  constructor(obj?: Partial<StandardMediaInfo>) {
     super(obj);
-
-    this.uri = obj.uri;
+    if(!obj) {
+      return;
+    }
+    this.uri = map(obj.uri);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import LiveApi from './live/LiveApi';
 import MachineLearningApi from './machineLearning/MachineLearningApi';
 import CustomdataApi from './customdata/CustomdataApi';
@@ -52,19 +53,19 @@ export default class EncodingsApi extends BaseAPI {
   /**
    * @summary Create Encoding
    * @param {Encoding} encoding The Encoding to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public create(encoding?: Encoding): Promise<Encoding> {
     return this.restClient.post<Encoding>('/encoding/encodings', {}, encoding).then((response) => {
-      return new Encoding(response);
+      return map(response, Encoding);
     });
   }
 
   /**
    * @summary Delete Encoding
    * @param {string} encodingId Id of the encoding.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public delete(encodingId: string): Promise<BitmovinResponse> {
@@ -72,14 +73,14 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Encoding Details
    * @param {string} encodingId Id of the encoding.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public get(encodingId: string): Promise<Encoding> {
@@ -87,14 +88,14 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.get<Encoding>('/encoding/encodings/{encoding_id}', pathParamMap).then((response) => {
-      return new Encoding(response);
+      return map(response, Encoding);
     });
   }
 
   /**
    * @summary Encoding Start Details
    * @param {string} encodingId Id of the encoding
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public getStartRequest(encodingId: string): Promise<StartEncodingRequest> {
@@ -102,14 +103,14 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.get<StartEncodingRequest>('/encoding/encodings/{encoding_id}/start', pathParamMap).then((response) => {
-      return new StartEncodingRequest(response);
+      return map(response, StartEncodingRequest);
     });
   }
 
   /**
    * @summary List all Encodings
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public list(queryParameters?: EncodingListQueryParams | ((q: EncodingListQueryParamsBuilder) => EncodingListQueryParamsBuilder)): Promise<PaginationResponse<Encoding>> {
@@ -120,7 +121,7 @@ export default class EncodingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Encoding>>('/encoding/encodings', {}, queryParams).then((response) => {
-      return new PaginationResponse<Encoding>(response, Encoding);;
+      return new PaginationResponse<Encoding>(response, Encoding);
     });
   }
 
@@ -128,7 +129,7 @@ export default class EncodingsApi extends BaseAPI {
    * @summary Reprioritize Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {ReprioritizeEncodingRequest} reprioritizeEncodingRequest Reprioritization options
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public reprioritize(encodingId: string, reprioritizeEncodingRequest?: ReprioritizeEncodingRequest): Promise<BitmovinResponse> {
@@ -136,7 +137,7 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/reprioritize', pathParamMap, reprioritizeEncodingRequest).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -144,7 +145,7 @@ export default class EncodingsApi extends BaseAPI {
    * @summary Reschedule Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {RescheduleEncodingRequest} rescheduleEncodingRequest Rescheduling options
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public reschedule(encodingId: string, rescheduleEncodingRequest?: RescheduleEncodingRequest): Promise<BitmovinResponse> {
@@ -152,7 +153,7 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/reschedule', pathParamMap, rescheduleEncodingRequest).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -160,7 +161,7 @@ export default class EncodingsApi extends BaseAPI {
    * @summary Start Encoding
    * @param {string} encodingId Id of the encoding
    * @param {StartEncodingRequest} [startEncodingRequest] Encoding Startup Options
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public start(encodingId: string, startEncodingRequest?: StartEncodingRequest): Promise<BitmovinResponse> {
@@ -168,14 +169,14 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/start', pathParamMap, startEncodingRequest).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary Encoding Status
    * @param {string} encodingId Id of the encoding
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public status(encodingId: string): Promise<Task> {
@@ -183,14 +184,14 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.get<Task>('/encoding/encodings/{encoding_id}/status', pathParamMap).then((response) => {
-      return new Task(response);
+      return map(response, Task);
     });
   }
 
   /**
    * @summary Stop Encoding
    * @param {string} encodingId Id of the encoding
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof EncodingsApi
    */
   public stop(encodingId: string): Promise<BitmovinResponse> {
@@ -198,7 +199,7 @@ export default class EncodingsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<BitmovinResponse>('/encoding/encodings/{encoding_id}/stop', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import MediaStream from './MediaStream';
 
 /**
@@ -48,15 +48,17 @@ export class AudioStream extends MediaStream {
    */
   public hearingImpaired?: boolean;
 
-  constructor(obj: Partial<AudioStream>) {
+  constructor(obj?: Partial<AudioStream>) {
     super(obj);
-
-    this.sampleRate = obj.sampleRate;
-    this.bitrate = obj.bitrate;
-    this.rate = obj.rate;
-    this.channelFormat = obj.channelFormat;
-    this.language = obj.language;
-    this.hearingImpaired = obj.hearingImpaired;
+    if(!obj) {
+      return;
+    }
+    this.sampleRate = map(obj.sampleRate);
+    this.bitrate = map(obj.bitrate);
+    this.rate = map(obj.rate);
+    this.channelFormat = map(obj.channelFormat);
+    this.language = map(obj.language);
+    this.hearingImpaired = map(obj.hearingImpaired);
   }
 }
 

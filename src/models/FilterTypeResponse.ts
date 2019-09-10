@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import FilterType from './FilterType';
 
 /**
@@ -13,9 +13,11 @@ export class FilterTypeResponse {
    */
   public type?: FilterType;
 
-  constructor(obj: Partial<FilterTypeResponse>) {
-
-    this.type = obj.type;
+  constructor(obj?: Partial<FilterTypeResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
   }
 }
 

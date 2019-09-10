@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ChunkLengthMode from './ChunkLengthMode';
 
 /**
@@ -20,10 +20,12 @@ export class InternalChunkLength {
    */
   public customChunkLength?: number;
 
-  constructor(obj: Partial<InternalChunkLength>) {
-
-    this.mode = obj.mode;
-    this.customChunkLength = obj.customChunkLength;
+  constructor(obj?: Partial<InternalChunkLength>) {
+    if(!obj) {
+      return;
+    }
+    this.mode = map(obj.mode);
+    this.customChunkLength = map(obj.customChunkLength);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class WebmApi extends BaseAPI {
    * @summary Add WebM Segment Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {WebmMuxing} webmMuxing The WebM Segment Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public create(encodingId: string, webmMuxing?: WebmMuxing): Promise<WebmMuxing> {
@@ -35,7 +36,7 @@ export default class WebmApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<WebmMuxing>('/encoding/encodings/{encoding_id}/muxings/webm', pathParamMap, webmMuxing).then((response) => {
-      return new WebmMuxing(response);
+      return map(response, WebmMuxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class WebmApi extends BaseAPI {
    * @summary Delete WebM Muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class WebmApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class WebmApi extends BaseAPI {
    * @summary WebM Segment Muxing Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public get(encodingId: string, muxingId: string): Promise<WebmMuxing> {
@@ -69,7 +70,7 @@ export default class WebmApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<WebmMuxing>('/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}', pathParamMap).then((response) => {
-      return new WebmMuxing(response);
+      return map(response, WebmMuxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class WebmApi extends BaseAPI {
    * @summary List WebM Segment Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof WebmApi
    */
   public list(encodingId: string, queryParameters?: WebmMuxingListQueryParams | ((q: WebmMuxingListQueryParamsBuilder) => WebmMuxingListQueryParamsBuilder)): Promise<PaginationResponse<WebmMuxing>> {
@@ -91,7 +92,7 @@ export default class WebmApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<WebmMuxing>>('/encoding/encodings/{encoding_id}/muxings/webm', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<WebmMuxing>(response, WebmMuxing);;
+      return new PaginationResponse<WebmMuxing>(response, WebmMuxing);
     });
   }
 }

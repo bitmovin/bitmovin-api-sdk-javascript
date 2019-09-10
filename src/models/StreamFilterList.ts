@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import StreamFilter from './StreamFilter';
 
 /**
@@ -13,9 +13,11 @@ export class StreamFilterList {
    */
   public filters?: StreamFilter[];
 
-  constructor(obj: Partial<StreamFilterList>) {
-
-    this.filters = map<StreamFilter>(obj.filters, StreamFilter) || [];
+  constructor(obj?: Partial<StreamFilterList>) {
+    if(!obj) {
+      return;
+    }
+    this.filters = mapArray(obj.filters, StreamFilter);
   }
 }
 

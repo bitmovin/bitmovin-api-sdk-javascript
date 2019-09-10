@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclPermission from './AclPermission';
 
 /**
@@ -18,10 +18,12 @@ export class AclEntry {
    */
   public permission?: AclPermission;
 
-  constructor(obj: Partial<AclEntry>) {
-
-    this.scope = obj.scope;
-    this.permission = obj.permission;
+  constructor(obj?: Partial<AclEntry>) {
+    if(!obj) {
+      return;
+    }
+    this.scope = map(obj.scope);
+    this.permission = map(obj.permission);
   }
 }
 

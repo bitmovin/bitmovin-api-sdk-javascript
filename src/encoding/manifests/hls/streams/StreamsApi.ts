@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomTagsApi from './customTags/CustomTagsApi';
 import IframeApi from './iframe/IframeApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Add Variant Stream
    * @param {string} manifestId Id of the hls manifest.
    * @param {StreamInfo} streamInfo The Variant Stream to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public create(manifestId: string, streamInfo?: StreamInfo): Promise<StreamInfo> {
@@ -35,7 +36,7 @@ export default class StreamsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<StreamInfo>('/encoding/manifests/hls/{manifest_id}/streams', pathParamMap, streamInfo).then((response) => {
-      return new StreamInfo(response);
+      return map(response, StreamInfo);
     });
   }
 
@@ -43,7 +44,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Delete Variant Stream
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public delete(manifestId: string, streamId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class StreamsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Variant Stream Details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public get(manifestId: string, streamId: string): Promise<StreamInfo> {
@@ -69,7 +70,7 @@ export default class StreamsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.get<StreamInfo>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}', pathParamMap).then((response) => {
-      return new StreamInfo(response);
+      return map(response, StreamInfo);
     });
   }
 
@@ -77,7 +78,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary List all Variant Streams
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public list(manifestId: string, queryParameters?: StreamInfoListQueryParams | ((q: StreamInfoListQueryParamsBuilder) => StreamInfoListQueryParamsBuilder)): Promise<PaginationResponse<StreamInfo>> {
@@ -91,7 +92,7 @@ export default class StreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<StreamInfo>>('/encoding/manifests/hls/{manifest_id}/streams', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<StreamInfo>(response, StreamInfo);;
+      return new PaginationResponse<StreamInfo>(response, StreamInfo);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,12 @@ export class Domain extends BitmovinResource {
    */
   public url?: string;
 
-  constructor(obj: Partial<Domain>) {
+  constructor(obj?: Partial<Domain>) {
     super(obj);
-
-    this.url = obj.url;
+    if(!obj) {
+      return;
+    }
+    this.url = map(obj.url);
   }
 }
 

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -20,11 +20,13 @@ export class Period extends BitmovinResponse {
    */
   public duration?: number;
 
-  constructor(obj: Partial<Period>) {
+  constructor(obj?: Partial<Period>) {
     super(obj);
-
-    this.start = obj.start;
-    this.duration = obj.duration;
+    if(!obj) {
+      return;
+    }
+    this.start = map(obj.start);
+    this.duration = map(obj.duration);
   }
 }
 

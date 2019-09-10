@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import TenantsApi from './tenants/TenantsApi';
 import PermissionsApi from './permissions/PermissionsApi';
 import BitmovinResource from '../../../models/BitmovinResource';
@@ -27,7 +28,7 @@ export default class GroupsApi extends BaseAPI {
    * @summary Add Group
    * @param {string} organizationId Id of the organization
    * @param {Group} group Tenant Group details
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GroupsApi
    */
   public create(organizationId: string, group?: Group): Promise<Group> {
@@ -35,7 +36,7 @@ export default class GroupsApi extends BaseAPI {
       organization_id: organizationId
     };
     return this.restClient.post<Group>('/account/organizations/{organization_id}/groups', pathParamMap, group).then((response) => {
-      return new Group(response);
+      return map(response, Group);
     });
   }
 
@@ -43,7 +44,7 @@ export default class GroupsApi extends BaseAPI {
    * @summary Delete Group
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GroupsApi
    */
   public delete(organizationId: string, groupId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class GroupsApi extends BaseAPI {
       group_id: groupId
     };
     return this.restClient.delete<BitmovinResponse>('/account/organizations/{organization_id}/groups/{group_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class GroupsApi extends BaseAPI {
    * @summary Group Details
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GroupsApi
    */
   public get(organizationId: string, groupId: string): Promise<Group> {
@@ -69,14 +70,14 @@ export default class GroupsApi extends BaseAPI {
       group_id: groupId
     };
     return this.restClient.get<Group>('/account/organizations/{organization_id}/groups/{group_id}', pathParamMap).then((response) => {
-      return new Group(response);
+      return map(response, Group);
     });
   }
 
   /**
    * @summary List Groups
    * @param {string} organizationId Id of the organization
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof GroupsApi
    */
   public list(organizationId: string): Promise<PaginationResponse<Group>> {
@@ -84,7 +85,7 @@ export default class GroupsApi extends BaseAPI {
       organization_id: organizationId
     };
     return this.restClient.get<PaginationResponse<Group>>('/account/organizations/{organization_id}/groups', pathParamMap).then((response) => {
-      return new PaginationResponse<Group>(response, Group);;
+      return new PaginationResponse<Group>(response, Group);
     });
   }
 }

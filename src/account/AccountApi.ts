@@ -1,5 +1,6 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
+import {map, mapArray} from '../common/Mapper';
 import InformationApi from './information/InformationApi';
 import LoginApi from './login/LoginApi';
 import LimitsApi from './limits/LimitsApi';

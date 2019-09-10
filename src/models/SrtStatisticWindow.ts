@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -23,11 +23,13 @@ export class SrtStatisticWindow {
    */
   public flow?: number;
 
-  constructor(obj: Partial<SrtStatisticWindow>) {
-
-    this.congestion = obj.congestion;
-    this.flight = obj.flight;
-    this.flow = obj.flow;
+  constructor(obj?: Partial<SrtStatisticWindow>) {
+    if(!obj) {
+      return;
+    }
+    this.congestion = map(obj.congestion);
+    this.flight = map(obj.flight);
+    this.flow = map(obj.flow);
   }
 }
 

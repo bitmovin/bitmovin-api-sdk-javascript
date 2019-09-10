@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsAbstractFilter from './AnalyticsAbstractFilter';
 import AnalyticsAttribute from './AnalyticsAttribute';
+import AnalyticsQueryOperator from './AnalyticsQueryOperator';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AnalyticsInFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsInFilter
    */
-  public operator: 'IN' = 'IN';
+  public operator: AnalyticsQueryOperator.IN = AnalyticsQueryOperator.IN;
 
   /**
    * @type {any[]}
@@ -20,10 +21,12 @@ export class AnalyticsInFilter extends AnalyticsAbstractFilter {
    */
   public value?: any[];
 
-  constructor(obj: Partial<AnalyticsInFilter>) {
+  constructor(obj?: Partial<AnalyticsInFilter>) {
     super(obj);
-
-    this.value = obj.value || [];
+    if(!obj) {
+      return;
+    }
+    this.value = mapArray(obj.value);
   }
 }
 

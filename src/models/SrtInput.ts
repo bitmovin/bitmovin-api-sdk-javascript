@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BackupSrtInputs from './BackupSrtInputs';
 import Input from './Input';
+import InputType from './InputType';
 import SrtMode from './SrtMode';
 
 /**
@@ -13,7 +14,7 @@ export class SrtInput extends Input {
    * @type {string}
    * @memberof SrtInput
    */
-  public type: 'SRT' = 'SRT';
+  public type: InputType.SRT = InputType.SRT;
 
   /**
    * The SRT mode to use (required)
@@ -70,17 +71,19 @@ export class SrtInput extends Input {
    */
   public backupSrtInputs?: BackupSrtInputs;
 
-  constructor(obj: Partial<SrtInput>) {
+  constructor(obj?: Partial<SrtInput>) {
     super(obj);
-
-    this.mode = obj.mode;
-    this.host = obj.host;
-    this.port = obj.port;
-    this.path = obj.path;
-    this.latency = obj.latency;
-    this.passphrase = obj.passphrase;
-    this.keyLength = obj.keyLength;
-    this.backupSrtInputs = map<BackupSrtInputs>(obj.backupSrtInputs, BackupSrtInputs);
+    if(!obj) {
+      return;
+    }
+    this.mode = map(obj.mode);
+    this.host = map(obj.host);
+    this.port = map(obj.port);
+    this.path = map(obj.path);
+    this.latency = map(obj.latency);
+    this.passphrase = map(obj.passphrase);
+    this.keyLength = map(obj.keyLength);
+    this.backupSrtInputs = map(obj.backupSrtInputs, BackupSrtInputs);
   }
 }
 

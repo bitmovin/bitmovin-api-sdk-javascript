@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import WatermarkApi from './watermark/WatermarkApi';
 import AudioVolumeApi from './audioVolume/AudioVolumeApi';
 import EnhancedWatermarkApi from './enhancedWatermark/EnhancedWatermarkApi';
@@ -61,7 +62,7 @@ export default class FiltersApi extends BaseAPI {
   /**
    * @summary List all Filters
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FiltersApi
    */
   public list(queryParameters?: FilterListQueryParams | ((q: FilterListQueryParamsBuilder) => FilterListQueryParamsBuilder)): Promise<PaginationResponse<Filter>> {
@@ -72,7 +73,7 @@ export default class FiltersApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Filter>>('/encoding/filters', {}, queryParams).then((response) => {
-      return new PaginationResponse<Filter>(response, Filter);;
+      return new PaginationResponse<Filter>(response, Filter);
     });
   }
 }

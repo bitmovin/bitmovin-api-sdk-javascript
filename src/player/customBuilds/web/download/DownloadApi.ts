@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomPlayerBuildDownload from '../../../../models/CustomPlayerBuildDownload';
 
 /**
@@ -17,7 +18,7 @@ export default class DownloadApi extends BaseAPI {
   /**
    * @summary Custom Web Player Build Download Link
    * @param {string} customBuildId Id of the custom player build
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof DownloadApi
    */
   public get(customBuildId: string): Promise<CustomPlayerBuildDownload> {
@@ -25,7 +26,7 @@ export default class DownloadApi extends BaseAPI {
       custom_build_id: customBuildId
     };
     return this.restClient.get<CustomPlayerBuildDownload>('/player/custom-builds/web/{custom_build_id}/download', pathParamMap).then((response) => {
-      return new CustomPlayerBuildDownload(response);
+      return map(response, CustomPlayerBuildDownload);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Notification from './Notification';
 
 /**
@@ -12,10 +12,12 @@ export class EmailNotification extends Notification {
    */
   public emails?: string[];
 
-  constructor(obj: Partial<EmailNotification>) {
+  constructor(obj?: Partial<EmailNotification>) {
     super(obj);
-
-    this.emails = obj.emails || [];
+    if(!obj) {
+      return;
+    }
+    this.emails = mapArray(obj.emails);
   }
 }
 

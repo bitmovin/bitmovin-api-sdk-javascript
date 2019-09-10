@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AesEncryptionDrm from './AesEncryptionDrm';
 import BitmovinResource from './BitmovinResource';
 import CencDrm from './CencDrm';
 import ClearKeyDrm from './ClearKeyDrm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 import FairPlayDrm from './FairPlayDrm';
 import MarlinDrm from './MarlinDrm';
@@ -26,15 +27,15 @@ export type DrmUnion =
  */
 export class Drm extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'WIDEVINE': 'WidevineDrm',
-    'PLAYREADY': 'PlayReadyDrm',
-    'PRIMETIME': 'PrimeTimeDrm',
-    'FAIRPLAY': 'FairPlayDrm',
-    'MARLIN': 'MarlinDrm',
-    'CLEARKEY': 'ClearKeyDrm',
-    'AES': 'AesEncryptionDrm',
-    'CENC': 'CencDrm'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof DrmType]: string; } = {
+    WIDEVINE: 'WidevineDrm',
+    PLAYREADY: 'PlayReadyDrm',
+    PRIMETIME: 'PrimeTimeDrm',
+    FAIRPLAY: 'FairPlayDrm',
+    MARLIN: 'MarlinDrm',
+    CLEARKEY: 'ClearKeyDrm',
+    AES: 'AesEncryptionDrm',
+    CENC: 'CencDrm'
   };
 
   /**
@@ -43,10 +44,12 @@ export class Drm extends BitmovinResource {
    */
   public outputs?: EncodingOutput[];
 
-  constructor(obj: Partial<Drm>) {
+  constructor(obj?: Partial<Drm>) {
     super(obj);
-
-    this.outputs = map<EncodingOutput>(obj.outputs, EncodingOutput) || [];
+    if(!obj) {
+      return;
+    }
+    this.outputs = mapArray(obj.outputs, EncodingOutput);
   }
 }
 

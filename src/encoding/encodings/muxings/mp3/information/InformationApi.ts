@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import Mp3MuxingInformation from '../../../../../models/Mp3MuxingInformation';
 
 /**
@@ -18,7 +19,7 @@ export default class InformationApi extends BaseAPI {
    * @summary MP3 Muxing Information
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the MP3 Muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InformationApi
    */
   public get(encodingId: string, muxingId: string): Promise<Mp3MuxingInformation> {
@@ -27,7 +28,7 @@ export default class InformationApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<Mp3MuxingInformation>('/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}/information', pathParamMap).then((response) => {
-      return new Mp3MuxingInformation(response);
+      return map(response, Mp3MuxingInformation);
     });
   }
 }

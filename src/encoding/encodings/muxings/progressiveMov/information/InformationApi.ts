@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import ProgressiveMovMuxingInformation from '../../../../../models/ProgressiveMovMuxingInformation';
 
 /**
@@ -18,7 +19,7 @@ export default class InformationApi extends BaseAPI {
    * @summary Progressive MOV Muxing Information
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive MOV muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof InformationApi
    */
   public get(encodingId: string, muxingId: string): Promise<ProgressiveMovMuxingInformation> {
@@ -27,7 +28,7 @@ export default class InformationApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<ProgressiveMovMuxingInformation>('/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/information', pathParamMap).then((response) => {
-      return new ProgressiveMovMuxingInformation(response);
+      return map(response, ProgressiveMovMuxingInformation);
     });
   }
 }

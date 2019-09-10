@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -13,10 +13,12 @@ export class PlayerChannel extends BitmovinResponse {
    */
   public name?: string;
 
-  constructor(obj: Partial<PlayerChannel>) {
+  constructor(obj?: Partial<PlayerChannel>) {
     super(obj);
-
-    this.name = obj.name;
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
   }
 }
 

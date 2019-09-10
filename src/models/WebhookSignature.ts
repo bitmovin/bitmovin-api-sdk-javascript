@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import SignatureType from './SignatureType';
 
 /**
@@ -20,10 +20,12 @@ export class WebhookSignature {
    */
   public key?: string;
 
-  constructor(obj: Partial<WebhookSignature>) {
-
-    this.type = obj.type;
-    this.key = obj.key;
+  constructor(obj?: Partial<WebhookSignature>) {
+    if(!obj) {
+      return;
+    }
+    this.type = map(obj.type);
+    this.key = map(obj.key);
   }
 }
 

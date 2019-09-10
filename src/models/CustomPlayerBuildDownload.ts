@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * Custom player download information
@@ -20,10 +20,12 @@ export class CustomPlayerBuildDownload {
    */
   public expiresAt?: Date;
 
-  constructor(obj: Partial<CustomPlayerBuildDownload>) {
-
-    this.downloadLink = obj.downloadLink;
-    this.expiresAt = map<Date>(obj.expiresAt, Date);
+  constructor(obj?: Partial<CustomPlayerBuildDownload>) {
+    if(!obj) {
+      return;
+    }
+    this.downloadLink = map(obj.downloadLink);
+    this.expiresAt = map(obj.expiresAt, Date);
   }
 }
 

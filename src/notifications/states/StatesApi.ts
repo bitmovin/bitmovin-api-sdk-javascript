@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import NotificationStateEntry from '../../models/NotificationStateEntry';
 import PaginationResponse from '../../models/PaginationResponse';
 import {NotificationStateEntryListQueryParams, NotificationStateEntryListQueryParamsBuilder} from './NotificationStateEntryListQueryParams';
@@ -21,7 +22,7 @@ export default class StatesApi extends BaseAPI {
    * @param {string} notificationId Id of the notification
    * @param {string} resourceId Id of the resource, e.g. encoding id
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StatesApi
    */
   public list(notificationId: string, resourceId: string, queryParameters?: NotificationStateEntryListQueryParams | ((q: NotificationStateEntryListQueryParamsBuilder) => NotificationStateEntryListQueryParamsBuilder)): Promise<PaginationResponse<NotificationStateEntry>> {
@@ -36,7 +37,7 @@ export default class StatesApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<NotificationStateEntry>>('/notifications/{notification_id}/states/{resource_id}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<NotificationStateEntry>(response, NotificationStateEntry);;
+      return new PaginationResponse<NotificationStateEntry>(response, NotificationStateEntry);
     });
   }
 }

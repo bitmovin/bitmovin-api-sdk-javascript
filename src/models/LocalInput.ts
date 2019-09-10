@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
+import InputType from './InputType';
 
 /**
  * @export
@@ -11,7 +12,7 @@ export class LocalInput extends Input {
    * @type {string}
    * @memberof LocalInput
    */
-  public type: 'LOCAL' = 'LOCAL';
+  public type: InputType.LOCAL = InputType.LOCAL;
 
   /**
    * Path to your local storage (required)
@@ -20,10 +21,12 @@ export class LocalInput extends Input {
    */
   public path?: string;
 
-  constructor(obj: Partial<LocalInput>) {
+  constructor(obj?: Partial<LocalInput>) {
     super(obj);
-
-    this.path = obj.path;
+    if(!obj) {
+      return;
+    }
+    this.path = map(obj.path);
   }
 }
 

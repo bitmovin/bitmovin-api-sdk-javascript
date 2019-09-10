@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class ManifestResource {
    */
   public manifestId?: string;
 
-  constructor(obj: Partial<ManifestResource>) {
-
-    this.manifestId = obj.manifestId;
+  constructor(obj?: Partial<ManifestResource>) {
+    if(!obj) {
+      return;
+    }
+    this.manifestId = map(obj.manifestId);
   }
 }
 

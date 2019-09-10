@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AdAnalyticsVarianceQueryRequest from '../../../../models/AdAnalyticsVarianceQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
@@ -19,12 +20,12 @@ export default class VarianceApi extends BaseAPI {
   /**
    * @summary Variance
    * @param {AdAnalyticsVarianceQueryRequest} adAnalyticsVarianceQueryRequest Analytics Query Object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VarianceApi
    */
   public create(adAnalyticsVarianceQueryRequest?: AdAnalyticsVarianceQueryRequest): Promise<AnalyticsResponse> {
     return this.restClient.post<AnalyticsResponse>('/analytics/ads/queries/variance', {}, adAnalyticsVarianceQueryRequest).then((response) => {
-      return new AnalyticsResponse(response);
+      return map(response, AnalyticsResponse);
     });
   }
 }

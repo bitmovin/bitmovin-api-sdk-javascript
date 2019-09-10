@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import SmoothManifestContentProtection from '../../../../models/SmoothManifestContentProtection';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @summary Add Content Protection to Smooth Streaming
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {SmoothManifestContentProtection} smoothManifestContentProtection The Content Protection to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public create(manifestId: string, smoothManifestContentProtection?: SmoothManifestContentProtection): Promise<SmoothManifestContentProtection> {
@@ -29,7 +30,7 @@ export default class ContentprotectionApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<SmoothManifestContentProtection>('/encoding/manifests/smooth/{manifest_id}/contentprotection', pathParamMap, smoothManifestContentProtection).then((response) => {
-      return new SmoothManifestContentProtection(response);
+      return map(response, SmoothManifestContentProtection);
     });
   }
 
@@ -37,7 +38,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @summary Delete Content Protection of Smooth Streaming
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} protectionId Id of the content protection.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public delete(manifestId: string, protectionId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class ContentprotectionApi extends BaseAPI {
       protection_id: protectionId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @summary Content Protection of Smooth Streaming Representation Details
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} protectionId Id of the content protection.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public get(manifestId: string, protectionId: string): Promise<SmoothManifestContentProtection> {
@@ -63,7 +64,7 @@ export default class ContentprotectionApi extends BaseAPI {
       protection_id: protectionId
     };
     return this.restClient.get<SmoothManifestContentProtection>('/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}', pathParamMap).then((response) => {
-      return new SmoothManifestContentProtection(response);
+      return map(response, SmoothManifestContentProtection);
     });
   }
 
@@ -71,7 +72,7 @@ export default class ContentprotectionApi extends BaseAPI {
    * @summary List Content Protection of Smooth Streaming
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ContentprotectionApi
    */
   public list(manifestId: string, queryParameters?: SmoothManifestContentProtectionListQueryParams | ((q: SmoothManifestContentProtectionListQueryParamsBuilder) => SmoothManifestContentProtectionListQueryParamsBuilder)): Promise<PaginationResponse<SmoothManifestContentProtection>> {
@@ -85,7 +86,7 @@ export default class ContentprotectionApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<SmoothManifestContentProtection>>('/encoding/manifests/smooth/{manifest_id}/contentprotection', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<SmoothManifestContentProtection>(response, SmoothManifestContentProtection);;
+      return new PaginationResponse<SmoothManifestContentProtection>(response, SmoothManifestContentProtection);
     });
   }
 }

@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsColumnLabel from './AnalyticsColumnLabel';
 
 /**
@@ -25,11 +25,13 @@ export class AnalyticsResponse {
    */
   public columnLabels?: AnalyticsColumnLabel[];
 
-  constructor(obj: Partial<AnalyticsResponse>) {
-
-    this.rows = obj.rows || [];
-    this.rowCount = obj.rowCount;
-    this.columnLabels = map<AnalyticsColumnLabel>(obj.columnLabels, AnalyticsColumnLabel) || [];
+  constructor(obj?: Partial<AnalyticsResponse>) {
+    if(!obj) {
+      return;
+    }
+    this.rows = mapArray(obj.rows);
+    this.rowCount = map(obj.rowCount);
+    this.columnLabels = mapArray(obj.columnLabels, AnalyticsColumnLabel);
   }
 }
 

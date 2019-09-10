@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import H264Api from './h264/H264Api';
 import H265Api from './h265/H265Api';
 import Vp8Api from './vp8/Vp8Api';

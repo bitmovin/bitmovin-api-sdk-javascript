@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BroadcastTsInputStreamConfiguration from './BroadcastTsInputStreamConfiguration';
 import RaiUnit from './RaiUnit';
 
@@ -21,11 +21,13 @@ export class BroadcastTsAudioInputStreamConfiguration extends BroadcastTsInputSt
    */
   public language?: string;
 
-  constructor(obj: Partial<BroadcastTsAudioInputStreamConfiguration>) {
+  constructor(obj?: Partial<BroadcastTsAudioInputStreamConfiguration>) {
     super(obj);
-
-    this.useATSCBufferModel = obj.useATSCBufferModel;
-    this.language = obj.language;
+    if(!obj) {
+      return;
+    }
+    this.useATSCBufferModel = map(obj.useATSCBufferModel);
+    this.language = map(obj.language);
   }
 }
 

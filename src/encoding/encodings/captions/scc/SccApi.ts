@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ConvertSccCaption from '../../../../models/ConvertSccCaption';
@@ -24,7 +25,7 @@ export default class SccApi extends BaseAPI {
    * @summary Convert SCC captions
    * @param {string} encodingId Id of the encoding.
    * @param {ConvertSccCaption} convertSccCaption The SCC captions to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public create(encodingId: string, convertSccCaption?: ConvertSccCaption): Promise<ConvertSccCaption> {
@@ -32,7 +33,7 @@ export default class SccApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<ConvertSccCaption>('/encoding/encodings/{encoding_id}/captions/scc', pathParamMap, convertSccCaption).then((response) => {
-      return new ConvertSccCaption(response);
+      return map(response, ConvertSccCaption);
     });
   }
 
@@ -40,7 +41,7 @@ export default class SccApi extends BaseAPI {
    * @summary Delete Convert SCC captions
    * @param {string} encodingId Id of the encoding.
    * @param {string} captionsId Id of the caption.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public delete(encodingId: string, captionsId: string): Promise<BitmovinResponse> {
@@ -49,7 +50,7 @@ export default class SccApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/captions/scc/{captions_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -57,7 +58,7 @@ export default class SccApi extends BaseAPI {
    * @summary Convert SCC captions Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} captionsId Id of the caption.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public get(encodingId: string, captionsId: string): Promise<ConvertSccCaption> {
@@ -66,7 +67,7 @@ export default class SccApi extends BaseAPI {
       captions_id: captionsId
     };
     return this.restClient.get<ConvertSccCaption>('/encoding/encodings/{encoding_id}/captions/scc/{captions_id}', pathParamMap).then((response) => {
-      return new ConvertSccCaption(response);
+      return map(response, ConvertSccCaption);
     });
   }
 
@@ -74,7 +75,7 @@ export default class SccApi extends BaseAPI {
    * @summary List Convert SCC captions
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof SccApi
    */
   public list(encodingId: string, queryParameters?: ConvertSccCaptionListQueryParams | ((q: ConvertSccCaptionListQueryParamsBuilder) => ConvertSccCaptionListQueryParamsBuilder)): Promise<PaginationResponse<ConvertSccCaption>> {
@@ -88,7 +89,7 @@ export default class SccApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ConvertSccCaption>>('/encoding/encodings/{encoding_id}/captions/scc', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ConvertSccCaption>(response, ConvertSccCaption);;
+      return new PaginationResponse<ConvertSccCaption>(response, ConvertSccCaption);
     });
   }
 }

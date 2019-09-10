@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import VersionsApi from './versions/VersionsApi';
 import PlayerChannel from '../../models/PlayerChannel';
 import PaginationResponse from '../../models/PaginationResponse';
@@ -20,12 +21,12 @@ export default class ChannelsApi extends BaseAPI {
 
   /**
    * @summary List Player Channels
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ChannelsApi
    */
   public list(): Promise<PaginationResponse<PlayerChannel>> {
     return this.restClient.get<PaginationResponse<PlayerChannel>>('/player/channels', {}).then((response) => {
-      return new PaginationResponse<PlayerChannel>(response, PlayerChannel);;
+      return new PaginationResponse<PlayerChannel>(response, PlayerChannel);
     });
   }
 }

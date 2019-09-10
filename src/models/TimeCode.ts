@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class TimeCode {
    */
   public timeCodeStart?: string;
 
-  constructor(obj: Partial<TimeCode>) {
-
-    this.timeCodeStart = obj.timeCodeStart;
+  constructor(obj?: Partial<TimeCode>) {
+    if(!obj) {
+      return;
+    }
+    this.timeCodeStart = map(obj.timeCodeStart);
   }
 }
 

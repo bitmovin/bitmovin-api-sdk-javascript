@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import EncodingStatisticsVod from '../../../../models/EncodingStatisticsVod';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EncodingStatisticsVodListQueryParams, EncodingStatisticsVodListQueryParamsBuilder} from './EncodingStatisticsVodListQueryParams';
@@ -20,7 +21,7 @@ export default class VodApi extends BaseAPI {
   /**
    * @summary List VOD Encoding Statistics
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VodApi
    */
   public list(queryParameters?: EncodingStatisticsVodListQueryParams | ((q: EncodingStatisticsVodListQueryParamsBuilder) => EncodingStatisticsVodListQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsVod>> {
@@ -31,7 +32,7 @@ export default class VodApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod', {}, queryParams).then((response) => {
-      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);;
+      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);
     });
   }
 
@@ -40,7 +41,7 @@ export default class VodApi extends BaseAPI {
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof VodApi
    */
   public listByDateRange(from: Date, to: Date, queryParameters?: EncodingStatisticsVodListByDateRangeQueryParams | ((q: EncodingStatisticsVodListByDateRangeQueryParamsBuilder) => EncodingStatisticsVodListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<EncodingStatisticsVod>> {
@@ -55,7 +56,7 @@ export default class VodApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingStatisticsVod>>('/encoding/statistics/encodings/vod/{from}/{to}', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);;
+      return new PaginationResponse<EncodingStatisticsVod>(response, EncodingStatisticsVod);
     });
   }
 }

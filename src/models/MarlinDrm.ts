@@ -1,5 +1,6 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
+import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
 
 /**
@@ -12,7 +13,7 @@ export class MarlinDrm extends Drm {
    * @type {string}
    * @memberof MarlinDrm
    */
-  public type: 'MARLIN' = 'MARLIN';
+  public type: DrmType.MARLIN = DrmType.MARLIN;
 
   /**
    * 16 byte key in hex (32 characters) (required)
@@ -28,11 +29,13 @@ export class MarlinDrm extends Drm {
    */
   public kid?: string;
 
-  constructor(obj: Partial<MarlinDrm>) {
+  constructor(obj?: Partial<MarlinDrm>) {
     super(obj);
-
-    this.key = obj.key;
-    this.kid = obj.kid;
+    if(!obj) {
+      return;
+    }
+    this.key = map(obj.key);
+    this.kid = map(obj.kid);
   }
 }
 

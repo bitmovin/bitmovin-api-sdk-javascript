@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import H264VideoConfiguration from '../../../../models/H264VideoConfiguration';
@@ -23,19 +24,19 @@ export default class H264Api extends BaseAPI {
   /**
    * @summary Create H264/AVC Codec Configuration
    * @param {H264VideoConfiguration} h264VideoConfiguration The H264/AVC Codec Configuration to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264Api
    */
   public create(h264VideoConfiguration?: H264VideoConfiguration): Promise<H264VideoConfiguration> {
     return this.restClient.post<H264VideoConfiguration>('/encoding/configurations/video/h264', {}, h264VideoConfiguration).then((response) => {
-      return new H264VideoConfiguration(response);
+      return map(response, H264VideoConfiguration);
     });
   }
 
   /**
    * @summary Delete H264/AVC Codec Configuration
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264Api
    */
   public delete(configurationId: string): Promise<BitmovinResponse> {
@@ -43,14 +44,14 @@ export default class H264Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/configurations/video/h264/{configuration_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
   /**
    * @summary H264/AVC Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264Api
    */
   public get(configurationId: string): Promise<H264VideoConfiguration> {
@@ -58,14 +59,14 @@ export default class H264Api extends BaseAPI {
       configuration_id: configurationId
     };
     return this.restClient.get<H264VideoConfiguration>('/encoding/configurations/video/h264/{configuration_id}', pathParamMap).then((response) => {
-      return new H264VideoConfiguration(response);
+      return map(response, H264VideoConfiguration);
     });
   }
 
   /**
    * @summary List H264/AVC Codec Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof H264Api
    */
   public list(queryParameters?: H264VideoConfigurationListQueryParams | ((q: H264VideoConfigurationListQueryParamsBuilder) => H264VideoConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<H264VideoConfiguration>> {
@@ -76,7 +77,7 @@ export default class H264Api extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<H264VideoConfiguration>>('/encoding/configurations/video/h264', {}, queryParams).then((response) => {
-      return new PaginationResponse<H264VideoConfiguration>(response, H264VideoConfiguration);;
+      return new PaginationResponse<H264VideoConfiguration>(response, H264VideoConfiguration);
     });
   }
 }

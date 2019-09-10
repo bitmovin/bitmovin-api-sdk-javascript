@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import RtmpInput from '../../../models/RtmpInput';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {RtmpInputListQueryParams, RtmpInputListQueryParamsBuilder} from './RtmpInputListQueryParams';
@@ -19,7 +20,7 @@ export default class RtmpApi extends BaseAPI {
   /**
    * @summary RTMP Input Details
    * @param {string} inputId Id of the input
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RtmpApi
    */
   public get(inputId: string): Promise<RtmpInput> {
@@ -27,14 +28,14 @@ export default class RtmpApi extends BaseAPI {
       input_id: inputId
     };
     return this.restClient.get<RtmpInput>('/encoding/inputs/rtmp/{input_id}', pathParamMap).then((response) => {
-      return new RtmpInput(response);
+      return map(response, RtmpInput);
     });
   }
 
   /**
    * @summary List RTMP Inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof RtmpApi
    */
   public list(queryParameters?: RtmpInputListQueryParams | ((q: RtmpInputListQueryParamsBuilder) => RtmpInputListQueryParamsBuilder)): Promise<PaginationResponse<RtmpInput>> {
@@ -45,7 +46,7 @@ export default class RtmpApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<RtmpInput>>('/encoding/inputs/rtmp', {}, queryParams).then((response) => {
-      return new PaginationResponse<RtmpInput>(response, RtmpInput);;
+      return new PaginationResponse<RtmpInput>(response, RtmpInput);
     });
   }
 }

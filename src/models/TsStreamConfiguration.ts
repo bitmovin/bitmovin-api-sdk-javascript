@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class TsStreamConfiguration {
    */
   public pid?: number;
 
-  constructor(obj: Partial<TsStreamConfiguration>) {
-
-    this.streamId = obj.streamId;
-    this.pid = obj.pid;
+  constructor(obj?: Partial<TsStreamConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.streamId = map(obj.streamId);
+    this.pid = map(obj.pid);
   }
 }
 

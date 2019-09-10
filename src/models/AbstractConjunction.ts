@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AbstractCondition from './AbstractCondition';
 
 /**
@@ -13,10 +13,12 @@ export class AbstractConjunction extends AbstractCondition {
    */
   public conditions?: AbstractCondition[];
 
-  constructor(obj: Partial<AbstractConjunction>) {
+  constructor(obj?: Partial<AbstractConjunction>) {
     super(obj);
-
-    this.conditions = map<AbstractCondition>(obj.conditions, AbstractCondition) || [];
+    if(!obj) {
+      return;
+    }
+    this.conditions = mapArray(obj.conditions, AbstractCondition);
   }
 }
 

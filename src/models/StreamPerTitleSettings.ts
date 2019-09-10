@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import StreamPerTitleFixedResolutionAndBitrateSettings from './StreamPerTitleFixedResolutionAndBitrateSettings';
 
 /**
@@ -13,9 +13,11 @@ export class StreamPerTitleSettings {
    */
   public fixedResolutionAndBitrateSettings?: StreamPerTitleFixedResolutionAndBitrateSettings;
 
-  constructor(obj: Partial<StreamPerTitleSettings>) {
-
-    this.fixedResolutionAndBitrateSettings = map<StreamPerTitleFixedResolutionAndBitrateSettings>(obj.fixedResolutionAndBitrateSettings, StreamPerTitleFixedResolutionAndBitrateSettings);
+  constructor(obj?: Partial<StreamPerTitleSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.fixedResolutionAndBitrateSettings = map(obj.fixedResolutionAndBitrateSettings, StreamPerTitleFixedResolutionAndBitrateSettings);
   }
 }
 

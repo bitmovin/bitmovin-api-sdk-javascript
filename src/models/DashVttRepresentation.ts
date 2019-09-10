@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -13,10 +13,12 @@ export class DashVttRepresentation extends BitmovinResource {
    */
   public vttUrl?: string;
 
-  constructor(obj: Partial<DashVttRepresentation>) {
+  constructor(obj?: Partial<DashVttRepresentation>) {
     super(obj);
-
-    this.vttUrl = obj.vttUrl;
+    if(!obj) {
+      return;
+    }
+    this.vttUrl = map(obj.vttUrl);
   }
 }
 

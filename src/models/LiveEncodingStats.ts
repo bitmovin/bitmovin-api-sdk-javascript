@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import LiveEncodingStatsEvent from './LiveEncodingStatsEvent';
 import LiveEncodingStatus from './LiveEncodingStatus';
 import StreamInfos from './StreamInfos';
@@ -28,11 +28,13 @@ export class LiveEncodingStats {
    */
   public statistics?: StreamInfos[];
 
-  constructor(obj: Partial<LiveEncodingStats>) {
-
-    this.status = obj.status;
-    this.events = map<LiveEncodingStatsEvent>(obj.events, LiveEncodingStatsEvent) || [];
-    this.statistics = map<StreamInfos>(obj.statistics, StreamInfos) || [];
+  constructor(obj?: Partial<LiveEncodingStats>) {
+    if(!obj) {
+      return;
+    }
+    this.status = map(obj.status);
+    this.events = mapArray(obj.events, LiveEncodingStatsEvent);
+    this.statistics = mapArray(obj.statistics, StreamInfos);
   }
 }
 

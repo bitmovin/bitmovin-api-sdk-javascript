@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioStream from './AudioStream';
 import MediaStream from './MediaStream';
 import SubtitleStream from './SubtitleStream';
@@ -79,18 +79,20 @@ export class EncodingStreamInputDetails {
    */
   public subtitleStreams?: SubtitleStream[];
 
-  constructor(obj: Partial<EncodingStreamInputDetails>) {
-
-    this.formatName = obj.formatName;
-    this.startTime = obj.startTime;
-    this.duration = obj.duration;
-    this.size = obj.size;
-    this.bitrate = obj.bitrate;
-    this.tags = obj.tags;
-    this.videoStreams = map<VideoStream>(obj.videoStreams, VideoStream) || [];
-    this.audioStreams = map<AudioStream>(obj.audioStreams, AudioStream) || [];
-    this.metaStreams = map<MediaStream>(obj.metaStreams, MediaStream) || [];
-    this.subtitleStreams = map<SubtitleStream>(obj.subtitleStreams, SubtitleStream) || [];
+  constructor(obj?: Partial<EncodingStreamInputDetails>) {
+    if(!obj) {
+      return;
+    }
+    this.formatName = map(obj.formatName);
+    this.startTime = map(obj.startTime);
+    this.duration = map(obj.duration);
+    this.size = map(obj.size);
+    this.bitrate = map(obj.bitrate);
+    this.tags = map(obj.tags);
+    this.videoStreams = mapArray(obj.videoStreams, VideoStream);
+    this.audioStreams = mapArray(obj.audioStreams, AudioStream);
+    this.metaStreams = mapArray(obj.metaStreams, MediaStream);
+    this.subtitleStreams = mapArray(obj.subtitleStreams, SubtitleStream);
   }
 }
 

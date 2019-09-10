@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import IFramePlaylist from '../../../../../models/IFramePlaylist';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -22,7 +23,7 @@ export default class IframeApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {IFramePlaylist} iFramePlaylist The I-frame playlist to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IframeApi
    */
   public create(manifestId: string, streamId: string, iFramePlaylist?: IFramePlaylist): Promise<IFramePlaylist> {
@@ -31,7 +32,7 @@ export default class IframeApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<IFramePlaylist>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe', pathParamMap, iFramePlaylist).then((response) => {
-      return new IFramePlaylist(response);
+      return map(response, IFramePlaylist);
     });
   }
 
@@ -40,7 +41,7 @@ export default class IframeApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {string} iframeId Id of the Iframe-Playlist.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IframeApi
    */
   public delete(manifestId: string, streamId: string, iframeId: string): Promise<BitmovinResponse> {
@@ -50,7 +51,7 @@ export default class IframeApi extends BaseAPI {
       iframe_id: iframeId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -59,7 +60,7 @@ export default class IframeApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {string} iframeId Id of the Iframe-Playlist.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IframeApi
    */
   public get(manifestId: string, streamId: string, iframeId: string): Promise<IFramePlaylist> {
@@ -69,7 +70,7 @@ export default class IframeApi extends BaseAPI {
       iframe_id: iframeId
     };
     return this.restClient.get<IFramePlaylist>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}', pathParamMap).then((response) => {
-      return new IFramePlaylist(response);
+      return map(response, IFramePlaylist);
     });
   }
 
@@ -78,7 +79,7 @@ export default class IframeApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof IframeApi
    */
   public list(manifestId: string, streamId: string, queryParameters?: IFramePlaylistListQueryParams | ((q: IFramePlaylistListQueryParamsBuilder) => IFramePlaylistListQueryParamsBuilder)): Promise<PaginationResponse<IFramePlaylist>> {
@@ -93,7 +94,7 @@ export default class IframeApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<IFramePlaylist>>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<IFramePlaylist>(response, IFramePlaylist);;
+      return new PaginationResponse<IFramePlaylist>(response, IFramePlaylist);
     });
   }
 }

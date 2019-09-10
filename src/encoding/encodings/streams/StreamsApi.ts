@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InputApi from './input/InputApi';
 import InputsApi from './inputs/InputsApi';
@@ -51,7 +52,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Add Stream
    * @param {string} encodingId Id of the encoding.
    * @param {Stream} stream The Stream to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public create(encodingId: string, stream?: Stream): Promise<Stream> {
@@ -59,7 +60,7 @@ export default class StreamsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<Stream>('/encoding/encodings/{encoding_id}/streams', pathParamMap, stream).then((response) => {
-      return new Stream(response);
+      return map(response, Stream);
     });
   }
 
@@ -67,7 +68,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Delete Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public delete(encodingId: string, streamId: string): Promise<BitmovinResponse> {
@@ -76,7 +77,7 @@ export default class StreamsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/streams/{stream_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -84,7 +85,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary Stream Details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public get(encodingId: string, streamId: string): Promise<Stream> {
@@ -93,7 +94,7 @@ export default class StreamsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.get<Stream>('/encoding/encodings/{encoding_id}/streams/{stream_id}', pathParamMap).then((response) => {
-      return new Stream(response);
+      return map(response, Stream);
     });
   }
 
@@ -101,7 +102,7 @@ export default class StreamsApi extends BaseAPI {
    * @summary List Streams
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof StreamsApi
    */
   public list(encodingId: string, queryParameters?: StreamListQueryParams | ((q: StreamListQueryParamsBuilder) => StreamListQueryParamsBuilder)): Promise<PaginationResponse<Stream>> {
@@ -115,7 +116,7 @@ export default class StreamsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Stream>>('/encoding/encodings/{encoding_id}/streams', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Stream>(response, Stream);;
+      return new PaginationResponse<Stream>(response, Stream);
     });
   }
 }

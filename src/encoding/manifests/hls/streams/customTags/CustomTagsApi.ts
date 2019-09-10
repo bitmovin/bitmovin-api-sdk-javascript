@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import CustomTag from '../../../../../models/CustomTag';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -22,7 +23,7 @@ export default class CustomTagsApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {CustomTag} customTag The Custom Tag to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomTagsApi
    */
   public create(manifestId: string, streamId: string, customTag?: CustomTag): Promise<CustomTag> {
@@ -31,7 +32,7 @@ export default class CustomTagsApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.post<CustomTag>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags', pathParamMap, customTag).then((response) => {
-      return new CustomTag(response);
+      return map(response, CustomTag);
     });
   }
 
@@ -40,7 +41,7 @@ export default class CustomTagsApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {string} customTagId Id of the custom tag.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomTagsApi
    */
   public delete(manifestId: string, streamId: string, customTagId: string): Promise<BitmovinResponse> {
@@ -50,7 +51,7 @@ export default class CustomTagsApi extends BaseAPI {
       custom_tag_id: customTagId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags/{custom_tag_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -59,7 +60,7 @@ export default class CustomTagsApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {string} customTagId Id of the custom tag.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomTagsApi
    */
   public get(manifestId: string, streamId: string, customTagId: string): Promise<CustomTag> {
@@ -69,7 +70,7 @@ export default class CustomTagsApi extends BaseAPI {
       custom_tag_id: customTagId
     };
     return this.restClient.get<CustomTag>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags/{custom_tag_id}', pathParamMap).then((response) => {
-      return new CustomTag(response);
+      return map(response, CustomTag);
     });
   }
 
@@ -78,7 +79,7 @@ export default class CustomTagsApi extends BaseAPI {
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomTagsApi
    */
   public list(manifestId: string, streamId: string, queryParameters?: CustomTagListQueryParams | ((q: CustomTagListQueryParamsBuilder) => CustomTagListQueryParamsBuilder)): Promise<PaginationResponse<CustomTag>> {
@@ -93,7 +94,7 @@ export default class CustomTagsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<CustomTag>>('/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<CustomTag>(response, CustomTag);;
+      return new PaginationResponse<CustomTag>(response, CustomTag);
     });
   }
 }

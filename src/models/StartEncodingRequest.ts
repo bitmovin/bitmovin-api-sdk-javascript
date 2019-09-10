@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingMode from './EncodingMode';
 import ManifestResource from './ManifestResource';
 import PerTitle from './PerTitle';
@@ -81,18 +81,20 @@ export class StartEncodingRequest {
    */
   public perTitle?: PerTitle;
 
-  constructor(obj: Partial<StartEncodingRequest>) {
-
-    this.trimming = map<Trimming>(obj.trimming, Trimming);
-    this.scheduling = map<Scheduling>(obj.scheduling, Scheduling);
-    this.tweaks = map<Tweaks>(obj.tweaks, Tweaks);
-    this.handleVariableInputFps = obj.handleVariableInputFps;
-    this.encodingMode = obj.encodingMode;
-    this.previewDashManifests = map<ManifestResource>(obj.previewDashManifests, ManifestResource) || [];
-    this.previewHlsManifests = map<ManifestResource>(obj.previewHlsManifests, ManifestResource) || [];
-    this.vodDashManifests = map<ManifestResource>(obj.vodDashManifests, ManifestResource) || [];
-    this.vodHlsManifests = map<ManifestResource>(obj.vodHlsManifests, ManifestResource) || [];
-    this.perTitle = map<PerTitle>(obj.perTitle, PerTitle);
+  constructor(obj?: Partial<StartEncodingRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.trimming = map(obj.trimming, Trimming);
+    this.scheduling = map(obj.scheduling, Scheduling);
+    this.tweaks = map(obj.tweaks, Tweaks);
+    this.handleVariableInputFps = map(obj.handleVariableInputFps);
+    this.encodingMode = map(obj.encodingMode);
+    this.previewDashManifests = mapArray(obj.previewDashManifests, ManifestResource);
+    this.previewHlsManifests = mapArray(obj.previewHlsManifests, ManifestResource);
+    this.vodDashManifests = mapArray(obj.vodDashManifests, ManifestResource);
+    this.vodHlsManifests = mapArray(obj.vodHlsManifests, ManifestResource);
+    this.perTitle = map(obj.perTitle, PerTitle);
   }
 }
 

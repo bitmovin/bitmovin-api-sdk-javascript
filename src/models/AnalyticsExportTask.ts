@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsExportStatus from './AnalyticsExportStatus';
 import AnalyticsExportTaskOutputTarget from './AnalyticsExportTaskOutputTarget';
 import BitmovinResponse from './BitmovinResponse';
@@ -76,19 +76,21 @@ export class AnalyticsExportTask extends BitmovinResponse {
    */
   public finishedAt?: Date;
 
-  constructor(obj: Partial<AnalyticsExportTask>) {
+  constructor(obj?: Partial<AnalyticsExportTask>) {
     super(obj);
-
-    this.startTime = map<Date>(obj.startTime, Date);
-    this.endTime = map<Date>(obj.endTime, Date);
-    this.name = obj.name;
-    this.description = obj.description;
-    this.licenseKey = obj.licenseKey;
-    this.output = map<AnalyticsExportTaskOutputTarget>(obj.output, AnalyticsExportTaskOutputTarget);
-    this.progress = obj.progress;
-    this.status = obj.status;
-    this.startedAt = map<Date>(obj.startedAt, Date);
-    this.finishedAt = map<Date>(obj.finishedAt, Date);
+    if(!obj) {
+      return;
+    }
+    this.startTime = map(obj.startTime, Date);
+    this.endTime = map(obj.endTime, Date);
+    this.name = map(obj.name);
+    this.description = map(obj.description);
+    this.licenseKey = map(obj.licenseKey);
+    this.output = map(obj.output, AnalyticsExportTaskOutputTarget);
+    this.progress = map(obj.progress);
+    this.status = map(obj.status);
+    this.startedAt = map(obj.startedAt, Date);
+    this.finishedAt = map(obj.finishedAt, Date);
   }
 }
 

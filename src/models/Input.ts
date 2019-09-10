@@ -7,6 +7,7 @@ import GcsInput from './GcsInput';
 import GenericS3Input from './GenericS3Input';
 import HttpInput from './HttpInput';
 import HttpsInput from './HttpsInput';
+import InputType from './InputType';
 import LocalInput from './LocalInput';
 import RedundantRtmpInput from './RedundantRtmpInput';
 import RtmpInput from './RtmpInput';
@@ -46,31 +47,33 @@ export type InputUnion =
  */
 export class Input extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
-    'AKAMAI_NETSTORAGE': 'AkamaiNetStorageInput',
-    'ASPERA': 'AsperaInput',
-    'AZURE': 'AzureInput',
-    'REDUNDANT_RTMP': 'RedundantRtmpInput',
-    'FTP': 'FtpInput',
-    'GENERIC_S3': 'GenericS3Input',
-    'GCS': 'GcsInput',
-    'HTTP': 'HttpInput',
-    'HTTPS': 'HttpsInput',
-    'LOCAL': 'LocalInput',
-    'RTMP': 'RtmpInput',
-    'S3': 'S3Input',
-    'S3_ROLE_BASED': 'S3RoleBasedInput',
-    'SFTP': 'SftpInput',
-    'TCP': 'TcpInput',
-    'UDP': 'UdpInput',
-    'UDP_MULTICAST': 'UdpMulticastInput',
-    'ZIXI': 'ZixiInput',
-    'SRT': 'SrtInput'
+  protected static readonly _discriminatorMapping: { [key in keyof typeof InputType]: string; } = {
+    AKAMAI_NETSTORAGE: 'AkamaiNetStorageInput',
+    ASPERA: 'AsperaInput',
+    AZURE: 'AzureInput',
+    REDUNDANT_RTMP: 'RedundantRtmpInput',
+    FTP: 'FtpInput',
+    GENERIC_S3: 'GenericS3Input',
+    GCS: 'GcsInput',
+    HTTP: 'HttpInput',
+    HTTPS: 'HttpsInput',
+    LOCAL: 'LocalInput',
+    RTMP: 'RtmpInput',
+    S3: 'S3Input',
+    S3_ROLE_BASED: 'S3RoleBasedInput',
+    SFTP: 'SftpInput',
+    TCP: 'TcpInput',
+    UDP: 'UdpInput',
+    UDP_MULTICAST: 'UdpMulticastInput',
+    ZIXI: 'ZixiInput',
+    SRT: 'SrtInput'
   };
 
-  constructor(obj: Partial<Input>) {
+  constructor(obj?: Partial<Input>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

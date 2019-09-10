@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BitrateSelectionMode from './BitrateSelectionMode';
 
 /**
@@ -41,13 +41,15 @@ export class StreamPerTitleFixedResolutionAndBitrateSettings {
    */
   public highComplexityBoundaryForMaxBitrate?: number;
 
-  constructor(obj: Partial<StreamPerTitleFixedResolutionAndBitrateSettings>) {
-
-    this.minBitrate = obj.minBitrate;
-    this.maxBitrate = obj.maxBitrate;
-    this.bitrateSelectionMode = obj.bitrateSelectionMode;
-    this.lowComplexityBoundaryForMaxBitrate = obj.lowComplexityBoundaryForMaxBitrate;
-    this.highComplexityBoundaryForMaxBitrate = obj.highComplexityBoundaryForMaxBitrate;
+  constructor(obj?: Partial<StreamPerTitleFixedResolutionAndBitrateSettings>) {
+    if(!obj) {
+      return;
+    }
+    this.minBitrate = map(obj.minBitrate);
+    this.maxBitrate = map(obj.maxBitrate);
+    this.bitrateSelectionMode = map(obj.bitrateSelectionMode);
+    this.lowComplexityBoundaryForMaxBitrate = map(obj.lowComplexityBoundaryForMaxBitrate);
+    this.highComplexityBoundaryForMaxBitrate = map(obj.highComplexityBoundaryForMaxBitrate);
   }
 }
 

@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../../../models/BitmovinResponse';
 import FrameIdId3Tag from '../../../../../../models/FrameIdId3Tag';
@@ -25,7 +26,7 @@ export default class FrameIdApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {FrameIdId3Tag} frameIdId3Tag The Frame ID ID3 Tag to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FrameIdApi
    */
   public create(encodingId: string, muxingId: string, frameIdId3Tag?: FrameIdId3Tag): Promise<FrameIdId3Tag> {
@@ -34,7 +35,7 @@ export default class FrameIdApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.post<FrameIdId3Tag>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id', pathParamMap, frameIdId3Tag).then((response) => {
-      return new FrameIdId3Tag(response);
+      return map(response, FrameIdId3Tag);
     });
   }
 
@@ -43,7 +44,7 @@ export default class FrameIdApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FrameIdApi
    */
   public delete(encodingId: string, muxingId: string, id3TagId: string): Promise<BitmovinResponse> {
@@ -53,7 +54,7 @@ export default class FrameIdApi extends BaseAPI {
       id3_tag_id: id3TagId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id/{id3_tag_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -62,7 +63,7 @@ export default class FrameIdApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FrameIdApi
    */
   public get(encodingId: string, muxingId: string, id3TagId: string): Promise<FrameIdId3Tag> {
@@ -72,7 +73,7 @@ export default class FrameIdApi extends BaseAPI {
       id3_tag_id: id3TagId
     };
     return this.restClient.get<FrameIdId3Tag>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id/{id3_tag_id}', pathParamMap).then((response) => {
-      return new FrameIdId3Tag(response);
+      return map(response, FrameIdId3Tag);
     });
   }
 
@@ -81,7 +82,7 @@ export default class FrameIdApi extends BaseAPI {
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS Muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof FrameIdApi
    */
   public list(encodingId: string, muxingId: string, queryParameters?: FrameIdId3TagListQueryParams | ((q: FrameIdId3TagListQueryParamsBuilder) => FrameIdId3TagListQueryParamsBuilder)): Promise<PaginationResponse<FrameIdId3Tag>> {
@@ -96,7 +97,7 @@ export default class FrameIdApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<FrameIdId3Tag>>('/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<FrameIdId3Tag>(response, FrameIdId3Tag);;
+      return new PaginationResponse<FrameIdId3Tag>(response, FrameIdId3Tag);
     });
   }
 }

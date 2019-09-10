@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -12,9 +12,11 @@ export class RescheduleEncodingRequest {
    */
   public infrastructureId?: string;
 
-  constructor(obj: Partial<RescheduleEncodingRequest>) {
-
-    this.infrastructureId = obj.infrastructureId;
+  constructor(obj?: Partial<RescheduleEncodingRequest>) {
+    if(!obj) {
+      return;
+    }
+    this.infrastructureId = map(obj.infrastructureId);
   }
 }
 

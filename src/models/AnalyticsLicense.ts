@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AnalyticsLicenseCustomDataFieldLabels from './AnalyticsLicenseCustomDataFieldLabels';
 import AnalyticsLicenseDomain from './AnalyticsLicenseDomain';
 import BitmovinResponse from './BitmovinResponse';
@@ -71,18 +71,20 @@ export class AnalyticsLicense extends BitmovinResponse {
    */
   public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
 
-  constructor(obj: Partial<AnalyticsLicense>) {
+  constructor(obj?: Partial<AnalyticsLicense>) {
     super(obj);
-
-    this.name = obj.name;
-    this.licenseKey = obj.licenseKey;
-    this.createdAt = map<Date>(obj.createdAt, Date);
-    this.maxImpressions = obj.maxImpressions;
-    this.impressions = obj.impressions;
-    this.domains = map<AnalyticsLicenseDomain>(obj.domains, AnalyticsLicenseDomain) || [];
-    this.ignoreDNT = obj.ignoreDNT;
-    this.timeZone = obj.timeZone;
-    this.customDataFieldLabels = map<AnalyticsLicenseCustomDataFieldLabels>(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
+    if(!obj) {
+      return;
+    }
+    this.name = map(obj.name);
+    this.licenseKey = map(obj.licenseKey);
+    this.createdAt = map(obj.createdAt, Date);
+    this.maxImpressions = map(obj.maxImpressions);
+    this.impressions = map(obj.impressions);
+    this.domains = mapArray(obj.domains, AnalyticsLicenseDomain);
+    this.ignoreDNT = map(obj.ignoreDNT);
+    this.timeZone = map(obj.timeZone);
+    this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
   }
 }
 

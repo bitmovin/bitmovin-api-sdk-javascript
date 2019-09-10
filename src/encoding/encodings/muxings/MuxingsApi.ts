@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
+import {map, mapArray} from '../../../common/Mapper';
 import Fmp4Api from './fmp4/Fmp4Api';
 import ChunkedTextApi from './chunkedText/ChunkedTextApi';
 import CmafApi from './cmaf/CmafApi';
@@ -60,7 +61,7 @@ export default class MuxingsApi extends BaseAPI {
    * @summary List All Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof MuxingsApi
    */
   public list(encodingId: string, queryParameters?: MuxingListQueryParams | ((q: MuxingListQueryParamsBuilder) => MuxingListQueryParamsBuilder)): Promise<PaginationResponse<Muxing>> {
@@ -74,7 +75,7 @@ export default class MuxingsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Muxing>>('/encoding/encodings/{encoding_id}/muxings', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Muxing>(response, Muxing);;
+      return new PaginationResponse<Muxing>(response, Muxing);
     });
   }
 }

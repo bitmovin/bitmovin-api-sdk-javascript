@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -15,7 +16,7 @@ export class ChunkedTextMuxing extends Muxing {
    * @type {string}
    * @memberof ChunkedTextMuxing
    */
-  public type: 'CHUNKED_TEXT' = 'CHUNKED_TEXT';
+  public type: MuxingType.CHUNKED_TEXT = MuxingType.CHUNKED_TEXT;
 
   /**
    * Length of the segments in seconds (required)
@@ -45,13 +46,15 @@ export class ChunkedTextMuxing extends Muxing {
    */
   public segmentsMuxed?: number;
 
-  constructor(obj: Partial<ChunkedTextMuxing>) {
+  constructor(obj?: Partial<ChunkedTextMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.segmentNaming = obj.segmentNaming;
-    this.segmentNamingTemplate = obj.segmentNamingTemplate;
-    this.segmentsMuxed = obj.segmentsMuxed;
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
   }
 }
 

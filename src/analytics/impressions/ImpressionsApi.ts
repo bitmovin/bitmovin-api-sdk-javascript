@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import AnalyticsImpressionDetails from '../../models/AnalyticsImpressionDetails';
 import AnalyticsLicenseKey from '../../models/AnalyticsLicenseKey';
 
@@ -19,7 +20,7 @@ export default class ImpressionsApi extends BaseAPI {
    * @summary Impression Details
    * @param {string} impressionId Impression id
    * @param {AnalyticsLicenseKey} analyticsLicenseKey Analytics license
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ImpressionsApi
    */
   public create(impressionId: string, analyticsLicenseKey?: AnalyticsLicenseKey): Promise<AnalyticsImpressionDetails> {
@@ -27,7 +28,7 @@ export default class ImpressionsApi extends BaseAPI {
       impression_id: impressionId
     };
     return this.restClient.post<AnalyticsImpressionDetails>('/analytics/impressions/{impression_id}', pathParamMap, analyticsLicenseKey).then((response) => {
-      return new AnalyticsImpressionDetails(response);
+      return map(response, AnalyticsImpressionDetails);
     });
   }
 }

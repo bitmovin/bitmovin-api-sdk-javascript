@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AutoRepresentation from './AutoRepresentation';
 import PerTitleConfiguration from './PerTitleConfiguration';
 import PerTitleFixedResolutionAndBitrateConfiguration from './PerTitleFixedResolutionAndBitrateConfiguration';
@@ -15,10 +15,12 @@ export class Vp9PerTitleConfiguration extends PerTitleConfiguration {
    */
   public targetQualityCrf?: number;
 
-  constructor(obj: Partial<Vp9PerTitleConfiguration>) {
+  constructor(obj?: Partial<Vp9PerTitleConfiguration>) {
     super(obj);
-
-    this.targetQualityCrf = obj.targetQualityCrf;
+    if(!obj) {
+      return;
+    }
+    this.targetQualityCrf = map(obj.targetQualityCrf);
   }
 }
 

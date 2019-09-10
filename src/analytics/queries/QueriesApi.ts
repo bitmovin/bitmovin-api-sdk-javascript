@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import CountApi from './count/CountApi';
 import SumApi from './sum/SumApi';
 import AvgApi from './avg/AvgApi';

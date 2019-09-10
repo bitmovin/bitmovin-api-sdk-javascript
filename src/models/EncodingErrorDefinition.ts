@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import ErrorRetryHint from './ErrorRetryHint';
 
 /**
@@ -41,13 +41,15 @@ export class EncodingErrorDefinition {
    */
   public retryHint?: ErrorRetryHint;
 
-  constructor(obj: Partial<EncodingErrorDefinition>) {
-
-    this.code = obj.code;
-    this.category = obj.category;
-    this.message = obj.message;
-    this.description = obj.description;
-    this.retryHint = obj.retryHint;
+  constructor(obj?: Partial<EncodingErrorDefinition>) {
+    if(!obj) {
+      return;
+    }
+    this.code = map(obj.code);
+    this.category = map(obj.category);
+    this.message = map(obj.message);
+    this.description = map(obj.description);
+    this.retryHint = map(obj.retryHint);
   }
 }
 

@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -15,7 +16,7 @@ export class Fmp4Muxing extends Muxing {
    * @type {string}
    * @memberof Fmp4Muxing
    */
-  public type: 'FMP4' = 'FMP4';
+  public type: MuxingType.FMP4 = MuxingType.FMP4;
 
   /**
    * Length of the fragments in seconds (required)
@@ -66,16 +67,18 @@ export class Fmp4Muxing extends Muxing {
    */
   public segmentsMuxed?: number;
 
-  constructor(obj: Partial<Fmp4Muxing>) {
+  constructor(obj?: Partial<Fmp4Muxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.segmentNaming = obj.segmentNaming;
-    this.segmentNamingTemplate = obj.segmentNamingTemplate;
-    this.initSegmentName = obj.initSegmentName;
-    this.initSegmentNameTemplate = obj.initSegmentNameTemplate;
-    this.writeDurationPerSample = obj.writeDurationPerSample;
-    this.segmentsMuxed = obj.segmentsMuxed;
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
+    this.initSegmentName = map(obj.initSegmentName);
+    this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
+    this.writeDurationPerSample = map(obj.writeDurationPerSample);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
   }
 }
 

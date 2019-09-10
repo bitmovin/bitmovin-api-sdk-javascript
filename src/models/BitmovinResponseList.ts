@@ -5,9 +5,11 @@ import BitmovinResponse from './BitmovinResponse';
  * @class BitmovinResponseList
  */
 export class BitmovinResponseList extends Array<BitmovinResponse> {
-  constructor(obj: any) {
+  constructor(obj?: any) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

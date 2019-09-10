@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
+import {map, mapArray} from '../../common/Mapper';
 import EncodingErrorDefinition from '../../models/EncodingErrorDefinition';
 import PaginationResponse from '../../models/PaginationResponse';
 import {EncodingErrorDefinitionListQueryParams, EncodingErrorDefinitionListQueryParamsBuilder} from './EncodingErrorDefinitionListQueryParams';
@@ -19,7 +20,7 @@ export default class ErrorDefinitionsApi extends BaseAPI {
   /**
    * @summary List all possible encoding error definitions
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ErrorDefinitionsApi
    */
   public list(queryParameters?: EncodingErrorDefinitionListQueryParams | ((q: EncodingErrorDefinitionListQueryParamsBuilder) => EncodingErrorDefinitionListQueryParamsBuilder)): Promise<PaginationResponse<EncodingErrorDefinition>> {
@@ -30,7 +31,7 @@ export default class ErrorDefinitionsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<EncodingErrorDefinition>>('/encoding/error-definitions', {}, queryParams).then((response) => {
-      return new PaginationResponse<EncodingErrorDefinition>(response, EncodingErrorDefinition);;
+      return new PaginationResponse<EncodingErrorDefinition>(response, EncodingErrorDefinition);
     });
   }
 }

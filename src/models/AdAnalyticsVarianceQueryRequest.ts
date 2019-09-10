@@ -9,9 +9,11 @@ import AnalyticsInterval from './AnalyticsInterval';
  * @class AdAnalyticsVarianceQueryRequest
  */
 export class AdAnalyticsVarianceQueryRequest extends AdAnalyticsQueryRequest {
-  constructor(obj: Partial<AdAnalyticsVarianceQueryRequest>) {
+  constructor(obj?: Partial<AdAnalyticsVarianceQueryRequest>) {
     super(obj);
-
+    if(!obj) {
+      return;
+    }
   }
 }
 

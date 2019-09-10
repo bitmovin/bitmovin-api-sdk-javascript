@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import TsAudioStreamConfiguration from './TsAudioStreamConfiguration';
 import TsProgramClockReferenceConfiguration from './TsProgramClockReferenceConfiguration';
 import TsProgramMapTableConfiguration from './TsProgramMapTableConfiguration';
@@ -40,13 +40,15 @@ export class TsMuxingConfiguration {
    */
   public audioStreams?: TsAudioStreamConfiguration[];
 
-  constructor(obj: Partial<TsMuxingConfiguration>) {
-
-    this.programNumber = obj.programNumber;
-    this.pmt = map<TsProgramMapTableConfiguration>(obj.pmt, TsProgramMapTableConfiguration);
-    this.pcr = map<TsProgramClockReferenceConfiguration>(obj.pcr, TsProgramClockReferenceConfiguration);
-    this.videoStreams = map<TsVideoStreamConfiguration>(obj.videoStreams, TsVideoStreamConfiguration) || [];
-    this.audioStreams = map<TsAudioStreamConfiguration>(obj.audioStreams, TsAudioStreamConfiguration) || [];
+  constructor(obj?: Partial<TsMuxingConfiguration>) {
+    if(!obj) {
+      return;
+    }
+    this.programNumber = map(obj.programNumber);
+    this.pmt = map(obj.pmt, TsProgramMapTableConfiguration);
+    this.pcr = map(obj.pcr, TsProgramClockReferenceConfiguration);
+    this.videoStreams = mapArray(obj.videoStreams, TsVideoStreamConfiguration);
+    this.audioStreams = mapArray(obj.audioStreams, TsAudioStreamConfiguration);
   }
 }
 

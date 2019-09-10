@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomXmlElementsApi from './customXmlElements/CustomXmlElementsApi';
 import AdaptationsetsApi from './adaptationsets/AdaptationsetsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class PeriodsApi extends BaseAPI {
    * @summary Add Period
    * @param {string} manifestId Id of the manifest
    * @param {Period} period The Period to be added to the manifest
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PeriodsApi
    */
   public create(manifestId: string, period?: Period): Promise<Period> {
@@ -35,7 +36,7 @@ export default class PeriodsApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<Period>('/encoding/manifests/dash/{manifest_id}/periods', pathParamMap, period).then((response) => {
-      return new Period(response);
+      return map(response, Period);
     });
   }
 
@@ -43,7 +44,7 @@ export default class PeriodsApi extends BaseAPI {
    * @summary Delete Period
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period to be deleted
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PeriodsApi
    */
   public delete(manifestId: string, periodId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class PeriodsApi extends BaseAPI {
       period_id: periodId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class PeriodsApi extends BaseAPI {
    * @summary Period Details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PeriodsApi
    */
   public get(manifestId: string, periodId: string): Promise<Period> {
@@ -69,7 +70,7 @@ export default class PeriodsApi extends BaseAPI {
       period_id: periodId
     };
     return this.restClient.get<Period>('/encoding/manifests/dash/{manifest_id}/periods/{period_id}', pathParamMap).then((response) => {
-      return new Period(response);
+      return map(response, Period);
     });
   }
 
@@ -77,7 +78,7 @@ export default class PeriodsApi extends BaseAPI {
    * @summary List all Periods
    * @param {string} manifestId Id of the manifest
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof PeriodsApi
    */
   public list(manifestId: string, queryParameters?: PeriodListQueryParams | ((q: PeriodListQueryParamsBuilder) => PeriodListQueryParamsBuilder)): Promise<PaginationResponse<Period>> {
@@ -91,7 +92,7 @@ export default class PeriodsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<Period>>('/encoding/manifests/dash/{manifest_id}/periods', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<Period>(response, Period);;
+      return new PaginationResponse<Period>(response, Period);
     });
   }
 }

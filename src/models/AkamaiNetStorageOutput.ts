@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import Output from './Output';
+import OutputType from './OutputType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AkamaiNetStorageOutput extends Output {
    * @type {string}
    * @memberof AkamaiNetStorageOutput
    */
-  public type: 'AKAMAI_NETSTORAGE' = 'AKAMAI_NETSTORAGE';
+  public type: OutputType.AKAMAI_NETSTORAGE = OutputType.AKAMAI_NETSTORAGE;
 
   /**
    * Host to use for Akamai NetStorage transfers (required)
@@ -35,12 +36,14 @@ export class AkamaiNetStorageOutput extends Output {
    */
   public password?: string;
 
-  constructor(obj: Partial<AkamaiNetStorageOutput>) {
+  constructor(obj?: Partial<AkamaiNetStorageOutput>) {
     super(obj);
-
-    this.host = obj.host;
-    this.username = obj.username;
-    this.password = obj.password;
+    if(!obj) {
+      return;
+    }
+    this.host = map(obj.host);
+    this.username = map(obj.username);
+    this.password = map(obj.password);
   }
 }
 

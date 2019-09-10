@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../common/Mapper';
 import AudioMediaInfo from '../../../../../models/AudioMediaInfo';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import PaginationResponse from '../../../../../models/PaginationResponse';
@@ -21,7 +22,7 @@ export default class AudioApi extends BaseAPI {
    * @summary Add Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {AudioMediaInfo} audioMediaInfo The Audio Media to be added
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioApi
    */
   public create(manifestId: string, audioMediaInfo?: AudioMediaInfo): Promise<AudioMediaInfo> {
@@ -29,7 +30,7 @@ export default class AudioApi extends BaseAPI {
       manifest_id: manifestId
     };
     return this.restClient.post<AudioMediaInfo>('/encoding/manifests/hls/{manifest_id}/media/audio', pathParamMap, audioMediaInfo).then((response) => {
-      return new AudioMediaInfo(response);
+      return map(response, AudioMediaInfo);
     });
   }
 
@@ -37,7 +38,7 @@ export default class AudioApi extends BaseAPI {
    * @summary Delete Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the audio media.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioApi
    */
   public delete(manifestId: string, mediaId: string): Promise<BitmovinResponse> {
@@ -46,7 +47,7 @@ export default class AudioApi extends BaseAPI {
       media_id: mediaId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -54,7 +55,7 @@ export default class AudioApi extends BaseAPI {
    * @summary Audio Media Details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the audio media.
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioApi
    */
   public get(manifestId: string, mediaId: string): Promise<AudioMediaInfo> {
@@ -63,7 +64,7 @@ export default class AudioApi extends BaseAPI {
       media_id: mediaId
     };
     return this.restClient.get<AudioMediaInfo>('/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}', pathParamMap).then((response) => {
-      return new AudioMediaInfo(response);
+      return map(response, AudioMediaInfo);
     });
   }
 
@@ -71,7 +72,7 @@ export default class AudioApi extends BaseAPI {
    * @summary List all Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof AudioApi
    */
   public list(manifestId: string, queryParameters?: AudioMediaInfoListQueryParams | ((q: AudioMediaInfoListQueryParamsBuilder) => AudioMediaInfoListQueryParamsBuilder)): Promise<PaginationResponse<AudioMediaInfo>> {
@@ -85,7 +86,7 @@ export default class AudioApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<AudioMediaInfo>>('/encoding/manifests/hls/{manifest_id}/media/audio', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<AudioMediaInfo>(response, AudioMediaInfo);;
+      return new PaginationResponse<AudioMediaInfo>(response, AudioMediaInfo);
     });
   }
 }

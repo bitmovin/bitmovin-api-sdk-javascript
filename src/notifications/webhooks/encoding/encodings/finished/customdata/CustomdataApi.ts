@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import CustomData from '../../../../../../models/CustomData';
 
 /**
@@ -18,7 +19,7 @@ export default class CustomdataApi extends BaseAPI {
    * @summary Encoding Finished Webhook Custom Data for specific Encoding Resource
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public getCustomDataByEncodingIdAndWebhookId(encodingId: string, webhookId: string): Promise<CustomData> {
@@ -27,14 +28,14 @@ export default class CustomdataApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.get<CustomData>('/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 
   /**
    * @summary Encoding Finished Webhook Custom Data
    * @param {string} webhookId Id of the webhook
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof CustomdataApi
    */
   public getCustomDataByWebhookId(webhookId: string): Promise<CustomData> {
@@ -42,7 +43,7 @@ export default class CustomdataApi extends BaseAPI {
       webhook_id: webhookId
     };
     return this.restClient.get<CustomData>('/notifications/webhooks/encoding/encodings/finished/{webhook_id}/customData', pathParamMap).then((response) => {
-      return new CustomData(response);
+      return map(response, CustomData);
     });
   }
 }

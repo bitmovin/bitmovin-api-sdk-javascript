@@ -1,7 +1,8 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AudioMixInputChannelLayout from './AudioMixInputChannelLayout';
 import AudioMixInputStreamChannel from './AudioMixInputStreamChannel';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 
 /**
  * @export
@@ -13,7 +14,7 @@ export class AudioMixInputStream extends InputStream {
    * @type {string}
    * @memberof AudioMixInputStream
    */
-  public type: 'AUDIO_MIX' = 'AUDIO_MIX';
+  public type: InputStreamType.AUDIO_MIX = InputStreamType.AUDIO_MIX;
 
   /**
    * Channel layout of the audio mix input stream
@@ -28,11 +29,13 @@ export class AudioMixInputStream extends InputStream {
    */
   public audioMixChannels?: AudioMixInputStreamChannel[];
 
-  constructor(obj: Partial<AudioMixInputStream>) {
+  constructor(obj?: Partial<AudioMixInputStream>) {
     super(obj);
-
-    this.channelLayout = obj.channelLayout;
-    this.audioMixChannels = map<AudioMixInputStreamChannel>(obj.audioMixChannels, AudioMixInputStreamChannel) || [];
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
+    this.audioMixChannels = mapArray(obj.audioMixChannels, AudioMixInputStreamChannel);
   }
 }
 

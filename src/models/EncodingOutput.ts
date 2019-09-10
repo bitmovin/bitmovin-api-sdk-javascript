@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 
 /**
@@ -26,11 +26,13 @@ export class EncodingOutput {
    */
   public acl?: AclEntry[];
 
-  constructor(obj: Partial<EncodingOutput>) {
-
-    this.outputId = obj.outputId;
-    this.outputPath = obj.outputPath;
-    this.acl = map<AclEntry>(obj.acl, AclEntry) || [];
+  constructor(obj?: Partial<EncodingOutput>) {
+    if(!obj) {
+      return;
+    }
+    this.outputId = map(obj.outputId);
+    this.outputPath = map(obj.outputPath);
+    this.acl = mapArray(obj.acl, AclEntry);
   }
 }
 

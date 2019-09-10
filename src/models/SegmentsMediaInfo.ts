@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import BasicMediaInfo from './BasicMediaInfo';
 
 /**
@@ -55,16 +55,18 @@ export class SegmentsMediaInfo extends BasicMediaInfo {
    */
   public endSegmentNumber?: number;
 
-  constructor(obj: Partial<SegmentsMediaInfo>) {
+  constructor(obj?: Partial<SegmentsMediaInfo>) {
     super(obj);
-
-    this.segmentPath = obj.segmentPath;
-    this.encodingId = obj.encodingId;
-    this.streamId = obj.streamId;
-    this.muxingId = obj.muxingId;
-    this.drmId = obj.drmId;
-    this.startSegmentNumber = obj.startSegmentNumber;
-    this.endSegmentNumber = obj.endSegmentNumber;
+    if(!obj) {
+      return;
+    }
+    this.segmentPath = map(obj.segmentPath);
+    this.encodingId = map(obj.encodingId);
+    this.streamId = map(obj.streamId);
+    this.muxingId = map(obj.muxingId);
+    this.drmId = map(obj.drmId);
+    this.startSegmentNumber = map(obj.startSegmentNumber);
+    this.endSegmentNumber = map(obj.endSegmentNumber);
   }
 }
 

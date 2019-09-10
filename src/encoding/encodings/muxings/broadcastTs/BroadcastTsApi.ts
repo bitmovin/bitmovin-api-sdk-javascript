@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InformationApi from './information/InformationApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
@@ -27,7 +28,7 @@ export default class BroadcastTsApi extends BaseAPI {
    * @summary Add Broadcast TS Muxing
    * @param {string} encodingId ID of the encoding.
    * @param {BroadcastTsMuxing} broadcastTsMuxing The Broadcast TS Muxing to be created
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
   public create(encodingId: string, broadcastTsMuxing?: BroadcastTsMuxing): Promise<BroadcastTsMuxing> {
@@ -35,7 +36,7 @@ export default class BroadcastTsApi extends BaseAPI {
       encoding_id: encodingId
     };
     return this.restClient.post<BroadcastTsMuxing>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts', pathParamMap, broadcastTsMuxing).then((response) => {
-      return new BroadcastTsMuxing(response);
+      return map(response, BroadcastTsMuxing);
     });
   }
 
@@ -43,7 +44,7 @@ export default class BroadcastTsApi extends BaseAPI {
    * @summary Delete Broadcast TS Muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Broadcast TS muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
   public delete(encodingId: string, muxingId: string): Promise<BitmovinResponse> {
@@ -52,7 +53,7 @@ export default class BroadcastTsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}', pathParamMap).then((response) => {
-      return new BitmovinResponse(response);
+      return map(response, BitmovinResponse);
     });
   }
 
@@ -60,7 +61,7 @@ export default class BroadcastTsApi extends BaseAPI {
    * @summary Broadcast TS Muxing Details
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Broadcast TS Muxing
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
   public get(encodingId: string, muxingId: string): Promise<BroadcastTsMuxing> {
@@ -69,7 +70,7 @@ export default class BroadcastTsApi extends BaseAPI {
       muxing_id: muxingId
     };
     return this.restClient.get<BroadcastTsMuxing>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}', pathParamMap).then((response) => {
-      return new BroadcastTsMuxing(response);
+      return map(response, BroadcastTsMuxing);
     });
   }
 
@@ -77,7 +78,7 @@ export default class BroadcastTsApi extends BaseAPI {
    * @summary List Broadcast TS Muxings
    * @param {string} encodingId ID of the Encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
   public list(encodingId: string, queryParameters?: BroadcastTsMuxingListQueryParams | ((q: BroadcastTsMuxingListQueryParamsBuilder) => BroadcastTsMuxingListQueryParamsBuilder)): Promise<PaginationResponse<BroadcastTsMuxing>> {
@@ -91,7 +92,7 @@ export default class BroadcastTsApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<BroadcastTsMuxing>>('/encoding/encodings/{encoding_id}/muxings/broadcast-ts', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<BroadcastTsMuxing>(response, BroadcastTsMuxing);;
+      return new PaginationResponse<BroadcastTsMuxing>(response, BroadcastTsMuxing);
     });
   }
 }

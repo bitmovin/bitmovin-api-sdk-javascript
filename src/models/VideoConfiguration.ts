@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import CodecConfiguration from './CodecConfiguration';
 import ColorConfig from './ColorConfig';
 import EncodingMode from './EncodingMode';
@@ -70,18 +70,20 @@ export class VideoConfiguration extends CodecConfiguration {
    */
   public encodingMode?: EncodingMode;
 
-  constructor(obj: Partial<VideoConfiguration>) {
+  constructor(obj?: Partial<VideoConfiguration>) {
     super(obj);
-
-    this.width = obj.width;
-    this.height = obj.height;
-    this.bitrate = obj.bitrate;
-    this.rate = obj.rate;
-    this.pixelFormat = obj.pixelFormat;
-    this.colorConfig = map<ColorConfig>(obj.colorConfig, ColorConfig);
-    this.sampleAspectRatioNumerator = obj.sampleAspectRatioNumerator;
-    this.sampleAspectRatioDenominator = obj.sampleAspectRatioDenominator;
-    this.encodingMode = obj.encodingMode;
+    if(!obj) {
+      return;
+    }
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.bitrate = map(obj.bitrate);
+    this.rate = map(obj.rate);
+    this.pixelFormat = map(obj.pixelFormat);
+    this.colorConfig = map(obj.colorConfig, ColorConfig);
+    this.sampleAspectRatioNumerator = map(obj.sampleAspectRatioNumerator);
+    this.sampleAspectRatioDenominator = map(obj.sampleAspectRatioDenominator);
+    this.encodingMode = map(obj.encodingMode);
   }
 }
 

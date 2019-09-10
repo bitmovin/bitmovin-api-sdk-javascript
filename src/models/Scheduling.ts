@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
@@ -19,10 +19,12 @@ export class Scheduling {
    */
   public prewarmedInstancePoolIds?: string[];
 
-  constructor(obj: Partial<Scheduling>) {
-
-    this.priority = obj.priority;
-    this.prewarmedInstancePoolIds = obj.prewarmedInstancePoolIds || [];
+  constructor(obj?: Partial<Scheduling>) {
+    if(!obj) {
+      return;
+    }
+    this.priority = map(obj.priority);
+    this.prewarmedInstancePoolIds = mapArray(obj.prewarmedInstancePoolIds);
   }
 }
 

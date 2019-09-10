@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
+import {map, mapArray} from '../../../../../../common/Mapper';
 import ObjectDetectionTimestampResult from '../../../../../../models/ObjectDetectionTimestampResult';
 import PaginationResponse from '../../../../../../models/PaginationResponse';
 import {ObjectDetectionTimestampResultListQueryParams, ObjectDetectionTimestampResultListQueryParamsBuilder} from './ObjectDetectionTimestampResultListQueryParams';
@@ -21,7 +22,7 @@ export default class ByTimestampApi extends BaseAPI {
    * @param {string} encodingId Id of the encoding
    * @param {string} objectDetectionId Id of the object detection configuration
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof ByTimestampApi
    */
   public list(encodingId: string, objectDetectionId: string, queryParameters?: ObjectDetectionTimestampResultListQueryParams | ((q: ObjectDetectionTimestampResultListQueryParamsBuilder) => ObjectDetectionTimestampResultListQueryParamsBuilder)): Promise<PaginationResponse<ObjectDetectionTimestampResult>> {
@@ -36,7 +37,7 @@ export default class ByTimestampApi extends BaseAPI {
       queryParams = queryParameters;
     }
     return this.restClient.get<PaginationResponse<ObjectDetectionTimestampResult>>('/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results/by-timestamp', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<ObjectDetectionTimestampResult>(response, ObjectDetectionTimestampResult);;
+      return new PaginationResponse<ObjectDetectionTimestampResult>(response, ObjectDetectionTimestampResult);
     });
   }
 }

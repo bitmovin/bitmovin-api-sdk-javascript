@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import LiveEncodingEventName from './LiveEncodingEventName';
 
 /**
@@ -33,12 +33,14 @@ export class LiveEncodingStatsEventDetails {
    */
   public errorMessage?: string;
 
-  constructor(obj: Partial<LiveEncodingStatsEventDetails>) {
-
-    this.eventName = obj.eventName;
-    this.avDriftInSeconds = obj.avDriftInSeconds;
-    this.idleDurationInSeconds = obj.idleDurationInSeconds;
-    this.errorMessage = obj.errorMessage;
+  constructor(obj?: Partial<LiveEncodingStatsEventDetails>) {
+    if(!obj) {
+      return;
+    }
+    this.eventName = map(obj.eventName);
+    this.avDriftInSeconds = map(obj.avDriftInSeconds);
+    this.idleDurationInSeconds = map(obj.idleDurationInSeconds);
+    this.errorMessage = map(obj.errorMessage);
   }
 }
 

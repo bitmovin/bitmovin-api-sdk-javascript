@@ -1,5 +1,6 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
+import {map, mapArray} from '../../../../common/Mapper';
 import AdAnalyticsMedianQueryRequest from '../../../../models/AdAnalyticsMedianQueryRequest';
 import AdAnalyticsQueryRequest from '../../../../models/AdAnalyticsQueryRequest';
 import AnalyticsResponse from '../../../../models/AnalyticsResponse';
@@ -19,12 +20,12 @@ export default class MedianApi extends BaseAPI {
   /**
    * @summary Median
    * @param {AdAnalyticsMedianQueryRequest} adAnalyticsMedianQueryRequest Analytics Query Object
-   * @throws {RequiredError}
+   * @throws {BitmovinError}
    * @memberof MedianApi
    */
   public create(adAnalyticsMedianQueryRequest?: AdAnalyticsMedianQueryRequest): Promise<AnalyticsResponse> {
     return this.restClient.post<AnalyticsResponse>('/analytics/ads/queries/median', {}, adAnalyticsMedianQueryRequest).then((response) => {
-      return new AnalyticsResponse(response);
+      return map(response, AnalyticsResponse);
     });
   }
 }

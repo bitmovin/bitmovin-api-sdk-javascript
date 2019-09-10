@@ -1,4 +1,4 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import LiveEncodingCodec from './LiveEncodingCodec';
 import MediaType from './MediaType';
 
@@ -133,26 +133,28 @@ export class StreamInfosDetails {
    */
   public bytesBackupPerSecondAvg?: number;
 
-  constructor(obj: Partial<StreamInfosDetails>) {
-
-    this.id = obj.id;
-    this.mediaType = obj.mediaType;
-    this.width = obj.width;
-    this.height = obj.height;
-    this.rate = obj.rate;
-    this.codec = obj.codec;
-    this.samplesReadPerSecondMin = obj.samplesReadPerSecondMin;
-    this.samplesReadPerSecondMax = obj.samplesReadPerSecondMax;
-    this.samplesReadPerSecondAvg = obj.samplesReadPerSecondAvg;
-    this.samplesBackupPerSecondMin = obj.samplesBackupPerSecondMin;
-    this.samplesBackupPerSecondMax = obj.samplesBackupPerSecondMax;
-    this.samplesBackupPerSecondAvg = obj.samplesBackupPerSecondAvg;
-    this.bytesReadPerSecondMin = obj.bytesReadPerSecondMin;
-    this.bytesReadPerSecondMax = obj.bytesReadPerSecondMax;
-    this.bytesReadPerSecondAvg = obj.bytesReadPerSecondAvg;
-    this.bytesBackupPerSecondMin = obj.bytesBackupPerSecondMin;
-    this.bytesBackupPerSecondMax = obj.bytesBackupPerSecondMax;
-    this.bytesBackupPerSecondAvg = obj.bytesBackupPerSecondAvg;
+  constructor(obj?: Partial<StreamInfosDetails>) {
+    if(!obj) {
+      return;
+    }
+    this.id = map(obj.id);
+    this.mediaType = map(obj.mediaType);
+    this.width = map(obj.width);
+    this.height = map(obj.height);
+    this.rate = map(obj.rate);
+    this.codec = map(obj.codec);
+    this.samplesReadPerSecondMin = map(obj.samplesReadPerSecondMin);
+    this.samplesReadPerSecondMax = map(obj.samplesReadPerSecondMax);
+    this.samplesReadPerSecondAvg = map(obj.samplesReadPerSecondAvg);
+    this.samplesBackupPerSecondMin = map(obj.samplesBackupPerSecondMin);
+    this.samplesBackupPerSecondMax = map(obj.samplesBackupPerSecondMax);
+    this.samplesBackupPerSecondAvg = map(obj.samplesBackupPerSecondAvg);
+    this.bytesReadPerSecondMin = map(obj.bytesReadPerSecondMin);
+    this.bytesReadPerSecondMax = map(obj.bytesReadPerSecondMax);
+    this.bytesReadPerSecondAvg = map(obj.bytesReadPerSecondAvg);
+    this.bytesBackupPerSecondMin = map(obj.bytesBackupPerSecondMin);
+    this.bytesBackupPerSecondMax = map(obj.bytesBackupPerSecondMax);
+    this.bytesBackupPerSecondAvg = map(obj.bytesBackupPerSecondAvg);
   }
 }
 

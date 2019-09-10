@@ -1,6 +1,7 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import AacChannelLayout from './AacChannelLayout';
 import AudioConfiguration from './AudioConfiguration';
+import CodecConfigType from './CodecConfigType';
 
 /**
  * @export
@@ -12,7 +13,7 @@ export class AacAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof AacAudioConfiguration
    */
-  public type: 'AAC' = 'AAC';
+  public type: CodecConfigType.AAC = CodecConfigType.AAC;
 
   /**
    * Channel layout of the audio codec configuration
@@ -21,10 +22,20 @@ export class AacAudioConfiguration extends AudioConfiguration {
    */
   public channelLayout?: AacChannelLayout;
 
-  constructor(obj: Partial<AacAudioConfiguration>) {
-    super(obj);
+  /**
+   * The highest frequency that will pass the audio encoder. This value is optional.
+   * @type {number}
+   * @memberof AacAudioConfiguration
+   */
+  public cutoffFrequency?: number;
 
-    this.channelLayout = obj.channelLayout;
+  constructor(obj?: Partial<AacAudioConfiguration>) {
+    super(obj);
+    if(!obj) {
+      return;
+    }
+    this.channelLayout = map(obj.channelLayout);
+    this.cutoffFrequency = map(obj.cutoffFrequency);
   }
 }
 

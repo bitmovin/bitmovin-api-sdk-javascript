@@ -1,8 +1,9 @@
-import {map} from '../common/Mapper';
+import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -15,7 +16,7 @@ export class CmafMuxing extends Muxing {
    * @type {string}
    * @memberof CmafMuxing
    */
-  public type: 'CMAF' = 'CMAF';
+  public type: MuxingType.CMAF = MuxingType.CMAF;
 
   /**
    * Length of the fragments in seconds (required)
@@ -66,16 +67,18 @@ export class CmafMuxing extends Muxing {
    */
   public framesPerCmafChunk?: number;
 
-  constructor(obj: Partial<CmafMuxing>) {
+  constructor(obj?: Partial<CmafMuxing>) {
     super(obj);
-
-    this.segmentLength = obj.segmentLength;
-    this.segmentNaming = obj.segmentNaming;
-    this.segmentNamingTemplate = obj.segmentNamingTemplate;
-    this.initSegmentName = obj.initSegmentName;
-    this.initSegmentNameTemplate = obj.initSegmentNameTemplate;
-    this.segmentsMuxed = obj.segmentsMuxed;
-    this.framesPerCmafChunk = obj.framesPerCmafChunk;
+    if(!obj) {
+      return;
+    }
+    this.segmentLength = map(obj.segmentLength);
+    this.segmentNaming = map(obj.segmentNaming);
+    this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
+    this.initSegmentName = map(obj.initSegmentName);
+    this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
+    this.framesPerCmafChunk = map(obj.framesPerCmafChunk);
   }
 }
 
