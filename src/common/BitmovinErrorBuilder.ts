@@ -1,12 +1,12 @@
-import {Link, Message, ResponseErrorData} from '../models';
+import { Link, Message, ResponseErrorData } from '../models';
 import BitmovinError from './BitmovinError';
 
 function appendLine(message: string, messageToAppend: string) {
   return `${message}${messageToAppend}\n`;
 }
 
-function getShortMessage(response: any, errorResponse: any) {
-  let shortMessage = `Request failed: ${response.statusText}`;
+function getShortMessage(additionalInfo: String, errorResponse: any) {
+  let shortMessage = `Request failed: ${additionalInfo}`;
 
   if (errorResponse !== undefined && errorResponse.data !== undefined && errorResponse.data.message !== undefined) {
     shortMessage = errorResponse.data.message;
@@ -34,12 +34,20 @@ function appendRequestMessage(request: any) {
   return request.body == undefined ? message : appendLine(message, `  body: ${request.body}`);
 }
 
-function appendResponseMessage(response: any, errorResponse: any) {
+function appendResponseMessage(response: any, errorResponse?: any) {
   let message = appendLine('', `response:`);
 
   message = appendLine(message, `  httpStatusCode: ${response.status}`);
 
-  return errorResponse == undefined ? message : appendLine(message, `  body: ${JSON.stringify(errorResponse)}`);
+  if (errorResponse) {
+    let body = errorResponse;
+    if (!(typeof body === 'string' || body instanceof String)) {
+      body = JSON.stringify(body);
+      message = appendLine(message, `  body: ${body}`);
+    }
+  }
+
+  return message;
 }
 
 function buildDetails(details: Message[]) {
@@ -62,13 +70,13 @@ function buildLinks(links: Link[]) {
   return message;
 }
 
-export function buildBitmovinError(request: any, response: any, errorResponse?: any): BitmovinError {
+export function buildBitmovinError(additionalInfo: string, request: any, response: any, errorResponse?: any | string, error?: Error): BitmovinError {
   let code: number | undefined;
   let details: Message[] | undefined;
   let developerMessage: string | undefined;
   let links: Link[] | undefined;
   let requestId: string | undefined;
-  const shortMessage = getShortMessage(response, errorResponse);
+  const shortMessage = getShortMessage(additionalInfo, errorResponse);
   let message: string = appendLine('', shortMessage);
 
   if (errorResponse !== undefined && errorResponse.data !== undefined) {
@@ -94,5 +102,22 @@ export function buildBitmovinError(request: any, response: any, errorResponse?: 
   message += appendRequestMessage(request);
   message += appendResponseMessage(response, errorResponse);
 
-  return new BitmovinError(message, response.status, shortMessage, developerMessage, requestId, code, details, links);
+  const bitmovinError = new BitmovinError(message, response.status, shortMessage, developerMessage, requestId, code, details, links);
+  if (error && error.stack) {
+    bitmovinError.stack = error.stack;
+  }
+  return bitmovinError;
+}
+
+export function buildBitmovinErrorFromError(request: any, error: Error): BitmovinError {
+  const shortMessage = `Request failed: ${error.message}`
+  let message: string = appendLine('', shortMessage);
+
+  message += appendRequestMessage(request);
+
+  const bitmovinError = new BitmovinError(message, 0, shortMessage, shortMessage);
+  if (error.stack) {
+    bitmovinError.stack = error.stack;
+  }
+  return bitmovinError;
 }

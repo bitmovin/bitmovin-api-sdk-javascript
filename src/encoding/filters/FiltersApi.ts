@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
+import ConformApi from './conform/ConformApi';
 import WatermarkApi from './watermark/WatermarkApi';
 import AudioVolumeApi from './audioVolume/AudioVolumeApi';
 import EnhancedWatermarkApi from './enhancedWatermark/EnhancedWatermarkApi';
@@ -26,6 +27,7 @@ import {FilterListQueryParams, FilterListQueryParamsBuilder} from './FilterListQ
  * @extends {BaseAPI}
  */
 export default class FiltersApi extends BaseAPI {
+  public conform: ConformApi;
   public watermark: WatermarkApi;
   public audioVolume: AudioVolumeApi;
   public enhancedWatermark: EnhancedWatermarkApi;
@@ -43,6 +45,7 @@ export default class FiltersApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.conform = new ConformApi(configuration);
     this.watermark = new WatermarkApi(configuration);
     this.audioVolume = new AudioVolumeApi(configuration);
     this.enhancedWatermark = new EnhancedWatermarkApi(configuration);

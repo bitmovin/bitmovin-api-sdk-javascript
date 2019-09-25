@@ -1,11 +1,11 @@
 import Logger from './Logger';
 
 export class NullLogger implements Logger {
-  public log(message: string, data?: any) {
+  public async logRequest(request: any) {
     return;
   }
 
-  public error(message: string, data?: any) {
+  public async logResponse(response: any) {
     return;
   }
 }

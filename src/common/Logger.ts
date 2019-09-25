@@ -1,6 +1,6 @@
 export interface Logger {
-    log(message: string, data?: any);
-    error(message: string, data?: any);
+    logRequest(request: any): Promise<any>;
+    logResponse(response: any): Promise<any>;
 }
 
 export default Logger;

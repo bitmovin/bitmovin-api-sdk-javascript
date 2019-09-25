@@ -4,6 +4,7 @@
  */
 export enum FilterType {
   CROP = 'CROP',
+  CONFORM = 'CONFORM',
   WATERMARK = 'WATERMARK',
   ENHANCED_WATERMARK = 'ENHANCED_WATERMARK',
   ROTATE = 'ROTATE',

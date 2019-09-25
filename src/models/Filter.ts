@@ -1,6 +1,7 @@
 import AudioMixFilter from './AudioMixFilter';
 import AudioVolumeFilter from './AudioVolumeFilter';
 import BitmovinResource from './BitmovinResource';
+import ConformFilter from './ConformFilter';
 import CropFilter from './CropFilter';
 import DeinterlaceFilter from './DeinterlaceFilter';
 import DenoiseHqdn3dFilter from './DenoiseHqdn3dFilter';
@@ -16,6 +17,7 @@ import WatermarkFilter from './WatermarkFilter';
 
 export type FilterUnion =
   CropFilter |
+  ConformFilter |
   WatermarkFilter |
   EnhancedWatermarkFilter |
   RotateFilter |
@@ -37,6 +39,7 @@ export class Filter extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
   protected static readonly _discriminatorMapping: { [key in keyof typeof FilterType]: string; } = {
     CROP: 'CropFilter',
+    CONFORM: 'ConformFilter',
     WATERMARK: 'WatermarkFilter',
     ENHANCED_WATERMARK: 'EnhancedWatermarkFilter',
     ROTATE: 'RotateFilter',

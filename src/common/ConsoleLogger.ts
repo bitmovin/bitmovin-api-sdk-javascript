@@ -1,13 +1,32 @@
 import Logger from './Logger';
 
 export class ConsoleLogger implements Logger {
-   log(message: string, data?: any) {
-    console.log.apply(console, arguments);
-   }
+  public async logRequest(request: any) {
+    const { method, url, body } = request;
 
-   error(message: string, data?: any) {
-     console.log.apply(console, arguments);
-   }
+    let message = `request: ${method} ${url}`
+    if (body) {
+      message +=
+        `\n  body: ${body}`;
+    }
+
+    console.log(message);
+  }
+
+  public async logResponse(response: any) {
+    const { status } = response;
+    let body = await response.text();
+
+    let message = `response:\n` +
+      `  httpStatusCode: ${status}`;
+
+    if (body) {
+      message +=
+        `\n  body: ${body}`;
+    }
+
+    console.log(message);
+  }
 }
 
 export default ConsoleLogger;

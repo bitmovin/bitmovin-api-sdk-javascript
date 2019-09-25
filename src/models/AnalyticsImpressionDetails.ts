@@ -35,6 +35,13 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
   public audioBitrate?: number;
 
   /**
+   * Selected audio language
+   * @type {string}
+   * @memberof AnalyticsImpressionDetails
+   */
+  public audioLanguage?: string;
+
+  /**
    * Autoplay enabled
    * @type {boolean}
    * @memberof AnalyticsImpressionDetails
@@ -63,7 +70,7 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
   public browserVersionMinor?: string;
 
   /**
-   * Millisecond the player buffered
+   * Milliseconds the player buffered
    * @type {number}
    * @memberof AnalyticsImpressionDetails
    */
@@ -420,6 +427,20 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
   public streamFormat?: string;
 
   /**
+   * Subtitle enabled
+   * @type {boolean}
+   * @memberof AnalyticsImpressionDetails
+   */
+  public subtitleEnabled?: boolean;
+
+  /**
+   * Selected subtitle language
+   * @type {string}
+   * @memberof AnalyticsImpressionDetails
+   */
+  public subtitleLanguage?: string;
+
+  /**
    * Current time in milliseconds
    * @type {number}
    * @memberof AnalyticsImpressionDetails
@@ -519,6 +540,7 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
     this.analyticsVersion = map(obj.analyticsVersion);
     this.asn = map(obj.asn);
     this.audioBitrate = map(obj.audioBitrate);
+    this.audioLanguage = map(obj.audioLanguage);
     this.autoplay = map(obj.autoplay);
     this.browser = map(obj.browser);
     this.browserVersionMajor = map(obj.browserVersionMajor);
@@ -574,6 +596,8 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
     this.startupTime = map(obj.startupTime);
     this.state = map(obj.state);
     this.streamFormat = map(obj.streamFormat);
+    this.subtitleEnabled = map(obj.subtitleEnabled);
+    this.subtitleLanguage = map(obj.subtitleLanguage);
     this.time = map(obj.time);
     this.userId = map(obj.userId);
     this.videoBitrate = map(obj.videoBitrate);

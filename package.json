@@ -1,13 +1,13 @@
 {
   "name": "@bitmovin/api-sdk",
-  "version": "1.23.0-alpha.0",
-  "description": "OpenAPI client for @bitmovin/api-sdk",
+  "version": "1.24.0",
+  "description": "Bitmovin JS/TS API SDK",
   "author": "Bitmovin Inc",
   "keywords": [
     "bitmovin",
+    "bitmovin-javascript",
     "bitmovin-typescript",
-    "bitmovin-api",
-    "@bitmovin/api-sdk"
+    "bitmovin-api"
   ],
   "license": "MIT",
   "main": "dist/index.js",

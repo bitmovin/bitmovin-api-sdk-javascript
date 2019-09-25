@@ -16,14 +16,14 @@ export class ScaleFilter extends Filter {
   public type: FilterType.SCALE = FilterType.SCALE;
 
   /**
-   * The width of the output frame in pixel. If not set: codec configuration width will be used.
+   * The width of the output frame in pixels. If not set it will be based on the configured height by maintaining the original aspect ratio. If height is also not set, the original source dimensions will be applied.
    * @type {number}
    * @memberof ScaleFilter
    */
   public width?: number;
 
   /**
-   * The height of the output frame in pixel. If not set: codec configuration height will be used.
+   * The height of the output frame in pixels. If not set it will be based on the configured width by maintaining the original aspect ratio. If width is also not set, the original source dimensions will be applied.
    * @type {number}
    * @memberof ScaleFilter
    */

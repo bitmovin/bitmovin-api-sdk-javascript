@@ -1,24 +1,31 @@
-# Bitmovin Javascript API Client
+<p align="center">
+  <a href="https://www.bitmovin.com">
+    <img alt="Bitmovin TypeScript/JavaScript API SDK Header" src="https://cdn.bitmovin.com/frontend/encoding/openapi-clients/readme-headers/ReadmeHeader_JS.png" >
+  </a>
 
-***Important: This is an alpha version. There may be breaking changes***
+  <h4 align="center">
+    TypeScript/JavaScript API SDK which enables you to seamlessly integrate the Bitmovin API into your projects.
+  </h4>
+  <p align="center">
+    <a href="https://badge.fury.io/js/%40bitmovin%2Fapi-sdk"><img src="https://badge.fury.io/js/%40bitmovin%2Fapi-sdk.svg" alt="npm version" height="18"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></img></a>
+  </p>
+</p>
 
-[![bitmovin](http://bitmovin-a.akamaihd.net/webpages/bitmovin-logo-github.png)](http://www.bitmovin.com)
-[![npm version](https://badge.fury.io/js/bitmovin-javascript.svg)](https://badge.fury.io/js/bitmovin-javascript)
+Using this API client requires an active account.
 
-TypeScript/JavaScript-Client which enables you to seamlessly integrate the Bitmovin API into your projects. Using this API client requires an active account.
+> Don't have an account yet? [Sign up for a free Bitmovin trial plan](https://dashboard.bitmovin.com/signup)!
 
-[Sign up for a Bitmovin Account!](https://dashboard.bitmovin.com/signup)
+For full documentation of all available API endpoints, see the [Bitmovin API reference](https://bitmovin.com/docs).
 
-The full API reference can be found [here](https://bitmovin.com/docs).
-
-Installation
+## Installation
 ------------
 
 ``` bash
-npm install @bitmovin/api-sdk@1.23.0-alpha.0
+npm install @bitmovin/api-sdk@1.24.0
 ```
 
-Initialization
+## Initialization
 ----------
 
 ### Node
@@ -40,7 +47,7 @@ const bitmovinApi = new BitmovinApi({apiKey: '<YOUR_API_KEY>'});
 
 ### Browser
 
-Use `@bitmovin/api-sdk/dist/bitmovin.browser.js` or `bitmovin.browser.min.js` for the minified version.
+Use `@bitmovin/api-sdk/dist/bitmovin-api-sdk.browser.js` or `bitmovin-api-sdk.browser.min.js` for the minified version.
 
 ### ES5 with Modules (CommonJS)
 
@@ -49,3 +56,9 @@ Import `@bitmovin/api-sdk/dist/index.js`.
 ### Types
 
 - Typescript (`@bitmovin/api-sdk/dist/index.d.ts`)
+
+# Previous API Client (Legacy)
+
+`bitmovin-api-sdk-javascript` is the latest Bitmovin API client for TypeScript / JavaScript. It guarantees 100% specification conformity at any given time and access to all features of the API as soon as they are released. 
+
+However, if you need to use the previous version for legacy reasons, you can still find it at [bitmovin-javascript](https://github.com/bitmovin/bitmovin-javascript). 
