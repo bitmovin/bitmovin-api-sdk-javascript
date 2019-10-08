@@ -14,7 +14,8 @@ export enum MuxingType {
   PROGRESSIVE_TS = 'PROGRESSIVE_TS',
   BROADCAST_TS = 'BROADCAST_TS',
   CHUNKED_TEXT = 'CHUNKED_TEXT',
-  TEXT = 'TEXT'
+  TEXT = 'TEXT',
+  SEGMENTED_RAW = 'SEGMENTED_RAW'
 }
 
 export default MuxingType;

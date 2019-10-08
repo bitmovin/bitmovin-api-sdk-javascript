@@ -437,6 +437,8 @@ export * from './SmoothStreamingManifest';
 export * from './SmoothStreamingRepresentation';
 export * from './SourceChannel';
 export * from './SourceChannelType';
+export * from './SpekeDrm';
+export * from './SpekeDrmProvider';
 export * from './Sprite';
 export * from './SpriteUnit';
 export * from './SrtInput';

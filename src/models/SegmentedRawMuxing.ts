@@ -3,6 +3,7 @@ import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
+import MuxingType from './MuxingType';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -10,6 +11,13 @@ import StreamConditionsMode from './StreamConditionsMode';
  * @class SegmentedRawMuxing
  */
 export class SegmentedRawMuxing extends Muxing {
+  /**
+   * Discriminator property for Muxing
+   * @type {string}
+   * @memberof SegmentedRawMuxing
+   */
+  public type: MuxingType.SEGMENTED_RAW = MuxingType.SEGMENTED_RAW;
+
   /**
    * Length of the fragments in seconds (required)
    * @type {number}

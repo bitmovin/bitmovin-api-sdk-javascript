@@ -8,6 +8,7 @@ import FairplayApi from './fairplay/FairplayApi';
 import MarlinApi from './marlin/MarlinApi';
 import ClearkeyApi from './clearkey/ClearkeyApi';
 import CencApi from './cenc/CencApi';
+import SpekeApi from './speke/SpekeApi';
 import Drm from '../../../../../models/Drm';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 
@@ -25,6 +26,7 @@ export default class DrmApi extends BaseAPI {
   public marlin: MarlinApi;
   public clearkey: ClearkeyApi;
   public cenc: CencApi;
+  public speke: SpekeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -35,6 +37,7 @@ export default class DrmApi extends BaseAPI {
     this.marlin = new MarlinApi(configuration);
     this.clearkey = new ClearkeyApi(configuration);
     this.cenc = new CencApi(configuration);
+    this.speke = new SpekeApi(configuration);
   }
 
   /**

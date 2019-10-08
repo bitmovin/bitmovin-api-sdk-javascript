@@ -13,6 +13,7 @@ import MuxingType from './MuxingType';
 import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
+import SegmentedRawMuxing from './SegmentedRawMuxing';
 import StreamConditionsMode from './StreamConditionsMode';
 import TextMuxing from './TextMuxing';
 import TsMuxing from './TsMuxing';
@@ -30,7 +31,8 @@ export type MuxingUnion =
   ProgressiveTsMuxing |
   BroadcastTsMuxing |
   ChunkedTextMuxing |
-  TextMuxing;
+  TextMuxing |
+  SegmentedRawMuxing;
 
 /**
  * @export
@@ -50,7 +52,8 @@ export class Muxing extends BitmovinResource {
     PROGRESSIVE_TS: 'ProgressiveTsMuxing',
     BROADCAST_TS: 'BroadcastTsMuxing',
     CHUNKED_TEXT: 'ChunkedTextMuxing',
-    TEXT: 'TextMuxing'
+    TEXT: 'TextMuxing',
+    SEGMENTED_RAW: 'SegmentedRawMuxing'
   };
 
   /**

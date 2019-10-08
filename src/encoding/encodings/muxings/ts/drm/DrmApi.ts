@@ -3,6 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import {map, mapArray} from '../../../../../common/Mapper';
 import FairplayApi from './fairplay/FairplayApi';
 import AesApi from './aes/AesApi';
+import SpekeApi from './speke/SpekeApi';
 import Drm from '../../../../../models/Drm';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 
@@ -15,11 +16,13 @@ import PaginationResponse from '../../../../../models/PaginationResponse';
 export default class DrmApi extends BaseAPI {
   public fairplay: FairplayApi;
   public aes: AesApi;
+  public speke: SpekeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.fairplay = new FairplayApi(configuration);
     this.aes = new AesApi(configuration);
+    this.speke = new SpekeApi(configuration);
   }
 
   /**

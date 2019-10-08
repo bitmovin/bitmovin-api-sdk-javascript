@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
+import DrmApi from './drm/DrmApi';
 import CaptionsApi from './captions/CaptionsApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import CmafMuxing from '../../../../models/CmafMuxing';
@@ -16,11 +17,13 @@ import {CmafMuxingListQueryParams, CmafMuxingListQueryParamsBuilder} from './Cma
  */
 export default class CmafApi extends BaseAPI {
   public customdata: CustomdataApi;
+  public drm: DrmApi;
   public captions: CaptionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
+    this.drm = new DrmApi(configuration);
     this.captions = new CaptionsApi(configuration);
   }
 

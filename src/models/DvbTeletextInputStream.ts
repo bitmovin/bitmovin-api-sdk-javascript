@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import InputStream from './InputStream';
+import InputStreamType from './InputStreamType';
 import StreamSelectionMode from './StreamSelectionMode';
 
 /**
@@ -7,6 +8,13 @@ import StreamSelectionMode from './StreamSelectionMode';
  * @class DvbTeletextInputStream
  */
 export class DvbTeletextInputStream extends InputStream {
+  /**
+   * Discriminator property for InputStream
+   * @type {string}
+   * @memberof DvbTeletextInputStream
+   */
+  public type: InputStreamType.DVB_TELETEXT = InputStreamType.DVB_TELETEXT;
+
   /**
    * Id of input
    * @type {string}

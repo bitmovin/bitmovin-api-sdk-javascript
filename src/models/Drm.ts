@@ -9,6 +9,7 @@ import FairPlayDrm from './FairPlayDrm';
 import MarlinDrm from './MarlinDrm';
 import PlayReadyDrm from './PlayReadyDrm';
 import PrimeTimeDrm from './PrimeTimeDrm';
+import SpekeDrm from './SpekeDrm';
 import WidevineDrm from './WidevineDrm';
 
 export type DrmUnion =
@@ -19,7 +20,8 @@ export type DrmUnion =
   MarlinDrm |
   ClearKeyDrm |
   AesEncryptionDrm |
-  CencDrm;
+  CencDrm |
+  SpekeDrm;
 
 /**
  * @export
@@ -35,7 +37,8 @@ export class Drm extends BitmovinResource {
     MARLIN: 'MarlinDrm',
     CLEARKEY: 'ClearKeyDrm',
     AES: 'AesEncryptionDrm',
-    CENC: 'CencDrm'
+    CENC: 'CencDrm',
+    SPEKE: 'SpekeDrm'
   };
 
   /**

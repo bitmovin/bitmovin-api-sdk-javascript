@@ -6,6 +6,7 @@ import ClearkeyApi from './clearkey/ClearkeyApi';
 import WidevineApi from './widevine/WidevineApi';
 import MarlinApi from './marlin/MarlinApi';
 import CencApi from './cenc/CencApi';
+import SpekeApi from './speke/SpekeApi';
 import Drm from '../../../../../models/Drm';
 import PaginationResponse from '../../../../../models/PaginationResponse';
 
@@ -21,6 +22,7 @@ export default class DrmApi extends BaseAPI {
   public widevine: WidevineApi;
   public marlin: MarlinApi;
   public cenc: CencApi;
+  public speke: SpekeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -29,6 +31,7 @@ export default class DrmApi extends BaseAPI {
     this.widevine = new WidevineApi(configuration);
     this.marlin = new MarlinApi(configuration);
     this.cenc = new CencApi(configuration);
+    this.speke = new SpekeApi(configuration);
   }
 
   /**

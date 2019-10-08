@@ -11,7 +11,8 @@ export enum DrmType {
   MARLIN = 'MARLIN',
   CLEARKEY = 'CLEARKEY',
   AES = 'AES',
-  CENC = 'CENC'
+  CENC = 'CENC',
+  SPEKE = 'SPEKE'
 }
 
 export default DrmType;

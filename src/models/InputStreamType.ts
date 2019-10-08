@@ -11,7 +11,8 @@ export enum InputStreamType {
   AUDIO_MIX = 'AUDIO_MIX',
   FILE = 'FILE',
   CAPTION_CEA608 = 'CAPTION_CEA608',
-  CAPTION_CEA708 = 'CAPTION_CEA708'
+  CAPTION_CEA708 = 'CAPTION_CEA708',
+  DVB_TELETEXT = 'DVB_TELETEXT'
 }
 
 export default InputStreamType;
