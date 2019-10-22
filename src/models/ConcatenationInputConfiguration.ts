@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import PaddingSequence from './PaddingSequence';
 
 /**
  * @export
@@ -26,6 +27,20 @@ export class ConcatenationInputConfiguration {
    */
   public position?: number;
 
+  /**
+   * Inserts a padding sequence (black frames and/or silent audio) before the input stream. If this is set, all video output streams of the encoding need to use the same ConcatenationInputStream.
+   * @type {PaddingSequence}
+   * @memberof ConcatenationInputConfiguration
+   */
+  public paddingBefore?: PaddingSequence;
+
+  /**
+   * Inserts a padding sequence (black frames and/or silent audio) after the input stream. If this is set, all video output streams of the encoding need to use the same ConcatenationInputStream.
+   * @type {PaddingSequence}
+   * @memberof ConcatenationInputConfiguration
+   */
+  public paddingAfter?: PaddingSequence;
+
   constructor(obj?: Partial<ConcatenationInputConfiguration>) {
     if(!obj) {
       return;
@@ -33,6 +48,8 @@ export class ConcatenationInputConfiguration {
     this.inputStreamId = map(obj.inputStreamId);
     this.isMain = map(obj.isMain);
     this.position = map(obj.position);
+    this.paddingBefore = map(obj.paddingBefore, PaddingSequence);
+    this.paddingAfter = map(obj.paddingAfter, PaddingSequence);
   }
 }
 

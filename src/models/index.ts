@@ -358,6 +358,8 @@ export * from './OrganizationType';
 export * from './Output';
 export * from './OutputType';
 export * from './OutputTypeResponse';
+export * from './PaddingDurationUnit';
+export * from './PaddingSequence';
 export * from './PaginationResponse';
 export * from './PerTitle';
 export * from './PerTitleConfiguration';

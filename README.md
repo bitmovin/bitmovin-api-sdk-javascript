@@ -22,7 +22,7 @@ For full documentation of all available API endpoints, see the [Bitmovin API ref
 ------------
 
 ``` bash
-npm install @bitmovin/api-sdk@1.25.0
+npm install @bitmovin/api-sdk@1.26.0
 ```
 
 ## Initialization
@@ -56,6 +56,9 @@ Import `@bitmovin/api-sdk/dist/index.js`.
 ### Types
 
 - Typescript (`@bitmovin/api-sdk/dist/index.d.ts`)
+
+## Examples
+You can find sample workflow scripts in the [Bitmovin API SDK examples](https://github.com/bitmovin/bitmovin-api-sdk-examples) repository.
 
 # Previous API Client (Legacy)
 
