@@ -3,6 +3,7 @@ import BitmovinResource from './BitmovinResource';
 import Cea608CaptionInputStream from './Cea608CaptionInputStream';
 import Cea708CaptionInputStream from './Cea708CaptionInputStream';
 import ConcatenationInputStream from './ConcatenationInputStream';
+import DolbyVisionMetadataIngestInputStream from './DolbyVisionMetadataIngestInputStream';
 import DvbTeletextInputStream from './DvbTeletextInputStream';
 import FileInputStream from './FileInputStream';
 import H264PictureTimingTrimmingInputStream from './H264PictureTimingTrimmingInputStream';
@@ -18,6 +19,7 @@ export type InputStreamUnion =
   TimecodeTrackTrimmingInputStream |
   H264PictureTimingTrimmingInputStream |
   AudioMixInputStream |
+  DolbyVisionMetadataIngestInputStream |
   Cea608CaptionInputStream |
   Cea708CaptionInputStream |
   FileInputStream |
@@ -36,6 +38,7 @@ export class InputStream extends BitmovinResource {
     TRIMMING_TIME_CODE_TRACK: 'TimecodeTrackTrimmingInputStream',
     TRIMMING_H264_PICTURE_TIMING: 'H264PictureTimingTrimmingInputStream',
     AUDIO_MIX: 'AudioMixInputStream',
+    SIDECAR_DOLBY_VISION_METADATA: 'DolbyVisionMetadataIngestInputStream',
     CAPTION_CEA608: 'Cea608CaptionInputStream',
     CAPTION_CEA708: 'Cea708CaptionInputStream',
     FILE: 'FileInputStream',

@@ -7,7 +7,8 @@ export enum Status {
   QUEUED = 'QUEUED',
   RUNNING = 'RUNNING',
   FINISHED = 'FINISHED',
-  ERROR = 'ERROR'
+  ERROR = 'ERROR',
+  CANCELED = 'CANCELED'
 }
 
 export default Status;

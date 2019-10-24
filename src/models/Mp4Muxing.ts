@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import DolbyVisionMuxingConfiguration from './DolbyVisionMuxingConfiguration';
 import EncodingOutput from './EncodingOutput';
 import FragmentedMp4MuxingManifestType from './FragmentedMp4MuxingManifestType';
 import Ignoring from './Ignoring';
@@ -54,6 +55,13 @@ export class Mp4Muxing extends Muxing {
    */
   public internalChunkLength?: InternalChunkLength;
 
+  /**
+   * Dolby Vision specific configuration
+   * @type {DolbyVisionMuxingConfiguration}
+   * @memberof Mp4Muxing
+   */
+  public dolbyVisionConfiguration?: DolbyVisionMuxingConfiguration;
+
   constructor(obj?: Partial<Mp4Muxing>) {
     super(obj);
     if(!obj) {
@@ -64,6 +72,7 @@ export class Mp4Muxing extends Muxing {
     this.timeCode = map(obj.timeCode, TimeCode);
     this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
     this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
+    this.dolbyVisionConfiguration = map(obj.dolbyVisionConfiguration, DolbyVisionMuxingConfiguration);
   }
 }
 
