@@ -2,7 +2,6 @@ import {map, mapArray} from '../common/Mapper';
 import BroadcastTsMuxingConfiguration from './BroadcastTsMuxingConfiguration';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
-import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
@@ -40,13 +39,6 @@ export class BroadcastTsMuxing extends Muxing {
    */
   public configuration?: BroadcastTsMuxingConfiguration;
 
-  /**
-   * Modifies the internal chunk length used for chunked encoding
-   * @type {InternalChunkLength}
-   * @memberof BroadcastTsMuxing
-   */
-  public internalChunkLength?: InternalChunkLength;
-
   constructor(obj?: Partial<BroadcastTsMuxing>) {
     super(obj);
     if(!obj) {
@@ -55,7 +47,6 @@ export class BroadcastTsMuxing extends Muxing {
     this.segmentLength = map(obj.segmentLength);
     this.filename = map(obj.filename);
     this.configuration = map(obj.configuration, BroadcastTsMuxingConfiguration);
-    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

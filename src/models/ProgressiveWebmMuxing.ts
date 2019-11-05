@@ -1,7 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
-import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
@@ -26,20 +25,12 @@ export class ProgressiveWebmMuxing extends Muxing {
    */
   public filename?: string;
 
-  /**
-   * Modifies the internal chunk length used for chunked encoding
-   * @type {InternalChunkLength}
-   * @memberof ProgressiveWebmMuxing
-   */
-  public internalChunkLength?: InternalChunkLength;
-
   constructor(obj?: Partial<ProgressiveWebmMuxing>) {
     super(obj);
     if(!obj) {
       return;
     }
     this.filename = map(obj.filename);
-    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

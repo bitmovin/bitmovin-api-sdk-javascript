@@ -1,7 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Ignoring from './Ignoring';
-import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
@@ -40,13 +39,6 @@ export class ProgressiveTsMuxing extends Muxing {
    */
   public startOffset?: number;
 
-  /**
-   * Modifies the internal chunk length used for chunked encoding
-   * @type {InternalChunkLength}
-   * @memberof ProgressiveTsMuxing
-   */
-  public internalChunkLength?: InternalChunkLength;
-
   constructor(obj?: Partial<ProgressiveTsMuxing>) {
     super(obj);
     if(!obj) {
@@ -55,7 +47,6 @@ export class ProgressiveTsMuxing extends Muxing {
     this.segmentLength = map(obj.segmentLength);
     this.filename = map(obj.filename);
     this.startOffset = map(obj.startOffset);
-    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
   }
 }
 

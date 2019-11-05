@@ -3,7 +3,6 @@ import DolbyVisionMuxingConfiguration from './DolbyVisionMuxingConfiguration';
 import EncodingOutput from './EncodingOutput';
 import FragmentedMp4MuxingManifestType from './FragmentedMp4MuxingManifestType';
 import Ignoring from './Ignoring';
-import InternalChunkLength from './InternalChunkLength';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
@@ -49,13 +48,6 @@ export class Mp4Muxing extends Muxing {
   public fragmentedMP4MuxingManifestType?: FragmentedMp4MuxingManifestType;
 
   /**
-   * Modifies the internal chunk length used for chunked encoding
-   * @type {InternalChunkLength}
-   * @memberof Mp4Muxing
-   */
-  public internalChunkLength?: InternalChunkLength;
-
-  /**
    * Dolby Vision specific configuration
    * @type {DolbyVisionMuxingConfiguration}
    * @memberof Mp4Muxing
@@ -71,7 +63,6 @@ export class Mp4Muxing extends Muxing {
     this.fragmentDuration = map(obj.fragmentDuration);
     this.timeCode = map(obj.timeCode, TimeCode);
     this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
-    this.internalChunkLength = map(obj.internalChunkLength, InternalChunkLength);
     this.dolbyVisionConfiguration = map(obj.dolbyVisionConfiguration, DolbyVisionMuxingConfiguration);
   }
 }
