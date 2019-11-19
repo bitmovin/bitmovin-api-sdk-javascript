@@ -49,6 +49,12 @@ export class AccountInformation extends BitmovinResource {
    */
   public company?: string;
 
+  /**
+   * @type {boolean}
+   * @memberof AccountInformation
+   */
+  public isVerified?: boolean;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -60,6 +66,7 @@ export class AccountInformation extends BitmovinResource {
     this.lastName = map(obj.lastName);
     this.phone = map(obj.phone);
     this.company = map(obj.company);
+    this.isVerified = map(obj.isVerified);
   }
 }
 

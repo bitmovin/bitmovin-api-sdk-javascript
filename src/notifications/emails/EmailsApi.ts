@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
+import UsageReportsApi from './usageReports/UsageReportsApi';
 import EncodingApi from './encoding/EncodingApi';
 import Notification from '../../models/Notification';
 import PaginationResponse from '../../models/PaginationResponse';
@@ -13,10 +14,12 @@ import {NotificationListQueryParams, NotificationListQueryParamsBuilder} from '.
  * @extends {BaseAPI}
  */
 export default class EmailsApi extends BaseAPI {
+  public usageReports: UsageReportsApi;
   public encoding: EncodingApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.usageReports = new UsageReportsApi(configuration);
     this.encoding = new EncodingApi(configuration);
   }
 

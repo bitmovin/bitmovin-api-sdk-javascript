@@ -108,6 +108,7 @@ function isPrimitive(arg: any): boolean {
 
 export class RestClient {
   private readonly GET = 'GET';
+  private readonly PATCH = 'PATCH';
   private readonly POST = 'POST';
   private readonly PUT = 'PUT';
   private readonly DELETE = 'DELETE';
@@ -153,6 +154,10 @@ export class RestClient {
       }, new FetchHandler(this.fetch));
 
     return httpHandler;
+  }
+
+  public patch<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
+    return this.request(this.PATCH, url, urlParameterMap, body);
   }
 
   public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
@@ -221,7 +226,7 @@ class HeaderHandler extends DelegatingHandler {
     const headers: Record<string, string> = {
       'X-Api-Key': apiKey,
       'X-Api-Client': 'bitmovin-api-sdk-javascript',
-      'X-Api-Client-Version': '1.28.0',
+      'X-Api-Client-Version': '1.29.0',
       'Content-Type': 'application/json'
     };
 

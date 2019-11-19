@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import TenantsApi from './tenants/TenantsApi';
+import InvitationsApi from './invitations/InvitationsApi';
 import PermissionsApi from './permissions/PermissionsApi';
 import BitmovinResource from '../../../models/BitmovinResource';
 import BitmovinResponse from '../../../models/BitmovinResponse';
@@ -16,11 +17,13 @@ import PaginationResponse from '../../../models/PaginationResponse';
  */
 export default class GroupsApi extends BaseAPI {
   public tenants: TenantsApi;
+  public invitations: InvitationsApi;
   public permissions: PermissionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.tenants = new TenantsApi(configuration);
+    this.invitations = new InvitationsApi(configuration);
     this.permissions = new PermissionsApi(configuration);
   }
 
