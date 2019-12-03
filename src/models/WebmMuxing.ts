@@ -53,6 +53,13 @@ export class WebmMuxing extends Muxing {
    */
   public initSegmentNameTemplate?: string;
 
+  /**
+   * Number of segments which have been encoded
+   * @type {number}
+   * @memberof WebmMuxing
+   */
+  public segmentsMuxed?: number;
+
   constructor(obj?: Partial<WebmMuxing>) {
     super(obj);
     if(!obj) {
@@ -63,6 +70,7 @@ export class WebmMuxing extends Muxing {
     this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
     this.initSegmentName = map(obj.initSegmentName);
     this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
+    this.segmentsMuxed = map(obj.segmentsMuxed);
   }
 }
 

@@ -116,6 +116,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="impressionsapi.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="impressionsapi.html#getimpressions" class="tsd-kind-icon">get<wbr>Impressions</a></li>
 							</ul>
 						</section>
 					</div>
@@ -134,7 +135,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5959341/src/analytics/impressions/ImpressionsApi.ts#L13">analytics/impressions/ImpressionsApi.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/analytics/impressions/ImpressionsApi.ts#L15">analytics/impressions/ImpressionsApi.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -157,7 +158,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#restclient">restClient</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5959341/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,7 +175,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5959341/src/analytics/impressions/ImpressionsApi.ts#L26">analytics/impressions/ImpressionsApi.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/analytics/impressions/ImpressionsApi.ts#L28">analytics/impressions/ImpressionsApi.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -209,6 +210,45 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getimpressions" class="tsd-anchor"></a>
+					<h3>get<wbr>Impressions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Impressions<span class="tsd-signature-symbol">(</span>analyticsImpressionsQuery<span class="tsd-signature-symbol">?: </span><a href="analyticsimpressionsquery.html" class="tsd-signature-type">AnalyticsImpressionsQuery</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="analyticsimpressionsresponse.html" class="tsd-signature-type">AnalyticsImpressionsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/analytics/impressions/ImpressionsApi.ts#L43">analytics/impressions/ImpressionsApi.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>summary</dt>
+									<dd><p>List impressions</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{BitmovinError}</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>ImpressionsApi</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> analyticsImpressionsQuery: <a href="analyticsimpressionsquery.html" class="tsd-signature-type">AnalyticsImpressionsQuery</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Analytics impressions query object</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="analyticsimpressionsresponse.html" class="tsd-signature-type">AnalyticsImpressionsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -234,6 +274,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="impressionsapi.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="impressionsapi.html#getimpressions" class="tsd-kind-icon">get<wbr>Impressions</a>
 							</li>
 						</ul>
 					</li>
