@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AnalyticsColumnLabel from './AnalyticsColumnLabel';
+import AnalyticsContextDescription from './AnalyticsContextDescription';
 
 /**
  * @export
@@ -25,6 +26,12 @@ export class AnalyticsResponse {
    */
   public columnLabels?: AnalyticsColumnLabel[];
 
+  /**
+   * @type {AnalyticsContextDescription[]}
+   * @memberof AnalyticsResponse
+   */
+  public contextDescription?: AnalyticsContextDescription[];
+
   constructor(obj?: Partial<AnalyticsResponse>) {
     if(!obj) {
       return;
@@ -32,6 +39,7 @@ export class AnalyticsResponse {
     this.rows = mapArray(obj.rows);
     this.rowCount = map(obj.rowCount);
     this.columnLabels = mapArray(obj.columnLabels, AnalyticsColumnLabel);
+    this.contextDescription = mapArray(obj.contextDescription, AnalyticsContextDescription);
   }
 }
 

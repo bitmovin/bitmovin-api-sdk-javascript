@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import Drm from './Drm';
 import DrmType from './DrmType';
 import EncodingOutput from './EncodingOutput';
+import PlayReadyAdditionalInformation from './PlayReadyAdditionalInformation';
 import PlayReadyEncryptionMethod from './PlayReadyEncryptionMethod';
 
 /**
@@ -57,6 +58,12 @@ export class PlayReadyDrm extends Drm {
    */
   public kid?: string;
 
+  /**
+   * @type {PlayReadyAdditionalInformation}
+   * @memberof PlayReadyDrm
+   */
+  public additionalInformation?: PlayReadyAdditionalInformation;
+
   constructor(obj?: Partial<PlayReadyDrm>) {
     super(obj);
     if(!obj) {
@@ -68,6 +75,7 @@ export class PlayReadyDrm extends Drm {
     this.pssh = map(obj.pssh);
     this.method = map(obj.method);
     this.kid = map(obj.kid);
+    this.additionalInformation = map(obj.additionalInformation, PlayReadyAdditionalInformation);
   }
 }
 

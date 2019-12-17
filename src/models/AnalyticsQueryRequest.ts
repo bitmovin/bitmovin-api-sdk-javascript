@@ -48,6 +48,13 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
   public groupBy?: AnalyticsAttribute[];
 
   /**
+   * Whether context data should be included in the response
+   * @type {boolean}
+   * @memberof AnalyticsQueryRequest
+   */
+  public includeContext?: boolean;
+
+  /**
    * Maximum number of rows returned (max. 200)
    * @type {number}
    * @memberof AnalyticsQueryRequest
@@ -72,6 +79,7 @@ export class AnalyticsQueryRequest extends AnalyticsQueryTimeframe {
     this.dimension = map(obj.dimension);
     this.interval = map(obj.interval);
     this.groupBy = mapArray(obj.groupBy);
+    this.includeContext = map(obj.includeContext);
     this.limit = map(obj.limit);
     this.offset = map(obj.offset);
   }

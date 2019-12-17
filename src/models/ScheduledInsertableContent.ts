@@ -15,14 +15,14 @@ export class ScheduledInsertableContent extends BitmovinResource {
   public contentId?: string;
 
   /**
-   * Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ, if this property is not set the content will be played as soon as possible.
    * @type {Date}
    * @memberof ScheduledInsertableContent
    */
   public runAt?: Date;
 
   /**
-   * Duration for how long to play the content. Cut off if shorter, loop if longer than actual duration.
+   * Duration for how long to play the content. Cut off if shorter, loop if longer than actual duration. This property is required if the insertable content is an image.
    * @type {number}
    * @memberof ScheduledInsertableContent
    */

@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AspectMode from './AspectMode';
 import PaddingSequence from './PaddingSequence';
 
 /**
@@ -41,6 +42,13 @@ export class ConcatenationInputConfiguration {
    */
   public paddingAfter?: PaddingSequence;
 
+  /**
+   * Specifies the aspect mode that is used when adapting to the main input stream's aspect ratio
+   * @type {AspectMode}
+   * @memberof ConcatenationInputConfiguration
+   */
+  public aspectMode?: AspectMode;
+
   constructor(obj?: Partial<ConcatenationInputConfiguration>) {
     if(!obj) {
       return;
@@ -50,6 +58,7 @@ export class ConcatenationInputConfiguration {
     this.position = map(obj.position);
     this.paddingBefore = map(obj.paddingBefore, PaddingSequence);
     this.paddingAfter = map(obj.paddingAfter, PaddingSequence);
+    this.aspectMode = map(obj.aspectMode);
   }
 }
 

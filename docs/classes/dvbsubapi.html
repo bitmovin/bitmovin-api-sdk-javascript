@@ -116,6 +116,9 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="dvbsubapi.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="dvbsubapi.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="dvbsubapi.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="dvbsubapi.html#list" class="tsd-kind-icon">list</a></li>
 							</ul>
 						</section>
 					</div>
@@ -134,7 +137,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L12">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L15">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -157,7 +160,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#restclient">restClient</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,13 +171,13 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamDvbSubSubtitle<span class="tsd-signature-symbol">?: </span><a href="streamdvbsubsubtitle.html" class="tsd-signature-type">StreamDvbSubSubtitle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="streamdvbsubsubtitle.html" class="tsd-signature-type">StreamDvbSubSubtitle</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, burnInSubtitleDvbSub<span class="tsd-signature-symbol">?: </span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/5eb77ea/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L26">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L29">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,13 +208,163 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> streamDvbSubSubtitle: <a href="streamdvbsubsubtitle.html" class="tsd-signature-type">StreamDvbSubSubtitle</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> burnInSubtitleDvbSub: <a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The Burn-In DVB-SUB Subtitle to be added</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="streamdvbsubsubtitle.html" class="tsd-signature-type">StreamDvbSubSubtitle</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subtitleId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L47">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:47</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>summary</dt>
+									<dd><p>Delete Burn-In DVB-SUB Subtitle from Stream</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{BitmovinError}</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>DvbsubApi</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the encoding.</p>
+									</div>
+								</li>
+								<li>
+									<h5>streamId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the stream.</p>
+									</div>
+								</li>
+								<li>
+									<h5>subtitleId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the subtitle.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, subtitleId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L66">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>summary</dt>
+									<dd><p>Get Burn-In DVB-SUB Subtitle Details</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{BitmovinError}</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>DvbsubApi</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the encoding.</p>
+									</div>
+								</li>
+								<li>
+									<h5>streamId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the stream.</p>
+									</div>
+								</li>
+								<li>
+									<h5>subtitleId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the subtitle.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="list" class="tsd-anchor"></a>
+					<h3>list</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, streamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, queryParameters<span class="tsd-signature-symbol">?: </span><a href="../interfaces/burninsubtitledvbsublistqueryparams.html" class="tsd-signature-type">BurnInSubtitleDvbSubListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts#L85">encoding/encodings/streams/burnInSubtitles/dvbsub/DvbsubApi.ts:85</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>summary</dt>
+									<dd><p>List the Burn-In DVB-SUB subtitles of a stream</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{BitmovinError}</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>DvbsubApi</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the encoding.</p>
+									</div>
+								</li>
+								<li>
+									<h5>streamId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Id of the stream.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> queryParameters: <a href="../interfaces/burninsubtitledvbsublistqueryparams.html" class="tsd-signature-type">BurnInSubtitleDvbSubListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="burninsubtitledvbsub.html" class="tsd-signature-type">BurnInSubtitleDvbSub</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -240,6 +393,15 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="dvbsubapi.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="dvbsubapi.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="dvbsubapi.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="dvbsubapi.html#list" class="tsd-kind-icon">list</a>
 							</li>
 						</ul>
 					</li>

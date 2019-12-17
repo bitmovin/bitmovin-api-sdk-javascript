@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import PlayReadyAdditionalInformation from './PlayReadyAdditionalInformation';
 
 /**
  * @export
@@ -19,12 +20,19 @@ export class CencPlayReady {
    */
   public pssh?: string;
 
+  /**
+   * @type {PlayReadyAdditionalInformation}
+   * @memberof CencPlayReady
+   */
+  public additionalInformation?: PlayReadyAdditionalInformation;
+
   constructor(obj?: Partial<CencPlayReady>) {
     if(!obj) {
       return;
     }
     this.laUrl = map(obj.laUrl);
     this.pssh = map(obj.pssh);
+    this.additionalInformation = map(obj.additionalInformation, PlayReadyAdditionalInformation);
   }
 }
 
