@@ -66,23 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>PermissionsApi - object-oriented interface</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>export</dt>
-						<dd></dd>
-						<dt>class</dt>
-						<dd><p>PermissionsApi</p>
-						</dd>
-						<dt>extends</dt>
-						<dd><p>{BaseAPI}</p>
-						</dd>
-					</dl>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -136,7 +119,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/account/organizations/groups/permissions/PermissionsApi.ts#L14">account/organizations/groups/permissions/PermissionsApi.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/account/organizations/groups/permissions/PermissionsApi.ts#L14">account/organizations/groups/permissions/PermissionsApi.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -159,7 +142,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#restclient">restClient</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/common/BaseAPI.ts#L10">common/BaseAPI.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,47 +153,25 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, acl<span class="tsd-signature-symbol">?: </span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, acl<span class="tsd-signature-symbol">: </span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/account/organizations/groups/permissions/PermissionsApi.ts#L28">account/organizations/groups/permissions/PermissionsApi.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/account/organizations/groups/permissions/PermissionsApi.ts#L28">account/organizations/groups/permissions/PermissionsApi.ts:28</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>summary</dt>
-									<dd><p>Set Group Permissions</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p>{BitmovinError}</p>
-									</dd>
-									<dt>memberof</dt>
-									<dd><p>PermissionsApi</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>organizationId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the organization</p>
-									</div>
 								</li>
 								<li>
 									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the group</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> acl: <a href="acl.html" class="tsd-signature-type">Acl</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Group Permissions</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -227,41 +188,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/account/organizations/groups/permissions/PermissionsApi.ts#L46">account/organizations/groups/permissions/PermissionsApi.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/account/organizations/groups/permissions/PermissionsApi.ts#L46">account/organizations/groups/permissions/PermissionsApi.ts:46</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>summary</dt>
-									<dd><p>Delete Permission</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p>{BitmovinError}</p>
-									</dd>
-									<dt>memberof</dt>
-									<dd><p>PermissionsApi</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>organizationId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the organization</p>
-									</div>
 								</li>
 								<li>
 									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the group</p>
-									</div>
 								</li>
 								<li>
 									<h5>permissionId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the permission</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -278,35 +217,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/account/organizations/groups/permissions/PermissionsApi.ts#L64">account/organizations/groups/permissions/PermissionsApi.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/account/organizations/groups/permissions/PermissionsApi.ts#L64">account/organizations/groups/permissions/PermissionsApi.ts:64</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>summary</dt>
-									<dd><p>Get Group Permissions</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p>{BitmovinError}</p>
-									</dd>
-									<dt>memberof</dt>
-									<dd><p>PermissionsApi</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>organizationId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the organization</p>
-									</div>
 								</li>
 								<li>
 									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Id of the group</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="acl.html" class="tsd-signature-type">Acl</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>

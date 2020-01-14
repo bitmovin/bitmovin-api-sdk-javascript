@@ -66,17 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>export</dt>
-						<dd></dd>
-						<dt>class</dt>
-						<dd><p>StreamInfo</p>
-						</dd>
-					</dl>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -135,14 +124,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Stream<wbr>Info<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="streaminfo.html" class="tsd-signature-type">StreamInfo</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="streaminfo.html" class="tsd-signature-type">StreamInfo</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Stream<wbr>Info<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="streaminfo.html" class="tsd-signature-type">StreamInfo</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="streaminfo.html" class="tsd-signature-type">StreamInfo</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L113">models/StreamInfo.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L113">models/StreamInfo.ts:113</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -164,22 +153,9 @@
 					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L15">models/StreamInfo.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L15">models/StreamInfo.ts:15</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>It MUST match the value of the GROUP-ID attribute of an Audio EXT-X-MEDIA tag elsewhere in the Master Playlist. Either this or <code>audioGroups</code> must be set.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="audiogroups" class="tsd-anchor"></a>
@@ -187,22 +163,9 @@
 					<div class="tsd-signature tsd-kind-icon">audio<wbr>Groups<span class="tsd-signature-symbol">:</span> <a href="audiogroupconfiguration.html" class="tsd-signature-type">AudioGroupConfiguration</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L22">models/StreamInfo.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L22">models/StreamInfo.ts:22</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>HLS Audio Group Configuration. You will want to use this configuration property in case you specify conditions on audio streams. The first matching audio group will be used for the specific variant stream. Either this or <code>audio</code> must be set.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{AudioGroupConfiguration}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="closedcaptions" class="tsd-anchor"></a>
@@ -210,22 +173,9 @@
 					<div class="tsd-signature tsd-kind-icon">closed<wbr>Captions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L43">models/StreamInfo.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L43">models/StreamInfo.ts:43</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If the value is not &#39;NONE&#39;, it MUST match the value of the GROUP-ID attribute of a Closed Captions EXT-X-MEDIA tag elsewhere in the Playlist (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="createdat" class="tsd-anchor"></a>
@@ -234,22 +184,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#createdat">createdAt</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResource.ts#L28">models/BitmovinResource.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResource.ts#L28">models/BitmovinResource.ts:28</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{Date}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResource</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="customdata" class="tsd-anchor"></a>
@@ -258,22 +195,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#customdata">customData</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResource.ts#L42">models/BitmovinResource.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResource.ts#L42">models/BitmovinResource.ts:42</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>User-specific meta data. This can hold anything.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{{ [key: string]: any; }}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResource</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="description" class="tsd-anchor"></a>
@@ -282,22 +206,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#description">description</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResource.ts#L21">models/BitmovinResource.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResource.ts#L21">models/BitmovinResource.ts:21</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Description of the resource. Can be freely chosen by the user.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResource</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="drmid" class="tsd-anchor"></a>
@@ -305,22 +216,9 @@
 					<div class="tsd-signature tsd-kind-icon">drm<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L71">models/StreamInfo.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L71">models/StreamInfo.ts:71</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Id of the DRM.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="encodingid" class="tsd-anchor"></a>
@@ -328,22 +226,9 @@
 					<div class="tsd-signature tsd-kind-icon">encoding<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L50">models/StreamInfo.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L50">models/StreamInfo.ts:50</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Id of the encoding. (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="endsegmentnumber" class="tsd-anchor"></a>
@@ -351,22 +236,9 @@
 					<div class="tsd-signature tsd-kind-icon">end<wbr>Segment<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L99">models/StreamInfo.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L99">models/StreamInfo.ts:99</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Number of the last segment. Default is the last one that was encoded.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{number}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="forceframerateattribute" class="tsd-anchor"></a>
@@ -374,22 +246,9 @@
 					<div class="tsd-signature tsd-kind-icon">force<wbr>Frame<wbr>Rate<wbr>Attribute<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L106">models/StreamInfo.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L106">models/StreamInfo.ts:106</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Force the addition of the frame rate attribute to all stream infos.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{boolean}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="forcevideorangeattribute" class="tsd-anchor"></a>
@@ -397,22 +256,9 @@
 					<div class="tsd-signature tsd-kind-icon">force<wbr>Video<wbr>Range<wbr>Attribute<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L113">models/StreamInfo.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L113">models/StreamInfo.ts:113</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Force the addition of the video-range attribute to all stream infos.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{boolean}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
@@ -421,22 +267,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresponse.html">BitmovinResponse</a>.<a href="bitmovinresponse.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResponse.ts#L13">models/BitmovinResponse.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResponse.ts#L13">models/BitmovinResponse.ts:13</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Id of the resource (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResponse</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="modifiedat" class="tsd-anchor"></a>
@@ -445,22 +278,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#modifiedat">modifiedAt</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResource.ts#L35">models/BitmovinResource.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResource.ts#L35">models/BitmovinResource.ts:35</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{Date}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResource</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="muxingid" class="tsd-anchor"></a>
@@ -468,22 +288,9 @@
 					<div class="tsd-signature tsd-kind-icon">muxing<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L64">models/StreamInfo.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L64">models/StreamInfo.ts:64</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Id of the muxing. (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
@@ -492,22 +299,9 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/BitmovinResource.ts#L14">models/BitmovinResource.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/BitmovinResource.ts#L14">models/BitmovinResource.ts:14</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Name of the resource. Can be freely chosen by the user.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>BitmovinResource</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="segmentpath" class="tsd-anchor"></a>
@@ -515,22 +309,9 @@
 					<div class="tsd-signature tsd-kind-icon">segment<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L78">models/StreamInfo.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L78">models/StreamInfo.ts:78</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Path to segments. (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="startsegmentnumber" class="tsd-anchor"></a>
@@ -538,22 +319,9 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>Segment<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L92">models/StreamInfo.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L92">models/StreamInfo.ts:92</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Number of the first segment. Default is 0.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{number}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="streamid" class="tsd-anchor"></a>
@@ -561,22 +329,9 @@
 					<div class="tsd-signature tsd-kind-icon">stream<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L57">models/StreamInfo.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L57">models/StreamInfo.ts:57</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Id of the stream. (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="subtitles" class="tsd-anchor"></a>
@@ -584,22 +339,9 @@
 					<div class="tsd-signature tsd-kind-icon">subtitles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L36">models/StreamInfo.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L36">models/StreamInfo.ts:36</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>It MUST match the value of the GROUP-ID attribute of a Subtitles EXT-X-MEDIA tag elsewhere in the Master Playlist</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="uri" class="tsd-anchor"></a>
@@ -607,22 +349,9 @@
 					<div class="tsd-signature tsd-kind-icon">uri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L85">models/StreamInfo.ts:85</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L85">models/StreamInfo.ts:85</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The URI of the playlist file. (required)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="video" class="tsd-anchor"></a>
@@ -630,22 +359,9 @@
 					<div class="tsd-signature tsd-kind-icon">video<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/be93e32/src/models/StreamInfo.ts#L29">models/StreamInfo.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/b6f2ab2/src/models/StreamInfo.ts#L29">models/StreamInfo.ts:29</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>It MUST match the value of the GROUP-ID attribute of a Video EXT-X-MEDIA tag elsewhere in the Master Playlist</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>StreamInfo</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</div>
