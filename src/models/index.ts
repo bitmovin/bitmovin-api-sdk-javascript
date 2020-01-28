@@ -213,6 +213,7 @@ export * from './DolbyVisionMetadata';
 export * from './DolbyVisionMetadataIngestInputStream';
 export * from './DolbyVisionMetadataSource';
 export * from './DolbyVisionMuxingConfiguration';
+export * from './DolbyVisionPerStreamMode';
 export * from './DolbyVisionProfile';
 export * from './DolbyVisionTrackSampleEntryName';
 export * from './Domain';

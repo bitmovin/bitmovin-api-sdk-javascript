@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
+import DolbyVisionPerStreamMode from './DolbyVisionPerStreamMode';
 import EncodingMode from './EncodingMode';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
@@ -131,6 +132,19 @@ export class StatisticsPerStream {
    */
   public psnrMultiplicator?: number;
 
+  /**
+   * @type {DolbyVisionPerStreamMode}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionMode?: DolbyVisionPerStreamMode;
+
+  /**
+   * The output minutes multiplicator for Dolby Vision streams
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionMultiplicator?: number;
+
   constructor(obj?: Partial<StatisticsPerStream>) {
     if(!obj) {
       return;
@@ -153,6 +167,8 @@ export class StatisticsPerStream {
     this.perTitleMultiplicator = map(obj.perTitleMultiplicator);
     this.psnrMode = map(obj.psnrMode);
     this.psnrMultiplicator = map(obj.psnrMultiplicator);
+    this.dolbyVisionMode = map(obj.dolbyVisionMode);
+    this.dolbyVisionMultiplicator = map(obj.dolbyVisionMultiplicator);
   }
 }
 
