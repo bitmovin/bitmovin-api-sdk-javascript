@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import AdaptiveQuantMode from './AdaptiveQuantMode';
 import BAdapt from './BAdapt';
+import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
 import EncodingMode from './EncodingMode';
@@ -688,6 +689,13 @@ export class H265VideoConfiguration extends VideoConfiguration {
    */
   public lowpassDct?: boolean;
 
+  /**
+   * Defines whether CEA 608/708 subtitles are extracted from the input video stream
+   * @type {Cea608708SubtitleConfiguration}
+   * @memberof H265VideoConfiguration
+   */
+  public cea608708SubtitleConfig?: Cea608708SubtitleConfiguration;
+
   constructor(obj?: Partial<H265VideoConfiguration>) {
     super(obj);
     if(!obj) {
@@ -787,6 +795,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
     this.saoNonDeblock = map(obj.saoNonDeblock);
     this.limitSao = map(obj.limitSao);
     this.lowpassDct = map(obj.lowpassDct);
+    this.cea608708SubtitleConfig = map(obj.cea608708SubtitleConfig, Cea608708SubtitleConfiguration);
   }
 }
 

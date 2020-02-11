@@ -56,6 +56,20 @@ export class AsperaInput extends Input {
    */
   public token?: string;
 
+  /**
+   * Set the TCP port to be used for fasp session initiation
+   * @type {number}
+   * @memberof AsperaInput
+   */
+  public sshPort?: number;
+
+  /**
+   * Set the UDP port to be used by fasp for data transfer
+   * @type {number}
+   * @memberof AsperaInput
+   */
+  public faspPort?: number;
+
   constructor(obj?: Partial<AsperaInput>) {
     super(obj);
     if(!obj) {
@@ -67,6 +81,8 @@ export class AsperaInput extends Input {
     this.username = map(obj.username);
     this.password = map(obj.password);
     this.token = map(obj.token);
+    this.sshPort = map(obj.sshPort);
+    this.faspPort = map(obj.faspPort);
   }
 }
 
