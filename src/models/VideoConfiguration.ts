@@ -38,6 +38,7 @@ export class VideoConfiguration extends CodecConfiguration {
   public rate?: number;
 
   /**
+   * Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
    * @type {PixelFormat}
    * @memberof VideoConfiguration
    */

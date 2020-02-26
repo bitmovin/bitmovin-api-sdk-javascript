@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InformationApi from './information/InformationApi';
+import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import ProgressiveWebmMuxing from '../../../../models/ProgressiveWebmMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -17,17 +18,19 @@ import {ProgressiveWebmMuxingListQueryParams, ProgressiveWebmMuxingListQueryPara
 export default class ProgressiveWebmApi extends BaseAPI {
   public customdata: CustomdataApi;
   public information: InformationApi;
+  public drm: DrmApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
     this.information = new InformationApi(configuration);
+    this.drm = new DrmApi(configuration);
   }
 
   /**
-   * @summary Add Progressive WebM Muxing
+   * @summary Add Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ProgressiveWebmMuxing} progressiveWebmMuxing The Progressive WebM Muxing to be created
+   * @param {ProgressiveWebmMuxing} progressiveWebmMuxing The Progressive WebM muxing to be created
    * @throws {BitmovinError}
    * @memberof ProgressiveWebmApi
    */
@@ -41,7 +44,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Progressive WebM Muxing
+   * @summary Delete Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @throws {BitmovinError}
@@ -58,7 +61,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive WebM Muxing Details
+   * @summary Progressive WebM muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @throws {BitmovinError}
@@ -75,7 +78,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary List Progressive WebM Muxings
+   * @summary List Progressive WebM muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

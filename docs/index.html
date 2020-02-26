@@ -85,7 +85,7 @@
 					<h2>Installation</h2>
 				</a>
 				<hr>
-				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.34.0</code></pre>
+				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.35.0</code></pre>
 				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
 					<h2>Initialization</h2>
 				</a>
@@ -291,6 +291,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/drmtype.html" class="tsd-kind-icon">Drm<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/egresscategory.html" class="tsd-kind-icon">Egress<wbr>Category</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/encodingmode.html" class="tsd-kind-icon">Encoding<wbr>Mode</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -453,6 +456,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/paddingdurationunit.html" class="tsd-kind-icon">Padding<wbr>Duration<wbr>Unit</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/passthroughmode.html" class="tsd-kind-icon">Passthrough<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/pertitlefixedresolutionandbitrateconfigurationmode.html" class="tsd-kind-icon">Per<wbr>Title<wbr>Fixed<wbr>Resolution<wbr>And<wbr>Bitrate<wbr>Configuration<wbr>Mode</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -487,6 +493,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/profileh265.html" class="tsd-kind-icon">Profile<wbr>H265</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/progressivewebmmuxingmanifesttype.html" class="tsd-kind-icon">Progressive<wbr>Webm<wbr>Muxing<wbr>Manifest<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/psnrperstreammode.html" class="tsd-kind-icon">Psnr<wbr>Per<wbr>Stream<wbr>Mode</a>
@@ -1350,12 +1359,6 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/dashapi.html" class="tsd-kind-icon">Dash<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/dashcmafdrmrepresentation.html" class="tsd-kind-icon">Dash<wbr>Cmaf<wbr>Drm<wbr>Representation</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/dashcmafdrmrepresentationlistqueryparamsbuilder.html" class="tsd-kind-icon">Dash<wbr>Cmaf<wbr>Drm<wbr>Representation<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/dashcmafrepresentation.html" class="tsd-kind-icon">Dash<wbr>Cmaf<wbr>Representation</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -1395,6 +1398,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/dashmp4representationlistqueryparamsbuilder.html" class="tsd-kind-icon">Dash<wbr>Mp4<wbr>Representation<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/dashprogressivewebmrepresentation.html" class="tsd-kind-icon">Dash<wbr>Progressive<wbr>Webm<wbr>Representation</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dashprogressivewebmrepresentationlistqueryparamsbuilder.html" class="tsd-kind-icon">Dash<wbr>Progressive<wbr>Webm<wbr>Representation<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/dashrepresentation.html" class="tsd-kind-icon">Dash<wbr>Representation</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -1414,6 +1423,21 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/defaultapi.html" class="tsd-kind-icon">Default<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/defaultdashmanifestperiod.html" class="tsd-kind-icon">Default<wbr>Dash<wbr>Manifest<wbr>Period</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/defaultmanifestandcondition.html" class="tsd-kind-icon">Default<wbr>Manifest<wbr>And<wbr>Condition</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/defaultmanifestattributecondition.html" class="tsd-kind-icon">Default<wbr>Manifest<wbr>Attribute<wbr>Condition</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/defaultmanifestcondition.html" class="tsd-kind-icon">Default<wbr>Manifest<wbr>Condition</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/defaultmanifestorcondition.html" class="tsd-kind-icon">Default<wbr>Manifest<wbr>OrCondition</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/deinterlaceapi.html" class="tsd-kind-icon">Deinterlace<wbr>Api</a>
@@ -1504,6 +1528,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/ebur128singlepassfilterlistqueryparamsbuilder.html" class="tsd-kind-icon">Ebu<wbr>R128<wbr>Single<wbr>Pass<wbr>Filter<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/egressinformation.html" class="tsd-kind-icon">Egress<wbr>Information</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/emailnotification.html" class="tsd-kind-icon">Email<wbr>Notification</a>
@@ -2784,6 +2811,15 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/timecodetracktrimminginputstreamlistqueryparamsbuilder.html" class="tsd-kind-icon">Timecode<wbr>Track<wbr>Trimming<wbr>Input<wbr>Stream<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/transferretriesapi.html" class="tsd-kind-icon">Transfer<wbr>Retries<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transferretry.html" class="tsd-kind-icon">Transfer<wbr>Retry</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/transferretrylistqueryparamsbuilder.html" class="tsd-kind-icon">Transfer<wbr>Retry<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/trimming.html" class="tsd-kind-icon">Trimming</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -3138,9 +3174,6 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/dailystatisticsperlabellistqueryparams.html" class="tsd-kind-icon">Daily<wbr>Statistics<wbr>Per<wbr>Label<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/dashcmafdrmrepresentationlistqueryparams.html" class="tsd-kind-icon">Dash<wbr>Cmaf<wbr>Drm<wbr>Representation<wbr>List<wbr>Query<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/dashcmafrepresentationlistqueryparams.html" class="tsd-kind-icon">Dash<wbr>Cmaf<wbr>Representation<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -3157,6 +3190,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/dashmp4representationlistqueryparams.html" class="tsd-kind-icon">Dash<wbr>Mp4<wbr>Representation<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/dashprogressivewebmrepresentationlistqueryparams.html" class="tsd-kind-icon">Dash<wbr>Progressive<wbr>Webm<wbr>Representation<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/dashvttrepresentationlistqueryparams.html" class="tsd-kind-icon">Dash<wbr>Vtt<wbr>Representation<wbr>List<wbr>Query<wbr>Params</a>
@@ -3504,6 +3540,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/timecodetracktrimminginputstreamlistqueryparams.html" class="tsd-kind-icon">Timecode<wbr>Track<wbr>Trimming<wbr>Input<wbr>Stream<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/transferretrylistqueryparams.html" class="tsd-kind-icon">Transfer<wbr>Retry<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/tsmuxinglistqueryparams.html" class="tsd-kind-icon">Ts<wbr>Muxing<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -3568,6 +3607,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#codecconfigurationunion" class="tsd-kind-icon">Codec<wbr>Configuration<wbr>Union</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#defaultmanifestconditionunion" class="tsd-kind-icon">Default<wbr>Manifest<wbr>Condition<wbr>Union</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#drmunion" class="tsd-kind-icon">Drm<wbr>Union</a>

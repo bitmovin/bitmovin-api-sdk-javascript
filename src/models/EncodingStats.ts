@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
 import BillableEncodingMinutes from './BillableEncodingMinutes';
+import EgressInformation from './EgressInformation';
 import StatisticsPerMuxing from './StatisticsPerMuxing';
 import StatisticsPerStream from './StatisticsPerStream';
 
@@ -50,6 +51,13 @@ export class EncodingStats {
    * @memberof EncodingStats
    */
   public billableMinutes?: number;
+
+  /**
+   * Billable egress output
+   * @type {EgressInformation[]}
+   * @memberof EncodingStats
+   */
+  public billableEgressBytes?: EgressInformation[];
 
   /**
    * Detailed statistics per stream
@@ -103,6 +111,7 @@ export class EncodingStats {
     this.timeEncoded = map(obj.timeEncoded);
     this.downloadedSize = map(obj.downloadedSize);
     this.billableMinutes = map(obj.billableMinutes);
+    this.billableEgressBytes = mapArray(obj.billableEgressBytes, EgressInformation);
     this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
     this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
     this.billableFeatureMinutes = map(obj.billableFeatureMinutes);

@@ -27,9 +27,9 @@ export default class Id3Api extends BaseAPI {
   }
 
   /**
-   * @summary List all ID3 Tags of Progressive TS Muxing
+   * @summary List all ID3 Tags of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof Id3Api

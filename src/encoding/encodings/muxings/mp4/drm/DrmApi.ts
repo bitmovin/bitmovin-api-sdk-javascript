@@ -35,7 +35,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all DRM configurations of MP4 Muxing
+   * @summary List all DRM configurations of MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @throws {BitmovinError}

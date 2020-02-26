@@ -22,9 +22,9 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Text Muxing
+   * @summary Add Text muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {TextMuxing} textMuxing The Text Muxing to be created
+   * @param {TextMuxing} textMuxing The Text muxing to be created
    * @throws {BitmovinError}
    * @memberof TextApi
    */
@@ -38,7 +38,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Text Muxing
+   * @summary Delete Text muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Text muxing
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Text Muxing Details
+   * @summary Text muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Text muxing
    * @throws {BitmovinError}
@@ -72,7 +72,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary List Text Muxings
+   * @summary List Text muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -25,9 +25,9 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary Add MP3 Muxing
+   * @summary Add MP3 muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Mp3Muxing} mp3Muxing The MP3 Muxing to be created
+   * @param {Mp3Muxing} mp3Muxing The MP3 muxing to be created
    * @throws {BitmovinError}
    * @memberof Mp3Api
    */
@@ -41,7 +41,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary Delete MP3 Muxing
+   * @summary Delete MP3 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP3 muxing
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary MP3 Muxing Details
+   * @summary MP3 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP3 muxing
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary List MP3 Muxings
+   * @summary List MP3 muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

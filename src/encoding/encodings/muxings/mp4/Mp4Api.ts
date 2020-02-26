@@ -28,9 +28,9 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add MP4 Muxing
+   * @summary Add MP4 muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Mp4Muxing} mp4Muxing The MP4 Muxing to be created
+   * @param {Mp4Muxing} mp4Muxing The MP4 muxing to be created
    * @throws {BitmovinError}
    * @memberof Mp4Api
    */
@@ -44,7 +44,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Delete MP4 Muxing
+   * @summary Delete MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @throws {BitmovinError}
@@ -61,7 +61,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary MP4 Segment Muxing Details
+   * @summary MP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @throws {BitmovinError}
@@ -78,7 +78,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary List MP4 Muxings
+   * @summary List MP4 muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -22,9 +22,9 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add SPEKE DRM key provider to CMAF
+   * @summary Add SPEKE DRM key provider to Progressive WebM
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the CMAF muxing
+   * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {SpekeDrm} spekeDrm The SPEKE DRM key provider to be created
    * @throws {BitmovinError}
    * @memberof SpekeApi
@@ -34,15 +34,15 @@ export default class SpekeApi extends BaseAPI {
       encoding_id: encodingId,
       muxing_id: muxingId
     };
-    return this.restClient.post<SpekeDrm>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/speke', pathParamMap, spekeDrm).then((response) => {
+    return this.restClient.post<SpekeDrm>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/speke', pathParamMap, spekeDrm).then((response) => {
       return map(response, SpekeDrm);
     });
   }
 
   /**
-   * @summary Delete SPEKE DRM from CMAF
+   * @summary Delete SPEKE DRM from Progressive WebM
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the CMAF muxing
+   * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
    * @throws {BitmovinError}
    * @memberof SpekeApi
@@ -53,15 +53,15 @@ export default class SpekeApi extends BaseAPI {
       muxing_id: muxingId,
       drm_id: drmId
     };
-    return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/speke/{drm_id}', pathParamMap).then((response) => {
+    return this.restClient.delete<BitmovinResponse>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/speke/{drm_id}', pathParamMap).then((response) => {
       return map(response, BitmovinResponse);
     });
   }
 
   /**
-   * @summary SPEKE DRM Details of CMAF
+   * @summary SPEKE DRM Details of Progressive WebM
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the CMAF muxing
+   * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
    * @throws {BitmovinError}
    * @memberof SpekeApi
@@ -72,15 +72,15 @@ export default class SpekeApi extends BaseAPI {
       muxing_id: muxingId,
       drm_id: drmId
     };
-    return this.restClient.get<SpekeDrm>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/speke/{drm_id}', pathParamMap).then((response) => {
+    return this.restClient.get<SpekeDrm>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/speke/{drm_id}', pathParamMap).then((response) => {
       return map(response, SpekeDrm);
     });
   }
 
   /**
-   * @summary List SPEKE DRM of CMAF
+   * @summary List SPEKE DRM of Progressive WebM
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the CMAF muxing
+   * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof SpekeApi
@@ -96,7 +96,7 @@ export default class SpekeApi extends BaseAPI {
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<SpekeDrm>>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/speke', pathParamMap, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<SpekeDrm>>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/speke', pathParamMap, queryParams).then((response) => {
       return new PaginationResponse<SpekeDrm>(response, SpekeDrm);
     });
   }

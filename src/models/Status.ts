@@ -8,7 +8,8 @@ export enum Status {
   RUNNING = 'RUNNING',
   FINISHED = 'FINISHED',
   ERROR = 'ERROR',
-  CANCELED = 'CANCELED'
+  CANCELED = 'CANCELED',
+  TRANSFER_ERROR = 'TRANSFER_ERROR'
 }
 
 export default Status;

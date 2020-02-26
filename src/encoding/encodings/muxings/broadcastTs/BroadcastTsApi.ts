@@ -25,9 +25,9 @@ export default class BroadcastTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Broadcast TS Muxing
+   * @summary Add Broadcast TS muxing
    * @param {string} encodingId ID of the encoding.
-   * @param {BroadcastTsMuxing} broadcastTsMuxing The Broadcast TS Muxing to be created
+   * @param {BroadcastTsMuxing} broadcastTsMuxing The Broadcast TS muxing to be created
    * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
@@ -41,7 +41,7 @@ export default class BroadcastTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Broadcast TS Muxing
+   * @summary Delete Broadcast TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Broadcast TS muxing
    * @throws {BitmovinError}
@@ -58,9 +58,9 @@ export default class BroadcastTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Broadcast TS Muxing Details
+   * @summary Broadcast TS muxing details
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Broadcast TS Muxing
+   * @param {string} muxingId ID of the Broadcast TS muxing
    * @throws {BitmovinError}
    * @memberof BroadcastTsApi
    */
@@ -75,7 +75,7 @@ export default class BroadcastTsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Broadcast TS Muxings
+   * @summary List Broadcast TS muxings
    * @param {string} encodingId ID of the Encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

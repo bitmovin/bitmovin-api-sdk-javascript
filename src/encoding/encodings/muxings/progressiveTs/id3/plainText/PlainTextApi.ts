@@ -22,9 +22,9 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Plain Text ID3 Tag to Progressive TS Muxing
+   * @summary Add Plain Text ID3 Tag to Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {PlaintextId3Tag} plaintextId3Tag The Plain Text ID3 Tag to be created
    * @throws {BitmovinError}
    * @memberof PlainTextApi
@@ -40,9 +40,9 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Plain Text ID3 Tag of Progressive TS Muxing
+   * @summary Delete Plain Text ID3 Tag of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Plain Text ID3 Tag
    * @throws {BitmovinError}
    * @memberof PlainTextApi
@@ -59,9 +59,9 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Plain Text ID3 Tag Details of Progressive TS Muxing
+   * @summary Plain Text ID3 Tag Details of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Plain Text ID3 Tag
    * @throws {BitmovinError}
    * @memberof PlainTextApi
@@ -78,9 +78,9 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary List Plain Text ID3 Tags of Progressive TS Muxing
+   * @summary List Plain Text ID3 Tags of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof PlainTextApi

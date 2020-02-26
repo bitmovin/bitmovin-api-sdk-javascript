@@ -16,9 +16,9 @@ export default class InformationApi extends BaseAPI {
   }
 
   /**
-   * @summary MP3 Muxing Information
+   * @summary MP3 muxing Information
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the MP3 Muxing
+   * @param {string} muxingId ID of the MP3 muxing
    * @throws {BitmovinError}
    * @memberof InformationApi
    */

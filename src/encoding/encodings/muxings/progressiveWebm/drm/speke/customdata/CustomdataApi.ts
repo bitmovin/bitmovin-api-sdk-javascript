@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Custom Data of CMAF
+   * @summary SPEKE DRM Custom Data of Progressive WebM
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the CMAF muxing
+   * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
    * @throws {BitmovinError}
    * @memberof CustomdataApi
@@ -29,7 +29,7 @@ export default class CustomdataApi extends BaseAPI {
       muxing_id: muxingId,
       drm_id: drmId
     };
-    return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/speke/{drm_id}/customData', pathParamMap).then((response) => {
+    return this.restClient.get<CustomData>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/speke/{drm_id}/customData', pathParamMap).then((response) => {
       return map(response, CustomData);
     });
   }

@@ -25,9 +25,9 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive MOV Muxing
+   * @summary Add Progressive MOV muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ProgressiveMovMuxing} progressiveMovMuxing The Progressive MOV Muxing to be created
+   * @param {ProgressiveMovMuxing} progressiveMovMuxing The Progressive MOV muxing to be created
    * @throws {BitmovinError}
    * @memberof ProgressiveMovApi
    */
@@ -41,7 +41,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Progressive MOV Muxing
+   * @summary Delete Progressive MOV muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive MOV Muxing Details
+   * @summary Progressive MOV muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary List Progressive MOV Muxings
+   * @summary List Progressive MOV muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

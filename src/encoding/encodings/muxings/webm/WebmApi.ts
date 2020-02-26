@@ -25,9 +25,9 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add WebM Segment Muxing
+   * @summary Add WebM muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {WebmMuxing} webmMuxing The WebM Segment Muxing to be created
+   * @param {WebmMuxing} webmMuxing The WebM muxing to be created
    * @throws {BitmovinError}
    * @memberof WebmApi
    */
@@ -41,7 +41,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete WebM Muxing
+   * @summary Delete WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary WebM Segment Muxing Details
+   * @summary WebM muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary List WebM Segment Muxings
+   * @summary List WebM muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

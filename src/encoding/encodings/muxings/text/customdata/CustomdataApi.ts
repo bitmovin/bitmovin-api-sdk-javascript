@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Text Muxing custom data
+   * @summary Text muxing custom data
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the Text Muxing
+   * @param {string} muxingId Id of the Text muxing
    * @throws {BitmovinError}
    * @memberof CustomdataApi
    */

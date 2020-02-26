@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary AES Encryption Custom Data of TS Segment
+   * @summary AES Encryption Custom Data of TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the transport stream segment.
+   * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the PlayReady DRM configuration.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

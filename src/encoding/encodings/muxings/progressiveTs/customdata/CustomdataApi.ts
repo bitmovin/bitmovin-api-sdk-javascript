@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive TS Muxing Custom Data
+   * @summary Progressive TS muxing Custom Data
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @throws {BitmovinError}

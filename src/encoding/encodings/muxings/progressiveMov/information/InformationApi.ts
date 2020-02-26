@@ -16,7 +16,7 @@ export default class InformationApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive MOV Muxing Information
+   * @summary Progressive MOV muxing Information
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive MOV muxing
    * @throws {BitmovinError}

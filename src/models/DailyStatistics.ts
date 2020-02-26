@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
 import BillableEncodingMinutes from './BillableEncodingMinutes';
+import EgressInformation from './EgressInformation';
 
 /**
  * @export
@@ -63,6 +64,12 @@ export class DailyStatistics {
    */
   public billableFeatureMinutes?: BillableEncodingFeatureMinutes[];
 
+  /**
+   * @type {EgressInformation[]}
+   * @memberof DailyStatistics
+   */
+  public billableEgressBytes?: EgressInformation[];
+
   constructor(obj?: Partial<DailyStatistics>) {
     if(!obj) {
       return;
@@ -75,6 +82,7 @@ export class DailyStatistics {
     this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
     this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
     this.billableFeatureMinutes = mapArray(obj.billableFeatureMinutes, BillableEncodingFeatureMinutes);
+    this.billableEgressBytes = mapArray(obj.billableEgressBytes, EgressInformation);
   }
 }
 

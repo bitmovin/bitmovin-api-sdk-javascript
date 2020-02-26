@@ -16,9 +16,9 @@ export default class InformationApi extends BaseAPI {
   }
 
   /**
-   * @summary Broadcast TS Muxing Information
+   * @summary Broadcast TS muxing Information
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Broadcast TS Muxing
+   * @param {string} muxingId ID of the Broadcast TS muxing
    * @throws {BitmovinError}
    * @memberof InformationApi
    */

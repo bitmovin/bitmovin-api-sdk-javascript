@@ -31,9 +31,9 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive TS Muxing
+   * @summary Add Progressive TS muxing
    * @param {string} encodingId ID of the encoding.
-   * @param {ProgressiveTsMuxing} progressiveTsMuxing The Progressive TS Muxing to be created
+   * @param {ProgressiveTsMuxing} progressiveTsMuxing The Progressive TS muxing to be created
    * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
@@ -47,7 +47,7 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Progressive TS Muxing
+   * @summary Delete Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @throws {BitmovinError}
@@ -64,9 +64,9 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive TS Muxing Details
+   * @summary Progressive TS muxing details
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @throws {BitmovinError}
    * @memberof ProgressiveTsApi
    */
@@ -81,7 +81,7 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Progressive TS Muxings
+   * @summary List Progressive TS muxings
    * @param {string} encodingId ID of the Encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

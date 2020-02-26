@@ -16,9 +16,9 @@ export default class InformationApi extends BaseAPI {
   }
 
   /**
-   * @summary MP4 Muxing Information
+   * @summary MP4 muxing Information
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the MP4 Muxing
+   * @param {string} muxingId ID of the MP4 muxing
    * @throws {BitmovinError}
    * @memberof InformationApi
    */

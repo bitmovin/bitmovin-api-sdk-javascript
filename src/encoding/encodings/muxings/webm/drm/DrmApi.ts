@@ -23,7 +23,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all DRM configurations of WebM Muxing
+   * @summary List all DRM configurations of WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @throws {BitmovinError}

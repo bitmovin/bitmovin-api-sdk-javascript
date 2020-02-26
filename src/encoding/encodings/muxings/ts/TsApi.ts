@@ -25,9 +25,9 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add TS Segment Muxing
+   * @summary Add TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {TsMuxing} tsMuxing The TS Segment Muxing to be created
+   * @param {TsMuxing} tsMuxing The TS muxing to be created
    * @throws {BitmovinError}
    * @memberof TsApi
    */
@@ -41,9 +41,9 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete TS Segment Muxing
+   * @summary Delete TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the ts segment muxing
+   * @param {string} muxingId Id of the TS muxing
    * @throws {BitmovinError}
    * @memberof TsApi
    */
@@ -58,9 +58,9 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary TS Segment Muxing Details
+   * @summary TS muxing details
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the ts segment muxing
+   * @param {string} muxingId Id of the TS muxing
    * @throws {BitmovinError}
    * @memberof TsApi
    */
@@ -75,7 +75,7 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary List TS Segment Muxings
+   * @summary List TS muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -6,6 +6,7 @@ import Fmp4Api from './fmp4/Fmp4Api';
 import CmafApi from './cmaf/CmafApi';
 import Mp4Api from './mp4/Mp4Api';
 import WebmApi from './webm/WebmApi';
+import ProgressiveWebmApi from './progressiveWebm/ProgressiveWebmApi';
 
 /**
  * RepresentationsApi - object-oriented interface
@@ -19,6 +20,7 @@ export default class RepresentationsApi extends BaseAPI {
   public cmaf: CmafApi;
   public mp4: Mp4Api;
   public webm: WebmApi;
+  public progressiveWebm: ProgressiveWebmApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -27,5 +29,6 @@ export default class RepresentationsApi extends BaseAPI {
     this.cmaf = new CmafApi(configuration);
     this.mp4 = new Mp4Api(configuration);
     this.webm = new WebmApi(configuration);
+    this.progressiveWebm = new ProgressiveWebmApi(configuration);
   }
 }

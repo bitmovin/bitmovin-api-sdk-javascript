@@ -11,7 +11,7 @@ import ManifestType from './ManifestType';
  */
 export class HlsManifestDefault extends HlsManifest {
   /**
-   * The id of the encoding to create a default manifest from (required)
+   * The id of the encoding to create a default manifest from. (required)
    * @type {string}
    * @memberof HlsManifestDefault
    */

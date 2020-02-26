@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary fMP4 Muxing Custom Data
+   * @summary fMP4 muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @throws {BitmovinError}

@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../../common/Configuration';
 import {map, mapArray} from '../../../../../../../common/Mapper';
-import DrmApi from './drm/DrmApi';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../../../../../models/BitmovinResponse';
 import DashCmafRepresentation from '../../../../../../../models/DashCmafRepresentation';
@@ -16,12 +15,10 @@ import {DashCmafRepresentationListQueryParams, DashCmafRepresentationListQueryPa
  * @extends {BaseAPI}
  */
 export default class CmafApi extends BaseAPI {
-  public drm: DrmApi;
   public contentprotection: ContentprotectionApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
-    this.drm = new DrmApi(configuration);
     this.contentprotection = new ContentprotectionApi(configuration);
   }
 

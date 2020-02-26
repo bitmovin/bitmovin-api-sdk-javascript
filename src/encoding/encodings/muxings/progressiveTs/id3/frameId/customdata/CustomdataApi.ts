@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Frame ID ID3 Tag Custom Data of Progressive TS Muxing
+   * @summary Frame ID ID3 Tag Custom Data of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
    * @throws {BitmovinError}
    * @memberof CustomdataApi

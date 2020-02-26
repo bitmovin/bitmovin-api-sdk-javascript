@@ -1,23 +1,23 @@
 
-export interface ContentProtectionListQueryParams {
+export interface CencDrmListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
-     * @memberof ContentProtectionListQueryParams
+     * @memberof CencDrmListQueryParams
      */
     offset?: number | undefined;
 
     /**
      * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
-     * @memberof ContentProtectionListQueryParams
+     * @memberof CencDrmListQueryParams
      */
     limit?: number | undefined;
 }
 
-export class ContentProtectionListQueryParamsBuilder {
-    private internalParams: ContentProtectionListQueryParams = {};
+export class CencDrmListQueryParamsBuilder {
+    private internalParams: CencDrmListQueryParams = {};
 
     /**
      *

@@ -22,7 +22,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Add FairPlay DRM to TS Segment
+   * @summary Add FairPlay DRM to TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
@@ -40,9 +40,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete FairPlay DRM from TS Segment
+   * @summary Delete FairPlay DRM from TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the transport streams segment.
+   * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.
    * @throws {BitmovinError}
    * @memberof FairplayApi
@@ -59,9 +59,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Details of TS Segment
+   * @summary FairPlay DRM Details of TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the transport streams segment.
+   * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.
    * @throws {BitmovinError}
    * @memberof FairplayApi
@@ -78,9 +78,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary List FairPlay DRMs of TS Segment
+   * @summary List FairPlay DRMs of TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the transport streams segment.
+   * @param {string} muxingId Id of the TS muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof FairplayApi

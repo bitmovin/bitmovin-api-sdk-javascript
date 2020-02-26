@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Custom Data of TS Segment
+   * @summary SPEKE DRM Custom Data of TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the TS Segment muxing
+   * @param {string} muxingId Id of the TS muxing
    * @param {string} drmId Id of the SPEKE DRM.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

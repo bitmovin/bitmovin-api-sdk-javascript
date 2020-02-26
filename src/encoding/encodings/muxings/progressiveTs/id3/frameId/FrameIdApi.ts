@@ -22,9 +22,9 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Frame ID ID3 Tag to Progressive TS Muxing
+   * @summary Add Frame ID ID3 Tag to Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {FrameIdId3Tag} frameIdId3Tag The Frame ID ID3 Tag to be created
    * @throws {BitmovinError}
    * @memberof FrameIdApi
@@ -40,9 +40,9 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Frame ID ID3 Tag of Progressive TS Muxing
+   * @summary Delete Frame ID ID3 Tag of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
    * @throws {BitmovinError}
    * @memberof FrameIdApi
@@ -59,9 +59,9 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Frame ID ID3 Tag Details of Progressive TS Muxing
+   * @summary Frame ID ID3 Tag Details of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
    * @throws {BitmovinError}
    * @memberof FrameIdApi
@@ -78,9 +78,9 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary List Frame ID ID3 Tags of Progressive TS Muxing
+   * @summary List Frame ID ID3 Tags of Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
-   * @param {string} muxingId ID of the Progressive TS Muxing
+   * @param {string} muxingId ID of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof FrameIdApi

@@ -16,7 +16,7 @@ export default class InformationApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive WebM Muxing Information
+   * @summary Progressive WebM muxing Information
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive WebM muxing
    * @throws {BitmovinError}

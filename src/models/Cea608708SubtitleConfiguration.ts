@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import PassthroughMode from './PassthroughMode';
 
 /**
  * @export
@@ -12,11 +13,18 @@ export class Cea608708SubtitleConfiguration {
    */
   public passthroughActivated?: boolean;
 
+  /**
+   * @type {PassthroughMode}
+   * @memberof Cea608708SubtitleConfiguration
+   */
+  public passthroughMode?: PassthroughMode;
+
   constructor(obj?: Partial<Cea608708SubtitleConfiguration>) {
     if(!obj) {
       return;
     }
     this.passthroughActivated = map(obj.passthroughActivated);
+    this.passthroughMode = map(obj.passthroughMode);
   }
 }
 

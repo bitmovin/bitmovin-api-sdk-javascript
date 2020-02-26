@@ -22,9 +22,9 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Chunked Text Muxing
+   * @summary Add Chunked Text muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {ChunkedTextMuxing} chunkedTextMuxing The Chunked Text Muxing to be created
+   * @param {ChunkedTextMuxing} chunkedTextMuxing The Chunked Text muxing to be created
    * @throws {BitmovinError}
    * @memberof ChunkedTextApi
    */
@@ -38,9 +38,9 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Chunked Text Muxing
+   * @summary Delete Chunked Text muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the Chunked Text Muxing
+   * @param {string} muxingId Id of the Chunked Text muxing
    * @throws {BitmovinError}
    * @memberof ChunkedTextApi
    */
@@ -55,9 +55,9 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Chunked Text Muxing Details
+   * @summary Chunked Text muxing details
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the Chunked Text Muxing
+   * @param {string} muxingId Id of the Chunked Text muxing
    * @throws {BitmovinError}
    * @memberof ChunkedTextApi
    */
@@ -72,7 +72,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary List Chunked Text Muxings
+   * @summary List Chunked Text muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -10,7 +10,7 @@ import SmoothStreamingManifest from './SmoothStreamingManifest';
  */
 export class SmoothManifestDefault extends SmoothStreamingManifest {
   /**
-   * The id of the encoding to create a default manifest from (required)
+   * The id of the encoding to create a default manifest from. (required)
    * @type {string}
    * @memberof SmoothManifestDefault
    */

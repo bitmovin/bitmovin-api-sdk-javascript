@@ -22,9 +22,9 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Segmented RAW Muxing
+   * @summary Add Segmented RAW muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {SegmentedRawMuxing} segmentedRawMuxing The Segmented RAW Muxing to be created
+   * @param {SegmentedRawMuxing} segmentedRawMuxing The Segmented RAW muxing to be created
    * @throws {BitmovinError}
    * @memberof SegmentedRawApi
    */
@@ -38,7 +38,7 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Segmented RAW Muxing
+   * @summary Delete Segmented RAW muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Segmented RAW muxing
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary Segmented RAW Muxing Details
+   * @summary Segmented RAW muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Segmented RAW muxing
    * @throws {BitmovinError}
@@ -72,7 +72,7 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary List Segmented RAW Muxings
+   * @summary List Segmented RAW muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

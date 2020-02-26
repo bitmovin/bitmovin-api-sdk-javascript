@@ -25,9 +25,9 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add fMP4 Segment Muxing
+   * @summary Add fMP4 muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Fmp4Muxing} fmp4Muxing The fMP4 Segment Muxing to be created
+   * @param {Fmp4Muxing} fmp4Muxing The fMP4 muxing to be created
    * @throws {BitmovinError}
    * @memberof Fmp4Api
    */
@@ -41,7 +41,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Delete fMP4 Muxing
+   * @summary Delete fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary fMP4 Segment Muxing Details
+   * @summary fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary List fMP4 Segment Muxings
+   * @summary List fMP4 muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
