@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import DashMp4Representation from './DashMp4Representation';
+import DashOnDemandRepresentationType from './DashOnDemandRepresentationType';
 
 /**
  * @export

@@ -226,7 +226,7 @@ class HeaderHandler extends DelegatingHandler {
     const headers: Record<string, string> = {
       'X-Api-Key': apiKey,
       'X-Api-Client': 'bitmovin-api-sdk-javascript',
-      'X-Api-Client-Version': '1.35.0',
+      'X-Api-Client-Version': '1.36.0',
       'Content-Type': 'application/json'
     };
 

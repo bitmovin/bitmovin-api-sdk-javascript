@@ -195,6 +195,7 @@ export * from './DashManifestDefault';
 export * from './DashManifestDefaultVersion';
 export * from './DashMp4DrmRepresentation';
 export * from './DashMp4Representation';
+export * from './DashOnDemandRepresentationType';
 export * from './DashProfile';
 export * from './DashProgressiveWebmRepresentation';
 export * from './DashRepresentation';
