@@ -35,6 +35,13 @@ export class BillableEncodingMinutes {
   public psnrMode?: PsnrPerStreamMode;
 
   /**
+   * Name of the preset configuration used for the codec configuration or \"CUSTOM\" if any preset values were overridden
+   * @type {string}
+   * @memberof BillableEncodingMinutes
+   */
+  public preset?: string;
+
+  /**
    * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
@@ -48,6 +55,7 @@ export class BillableEncodingMinutes {
     this.codec = map(obj.codec);
     this.perTitleResultStream = map(obj.perTitleResultStream);
     this.psnrMode = map(obj.psnrMode);
+    this.preset = map(obj.preset);
     this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }

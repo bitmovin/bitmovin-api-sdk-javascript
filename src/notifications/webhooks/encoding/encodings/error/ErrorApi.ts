@@ -24,7 +24,7 @@ export default class ErrorApi extends BaseAPI {
 
   /**
    * @summary Add Encoding Error Webhook
-   * @param {Webhook} webhook The Encoding Error Webhook to be added
+   * @param {Webhook} webhook The Encoding Error Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
@@ -35,7 +35,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Error Webhook for specific Encoding Resource
+   * @summary Add Encoding Error Webhook for specific Encoding Resource. **Note:** A maximum number of 5 webhooks is allowed
    * @param {string} encodingId Id of the encoding
    * @param {Webhook} webhook The Encoding Error Webhook to be added
    * @throws {BitmovinError}

@@ -9,6 +9,7 @@ import S3RoleBasedApi from './s3RoleBased/S3RoleBasedApi';
 import GenericS3Api from './genericS3/GenericS3Api';
 import LocalApi from './local/LocalApi';
 import GcsApi from './gcs/GcsApi';
+import GcsServiceAccountApi from './gcsServiceAccount/GcsServiceAccountApi';
 import AzureApi from './azure/AzureApi';
 import FtpApi from './ftp/FtpApi';
 import SftpApi from './sftp/SftpApi';
@@ -40,6 +41,7 @@ export default class InputsApi extends BaseAPI {
   public genericS3: GenericS3Api;
   public local: LocalApi;
   public gcs: GcsApi;
+  public gcsServiceAccount: GcsServiceAccountApi;
   public azure: AzureApi;
   public ftp: FtpApi;
   public sftp: SftpApi;
@@ -63,6 +65,7 @@ export default class InputsApi extends BaseAPI {
     this.genericS3 = new GenericS3Api(configuration);
     this.local = new LocalApi(configuration);
     this.gcs = new GcsApi(configuration);
+    this.gcsServiceAccount = new GcsServiceAccountApi(configuration);
     this.azure = new AzureApi(configuration);
     this.ftp = new FtpApi(configuration);
     this.sftp = new SftpApi(configuration);

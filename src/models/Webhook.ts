@@ -44,6 +44,13 @@ export class Webhook extends BitmovinResource {
    */
   public signature?: WebhookSignature;
 
+  /**
+   * The json schema of the data that is send as webhook payload
+   * @type {any}
+   * @memberof Webhook
+   */
+  public schema?: any;
+
   constructor(obj?: Partial<Webhook>) {
     super(obj);
     if(!obj) {
@@ -54,6 +61,7 @@ export class Webhook extends BitmovinResource {
     this.insecureSsl = map(obj.insecureSsl);
     this.encryption = map(obj.encryption, WebhookEncryption);
     this.signature = map(obj.signature, WebhookSignature);
+    this.schema = map(obj.schema);
   }
 }
 

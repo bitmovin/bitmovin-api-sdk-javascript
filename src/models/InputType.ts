@@ -21,7 +21,8 @@ export enum InputType {
   UDP = 'UDP',
   UDP_MULTICAST = 'UDP_MULTICAST',
   ZIXI = 'ZIXI',
-  SRT = 'SRT'
+  SRT = 'SRT',
+  GCS_SERVICE_ACCOUNT = 'GCS_SERVICE_ACCOUNT'
 }
 
 export default InputType;

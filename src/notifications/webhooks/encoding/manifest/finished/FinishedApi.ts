@@ -1,8 +1,8 @@
 import {BaseAPI} from '../../../../../common/BaseAPI';
 import Configuration from '../../../../../common/Configuration';
 import {map, mapArray} from '../../../../../common/Mapper';
+import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Webhook from '../../../../../models/Webhook';
-import PaginationResponse from '../../../../../models/PaginationResponse';
 
 /**
  * FinishedApi - object-oriented interface
@@ -18,20 +18,20 @@ export default class FinishedApi extends BaseAPI {
 
   /**
    * @summary Add Manifest Finished Successfully Webhook (All Manifests)
-   * @param {Webhook} webhook Add a new webhook notification if a manifest creation finished successfully
+   * @param {Webhook} webhook Add a new webhook notification if a manifest creation finished successfully. **Note:** A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */
-  public create(webhook?: Webhook): Promise<PaginationResponse<Webhook>> {
-    return this.restClient.post<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/manifest/finished', {}, webhook).then((response) => {
-      return new PaginationResponse<Webhook>(response, Webhook);
+  public create(webhook?: Webhook): Promise<Webhook> {
+    return this.restClient.post<Webhook>('/notifications/webhooks/encoding/manifest/finished', {}, webhook).then((response) => {
+      return map(response, Webhook);
     });
   }
 
   /**
    * @summary Add Manifest Finished Successfully Webhook Notification (Specific Manifest)
    * @param {string} manifestId Id of the manifest resource
-   * @param {Webhook} webhook The webhook notifications object
+   * @param {Webhook} webhook The webhook notifications object. **Note:** A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */
@@ -41,6 +41,21 @@ export default class FinishedApi extends BaseAPI {
     };
     return this.restClient.post<Webhook>('/notifications/webhooks/encoding/manifest/{manifest_id}/finished', pathParamMap, webhook).then((response) => {
       return map(response, Webhook);
+    });
+  }
+
+  /**
+   * @summary Delete Manifest Finished Webhook
+   * @param {string} notificationId Id of the webhook notification
+   * @throws {BitmovinError}
+   * @memberof FinishedApi
+   */
+  public delete(notificationId: string): Promise<BitmovinResponse> {
+    const pathParamMap = {
+      notification_id: notificationId
+    };
+    return this.restClient.delete<BitmovinResponse>('/notifications/webhooks/encoding/manifest/finished/{notification_id}', pathParamMap).then((response) => {
+      return map(response, BitmovinResponse);
     });
   }
 

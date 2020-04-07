@@ -4,6 +4,7 @@ import AzureInput from './AzureInput';
 import BitmovinResource from './BitmovinResource';
 import FtpInput from './FtpInput';
 import GcsInput from './GcsInput';
+import GcsServiceAccountInput from './GcsServiceAccountInput';
 import GenericS3Input from './GenericS3Input';
 import HttpInput from './HttpInput';
 import HttpsInput from './HttpsInput';
@@ -39,7 +40,8 @@ export type InputUnion =
   UdpInput |
   UdpMulticastInput |
   ZixiInput |
-  SrtInput;
+  SrtInput |
+  GcsServiceAccountInput;
 
 /**
  * @export
@@ -66,7 +68,8 @@ export class Input extends BitmovinResource {
     UDP: 'UdpInput',
     UDP_MULTICAST: 'UdpMulticastInput',
     ZIXI: 'ZixiInput',
-    SRT: 'SrtInput'
+    SRT: 'SrtInput',
+    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountInput'
   };
 
   constructor(obj?: Partial<Input>) {

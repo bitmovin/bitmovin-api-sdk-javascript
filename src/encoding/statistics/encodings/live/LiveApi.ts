@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
+import DailyApi from './daily/DailyApi';
 import EncodingStatisticsLive from '../../../../models/EncodingStatisticsLive';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EncodingStatisticsLiveListQueryParams, EncodingStatisticsLiveListQueryParamsBuilder} from './EncodingStatisticsLiveListQueryParams';
@@ -13,9 +14,11 @@ import {EncodingStatisticsLiveListByDateRangeQueryParams, EncodingStatisticsLive
  * @extends {BaseAPI}
  */
 export default class LiveApi extends BaseAPI {
+  public daily: DailyApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.daily = new DailyApi(configuration);
   }
 
   /**

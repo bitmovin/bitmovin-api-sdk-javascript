@@ -6,6 +6,7 @@ import AzureOutput from './AzureOutput';
 import BitmovinResource from './BitmovinResource';
 import FtpOutput from './FtpOutput';
 import GcsOutput from './GcsOutput';
+import GcsServiceAccountOutput from './GcsServiceAccountOutput';
 import GenericS3Output from './GenericS3Output';
 import LiveMediaIngestOutput from './LiveMediaIngestOutput';
 import LocalOutput from './LocalOutput';
@@ -25,7 +26,8 @@ export type OutputUnion =
   S3RoleBasedOutput |
   SftpOutput |
   AkamaiMslOutput |
-  LiveMediaIngestOutput;
+  LiveMediaIngestOutput |
+  GcsServiceAccountOutput;
 
 /**
  * @export
@@ -44,7 +46,8 @@ export class Output extends BitmovinResource {
     S3_ROLE_BASED: 'S3RoleBasedOutput',
     SFTP: 'SftpOutput',
     AKAMAI_MSL: 'AkamaiMslOutput',
-    LIVE_MEDIA_INGEST: 'LiveMediaIngestOutput'
+    LIVE_MEDIA_INGEST: 'LiveMediaIngestOutput',
+    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountOutput'
   };
 
   /**
