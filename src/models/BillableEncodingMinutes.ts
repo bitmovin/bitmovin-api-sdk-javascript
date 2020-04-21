@@ -42,6 +42,13 @@ export class BillableEncodingMinutes {
   public preset?: string;
 
   /**
+   * Indicates if the stream was part of a live encoding.
+   * @type {boolean}
+   * @memberof BillableEncodingMinutes
+   */
+  public live?: boolean;
+
+  /**
    * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
@@ -56,6 +63,7 @@ export class BillableEncodingMinutes {
     this.perTitleResultStream = map(obj.perTitleResultStream);
     this.psnrMode = map(obj.psnrMode);
     this.preset = map(obj.preset);
+    this.live = map(obj.live);
     this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }

@@ -5,7 +5,8 @@
  */
 export enum PassthroughMode {
   VIDEO_STREAM = 'VIDEO_STREAM',
-  CAPTION_STREAM = 'CAPTION_STREAM'
+  CAPTION_STREAM = 'CAPTION_STREAM',
+  VIDEO_CAPTION_STREAM = 'VIDEO_CAPTION_STREAM'
 }
 
 export default PassthroughMode;

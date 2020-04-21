@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
+import InformationApi from './information/InformationApi';
 import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Fmp4Muxing from '../../../../models/Fmp4Muxing';
@@ -16,11 +17,13 @@ import {Fmp4MuxingListQueryParams, Fmp4MuxingListQueryParamsBuilder} from './Fmp
  */
 export default class Fmp4Api extends BaseAPI {
   public customdata: CustomdataApi;
+  public information: InformationApi;
   public drm: DrmApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
+    this.information = new InformationApi(configuration);
     this.drm = new DrmApi(configuration);
   }
 

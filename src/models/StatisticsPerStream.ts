@@ -145,6 +145,34 @@ export class StatisticsPerStream {
    */
   public dolbyVisionMultiplicator?: number;
 
+  /**
+   * Name of the preset configuration used for the codec configuration or \"CUSTOM\" if any preset values were overridden
+   * @type {string}
+   * @memberof StatisticsPerStream
+   */
+  public preset?: string;
+
+  /**
+   * The output minutes multiplicator for the used codec configuration preset.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public presetMultiplicator?: number;
+
+  /**
+   * Indicates if the stream was part of a live encoding.
+   * @type {boolean}
+   * @memberof StatisticsPerStream
+   */
+  public live?: boolean;
+
+  /**
+   * The output minutes multiplicator for live streams.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public liveMultiplicator?: number;
+
   constructor(obj?: Partial<StatisticsPerStream>) {
     if(!obj) {
       return;
@@ -169,6 +197,10 @@ export class StatisticsPerStream {
     this.psnrMultiplicator = map(obj.psnrMultiplicator);
     this.dolbyVisionMode = map(obj.dolbyVisionMode);
     this.dolbyVisionMultiplicator = map(obj.dolbyVisionMultiplicator);
+    this.preset = map(obj.preset);
+    this.presetMultiplicator = map(obj.presetMultiplicator);
+    this.live = map(obj.live);
+    this.liveMultiplicator = map(obj.liveMultiplicator);
   }
 }
 
