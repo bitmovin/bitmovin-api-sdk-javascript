@@ -9,10 +9,10 @@ import MediaType from './MediaType';
 export class StreamInfosDetails {
   /**
    * The id of the stream (required)
-   * @type {number}
+   * @type {string}
    * @memberof StreamInfosDetails
    */
-  public id?: number;
+  public id?: string;
 
   /**
    * The media type of the stream (required)
