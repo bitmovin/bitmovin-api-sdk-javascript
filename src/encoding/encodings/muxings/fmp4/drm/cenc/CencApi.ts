@@ -22,7 +22,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CENC DRM to fMP4
+   * @summary Add CENC DRM to an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {CencDrm} cencDrm The CencDrm to be created
@@ -40,7 +40,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete CENC DRM from fMP4
+   * @summary Delete CENC DRM from an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the cenc drm.
@@ -59,7 +59,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary CENC DRM Details of fMP4
+   * @summary CENC DRM Details of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {string} drmId Id of the cenc drm.
@@ -78,7 +78,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary List CENC DRMs of fMP4
+   * @summary List CENC DRMs of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

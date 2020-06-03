@@ -22,10 +22,10 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AES Encryption to TS muxing
+   * @summary Add AES encryption configuration to a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
-   * @param {AesEncryptionDrm} aesEncryptionDrm The AES Encryption to be created
+   * @param {AesEncryptionDrm} aesEncryptionDrm The AES encryption configuration to be created
    * @throws {BitmovinError}
    * @memberof AesApi
    */
@@ -40,7 +40,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete AES Encryption from TS muxing
+   * @summary Delete AES encryption configuration from a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the PlayReady DRM configuration.
@@ -59,10 +59,10 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary AES Encryption Details of TS muxing
+   * @summary AES encryption Details of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
-   * @param {string} drmId Id of the AESEncryption configuration.
+   * @param {string} drmId Id of the AES encryption configuration.
    * @throws {BitmovinError}
    * @memberof AesApi
    */
@@ -78,7 +78,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary List AES Encryption of TS muxing
+   * @summary List AES encryption configurations of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

@@ -43,7 +43,7 @@ export default class InsertableContentApi extends BaseAPI {
   }
 
   /**
-   * @summary List All Inseratble Content Available For A Live Encoding
+   * @summary List All Insertable Content Available For A Live Encoding
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -3,6 +3,7 @@ import EncodingOutput from './EncodingOutput';
 import ManifestType from './ManifestType';
 import SmoothManifestDefaultVersion from './SmoothManifestDefaultVersion';
 import SmoothStreamingManifest from './SmoothStreamingManifest';
+import Status from './Status';
 
 /**
  * @export

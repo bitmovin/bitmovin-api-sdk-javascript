@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Custom Data of TS muxing
+   * @summary FairPlay DRM Custom Data of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.

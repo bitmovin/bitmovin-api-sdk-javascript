@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Raw ID3 Tag Custom Data of Progressive TS muxing
+   * @summary Raw ID3 Tag Custom Data of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the RAW ID3 Tag

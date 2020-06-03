@@ -22,7 +22,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add SPEKE DRM key provider to WebM
+   * @summary Add SPEKE DRM key provider to a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @param {SpekeDrm} spekeDrm The SPEKE DRM key provider to be created
@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from WebM
+   * @summary Delete SPEKE DRM from a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of WebM
+   * @summary SPEKE DRM Details of a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of WebM
+   * @summary List SPEKE DRM of a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

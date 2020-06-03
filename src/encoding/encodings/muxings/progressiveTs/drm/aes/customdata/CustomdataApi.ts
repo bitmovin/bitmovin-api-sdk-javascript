@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary AES encryption Custom Data of Progressive TS muxing
+   * @summary AES encryption Custom Data of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {string} drmId Id of the AES encryption configuration.

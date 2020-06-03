@@ -22,10 +22,10 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AES Encryption to fMP4
+   * @summary Add AES encryption configuration to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {AesEncryptionDrm} aesEncryptionDrm The AES Encryption to be created
+   * @param {AesEncryptionDrm} aesEncryptionDrm The AES encryption configuration to be created
    * @throws {BitmovinError}
    * @memberof AesApi
    */
@@ -40,7 +40,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete AES Encryption from fMP4
+   * @summary Delete AES encryption configuration from an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {string} drmId Id of the AES encryption configuration.
@@ -59,10 +59,10 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary AES Encryption Details of fMP4
+   * @summary AES encryption Details of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
-   * @param {string} drmId Id of the AESEncryption configuration.
+   * @param {string} drmId Id of the AES encryption configuration.
    * @throws {BitmovinError}
    * @memberof AesApi
    */
@@ -78,7 +78,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary List AES Encryption of fMP4
+   * @summary List AES encryption configurations of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

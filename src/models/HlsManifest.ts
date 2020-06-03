@@ -3,6 +3,7 @@ import EncodingOutput from './EncodingOutput';
 import HlsVersion from './HlsVersion';
 import Manifest from './Manifest';
 import ManifestType from './ManifestType';
+import Status from './Status';
 
 /**
  * @export

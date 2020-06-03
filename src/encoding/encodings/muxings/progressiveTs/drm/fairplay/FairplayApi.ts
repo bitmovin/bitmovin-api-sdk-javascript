@@ -22,9 +22,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Add FairPlay DRM to Progressive TS
+   * @summary Add FairPlay DRM to a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the progressive TS fragment.
+   * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
    * @throws {BitmovinError}
    * @memberof FairplayApi
@@ -40,9 +40,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete FairPlay DRM from Progressive TS
+   * @summary Delete FairPlay DRM from a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the progressive TS fragment.
+   * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.
    * @throws {BitmovinError}
    * @memberof FairplayApi
@@ -59,9 +59,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Details of Progressive TS
+   * @summary FairPlay DRM Details of a Progressive TS
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the progressive TS fragment.
+   * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.
    * @throws {BitmovinError}
    * @memberof FairplayApi
@@ -78,9 +78,9 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary List FairPlay DRMs of Progressive TS
+   * @summary List FairPlay DRMs of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the progressive TS fragment.
+   * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof FairplayApi

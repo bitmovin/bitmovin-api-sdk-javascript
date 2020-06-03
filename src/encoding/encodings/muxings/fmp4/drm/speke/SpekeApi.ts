@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from fMP4
+   * @summary Delete SPEKE DRM from an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of fMP4
+   * @summary SPEKE DRM Details of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of fMP4
+   * @summary List SPEKE DRM of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

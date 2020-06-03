@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from Progressive WebM
+   * @summary Delete SPEKE DRM from a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of Progressive WebM
+   * @summary SPEKE DRM Details of a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of Progressive WebM
+   * @summary List SPEKE DRM of a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

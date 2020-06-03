@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary CENC DRM Custom Data of Progressive WebM
+   * @summary CENC DRM Custom Data of a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing.
    * @param {string} drmId Id of the CENC DRM.

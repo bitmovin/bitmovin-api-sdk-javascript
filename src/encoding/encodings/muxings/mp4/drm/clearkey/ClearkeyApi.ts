@@ -22,7 +22,7 @@ export default class ClearkeyApi extends BaseAPI {
   }
 
   /**
-   * @summary Add ClearKey DRM to MP4
+   * @summary Add ClearKey DRM to an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {ClearKeyDrm} clearKeyDrm The ClearKey DRM to be created
@@ -40,7 +40,7 @@ export default class ClearkeyApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete ClearKey DRM from MP4
+   * @summary Delete ClearKey DRM from an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the ClearKey DRM configuration.
@@ -59,7 +59,7 @@ export default class ClearkeyApi extends BaseAPI {
   }
 
   /**
-   * @summary ClearKey DRM Details of MP4
+   * @summary ClearKey DRM Details of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the ClearKey DRM configuration.
@@ -78,7 +78,7 @@ export default class ClearkeyApi extends BaseAPI {
   }
 
   /**
-   * @summary List ClearKey DRMs of MP4
+   * @summary List ClearKey DRMs of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

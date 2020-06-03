@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
 import ManifestType from './ManifestType';
+import Status from './Status';
 
 /**
  * @export

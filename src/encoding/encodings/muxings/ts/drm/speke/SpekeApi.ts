@@ -22,7 +22,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add SPEKE DRM key provider to TS muxing
+   * @summary Add SPEKE DRM key provider to a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @param {SpekeDrm} spekeDrm The SPEKE DRM key provider to be created
@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from TS muxing
+   * @summary Delete SPEKE DRM from a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of TS muxing
+   * @summary SPEKE DRM Details of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of TS muxing
+   * @summary List SPEKE DRM of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

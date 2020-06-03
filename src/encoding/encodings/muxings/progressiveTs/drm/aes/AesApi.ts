@@ -22,7 +22,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AES encryption configuration to Progressive TS muxing
+   * @summary Add AES encryption configuration to a Progressive TS muxing
    * @param {string} encodingId Id of the encoding
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {AesEncryptionDrm} aesEncryptionDrm The AES encryption configuration to be created. Note that for AES encryption in conjunction with Progressive TS muxing the &#39;iv&#39; must remain unset or be empty.
@@ -40,7 +40,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete AES encryption configuration from Progressive TS muxing
+   * @summary Delete AES encryption configuration from a Progressive TS muxing
    * @param {string} encodingId Id of the encoding
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {string} drmId Id of the AES encryption configuration
@@ -59,7 +59,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary AES encryption Details of Progressive TS muxing
+   * @summary AES encryption Details of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {string} drmId Id of the AES encryption configuration
@@ -78,7 +78,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary List AES encryption configurations of Progressive TS muxing
+   * @summary List AES encryption configurations of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

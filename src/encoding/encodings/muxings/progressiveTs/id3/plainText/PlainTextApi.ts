@@ -22,7 +22,7 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Plain Text ID3 Tag to Progressive TS muxing
+   * @summary Add Plain Text ID3 Tag to a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {PlaintextId3Tag} plaintextId3Tag The Plain Text ID3 Tag to be created
@@ -40,7 +40,7 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Plain Text ID3 Tag of Progressive TS muxing
+   * @summary Delete Plain Text ID3 Tag of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Plain Text ID3 Tag
@@ -59,7 +59,7 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Plain Text ID3 Tag Details of Progressive TS muxing
+   * @summary Plain Text ID3 Tag Details of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Plain Text ID3 Tag
@@ -78,7 +78,7 @@ export default class PlainTextApi extends BaseAPI {
   }
 
   /**
-   * @summary List Plain Text ID3 Tags of Progressive TS muxing
+   * @summary List Plain Text ID3 Tags of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

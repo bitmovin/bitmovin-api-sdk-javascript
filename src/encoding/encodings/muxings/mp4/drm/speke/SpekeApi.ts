@@ -22,7 +22,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add SPEKE DRM key provider to MP4
+   * @summary Add SPEKE DRM key provider to an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @param {SpekeDrm} spekeDrm The SPEKE DRM key provider to be created
@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from MP4
+   * @summary Delete SPEKE DRM from an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of MP4
+   * @summary SPEKE DRM Details of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of MP4
+   * @summary List SPEKE DRM of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

@@ -22,7 +22,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CENC DRM to Progressive WebM
+   * @summary Add CENC DRM to a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing.
    * @param {CencDrm} cencDrm The CENC DRM to be created
@@ -40,7 +40,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete CENC DRM from Progressive WebM
+   * @summary Delete CENC DRM from a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @param {string} drmId Id of the CENC DRM.
@@ -59,7 +59,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary CENC DRM Details of Progressive WebM
+   * @summary CENC DRM Details of a Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing.
    * @param {string} drmId Id of the CENC DRM.

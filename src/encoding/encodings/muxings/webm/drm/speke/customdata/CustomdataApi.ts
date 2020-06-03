@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Custom Data of WebM
+   * @summary SPEKE DRM Custom Data of a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @param {string} drmId Id of the SPEKE DRM.

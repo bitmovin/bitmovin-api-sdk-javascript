@@ -40,7 +40,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SPEKE DRM from Progressive TS
+   * @summary Delete SPEKE DRM from a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of Progressive TS
+   * @summary SPEKE DRM Details of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {string} drmId Id of the SPEKE DRM.
@@ -78,7 +78,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary List SPEKE DRM of Progressive TS
+   * @summary List SPEKE DRM of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

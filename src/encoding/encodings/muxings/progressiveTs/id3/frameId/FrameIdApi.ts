@@ -22,7 +22,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Frame ID ID3 Tag to Progressive TS muxing
+   * @summary Add Frame ID ID3 Tag to a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {FrameIdId3Tag} frameIdId3Tag The Frame ID ID3 Tag to be created
@@ -40,7 +40,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Frame ID ID3 Tag of Progressive TS muxing
+   * @summary Delete Frame ID ID3 Tag of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
@@ -59,7 +59,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Frame ID ID3 Tag Details of Progressive TS muxing
+   * @summary Frame ID ID3 Tag Details of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag
@@ -78,7 +78,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary List Frame ID ID3 Tags of Progressive TS muxing
+   * @summary List Frame ID ID3 Tags of a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

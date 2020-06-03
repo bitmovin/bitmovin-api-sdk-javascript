@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary AES Encryption Custom Data of fMP4
+   * @summary AES encryption Custom Data of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {string} drmId Id of the AES encryption configuration.

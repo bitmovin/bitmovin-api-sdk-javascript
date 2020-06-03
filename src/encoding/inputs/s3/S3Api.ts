@@ -23,7 +23,7 @@ export default class S3Api extends BaseAPI {
 
   /**
    * @summary Create S3 Input
-   * @param {S3Input} s3Input The S3 input to be created
+   * @param {S3Input} s3Input The S3 input to be created  The following permissions are required for S3 input:   * s3:GetObject   * s3:GetBucketLocation, 
    * @throws {BitmovinError}
    * @memberof S3Api
    */

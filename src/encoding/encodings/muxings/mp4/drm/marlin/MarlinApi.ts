@@ -21,7 +21,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Marlin DRM to MP4
+   * @summary Add Marlin DRM to an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {MarlinDrm} marlinDrm The Marlin DRM to be created
@@ -39,7 +39,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Marlin DRM from MP4
+   * @summary Delete Marlin DRM from an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the Marlin DRM configuration.
@@ -58,7 +58,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary Marlin DRM Details of MP4
+   * @summary Marlin DRM Details of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the Marlin DRM configuration.
@@ -77,7 +77,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary List Marlin DRMs of MP4
+   * @summary List Marlin DRMs of an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

@@ -16,9 +16,9 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Custom Data of Progressive TS
+   * @summary FairPlay DRM Custom Data of a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {string} muxingId Id of the progressive TS fragment.
+   * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

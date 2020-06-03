@@ -3,6 +3,7 @@ import DashProfile from './DashProfile';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
 import ManifestType from './ManifestType';
+import Status from './Status';
 import UtcTiming from './UtcTiming';
 import XmlNamespace from './XmlNamespace';
 

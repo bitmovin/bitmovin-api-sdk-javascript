@@ -4,6 +4,7 @@ import HlsManifest from './HlsManifest';
 import HlsManifestDefaultVersion from './HlsManifestDefaultVersion';
 import HlsVersion from './HlsVersion';
 import ManifestType from './ManifestType';
+import Status from './Status';
 
 /**
  * @export

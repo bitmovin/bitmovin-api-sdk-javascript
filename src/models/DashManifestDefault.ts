@@ -5,6 +5,7 @@ import DashProfile from './DashProfile';
 import DefaultDashManifestPeriod from './DefaultDashManifestPeriod';
 import EncodingOutput from './EncodingOutput';
 import ManifestType from './ManifestType';
+import Status from './Status';
 import UtcTiming from './UtcTiming';
 import XmlNamespace from './XmlNamespace';
 

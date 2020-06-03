@@ -14,7 +14,7 @@ export class AudioConfiguration extends CodecConfiguration {
   public bitrate?: number;
 
   /**
-   * Audio sampling rate Hz
+   * Audio sampling rate in Hz
    * @type {number}
    * @memberof AudioConfiguration
    */

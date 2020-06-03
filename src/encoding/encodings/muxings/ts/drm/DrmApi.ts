@@ -26,7 +26,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all DRM configurations of TS muxing
+   * @summary List all DRM configurations of a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @throws {BitmovinError}

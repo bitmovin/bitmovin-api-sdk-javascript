@@ -22,7 +22,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Add FairPlay DRM to fMP4
+   * @summary Add FairPlay DRM to an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
@@ -40,7 +40,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete FairPlay DRM from fMP4
+   * @summary Delete FairPlay DRM from an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the FairPlay DRM configuration.
@@ -59,7 +59,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Details of fMP4
+   * @summary FairPlay DRM Details of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the FairPlay DRM configuration.
@@ -78,7 +78,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary List FairPlay DRMs of fMP4
+   * @summary List FairPlay DRMs of an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

@@ -22,7 +22,7 @@ export default class S3RoleBasedApi extends BaseAPI {
 
   /**
    * @summary Create S3 Role-based Input
-   * @param {S3RoleBasedInput} s3RoleBasedInput The S3 Role-based input to be created
+   * @param {S3RoleBasedInput} s3RoleBasedInput The S3 Role-based input to be created  The following permissions are required for S3 Role-based input:   * s3:GetObject   * s3:GetBucketLocation, 
    * @throws {BitmovinError}
    * @memberof S3RoleBasedApi
    */
