@@ -1,4 +1,9 @@
+import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
+import BillableEncodingMinutes from './BillableEncodingMinutes';
+import EgressInformation from './EgressInformation';
 import EncodingStatistics from './EncodingStatistics';
+import StatisticsPerMuxing from './StatisticsPerMuxing';
+import StatisticsPerStream from './StatisticsPerStream';
 
 /**
  * @export

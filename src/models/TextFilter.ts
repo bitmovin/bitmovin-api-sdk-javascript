@@ -141,6 +141,12 @@ export class TextFilter extends Filter {
    */
   public y?: string;
 
+  /**
+   * @type {string}
+   * @memberof TextFilter
+   */
+  public rate?: string;
+
   constructor(obj?: Partial<TextFilter>) {
     super(obj);
     if(!obj) {
@@ -164,6 +170,7 @@ export class TextFilter extends Filter {
     this.text = map(obj.text);
     this.x = map(obj.x);
     this.y = map(obj.y);
+    this.rate = map(obj.rate);
   }
 }
 

@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AudioVolumeFormat from './AudioVolumeFormat';
 import AudioVolumeUnit from './AudioVolumeUnit';
 import Filter from './Filter';
 import FilterType from './FilterType';
@@ -28,6 +29,12 @@ export class AudioVolumeFilter extends Filter {
    */
   public unit?: AudioVolumeUnit;
 
+  /**
+   * @type {AudioVolumeFormat}
+   * @memberof AudioVolumeFilter
+   */
+  public format?: AudioVolumeFormat;
+
   constructor(obj?: Partial<AudioVolumeFilter>) {
     super(obj);
     if(!obj) {
@@ -35,6 +42,7 @@ export class AudioVolumeFilter extends Filter {
     }
     this.volume = map(obj.volume);
     this.unit = map(obj.unit);
+    this.format = map(obj.format);
   }
 }
 

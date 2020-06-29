@@ -1,4 +1,9 @@
 import {map, mapArray} from '../common/Mapper';
+import BillableEncodingFeatureMinutes from './BillableEncodingFeatureMinutes';
+import BillableEncodingMinutes from './BillableEncodingMinutes';
+import EgressInformation from './EgressInformation';
+import StatisticsPerMuxing from './StatisticsPerMuxing';
+import StatisticsPerStream from './StatisticsPerStream';
 
 /**
  * @export
@@ -33,6 +38,50 @@ export class EncodingStatistics {
    */
   public bytesEgress?: number;
 
+  /**
+   * @type {BillableEncodingMinutes[]}
+   * @memberof EncodingStatistics
+   */
+  public billableEncodingMinutes?: BillableEncodingMinutes[];
+
+  /**
+   * @type {EgressInformation[]}
+   * @memberof EncodingStatistics
+   */
+  public billableEgressBytes?: EgressInformation[];
+
+  /**
+   * @type {StatisticsPerStream[]}
+   * @memberof EncodingStatistics
+   */
+  public streams?: StatisticsPerStream[];
+
+  /**
+   * @type {StatisticsPerMuxing[]}
+   * @memberof EncodingStatistics
+   */
+  public muxings?: StatisticsPerMuxing[];
+
+  /**
+   * @type {BillableEncodingFeatureMinutes[]}
+   * @memberof EncodingStatistics
+   */
+  public features?: BillableEncodingFeatureMinutes[];
+
+  /**
+   * Billable minutes for the muxings.
+   * @type {number}
+   * @memberof EncodingStatistics
+   */
+  public billableTransmuxingMinutes?: number;
+
+  /**
+   * Billable minutes for the features.
+   * @type {number}
+   * @memberof EncodingStatistics
+   */
+  public billableFeatureMinutes?: number;
+
   constructor(obj?: Partial<EncodingStatistics>) {
     if(!obj) {
       return;
@@ -41,6 +90,13 @@ export class EncodingStatistics {
     this.bytesEncoded = map(obj.bytesEncoded);
     this.timeEncoded = map(obj.timeEncoded);
     this.bytesEgress = map(obj.bytesEgress);
+    this.billableEncodingMinutes = mapArray(obj.billableEncodingMinutes, BillableEncodingMinutes);
+    this.billableEgressBytes = mapArray(obj.billableEgressBytes, EgressInformation);
+    this.streams = mapArray(obj.streams, StatisticsPerStream);
+    this.muxings = mapArray(obj.muxings, StatisticsPerMuxing);
+    this.features = mapArray(obj.features, BillableEncodingFeatureMinutes);
+    this.billableTransmuxingMinutes = map(obj.billableTransmuxingMinutes);
+    this.billableFeatureMinutes = map(obj.billableFeatureMinutes);
   }
 }
 

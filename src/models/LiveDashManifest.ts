@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AvailabilityStartTimeMode from './AvailabilityStartTimeMode';
 
 /**
  * @export
@@ -26,6 +27,27 @@ export class LiveDashManifest {
    */
   public liveEdgeOffset?: number;
 
+  /**
+   * The suggestedPresentationDelay to be set in the DASH manifest. If nothing is set, no value will be set.
+   * @type {number}
+   * @memberof LiveDashManifest
+   */
+  public suggestedPresentationDelay?: number;
+
+  /**
+   * The minimumUpdatePeriod to be set in the DASH manifest. If nothing is set, the segment duration will be set.
+   * @type {number}
+   * @memberof LiveDashManifest
+   */
+  public minimumUpdatePeriod?: number;
+
+  /**
+   * The mode to trigger the availabilityStartTime initialization.
+   * @type {AvailabilityStartTimeMode}
+   * @memberof LiveDashManifest
+   */
+  public availabilityStartTimeMode?: AvailabilityStartTimeMode;
+
   constructor(obj?: Partial<LiveDashManifest>) {
     if(!obj) {
       return;
@@ -33,6 +55,9 @@ export class LiveDashManifest {
     this.manifestId = map(obj.manifestId);
     this.timeshift = map(obj.timeshift);
     this.liveEdgeOffset = map(obj.liveEdgeOffset);
+    this.suggestedPresentationDelay = map(obj.suggestedPresentationDelay);
+    this.minimumUpdatePeriod = map(obj.minimumUpdatePeriod);
+    this.availabilityStartTimeMode = map(obj.availabilityStartTimeMode);
   }
 }
 

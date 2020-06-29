@@ -92,10 +92,17 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#billableegressbytes" class="tsd-kind-icon">billable<wbr>Egress<wbr>Bytes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#billableencodingminutes" class="tsd-kind-icon">billable<wbr>Encoding<wbr>Minutes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#billablefeatureminutes" class="tsd-kind-icon">billable<wbr>Feature<wbr>Minutes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#billabletransmuxingminutes" class="tsd-kind-icon">billable<wbr>Transmuxing<wbr>Minutes</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#bytesegress" class="tsd-kind-icon">bytes<wbr>Egress</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#bytesencoded" class="tsd-kind-icon">bytes<wbr>Encoded</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#date" class="tsd-kind-icon">date</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#features" class="tsd-kind-icon">features</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#muxings" class="tsd-kind-icon">muxings</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="encodingstatisticsvod.html#realtimefactor" class="tsd-kind-icon">real<wbr>Time<wbr>Factor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#streams" class="tsd-kind-icon">streams</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="encodingstatisticsvod.html#timeencoded" class="tsd-kind-icon">time<wbr>Encoded</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="encodingstatisticsvod.html#timeenqueued" class="tsd-kind-icon">time<wbr>Enqueued</a></li>
 							</ul>
@@ -116,7 +123,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatisticsVod.ts#L21">models/EncodingStatisticsVod.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatisticsVod.ts#L26">models/EncodingStatisticsVod.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -133,13 +140,57 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="billableegressbytes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> billable<wbr>Egress<wbr>Bytes</h3>
+					<div class="tsd-signature tsd-kind-icon">billable<wbr>Egress<wbr>Bytes<span class="tsd-signature-symbol">:</span> <a href="egressinformation.html" class="tsd-signature-type">EgressInformation</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#billableegressbytes">billableEgressBytes</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L51">models/EncodingStatistics.ts:51</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="billableencodingminutes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> billable<wbr>Encoding<wbr>Minutes</h3>
+					<div class="tsd-signature tsd-kind-icon">billable<wbr>Encoding<wbr>Minutes<span class="tsd-signature-symbol">:</span> <a href="billableencodingminutes.html" class="tsd-signature-type">BillableEncodingMinutes</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#billableencodingminutes">billableEncodingMinutes</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L45">models/EncodingStatistics.ts:45</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="billablefeatureminutes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> billable<wbr>Feature<wbr>Minutes</h3>
+					<div class="tsd-signature tsd-kind-icon">billable<wbr>Feature<wbr>Minutes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#billablefeatureminutes">billableFeatureMinutes</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L83">models/EncodingStatistics.ts:83</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="billabletransmuxingminutes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> billable<wbr>Transmuxing<wbr>Minutes</h3>
+					<div class="tsd-signature tsd-kind-icon">billable<wbr>Transmuxing<wbr>Minutes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#billabletransmuxingminutes">billableTransmuxingMinutes</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L76">models/EncodingStatistics.ts:76</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="bytesegress" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bytes<wbr>Egress</h3>
 					<div class="tsd-signature tsd-kind-icon">bytes<wbr>Egress<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#bytesegress">bytesEgress</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatistics.ts#L34">models/EncodingStatistics.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L39">models/EncodingStatistics.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,7 +201,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#bytesencoded">bytesEncoded</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatistics.ts#L20">models/EncodingStatistics.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L25">models/EncodingStatistics.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -161,7 +212,29 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#date">date</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatistics.ts#L13">models/EncodingStatistics.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L18">models/EncodingStatistics.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="features" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> features</h3>
+					<div class="tsd-signature tsd-kind-icon">features<span class="tsd-signature-symbol">:</span> <a href="billableencodingfeatureminutes.html" class="tsd-signature-type">BillableEncodingFeatureMinutes</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#features">features</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L69">models/EncodingStatistics.ts:69</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="muxings" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> muxings</h3>
+					<div class="tsd-signature tsd-kind-icon">muxings<span class="tsd-signature-symbol">:</span> <a href="statisticspermuxing.html" class="tsd-signature-type">StatisticsPerMuxing</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#muxings">muxings</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L63">models/EncodingStatistics.ts:63</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +244,18 @@
 					<div class="tsd-signature tsd-kind-icon">real<wbr>Time<wbr>Factor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatisticsVod.ts#L21">models/EncodingStatisticsVod.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatisticsVod.ts#L26">models/EncodingStatisticsVod.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="streams" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> streams</h3>
+					<div class="tsd-signature tsd-kind-icon">streams<span class="tsd-signature-symbol">:</span> <a href="statisticsperstream.html" class="tsd-signature-type">StatisticsPerStream</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#streams">streams</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L57">models/EncodingStatistics.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +266,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="encodingstatistics.html">EncodingStatistics</a>.<a href="encodingstatistics.html#timeencoded">timeEncoded</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatistics.ts#L27">models/EncodingStatistics.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatistics.ts#L32">models/EncodingStatistics.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,7 +276,7 @@
 					<div class="tsd-signature tsd-kind-icon">time<wbr>Enqueued<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/596356e/src/models/EncodingStatisticsVod.ts#L14">models/EncodingStatisticsVod.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/EncodingStatisticsVod.ts#L19">models/EncodingStatisticsVod.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -217,6 +301,18 @@
 								<a href="encodingstatisticsvod.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#billableegressbytes" class="tsd-kind-icon">billable<wbr>Egress<wbr>Bytes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#billableencodingminutes" class="tsd-kind-icon">billable<wbr>Encoding<wbr>Minutes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#billablefeatureminutes" class="tsd-kind-icon">billable<wbr>Feature<wbr>Minutes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#billabletransmuxingminutes" class="tsd-kind-icon">billable<wbr>Transmuxing<wbr>Minutes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="encodingstatisticsvod.html#bytesegress" class="tsd-kind-icon">bytes<wbr>Egress</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
@@ -225,8 +321,17 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="encodingstatisticsvod.html#date" class="tsd-kind-icon">date</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#features" class="tsd-kind-icon">features</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#muxings" class="tsd-kind-icon">muxings</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="encodingstatisticsvod.html#realtimefactor" class="tsd-kind-icon">real<wbr>Time<wbr>Factor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="encodingstatisticsvod.html#streams" class="tsd-kind-icon">streams</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="encodingstatisticsvod.html#timeencoded" class="tsd-kind-icon">time<wbr>Encoded</a>
