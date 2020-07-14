@@ -4,6 +4,7 @@ import BAdapt from './BAdapt';
 import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
+import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import H264BPyramid from './H264BPyramid';
 import H264InterlaceMode from './H264InterlaceMode';

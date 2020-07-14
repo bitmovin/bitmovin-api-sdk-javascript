@@ -17,6 +17,13 @@ export class Encoding extends BitmovinResource {
   public cloudRegion?: CloudRegion;
 
   /**
+   * Specify a list of regions which are used in case the preferred region is down. Currently there are several restrictions. - The region has to be specific or AUTO - The region has to be for the same cloud provider as the default one - You can only configure at most 3 fallback regions 
+   * @type {CloudRegion[]}
+   * @memberof Encoding
+   */
+  public fallbackCloudRegions?: CloudRegion[];
+
+  /**
    * Version of the encoder
    * @type {string}
    * @memberof Encoding
@@ -77,6 +84,7 @@ export class Encoding extends BitmovinResource {
       return;
     }
     this.cloudRegion = map(obj.cloudRegion);
+    this.fallbackCloudRegions = mapArray(obj.fallbackCloudRegions);
     this.encoderVersion = map(obj.encoderVersion);
     this.infrastructureId = map(obj.infrastructureId);
     this.infrastructure = map(obj.infrastructure, InfrastructureSettings);

@@ -47,6 +47,13 @@ export class AutoRestartConfiguration {
    */
   public scheduleExpression?: string;
 
+  /**
+   * Defines if the encoding should be restarted in case of an error during encoding.
+   * @type {boolean}
+   * @memberof AutoRestartConfiguration
+   */
+  public restartOnEncoderError?: boolean;
+
   constructor(obj?: Partial<AutoRestartConfiguration>) {
     if(!obj) {
       return;
@@ -57,6 +64,7 @@ export class AutoRestartConfiguration {
     this.hlsManifestsUpdateTimeout = map(obj.hlsManifestsUpdateTimeout);
     this.dashManifestsUpdateTimeout = map(obj.dashManifestsUpdateTimeout);
     this.scheduleExpression = map(obj.scheduleExpression);
+    this.restartOnEncoderError = map(obj.restartOnEncoderError);
   }
 }
 

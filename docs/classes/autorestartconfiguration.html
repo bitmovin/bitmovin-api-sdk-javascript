@@ -91,6 +91,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#dashmanifestsupdatetimeout" class="tsd-kind-icon">dash<wbr>Manifests<wbr>Update<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#frameswrittentimeout" class="tsd-kind-icon">frames<wbr>Written<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#hlsmanifestsupdatetimeout" class="tsd-kind-icon">hls<wbr>Manifests<wbr>Update<wbr>Timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#restartonencodererror" class="tsd-kind-icon">restart<wbr>OnEncoder<wbr>Error</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#scheduleexpression" class="tsd-kind-icon">schedule<wbr>Expression</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="autorestartconfiguration.html#segmentswrittentimeout" class="tsd-kind-icon">segments<wbr>Written<wbr>Timeout</a></li>
 							</ul>
@@ -110,7 +111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L48">models/AutoRestartConfiguration.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L55">models/AutoRestartConfiguration.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">bytes<wbr>Written<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L20">models/AutoRestartConfiguration.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L20">models/AutoRestartConfiguration.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,7 +143,7 @@
 					<div class="tsd-signature tsd-kind-icon">dash<wbr>Manifests<wbr>Update<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L41">models/AutoRestartConfiguration.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L41">models/AutoRestartConfiguration.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -152,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">frames<wbr>Written<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L27">models/AutoRestartConfiguration.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L27">models/AutoRestartConfiguration.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,7 +163,17 @@
 					<div class="tsd-signature tsd-kind-icon">hls<wbr>Manifests<wbr>Update<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L34">models/AutoRestartConfiguration.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L34">models/AutoRestartConfiguration.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="restartonencodererror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> restart<wbr>OnEncoder<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">restart<wbr>OnEncoder<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L55">models/AutoRestartConfiguration.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">schedule<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L48">models/AutoRestartConfiguration.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L48">models/AutoRestartConfiguration.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">segments<wbr>Written<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/3292c4d/src/models/AutoRestartConfiguration.ts#L13">models/AutoRestartConfiguration.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/bitmovin/bitmovin-api-sdk-javascript/blob/517cdfb/src/models/AutoRestartConfiguration.ts#L13">models/AutoRestartConfiguration.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -217,6 +228,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="autorestartconfiguration.html#hlsmanifestsupdatetimeout" class="tsd-kind-icon">hls<wbr>Manifests<wbr>Update<wbr>Timeout</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="autorestartconfiguration.html#restartonencodererror" class="tsd-kind-icon">restart<wbr>OnEncoder<wbr>Error</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="autorestartconfiguration.html#scheduleexpression" class="tsd-kind-icon">schedule<wbr>Expression</a>

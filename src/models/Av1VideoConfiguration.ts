@@ -3,6 +3,7 @@ import Av1AdaptiveQuantMode from './Av1AdaptiveQuantMode';
 import Av1KeyPlacementMode from './Av1KeyPlacementMode';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
+import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import PixelFormat from './PixelFormat';
 import VideoConfiguration from './VideoConfiguration';

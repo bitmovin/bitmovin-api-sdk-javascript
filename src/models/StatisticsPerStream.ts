@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
 import DolbyVisionPerStreamMode from './DolbyVisionPerStreamMode';
 import EncodingMode from './EncodingMode';
+import InputFactor from './InputFactor';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
 import StatisticsResolution from './StatisticsResolution';
@@ -173,6 +174,12 @@ export class StatisticsPerStream {
    */
   public liveMultiplicator?: number;
 
+  /**
+   * @type {InputFactor}
+   * @memberof StatisticsPerStream
+   */
+  public inputFactor?: InputFactor;
+
   constructor(obj?: Partial<StatisticsPerStream>) {
     if(!obj) {
       return;
@@ -201,6 +208,7 @@ export class StatisticsPerStream {
     this.presetMultiplicator = map(obj.presetMultiplicator);
     this.live = map(obj.live);
     this.liveMultiplicator = map(obj.liveMultiplicator);
+    this.inputFactor = map(obj.inputFactor, InputFactor);
   }
 }
 

@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
+import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import PixelFormat from './PixelFormat';
 import PresetConfiguration from './PresetConfiguration';

@@ -4,6 +4,7 @@ import BAdapt from './BAdapt';
 import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
+import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import ForceFlushMode from './ForceFlushMode';
 import LevelH265 from './LevelH265';

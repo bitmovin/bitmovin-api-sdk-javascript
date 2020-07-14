@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import AacApi from './aac/AacApi';
+import DtsPassthroughApi from './dtsPassthrough/DtsPassthroughApi';
 import HeAacV1Api from './heAacV1/HeAacV1Api';
 import HeAacV2Api from './heAacV2/HeAacV2Api';
 import VorbisApi from './vorbis/VorbisApi';
@@ -19,6 +20,7 @@ import Mp3Api from './mp3/Mp3Api';
  */
 export default class AudioApi extends BaseAPI {
   public aac: AacApi;
+  public dtsPassthrough: DtsPassthroughApi;
   public heAacV1: HeAacV1Api;
   public heAacV2: HeAacV2Api;
   public vorbis: VorbisApi;
@@ -31,6 +33,7 @@ export default class AudioApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.aac = new AacApi(configuration);
+    this.dtsPassthrough = new DtsPassthroughApi(configuration);
     this.heAacV1 = new HeAacV1Api(configuration);
     this.heAacV2 = new HeAacV2Api(configuration);
     this.vorbis = new VorbisApi(configuration);

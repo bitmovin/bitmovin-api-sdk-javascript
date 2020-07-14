@@ -4,6 +4,7 @@
  */
 export enum CodecConfigType {
   AAC = 'AAC',
+  DTS_PASSTHROUGH = 'DTS_PASSTHROUGH',
   HE_AAC_V1 = 'HE_AAC_V1',
   HE_AAC_V2 = 'HE_AAC_V2',
   H264 = 'H264',

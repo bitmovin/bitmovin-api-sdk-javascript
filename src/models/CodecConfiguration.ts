@@ -3,6 +3,7 @@ import Ac3AudioConfiguration from './Ac3AudioConfiguration';
 import Av1VideoConfiguration from './Av1VideoConfiguration';
 import BitmovinResource from './BitmovinResource';
 import CodecConfigType from './CodecConfigType';
+import DtsPassthroughAudioConfiguration from './DtsPassthroughAudioConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
 import H264VideoConfiguration from './H264VideoConfiguration';
 import H265VideoConfiguration from './H265VideoConfiguration';
@@ -18,6 +19,7 @@ import Vp9VideoConfiguration from './Vp9VideoConfiguration';
 
 export type CodecConfigurationUnion =
   AacAudioConfiguration |
+  DtsPassthroughAudioConfiguration |
   HeAacV1AudioConfiguration |
   HeAacV2AudioConfiguration |
   H264VideoConfiguration |
@@ -41,6 +43,7 @@ export class CodecConfiguration extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
   protected static readonly _discriminatorMapping: { [key in keyof typeof CodecConfigType]: string; } = {
     AAC: 'AacAudioConfiguration',
+    DTS_PASSTHROUGH: 'DtsPassthroughAudioConfiguration',
     HE_AAC_V1: 'HeAacV1AudioConfiguration',
     HE_AAC_V2: 'HeAacV2AudioConfiguration',
     H264: 'H264VideoConfiguration',
