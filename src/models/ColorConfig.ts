@@ -55,28 +55,28 @@ export class ColorConfig {
   public chromaLocation?: ChromaLocation;
 
   /**
-   * The color space to be applied
+   * The color space to be applied. If used on a Dolby Vision stream, this value must be set to UNSPECIFIED.
    * @type {ColorSpace}
    * @memberof ColorConfig
    */
   public colorSpace?: ColorSpace;
 
   /**
-   * The color primaries to be applied
+   * The color primaries to be applied. If used on a Dolby Vision stream, this value must be set to UNSPECIFIED.
    * @type {ColorPrimaries}
    * @memberof ColorConfig
    */
   public colorPrimaries?: ColorPrimaries;
 
   /**
-   * The color range to be applied
+   * The color range to be applied. If used on a Dolby Vision stream, this value must be set to JPEG.
    * @type {ColorRange}
    * @memberof ColorConfig
    */
   public colorRange?: ColorRange;
 
   /**
-   * The color transfer to be applied
+   * The color transfer to be applied. If used on a Dolby Vision stream, this value must be set to UNSPECIFIED.
    * @type {ColorTransfer}
    * @memberof ColorConfig
    */

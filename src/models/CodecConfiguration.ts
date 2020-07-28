@@ -3,6 +3,7 @@ import Ac3AudioConfiguration from './Ac3AudioConfiguration';
 import Av1VideoConfiguration from './Av1VideoConfiguration';
 import BitmovinResource from './BitmovinResource';
 import CodecConfigType from './CodecConfigType';
+import DolbyAtmosAudioConfiguration from './DolbyAtmosAudioConfiguration';
 import DtsPassthroughAudioConfiguration from './DtsPassthroughAudioConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
 import H264VideoConfiguration from './H264VideoConfiguration';
@@ -33,7 +34,8 @@ export type CodecConfigurationUnion =
   OpusAudioConfiguration |
   VorbisAudioConfiguration |
   MjpegVideoConfiguration |
-  Av1VideoConfiguration;
+  Av1VideoConfiguration |
+  DolbyAtmosAudioConfiguration;
 
 /**
  * @export
@@ -57,7 +59,8 @@ export class CodecConfiguration extends BitmovinResource {
     OPUS: 'OpusAudioConfiguration',
     VORBIS: 'VorbisAudioConfiguration',
     MJPEG: 'MjpegVideoConfiguration',
-    AV1: 'Av1VideoConfiguration'
+    AV1: 'Av1VideoConfiguration',
+    DOLBY_ATMOS: 'DolbyAtmosAudioConfiguration'
   };
 
   constructor(obj?: Partial<CodecConfiguration>) {

@@ -18,7 +18,8 @@ export enum CodecConfigType {
   OPUS = 'OPUS',
   VORBIS = 'VORBIS',
   MJPEG = 'MJPEG',
-  AV1 = 'AV1'
+  AV1 = 'AV1',
+  DOLBY_ATMOS = 'DOLBY_ATMOS'
 }
 
 export default CodecConfigType;
