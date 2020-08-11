@@ -20,7 +20,7 @@ export default class DomainsApi extends BaseAPI {
   /**
    * @summary Add Domain
    * @param {string} licenseId Id of the Player License
-   * @param {Domain} domain The Domain to be added to Player License Whitelist
+   * @param {Domain} domain The Domain to be added to Player License Allowlist
    * @throws {BitmovinError}
    * @memberof DomainsApi
    */

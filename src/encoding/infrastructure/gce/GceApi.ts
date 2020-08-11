@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
+import RegionsApi from './regions/RegionsApi';
 import GceAccount from '../../../models/GceAccount';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {GceAccountListQueryParams, GceAccountListQueryParamsBuilder} from './GceAccountListQueryParams';
@@ -12,9 +13,11 @@ import {GceAccountListQueryParams, GceAccountListQueryParamsBuilder} from './Gce
  * @extends {BaseAPI}
  */
 export default class GceApi extends BaseAPI {
+  public regions: RegionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.regions = new RegionsApi(configuration);
   }
 
   /**
