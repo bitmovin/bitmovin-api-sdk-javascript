@@ -7,7 +7,7 @@ import StreamInfosDetails from './StreamInfosDetails';
  */
 export class StreamInfos {
   /**
-   * Timestamp of the event formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
+   * Timestamp of the event, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
    * @type {Date}
    * @memberof StreamInfos
    */

@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import CloudRegion from './CloudRegion';
 import EncodingMode from './EncodingMode';
+import EncodingType from './EncodingType';
 import InfrastructureSettings from './InfrastructureSettings';
 import Status from './Status';
 
@@ -10,6 +11,55 @@ import Status from './Status';
  * @class Encoding
  */
 export class Encoding extends BitmovinResource {
+  /**
+   * Type of the encoding
+   * @type {EncodingType}
+   * @memberof Encoding
+   */
+  public type?: EncodingType;
+
+  /**
+   * Timestamp when the encoding was started, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof Encoding
+   */
+  public startedAt?: Date;
+
+  /**
+   * Timestamp when the encoding status changed to \"QUEUED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof Encoding
+   */
+  public queuedAt?: Date;
+
+  /**
+   * Timestamp when the encoding status changed to to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof Encoding
+   */
+  public runningAt?: Date;
+
+  /**
+   * Timestamp when the encoding status changed to \"FINISHED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof Encoding
+   */
+  public finishedAt?: Date;
+
+  /**
+   * Timestamp when the encoding status changed to \"ERROR\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * @type {Date}
+   * @memberof Encoding
+   */
+  public errorAt?: Date;
+
+  /**
+   * Progress of the encoding in percent
+   * @type {number}
+   * @memberof Encoding
+   */
+  public progress?: number;
+
   /**
    * @type {CloudRegion}
    * @memberof Encoding
@@ -83,6 +133,13 @@ export class Encoding extends BitmovinResource {
     if(!obj) {
       return;
     }
+    this.type = map(obj.type);
+    this.startedAt = map(obj.startedAt, Date);
+    this.queuedAt = map(obj.queuedAt, Date);
+    this.runningAt = map(obj.runningAt, Date);
+    this.finishedAt = map(obj.finishedAt, Date);
+    this.errorAt = map(obj.errorAt, Date);
+    this.progress = map(obj.progress);
     this.cloudRegion = map(obj.cloudRegion);
     this.fallbackCloudRegions = mapArray(obj.fallbackCloudRegions);
     this.encoderVersion = map(obj.encoderVersion);

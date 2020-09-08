@@ -1,11 +1,19 @@
 import {map, mapArray} from '../common/Mapper';
-import BitmovinResource from './BitmovinResource';
+import CodecConfigType from './CodecConfigType';
+import SubtitleConfiguration from './SubtitleConfiguration';
 
 /**
  * @export
  * @class WebVttConfiguration
  */
-export class WebVttConfiguration extends BitmovinResource {
+export class WebVttConfiguration extends SubtitleConfiguration {
+  /**
+   * Discriminator property for CodecConfiguration
+   * @type {string}
+   * @memberof WebVttConfiguration
+   */
+  public type: CodecConfigType.WEBVTT = CodecConfigType.WEBVTT;
+
   /**
    * If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.
    * @type {boolean}

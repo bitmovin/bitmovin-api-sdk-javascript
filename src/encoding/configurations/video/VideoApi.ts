@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
+import H262Api from './h262/H262Api';
 import H264Api from './h264/H264Api';
 import H265Api from './h265/H265Api';
 import Vp8Api from './vp8/Vp8Api';
@@ -15,6 +16,7 @@ import MjpegApi from './mjpeg/MjpegApi';
  * @extends {BaseAPI}
  */
 export default class VideoApi extends BaseAPI {
+  public h262: H262Api;
   public h264: H264Api;
   public h265: H265Api;
   public vp8: Vp8Api;
@@ -24,6 +26,7 @@ export default class VideoApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.h262 = new H262Api(configuration);
     this.h264 = new H264Api(configuration);
     this.h265 = new H265Api(configuration);
     this.vp8 = new Vp8Api(configuration);

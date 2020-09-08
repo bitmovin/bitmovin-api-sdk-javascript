@@ -46,35 +46,35 @@ export class Task extends BitmovinResponse {
   public messages?: Message[];
 
   /**
-   * Timestamp when the task was created, formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the task was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Task
    */
   public createdAt?: Date;
 
   /**
-   * Timestamp when the task status changed to \"QUEUED\", formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the task status changed to \"QUEUED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Task
    */
   public queuedAt?: Date;
 
   /**
-   * Timestamp when the task status changed to to \"RUNNING\", formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the task status changed to to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Task
    */
   public runningAt?: Date;
 
   /**
-   * Timestamp when the task status changed to \"FINISHED\", formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the task status changed to \"FINISHED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Task
    */
   public finishedAt?: Date;
 
   /**
-   * Timestamp when the task status changed to \"ERROR\", formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the task status changed to \"ERROR\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Task
    */

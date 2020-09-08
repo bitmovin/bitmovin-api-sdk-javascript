@@ -1,7 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
-import StreamDetails from '../../../../models/StreamDetails';
+import EncodingStreamInput from '../../../../models/EncodingStreamInput';
 import PaginationResponse from '../../../../models/PaginationResponse';
 
 /**
@@ -23,13 +23,13 @@ export default class InputsApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof InputsApi
    */
-  public list(encodingId: string, streamId: string): Promise<PaginationResponse<StreamDetails>> {
+  public list(encodingId: string, streamId: string): Promise<PaginationResponse<EncodingStreamInput>> {
     const pathParamMap = {
       encoding_id: encodingId,
       stream_id: streamId
     };
-    return this.restClient.get<PaginationResponse<StreamDetails>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs', pathParamMap).then((response) => {
-      return new PaginationResponse<StreamDetails>(response, StreamDetails);
+    return this.restClient.get<PaginationResponse<EncodingStreamInput>>('/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs', pathParamMap).then((response) => {
+      return new PaginationResponse<EncodingStreamInput>(response, EncodingStreamInput);
     });
   }
 }

@@ -8,6 +8,7 @@ import HeAacV1Api from './heAacV1/HeAacV1Api';
 import HeAacV2Api from './heAacV2/HeAacV2Api';
 import VorbisApi from './vorbis/VorbisApi';
 import OpusApi from './opus/OpusApi';
+import PcmApi from './pcm/PcmApi';
 import Ac3Api from './ac3/Ac3Api';
 import Eac3Api from './eac3/Eac3Api';
 import Mp2Api from './mp2/Mp2Api';
@@ -27,6 +28,7 @@ export default class AudioApi extends BaseAPI {
   public heAacV2: HeAacV2Api;
   public vorbis: VorbisApi;
   public opus: OpusApi;
+  public pcm: PcmApi;
   public ac3: Ac3Api;
   public eac3: Eac3Api;
   public mp2: Mp2Api;
@@ -41,6 +43,7 @@ export default class AudioApi extends BaseAPI {
     this.heAacV2 = new HeAacV2Api(configuration);
     this.vorbis = new VorbisApi(configuration);
     this.opus = new OpusApi(configuration);
+    this.pcm = new PcmApi(configuration);
     this.ac3 = new Ac3Api(configuration);
     this.eac3 = new Eac3Api(configuration);
     this.mp2 = new Mp2Api(configuration);

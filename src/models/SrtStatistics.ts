@@ -17,7 +17,7 @@ export class SrtStatistics {
   public id?: string;
 
   /**
-   * Timestamp when the srt statistics event was created, formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the srt statistics event was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof SrtStatistics
    */

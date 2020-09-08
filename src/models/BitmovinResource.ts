@@ -21,14 +21,14 @@ export class BitmovinResource extends BitmovinResponse {
   public description?: string;
 
   /**
-   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof BitmovinResource
    */
   public createdAt?: Date;
 
   /**
-   * Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof BitmovinResource
    */

@@ -15,21 +15,21 @@ export class TransferRetry extends BitmovinResource {
   public status?: Status;
 
   /**
-   * Timestamp when the transfer-retry was started, formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the transfer-retry was started, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof TransferRetry
    */
   public startedAt?: Date;
 
   /**
-   * Timestamp when the transfer-retry status changed to 'FINISHED', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the transfer-retry status changed to 'FINISHED', returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof TransferRetry
    */
   public finishedAt?: Date;
 
   /**
-   * Timestamp when the transfer-retry status changed to 'ERROR', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+   * Timestamp when the transfer-retry status changed to 'ERROR', returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ 
    * @type {Date}
    * @memberof TransferRetry
    */

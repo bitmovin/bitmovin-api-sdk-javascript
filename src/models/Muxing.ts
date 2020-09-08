@@ -10,6 +10,7 @@ import Mp3Muxing from './Mp3Muxing';
 import Mp4Muxing from './Mp4Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
+import MxfMuxing from './MxfMuxing';
 import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
@@ -26,6 +27,7 @@ export type MuxingUnion =
   TsMuxing |
   WebmMuxing |
   Mp3Muxing |
+  MxfMuxing |
   ProgressiveWebmMuxing |
   ProgressiveMovMuxing |
   ProgressiveTsMuxing |
@@ -47,6 +49,7 @@ export class Muxing extends BitmovinResource {
     TS: 'TsMuxing',
     WEBM: 'WebmMuxing',
     MP3: 'Mp3Muxing',
+    MXF: 'MxfMuxing',
     PROGRESSIVE_WEBM: 'ProgressiveWebmMuxing',
     PROGRESSIVE_MOV: 'ProgressiveMovMuxing',
     PROGRESSIVE_TS: 'ProgressiveTsMuxing',

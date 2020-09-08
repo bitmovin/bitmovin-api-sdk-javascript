@@ -10,6 +10,7 @@ import TsApi from './ts/TsApi';
 import WebmApi from './webm/WebmApi';
 import Mp3Api from './mp3/Mp3Api';
 import Mp4Api from './mp4/Mp4Api';
+import MxfApi from './mxf/MxfApi';
 import ProgressiveTsApi from './progressiveTs/ProgressiveTsApi';
 import BroadcastTsApi from './broadcastTs/BroadcastTsApi';
 import ProgressiveWebmApi from './progressiveWebm/ProgressiveWebmApi';
@@ -35,6 +36,7 @@ export default class MuxingsApi extends BaseAPI {
   public webm: WebmApi;
   public mp3: Mp3Api;
   public mp4: Mp4Api;
+  public mxf: MxfApi;
   public progressiveTs: ProgressiveTsApi;
   public broadcastTs: BroadcastTsApi;
   public progressiveWebm: ProgressiveWebmApi;
@@ -51,6 +53,7 @@ export default class MuxingsApi extends BaseAPI {
     this.webm = new WebmApi(configuration);
     this.mp3 = new Mp3Api(configuration);
     this.mp4 = new Mp4Api(configuration);
+    this.mxf = new MxfApi(configuration);
     this.progressiveTs = new ProgressiveTsApi(configuration);
     this.broadcastTs = new BroadcastTsApi(configuration);
     this.progressiveWebm = new ProgressiveWebmApi(configuration);

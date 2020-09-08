@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AnalyticsVideoStartFailedReason from './AnalyticsVideoStartFailedReason';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -531,6 +532,19 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
    */
   public videoWindowWidth?: number;
 
+  /**
+   * True if starting the video failed
+   * @type {boolean}
+   * @memberof AnalyticsImpressionDetails
+   */
+  public videostartFailed?: boolean;
+
+  /**
+   * @type {AnalyticsVideoStartFailedReason}
+   * @memberof AnalyticsImpressionDetails
+   */
+  public videostartFailedReason?: AnalyticsVideoStartFailedReason;
+
   constructor(obj?: Partial<AnalyticsImpressionDetails>) {
     super(obj);
     if(!obj) {
@@ -611,6 +625,8 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
     this.videotimeStart = map(obj.videotimeStart);
     this.videoWindowHeight = map(obj.videoWindowHeight);
     this.videoWindowWidth = map(obj.videoWindowWidth);
+    this.videostartFailed = map(obj.videostartFailed);
+    this.videostartFailedReason = map(obj.videostartFailedReason);
   }
 }
 

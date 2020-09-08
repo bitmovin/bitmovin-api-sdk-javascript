@@ -75,6 +75,13 @@ export class StartEncodingRequest {
   public vodHlsManifests?: ManifestResource[];
 
   /**
+   * List of VoD SMOOTH manifests to be created after encoding finished successfully
+   * @type {ManifestResource[]}
+   * @memberof StartEncodingRequest
+   */
+  public vodSmoothManifests?: ManifestResource[];
+
+  /**
    * Per-Title settings
    * @type {PerTitle}
    * @memberof StartEncodingRequest
@@ -94,6 +101,7 @@ export class StartEncodingRequest {
     this.previewHlsManifests = mapArray(obj.previewHlsManifests, ManifestResource);
     this.vodDashManifests = mapArray(obj.vodDashManifests, ManifestResource);
     this.vodHlsManifests = mapArray(obj.vodHlsManifests, ManifestResource);
+    this.vodSmoothManifests = mapArray(obj.vodSmoothManifests, ManifestResource);
     this.perTitle = map(obj.perTitle, PerTitle);
   }
 }

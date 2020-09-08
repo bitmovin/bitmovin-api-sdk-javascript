@@ -6,6 +6,7 @@ import CodecConfigType from './CodecConfigType';
 import DolbyAtmosAudioConfiguration from './DolbyAtmosAudioConfiguration';
 import DtsPassthroughAudioConfiguration from './DtsPassthroughAudioConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
+import H262VideoConfiguration from './H262VideoConfiguration';
 import H264VideoConfiguration from './H264VideoConfiguration';
 import H265VideoConfiguration from './H265VideoConfiguration';
 import HeAacV1AudioConfiguration from './HeAacV1AudioConfiguration';
@@ -14,9 +15,11 @@ import MjpegVideoConfiguration from './MjpegVideoConfiguration';
 import Mp2AudioConfiguration from './Mp2AudioConfiguration';
 import Mp3AudioConfiguration from './Mp3AudioConfiguration';
 import OpusAudioConfiguration from './OpusAudioConfiguration';
+import PcmAudioConfiguration from './PcmAudioConfiguration';
 import VorbisAudioConfiguration from './VorbisAudioConfiguration';
 import Vp8VideoConfiguration from './Vp8VideoConfiguration';
 import Vp9VideoConfiguration from './Vp9VideoConfiguration';
+import WebVttConfiguration from './WebVttConfiguration';
 
 export type CodecConfigurationUnion =
   AacAudioConfiguration |
@@ -35,7 +38,10 @@ export type CodecConfigurationUnion =
   VorbisAudioConfiguration |
   MjpegVideoConfiguration |
   Av1VideoConfiguration |
-  DolbyAtmosAudioConfiguration;
+  DolbyAtmosAudioConfiguration |
+  H262VideoConfiguration |
+  PcmAudioConfiguration |
+  WebVttConfiguration;
 
 /**
  * @export
@@ -60,7 +66,10 @@ export class CodecConfiguration extends BitmovinResource {
     VORBIS: 'VorbisAudioConfiguration',
     MJPEG: 'MjpegVideoConfiguration',
     AV1: 'Av1VideoConfiguration',
-    DOLBY_ATMOS: 'DolbyAtmosAudioConfiguration'
+    DOLBY_ATMOS: 'DolbyAtmosAudioConfiguration',
+    H262: 'H262VideoConfiguration',
+    PCM: 'PcmAudioConfiguration',
+    WEBVTT: 'WebVttConfiguration'
   };
 
   constructor(obj?: Partial<CodecConfiguration>) {

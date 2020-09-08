@@ -13,7 +13,7 @@ export class CustomData {
   public customData?: { [key: string]: any; };
 
   /**
-   * Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+   * Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof CustomData
    */
