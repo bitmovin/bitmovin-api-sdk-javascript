@@ -57,6 +57,21 @@ export default class OutputsApi extends BaseAPI {
   }
 
   /**
+   * @summary Get Output Details
+   * @param {string} outputId Id of the wanted output
+   * @throws {BitmovinError}
+   * @memberof OutputsApi
+   */
+  public get(outputId: string): Promise<Output> {
+    const pathParamMap = {
+      output_id: outputId
+    };
+    return this.restClient.get<Output>('/encoding/outputs/{output_id}', pathParamMap).then((response) => {
+      return map(response, Output);
+    });
+  }
+
+  /**
    * @summary List all Outputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

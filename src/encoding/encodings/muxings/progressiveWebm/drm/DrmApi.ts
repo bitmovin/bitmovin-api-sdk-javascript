@@ -23,6 +23,25 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
+   * @summary DRM Details of a Progressive WEBM muxing
+   * @param {string} encodingId Id of the encoding.
+   * @param {string} muxingId Id of the Progressive WEBM muxing
+   * @param {string} drmId Id of the DRM.
+   * @throws {BitmovinError}
+   * @memberof DrmApi
+   */
+  public get(encodingId: string, muxingId: string, drmId: string): Promise<Drm> {
+    const pathParamMap = {
+      encoding_id: encodingId,
+      muxing_id: muxingId,
+      drm_id: drmId
+    };
+    return this.restClient.get<Drm>('/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm/{drm_id}', pathParamMap).then((response) => {
+      return map(response, Drm);
+    });
+  }
+
+  /**
    * @summary List all DRMs of Progressive WEBM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WEBM muxing

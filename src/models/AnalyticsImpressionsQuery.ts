@@ -20,6 +20,13 @@ export class AnalyticsImpressionsQuery extends AnalyticsQueryTimeframe {
    */
   public filters?: AnalyticsAbstractFilter[];
 
+  /**
+   * Number of returned impressions
+   * @type {number}
+   * @memberof AnalyticsImpressionsQuery
+   */
+  public limit?: number;
+
   constructor(obj?: Partial<AnalyticsImpressionsQuery>) {
     super(obj);
     if(!obj) {
@@ -27,6 +34,7 @@ export class AnalyticsImpressionsQuery extends AnalyticsQueryTimeframe {
     }
     this.licenseKey = map(obj.licenseKey);
     this.filters = mapArray(obj.filters, AnalyticsAbstractFilter);
+    this.limit = map(obj.limit);
   }
 }
 

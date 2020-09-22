@@ -30,6 +30,21 @@ export default class ConfigurationsApi extends BaseAPI {
   }
 
   /**
+   * @summary Get Codec Configuration Details
+   * @param {string} configurationId Id of the codec configuration
+   * @throws {BitmovinError}
+   * @memberof ConfigurationsApi
+   */
+  public get(configurationId: string): Promise<CodecConfiguration> {
+    const pathParamMap = {
+      configuration_id: configurationId
+    };
+    return this.restClient.get<CodecConfiguration>('/encoding/configurations/{configuration_id}', pathParamMap).then((response) => {
+      return map(response, CodecConfiguration);
+    });
+  }
+
+  /**
    * @summary List all Codec Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

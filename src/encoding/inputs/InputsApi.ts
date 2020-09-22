@@ -81,6 +81,21 @@ export default class InputsApi extends BaseAPI {
   }
 
   /**
+   * @summary Get Input Details
+   * @param {string} inputId Id of the Input
+   * @throws {BitmovinError}
+   * @memberof InputsApi
+   */
+  public get(inputId: string): Promise<Input> {
+    const pathParamMap = {
+      input_id: inputId
+    };
+    return this.restClient.get<Input>('/encoding/inputs/{input_id}', pathParamMap).then((response) => {
+      return map(response, Input);
+    });
+  }
+
+  /**
    * @summary List all Inputs
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

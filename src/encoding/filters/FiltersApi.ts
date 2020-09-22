@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
+import TypeApi from './type/TypeApi';
 import ConformApi from './conform/ConformApi';
 import WatermarkApi from './watermark/WatermarkApi';
 import AudioVolumeApi from './audioVolume/AudioVolumeApi';
@@ -15,7 +16,6 @@ import TextApi from './text/TextApi';
 import InterlaceApi from './interlace/InterlaceApi';
 import UnsharpApi from './unsharp/UnsharpApi';
 import ScaleApi from './scale/ScaleApi';
-import TypeApi from './type/TypeApi';
 import Filter from '../../models/Filter';
 import PaginationResponse from '../../models/PaginationResponse';
 import {FilterListQueryParams, FilterListQueryParamsBuilder} from './FilterListQueryParams';
@@ -27,6 +27,7 @@ import {FilterListQueryParams, FilterListQueryParamsBuilder} from './FilterListQ
  * @extends {BaseAPI}
  */
 export default class FiltersApi extends BaseAPI {
+  public type: TypeApi;
   public conform: ConformApi;
   public watermark: WatermarkApi;
   public audioVolume: AudioVolumeApi;
@@ -41,10 +42,10 @@ export default class FiltersApi extends BaseAPI {
   public interlace: InterlaceApi;
   public unsharp: UnsharpApi;
   public scale: ScaleApi;
-  public type: TypeApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.type = new TypeApi(configuration);
     this.conform = new ConformApi(configuration);
     this.watermark = new WatermarkApi(configuration);
     this.audioVolume = new AudioVolumeApi(configuration);
@@ -59,7 +60,21 @@ export default class FiltersApi extends BaseAPI {
     this.interlace = new InterlaceApi(configuration);
     this.unsharp = new UnsharpApi(configuration);
     this.scale = new ScaleApi(configuration);
-    this.type = new TypeApi(configuration);
+  }
+
+  /**
+   * @summary Get Filter Details
+   * @param {string} filterId Id of the filter
+   * @throws {BitmovinError}
+   * @memberof FiltersApi
+   */
+  public get(filterId: string): Promise<Filter> {
+    const pathParamMap = {
+      filter_id: filterId
+    };
+    return this.restClient.get<Filter>('/encoding/filters/{filter_id}', pathParamMap).then((response) => {
+      return map(response, Filter);
+    });
   }
 
   /**

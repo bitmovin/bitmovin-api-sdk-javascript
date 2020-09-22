@@ -22,13 +22,6 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
   public analyticsVersion?: string;
 
   /**
-   * Autonomous System Number inferred from the IP address
-   * @type {number}
-   * @memberof AnalyticsImpressionDetails
-   */
-  public asn?: number;
-
-  /**
    * Audio Bitrate
    * @type {number}
    * @memberof AnalyticsImpressionDetails
@@ -552,7 +545,6 @@ export class AnalyticsImpressionDetails extends BitmovinResponse {
     }
     this.ad = map(obj.ad);
     this.analyticsVersion = map(obj.analyticsVersion);
-    this.asn = map(obj.asn);
     this.audioBitrate = map(obj.audioBitrate);
     this.audioLanguage = map(obj.audioLanguage);
     this.autoplay = map(obj.autoplay);

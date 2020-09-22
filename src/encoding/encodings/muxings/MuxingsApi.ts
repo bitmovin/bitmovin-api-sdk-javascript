@@ -61,6 +61,23 @@ export default class MuxingsApi extends BaseAPI {
   }
 
   /**
+   * @summary Muxing Details
+   * @param {string} encodingId Id of the encoding.
+   * @param {string} muxingId Id of the muxing.
+   * @throws {BitmovinError}
+   * @memberof MuxingsApi
+   */
+  public get(encodingId: string, muxingId: string): Promise<Muxing> {
+    const pathParamMap = {
+      encoding_id: encodingId,
+      muxing_id: muxingId
+    };
+    return this.restClient.get<Muxing>('/encoding/encodings/{encoding_id}/muxings/{muxing_id}', pathParamMap).then((response) => {
+      return map(response, Muxing);
+    });
+  }
+
+  /**
    * @summary List All Muxings
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
