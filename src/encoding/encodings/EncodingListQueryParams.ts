@@ -1,4 +1,5 @@
 import CloudRegion from '../../models/CloudRegion';
+import EncodingMode from '../../models/EncodingMode';
 
 export interface EncodingListQueryParams {
 
@@ -45,11 +46,32 @@ export interface EncodingListQueryParams {
     cloudRegion?: CloudRegion | undefined;
 
     /**
+     * Filter encodings to only show the ones with the selectedCloudRegion specified which was selected when cloudregion:AUTO was set
+     * @type {CloudRegion}
+     * @memberof EncodingListQueryParams
+     */
+    selectedCloudRegion?: CloudRegion | undefined;
+
+    /**
      * Filter encodings to only show the ones with the encoderVersion specified.
      * @type {string}
      * @memberof EncodingListQueryParams
      */
     encoderVersion?: string | undefined;
+
+    /**
+     * Filter encodings to only show the ones with the encoderVersion specified that was actually used for the encoding.
+     * @type {string}
+     * @memberof EncodingListQueryParams
+     */
+    selectedEncoderVersion?: string | undefined;
+
+    /**
+     * Filter encodings to only show the ones with the encodingMode specified that was actually used for the encoding.
+     * @type {EncodingMode}
+     * @memberof EncodingListQueryParams
+     */
+    selectedEncodingMode?: EncodingMode | undefined;
 
     /**
      * Filter encodings to only show the ones with this exact name.
@@ -125,10 +147,37 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
+     * @param selectedCloudRegion Filter encodings to only show the ones with the selectedCloudRegion specified which was selected when cloudregion:AUTO was set
+     */
+    public selectedCloudRegion(selectedCloudRegion: CloudRegion) {
+        this.internalParams.selectedCloudRegion = selectedCloudRegion;
+        return this;
+    }
+
+    /**
+     *
      * @param encoderVersion Filter encodings to only show the ones with the encoderVersion specified.
      */
     public encoderVersion(encoderVersion: string) {
         this.internalParams.encoderVersion = encoderVersion;
+        return this;
+    }
+
+    /**
+     *
+     * @param selectedEncoderVersion Filter encodings to only show the ones with the encoderVersion specified that was actually used for the encoding.
+     */
+    public selectedEncoderVersion(selectedEncoderVersion: string) {
+        this.internalParams.selectedEncoderVersion = selectedEncoderVersion;
+        return this;
+    }
+
+    /**
+     *
+     * @param selectedEncodingMode Filter encodings to only show the ones with the encodingMode specified that was actually used for the encoding.
+     */
+    public selectedEncodingMode(selectedEncodingMode: EncodingMode) {
+        this.internalParams.selectedEncodingMode = selectedEncodingMode;
         return this;
     }
 

@@ -13,18 +13,18 @@ export class Scheduling {
   public priority?: number;
 
   /**
-   * List of prewarmed Instance pools. If set, prewarmed instances from pools with these IDs will be used for the Encoding if available. The pool IDs will be tried in the order in which they are passed.
+   * List of prewarmed encoder pools. If set, prewarmed encoders from pools with these IDs will be used for the encoding if available. The pool IDs will be tried in the order in which they are passed.
    * @type {string[]}
    * @memberof Scheduling
    */
-  public prewarmedInstancePoolIds?: string[];
+  public prewarmedEncoderPoolIds?: string[];
 
   constructor(obj?: Partial<Scheduling>) {
     if(!obj) {
       return;
     }
     this.priority = map(obj.priority);
-    this.prewarmedInstancePoolIds = mapArray(obj.prewarmedInstancePoolIds);
+    this.prewarmedEncoderPoolIds = mapArray(obj.prewarmedEncoderPoolIds);
   }
 }
 

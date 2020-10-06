@@ -33,21 +33,21 @@ export class Encoding extends BitmovinResource {
   public queuedAt?: Date;
 
   /**
-   * Timestamp when the encoding status changed to to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the encoding status changed to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
    * @memberof Encoding
    */
   public runningAt?: Date;
 
   /**
-   * Timestamp when the encoding status changed to \"FINISHED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the encoding status changed to 'FINISHED', 'ERROR', 'CANCELED', or 'TRANSFER_ERROR', returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ  Note that this timestamp might be inaccurate for encodings which ran prior to the [1.50.0 REST API release](https://bitmovin.com/docs/encoding/changelogs/rest). 
    * @type {Date}
    * @memberof Encoding
    */
   public finishedAt?: Date;
 
   /**
-   * Timestamp when the encoding status changed to \"ERROR\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+   * Timestamp when the encoding status changed to 'ERROR', returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ  Note that this timestamp is deprecated and is equivalent to finishedAt in case of an 'ERROR'. 
    * @type {Date}
    * @memberof Encoding
    */
@@ -94,21 +94,21 @@ export class Encoding extends BitmovinResource {
   public infrastructure?: InfrastructureSettings;
 
   /**
-   * Will be set to the encoder version that was actually used for the encoding. This is especially useful when starting an encoding with a version tag like STABLE or BETA.
+   * After the encoding has been started, this will contain the encoder version that was actually used. Especially useful when starting an encoding with a version tag like STABLE or BETA.
    * @type {string}
    * @memberof Encoding
    */
   public selectedEncoderVersion?: string;
 
   /**
-   * Will be set to the encoding mode that was actually used for the encoding. This is especially useful when starting an encoding with encoding mode STANDARD.
+   * After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when starting an encoding with encoding mode STANDARD.
    * @type {EncodingMode}
    * @memberof Encoding
    */
   public selectedEncodingMode?: EncodingMode;
 
   /**
-   * Contains the region which was selected when cloudregion:AUTO was specified
+   * After the encoding has been started, this will contain the cloud region that was actually used. This will differ from cloudRegion if cloudRegion was set to an unspecific region (e.g. 'AUTO')
    * @type {CloudRegion}
    * @memberof Encoding
    */

@@ -14,6 +14,7 @@ import KeyframesApi from './keyframes/KeyframesApi';
 import BitmovinResponse from '../../models/BitmovinResponse';
 import CloudRegion from '../../models/CloudRegion';
 import Encoding from '../../models/Encoding';
+import EncodingMode from '../../models/EncodingMode';
 import ReprioritizeEncodingRequest from '../../models/ReprioritizeEncodingRequest';
 import RescheduleEncodingRequest from '../../models/RescheduleEncodingRequest';
 import StartEncodingRequest from '../../models/StartEncodingRequest';

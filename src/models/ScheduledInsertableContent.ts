@@ -15,7 +15,7 @@ export class ScheduledInsertableContent extends BitmovinResource {
   public contentId?: string;
 
   /**
-   * Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ, if this property is not set the content will be played as soon as possible.
+   * Time to play the content in UTC: YYYY-MM-DDThh:mm:ssZ, if this property is not set the content will be played as soon as possible.
    * @type {Date}
    * @memberof ScheduledInsertableContent
    */
