@@ -9,6 +9,7 @@ import EnhancedWatermarkApi from './enhancedWatermark/EnhancedWatermarkApi';
 import CropApi from './crop/CropApi';
 import RotateApi from './rotate/RotateApi';
 import DeinterlaceApi from './deinterlace/DeinterlaceApi';
+import EnhancedDeinterlaceApi from './enhancedDeinterlace/EnhancedDeinterlaceApi';
 import AudioMixApi from './audioMix/AudioMixApi';
 import DenoiseHqdn3dApi from './denoiseHqdn3d/DenoiseHqdn3dApi';
 import EbuR128SinglePassApi from './ebuR128SinglePass/EbuR128SinglePassApi';
@@ -35,6 +36,7 @@ export default class FiltersApi extends BaseAPI {
   public crop: CropApi;
   public rotate: RotateApi;
   public deinterlace: DeinterlaceApi;
+  public enhancedDeinterlace: EnhancedDeinterlaceApi;
   public audioMix: AudioMixApi;
   public denoiseHqdn3d: DenoiseHqdn3dApi;
   public ebuR128SinglePass: EbuR128SinglePassApi;
@@ -53,6 +55,7 @@ export default class FiltersApi extends BaseAPI {
     this.crop = new CropApi(configuration);
     this.rotate = new RotateApi(configuration);
     this.deinterlace = new DeinterlaceApi(configuration);
+    this.enhancedDeinterlace = new EnhancedDeinterlaceApi(configuration);
     this.audioMix = new AudioMixApi(configuration);
     this.denoiseHqdn3d = new DenoiseHqdn3dApi(configuration);
     this.ebuR128SinglePass = new EbuR128SinglePassApi(configuration);

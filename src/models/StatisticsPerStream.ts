@@ -175,6 +175,20 @@ export class StatisticsPerStream {
   public liveMultiplicator?: number;
 
   /**
+   * Indicates if an enhanced interlace filter was used.
+   * @type {boolean}
+   * @memberof StatisticsPerStream
+   */
+  public enhancedDeinterlace?: boolean;
+
+  /**
+   * The output minutes multiplicator for streams using an enhanced deinterlace filter.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public enhancedDeinterlaceMultiplicator?: number;
+
+  /**
    * @type {InputFactor}
    * @memberof StatisticsPerStream
    */
@@ -208,6 +222,8 @@ export class StatisticsPerStream {
     this.presetMultiplicator = map(obj.presetMultiplicator);
     this.live = map(obj.live);
     this.liveMultiplicator = map(obj.liveMultiplicator);
+    this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
+    this.enhancedDeinterlaceMultiplicator = map(obj.enhancedDeinterlaceMultiplicator);
     this.inputFactor = map(obj.inputFactor, InputFactor);
   }
 }

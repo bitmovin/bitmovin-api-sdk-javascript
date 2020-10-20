@@ -6,6 +6,7 @@ import CropFilter from './CropFilter';
 import DeinterlaceFilter from './DeinterlaceFilter';
 import DenoiseHqdn3dFilter from './DenoiseHqdn3dFilter';
 import EbuR128SinglePassFilter from './EbuR128SinglePassFilter';
+import EnhancedDeinterlaceFilter from './EnhancedDeinterlaceFilter';
 import EnhancedWatermarkFilter from './EnhancedWatermarkFilter';
 import FilterType from './FilterType';
 import InterlaceFilter from './InterlaceFilter';
@@ -22,6 +23,7 @@ export type FilterUnion =
   EnhancedWatermarkFilter |
   RotateFilter |
   DeinterlaceFilter |
+  EnhancedDeinterlaceFilter |
   AudioMixFilter |
   DenoiseHqdn3dFilter |
   TextFilter |
@@ -44,6 +46,7 @@ export class Filter extends BitmovinResource {
     ENHANCED_WATERMARK: 'EnhancedWatermarkFilter',
     ROTATE: 'RotateFilter',
     DEINTERLACE: 'DeinterlaceFilter',
+    ENHANCED_DEINTERLACE: 'EnhancedDeinterlaceFilter',
     AUDIO_MIX: 'AudioMixFilter',
     DENOISE_HQDN3D: 'DenoiseHqdn3dFilter',
     TEXT: 'TextFilter',

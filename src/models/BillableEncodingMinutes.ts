@@ -49,6 +49,13 @@ export class BillableEncodingMinutes {
   public live?: boolean;
 
   /**
+   * Indicates if an enhanced interlace filter was used.
+   * @type {boolean}
+   * @memberof BillableEncodingMinutes
+   */
+  public enhancedDeinterlace?: boolean;
+
+  /**
    * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
@@ -64,6 +71,7 @@ export class BillableEncodingMinutes {
     this.psnrMode = map(obj.psnrMode);
     this.preset = map(obj.preset);
     this.live = map(obj.live);
+    this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
     this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }
