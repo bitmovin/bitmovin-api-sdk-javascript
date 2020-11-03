@@ -18,7 +18,7 @@ export interface EncodingListQueryParams {
     limit?: number | undefined;
 
     /**
-     * Order list result according an encoding resource attribute
+     * Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
      * @type {string}
      * @memberof EncodingListQueryParams
      */
@@ -86,6 +86,34 @@ export interface EncodingListQueryParams {
      * @memberof EncodingListQueryParams
      */
     search?: string | undefined;
+
+    /**
+     * Filter encodings to only return those created after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    createdAtNewerThan?: Date | undefined;
+
+    /**
+     * Filter encodings to only return those created before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    createdAtOlderThan?: Date | undefined;
+
+    /**
+     * Filter encodings to only return those started after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    startedAtNewerThan?: Date | undefined;
+
+    /**
+     * Filter encodings to only return those started before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    startedAtOlderThan?: Date | undefined;
 }
 
 export class EncodingListQueryParamsBuilder {
@@ -111,7 +139,7 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param sort Order list result according an encoding resource attribute
+     * @param sort Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
      */
     public sort(sort: string) {
         this.internalParams.sort = sort;
@@ -196,6 +224,42 @@ export class EncodingListQueryParamsBuilder {
      */
     public search(search: string) {
         this.internalParams.search = search;
+        return this;
+    }
+
+    /**
+     *
+     * @param createdAtNewerThan Filter encodings to only return those created after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     */
+    public createdAtNewerThan(createdAtNewerThan: Date) {
+        this.internalParams.createdAtNewerThan = createdAtNewerThan;
+        return this;
+    }
+
+    /**
+     *
+     * @param createdAtOlderThan Filter encodings to only return those created before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     */
+    public createdAtOlderThan(createdAtOlderThan: Date) {
+        this.internalParams.createdAtOlderThan = createdAtOlderThan;
+        return this;
+    }
+
+    /**
+     *
+     * @param startedAtNewerThan Filter encodings to only return those started after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     */
+    public startedAtNewerThan(startedAtNewerThan: Date) {
+        this.internalParams.startedAtNewerThan = startedAtNewerThan;
+        return this;
+    }
+
+    /**
+     *
+     * @param startedAtOlderThan Filter encodings to only return those started before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     */
+    public startedAtOlderThan(startedAtOlderThan: Date) {
+        this.internalParams.startedAtOlderThan = startedAtOlderThan;
         return this;
     }
 

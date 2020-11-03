@@ -14,6 +14,13 @@ const BASE_URL = 'https://api.bitmovin.com/v1';
 
 export type FetchAPI = (url: string, init?: any) => Promise<Response>;
 
+function prepareUrlParameterValue(parameterValue: any) {
+  if (parameterValue instanceof Date) {
+    return parameterValue.toISOString().replace(/\.\d+Z/, 'Z');
+  }
+  return parameterValue;
+}
+
 function queryParams(params) {
   if (!params) {
     return '';
@@ -24,7 +31,7 @@ function queryParams(params) {
 
   for (const key of Object.keys(params)) {
     if (params[key] && typeof params[key] !== 'function') {
-      queryParameterString += (addSeperator ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+      queryParameterString += (addSeperator ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(prepareUrlParameterValue(params[key]));
       addSeperator = true;
     }
   }
@@ -226,7 +233,7 @@ class HeaderHandler extends DelegatingHandler {
     const headers: Record<string, string> = {
       'X-Api-Key': apiKey,
       'X-Api-Client': 'bitmovin-api-sdk-javascript',
-      'X-Api-Client-Version': '1.51.0',
+      'X-Api-Client-Version': '1.52.0',
       'Content-Type': 'application/json'
     };
 
