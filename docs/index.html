@@ -85,7 +85,7 @@
 					<h2>Installation</h2>
 				</a>
 				<hr>
-				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.52.1</code></pre>
+				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.53.0</code></pre>
 				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
 					<h2>Initialization</h2>
 				</a>
@@ -240,6 +240,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/channellayout.html" class="tsd-kind-icon">Channel<wbr>Layout</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/channelsattributeforaudio.html" class="tsd-kind-icon">Channels<wbr>Attribute<wbr>For<wbr>Audio</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/chromalocation.html" class="tsd-kind-icon">Chroma<wbr>Location</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -333,9 +336,6 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/encryptionmode.html" class="tsd-kind-icon">Encryption<wbr>Mode</a>
 					</li>
 					<li class=" tsd-kind-enum">
-						<a href="enums/encryptiontype.html" class="tsd-kind-icon">Encryption<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
 						<a href="enums/enhanceddeinterlaceautoenable.html" class="tsd-kind-icon">Enhanced<wbr>Deinterlace<wbr>Auto<wbr>Enable</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -346,6 +346,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/errorretryhint.html" class="tsd-kind-icon">Error<wbr>Retry<wbr>Hint</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/externalidmode.html" class="tsd-kind-icon">External<wbr>IdMode</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/fileinputstreamtype.html" class="tsd-kind-icon">File<wbr>Input<wbr>Stream<wbr>Type</a>
@@ -547,6 +550,15 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/presetconfiguration.html" class="tsd-kind-icon">Preset<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/prewarmedencoderdisksize.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Disk<wbr>Size</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/prewarmedencoderpoolaction.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/prewarmedencoderpoolstatus.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool<wbr>Status</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/profileh262.html" class="tsd-kind-icon">Profile<wbr>H262</a>
@@ -2529,6 +2541,18 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/prewarmeddeploymentapi.html" class="tsd-kind-icon">Prewarmed<wbr>Deployment<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/prewarmedencoderpool.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/prewarmedencoderpoollistqueryparamsbuilder.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/prewarmedencoderpoolschedule.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool<wbr>Schedule</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/prewarmedencoderpoolsapi.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pools<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/primetimedrm.html" class="tsd-kind-icon">Prime<wbr>Time<wbr>Drm</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -2728,6 +2752,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/scheduledinsertablecontentlistqueryparamsbuilder.html" class="tsd-kind-icon">Scheduled<wbr>Insertable<wbr>Content<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/schedulesapi.html" class="tsd-kind-icon">Schedules<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/scheduling.html" class="tsd-kind-icon">Scheduling</a>
@@ -3231,9 +3258,6 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/webhook.html" class="tsd-kind-icon">Webhook</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/webhookencryption.html" class="tsd-kind-icon">Webhook<wbr>Encryption</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/webhooklistbyencodingidqueryparamsbuilder.html" class="tsd-kind-icon">Webhook<wbr>List<wbr>ByEncoding<wbr>IdQuery<wbr>Params<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -3703,6 +3727,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/prewarmencodersettingslistqueryparams.html" class="tsd-kind-icon">Prewarm<wbr>Encoder<wbr>Settings<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/prewarmedencoderpoollistqueryparams.html" class="tsd-kind-icon">Prewarmed<wbr>Encoder<wbr>Pool<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/primetimedrmlistqueryparams.html" class="tsd-kind-icon">Prime<wbr>Time<wbr>Drm<wbr>List<wbr>Query<wbr>Params</a>

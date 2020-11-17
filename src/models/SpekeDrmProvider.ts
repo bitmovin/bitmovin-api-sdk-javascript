@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import ExternalIdMode from './ExternalIdMode';
 
 /**
  * @export
@@ -41,6 +42,12 @@ export class SpekeDrmProvider {
   public externalId?: string;
 
   /**
+   * @type {ExternalIdMode}
+   * @memberof SpekeDrmProvider
+   */
+  public externalIdMode?: ExternalIdMode;
+
+  /**
    * Describes the region of the AWS API Gateway that is used to access the SPEKE server. This property is mandatory when setting 'roleArn' and has to indicate in which region the AWS API Gateway is setup. This usually corresponds to the `{{region}}` one sets in the execute-api policy for the role as described in 'roleArn'. 
    * @type {string}
    * @memberof SpekeDrmProvider
@@ -56,6 +63,7 @@ export class SpekeDrmProvider {
     this.password = map(obj.password);
     this.roleArn = map(obj.roleArn);
     this.externalId = map(obj.externalId);
+    this.externalIdMode = map(obj.externalIdMode);
     this.gatewayRegion = map(obj.gatewayRegion);
   }
 }

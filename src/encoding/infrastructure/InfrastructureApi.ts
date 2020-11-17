@@ -5,6 +5,7 @@ import KubernetesApi from './kubernetes/KubernetesApi';
 import AwsApi from './aws/AwsApi';
 import AzureApi from './azure/AzureApi';
 import GceApi from './gce/GceApi';
+import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPoolsApi';
 
 /**
  * InfrastructureApi - object-oriented interface
@@ -17,6 +18,7 @@ export default class InfrastructureApi extends BaseAPI {
   public aws: AwsApi;
   public azure: AzureApi;
   public gce: GceApi;
+  public prewarmedEncoderPools: PrewarmedEncoderPoolsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -24,5 +26,6 @@ export default class InfrastructureApi extends BaseAPI {
     this.aws = new AwsApi(configuration);
     this.azure = new AzureApi(configuration);
     this.gce = new GceApi(configuration);
+    this.prewarmedEncoderPools = new PrewarmedEncoderPoolsApi(configuration);
   }
 }

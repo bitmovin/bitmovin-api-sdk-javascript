@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import ChannelsAttributeForAudio from './ChannelsAttributeForAudio';
 import EncodingOutput from './EncodingOutput';
 import HlsManifest from './HlsManifest';
 import HlsManifestDefaultVersion from './HlsManifestDefaultVersion';

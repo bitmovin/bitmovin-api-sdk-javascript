@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import ChannelsAttributeForAudio from './ChannelsAttributeForAudio';
 import EncodingOutput from './EncodingOutput';
 import HlsVersion from './HlsVersion';
 import Manifest from './Manifest';
@@ -31,6 +32,13 @@ export class HlsManifest extends Manifest {
    */
   public hlsMasterPlaylistVersion?: HlsVersion;
 
+  /**
+   * Controls the behaviour of the CHANNELS attribute for the EXT-X-VERSION tag
+   * @type {ChannelsAttributeForAudio}
+   * @memberof HlsManifest
+   */
+  public channelsAttributeForAudio?: ChannelsAttributeForAudio;
+
   constructor(obj?: Partial<HlsManifest>) {
     super(obj);
     if(!obj) {
@@ -39,6 +47,7 @@ export class HlsManifest extends Manifest {
     this.manifestName = map(obj.manifestName);
     this.hlsMediaPlaylistVersion = map(obj.hlsMediaPlaylistVersion);
     this.hlsMasterPlaylistVersion = map(obj.hlsMasterPlaylistVersion);
+    this.channelsAttributeForAudio = map(obj.channelsAttributeForAudio);
   }
 }
 
