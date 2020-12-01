@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary WebVtt Subtitle Configuration Custom Data
+   * @summary WebVtt subtitle configuration custom data
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof CustomdataApi

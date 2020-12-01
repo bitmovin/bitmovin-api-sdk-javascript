@@ -22,19 +22,19 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary Create WebVtt Subtitle Configuration
-   * @param {WebVttConfiguration} webVttConfiguration The WebVtt Subtitle Configuration to be created
+   * @summary Create WebVtt subtitle configuration
+   * @param {WebVttConfiguration} webVttConfiguration The WebVtt subtitle configuration to be created
    * @throws {BitmovinError}
    * @memberof WebvttApi
    */
   public create(webVttConfiguration?: WebVttConfiguration): Promise<WebVttConfiguration> {
-    return this.restClient.post<WebVttConfiguration>('/encoding/configurations/subtitles/webvtt/', {}, webVttConfiguration).then((response) => {
+    return this.restClient.post<WebVttConfiguration>('/encoding/configurations/subtitles/webvtt', {}, webVttConfiguration).then((response) => {
       return map(response, WebVttConfiguration);
     });
   }
 
   /**
-   * @summary Delete WebVtt Subtitle Configuration
+   * @summary Delete WebVtt subtitle configuration
    * @param {string} configurationId Id of the subtitle configuration
    * @throws {BitmovinError}
    * @memberof WebvttApi
@@ -49,7 +49,7 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary WebVtt Subtitle Configuration Details
+   * @summary WebVtt subtitle configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof WebvttApi
@@ -64,7 +64,7 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary List WebVtt Configurations
+   * @summary List WebVtt subtitle configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof WebvttApi
@@ -76,7 +76,7 @@ export default class WebvttApi extends BaseAPI {
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt/', {}, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<WebVttConfiguration>>('/encoding/configurations/subtitles/webvtt', {}, queryParams).then((response) => {
       return new PaginationResponse<WebVttConfiguration>(response, WebVttConfiguration);
     });
   }

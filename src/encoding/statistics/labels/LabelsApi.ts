@@ -34,7 +34,7 @@ export default class LabelsApi extends BaseAPI {
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels/', {}, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<StatisticsPerLabel>>('/encoding/statistics/labels', {}, queryParams).then((response) => {
       return new PaginationResponse<StatisticsPerLabel>(response, StatisticsPerLabel);
     });
   }

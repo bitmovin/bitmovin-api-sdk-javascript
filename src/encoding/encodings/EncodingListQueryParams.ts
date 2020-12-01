@@ -18,7 +18,7 @@ export interface EncodingListQueryParams {
     limit?: number | undefined;
 
     /**
-     * Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
+     * Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `finishedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
      * @type {string}
      * @memberof EncodingListQueryParams
      */
@@ -88,32 +88,46 @@ export interface EncodingListQueryParams {
     search?: string | undefined;
 
     /**
-     * Filter encodings to only return those created after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * Filter encodings to only return those created after this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      * @type {Date}
      * @memberof EncodingListQueryParams
      */
     createdAtNewerThan?: Date | undefined;
 
     /**
-     * Filter encodings to only return those created before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * Filter encodings to only return those created before this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      * @type {Date}
      * @memberof EncodingListQueryParams
      */
     createdAtOlderThan?: Date | undefined;
 
     /**
-     * Filter encodings to only return those started after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * Filter encodings to only return those started after this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      * @type {Date}
      * @memberof EncodingListQueryParams
      */
     startedAtNewerThan?: Date | undefined;
 
     /**
-     * Filter encodings to only return those started before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * Filter encodings to only return those started before this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      * @type {Date}
      * @memberof EncodingListQueryParams
      */
     startedAtOlderThan?: Date | undefined;
+
+    /**
+     * Filter encodings to only return those finished at newer than this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ Available for all encodings started after REST API Service release v1.50.0 (Changelogs for more information https://bitmovin.com/docs/encoding/changelogs/rest) 
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    finishedAtNewerThan?: Date | undefined;
+
+    /**
+     * Filter encodings to only return those finished at older than this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ Available for all encodings started after REST API Service release v1.50.0 (Changelogs for more information https://bitmovin.com/docs/encoding/changelogs/rest) 
+     * @type {Date}
+     * @memberof EncodingListQueryParams
+     */
+    finishedAtOlderThan?: Date | undefined;
 }
 
 export class EncodingListQueryParamsBuilder {
@@ -139,7 +153,7 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param sort Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
+     * @param sort Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `finishedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
      */
     public sort(sort: string) {
         this.internalParams.sort = sort;
@@ -229,7 +243,7 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param createdAtNewerThan Filter encodings to only return those created after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @param createdAtNewerThan Filter encodings to only return those created after this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      */
     public createdAtNewerThan(createdAtNewerThan: Date) {
         this.internalParams.createdAtNewerThan = createdAtNewerThan;
@@ -238,7 +252,7 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param createdAtOlderThan Filter encodings to only return those created before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @param createdAtOlderThan Filter encodings to only return those created before this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      */
     public createdAtOlderThan(createdAtOlderThan: Date) {
         this.internalParams.createdAtOlderThan = createdAtOlderThan;
@@ -247,7 +261,7 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param startedAtNewerThan Filter encodings to only return those started after this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @param startedAtNewerThan Filter encodings to only return those started after this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      */
     public startedAtNewerThan(startedAtNewerThan: Date) {
         this.internalParams.startedAtNewerThan = startedAtNewerThan;
@@ -256,10 +270,28 @@ export class EncodingListQueryParamsBuilder {
 
     /**
      *
-     * @param startedAtOlderThan Filter encodings to only return those started before this exact time, provided in ISO8601 format: YYYY-MM-DDThh:mm:ssZ
+     * @param startedAtOlderThan Filter encodings to only return those started before this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
      */
     public startedAtOlderThan(startedAtOlderThan: Date) {
         this.internalParams.startedAtOlderThan = startedAtOlderThan;
+        return this;
+    }
+
+    /**
+     *
+     * @param finishedAtNewerThan Filter encodings to only return those finished at newer than this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ Available for all encodings started after REST API Service release v1.50.0 (Changelogs for more information https://bitmovin.com/docs/encoding/changelogs/rest) 
+     */
+    public finishedAtNewerThan(finishedAtNewerThan: Date) {
+        this.internalParams.finishedAtNewerThan = finishedAtNewerThan;
+        return this;
+    }
+
+    /**
+     *
+     * @param finishedAtOlderThan Filter encodings to only return those finished at older than this exact time, provided in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ Available for all encodings started after REST API Service release v1.50.0 (Changelogs for more information https://bitmovin.com/docs/encoding/changelogs/rest) 
+     */
+    public finishedAtOlderThan(finishedAtOlderThan: Date) {
+        this.internalParams.finishedAtOlderThan = finishedAtOlderThan;
         return this;
     }
 
