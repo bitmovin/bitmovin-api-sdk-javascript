@@ -5,6 +5,7 @@ import FinishedApi from './finished/FinishedApi';
 import ErrorApi from './error/ErrorApi';
 import TransferErrorApi from './transferError/TransferErrorApi';
 import LiveInputStreamChangedApi from './liveInputStreamChanged/LiveInputStreamChangedApi';
+import EncodingStatusChangedApi from './encodingStatusChanged/EncodingStatusChangedApi';
 
 /**
  * EncodingsApi - object-oriented interface
@@ -17,6 +18,7 @@ export default class EncodingsApi extends BaseAPI {
   public error: ErrorApi;
   public transferError: TransferErrorApi;
   public liveInputStreamChanged: LiveInputStreamChangedApi;
+  public encodingStatusChanged: EncodingStatusChangedApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -24,5 +26,6 @@ export default class EncodingsApi extends BaseAPI {
     this.error = new ErrorApi(configuration);
     this.transferError = new TransferErrorApi(configuration);
     this.liveInputStreamChanged = new LiveInputStreamChangedApi(configuration);
+    this.encodingStatusChanged = new EncodingStatusChangedApi(configuration);
   }
 }
