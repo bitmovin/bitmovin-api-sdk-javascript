@@ -3,6 +3,7 @@ import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
 import KubernetesApi from './kubernetes/KubernetesApi';
 import AwsApi from './aws/AwsApi';
+import StaticIpsApi from './staticIps/StaticIpsApi';
 import AzureApi from './azure/AzureApi';
 import GceApi from './gce/GceApi';
 import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPoolsApi';
@@ -16,6 +17,7 @@ import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPo
 export default class InfrastructureApi extends BaseAPI {
   public kubernetes: KubernetesApi;
   public aws: AwsApi;
+  public staticIps: StaticIpsApi;
   public azure: AzureApi;
   public gce: GceApi;
   public prewarmedEncoderPools: PrewarmedEncoderPoolsApi;
@@ -24,6 +26,7 @@ export default class InfrastructureApi extends BaseAPI {
     super(configuration);
     this.kubernetes = new KubernetesApi(configuration);
     this.aws = new AwsApi(configuration);
+    this.staticIps = new StaticIpsApi(configuration);
     this.azure = new AzureApi(configuration);
     this.gce = new GceApi(configuration);
     this.prewarmedEncoderPools = new PrewarmedEncoderPoolsApi(configuration);

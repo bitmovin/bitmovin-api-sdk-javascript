@@ -16,28 +16,28 @@ export class CropFilter extends Filter {
   public type: FilterType.CROP = FilterType.CROP;
 
   /**
-   * Amount of pixels which will be cropped of the input video from the left side.
+   * Amount of pixels that will be cropped of the input video from the left side. Must be zero or a positive value.
    * @type {number}
    * @memberof CropFilter
    */
   public left?: number;
 
   /**
-   * Amount of pixels which will be cropped of the input video from the right side.
+   * Amount of pixels that will be cropped of the input video from the right side. Must be zero or a positive value.
    * @type {number}
    * @memberof CropFilter
    */
   public right?: number;
 
   /**
-   * Amount of pixels which will be cropped of the input video from the top.
+   * Amount of pixels that will be cropped of the input video from the top. Must be zero or a positive value.
    * @type {number}
    * @memberof CropFilter
    */
   public top?: number;
 
   /**
-   * Amount of pixels which will be cropped of the input video from the bottom.
+   * Amount of pixels that will be cropped of the input video from the bottom. Must be zero or a positive value.
    * @type {number}
    * @memberof CropFilter
    */

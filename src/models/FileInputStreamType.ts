@@ -4,7 +4,8 @@
  */
 export enum FileInputStreamType {
   TTML = 'TTML',
-  WEBVTT = 'WEBVTT'
+  WEBVTT = 'WEBVTT',
+  SRT = 'SRT'
 }
 
 export default FileInputStreamType;

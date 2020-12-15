@@ -1,23 +1,23 @@
 
-export interface AnalyticsIncidentListByLicenseKeyQueryParams {
+export interface WebVttSidecarFileListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
-     * @memberof AnalyticsIncidentListByLicenseKeyQueryParams
+     * @memberof WebVttSidecarFileListQueryParams
      */
     offset?: number | undefined;
 
     /**
-     * Maximum number of items to return. Default is 10, maximum is 100
+     * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
-     * @memberof AnalyticsIncidentListByLicenseKeyQueryParams
+     * @memberof WebVttSidecarFileListQueryParams
      */
     limit?: number | undefined;
 }
 
-export class AnalyticsIncidentListByLicenseKeyQueryParamsBuilder {
-    private internalParams: AnalyticsIncidentListByLicenseKeyQueryParams = {};
+export class WebVttSidecarFileListQueryParamsBuilder {
+    private internalParams: WebVttSidecarFileListQueryParams = {};
 
     /**
      *
@@ -30,7 +30,7 @@ export class AnalyticsIncidentListByLicenseKeyQueryParamsBuilder {
 
     /**
      *
-     * @param limit Maximum number of items to return. Default is 10, maximum is 100
+     * @param limit Maximum number of items to return. Default is 25, maximum is 100
      */
     public limit(limit: number) {
         this.internalParams.limit = limit;

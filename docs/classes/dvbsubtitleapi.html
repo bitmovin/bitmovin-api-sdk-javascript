@@ -71,6 +71,9 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="baseapi.html" class="tsd-signature-type">BaseAPI</a>
+					</li>
+					<li>
+						<a href="baseapi.html" class="tsd-signature-type">BaseAPI</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">DvbSubtitleApi</span>
@@ -89,10 +92,11 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="dvbsubtitleapi.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="dvbsubtitleapi.html#restclient" class="tsd-kind-icon">rest<wbr>Client</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="dvbsubtitleapi.html#customdata" class="tsd-kind-icon">customdata</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="dvbsubtitleapi.html#restclient" class="tsd-kind-icon">rest<wbr>Client</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -120,7 +124,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in encoding/encodings/inputStreams/subtitles/dvbSubtitle/DvbSubtitleApi.ts:15</li>
+									<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:18</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -134,14 +138,25 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="customdata" class="tsd-anchor"></a>
+					<h3>customdata</h3>
+					<div class="tsd-signature tsd-kind-icon">customdata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CustomdataApi</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:18</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="restclient" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> rest<wbr>Client</h3>
 					<div class="tsd-signature tsd-kind-icon">rest<wbr>Client<span class="tsd-signature-symbol">:</span> <a href="restclient.html" class="tsd-signature-type">RestClient</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#restclient">restClient</a></p>
+						<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#restclient">restClient</a></p>
 						<ul>
 							<li>Defined in common/BaseAPI.ts:10</li>
 						</ul>
@@ -154,25 +169,22 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, dvbSubtitleInputStream<span class="tsd-signature-symbol">: </span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>dvbSubtitleConfiguration<span class="tsd-signature-symbol">: </span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in encoding/encodings/inputStreams/subtitles/dvbSubtitle/DvbSubtitleApi.ts:28</li>
+									<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:31</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> dvbSubtitleInputStream: <a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> dvbSubtitleConfiguration: <a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -180,22 +192,19 @@
 					<a name="delete" class="tsd-anchor"></a>
 					<h3>delete</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, inputStreamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>configurationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in encoding/encodings/inputStreams/subtitles/dvbSubtitle/DvbSubtitleApi.ts:44</li>
+									<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:43</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>inputStreamId: <span class="tsd-signature-type">string</span></h5>
+									<h5>configurationId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -206,25 +215,22 @@
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, inputStreamId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>configurationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in encoding/encodings/inputStreams/subtitles/dvbSubtitle/DvbSubtitleApi.ts:61</li>
+									<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:58</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>inputStreamId: <span class="tsd-signature-type">string</span></h5>
+									<h5>configurationId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -232,25 +238,22 @@
 					<a name="list" class="tsd-anchor"></a>
 					<h3>list</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>encodingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, queryParameters<span class="tsd-signature-symbol">: </span><a href="../interfaces/dvbsubtitleinputstreamlistqueryparams.html" class="tsd-signature-type">DvbSubtitleInputStreamListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>queryParameters<span class="tsd-signature-symbol">: </span><a href="../interfaces/dvbsubtitleconfigurationlistqueryparams.html" class="tsd-signature-type">DvbSubtitleConfigurationListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in encoding/encodings/inputStreams/subtitles/dvbSubtitle/DvbSubtitleApi.ts:78</li>
+									<li>Defined in encoding/configurations/subtitles/dvbSubtitle/DvbSubtitleApi.ts:73</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>encodingId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> queryParameters: <a href="../interfaces/dvbsubtitleinputstreamlistqueryparams.html" class="tsd-signature-type">DvbSubtitleInputStreamListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> queryParameters: <a href="../interfaces/dvbsubtitleconfigurationlistqueryparams.html" class="tsd-signature-type">DvbSubtitleConfigurationListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleinputstream.html" class="tsd-signature-type">DvbSubtitleInputStream</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="dvbsubtitleconfiguration.html" class="tsd-signature-type">DvbSubtitleConfiguration</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -274,7 +277,10 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="dvbsubtitleapi.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="dvbsubtitleapi.html#customdata" class="tsd-kind-icon">customdata</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="dvbsubtitleapi.html#restclient" class="tsd-kind-icon">rest<wbr>Client</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">

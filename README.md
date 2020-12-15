@@ -22,7 +22,7 @@ For full documentation of all available API endpoints, see the [Bitmovin API ref
 ------------
 
 ``` bash
-npm install @bitmovin/api-sdk@1.54.1
+npm install @bitmovin/api-sdk@1.55.0
 ```
 
 ## Initialization

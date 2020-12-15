@@ -52,13 +52,6 @@ export class StartLiveEncodingRequest {
    */
   public autoRestartConfiguration?: AutoRestartConfiguration;
 
-  /**
-   * The static IP that will be used for the live encoding. If the provider and the region do not match the encoding start call will fail.
-   * @type {string[]}
-   * @memberof StartLiveEncodingRequest
-   */
-  public staticIpId?: string[];
-
   constructor(obj?: Partial<StartLiveEncodingRequest>) {
     if(!obj) {
       return;
@@ -69,7 +62,6 @@ export class StartLiveEncodingRequest {
     this.liveEncodingMode = map(obj.liveEncodingMode);
     this.reuploadSettings = map(obj.reuploadSettings, ReuploadSettings);
     this.autoRestartConfiguration = map(obj.autoRestartConfiguration, AutoRestartConfiguration);
-    this.staticIpId = mapArray(obj.staticIpId);
   }
 }
 

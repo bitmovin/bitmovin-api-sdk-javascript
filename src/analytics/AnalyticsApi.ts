@@ -9,7 +9,6 @@ import AdsApi from './ads/AdsApi';
 import QueriesApi from './queries/QueriesApi';
 import LicensesApi from './licenses/LicensesApi';
 import OutputsApi from './outputs/OutputsApi';
-import AlertingApi from './alerting/AlertingApi';
 
 /**
  * AnalyticsApi - object-oriented interface
@@ -26,7 +25,6 @@ export default class AnalyticsApi extends BaseAPI {
   public queries: QueriesApi;
   public licenses: LicensesApi;
   public outputs: OutputsApi;
-  public alerting: AlertingApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -38,6 +36,5 @@ export default class AnalyticsApi extends BaseAPI {
     this.queries = new QueriesApi(configuration);
     this.licenses = new LicensesApi(configuration);
     this.outputs = new OutputsApi(configuration);
-    this.alerting = new AlertingApi(configuration);
   }
 }

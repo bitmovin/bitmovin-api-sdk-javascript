@@ -22,7 +22,8 @@ export enum CodecConfigType {
   DOLBY_ATMOS = 'DOLBY_ATMOS',
   H262 = 'H262',
   PCM = 'PCM',
-  WEBVTT = 'WEBVTT'
+  WEBVTT = 'WEBVTT',
+  DVB_SUBTITLE = 'DVB_SUBTITLE'
 }
 
 export default CodecConfigType;

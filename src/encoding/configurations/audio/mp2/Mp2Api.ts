@@ -4,6 +4,8 @@ import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Mp2AudioConfiguration from '../../../../models/Mp2AudioConfiguration';
+import PaginationResponse from '../../../../models/PaginationResponse';
+import {Mp2AudioConfigurationListQueryParams, Mp2AudioConfigurationListQueryParamsBuilder} from './Mp2AudioConfigurationListQueryParams';
 
 /**
  * Mp2Api - object-oriented interface
@@ -58,6 +60,24 @@ export default class Mp2Api extends BaseAPI {
     };
     return this.restClient.get<Mp2AudioConfiguration>('/encoding/configurations/audio/mp2/{configuration_id}', pathParamMap).then((response) => {
       return map(response, Mp2AudioConfiguration);
+    });
+  }
+
+  /**
+   * @summary List MP2 Configurations
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
+   * @throws {BitmovinError}
+   * @memberof Mp2Api
+   */
+  public list(queryParameters?: Mp2AudioConfigurationListQueryParams | ((q: Mp2AudioConfigurationListQueryParamsBuilder) => Mp2AudioConfigurationListQueryParamsBuilder)): Promise<PaginationResponse<Mp2AudioConfiguration>> {
+    let queryParams: Mp2AudioConfigurationListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+      queryParams = queryParameters(new Mp2AudioConfigurationListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+      queryParams = queryParameters;
+    }
+    return this.restClient.get<PaginationResponse<Mp2AudioConfiguration>>('/encoding/configurations/audio/mp2', {}, queryParams).then((response) => {
+      return new PaginationResponse<Mp2AudioConfiguration>(response, Mp2AudioConfiguration);
     });
   }
 }

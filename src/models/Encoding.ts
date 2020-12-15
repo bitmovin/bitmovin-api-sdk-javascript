@@ -94,6 +94,13 @@ export class Encoding extends BitmovinResource {
   public infrastructure?: InfrastructureSettings;
 
   /**
+   * Specify an ID of a Static IP infrastructure resource this encoding should use. A Static IP cannot be used by multiple encodings at once. The encoding will go to an error state if the Static IP is already in use. This is currently only supported for live encodings.
+   * @type {string}
+   * @memberof Encoding
+   */
+  public staticIpId?: string;
+
+  /**
    * After the encoding has been started, this will contain the encoder version that was actually used. Especially useful when starting an encoding with a version tag like STABLE or BETA.
    * @type {string}
    * @memberof Encoding
@@ -145,6 +152,7 @@ export class Encoding extends BitmovinResource {
     this.encoderVersion = map(obj.encoderVersion);
     this.infrastructureId = map(obj.infrastructureId);
     this.infrastructure = map(obj.infrastructure, InfrastructureSettings);
+    this.staticIpId = map(obj.staticIpId);
     this.selectedEncoderVersion = map(obj.selectedEncoderVersion);
     this.selectedEncodingMode = map(obj.selectedEncodingMode);
     this.selectedCloudRegion = map(obj.selectedCloudRegion);
