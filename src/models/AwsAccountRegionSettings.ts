@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AwsCloudRegion from './AwsCloudRegion';
 import BitmovinResource from './BitmovinResource';
 
 /**
@@ -34,6 +35,12 @@ export class AwsAccountRegionSettings extends BitmovinResource {
    */
   public sshPort?: number;
 
+  /**
+   * @type {AwsCloudRegion}
+   * @memberof AwsAccountRegionSettings
+   */
+  public region?: AwsCloudRegion;
+
   constructor(obj?: Partial<AwsAccountRegionSettings>) {
     super(obj);
     if(!obj) {
@@ -43,6 +50,7 @@ export class AwsAccountRegionSettings extends BitmovinResource {
     this.securityGroupId = map(obj.securityGroupId);
     this.subnetId = map(obj.subnetId);
     this.sshPort = map(obj.sshPort);
+    this.region = map(obj.region);
   }
 }
 

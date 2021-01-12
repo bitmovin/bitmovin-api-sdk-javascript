@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
+import GoogleCloudRegion from './GoogleCloudRegion';
 
 /**
  * @export
@@ -20,6 +21,12 @@ export class GceAccountRegionSettings extends BitmovinResource {
    */
   public subnetId?: string;
 
+  /**
+   * @type {GoogleCloudRegion}
+   * @memberof GceAccountRegionSettings
+   */
+  public region?: GoogleCloudRegion;
+
   constructor(obj?: Partial<GceAccountRegionSettings>) {
     super(obj);
     if(!obj) {
@@ -27,6 +34,7 @@ export class GceAccountRegionSettings extends BitmovinResource {
     }
     this.network = map(obj.network);
     this.subnetId = map(obj.subnetId);
+    this.region = map(obj.region);
   }
 }
 
