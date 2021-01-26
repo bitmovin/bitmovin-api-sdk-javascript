@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BroadcastTsProgramConfiguration | @bitmovin/api-sdk</title>
+	<title>PackedAudioMuxingListQueryParamsBuilder | @bitmovin/api-sdk</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="broadcasttsprogramconfiguration.html">BroadcastTsProgramConfiguration</a>
+					<a href="packedaudiomuxinglistqueryparamsbuilder.html">PackedAudioMuxingListQueryParamsBuilder</a>
 				</li>
 			</ul>
-			<h1>Class BroadcastTsProgramConfiguration</h1>
+			<h1>Class PackedAudioMuxingListQueryParamsBuilder</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BroadcastTsProgramConfiguration</span>
+						<span class="target">PackedAudioMuxingListQueryParamsBuilder</span>
 					</li>
 				</ul>
 			</section>
@@ -78,91 +78,100 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="broadcasttsprogramconfiguration.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="packedaudiomuxinglistqueryparamsbuilder.html#internalparams" class="tsd-kind-icon">internal<wbr>Params</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="broadcasttsprogramconfiguration.html#insertprogramclockrefonpes" class="tsd-kind-icon">insert<wbr>Program<wbr>Clock<wbr>Ref<wbr>OnPes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="broadcasttsprogramconfiguration.html#pidforpmt" class="tsd-kind-icon">pid<wbr>ForPMT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="broadcasttsprogramconfiguration.html#programclockrefinterval" class="tsd-kind-icon">program<wbr>Clock<wbr>Ref<wbr>Interval</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="broadcasttsprogramconfiguration.html#programnumber" class="tsd-kind-icon">program<wbr>Number</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="packedaudiomuxinglistqueryparamsbuilder.html#buildqueryparams" class="tsd-kind-icon">build<wbr>Query<wbr>Params</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="packedaudiomuxinglistqueryparamsbuilder.html#limit" class="tsd-kind-icon">limit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="packedaudiomuxinglistqueryparamsbuilder.html#offset" class="tsd-kind-icon">offset</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="internalparams" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> internal<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">internal<wbr>Params<span class="tsd-signature-symbol">:</span> <a href="../interfaces/packedaudiomuxinglistqueryparams.html" class="tsd-signature-type">PackedAudioMuxingListQueryParams</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in encoding/encodings/muxings/packedAudio/PackedAudioMuxingListQueryParams.ts:20</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Broadcast<wbr>TsProgram<wbr>Configuration<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="broadcasttsprogramconfiguration.html" class="tsd-signature-type">BroadcastTsProgramConfiguration</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="broadcasttsprogramconfiguration.html" class="tsd-signature-type">BroadcastTsProgramConfiguration</a></li>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildqueryparams" class="tsd-anchor"></a>
+					<h3>build<wbr>Query<wbr>Params</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Query<wbr>Params<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/packedaudiomuxinglistqueryparams.html" class="tsd-signature-type">PackedAudioMuxingListQueryParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in models/BroadcastTsProgramConfiguration.ts:34</li>
+									<li>Defined in encoding/encodings/muxings/packedAudio/PackedAudioMuxingListQueryParams.ts:40</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/packedaudiomuxinglistqueryparams.html" class="tsd-signature-type">PackedAudioMuxingListQueryParams</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="limit" class="tsd-anchor"></a>
+					<h3>limit</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">(</span>limit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in encoding/encodings/muxings/packedAudio/PackedAudioMuxingListQueryParams.ts:35</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> obj: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="broadcasttsprogramconfiguration.html" class="tsd-signature-type">BroadcastTsProgramConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>limit: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="broadcasttsprogramconfiguration.html" class="tsd-signature-type">BroadcastTsProgramConfiguration</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="insertprogramclockrefonpes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> insert<wbr>Program<wbr>Clock<wbr>Ref<wbr>OnPes</h3>
-					<div class="tsd-signature tsd-kind-icon">insert<wbr>Program<wbr>Clock<wbr>Ref<wbr>OnPes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in models/BroadcastTsProgramConfiguration.ts:27</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="pidforpmt" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> pid<wbr>ForPMT</h3>
-					<div class="tsd-signature tsd-kind-icon">pid<wbr>ForPMT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in models/BroadcastTsProgramConfiguration.ts:20</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="programclockrefinterval" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> program<wbr>Clock<wbr>Ref<wbr>Interval</h3>
-					<div class="tsd-signature tsd-kind-icon">program<wbr>Clock<wbr>Ref<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in models/BroadcastTsProgramConfiguration.ts:34</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="programnumber" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> program<wbr>Number</h3>
-					<div class="tsd-signature tsd-kind-icon">program<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in models/BroadcastTsProgramConfiguration.ts:13</li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="offset" class="tsd-anchor"></a>
+					<h3>offset</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">(</span>offset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in encoding/encodings/muxings/packedAudio/PackedAudioMuxingListQueryParams.ts:26</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>offset: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -179,22 +188,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="broadcasttsprogramconfiguration.html" class="tsd-kind-icon">Broadcast<wbr>TsProgram<wbr>Configuration</a>
+						<a href="packedaudiomuxinglistqueryparamsbuilder.html" class="tsd-kind-icon">Packed<wbr>Audio<wbr>Muxing<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="broadcasttsprogramconfiguration.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="packedaudiomuxinglistqueryparamsbuilder.html#internalparams" class="tsd-kind-icon">internal<wbr>Params</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="broadcasttsprogramconfiguration.html#insertprogramclockrefonpes" class="tsd-kind-icon">insert<wbr>Program<wbr>Clock<wbr>Ref<wbr>OnPes</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="packedaudiomuxinglistqueryparamsbuilder.html#buildqueryparams" class="tsd-kind-icon">build<wbr>Query<wbr>Params</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="broadcasttsprogramconfiguration.html#pidforpmt" class="tsd-kind-icon">pid<wbr>ForPMT</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="packedaudiomuxinglistqueryparamsbuilder.html#limit" class="tsd-kind-icon">limit</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="broadcasttsprogramconfiguration.html#programclockrefinterval" class="tsd-kind-icon">program<wbr>Clock<wbr>Ref<wbr>Interval</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="broadcasttsprogramconfiguration.html#programnumber" class="tsd-kind-icon">program<wbr>Number</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="packedaudiomuxinglistqueryparamsbuilder.html#offset" class="tsd-kind-icon">offset</a>
 							</li>
 						</ul>
 					</li>

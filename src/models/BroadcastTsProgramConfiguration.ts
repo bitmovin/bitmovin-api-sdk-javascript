@@ -26,6 +26,13 @@ export class BroadcastTsProgramConfiguration {
    */
   public insertProgramClockRefOnPes?: boolean;
 
+  /**
+   * Interval between Program Clock References (PCRs) in milliseconds. Defines the period between PCR fields inserted in the stream. The default value is 90ms.
+   * @type {number}
+   * @memberof BroadcastTsProgramConfiguration
+   */
+  public programClockRefInterval?: number;
+
   constructor(obj?: Partial<BroadcastTsProgramConfiguration>) {
     if(!obj) {
       return;
@@ -33,6 +40,7 @@ export class BroadcastTsProgramConfiguration {
     this.programNumber = map(obj.programNumber);
     this.pidForPMT = map(obj.pidForPMT);
     this.insertProgramClockRefOnPes = map(obj.insertProgramClockRefOnPes);
+    this.programClockRefInterval = map(obj.programClockRefInterval);
   }
 }
 

@@ -11,6 +11,7 @@ import Mp4Muxing from './Mp4Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
 import MxfMuxing from './MxfMuxing';
+import PackedAudioMuxing from './PackedAudioMuxing';
 import ProgressiveMovMuxing from './ProgressiveMovMuxing';
 import ProgressiveTsMuxing from './ProgressiveTsMuxing';
 import ProgressiveWebmMuxing from './ProgressiveWebmMuxing';
@@ -34,7 +35,8 @@ export type MuxingUnion =
   BroadcastTsMuxing |
   ChunkedTextMuxing |
   TextMuxing |
-  SegmentedRawMuxing;
+  SegmentedRawMuxing |
+  PackedAudioMuxing;
 
 /**
  * @export
@@ -56,7 +58,8 @@ export class Muxing extends BitmovinResource {
     BROADCAST_TS: 'BroadcastTsMuxing',
     CHUNKED_TEXT: 'ChunkedTextMuxing',
     TEXT: 'TextMuxing',
-    SEGMENTED_RAW: 'SegmentedRawMuxing'
+    SEGMENTED_RAW: 'SegmentedRawMuxing',
+    PACKED_AUDIO: 'PackedAudioMuxing'
   };
 
   /**

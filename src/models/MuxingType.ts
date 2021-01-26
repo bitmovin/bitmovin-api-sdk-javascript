@@ -16,7 +16,8 @@ export enum MuxingType {
   BROADCAST_TS = 'BROADCAST_TS',
   CHUNKED_TEXT = 'CHUNKED_TEXT',
   TEXT = 'TEXT',
-  SEGMENTED_RAW = 'SEGMENTED_RAW'
+  SEGMENTED_RAW = 'SEGMENTED_RAW',
+  PACKED_AUDIO = 'PACKED_AUDIO'
 }
 
 export default MuxingType;

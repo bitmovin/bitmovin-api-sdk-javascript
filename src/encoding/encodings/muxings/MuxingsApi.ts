@@ -5,6 +5,7 @@ import Fmp4Api from './fmp4/Fmp4Api';
 import ChunkedTextApi from './chunkedText/ChunkedTextApi';
 import CmafApi from './cmaf/CmafApi';
 import SegmentedRawApi from './segmentedRaw/SegmentedRawApi';
+import PackedAudioApi from './packedAudio/PackedAudioApi';
 import TextApi from './text/TextApi';
 import TsApi from './ts/TsApi';
 import WebmApi from './webm/WebmApi';
@@ -31,6 +32,7 @@ export default class MuxingsApi extends BaseAPI {
   public chunkedText: ChunkedTextApi;
   public cmaf: CmafApi;
   public segmentedRaw: SegmentedRawApi;
+  public packedAudio: PackedAudioApi;
   public text: TextApi;
   public ts: TsApi;
   public webm: WebmApi;
@@ -48,6 +50,7 @@ export default class MuxingsApi extends BaseAPI {
     this.chunkedText = new ChunkedTextApi(configuration);
     this.cmaf = new CmafApi(configuration);
     this.segmentedRaw = new SegmentedRawApi(configuration);
+    this.packedAudio = new PackedAudioApi(configuration);
     this.text = new TextApi(configuration);
     this.ts = new TsApi(configuration);
     this.webm = new WebmApi(configuration);
