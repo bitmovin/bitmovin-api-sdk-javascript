@@ -6,6 +6,7 @@ import InputApi from './input/InputApi';
 import InputsApi from './inputs/InputsApi';
 import FiltersApi from './filters/FiltersApi';
 import BurnInSubtitlesApi from './burnInSubtitles/BurnInSubtitlesApi';
+import WatermarkingApi from './watermarking/WatermarkingApi';
 import CaptionsApi from './captions/CaptionsApi';
 import BifsApi from './bifs/BifsApi';
 import HdrApi from './hdr/HdrApi';
@@ -29,6 +30,7 @@ export default class StreamsApi extends BaseAPI {
   public inputs: InputsApi;
   public filters: FiltersApi;
   public burnInSubtitles: BurnInSubtitlesApi;
+  public watermarking: WatermarkingApi;
   public captions: CaptionsApi;
   public bifs: BifsApi;
   public hdr: HdrApi;
@@ -43,6 +45,7 @@ export default class StreamsApi extends BaseAPI {
     this.inputs = new InputsApi(configuration);
     this.filters = new FiltersApi(configuration);
     this.burnInSubtitles = new BurnInSubtitlesApi(configuration);
+    this.watermarking = new WatermarkingApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.bifs = new BifsApi(configuration);
     this.hdr = new HdrApi(configuration);

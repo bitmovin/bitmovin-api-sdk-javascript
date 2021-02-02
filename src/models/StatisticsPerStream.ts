@@ -3,6 +3,7 @@ import CodecConfigType from './CodecConfigType';
 import DolbyVisionPerStreamMode from './DolbyVisionPerStreamMode';
 import EncodingMode from './EncodingMode';
 import InputFactor from './InputFactor';
+import NexGuardABWatermarkingFeature from './NexGuardABWatermarkingFeature';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
 import StatisticsResolution from './StatisticsResolution';
@@ -189,6 +190,19 @@ export class StatisticsPerStream {
   public enhancedDeinterlaceMultiplicator?: number;
 
   /**
+   * @type {NexGuardABWatermarkingFeature}
+   * @memberof StatisticsPerStream
+   */
+  public nexGuardABWatermarkingType?: NexGuardABWatermarkingFeature;
+
+  /**
+   * The output minutes multiplicator for streams using a NexGuard A/B Watermarking.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public nexGuardABWatermarkingMultiplicator?: number;
+
+  /**
    * @type {InputFactor}
    * @memberof StatisticsPerStream
    */
@@ -224,6 +238,8 @@ export class StatisticsPerStream {
     this.liveMultiplicator = map(obj.liveMultiplicator);
     this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
     this.enhancedDeinterlaceMultiplicator = map(obj.enhancedDeinterlaceMultiplicator);
+    this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
+    this.nexGuardABWatermarkingMultiplicator = map(obj.nexGuardABWatermarkingMultiplicator);
     this.inputFactor = map(obj.inputFactor, InputFactor);
   }
 }

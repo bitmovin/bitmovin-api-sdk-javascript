@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import BillableEncodingMinutesDetails from './BillableEncodingMinutesDetails';
 import CodecConfigType from './CodecConfigType';
 import EncodingMode from './EncodingMode';
+import NexGuardABWatermarkingFeature from './NexGuardABWatermarkingFeature';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
 
@@ -56,6 +57,12 @@ export class BillableEncodingMinutes {
   public enhancedDeinterlace?: boolean;
 
   /**
+   * @type {NexGuardABWatermarkingFeature}
+   * @memberof BillableEncodingMinutes
+   */
+  public nexGuardABWatermarkingType?: NexGuardABWatermarkingFeature;
+
+  /**
    * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
@@ -72,6 +79,7 @@ export class BillableEncodingMinutes {
     this.preset = map(obj.preset);
     this.live = map(obj.live);
     this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
+    this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
     this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }

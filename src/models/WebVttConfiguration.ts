@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import CodecConfigType from './CodecConfigType';
 import SubtitleConfiguration from './SubtitleConfiguration';
+import WebVttCueIdentifierPolicy from './WebVttCueIdentifierPolicy';
 
 /**
  * @export
@@ -28,6 +29,12 @@ export class WebVttConfiguration extends SubtitleConfiguration {
    */
   public ignoreRegion?: boolean;
 
+  /**
+   * @type {WebVttCueIdentifierPolicy}
+   * @memberof WebVttConfiguration
+   */
+  public cueIdentifierPolicy?: WebVttCueIdentifierPolicy;
+
   constructor(obj?: Partial<WebVttConfiguration>) {
     super(obj);
     if(!obj) {
@@ -35,6 +42,7 @@ export class WebVttConfiguration extends SubtitleConfiguration {
     }
     this.appendOptionalZeroHour = map(obj.appendOptionalZeroHour);
     this.ignoreRegion = map(obj.ignoreRegion);
+    this.cueIdentifierPolicy = map(obj.cueIdentifierPolicy);
   }
 }
 
