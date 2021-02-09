@@ -2,9 +2,10 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
+import AnalyticsGcsServiceAccountOutput from '../../../models/AnalyticsGcsServiceAccountOutput';
 import GcsServiceAccountOutput from '../../../models/GcsServiceAccountOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import {GcsServiceAccountOutputListQueryParams, GcsServiceAccountOutputListQueryParamsBuilder} from './GcsServiceAccountOutputListQueryParams';
+import {AnalyticsGcsServiceAccountOutputListQueryParams, AnalyticsGcsServiceAccountOutputListQueryParamsBuilder} from './AnalyticsGcsServiceAccountOutputListQueryParams';
 
 /**
  * GcsServiceAccountApi - object-oriented interface
@@ -22,13 +23,13 @@ export default class GcsServiceAccountApi extends BaseAPI {
 
   /**
    * @summary Create Service Account based GCS Output
-   * @param {GcsServiceAccountOutput} gcsServiceAccountOutput The GCS output to be created
+   * @param {AnalyticsGcsServiceAccountOutput} analyticsGcsServiceAccountOutput The GCS output to be created
    * @throws {BitmovinError}
    * @memberof GcsServiceAccountApi
    */
-  public create(gcsServiceAccountOutput?: GcsServiceAccountOutput): Promise<GcsServiceAccountOutput> {
-    return this.restClient.post<GcsServiceAccountOutput>('/analytics/outputs/gcs-service-account', {}, gcsServiceAccountOutput).then((response) => {
-      return map(response, GcsServiceAccountOutput);
+  public create(analyticsGcsServiceAccountOutput?: AnalyticsGcsServiceAccountOutput): Promise<AnalyticsGcsServiceAccountOutput> {
+    return this.restClient.post<AnalyticsGcsServiceAccountOutput>('/analytics/outputs/gcs-service-account', {}, analyticsGcsServiceAccountOutput).then((response) => {
+      return map(response, AnalyticsGcsServiceAccountOutput);
     });
   }
 
@@ -68,15 +69,15 @@ export default class GcsServiceAccountApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof GcsServiceAccountApi
    */
-  public list(queryParameters?: GcsServiceAccountOutputListQueryParams | ((q: GcsServiceAccountOutputListQueryParamsBuilder) => GcsServiceAccountOutputListQueryParamsBuilder)): Promise<PaginationResponse<GcsServiceAccountOutput>> {
-    let queryParams: GcsServiceAccountOutputListQueryParams = {};
+  public list(queryParameters?: AnalyticsGcsServiceAccountOutputListQueryParams | ((q: AnalyticsGcsServiceAccountOutputListQueryParamsBuilder) => AnalyticsGcsServiceAccountOutputListQueryParamsBuilder)): Promise<PaginationResponse<AnalyticsGcsServiceAccountOutput>> {
+    let queryParams: AnalyticsGcsServiceAccountOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-      queryParams = queryParameters(new GcsServiceAccountOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AnalyticsGcsServiceAccountOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<GcsServiceAccountOutput>>('/analytics/outputs/gcs-service-account', {}, queryParams).then((response) => {
-      return new PaginationResponse<GcsServiceAccountOutput>(response, GcsServiceAccountOutput);
+    return this.restClient.get<PaginationResponse<AnalyticsGcsServiceAccountOutput>>('/analytics/outputs/gcs-service-account', {}, queryParams).then((response) => {
+      return new PaginationResponse<AnalyticsGcsServiceAccountOutput>(response, AnalyticsGcsServiceAccountOutput);
     });
   }
 }

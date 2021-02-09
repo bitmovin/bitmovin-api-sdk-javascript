@@ -2,9 +2,10 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
+import AnalyticsS3RoleBasedOutput from '../../../models/AnalyticsS3RoleBasedOutput';
 import S3RoleBasedOutput from '../../../models/S3RoleBasedOutput';
 import PaginationResponse from '../../../models/PaginationResponse';
-import {S3RoleBasedOutputListQueryParams, S3RoleBasedOutputListQueryParamsBuilder} from './S3RoleBasedOutputListQueryParams';
+import {AnalyticsS3RoleBasedOutputListQueryParams, AnalyticsS3RoleBasedOutputListQueryParamsBuilder} from './AnalyticsS3RoleBasedOutputListQueryParams';
 
 /**
  * S3RoleBasedApi - object-oriented interface
@@ -22,13 +23,13 @@ export default class S3RoleBasedApi extends BaseAPI {
 
   /**
    * @summary Create S3 Role-based Output
-   * @param {S3RoleBasedOutput} s3RoleBasedOutput The S3 Role-based output to be created
+   * @param {AnalyticsS3RoleBasedOutput} analyticsS3RoleBasedOutput The S3 Role-based output to be created
    * @throws {BitmovinError}
    * @memberof S3RoleBasedApi
    */
-  public create(s3RoleBasedOutput?: S3RoleBasedOutput): Promise<S3RoleBasedOutput> {
-    return this.restClient.post<S3RoleBasedOutput>('/analytics/outputs/s3-role-based', {}, s3RoleBasedOutput).then((response) => {
-      return map(response, S3RoleBasedOutput);
+  public create(analyticsS3RoleBasedOutput?: AnalyticsS3RoleBasedOutput): Promise<AnalyticsS3RoleBasedOutput> {
+    return this.restClient.post<AnalyticsS3RoleBasedOutput>('/analytics/outputs/s3-role-based', {}, analyticsS3RoleBasedOutput).then((response) => {
+      return map(response, AnalyticsS3RoleBasedOutput);
     });
   }
 
@@ -68,15 +69,15 @@ export default class S3RoleBasedApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof S3RoleBasedApi
    */
-  public list(queryParameters?: S3RoleBasedOutputListQueryParams | ((q: S3RoleBasedOutputListQueryParamsBuilder) => S3RoleBasedOutputListQueryParamsBuilder)): Promise<PaginationResponse<S3RoleBasedOutput>> {
-    let queryParams: S3RoleBasedOutputListQueryParams = {};
+  public list(queryParameters?: AnalyticsS3RoleBasedOutputListQueryParams | ((q: AnalyticsS3RoleBasedOutputListQueryParamsBuilder) => AnalyticsS3RoleBasedOutputListQueryParamsBuilder)): Promise<PaginationResponse<AnalyticsS3RoleBasedOutput>> {
+    let queryParams: AnalyticsS3RoleBasedOutputListQueryParams = {};
     if (typeof queryParameters === 'function') {
-      queryParams = queryParameters(new S3RoleBasedOutputListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new AnalyticsS3RoleBasedOutputListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<S3RoleBasedOutput>>('/analytics/outputs/s3-role-based', {}, queryParams).then((response) => {
-      return new PaginationResponse<S3RoleBasedOutput>(response, S3RoleBasedOutput);
+    return this.restClient.get<PaginationResponse<AnalyticsS3RoleBasedOutput>>('/analytics/outputs/s3-role-based', {}, queryParams).then((response) => {
+      return new PaginationResponse<AnalyticsS3RoleBasedOutput>(response, AnalyticsS3RoleBasedOutput);
     });
   }
 }

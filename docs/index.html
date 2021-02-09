@@ -85,7 +85,7 @@
 					<h2>Installation</h2>
 				</a>
 				<hr>
-				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.58.0</code></pre>
+				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.59.0</code></pre>
 				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
 					<h2>Initialization</h2>
 				</a>
@@ -175,6 +175,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/analyticsorder.html" class="tsd-kind-icon">Analytics<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/analyticsoutputtype.html" class="tsd-kind-icon">Analytics<wbr>Output<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/analyticsqueryoperator.html" class="tsd-kind-icon">Analytics<wbr>Query<wbr>Operator</a>
@@ -903,6 +906,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/analyticsexporttaskoutputtarget.html" class="tsd-kind-icon">Analytics<wbr>Export<wbr>Task<wbr>Output<wbr>Target</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/analyticsgcsserviceaccountoutput.html" class="tsd-kind-icon">Analytics<wbr>Gcs<wbr>Service<wbr>Account<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticsgcsserviceaccountoutputlistqueryparamsbuilder.html" class="tsd-kind-icon">Analytics<wbr>Gcs<wbr>Service<wbr>Account<wbr>Output<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/analyticsgreaterthanfilter.html" class="tsd-kind-icon">Analytics<wbr>Greater<wbr>Than<wbr>Filter</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -978,6 +987,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/analyticsorderbyentry.html" class="tsd-kind-icon">Analytics<wbr>Order<wbr>ByEntry</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/analyticsoutput.html" class="tsd-kind-icon">Analytics<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/analyticspercentilequeryrequest.html" class="tsd-kind-icon">Analytics<wbr>Percentile<wbr>Query<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -988,6 +1000,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/analyticsresponse.html" class="tsd-kind-icon">Analytics<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticss3rolebasedoutput.html" class="tsd-kind-icon">Analytics<wbr>S3Role<wbr>Based<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticss3rolebasedoutputlistqueryparamsbuilder.html" class="tsd-kind-icon">Analytics<wbr>S3Role<wbr>Based<wbr>Output<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/analyticsstddevqueryrequest.html" class="tsd-kind-icon">Analytics<wbr>Stddev<wbr>Query<wbr>Request</a>
@@ -3360,6 +3378,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/analyticsexporttasklistqueryparams.html" class="tsd-kind-icon">Analytics<wbr>Export<wbr>Task<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/analyticsgcsserviceaccountoutputlistqueryparams.html" class="tsd-kind-icon">Analytics<wbr>Gcs<wbr>Service<wbr>Account<wbr>Output<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/analyticss3rolebasedoutputlistqueryparams.html" class="tsd-kind-icon">Analytics<wbr>S3Role<wbr>Based<wbr>Output<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/apierrordefinitionlistqueryparams.html" class="tsd-kind-icon">Api<wbr>Error<wbr>Definition<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -3958,6 +3982,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#analyticsabstractfilterunion" class="tsd-kind-icon">Analytics<wbr>Abstract<wbr>Filter<wbr>Union</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#analyticsoutputunion" class="tsd-kind-icon">Analytics<wbr>Output<wbr>Union</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#callable" class="tsd-kind-icon">Callable</a>
