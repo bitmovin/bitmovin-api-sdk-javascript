@@ -48,7 +48,6 @@ export enum CloudRegion {
   AUSTRALIA = 'AUSTRALIA',
   AWS = 'AWS',
   GOOGLE = 'GOOGLE',
-  KUBERNETES = 'KUBERNETES',
   EXTERNAL = 'EXTERNAL',
   AUTO = 'AUTO'
 }

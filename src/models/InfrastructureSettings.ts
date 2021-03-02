@@ -7,7 +7,7 @@ import CloudRegion from './CloudRegion';
  */
 export class InfrastructureSettings {
   /**
-   * Id of a custom infrastructure, e.g., Kubernetes Cluster
+   * Id of a custom infrastructure, e.g., AWS Cloud Connect
    * @type {string}
    * @memberof InfrastructureSettings
    */

@@ -6,7 +6,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class RescheduleEncodingRequest {
   /**
-   * Id of a custom infrastructure, e.g., Kubernetes Cluster
+   * Id of a custom infrastructure, e.g., AWS Cloud Connect
    * @type {string}
    * @memberof RescheduleEncodingRequest
    */

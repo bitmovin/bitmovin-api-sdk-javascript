@@ -1,7 +1,6 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
-import KubernetesApi from './kubernetes/KubernetesApi';
 import AwsApi from './aws/AwsApi';
 import StaticIpsApi from './staticIps/StaticIpsApi';
 import AzureApi from './azure/AzureApi';
@@ -15,7 +14,6 @@ import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPo
  * @extends {BaseAPI}
  */
 export default class InfrastructureApi extends BaseAPI {
-  public kubernetes: KubernetesApi;
   public aws: AwsApi;
   public staticIps: StaticIpsApi;
   public azure: AzureApi;
@@ -24,7 +22,6 @@ export default class InfrastructureApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
-    this.kubernetes = new KubernetesApi(configuration);
     this.aws = new AwsApi(configuration);
     this.staticIps = new StaticIpsApi(configuration);
     this.azure = new AzureApi(configuration);
