@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import EncodingStreamInputDetails from './EncodingStreamInputDetails';
 import StreamSelectionMode from './StreamSelectionMode';
 
 /**
@@ -41,6 +42,13 @@ export class StreamInput {
    */
   public inputStreamId?: string;
 
+  /**
+   * Input analysis details  This property is populated after the encoding has finished 
+   * @type {EncodingStreamInputDetails}
+   * @memberof StreamInput
+   */
+  public analysisDetails?: EncodingStreamInputDetails;
+
   constructor(obj?: Partial<StreamInput>) {
     if(!obj) {
       return;
@@ -50,6 +58,7 @@ export class StreamInput {
     this.selectionMode = map(obj.selectionMode);
     this.position = map(obj.position);
     this.inputStreamId = map(obj.inputStreamId);
+    this.analysisDetails = map(obj.analysisDetails, EncodingStreamInputDetails);
   }
 }
 

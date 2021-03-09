@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import AnalyticsExportStatus from './AnalyticsExportStatus';
 import AnalyticsExportTaskOutputTarget from './AnalyticsExportTaskOutputTarget';
+import AnalyticsExportType from './AnalyticsExportType';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -76,6 +77,18 @@ export class AnalyticsExportTask extends BitmovinResponse {
    */
   public finishedAt?: Date;
 
+  /**
+   * @type {AnalyticsExportType}
+   * @memberof AnalyticsExportTask
+   */
+  public type?: AnalyticsExportType;
+
+  /**
+   * @type {string[]}
+   * @memberof AnalyticsExportTask
+   */
+  public columns?: string[];
+
   constructor(obj?: Partial<AnalyticsExportTask>) {
     super(obj);
     if(!obj) {
@@ -91,6 +104,8 @@ export class AnalyticsExportTask extends BitmovinResponse {
     this.status = map(obj.status);
     this.startedAt = map(obj.startedAt, Date);
     this.finishedAt = map(obj.finishedAt, Date);
+    this.type = map(obj.type);
+    this.columns = mapArray(obj.columns);
   }
 }
 

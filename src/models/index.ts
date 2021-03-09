@@ -55,6 +55,7 @@ export * from './AnalyticsEqualFilter';
 export * from './AnalyticsExportStatus';
 export * from './AnalyticsExportTask';
 export * from './AnalyticsExportTaskOutputTarget';
+export * from './AnalyticsExportType';
 export * from './AnalyticsGcsServiceAccountOutput';
 export * from './AnalyticsGreaterThanFilter';
 export * from './AnalyticsGreaterThanOrEqualFilter';

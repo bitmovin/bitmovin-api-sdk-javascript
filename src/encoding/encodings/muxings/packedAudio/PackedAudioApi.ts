@@ -3,6 +3,7 @@ import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import InformationApi from './information/InformationApi';
+import DrmApi from './drm/DrmApi';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import PackedAudioMuxing from '../../../../models/PackedAudioMuxing';
 import PaginationResponse from '../../../../models/PaginationResponse';
@@ -17,11 +18,13 @@ import {PackedAudioMuxingListQueryParams, PackedAudioMuxingListQueryParamsBuilde
 export default class PackedAudioApi extends BaseAPI {
   public customdata: CustomdataApi;
   public information: InformationApi;
+  public drm: DrmApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.customdata = new CustomdataApi(configuration);
     this.information = new InformationApi(configuration);
+    this.drm = new DrmApi(configuration);
   }
 
   /**
