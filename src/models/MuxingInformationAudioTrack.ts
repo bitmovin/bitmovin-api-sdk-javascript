@@ -54,7 +54,7 @@ export class MuxingInformationAudioTrack {
   public channels?: number;
 
   /**
-   * TODO add description
+   * The duration in seconds
    * @type {number}
    * @memberof MuxingInformationAudioTrack
    */

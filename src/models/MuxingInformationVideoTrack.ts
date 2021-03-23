@@ -34,7 +34,6 @@ export class MuxingInformationVideoTrack {
   public bitRate?: number;
 
   /**
-   * TODO add description
    * @type {number}
    * @memberof MuxingInformationVideoTrack
    */
