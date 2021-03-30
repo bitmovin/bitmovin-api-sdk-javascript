@@ -3,6 +3,7 @@ import AutoRestartConfiguration from './AutoRestartConfiguration';
 import EncodingMode from './EncodingMode';
 import LiveDashManifest from './LiveDashManifest';
 import LiveHlsManifest from './LiveHlsManifest';
+import ManifestGenerator from './ManifestGenerator';
 import ReuploadSettings from './ReuploadSettings';
 
 /**
@@ -46,6 +47,13 @@ export class StartLiveEncodingRequest {
   public reuploadSettings?: ReuploadSettings;
 
   /**
+   * Sets the version of the manifest generation engine
+   * @type {ManifestGenerator}
+   * @memberof StartLiveEncodingRequest
+   */
+  public manifestGenerator?: ManifestGenerator;
+
+  /**
    * Configuration for auto restarting the live encoding
    * @type {AutoRestartConfiguration}
    * @memberof StartLiveEncodingRequest
@@ -61,6 +69,7 @@ export class StartLiveEncodingRequest {
     this.dashManifests = mapArray(obj.dashManifests, LiveDashManifest);
     this.liveEncodingMode = map(obj.liveEncodingMode);
     this.reuploadSettings = map(obj.reuploadSettings, ReuploadSettings);
+    this.manifestGenerator = map(obj.manifestGenerator);
     this.autoRestartConfiguration = map(obj.autoRestartConfiguration, AutoRestartConfiguration);
   }
 }

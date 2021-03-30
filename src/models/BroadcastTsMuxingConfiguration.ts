@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import BroadcastTsAudioInputStreamConfiguration from './BroadcastTsAudioInputStreamConfiguration';
 import BroadcastTsProgramConfiguration from './BroadcastTsProgramConfiguration';
+import BroadcastTsSubtitleInputStreamConfiguration from './BroadcastTsSubtitleInputStreamConfiguration';
 import BroadcastTsTransportConfiguration from './BroadcastTsTransportConfiguration';
 import BroadcastTsVideoInputStreamConfiguration from './BroadcastTsVideoInputStreamConfiguration';
 
@@ -35,6 +36,12 @@ export class BroadcastTsMuxingConfiguration {
    */
   public audioStreams?: BroadcastTsAudioInputStreamConfiguration[];
 
+  /**
+   * @type {BroadcastTsSubtitleInputStreamConfiguration[]}
+   * @memberof BroadcastTsMuxingConfiguration
+   */
+  public subtitleStreams?: BroadcastTsSubtitleInputStreamConfiguration[];
+
   constructor(obj?: Partial<BroadcastTsMuxingConfiguration>) {
     if(!obj) {
       return;
@@ -43,6 +50,7 @@ export class BroadcastTsMuxingConfiguration {
     this.program = map(obj.program, BroadcastTsProgramConfiguration);
     this.videoStreams = mapArray(obj.videoStreams, BroadcastTsVideoInputStreamConfiguration);
     this.audioStreams = mapArray(obj.audioStreams, BroadcastTsAudioInputStreamConfiguration);
+    this.subtitleStreams = mapArray(obj.subtitleStreams, BroadcastTsSubtitleInputStreamConfiguration);
   }
 }
 

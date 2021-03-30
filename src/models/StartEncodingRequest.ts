@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingMode from './EncodingMode';
+import ManifestGenerator from './ManifestGenerator';
 import ManifestResource from './ManifestResource';
 import PerTitle from './PerTitle';
 import Scheduling from './Scheduling';
@@ -82,6 +83,13 @@ export class StartEncodingRequest {
   public vodSmoothManifests?: ManifestResource[];
 
   /**
+   * Sets the version of the manifest generation engine
+   * @type {ManifestGenerator}
+   * @memberof StartEncodingRequest
+   */
+  public manifestGenerator?: ManifestGenerator;
+
+  /**
    * Per-Title settings
    * @type {PerTitle}
    * @memberof StartEncodingRequest
@@ -102,6 +110,7 @@ export class StartEncodingRequest {
     this.vodDashManifests = mapArray(obj.vodDashManifests, ManifestResource);
     this.vodHlsManifests = mapArray(obj.vodHlsManifests, ManifestResource);
     this.vodSmoothManifests = mapArray(obj.vodSmoothManifests, ManifestResource);
+    this.manifestGenerator = map(obj.manifestGenerator);
     this.perTitle = map(obj.perTitle, PerTitle);
   }
 }
