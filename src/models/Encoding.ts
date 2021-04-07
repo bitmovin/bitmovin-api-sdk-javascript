@@ -81,13 +81,6 @@ export class Encoding extends BitmovinResource {
   public encoderVersion?: string;
 
   /**
-   * Define an external infrastructure to run the encoding on. Note If you set this value, the `cloudRegion` must be 'EXTERNAL'.
-   * @type {string}
-   * @memberof Encoding
-   */
-  public infrastructureId?: string;
-
-  /**
    * @type {InfrastructureSettings}
    * @memberof Encoding
    */
@@ -150,7 +143,6 @@ export class Encoding extends BitmovinResource {
     this.cloudRegion = map(obj.cloudRegion);
     this.fallbackCloudRegions = mapArray(obj.fallbackCloudRegions);
     this.encoderVersion = map(obj.encoderVersion);
-    this.infrastructureId = map(obj.infrastructureId);
     this.infrastructure = map(obj.infrastructure, InfrastructureSettings);
     this.staticIpId = map(obj.staticIpId);
     this.selectedEncoderVersion = map(obj.selectedEncoderVersion);

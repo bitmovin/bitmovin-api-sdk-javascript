@@ -35,7 +35,7 @@ export default class RotateApi extends BaseAPI {
 
   /**
    * @summary Delete Rotate Filter
-   * @param {string} filterId Id of the Rotate configuration.
+   * @param {string} filterId Id of the Rotate Filter.
    * @throws {BitmovinError}
    * @memberof RotateApi
    */
@@ -50,7 +50,7 @@ export default class RotateApi extends BaseAPI {
 
   /**
    * @summary Rotate Filter Details
-   * @param {string} filterId Id of the Rotate configuration.
+   * @param {string} filterId Id of the Rotate Filter.
    * @throws {BitmovinError}
    * @memberof RotateApi
    */

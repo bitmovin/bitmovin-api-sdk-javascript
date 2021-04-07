@@ -30,7 +30,7 @@ export class DvbSubtitleInputStream extends InputStream {
   public inputPath?: string;
 
   /**
-   * Specifies the algorithm how the stream in the input file will be selected. Only POSITION_ABSOLUTE is supported.
+   * Specifies the algorithm for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
    * @type {StreamSelectionMode}
    * @memberof DvbSubtitleInputStream
    */

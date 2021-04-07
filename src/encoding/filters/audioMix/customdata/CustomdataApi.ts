@@ -17,7 +17,7 @@ export default class CustomdataApi extends BaseAPI {
 
   /**
    * @summary Audio Mix Filter Custom Data
-   * @param {string} filterId Id of the Audio Mix configuration.
+   * @param {string} filterId Id of the Audio Mix Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi
    */

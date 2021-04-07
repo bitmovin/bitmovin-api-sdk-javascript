@@ -1,5 +1,5 @@
 /**
- * Specifies if the deinterlace filter should be applied unconditionally or only on demand.
+ * Specifies if the Deinterlace Filter should be applied unconditionally or only on demand.
  * @export
  * @enum {string}
  */

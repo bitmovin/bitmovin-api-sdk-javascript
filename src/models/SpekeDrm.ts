@@ -31,7 +31,7 @@ export class SpekeDrm extends Drm {
   public kid?: string;
 
   /**
-   * 16 byte initialization vector represented by a 32-character text string. It is mandatory if systemIds contains AES128 and FairPlay. 
+   * 16 byte initialization vector represented by a 32-character text string. It is mandatory if systemIds contains AES128 or FairPlay. 
    * @type {string}
    * @memberof SpekeDrm
    */

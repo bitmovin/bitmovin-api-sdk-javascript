@@ -6,7 +6,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class LiveHlsManifest {
   /**
-   * HLS manifest ids (required)
+   * HLS manifest id (required)
    * @type {string}
    * @memberof LiveHlsManifest
    */

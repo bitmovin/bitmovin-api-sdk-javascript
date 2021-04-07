@@ -35,7 +35,7 @@ export default class AudioVolumeApi extends BaseAPI {
 
   /**
    * @summary Delete Audio Volume Filter
-   * @param {string} filterId Id of the Audio volume configuration.
+   * @param {string} filterId Id of the Audio Volume Filter.
    * @throws {BitmovinError}
    * @memberof AudioVolumeApi
    */
@@ -50,7 +50,7 @@ export default class AudioVolumeApi extends BaseAPI {
 
   /**
    * @summary Audio Volume Filter Details
-   * @param {string} filterId Id of the audio volume configuration.
+   * @param {string} filterId Id of the Audio Volume Filter.
    * @throws {BitmovinError}
    * @memberof AudioVolumeApi
    */

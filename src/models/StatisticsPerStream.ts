@@ -183,7 +183,7 @@ export class StatisticsPerStream {
   public enhancedDeinterlace?: boolean;
 
   /**
-   * The output minutes multiplicator for streams using an enhanced deinterlace filter.
+   * The output minutes multiplicator for streams using an enhanced Deinterlace Filter.
    * @type {number}
    * @memberof StatisticsPerStream
    */

@@ -2,6 +2,11 @@ import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
 import SidecarErrorMode from './SidecarErrorMode';
+import SidecarFileType from './SidecarFileType';
+import WebVttSidecarFile from './WebVttSidecarFile';
+
+export type SidecarFileUnion =
+  WebVttSidecarFile;
 
 /**
  * A file that is added to an encoding. The size limit for a sidecar file is 10 MB
@@ -9,6 +14,11 @@ import SidecarErrorMode from './SidecarErrorMode';
  * @class SidecarFile
  */
 export class SidecarFile extends BitmovinResource {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key in keyof typeof SidecarFileType]: string; } = {
+    WEB_VTT: 'WebVttSidecarFile'
+  };
+
   /**
    * Id of input (required)
    * @type {string}

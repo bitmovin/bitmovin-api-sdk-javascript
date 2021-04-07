@@ -513,6 +513,7 @@ export * from './SftpInput';
 export * from './SftpOutput';
 export * from './SidecarErrorMode';
 export * from './SidecarFile';
+export * from './SidecarFileType';
 export * from './SignatureType';
 export * from './SmoothManifestContentProtection';
 export * from './SmoothManifestDefault';

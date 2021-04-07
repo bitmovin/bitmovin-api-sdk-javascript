@@ -17,7 +17,7 @@ export default class CustomdataApi extends BaseAPI {
 
   /**
    * @summary Deinterlace Filter Custom Data
-   * @param {string} filterId Id of the deinterlace filter
+   * @param {string} filterId Id of the Deinterlace Filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi
    */

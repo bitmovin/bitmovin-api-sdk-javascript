@@ -7,7 +7,7 @@ import AvailabilityStartTimeMode from './AvailabilityStartTimeMode';
  */
 export class LiveDashManifest {
   /**
-   * Dash manifest ids (required)
+   * Dash manifest id (required)
    * @type {string}
    * @memberof LiveDashManifest
    */

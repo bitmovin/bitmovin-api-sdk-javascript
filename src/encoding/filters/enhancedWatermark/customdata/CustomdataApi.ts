@@ -17,7 +17,7 @@ export default class CustomdataApi extends BaseAPI {
 
   /**
    * @summary Enhanced Watermark Filter Custom Data
-   * @param {string} filterId Id of the enhanced watermark configuration.
+   * @param {string} filterId Id of the enhanced Watermark Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi
    */

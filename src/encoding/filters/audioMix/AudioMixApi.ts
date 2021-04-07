@@ -35,7 +35,7 @@ export default class AudioMixApi extends BaseAPI {
 
   /**
    * @summary Delete Audio Mix Filter
-   * @param {string} filterId Id of the Audio Mix configuration.
+   * @param {string} filterId Id of the Audio Mix Filter.
    * @throws {BitmovinError}
    * @memberof AudioMixApi
    */
@@ -50,7 +50,7 @@ export default class AudioMixApi extends BaseAPI {
 
   /**
    * @summary Audio Mix Filter Details
-   * @param {string} filterId Id of the Audio Mix configuration.
+   * @param {string} filterId Id of the Audio Mix Filter.
    * @throws {BitmovinError}
    * @memberof AudioMixApi
    */

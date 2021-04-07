@@ -35,7 +35,7 @@ export default class WatermarkApi extends BaseAPI {
 
   /**
    * @summary Delete Watermark Filter
-   * @param {string} filterId Id of the watermark configuration.
+   * @param {string} filterId Id of the Watermark Filter.
    * @throws {BitmovinError}
    * @memberof WatermarkApi
    */
@@ -50,7 +50,7 @@ export default class WatermarkApi extends BaseAPI {
 
   /**
    * @summary Watermark Filter Details
-   * @param {string} filterId Id of the watermark configuration.
+   * @param {string} filterId Id of the Watermark Filter.
    * @throws {BitmovinError}
    * @memberof WatermarkApi
    */
