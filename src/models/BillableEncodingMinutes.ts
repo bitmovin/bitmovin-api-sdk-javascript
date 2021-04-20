@@ -3,6 +3,7 @@ import BillableEncodingMinutesDetails from './BillableEncodingMinutesDetails';
 import CodecConfigType from './CodecConfigType';
 import EncodingMode from './EncodingMode';
 import NexGuardABWatermarkingFeature from './NexGuardABWatermarkingFeature';
+import PixelFormatBitDepth from './PixelFormatBitDepth';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
 
@@ -63,6 +64,12 @@ export class BillableEncodingMinutes {
   public nexGuardABWatermarkingType?: NexGuardABWatermarkingFeature;
 
   /**
+   * @type {PixelFormatBitDepth}
+   * @memberof BillableEncodingMinutes
+   */
+  public pixelFormatBitDepth?: PixelFormatBitDepth;
+
+  /**
    * @type {BillableEncodingMinutesDetails}
    * @memberof BillableEncodingMinutes
    */
@@ -80,6 +87,7 @@ export class BillableEncodingMinutes {
     this.live = map(obj.live);
     this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
     this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
+    this.pixelFormatBitDepth = map(obj.pixelFormatBitDepth);
     this.billableMinutes = map(obj.billableMinutes, BillableEncodingMinutesDetails);
   }
 }

@@ -444,6 +444,7 @@ export * from './Period';
 export * from './Permission';
 export * from './PictureFieldParity';
 export * from './PixelFormat';
+export * from './PixelFormatBitDepth';
 export * from './PlaintextId3Tag';
 export * from './PlayReadyAdditionalInformation';
 export * from './PlayReadyDrm';

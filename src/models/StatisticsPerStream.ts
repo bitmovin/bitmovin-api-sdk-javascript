@@ -4,6 +4,7 @@ import DolbyVisionPerStreamMode from './DolbyVisionPerStreamMode';
 import EncodingMode from './EncodingMode';
 import InputFactor from './InputFactor';
 import NexGuardABWatermarkingFeature from './NexGuardABWatermarkingFeature';
+import PixelFormatBitDepth from './PixelFormatBitDepth';
 import PsnrPerStreamMode from './PsnrPerStreamMode';
 import StatisticsPerTitleStream from './StatisticsPerTitleStream';
 import StatisticsResolution from './StatisticsResolution';
@@ -203,6 +204,19 @@ export class StatisticsPerStream {
   public nexGuardABWatermarkingMultiplicator?: number;
 
   /**
+   * @type {PixelFormatBitDepth}
+   * @memberof StatisticsPerStream
+   */
+  public pixelFormatBitDepth?: PixelFormatBitDepth;
+
+  /**
+   * The output minutes multiplicator for the pixel format bit depth
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public pixelFormatMultiplicator?: number;
+
+  /**
    * @type {InputFactor}
    * @memberof StatisticsPerStream
    */
@@ -240,6 +254,8 @@ export class StatisticsPerStream {
     this.enhancedDeinterlaceMultiplicator = map(obj.enhancedDeinterlaceMultiplicator);
     this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
     this.nexGuardABWatermarkingMultiplicator = map(obj.nexGuardABWatermarkingMultiplicator);
+    this.pixelFormatBitDepth = map(obj.pixelFormatBitDepth);
+    this.pixelFormatMultiplicator = map(obj.pixelFormatMultiplicator);
     this.inputFactor = map(obj.inputFactor, InputFactor);
   }
 }
