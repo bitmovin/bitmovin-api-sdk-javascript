@@ -621,6 +621,8 @@ export * from './WebVttConfiguration';
 export * from './WebVttCueIdentifierPolicy';
 export * from './WebVttSidecarFile';
 export * from './WebVttSidecarFileSegmentation';
+export * from './WebVttStyling';
+export * from './WebVttStylingMode';
 export * from './Webhook';
 export * from './WebhookHttpMethod';
 export * from './WebhookNotification';
