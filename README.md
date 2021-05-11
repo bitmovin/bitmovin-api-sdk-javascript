@@ -16,17 +16,25 @@ Using this API client requires an active account.
 
 > Don't have an account yet? [Sign up for a free Bitmovin trial plan](https://dashboard.bitmovin.com/signup)!
 
-For full documentation of all available API endpoints, see the [Bitmovin API reference](https://bitmovin.com/docs).
+---
+
+## Documentation & Release Notes
++ Full Bitmovin API reference documentation: https://bitmovin.com/docs/encoding/api-reference
++ SDK reference documentation for Javascript: https://bitmovin.github.io/bitmovin-api-sdk-javascript
++ Release Notes: https://bitmovin.com/docs/encoding/changelogs/rest
+
+## Support
+If you have any questions regarding the SDK, provided examples or our services, please log in to your Bitmovin Dashboard at https://bitmovin.com/dashboard and [create a support ticket](https://bitmovin.com/dashboard/support/cases/create?tab=encoding). Our team will get back to you as soon as possible :+1:
+
+---
 
 ## Installation
-------------
 
 ``` bash
-npm install @bitmovin/api-sdk@1.70.0
+npm install @bitmovin/api-sdk@1.71.0
 ```
 
 ## Initialization
-----------
 
 ### Node
 
@@ -60,7 +68,9 @@ Import `@bitmovin/api-sdk/dist/index.js`.
 ## Examples
 You can find sample workflow scripts in the [Bitmovin API SDK examples](https://github.com/bitmovin/bitmovin-api-sdk-examples) repository.
 
-# Previous API Client (Legacy)
+---
+
+## Deprecated API Client (Legacy)
 
 `bitmovin-api-sdk-javascript` is the latest Bitmovin API client for TypeScript / JavaScript. It guarantees 100% specification conformity at any given time and access to all features of the API as soon as they are released. 
 

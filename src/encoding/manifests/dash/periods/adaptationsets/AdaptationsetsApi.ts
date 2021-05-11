@@ -4,6 +4,7 @@ import {map, mapArray} from '../../../../../common/Mapper';
 import AudioApi from './audio/AudioApi';
 import VideoApi from './video/VideoApi';
 import SubtitleApi from './subtitle/SubtitleApi';
+import ImageApi from './image/ImageApi';
 import RepresentationsApi from './representations/RepresentationsApi';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 
@@ -17,6 +18,7 @@ export default class AdaptationsetsApi extends BaseAPI {
   public audio: AudioApi;
   public video: VideoApi;
   public subtitle: SubtitleApi;
+  public image: ImageApi;
   public representations: RepresentationsApi;
   public contentprotection: ContentprotectionApi;
 
@@ -25,6 +27,7 @@ export default class AdaptationsetsApi extends BaseAPI {
     this.audio = new AudioApi(configuration);
     this.video = new VideoApi(configuration);
     this.subtitle = new SubtitleApi(configuration);
+    this.image = new ImageApi(configuration);
     this.representations = new RepresentationsApi(configuration);
     this.contentprotection = new ContentprotectionApi(configuration);
   }

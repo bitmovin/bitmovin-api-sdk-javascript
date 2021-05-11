@@ -1,6 +1,8 @@
 import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
+import SpriteCreationMode from './SpriteCreationMode';
+import SpriteJpegConfig from './SpriteJpegConfig';
 import SpriteUnit from './SpriteUnit';
 
 /**
@@ -36,7 +38,7 @@ export class Sprite extends BitmovinResource {
   public distance?: number;
 
   /**
-   * Name of the sprite image. File extension \".jpg\" or \".png\" is required. (required)
+   * Name of the sprite image. File extension \".jpg\"/\".jpeg\" or \".png\" is required. (required)
    * @type {string}
    * @memberof Sprite
    */
@@ -69,6 +71,34 @@ export class Sprite extends BitmovinResource {
    */
   public imagesPerFile?: number;
 
+  /**
+   * Number of rows of images per file.  Has to be set together with vTiles. If this property and vTiles are set, the imagesPerFile property must not be set.  It is recommended to use the placeholder '%number%' in the spriteName to allow the generation of multiple sprites.  Only supported starting with encoder version `2.76.0`. 
+   * @type {number}
+   * @memberof Sprite
+   */
+  public hTiles?: number;
+
+  /**
+   * Number of columns of images per file.  Has to be set together with hTiles. If this property and hTiles are set, the imagesPerFile property must not be set.  It is recommended to use the placeholder '%number%' in the spriteName to allow the generation of multiple sprites.  Only supported starting with encoder version `2.76.0`. 
+   * @type {number}
+   * @memberof Sprite
+   */
+  public vTiles?: number;
+
+  /**
+   * Additional configuration for JPEG sprite generation.  If this property is set the extension of the file must be '.jpg.' or '.jpeg'  Only supported starting with encoder version `2.76.0` 
+   * @type {SpriteJpegConfig}
+   * @memberof Sprite
+   */
+  public jpegConfig?: SpriteJpegConfig;
+
+  /**
+   * The creation mode for the thumbnails in the Sprite.  Two possible creation modes exist: generate thumbnails starting with the beginning of the video or after the first configured period.  When using distance=10 and unit=SECONDS and INTERVAL_END, the first image of the sprite is from the second 10 of the video. When using distance=10 and unit=SECONDS and INTERVAL_START, the first image of the sprite is from the very start of the video, while the second image is from second 10 of the video.  It is recommended to use 'INTERVAL_START' when using the sprites for trick play so that there is an additional thumbnail from the beginning of the video.  Only supported starting with encoder version `2.76.0`. 
+   * @type {SpriteCreationMode}
+   * @memberof Sprite
+   */
+  public creationMode?: SpriteCreationMode;
+
   constructor(obj?: Partial<Sprite>) {
     super(obj);
     if(!obj) {
@@ -83,6 +113,10 @@ export class Sprite extends BitmovinResource {
     this.vttName = map(obj.vttName);
     this.outputs = mapArray(obj.outputs, EncodingOutput);
     this.imagesPerFile = map(obj.imagesPerFile);
+    this.hTiles = map(obj.hTiles);
+    this.vTiles = map(obj.vTiles);
+    this.jpegConfig = map(obj.jpegConfig, SpriteJpegConfig);
+    this.creationMode = map(obj.creationMode);
   }
 }
 
