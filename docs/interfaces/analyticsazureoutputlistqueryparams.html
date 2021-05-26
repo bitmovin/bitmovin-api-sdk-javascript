@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AnalyticsOutputType | @bitmovin/api-sdk</title>
+	<title>AnalyticsAzureOutputListQueryParams | @bitmovin/api-sdk</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,60 +56,68 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="analyticsoutputtype.html">AnalyticsOutputType</a>
+					<a href="analyticsazureoutputlistqueryparams.html">AnalyticsAzureOutputListQueryParams</a>
 				</li>
 			</ul>
-			<h1>Enumeration AnalyticsOutputType</h1>
+			<h1>Interface AnalyticsAzureOutputListQueryParams</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AnalyticsAzureOutputListQueryParams</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumeration members</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="analyticsoutputtype.html#azure" class="tsd-kind-icon">AZURE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="analyticsoutputtype.html#gcs_service_account" class="tsd-kind-icon">GCS_<wbr>SERVICE_<wbr>ACCOUNT</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="analyticsoutputtype.html#s3_role_based" class="tsd-kind-icon">S3_<wbr>ROLE_<wbr>BASED</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="analyticsazureoutputlistqueryparams.html#limit" class="tsd-kind-icon">limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="analyticsazureoutputlistqueryparams.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="analyticsazureoutputlistqueryparams.html#offset" class="tsd-kind-icon">offset</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="azure" class="tsd-anchor"></a>
-					<h3>AZURE</h3>
-					<div class="tsd-signature tsd-kind-icon">AZURE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;AZURE&quot;</span></div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="limit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> limit</h3>
+					<div class="tsd-signature tsd-kind-icon">limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutputType.ts:8</li>
+							<li>Defined in analytics/outputs/azure/AnalyticsAzureOutputListQueryParams.ts:16</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="gcs_service_account" class="tsd-anchor"></a>
-					<h3>GCS_<wbr>SERVICE_<wbr>ACCOUNT</h3>
-					<div class="tsd-signature tsd-kind-icon">GCS_<wbr>SERVICE_<wbr>ACCOUNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;GCS_SERVICE_ACCOUNT&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutputType.ts:7</li>
+							<li>Defined in analytics/outputs/azure/AnalyticsAzureOutputListQueryParams.ts:23</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="s3_role_based" class="tsd-anchor"></a>
-					<h3>S3_<wbr>ROLE_<wbr>BASED</h3>
-					<div class="tsd-signature tsd-kind-icon">S3_<wbr>ROLE_<wbr>BASED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;S3_ROLE_BASED&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="offset" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> offset</h3>
+					<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutputType.ts:6</li>
+							<li>Defined in analytics/outputs/azure/AnalyticsAzureOutputListQueryParams.ts:9</li>
 						</ul>
 					</aside>
 				</section>
@@ -127,17 +135,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum">
-						<a href="analyticsoutputtype.html" class="tsd-kind-icon">Analytics<wbr>Output<wbr>Type</a>
+					<li class="current tsd-kind-interface">
+						<a href="analyticsazureoutputlistqueryparams.html" class="tsd-kind-icon">Analytics<wbr>Azure<wbr>Output<wbr>List<wbr>Query<wbr>Params</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="analyticsoutputtype.html#azure" class="tsd-kind-icon">AZURE</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="analyticsazureoutputlistqueryparams.html#limit" class="tsd-kind-icon">limit</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="analyticsoutputtype.html#gcs_service_account" class="tsd-kind-icon">GCS_<wbr>SERVICE_<wbr>ACCOUNT</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="analyticsazureoutputlistqueryparams.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="analyticsoutputtype.html#s3_role_based" class="tsd-kind-icon">S3_<wbr>ROLE_<wbr>BASED</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="analyticsazureoutputlistqueryparams.html#offset" class="tsd-kind-icon">offset</a>
 							</li>
 						</ul>
 					</li>

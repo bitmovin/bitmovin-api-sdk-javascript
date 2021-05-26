@@ -76,10 +76,13 @@
 								<span class="target">AnalyticsOutput</span>
 								<ul class="tsd-hierarchy">
 									<li>
+										<a href="analyticsgcsserviceaccountoutput.html" class="tsd-signature-type">AnalyticsGcsServiceAccountOutput</a>
+									</li>
+									<li>
 										<a href="analyticss3rolebasedoutput.html" class="tsd-signature-type">AnalyticsS3RoleBasedOutput</a>
 									</li>
 									<li>
-										<a href="analyticsgcsserviceaccountoutput.html" class="tsd-signature-type">AnalyticsGcsServiceAccountOutput</a>
+										<a href="analyticsazureoutput.html" class="tsd-signature-type">AnalyticsAzureOutput</a>
 									</li>
 								</ul>
 							</li>
@@ -132,7 +135,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="bitmovinresource.html">BitmovinResource</a>.<a href="bitmovinresource.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in models/AnalyticsOutput.ts:27</li>
+									<li>Defined in models/AnalyticsOutput.ts:30</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -154,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">acl<span class="tsd-signature-symbol">:</span> <a href="aclentry.html" class="tsd-signature-type">AclEntry</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutput.ts:27</li>
+							<li>Defined in models/AnalyticsOutput.ts:30</li>
 						</ul>
 					</aside>
 				</section>
@@ -230,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">_discriminator<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"type"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;type&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutput.ts:17</li>
+							<li>Defined in models/AnalyticsOutput.ts:19</li>
 						</ul>
 					</aside>
 				</section>
@@ -243,16 +246,26 @@
 					<div class="tsd-signature tsd-kind-icon">_discriminator<wbr>Mapping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in models/AnalyticsOutput.ts:18</li>
+							<li>Defined in models/AnalyticsOutput.ts:20</li>
 						</ul>
 					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.azure" class="tsd-anchor"></a>
+						<h3>AZURE</h3>
+						<div class="tsd-signature tsd-kind-icon">AZURE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;AnalyticsAzureOutput&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/AnalyticsOutput.ts:23</li>
+							</ul>
+						</aside>
+					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="_discriminatormapping.gcs_service_account" class="tsd-anchor"></a>
 						<h3>GCS_<wbr>SERVICE_<wbr>ACCOUNT</h3>
 						<div class="tsd-signature tsd-kind-icon">GCS_<wbr>SERVICE_<wbr>ACCOUNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;AnalyticsGcsServiceAccountOutput&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in models/AnalyticsOutput.ts:20</li>
+								<li>Defined in models/AnalyticsOutput.ts:22</li>
 							</ul>
 						</aside>
 					</section>
@@ -262,7 +275,7 @@
 						<div class="tsd-signature tsd-kind-icon">S3_<wbr>ROLE_<wbr>BASED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;AnalyticsS3RoleBasedOutput&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in models/AnalyticsOutput.ts:19</li>
+								<li>Defined in models/AnalyticsOutput.ts:21</li>
 							</ul>
 						</aside>
 					</section>

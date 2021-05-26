@@ -47,6 +47,7 @@ export * from './AnalyticsAttribute';
 export * from './AnalyticsAvgConcurrentViewersResponse';
 export * from './AnalyticsAvgDroppedFramesResponse';
 export * from './AnalyticsAvgQueryRequest';
+export * from './AnalyticsAzureOutput';
 export * from './AnalyticsColumnLabel';
 export * from './AnalyticsContainsFilter';
 export * from './AnalyticsContextDescription';
