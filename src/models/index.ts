@@ -328,6 +328,7 @@ export * from './HeAacV2Signaling';
 export * from './HlsManifest';
 export * from './HlsManifestDefault';
 export * from './HlsManifestDefaultVersion';
+export * from './HlsTargetDurationRoundingMode';
 export * from './HlsVersion';
 export * from './HttpInput';
 export * from './HttpsInput';

@@ -3,6 +3,7 @@ import ChannelsAttributeForAudio from './ChannelsAttributeForAudio';
 import EncodingOutput from './EncodingOutput';
 import HlsManifest from './HlsManifest';
 import HlsManifestDefaultVersion from './HlsManifestDefaultVersion';
+import HlsTargetDurationRoundingMode from './HlsTargetDurationRoundingMode';
 import HlsVersion from './HlsVersion';
 import ManifestType from './ManifestType';
 import Status from './Status';

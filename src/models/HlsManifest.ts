@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import ChannelsAttributeForAudio from './ChannelsAttributeForAudio';
 import EncodingOutput from './EncodingOutput';
+import HlsTargetDurationRoundingMode from './HlsTargetDurationRoundingMode';
 import HlsVersion from './HlsVersion';
 import Manifest from './Manifest';
 import ManifestType from './ManifestType';
@@ -39,6 +40,13 @@ export class HlsManifest extends Manifest {
    */
   public channelsAttributeForAudio?: ChannelsAttributeForAudio;
 
+  /**
+   * The rounding applied to target duration. Two possible rouding modes exist: NORMAL_ROUNDING, when the target duration is rounded to the nearest integer, or UPWARDS_ROUNDING, when the target duration is rounded to the highest integer. 
+   * @type {HlsTargetDurationRoundingMode}
+   * @memberof HlsManifest
+   */
+  public targetDurationRoundingMode?: HlsTargetDurationRoundingMode;
+
   constructor(obj?: Partial<HlsManifest>) {
     super(obj);
     if(!obj) {
@@ -48,6 +56,7 @@ export class HlsManifest extends Manifest {
     this.hlsMediaPlaylistVersion = map(obj.hlsMediaPlaylistVersion);
     this.hlsMasterPlaylistVersion = map(obj.hlsMasterPlaylistVersion);
     this.channelsAttributeForAudio = map(obj.channelsAttributeForAudio);
+    this.targetDurationRoundingMode = map(obj.targetDurationRoundingMode);
   }
 }
 
