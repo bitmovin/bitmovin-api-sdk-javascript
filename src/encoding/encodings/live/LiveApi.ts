@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import InsertableContentApi from './insertableContent/InsertableContentApi';
+import Scte35CueApi from './scte35Cue/Scte35CueApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import LiveEncoding from '../../../models/LiveEncoding';
 import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
@@ -14,10 +15,12 @@ import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
  */
 export default class LiveApi extends BaseAPI {
   public insertableContent: InsertableContentApi;
+  public scte35Cue: Scte35CueApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.insertableContent = new InsertableContentApi(configuration);
+    this.scte35Cue = new Scte35CueApi(configuration);
   }
 
   /**

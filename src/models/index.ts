@@ -511,6 +511,7 @@ export * from './SccCaption';
 export * from './ScheduledInsertableContent';
 export * from './ScheduledInsertableContentStatus';
 export * from './Scheduling';
+export * from './Scte35Cue';
 export * from './SegmentedRawMuxing';
 export * from './SegmentsMediaInfo';
 export * from './SftpInput';
