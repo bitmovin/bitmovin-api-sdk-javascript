@@ -8,7 +8,7 @@ import PaddingSequence from './PaddingSequence';
  */
 export class ConcatenationInputConfiguration {
   /**
-   * The ID of the input stream to be concatenated. This can be an ingest input stream or a trimming input stream
+   * The ID of the input stream to be concatenated. This can be an ingest input stream or a trimming input stream (required)
    * @type {string}
    * @memberof ConcatenationInputConfiguration
    */
@@ -22,21 +22,21 @@ export class ConcatenationInputConfiguration {
   public isMain?: boolean;
 
   /**
-   * Position of the stream
+   * A unique integer value that determines concatenation order (required)
    * @type {number}
    * @memberof ConcatenationInputConfiguration
    */
   public position?: number;
 
   /**
-   * Inserts a padding sequence (black frames and/or silent audio) before the input stream. If this is set, all video output streams of the encoding need to use the same ConcatenationInputStream.
+   * Inserts a padding sequence (black frames and/or silent audio) before the input stream.
    * @type {PaddingSequence}
    * @memberof ConcatenationInputConfiguration
    */
   public paddingBefore?: PaddingSequence;
 
   /**
-   * Inserts a padding sequence (black frames and/or silent audio) after the input stream. If this is set, all video output streams of the encoding need to use the same ConcatenationInputStream.
+   * Inserts a padding sequence (black frames and/or silent audio) after the input stream.
    * @type {PaddingSequence}
    * @memberof ConcatenationInputConfiguration
    */

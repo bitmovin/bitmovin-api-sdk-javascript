@@ -17,6 +17,7 @@ import StreamPerTitleSettings from './StreamPerTitleSettings';
  */
 export class Stream extends BitmovinResource {
   /**
+   * Determines the input source(s) for the stream. All video streams of an encoding need to have identical input configurations (required)
    * @type {StreamInput[]}
    * @memberof Stream
    */
