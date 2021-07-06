@@ -11,14 +11,14 @@ import SpriteUnit from './SpriteUnit';
  */
 export class Sprite extends BitmovinResource {
   /**
-   * Height of one thumbnail (required)
+   * Height of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required 
    * @type {number}
    * @memberof Sprite
    */
   public height?: number;
 
   /**
-   * Width of one thumbnail (required)
+   * Width of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required 
    * @type {number}
    * @memberof Sprite
    */

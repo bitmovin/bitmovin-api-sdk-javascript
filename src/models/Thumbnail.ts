@@ -9,14 +9,21 @@ import ThumbnailUnit from './ThumbnailUnit';
  */
 export class Thumbnail extends BitmovinResource {
   /**
-   * Height of the thumbnail. (required)
+   * Height of the thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 only height is supported and mandatory. 
    * @type {number}
    * @memberof Thumbnail
    */
   public height?: number;
 
   /**
-   *  Pattern which describes the thumbnail filenames. For example with thumbnail-%number%.png as pattern and 3 positions: thumbnail-3_0.png, thumbnail-5_0.png and thumbnail-25_5.png. (The number represents the position in the source video in seconds, in the previous example the first filename represents the thumbnail at 3s, the second one at 5s and the third one at 25.5s).
+   * Width of the thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 only height is supported 
+   * @type {number}
+   * @memberof Thumbnail
+   */
+  public width?: number;
+
+  /**
+   *  Pattern which describes the thumbnail filenames. For example with thumbnail-%number%.png as pattern and 3 positions: thumbnail-3_0.png, thumbnail-5_0.png and thumbnail-25_5.png. (The number represents the position in the source video in seconds, in the previous example the first filename represents the thumbnail at 3s, the second one at 5s and the third one at 25.5s). (required)
    * @type {string}
    * @memberof Thumbnail
    */
@@ -55,6 +62,7 @@ export class Thumbnail extends BitmovinResource {
       return;
     }
     this.height = map(obj.height);
+    this.width = map(obj.width);
     this.pattern = map(obj.pattern);
     this.interval = map(obj.interval);
     this.positions = mapArray(obj.positions);

@@ -22,7 +22,7 @@ export default class Ac3Api extends BaseAPI {
   }
 
   /**
-   * @summary Create AC3 Codec Configuration
+   * @summary Create AC3 Codec Configuration.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
    * @param {Ac3AudioConfiguration} ac3AudioConfiguration The AC3 Codec Configuration to be created
    * @throws {BitmovinError}
    * @memberof Ac3Api
@@ -34,7 +34,7 @@ export default class Ac3Api extends BaseAPI {
   }
 
   /**
-   * @summary Delete AC3 Codec Configuration
+   * @summary Delete AC3 Codec Configuration.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Ac3Api
@@ -49,7 +49,7 @@ export default class Ac3Api extends BaseAPI {
   }
 
   /**
-   * @summary AC3 Codec Configuration Details
+   * @summary AC3 Codec Configuration Details  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Ac3Api
@@ -64,7 +64,7 @@ export default class Ac3Api extends BaseAPI {
   }
 
   /**
-   * @summary List AC3 Configurations
+   * @summary List AC3 Configurations.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here:  https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof Ac3Api

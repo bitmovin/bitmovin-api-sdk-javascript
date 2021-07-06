@@ -4,6 +4,8 @@ import Av1VideoConfiguration from './Av1VideoConfiguration';
 import BitmovinResource from './BitmovinResource';
 import CodecConfigType from './CodecConfigType';
 import DolbyAtmosAudioConfiguration from './DolbyAtmosAudioConfiguration';
+import DolbyDigitalAudioConfiguration from './DolbyDigitalAudioConfiguration';
+import DolbyDigitalPlusAudioConfiguration from './DolbyDigitalPlusAudioConfiguration';
 import DtsPassthroughAudioConfiguration from './DtsPassthroughAudioConfiguration';
 import DvbSubtitleConfiguration from './DvbSubtitleConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
@@ -35,7 +37,9 @@ export type CodecConfigurationUnion =
   Mp2AudioConfiguration |
   Mp3AudioConfiguration |
   Ac3AudioConfiguration |
+  DolbyDigitalAudioConfiguration |
   Eac3AudioConfiguration |
+  DolbyDigitalPlusAudioConfiguration |
   OpusAudioConfiguration |
   VorbisAudioConfiguration |
   MjpegVideoConfiguration |
@@ -64,7 +68,9 @@ export class CodecConfiguration extends BitmovinResource {
     MP2: 'Mp2AudioConfiguration',
     MP3: 'Mp3AudioConfiguration',
     AC3: 'Ac3AudioConfiguration',
+    DD: 'DolbyDigitalAudioConfiguration',
     EAC3: 'Eac3AudioConfiguration',
+    DDPLUS: 'DolbyDigitalPlusAudioConfiguration',
     OPUS: 'OpusAudioConfiguration',
     VORBIS: 'VorbisAudioConfiguration',
     MJPEG: 'MjpegVideoConfiguration',

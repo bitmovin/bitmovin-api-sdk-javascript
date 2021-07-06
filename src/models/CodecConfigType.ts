@@ -15,6 +15,8 @@ export enum CodecConfigType {
   MP3 = 'MP3',
   AC3 = 'AC3',
   EAC3 = 'EAC3',
+  DD = 'DD',
+  DDPLUS = 'DDPLUS',
   OPUS = 'OPUS',
   VORBIS = 'VORBIS',
   MJPEG = 'MJPEG',
