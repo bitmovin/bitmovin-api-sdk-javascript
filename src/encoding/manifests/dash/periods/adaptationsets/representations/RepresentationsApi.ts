@@ -2,6 +2,7 @@ import {BaseAPI} from '../../../../../../common/BaseAPI';
 import Configuration from '../../../../../../common/Configuration';
 import {map, mapArray} from '../../../../../../common/Mapper';
 import VttApi from './vtt/VttApi';
+import ImscApi from './imsc/ImscApi';
 import SpriteApi from './sprite/SpriteApi';
 import Fmp4Api from './fmp4/Fmp4Api';
 import ChunkedTextApi from './chunkedText/ChunkedTextApi';
@@ -18,6 +19,7 @@ import ProgressiveWebmApi from './progressiveWebm/ProgressiveWebmApi';
  */
 export default class RepresentationsApi extends BaseAPI {
   public vtt: VttApi;
+  public imsc: ImscApi;
   public sprite: SpriteApi;
   public fmp4: Fmp4Api;
   public chunkedText: ChunkedTextApi;
@@ -29,6 +31,7 @@ export default class RepresentationsApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.vtt = new VttApi(configuration);
+    this.imsc = new ImscApi(configuration);
     this.sprite = new SpriteApi(configuration);
     this.fmp4 = new Fmp4Api(configuration);
     this.chunkedText = new ChunkedTextApi(configuration);

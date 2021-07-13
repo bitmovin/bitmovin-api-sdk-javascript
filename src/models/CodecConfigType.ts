@@ -25,6 +25,7 @@ export enum CodecConfigType {
   H262 = 'H262',
   PCM = 'PCM',
   WEBVTT = 'WEBVTT',
+  IMSC = 'IMSC',
   DVB_SUBTITLE = 'DVB_SUBTITLE'
 }
 

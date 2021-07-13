@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
+import AdsApi from './ads/AdsApi';
 import AnalyticsImpressionDetails from '../../models/AnalyticsImpressionDetails';
 import AnalyticsImpressionsQuery from '../../models/AnalyticsImpressionsQuery';
 import AnalyticsImpressionsResponse from '../../models/AnalyticsImpressionsResponse';
@@ -13,9 +14,11 @@ import AnalyticsLicenseKey from '../../models/AnalyticsLicenseKey';
  * @extends {BaseAPI}
  */
 export default class ImpressionsApi extends BaseAPI {
+  public ads: AdsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.ads = new AdsApi(configuration);
   }
 
   /**

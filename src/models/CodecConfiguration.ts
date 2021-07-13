@@ -14,6 +14,7 @@ import H264VideoConfiguration from './H264VideoConfiguration';
 import H265VideoConfiguration from './H265VideoConfiguration';
 import HeAacV1AudioConfiguration from './HeAacV1AudioConfiguration';
 import HeAacV2AudioConfiguration from './HeAacV2AudioConfiguration';
+import ImscConfiguration from './ImscConfiguration';
 import MjpegVideoConfiguration from './MjpegVideoConfiguration';
 import Mp2AudioConfiguration from './Mp2AudioConfiguration';
 import Mp3AudioConfiguration from './Mp3AudioConfiguration';
@@ -47,7 +48,8 @@ export type CodecConfigurationUnion =
   DolbyAtmosAudioConfiguration |
   H262VideoConfiguration |
   PcmAudioConfiguration |
-  WebVttConfiguration;
+  WebVttConfiguration |
+  ImscConfiguration;
 
 /**
  * @export
@@ -78,7 +80,8 @@ export class CodecConfiguration extends BitmovinResource {
     DOLBY_ATMOS: 'DolbyAtmosAudioConfiguration',
     H262: 'H262VideoConfiguration',
     PCM: 'PcmAudioConfiguration',
-    WEBVTT: 'WebVttConfiguration'
+    WEBVTT: 'WebVttConfiguration',
+    IMSC: 'ImscConfiguration'
   };
 
   constructor(obj?: Partial<CodecConfiguration>) {

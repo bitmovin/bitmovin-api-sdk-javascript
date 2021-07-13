@@ -16,7 +16,7 @@ export class StaticIp extends BitmovinResponse {
   public ipAddress?: string;
 
   /**
-   * Required if the static IP should be created for an AWS infrastructure account.
+   * Required if the static IP should be created for an AWS infrastructure account. If this is left blank the static Ip will be created for the managed cloud.
    * @type {string}
    * @memberof StaticIp
    */
