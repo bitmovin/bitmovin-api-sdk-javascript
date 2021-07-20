@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
+import ThumbnailAspectMode from './ThumbnailAspectMode';
 
 /**
  * Either height or width is required. It is also possible to set both properties.
@@ -42,6 +43,13 @@ export class Bif extends BitmovinResource {
    */
   public outputs?: EncodingOutput[];
 
+  /**
+   * Specifies the aspect mode that is used when both height and width are specified Only supported starting with encoder version `2.85.0`. 
+   * @type {ThumbnailAspectMode}
+   * @memberof Bif
+   */
+  public aspectMode?: ThumbnailAspectMode;
+
   constructor(obj?: Partial<Bif>) {
     super(obj);
     if(!obj) {
@@ -52,6 +60,7 @@ export class Bif extends BitmovinResource {
     this.distance = map(obj.distance);
     this.filename = map(obj.filename);
     this.outputs = mapArray(obj.outputs, EncodingOutput);
+    this.aspectMode = map(obj.aspectMode);
   }
 }
 

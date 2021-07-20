@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import EncodingOutput from './EncodingOutput';
+import ThumbnailAspectMode from './ThumbnailAspectMode';
 import ThumbnailUnit from './ThumbnailUnit';
 
 /**
@@ -56,6 +57,13 @@ export class Thumbnail extends BitmovinResource {
    */
   public unit?: ThumbnailUnit;
 
+  /**
+   * Specifies the aspect mode that is used when both height and width are specified Only supported starting with encoder version `2.85.0`. 
+   * @type {ThumbnailAspectMode}
+   * @memberof Thumbnail
+   */
+  public aspectMode?: ThumbnailAspectMode;
+
   constructor(obj?: Partial<Thumbnail>) {
     super(obj);
     if(!obj) {
@@ -68,6 +76,7 @@ export class Thumbnail extends BitmovinResource {
     this.positions = mapArray(obj.positions);
     this.outputs = mapArray(obj.outputs, EncodingOutput);
     this.unit = map(obj.unit);
+    this.aspectMode = map(obj.aspectMode);
   }
 }
 

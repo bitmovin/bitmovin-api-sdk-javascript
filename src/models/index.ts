@@ -624,6 +624,7 @@ export * from './TextFilter';
 export * from './TextFilterFont';
 export * from './TextMuxing';
 export * from './Thumbnail';
+export * from './ThumbnailAspectMode';
 export * from './ThumbnailUnit';
 export * from './TimeBasedTrimmingInputStream';
 export * from './TimeCode';

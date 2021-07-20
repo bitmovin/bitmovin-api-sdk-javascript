@@ -4,6 +4,7 @@ import EncodingOutput from './EncodingOutput';
 import SpriteCreationMode from './SpriteCreationMode';
 import SpriteJpegConfig from './SpriteJpegConfig';
 import SpriteUnit from './SpriteUnit';
+import ThumbnailAspectMode from './ThumbnailAspectMode';
 
 /**
  * @export
@@ -99,6 +100,13 @@ export class Sprite extends BitmovinResource {
    */
   public creationMode?: SpriteCreationMode;
 
+  /**
+   * Specifies the aspect mode that is used when both height and width are specified Only supported starting with encoder version `2.85.0`. 
+   * @type {ThumbnailAspectMode}
+   * @memberof Sprite
+   */
+  public aspectMode?: ThumbnailAspectMode;
+
   constructor(obj?: Partial<Sprite>) {
     super(obj);
     if(!obj) {
@@ -117,6 +125,7 @@ export class Sprite extends BitmovinResource {
     this.vTiles = map(obj.vTiles);
     this.jpegConfig = map(obj.jpegConfig, SpriteJpegConfig);
     this.creationMode = map(obj.creationMode);
+    this.aspectMode = map(obj.aspectMode);
   }
 }
 

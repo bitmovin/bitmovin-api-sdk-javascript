@@ -37,7 +37,7 @@ export class IngestInputStream extends InputStream {
   public selectionMode?: StreamSelectionMode;
 
   /**
-   * Position of the stream
+   * Position of the stream, starting from 0.
    * @type {number}
    * @memberof IngestInputStream
    */

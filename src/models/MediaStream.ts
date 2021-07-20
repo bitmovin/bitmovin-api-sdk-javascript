@@ -7,7 +7,7 @@ import BitmovinResponse from './BitmovinResponse';
  */
 export class MediaStream extends BitmovinResponse {
   /**
-   * Position starts from 0 and indicates the position of the stream in the media. 0 means that this is the first stream found in the media
+   * Position of the stream in the media, starting from 0.
    * @type {number}
    * @memberof MediaStream
    */
