@@ -16,6 +16,7 @@ export class SccCaption extends BitmovinResource {
   public input?: InputPath;
 
   /**
+   * Flavor of SMPTE timecodes in the SCC file (drop-frame or non-drop)
    * @type {SmpteTimecodeFlavor}
    * @memberof SccCaption
    */

@@ -46,12 +46,14 @@ export class S3Output extends Output {
   public md5MetaTag?: string;
 
   /**
+   * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
    * @type {AwsCloudRegion}
    * @memberof S3Output
    */
   public cloudRegion?: AwsCloudRegion;
 
   /**
+   * Specifies the method used for authentication. Must be set to S3_V2 if the region supports both V2 and V4, but the bucket allows V2 only (see https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
    * @type {S3SignatureVersion}
    * @memberof S3Output
    */

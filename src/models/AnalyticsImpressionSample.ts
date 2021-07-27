@@ -84,6 +84,13 @@ export class AnalyticsImpressionSample {
   public cdnProvider?: string;
 
   /**
+   * Casting Technology
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public castTech?: string;
+
+  /**
    * City
    * @type {string}
    * @memberof AnalyticsImpressionSample
@@ -616,6 +623,7 @@ export class AnalyticsImpressionSample {
   public videostartFailed?: boolean;
 
   /**
+   * Reason why starting the video failed
    * @type {AnalyticsVideoStartFailedReason}
    * @memberof AnalyticsImpressionSample
    */
@@ -636,6 +644,7 @@ export class AnalyticsImpressionSample {
     this.browserVersionMinor = map(obj.browserVersionMinor);
     this.buffered = map(obj.buffered);
     this.cdnProvider = map(obj.cdnProvider);
+    this.castTech = map(obj.castTech);
     this.city = map(obj.city);
     this.clientTime = map(obj.clientTime);
     this.country = map(obj.country);

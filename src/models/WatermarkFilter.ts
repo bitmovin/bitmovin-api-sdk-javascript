@@ -51,6 +51,7 @@ export class WatermarkFilter extends Filter {
   public bottom?: number;
 
   /**
+   * Specifies if the values of 'left', 'right', 'top' and 'bottom' are interpreted as pixels or as a percentage of the input video's dimensions.
    * @type {PositionUnit}
    * @memberof WatermarkFilter
    */

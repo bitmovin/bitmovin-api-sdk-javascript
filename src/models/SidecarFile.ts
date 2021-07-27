@@ -40,6 +40,7 @@ export class SidecarFile extends BitmovinResource {
   public outputs?: EncodingOutput[];
 
   /**
+   * This defines how errors should be handled
    * @type {SidecarErrorMode}
    * @memberof SidecarFile
    */

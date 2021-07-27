@@ -17,6 +17,7 @@ export class PrewarmedEncoderPool extends BitmovinResource {
   public encoderVersion?: string;
 
   /**
+   * The cloud region in which the pool's instances will be running. Must be a specific region (e.g. not 'AUTO', 'GOOGLE' or 'EUROPE') (required)
    * @type {CloudRegion}
    * @memberof PrewarmedEncoderPool
    */
@@ -30,6 +31,7 @@ export class PrewarmedEncoderPool extends BitmovinResource {
   public infrastructureId?: string;
 
   /**
+   * Disk size of the prewarmed instances in GB. Needs to be chosen depending on input file sizes and encoding features used. (required)
    * @type {PrewarmedEncoderDiskSize}
    * @memberof PrewarmedEncoderPool
    */
@@ -43,6 +45,7 @@ export class PrewarmedEncoderPool extends BitmovinResource {
   public targetPoolSize?: number;
 
   /**
+   * Current status of the pool.
    * @type {PrewarmedEncoderPoolStatus}
    * @memberof PrewarmedEncoderPool
    */

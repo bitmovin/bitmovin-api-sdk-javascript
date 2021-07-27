@@ -9,6 +9,7 @@ import ResourceLimitContainer from './ResourceLimitContainer';
  */
 export class Organization extends BitmovinResource {
   /**
+   * Specifies the type of the organization in the hierachy. Only sub-organizations can be newly created. (required)
    * @type {OrganizationType}
    * @memberof Organization
    */

@@ -28,7 +28,7 @@ export class DolbyDigitalAudioConfiguration extends AudioConfiguration {
   public bitstreamInfo?: DolbyDigitalBitstreamInfo;
 
   /**
-   * Channel layout of the audio codec configuration. <table> <tr><th colspan=2 align=\"left\"> Available values: </th></tr> <tr><td> NONE </td><td> No channel layout </td></tr> <tr><td> MONO </td><td> Channel layout Mono </td></tr> <tr><td> STEREO </td><td> Channel layout Stereo </td></tr> <tr><td> SURROUND </td><td> Channel layout 3.0 (3 front (left + center + right), no LFE) </td></tr> <tr><td> 3.1 </td><td> Channel layout 3.1 (3 front (left + center + right), LFE) </td></tr> <tr><td> BACK_SURROUND </td><td> Channel layout Surround (2 front (left + right), 1 back center, no LFE) </td></tr> <tr><td> BACK_SURROUND_LFE </td><td> Channel layout Surround with LFE (2 front (left + right), 1 back center, LFE) </td></tr> <tr><td> QUAD </td><td> Channel layout Quad (2 front (left + right), 2 back (left + right), no LFE) </td></tr> <tr><td> QUAD_LFE </td><td> Channel layout Quad with LFE (2 front (left + right), 2 back (left + right), LFE) </td></tr> <tr><td> 4.0 </td><td> Channel layout 4.0 (3 front (left + center + right), 1 back center, no LFE) </td></tr> <tr><td> 4.1 </td><td> Channel layout 4.1 (3 front (left + center + right), 1 back center, LFE) </td></tr> <tr><td> 5.0 </td><td> Channel layout 5.0 (3 front (left + center + right), 2 side (left + right), no LFE) </td></tr> <tr><td> 5.1 </td><td> Channel layout 5.1 (3 front (left + center + right), 2 side (left + right), LFE) </td></tr> </table> 
+   * Channel layout of the audio codec configuration.
    * @type {DolbyDigitalChannelLayout}
    * @memberof DolbyDigitalAudioConfiguration
    */

@@ -31,6 +31,7 @@ export class AnalyticsGcsServiceAccountOutput extends AnalyticsOutput {
   public bucketName?: string;
 
   /**
+   * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
    * @type {GoogleCloudRegion}
    * @memberof AnalyticsGcsServiceAccountOutput
    */

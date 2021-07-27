@@ -32,12 +32,14 @@ export class AkamaiMslOutput extends Output {
   public eventName?: string;
 
   /**
+   * The stream format. Only DASH is supported at the moment. (required)
    * @type {AkamaiMslStreamFormat}
    * @memberof AkamaiMslOutput
    */
   public streamFormat?: AkamaiMslStreamFormat;
 
   /**
+   * The Akamai MSL Version. Only MSL4 is supported at the moment. (required)
    * @type {AkamaiMslVersion}
    * @memberof AkamaiMslOutput
    */

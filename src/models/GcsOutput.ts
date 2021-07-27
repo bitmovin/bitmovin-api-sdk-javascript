@@ -38,6 +38,7 @@ export class GcsOutput extends Output {
   public bucketName?: string;
 
   /**
+   * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
    * @type {GoogleCloudRegion}
    * @memberof GcsOutput
    */
