@@ -6,7 +6,9 @@ import CodecConfigType from './CodecConfigType';
 import DolbyAtmosAudioConfiguration from './DolbyAtmosAudioConfiguration';
 import DolbyDigitalAudioConfiguration from './DolbyDigitalAudioConfiguration';
 import DolbyDigitalPlusAudioConfiguration from './DolbyDigitalPlusAudioConfiguration';
+import DtsAudioConfiguration from './DtsAudioConfiguration';
 import DtsPassthroughAudioConfiguration from './DtsPassthroughAudioConfiguration';
+import DtsXAudioConfiguration from './DtsXAudioConfiguration';
 import DvbSubtitleConfiguration from './DvbSubtitleConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
 import H262VideoConfiguration from './H262VideoConfiguration';
@@ -28,6 +30,8 @@ import WebVttConfiguration from './WebVttConfiguration';
 export type CodecConfigurationUnion =
   AacAudioConfiguration |
   DtsPassthroughAudioConfiguration |
+  DtsAudioConfiguration |
+  DtsXAudioConfiguration |
   DvbSubtitleConfiguration |
   HeAacV1AudioConfiguration |
   HeAacV2AudioConfiguration |
@@ -60,6 +64,8 @@ export class CodecConfiguration extends BitmovinResource {
   protected static readonly _discriminatorMapping: { [key in keyof typeof CodecConfigType]: string; } = {
     AAC: 'AacAudioConfiguration',
     DTS_PASSTHROUGH: 'DtsPassthroughAudioConfiguration',
+    DTS: 'DtsAudioConfiguration',
+    DTSX: 'DtsXAudioConfiguration',
     DVB_SUBTITLE: 'DvbSubtitleConfiguration',
     HE_AAC_V1: 'HeAacV1AudioConfiguration',
     HE_AAC_V2: 'HeAacV2AudioConfiguration',

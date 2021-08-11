@@ -97,7 +97,7 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.82.0</code></pre>
+				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.83.0</code></pre>
 				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
 					<h2>Initialization</h2>
 				</a>
@@ -184,6 +184,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/analyticsexporttype.html" class="tsd-kind-icon">Analytics<wbr>Export<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/analyticshttprequesttype.html" class="tsd-kind-icon">Analytics<wbr>Http<wbr>Request<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/analyticsinterval.html" class="tsd-kind-icon">Analytics<wbr>Interval</a>
@@ -417,6 +420,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/drmtype.html" class="tsd-kind-icon">Drm<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/dtsmode.html" class="tsd-kind-icon">Dts<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/dtsxchannellayout.html" class="tsd-kind-icon">DtsXChannel<wbr>Layout</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/egresscategory.html" class="tsd-kind-icon">Egress<wbr>Category</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -573,6 +582,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/maxtransformunitsize.html" class="tsd-kind-icon">Max<wbr>Transform<wbr>Unit<wbr>Size</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/mediaconfigbitrate.html" class="tsd-kind-icon">Media<wbr>Config<wbr>Bitrate</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/mediainfotype.html" class="tsd-kind-icon">Media<wbr>Info<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -610,6 +622,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/organizationtype.html" class="tsd-kind-icon">Organization<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/ottloudnessmode.html" class="tsd-kind-icon">Ott<wbr>Loudness<wbr>Mode</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/outputtype.html" class="tsd-kind-icon">Output<wbr>Type</a>
@@ -1020,6 +1035,15 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/analyticsequalfilter.html" class="tsd-kind-icon">Analytics<wbr>Equal<wbr>Filter</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/analyticserrordata.html" class="tsd-kind-icon">Analytics<wbr>Error<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticserrordetail.html" class="tsd-kind-icon">Analytics<wbr>Error<wbr>Detail</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticserrordetailsresponse.html" class="tsd-kind-icon">Analytics<wbr>Error<wbr>Details<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/analyticsexporttask.html" class="tsd-kind-icon">Analytics<wbr>Export<wbr>Task</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -1039,6 +1063,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/analyticsgreaterthanorequalfilter.html" class="tsd-kind-icon">Analytics<wbr>Greater<wbr>Than<wbr>OrEqual<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/analyticshttprequest.html" class="tsd-kind-icon">Analytics<wbr>Http<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/analyticsimpressiondetails.html" class="tsd-kind-icon">Analytics<wbr>Impression<wbr>Details</a>
@@ -1830,6 +1857,15 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/drmapi.html" class="tsd-kind-icon">Drm<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/dtsapi.html" class="tsd-kind-icon">Dts<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dtsaudioconfiguration.html" class="tsd-kind-icon">Dts<wbr>Audio<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dtsaudioconfigurationlistqueryparamsbuilder.html" class="tsd-kind-icon">Dts<wbr>Audio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/dtspassthroughapi.html" class="tsd-kind-icon">Dts<wbr>Passthrough<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -1837,6 +1873,15 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/dtspassthroughaudioconfigurationlistqueryparamsbuilder.html" class="tsd-kind-icon">Dts<wbr>Passthrough<wbr>Audio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dtsxaudioconfiguration.html" class="tsd-kind-icon">DtsXAudio<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dtsxaudioconfigurationlistqueryparamsbuilder.html" class="tsd-kind-icon">DtsXAudio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dtsxapi.html" class="tsd-kind-icon">Dtsx<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/dvbsubtitleapi.html" class="tsd-kind-icon">Dvb<wbr>Subtitle<wbr>Api</a>
@@ -1990,6 +2035,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="classes/errorhandler.html" class="tsd-kind-icon">Error<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/errorsapi.html" class="tsd-kind-icon">Errors<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/eventsapi.html" class="tsd-kind-icon">Events<wbr>Api</a>
@@ -3756,7 +3804,13 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/dolbyvisionmetadatalistqueryparams.html" class="tsd-kind-icon">Dolby<wbr>Vision<wbr>Metadata<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/dtsaudioconfigurationlistqueryparams.html" class="tsd-kind-icon">Dts<wbr>Audio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/dtspassthroughaudioconfigurationlistqueryparams.html" class="tsd-kind-icon">Dts<wbr>Passthrough<wbr>Audio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/dtsxaudioconfigurationlistqueryparams.html" class="tsd-kind-icon">DtsXAudio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/dvbsubtitleconfigurationlistqueryparams.html" class="tsd-kind-icon">Dvb<wbr>Subtitle<wbr>Configuration<wbr>List<wbr>Query<wbr>Params</a>

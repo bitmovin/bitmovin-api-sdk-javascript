@@ -3,6 +3,8 @@ import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
 import AacApi from './aac/AacApi';
 import DtsPassthroughApi from './dtsPassthrough/DtsPassthroughApi';
+import DtsApi from './dts/DtsApi';
+import DtsxApi from './dtsx/DtsxApi';
 import DolbyAtmosApi from './dolbyAtmos/DolbyAtmosApi';
 import HeAacV1Api from './heAacV1/HeAacV1Api';
 import HeAacV2Api from './heAacV2/HeAacV2Api';
@@ -25,6 +27,8 @@ import Mp3Api from './mp3/Mp3Api';
 export default class AudioApi extends BaseAPI {
   public aac: AacApi;
   public dtsPassthrough: DtsPassthroughApi;
+  public dts: DtsApi;
+  public dtsx: DtsxApi;
   public dolbyAtmos: DolbyAtmosApi;
   public heAacV1: HeAacV1Api;
   public heAacV2: HeAacV2Api;
@@ -42,6 +46,8 @@ export default class AudioApi extends BaseAPI {
     super(configuration);
     this.aac = new AacApi(configuration);
     this.dtsPassthrough = new DtsPassthroughApi(configuration);
+    this.dts = new DtsApi(configuration);
+    this.dtsx = new DtsxApi(configuration);
     this.dolbyAtmos = new DolbyAtmosApi(configuration);
     this.heAacV1 = new HeAacV1Api(configuration);
     this.heAacV2 = new HeAacV2Api(configuration);
