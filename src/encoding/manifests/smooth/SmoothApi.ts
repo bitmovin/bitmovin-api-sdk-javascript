@@ -94,14 +94,15 @@ export default class SmoothApi extends BaseAPI {
   /**
    * @summary Start Smooth Streaming Manifest Creation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {any} [body] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
-  public start(manifestId: string): Promise<BitmovinResponse> {
+  public start(manifestId: string, body?: any): Promise<BitmovinResponse> {
     const pathParamMap = {
       manifest_id: manifestId
     };
-    return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap).then((response) => {
+    return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap, body).then((response) => {
       return map(response, BitmovinResponse);
     });
   }

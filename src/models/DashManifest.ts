@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import DashEditionCompatibility from './DashEditionCompatibility';
 import DashProfile from './DashProfile';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
@@ -39,6 +40,13 @@ export class DashManifest extends Manifest {
    */
   public utcTimings?: UtcTiming[];
 
+  /**
+   * The manifest compatibility with the standard DASH Edition.
+   * @type {DashEditionCompatibility}
+   * @memberof DashManifest
+   */
+  public dashEditionCompatibility?: DashEditionCompatibility;
+
   constructor(obj?: Partial<DashManifest>) {
     super(obj);
     if(!obj) {
@@ -48,6 +56,7 @@ export class DashManifest extends Manifest {
     this.manifestName = map(obj.manifestName);
     this.namespaces = mapArray(obj.namespaces, XmlNamespace);
     this.utcTimings = mapArray(obj.utcTimings, UtcTiming);
+    this.dashEditionCompatibility = map(obj.dashEditionCompatibility);
   }
 }
 

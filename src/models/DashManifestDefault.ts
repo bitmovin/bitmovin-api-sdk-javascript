@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import DashEditionCompatibility from './DashEditionCompatibility';
 import DashManifest from './DashManifest';
 import DashManifestDefaultVersion from './DashManifestDefaultVersion';
 import DashProfile from './DashProfile';
