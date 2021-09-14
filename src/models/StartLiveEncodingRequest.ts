@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import AutoRestartConfiguration from './AutoRestartConfiguration';
 import EncodingMode from './EncodingMode';
+import LiveAutoShutdownConfiguration from './LiveAutoShutdownConfiguration';
 import LiveDashManifest from './LiveDashManifest';
 import LiveHlsManifest from './LiveHlsManifest';
 import ManifestGenerator from './ManifestGenerator';
@@ -60,6 +61,13 @@ export class StartLiveEncodingRequest {
    */
   public autoRestartConfiguration?: AutoRestartConfiguration;
 
+  /**
+   * Configuration for auto shutdown of the live encoding
+   * @type {LiveAutoShutdownConfiguration}
+   * @memberof StartLiveEncodingRequest
+   */
+  public autoShutdownConfiguration?: LiveAutoShutdownConfiguration;
+
   constructor(obj?: Partial<StartLiveEncodingRequest>) {
     if(!obj) {
       return;
@@ -71,6 +79,7 @@ export class StartLiveEncodingRequest {
     this.reuploadSettings = map(obj.reuploadSettings, ReuploadSettings);
     this.manifestGenerator = map(obj.manifestGenerator);
     this.autoRestartConfiguration = map(obj.autoRestartConfiguration, AutoRestartConfiguration);
+    this.autoShutdownConfiguration = map(obj.autoShutdownConfiguration, LiveAutoShutdownConfiguration);
   }
 }
 

@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import AnalyticsLicenseCustomDataFieldLabels from './AnalyticsLicenseCustomDataFieldLabels';
 import AnalyticsLicenseDomain from './AnalyticsLicenseDomain';
+import AnalyticsLicenseFeatures from './AnalyticsLicenseFeatures';
 import BitmovinResponse from './BitmovinResponse';
 
 /**
@@ -71,6 +72,12 @@ export class AnalyticsLicense extends BitmovinResponse {
    */
   public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
 
+  /**
+   * @type {AnalyticsLicenseFeatures}
+   * @memberof AnalyticsLicense
+   */
+  public features?: AnalyticsLicenseFeatures;
+
   constructor(obj?: Partial<AnalyticsLicense>) {
     super(obj);
     if(!obj) {
@@ -85,6 +92,7 @@ export class AnalyticsLicense extends BitmovinResponse {
     this.ignoreDNT = map(obj.ignoreDNT);
     this.timeZone = map(obj.timeZone);
     this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
+    this.features = map(obj.features, AnalyticsLicenseFeatures);
   }
 }
 

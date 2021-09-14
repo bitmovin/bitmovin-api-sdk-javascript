@@ -8,6 +8,7 @@ import MetricsApi from './metrics/MetricsApi';
 import AdsApi from './ads/AdsApi';
 import QueriesApi from './queries/QueriesApi';
 import LicensesApi from './licenses/LicensesApi';
+import VirtualLicensesApi from './virtualLicenses/VirtualLicensesApi';
 import OutputsApi from './outputs/OutputsApi';
 
 /**
@@ -24,6 +25,7 @@ export default class AnalyticsApi extends BaseAPI {
   public ads: AdsApi;
   public queries: QueriesApi;
   public licenses: LicensesApi;
+  public virtualLicenses: VirtualLicensesApi;
   public outputs: OutputsApi;
 
   constructor(configuration: Configuration) {
@@ -35,6 +37,7 @@ export default class AnalyticsApi extends BaseAPI {
     this.ads = new AdsApi(configuration);
     this.queries = new QueriesApi(configuration);
     this.licenses = new LicensesApi(configuration);
+    this.virtualLicenses = new VirtualLicensesApi(configuration);
     this.outputs = new OutputsApi(configuration);
   }
 }

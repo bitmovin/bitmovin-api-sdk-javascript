@@ -57,6 +57,13 @@ export class Notification extends BitmovinResponse {
    */
   public muted?: boolean;
 
+  /**
+   * User-specific meta data. This can hold anything.
+   * @type {{ [key: string]: any; }}
+   * @memberof Notification
+   */
+  public customData?: { [key: string]: any; };
+
   constructor(obj?: Partial<Notification>) {
     super(obj);
     if(!obj) {
@@ -70,6 +77,7 @@ export class Notification extends BitmovinResponse {
     this.category = map(obj.category);
     this.resourceType = map(obj.resourceType);
     this.muted = map(obj.muted);
+    this.customData = map(obj.customData);
   }
 }
 
