@@ -2,10 +2,9 @@ import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
-import PrewarmedEncoderPool from '../../../../models/PrewarmedEncoderPool';
 import PrewarmedEncoderPoolSchedule from '../../../../models/PrewarmedEncoderPoolSchedule';
 import PaginationResponse from '../../../../models/PaginationResponse';
-import {PrewarmedEncoderPoolListQueryParams, PrewarmedEncoderPoolListQueryParamsBuilder} from './PrewarmedEncoderPoolListQueryParams';
+import {PrewarmedEncoderPoolScheduleListQueryParams, PrewarmedEncoderPoolScheduleListQueryParamsBuilder} from './PrewarmedEncoderPoolScheduleListQueryParams';
 
 /**
  * SchedulesApi - object-oriented interface
@@ -76,18 +75,18 @@ export default class SchedulesApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof SchedulesApi
    */
-  public list(poolId: string, queryParameters?: PrewarmedEncoderPoolListQueryParams | ((q: PrewarmedEncoderPoolListQueryParamsBuilder) => PrewarmedEncoderPoolListQueryParamsBuilder)): Promise<PaginationResponse<PrewarmedEncoderPool>> {
+  public list(poolId: string, queryParameters?: PrewarmedEncoderPoolScheduleListQueryParams | ((q: PrewarmedEncoderPoolScheduleListQueryParamsBuilder) => PrewarmedEncoderPoolScheduleListQueryParamsBuilder)): Promise<PaginationResponse<PrewarmedEncoderPoolSchedule>> {
     const pathParamMap = {
       pool_id: poolId
     };
-    let queryParams: PrewarmedEncoderPoolListQueryParams = {};
+    let queryParams: PrewarmedEncoderPoolScheduleListQueryParams = {};
     if (typeof queryParameters === 'function') {
-      queryParams = queryParameters(new PrewarmedEncoderPoolListQueryParamsBuilder()).buildQueryParams();
+      queryParams = queryParameters(new PrewarmedEncoderPoolScheduleListQueryParamsBuilder()).buildQueryParams();
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<PrewarmedEncoderPool>>('/encoding/infrastructure/prewarmed-encoder-pools/{pool_id}/schedules', pathParamMap, queryParams).then((response) => {
-      return new PaginationResponse<PrewarmedEncoderPool>(response, PrewarmedEncoderPool);
+    return this.restClient.get<PaginationResponse<PrewarmedEncoderPoolSchedule>>('/encoding/infrastructure/prewarmed-encoder-pools/{pool_id}/schedules', pathParamMap, queryParams).then((response) => {
+      return new PaginationResponse<PrewarmedEncoderPoolSchedule>(response, PrewarmedEncoderPoolSchedule);
     });
   }
 }

@@ -1,23 +1,23 @@
 
-export interface PrewarmedEncoderPoolListQueryParams {
+export interface AnalyticsLicenseListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
-     * @memberof PrewarmedEncoderPoolListQueryParams
+     * @memberof AnalyticsLicenseListQueryParams
      */
     offset?: number | undefined;
 
     /**
      * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
-     * @memberof PrewarmedEncoderPoolListQueryParams
+     * @memberof AnalyticsLicenseListQueryParams
      */
     limit?: number | undefined;
 }
 
-export class PrewarmedEncoderPoolListQueryParamsBuilder {
-    private internalParams: PrewarmedEncoderPoolListQueryParams = {};
+export class AnalyticsLicenseListQueryParamsBuilder {
+    private internalParams: AnalyticsLicenseListQueryParams = {};
 
     /**
      *

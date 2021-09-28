@@ -5,6 +5,7 @@ import DomainsApi from './domains/DomainsApi';
 import AnalyticsLicense from '../../models/AnalyticsLicense';
 import AnalyticsLicenseUpdateRequest from '../../models/AnalyticsLicenseUpdateRequest';
 import PaginationResponse from '../../models/PaginationResponse';
+import {AnalyticsLicenseListQueryParams, AnalyticsLicenseListQueryParamsBuilder} from './AnalyticsLicenseListQueryParams';
 
 /**
  * LicensesApi - object-oriented interface
@@ -49,11 +50,18 @@ export default class LicensesApi extends BaseAPI {
 
   /**
    * @summary List Analytics Licenses
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof LicensesApi
    */
-  public list(): Promise<PaginationResponse<AnalyticsLicense>> {
-    return this.restClient.get<PaginationResponse<AnalyticsLicense>>('/analytics/licenses', {}).then((response) => {
+  public list(queryParameters?: AnalyticsLicenseListQueryParams | ((q: AnalyticsLicenseListQueryParamsBuilder) => AnalyticsLicenseListQueryParamsBuilder)): Promise<PaginationResponse<AnalyticsLicense>> {
+    let queryParams: AnalyticsLicenseListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+      queryParams = queryParameters(new AnalyticsLicenseListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+      queryParams = queryParameters;
+    }
+    return this.restClient.get<PaginationResponse<AnalyticsLicense>>('/analytics/licenses', {}, queryParams).then((response) => {
       return new PaginationResponse<AnalyticsLicense>(response, AnalyticsLicense);
     });
   }
