@@ -191,6 +191,34 @@ export class StatisticsPerStream {
   public enhancedDeinterlaceMultiplicator?: number;
 
   /**
+   * Indicates if the conversion from Dolby Vision to HDR was triggered.
+   * @type {boolean}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionToHdr?: boolean;
+
+  /**
+   * The output minutes multiplicator for streams using the conversion from Dolby Vision to HDR.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionToHdrMultiplicator?: number;
+
+  /**
+   * Indicates if the conversion from Dolby Vision to SDR was triggered.
+   * @type {boolean}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionToSdr?: boolean;
+
+  /**
+   * The output minutes multiplicator for streams using the conversion from Dolby Vision to SDR.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public dolbyVisionToSdrMultiplicator?: number;
+
+  /**
    * @type {NexGuardABWatermarkingFeature}
    * @memberof StatisticsPerStream
    */
@@ -252,6 +280,10 @@ export class StatisticsPerStream {
     this.liveMultiplicator = map(obj.liveMultiplicator);
     this.enhancedDeinterlace = map(obj.enhancedDeinterlace);
     this.enhancedDeinterlaceMultiplicator = map(obj.enhancedDeinterlaceMultiplicator);
+    this.dolbyVisionToHdr = map(obj.dolbyVisionToHdr);
+    this.dolbyVisionToHdrMultiplicator = map(obj.dolbyVisionToHdrMultiplicator);
+    this.dolbyVisionToSdr = map(obj.dolbyVisionToSdr);
+    this.dolbyVisionToSdrMultiplicator = map(obj.dolbyVisionToSdrMultiplicator);
     this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
     this.nexGuardABWatermarkingMultiplicator = map(obj.nexGuardABWatermarkingMultiplicator);
     this.pixelFormatBitDepth = map(obj.pixelFormatBitDepth);

@@ -11,6 +11,7 @@ import TrimmingApi from './trimming/TrimmingApi';
 import SubtitlesApi from './subtitles/SubtitlesApi';
 import CaptionsApi from './captions/CaptionsApi';
 import DolbyAtmosApi from './dolbyAtmos/DolbyAtmosApi';
+import DolbyVisionApi from './dolbyVision/DolbyVisionApi';
 import InputStream from '../../../models/InputStream';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {InputStreamListQueryParams, InputStreamListQueryParamsBuilder} from './InputStreamListQueryParams';
@@ -32,6 +33,7 @@ export default class InputStreamsApi extends BaseAPI {
   public subtitles: SubtitlesApi;
   public captions: CaptionsApi;
   public dolbyAtmos: DolbyAtmosApi;
+  public dolbyVision: DolbyVisionApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -45,6 +47,7 @@ export default class InputStreamsApi extends BaseAPI {
     this.subtitles = new SubtitlesApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.dolbyAtmos = new DolbyAtmosApi(configuration);
+    this.dolbyVision = new DolbyVisionApi(configuration);
   }
 
   /**

@@ -15,7 +15,8 @@ export enum InputStreamType {
   CAPTION_CEA708 = 'CAPTION_CEA708',
   DVB_SUBTITLE = 'DVB_SUBTITLE',
   DVB_TELETEXT = 'DVB_TELETEXT',
-  DOLBY_ATMOS = 'DOLBY_ATMOS'
+  DOLBY_ATMOS = 'DOLBY_ATMOS',
+  DOLBY_VISION = 'DOLBY_VISION'
 }
 
 export default InputStreamType;

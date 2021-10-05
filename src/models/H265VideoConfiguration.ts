@@ -7,6 +7,7 @@ import ColorConfig from './ColorConfig';
 import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import ForceFlushMode from './ForceFlushMode';
+import H265DynamicRangeFormat from './H265DynamicRangeFormat';
 import LevelH265 from './LevelH265';
 import LimitReferences from './LimitReferences';
 import LimitTransformUnitDepthRecursionMode from './LimitTransformUnitDepthRecursionMode';
@@ -44,6 +45,13 @@ export class H265VideoConfiguration extends VideoConfiguration {
    * @memberof H265VideoConfiguration
    */
   public presetConfiguration?: PresetConfiguration;
+
+  /**
+   * Automatically configures the H265 Video Codec to be compatible with the given SDR/HDR format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
+   * @type {H265DynamicRangeFormat}
+   * @memberof H265VideoConfiguration
+   */
+  public dynamicRangeFormat?: H265DynamicRangeFormat;
 
   /**
    * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
@@ -703,6 +711,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
       return;
     }
     this.presetConfiguration = map(obj.presetConfiguration);
+    this.dynamicRangeFormat = map(obj.dynamicRangeFormat);
     this.crf = map(obj.crf);
     this.profile = map(obj.profile);
     this.bframes = map(obj.bframes);

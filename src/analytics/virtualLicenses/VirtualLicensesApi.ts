@@ -47,6 +47,21 @@ export default class VirtualLicensesApi extends BaseAPI {
   }
 
   /**
+   * @summary Analytics Virtual License
+   * @param {string} virtualLicenseId Virtual license id
+   * @throws {BitmovinError}
+   * @memberof VirtualLicensesApi
+   */
+  public get(virtualLicenseId: string): Promise<AnalyticsVirtualLicense> {
+    const pathParamMap = {
+      virtual_license_id: virtualLicenseId
+    };
+    return this.restClient.get<AnalyticsVirtualLicense>('/analytics/virtual-licenses/{virtual_license_id}', pathParamMap).then((response) => {
+      return map(response, AnalyticsVirtualLicense);
+    });
+  }
+
+  /**
    * @summary List Analytics Virtual Licenses
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
