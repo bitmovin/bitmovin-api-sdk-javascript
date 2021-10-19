@@ -84,7 +84,6 @@ export * from './AnalyticsLicenseDomain';
 export * from './AnalyticsLicenseErrorDetailsConfig';
 export * from './AnalyticsLicenseFeatures';
 export * from './AnalyticsLicenseKey';
-export * from './AnalyticsLicenseUpdateRequest';
 export * from './AnalyticsMaxConcurrentViewersResponse';
 export * from './AnalyticsMaxQueryRequest';
 export * from './AnalyticsMedianQueryRequest';

@@ -3,7 +3,6 @@ import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
 import DomainsApi from './domains/DomainsApi';
 import AnalyticsLicense from '../../models/AnalyticsLicense';
-import AnalyticsLicenseUpdateRequest from '../../models/AnalyticsLicenseUpdateRequest';
 import PaginationResponse from '../../models/PaginationResponse';
 import {AnalyticsLicenseListQueryParams, AnalyticsLicenseListQueryParamsBuilder} from './AnalyticsLicenseListQueryParams';
 
@@ -69,15 +68,15 @@ export default class LicensesApi extends BaseAPI {
   /**
    * @summary Update Analytics License
    * @param {string} licenseId License id
-   * @param {AnalyticsLicenseUpdateRequest} analyticsLicenseUpdateRequest Analytics License details to be updated
+   * @param {AnalyticsLicense} analyticsLicense Analytics License details to be updated
    * @throws {BitmovinError}
    * @memberof LicensesApi
    */
-  public update(licenseId: string, analyticsLicenseUpdateRequest?: AnalyticsLicenseUpdateRequest): Promise<AnalyticsLicense> {
+  public update(licenseId: string, analyticsLicense?: AnalyticsLicense): Promise<AnalyticsLicense> {
     const pathParamMap = {
       license_id: licenseId
     };
-    return this.restClient.put<AnalyticsLicense>('/analytics/licenses/{license_id}', pathParamMap, analyticsLicenseUpdateRequest).then((response) => {
+    return this.restClient.put<AnalyticsLicense>('/analytics/licenses/{license_id}', pathParamMap, analyticsLicense).then((response) => {
       return map(response, AnalyticsLicense);
     });
   }

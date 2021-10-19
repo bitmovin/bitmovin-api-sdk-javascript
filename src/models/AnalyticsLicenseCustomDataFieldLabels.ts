@@ -40,6 +40,20 @@ export class AnalyticsLicenseCustomDataFieldLabels {
    */
   public customData5?: string;
 
+  /**
+   * Custom Data 6
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData6?: string;
+
+  /**
+   * Custom Data 7
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData7?: string;
+
   constructor(obj?: Partial<AnalyticsLicenseCustomDataFieldLabels>) {
     if(!obj) {
       return;
@@ -49,6 +63,8 @@ export class AnalyticsLicenseCustomDataFieldLabels {
     this.customData3 = map(obj.customData3);
     this.customData4 = map(obj.customData4);
     this.customData5 = map(obj.customData5);
+    this.customData6 = map(obj.customData6);
+    this.customData7 = map(obj.customData7);
   }
 }
 
