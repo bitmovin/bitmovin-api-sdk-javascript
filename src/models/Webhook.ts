@@ -9,7 +9,7 @@ import WebhookSignature from './WebhookSignature';
  */
 export class Webhook extends BitmovinResource {
   /**
-   * Webhook url (required)
+   * Webhook URL (required)
    * @type {string}
    * @memberof Webhook
    */
@@ -23,7 +23,7 @@ export class Webhook extends BitmovinResource {
   public method?: WebhookHttpMethod;
 
   /**
-   * Whether to skip SSL certification verification or not
+   * Skip verification of the SSL certificate
    * @type {boolean}
    * @memberof Webhook
    */
@@ -37,7 +37,7 @@ export class Webhook extends BitmovinResource {
   public signature?: WebhookSignature;
 
   /**
-   * The json schema of the data that is send as webhook payload
+   * JSON schema of the webhook payload
    * @type {any}
    * @memberof Webhook
    */

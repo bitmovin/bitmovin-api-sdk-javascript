@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Error Webhook Custom Data for specific Encoding Resource
+   * @summary 'Encoding Error' Webhook Custom Data for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -33,7 +33,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Error Webhook Custom Data
+   * @summary 'Encoding Error' Webhook Custom Data
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof CustomdataApi

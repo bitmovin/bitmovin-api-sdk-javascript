@@ -23,8 +23,8 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Transfer Error Webhook
-   * @param {Webhook} webhook The Encoding Transfer Error Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
+   * @summary Add 'Encoding Transfer Error' Webhook
+   * @param {Webhook} webhook The &#39;Encoding Transfer Error&#39; Webhook to be added. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
    */
@@ -35,9 +35,9 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Transfer Error Webhook for specific Encoding Resource
+   * @summary Add 'Encoding Transfer Error' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
-   * @param {Webhook} webhook The Encoding Transfer Error Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The &#39;Encoding Transfer Error&#39; Webhook to be added. A maximum number of 5 webhooks per Encoding is allowed
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
    */
@@ -51,7 +51,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Transfer Error Webhook for specific Encoding Resource
+   * @summary Delete 'Encoding Transfer Error' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -68,7 +68,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Transfer Error Webhook
+   * @summary Delete 'Encoding Transfer Error' Webhook
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
@@ -83,7 +83,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Transfer Error Webhook Details for specific Encoding Resource
+   * @summary 'Encoding Transfer Error' Webhook Details for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -100,7 +100,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Transfer Error Webhook Details
+   * @summary 'Encoding Transfer Error' Webhook Details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
@@ -115,7 +115,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Transfer-Error Webhooks
+   * @summary List 'Encoding Transfer Error' Webhooks
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
@@ -133,7 +133,7 @@ export default class TransferErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Transfer Error Webhooks for specific Encoding Resource
+   * @summary List 'Encoding Transfer Error' Webhooks for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

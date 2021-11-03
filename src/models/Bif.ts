@@ -24,7 +24,7 @@ export class Bif extends BitmovinResource {
   public width?: number;
 
   /**
-   * Distance in seconds between a screenshot
+   * Distance in seconds between a screenshot (required)
    * @type {number}
    * @memberof Bif
    */

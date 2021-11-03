@@ -219,6 +219,20 @@ export class StatisticsPerStream {
   public dolbyVisionToSdrMultiplicator?: number;
 
   /**
+   * Indicates if the conversion from HDR10/HLG to SDR was triggered.
+   * @type {boolean}
+   * @memberof StatisticsPerStream
+   */
+  public hdrHlgToSdr?: boolean;
+
+  /**
+   * The output minutes multiplicator for streams using the conversion from HDR10/HLG to SDR.
+   * @type {number}
+   * @memberof StatisticsPerStream
+   */
+  public hdrHlgToSdrMultiplicator?: number;
+
+  /**
    * @type {NexGuardABWatermarkingFeature}
    * @memberof StatisticsPerStream
    */
@@ -284,6 +298,8 @@ export class StatisticsPerStream {
     this.dolbyVisionToHdrMultiplicator = map(obj.dolbyVisionToHdrMultiplicator);
     this.dolbyVisionToSdr = map(obj.dolbyVisionToSdr);
     this.dolbyVisionToSdrMultiplicator = map(obj.dolbyVisionToSdrMultiplicator);
+    this.hdrHlgToSdr = map(obj.hdrHlgToSdr);
+    this.hdrHlgToSdrMultiplicator = map(obj.hdrHlgToSdrMultiplicator);
     this.nexGuardABWatermarkingType = map(obj.nexGuardABWatermarkingType);
     this.nexGuardABWatermarkingMultiplicator = map(obj.nexGuardABWatermarkingMultiplicator);
     this.pixelFormatBitDepth = map(obj.pixelFormatBitDepth);

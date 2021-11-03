@@ -23,8 +23,8 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Finished Webhook
-   * @param {Webhook} webhook The Encoding Finished Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
+   * @summary Add 'Encoding Finished' Webhook
+   * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */
@@ -35,9 +35,9 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Finished Webhook for specific Encoding Resource.
+   * @summary Add 'Encoding Finished' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
-   * @param {Webhook} webhook The Encoding Finished Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added. A maximum number of 5 webhooks per Encoding is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */
@@ -51,7 +51,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Finished Webhook for specific Encoding Resource
+   * @summary Delete 'Encoding Finished' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -68,7 +68,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Finished Webhook
+   * @summary Delete 'Encoding Finished' Webhook
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -83,7 +83,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Finished Webhook Details for specific Encoding Resource
+   * @summary 'Encoding Finished' Webhook Details for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -100,7 +100,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Finished Webhook Details
+   * @summary 'Encoding Finished' Webhook Details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -115,7 +115,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Finished Webhooks
+   * @summary List 'Encoding Finished' Webhooks
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -133,7 +133,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Finished Webhooks for specific Encoding Resource
+   * @summary List 'Encoding Finished' Webhooks for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

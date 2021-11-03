@@ -17,8 +17,8 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Manifest Error Webhook (All Manifests)
-   * @param {Webhook} webhook Add a new webhook notification if a manifest creation failed with an error. **Note:** A maximum number of 5 webhooks is allowed
+   * @summary Add 'Manifest Error' Webhook (All Manifests)
+   * @param {Webhook} webhook Add a new webhook notification if a manifest creation failed with an error. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
@@ -29,9 +29,9 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Manifest Error Webhook Notification (Specific Manifest)
+   * @summary Add 'Manifest Error' Webhook Notification (Specific Manifest)
    * @param {string} manifestId Id of the manifest resource
-   * @param {Webhook} webhook The webhook notifications object. **Note:** A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The webhook notifications object. A maximum number of 5 webhooks per Manifest is allowed
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
@@ -45,7 +45,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Manifest Error Webhook
+   * @summary Delete 'Manifest Error' Webhook
    * @param {string} notificationId Id of the webhook notification
    * @throws {BitmovinError}
    * @memberof ErrorApi
@@ -60,7 +60,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Replace Manifest Error Webhook Notification
+   * @summary Replace 'Manifest Error' Webhook Notification
    * @param {string} notificationId Id of the webhook notification
    * @param {Webhook} webhook The webhook notification with the updated values
    * @throws {BitmovinError}

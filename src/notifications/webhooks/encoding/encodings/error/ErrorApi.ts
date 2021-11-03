@@ -23,8 +23,8 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Error Webhook
-   * @param {Webhook} webhook The Encoding Error Webhook to be added. **Note:** A maximum number of 5 webhooks is allowed
+   * @summary Add 'Encoding Error' Webhook
+   * @param {Webhook} webhook The &#39;Encoding Error&#39; Webhook to be added. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
@@ -35,9 +35,9 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Error Webhook for specific Encoding Resource. **Note:** A maximum number of 5 webhooks is allowed
+   * @summary Add Error Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
-   * @param {Webhook} webhook The Encoding Error Webhook to be added
+   * @param {Webhook} webhook The &#39;Encoding Error&#39; Webhook to be added. A maximum number of 5 webhooks per Encoding is allowed
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
@@ -51,7 +51,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Error Webhook for specific Encoding Resource
+   * @summary Delete 'Encoding Error' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -68,7 +68,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Encoding Error Webhook
+   * @summary Delete 'Encoding Error' Webhook
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof ErrorApi
@@ -83,7 +83,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Error Webhook Details for specific Encoding Resource
+   * @summary 'Encoding Error' Webhook Details for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -100,7 +100,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Error Webhook Details
+   * @summary 'Encoding Error' Webhook Details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof ErrorApi
@@ -115,7 +115,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Error Webhooks
+   * @summary List 'Encoding Error' Webhooks
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof ErrorApi
@@ -133,7 +133,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary List Encoding Error Webhooks for specific Encoding Resource
+   * @summary List 'Encoding Error' Webhooks for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
