@@ -7,6 +7,7 @@ import ColorConfig from './ColorConfig';
 import DisplayAspectRatio from './DisplayAspectRatio';
 import EncodingMode from './EncodingMode';
 import H264BPyramid from './H264BPyramid';
+import H264DynamicRangeFormat from './H264DynamicRangeFormat';
 import H264InterlaceMode from './H264InterlaceMode';
 import H264MotionEstimationMethod from './H264MotionEstimationMethod';
 import H264NalHrd from './H264NalHrd';
@@ -39,6 +40,13 @@ export class H264VideoConfiguration extends VideoConfiguration {
    * @memberof H264VideoConfiguration
    */
   public presetConfiguration?: PresetConfiguration;
+
+  /**
+   * Automatically configures the H264 Video Codec to be compatible with the given SDR format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
+   * @type {H264DynamicRangeFormat}
+   * @memberof H264VideoConfiguration
+   */
+  public dynamicRangeFormat?: H264DynamicRangeFormat;
 
   /**
    * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
@@ -344,6 +352,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
       return;
     }
     this.presetConfiguration = map(obj.presetConfiguration);
+    this.dynamicRangeFormat = map(obj.dynamicRangeFormat);
     this.crf = map(obj.crf);
     this.profile = map(obj.profile);
     this.bframes = map(obj.bframes);

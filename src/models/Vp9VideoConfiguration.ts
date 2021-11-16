@@ -8,6 +8,7 @@ import PresetConfiguration from './PresetConfiguration';
 import VideoConfiguration from './VideoConfiguration';
 import Vp9AqMode from './Vp9AqMode';
 import Vp9ArnrType from './Vp9ArnrType';
+import Vp9DynamicRangeFormat from './Vp9DynamicRangeFormat';
 import Vp9Quality from './Vp9Quality';
 
 /**
@@ -28,6 +29,13 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
    * @memberof Vp9VideoConfiguration
    */
   public presetConfiguration?: PresetConfiguration;
+
+  /**
+   * Automatically configures the VP9 Video Codec to be compatible with the given SDR/HLG format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
+   * @type {Vp9DynamicRangeFormat}
+   * @memberof Vp9VideoConfiguration
+   */
+  public dynamicRangeFormat?: Vp9DynamicRangeFormat;
 
   /**
    * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
@@ -249,6 +257,7 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
       return;
     }
     this.presetConfiguration = map(obj.presetConfiguration);
+    this.dynamicRangeFormat = map(obj.dynamicRangeFormat);
     this.crf = map(obj.crf);
     this.lagInFrames = map(obj.lagInFrames);
     this.errorResiliencyEnabled = map(obj.errorResiliencyEnabled);

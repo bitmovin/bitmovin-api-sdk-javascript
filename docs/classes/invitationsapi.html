@@ -99,6 +99,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="invitationsapi.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="invitationsapi.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="invitationsapi.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="invitationsapi.html#list" class="tsd-kind-icon">list</a></li>
 							</ul>
 						</section>
@@ -118,7 +120,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="baseapi.html">BaseAPI</a>.<a href="baseapi.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:13</li>
+									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:15</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -158,7 +160,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:27</li>
+									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:29</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -178,16 +180,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="list" class="tsd-anchor"></a>
-					<h3>list</h3>
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="invitation.html" class="tsd-signature-type">Invitation</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, invitationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:44</li>
+									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:47</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -197,6 +199,67 @@
 								</li>
 								<li>
 									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>invitationId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="bitmovinresponse.html" class="tsd-signature-type">BitmovinResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, invitationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="invitation.html" class="tsd-signature-type">Invitation</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:66</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>organizationId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>invitationId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="invitation.html" class="tsd-signature-type">Invitation</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="list" class="tsd-anchor"></a>
+					<h3>list</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>organizationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, groupId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, queryParameters<span class="tsd-signature-symbol">: </span><a href="../interfaces/invitationlistqueryparams.html" class="tsd-signature-type">InvitationListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="invitation.html" class="tsd-signature-type">Invitation</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in account/organizations/groups/invitations/InvitationsApi.ts:85</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>organizationId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>groupId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> queryParameters: <a href="../interfaces/invitationlistqueryparams.html" class="tsd-signature-type">InvitationListQueryParams</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="paginationresponse.html" class="tsd-signature-type">PaginationResponse</a><span class="tsd-signature-symbol">&lt;</span><a href="invitation.html" class="tsd-signature-type">Invitation</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -228,6 +291,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="invitationsapi.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="invitationsapi.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="invitationsapi.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="invitationsapi.html#list" class="tsd-kind-icon">list</a>

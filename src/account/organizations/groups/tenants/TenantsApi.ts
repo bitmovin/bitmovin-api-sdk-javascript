@@ -4,6 +4,7 @@ import {map, mapArray} from '../../../../common/Mapper';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
 import Tenant from '../../../../models/Tenant';
 import PaginationResponse from '../../../../models/PaginationResponse';
+import {TenantListQueryParams, TenantListQueryParamsBuilder} from './TenantListQueryParams';
 
 /**
  * TenantsApi - object-oriented interface
@@ -77,15 +78,22 @@ export default class TenantsApi extends BaseAPI {
    * @summary List Tenants
    * @param {string} organizationId Id of the organization
    * @param {string} groupId Id of the group
+   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof TenantsApi
    */
-  public list(organizationId: string, groupId: string): Promise<PaginationResponse<Tenant>> {
+  public list(organizationId: string, groupId: string, queryParameters?: TenantListQueryParams | ((q: TenantListQueryParamsBuilder) => TenantListQueryParamsBuilder)): Promise<PaginationResponse<Tenant>> {
     const pathParamMap = {
       organization_id: organizationId,
       group_id: groupId
     };
-    return this.restClient.get<PaginationResponse<Tenant>>('/account/organizations/{organization_id}/groups/{group_id}/tenants', pathParamMap).then((response) => {
+    let queryParams: TenantListQueryParams = {};
+    if (typeof queryParameters === 'function') {
+      queryParams = queryParameters(new TenantListQueryParamsBuilder()).buildQueryParams();
+    } else if (queryParameters) {
+      queryParams = queryParameters;
+    }
+    return this.restClient.get<PaginationResponse<Tenant>>('/account/organizations/{organization_id}/groups/{group_id}/tenants', pathParamMap, queryParams).then((response) => {
       return new PaginationResponse<Tenant>(response, Tenant);
     });
   }
