@@ -2,6 +2,7 @@ import Accessibility from './Accessibility';
 import AdaptationSet from './AdaptationSet';
 import AdaptationSetRole from './AdaptationSetRole';
 import CustomAttribute from './CustomAttribute';
+import Label from './Label';
 
 /**
  * @export

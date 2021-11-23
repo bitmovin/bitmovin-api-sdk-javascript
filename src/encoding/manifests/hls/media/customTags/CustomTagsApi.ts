@@ -19,9 +19,9 @@ export default class CustomTagsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Custom Tag to Audio Media
+   * @summary Add Custom Tag to a Audio Media or a Subtitle media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {string} mediaId Id of the audio media.
+   * @param {string} mediaId Id of the media.
    * @param {CustomTag} customTag The Custom Tag to be added
    * @throws {BitmovinError}
    * @memberof CustomTagsApi
@@ -39,7 +39,7 @@ export default class CustomTagsApi extends BaseAPI {
   /**
    * @summary Delete Custom Tag
    * @param {string} manifestId Id of the hls manifest.
-   * @param {string} mediaId Id of the audio media.
+   * @param {string} mediaId Id of the media.
    * @param {string} customTagId Id of the custom tag.
    * @throws {BitmovinError}
    * @memberof CustomTagsApi
@@ -58,7 +58,7 @@ export default class CustomTagsApi extends BaseAPI {
   /**
    * @summary Custom Tag Details
    * @param {string} manifestId Id of the hls manifest.
-   * @param {string} mediaId Id of the audio media
+   * @param {string} mediaId Id of the media
    * @param {string} customTagId Id of the custom tag.
    * @throws {BitmovinError}
    * @memberof CustomTagsApi
@@ -75,9 +75,9 @@ export default class CustomTagsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Custom Tags of a Audio media
+   * @summary List all Custom Tags of a Audio media or a Subtitle media
    * @param {string} manifestId Id of the hls manifest.
-   * @param {string} mediaId Id of the audio media.
+   * @param {string} mediaId Id of the media.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof CustomTagsApi

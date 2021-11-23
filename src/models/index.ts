@@ -421,6 +421,7 @@ export * from './Invitation';
 export * from './InvitationStatus';
 export * from './IvSize';
 export * from './Keyframe';
+export * from './Label';
 export * from './LevelH262';
 export * from './LevelH264';
 export * from './LevelH265';
