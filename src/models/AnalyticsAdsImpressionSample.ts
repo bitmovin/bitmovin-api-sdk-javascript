@@ -419,6 +419,132 @@ export class AnalyticsAdsImpressionSample {
   public customData7?: string;
 
   /**
+   * Free form data set via the customData8 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData8?: string;
+
+  /**
+   * Free form data set via the customData9 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData9?: string;
+
+  /**
+   * Free form data set via the customData10 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData10?: string;
+
+  /**
+   * Free form data set via the customData11 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData11?: string;
+
+  /**
+   * Free form data set via the customData12 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData12?: string;
+
+  /**
+   * Free form data set via the customData13 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData13?: string;
+
+  /**
+   * Free form data set via the customData14 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData14?: string;
+
+  /**
+   * Free form data set via the customData15 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData15?: string;
+
+  /**
+   * Free form data set via the customData16 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData16?: string;
+
+  /**
+   * Free form data set via the customData17 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData17?: string;
+
+  /**
+   * Free form data set via the customData18 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData18?: string;
+
+  /**
+   * Free form data set via the customData19 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData19?: string;
+
+  /**
+   * Free form data set via the customData20 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData20?: string;
+
+  /**
+   * Free form data set via the customData21 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData21?: string;
+
+  /**
+   * Free form data set via the customData22 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData22?: string;
+
+  /**
+   * Free form data set via the customData23 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData23?: string;
+
+  /**
+   * Free form data set via the customData24 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData24?: string;
+
+  /**
+   * Free form data set via the customData25 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData25?: string;
+
+  /**
    * Custom user ID
    * @type {string}
    * @memberof AnalyticsAdsImpressionSample
@@ -929,6 +1055,24 @@ export class AnalyticsAdsImpressionSample {
     this.customData5 = map(obj.customData5);
     this.customData6 = map(obj.customData6);
     this.customData7 = map(obj.customData7);
+    this.customData8 = map(obj.customData8);
+    this.customData9 = map(obj.customData9);
+    this.customData10 = map(obj.customData10);
+    this.customData11 = map(obj.customData11);
+    this.customData12 = map(obj.customData12);
+    this.customData13 = map(obj.customData13);
+    this.customData14 = map(obj.customData14);
+    this.customData15 = map(obj.customData15);
+    this.customData16 = map(obj.customData16);
+    this.customData17 = map(obj.customData17);
+    this.customData18 = map(obj.customData18);
+    this.customData19 = map(obj.customData19);
+    this.customData20 = map(obj.customData20);
+    this.customData21 = map(obj.customData21);
+    this.customData22 = map(obj.customData22);
+    this.customData23 = map(obj.customData23);
+    this.customData24 = map(obj.customData24);
+    this.customData25 = map(obj.customData25);
     this.customUserId = map(obj.customUserId);
     this.dealId = map(obj.dealId);
     this.deviceClass = map(obj.deviceClass);
