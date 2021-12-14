@@ -10,6 +10,7 @@ import ManifestsApi from './manifests/ManifestsApi';
 import InfrastructureApi from './infrastructure/InfrastructureApi';
 import StatisticsApi from './statistics/StatisticsApi';
 import WatchFoldersApi from './watchFolders/WatchFoldersApi';
+import SimpleApi from './simple/SimpleApi';
 import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
 
 /**
@@ -28,6 +29,7 @@ export default class EncodingApi extends BaseAPI {
   public infrastructure: InfrastructureApi;
   public statistics: StatisticsApi;
   public watchFolders: WatchFoldersApi;
+  public simple: SimpleApi;
   public errorDefinitions: ErrorDefinitionsApi;
 
   constructor(configuration: Configuration) {
@@ -41,6 +43,7 @@ export default class EncodingApi extends BaseAPI {
     this.infrastructure = new InfrastructureApi(configuration);
     this.statistics = new StatisticsApi(configuration);
     this.watchFolders = new WatchFoldersApi(configuration);
+    this.simple = new SimpleApi(configuration);
     this.errorDefinitions = new ErrorDefinitionsApi(configuration);
   }
 }

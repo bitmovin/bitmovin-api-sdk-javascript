@@ -6,175 +6,175 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class AnalyticsLicenseCustomDataFieldLabels {
   /**
-   * Custom Data 1
+   * Label for field Custom Data 1
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData1?: string;
 
   /**
-   * Custom Data 2
+   * Label for field Custom Data 2
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData2?: string;
 
   /**
-   * Custom Data 3
+   * Label for field Custom Data 3
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData3?: string;
 
   /**
-   * Custom Data 4
+   * Label for field Custom Data 4
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData4?: string;
 
   /**
-   * Custom Data 5
+   * Label for field Custom Data 5
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData5?: string;
 
   /**
-   * Custom Data 6
+   * Label for field Custom Data 6
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData6?: string;
 
   /**
-   * Custom Data 7
+   * Label for field Custom Data 7
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData7?: string;
 
   /**
-   * Custom Data 8
+   * Label for field Custom Data 8
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData8?: string;
 
   /**
-   * Custom Data 9
+   * Label for field Custom Data 9
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData9?: string;
 
   /**
-   * Custom Data 10
+   * Label for field Custom Data 10
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData10?: string;
 
   /**
-   * Custom Data 11
+   * Label for field Custom Data 11
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData11?: string;
 
   /**
-   * Custom Data 12
+   * Label for field Custom Data 12
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData12?: string;
 
   /**
-   * Custom Data 13
+   * Label for field Custom Data 13
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData13?: string;
 
   /**
-   * Custom Data 14
+   * Label for field Custom Data 14
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData14?: string;
 
   /**
-   * Custom Data 15
+   * Label for field Custom Data 15
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData15?: string;
 
   /**
-   * Custom Data 16
+   * Label for field Custom Data 16
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData16?: string;
 
   /**
-   * Custom Data 17
+   * Label for field Custom Data 17
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData17?: string;
 
   /**
-   * Custom Data 18
+   * Label for field Custom Data 18
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData18?: string;
 
   /**
-   * Custom Data 19
+   * Label for field Custom Data 19
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData19?: string;
 
   /**
-   * Custom Data 20
+   * Label for field Custom Data 20
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData20?: string;
 
   /**
-   * Custom Data 21
+   * Label for field Custom Data 21
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData21?: string;
 
   /**
-   * Custom Data 22
+   * Label for field Custom Data 22
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData22?: string;
 
   /**
-   * Custom Data 23
+   * Label for field Custom Data 23
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData23?: string;
 
   /**
-   * Custom Data 24
+   * Label for field Custom Data 24
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */
   public customData24?: string;
 
   /**
-   * Custom Data 25
+   * Label for field Custom Data 25
    * @type {string}
    * @memberof AnalyticsLicenseCustomDataFieldLabels
    */

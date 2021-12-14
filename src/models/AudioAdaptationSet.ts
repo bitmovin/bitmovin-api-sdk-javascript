@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import Accessibility from './Accessibility';
 import AdaptationSet from './AdaptationSet';
 import AdaptationSetRole from './AdaptationSetRole';
+import AdaptationSetType from './AdaptationSetType';
 import CustomAttribute from './CustomAttribute';
 import Label from './Label';
 
@@ -10,6 +11,13 @@ import Label from './Label';
  * @class AudioAdaptationSet
  */
 export class AudioAdaptationSet extends AdaptationSet {
+  /**
+   * Discriminator property for AdaptationSet
+   * @type {string}
+   * @memberof AudioAdaptationSet
+   */
+  public type: AdaptationSetType.AUDIO = AdaptationSetType.AUDIO;
+
   /**
    * ISO 639-1 (Alpha-2) code identifying the language of the audio adaptation set (required)
    * @type {string}

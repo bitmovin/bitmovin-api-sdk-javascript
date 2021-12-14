@@ -97,7 +97,7 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.97.0</code></pre>
+				<pre><code class="language-bash">npm install @bitmovin/api-sdk@1.98.0</code></pre>
 				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
 					<h2>Initialization</h2>
 				</a>
@@ -163,6 +163,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/adaptationsetrole.html" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>Role</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/adaptationsettype.html" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/adaptivequantmode.html" class="tsd-kind-icon">Adaptive<wbr>Quant<wbr>Mode</a>
@@ -744,6 +747,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="enums/signaturetype.html" class="tsd-kind-icon">Signature<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="enums/simpleencodingvodjobinputtype.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Input<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/simpleencodingvodjobstatus.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="enums/smoothmanifestdefaultversion.html" class="tsd-kind-icon">Smooth<wbr>Manifest<wbr>Default<wbr>Version</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -961,6 +970,12 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/adaptationset.html" class="tsd-kind-icon">Adaptation<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/adaptationsetlistqueryparamsbuilder.html" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/adaptationsettyperesponse.html" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>Type<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/adaptationsetsapi.html" class="tsd-kind-icon">Adaptationsets<wbr>Api</a>
@@ -2451,6 +2466,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/invitationsapi.html" class="tsd-kind-icon">Invitations<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/jobsapi.html" class="tsd-kind-icon">Jobs<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/keyframe.html" class="tsd-kind-icon">Keyframe</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -3114,6 +3132,45 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="classes/sidecarsapi.html" class="tsd-kind-icon">Sidecars<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/simpleapi.html" class="tsd-kind-icon">Simple<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobaccesskeycredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Access<wbr>Key<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobazurecredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Azure<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobcredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjoberrors.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Errors</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobgcsserviceaccountcredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Gcs<wbr>Service<wbr>Account<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobrequest.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobresponse.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobresponselistqueryparamsbuilder.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Response<wbr>List<wbr>Query<wbr>Params<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobs3rolebasedcredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>S3Role<wbr>Based<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjoburlinput.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Url<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjoburloutput.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Url<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpleencodingvodjobusernamepasswordcredentials.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Username<wbr>Password<wbr>Credentials</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/smoothapi.html" class="tsd-kind-icon">Smooth<wbr>Api</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -3681,6 +3738,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/ac3audioconfigurationlistqueryparams.html" class="tsd-kind-icon">Ac3<wbr>Audio<wbr>Configuration<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/adaptationsetlistqueryparams.html" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/aesencryptiondrmlistqueryparams.html" class="tsd-kind-icon">Aes<wbr>Encryption<wbr>Drm<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -4200,6 +4260,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 						<a href="interfaces/sidecarfilelistqueryparams.html" class="tsd-kind-icon">Sidecar<wbr>File<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/simpleencodingvodjobresponselistqueryparams.html" class="tsd-kind-icon">Simple<wbr>Encoding<wbr>Vod<wbr>Job<wbr>Response<wbr>List<wbr>Query<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/smoothmanifestcontentprotectionlistqueryparams.html" class="tsd-kind-icon">Smooth<wbr>Manifest<wbr>Content<wbr>Protection<wbr>List<wbr>Query<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -4342,6 +4405,9 @@ const bitmovinApi = new BitmovinApi({apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;});</
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#adanalyticsabstractfilterunion" class="tsd-kind-icon">Ad<wbr>Analytics<wbr>Abstract<wbr>Filter<wbr>Union</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#adaptationsetunion" class="tsd-kind-icon">Adaptation<wbr>Set<wbr>Union</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#analyticsabstractfilterunion" class="tsd-kind-icon">Analytics<wbr>Abstract<wbr>Filter<wbr>Union</a>

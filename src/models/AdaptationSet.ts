@@ -1,15 +1,34 @@
 import {map, mapArray} from '../common/Mapper';
 import Accessibility from './Accessibility';
 import AdaptationSetRole from './AdaptationSetRole';
+import AdaptationSetType from './AdaptationSetType';
+import AudioAdaptationSet from './AudioAdaptationSet';
 import BitmovinResponse from './BitmovinResponse';
 import CustomAttribute from './CustomAttribute';
+import ImageAdaptationSet from './ImageAdaptationSet';
 import Label from './Label';
+import SubtitleAdaptationSet from './SubtitleAdaptationSet';
+import VideoAdaptationSet from './VideoAdaptationSet';
+
+export type AdaptationSetUnion =
+  VideoAdaptationSet |
+  AudioAdaptationSet |
+  ImageAdaptationSet |
+  SubtitleAdaptationSet;
 
 /**
  * @export
  * @class AdaptationSet
  */
 export class AdaptationSet extends BitmovinResponse {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key in keyof typeof AdaptationSetType]: string; } = {
+    VIDEO: 'VideoAdaptationSet',
+    AUDIO: 'AudioAdaptationSet',
+    IMAGE: 'ImageAdaptationSet',
+    SUBTITLE: 'SubtitleAdaptationSet'
+  };
+
   /**
    * Custom adaptation set attributes
    * @type {CustomAttribute[]}

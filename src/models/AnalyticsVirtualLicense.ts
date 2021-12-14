@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AnalyticsLicenseCustomDataFieldLabels from './AnalyticsLicenseCustomDataFieldLabels';
 import AnalyticsVirtualLicenseLicensesListItem from './AnalyticsVirtualLicenseLicensesListItem';
 
 /**
@@ -34,6 +35,20 @@ export class AnalyticsVirtualLicense {
    */
   public licenses?: AnalyticsVirtualLicenseLicensesListItem[];
 
+  /**
+   * The number of customData fields available
+   * @type {number}
+   * @memberof AnalyticsVirtualLicense
+   */
+  public customDataFieldsCount?: number;
+
+  /**
+   * Labels for Custom Data fields
+   * @type {AnalyticsLicenseCustomDataFieldLabels}
+   * @memberof AnalyticsVirtualLicense
+   */
+  public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
+
   constructor(obj?: Partial<AnalyticsVirtualLicense>) {
     if(!obj) {
       return;
@@ -42,6 +57,8 @@ export class AnalyticsVirtualLicense {
     this.name = map(obj.name);
     this.timezone = map(obj.timezone);
     this.licenses = mapArray(obj.licenses, AnalyticsVirtualLicenseLicensesListItem);
+    this.customDataFieldsCount = map(obj.customDataFieldsCount);
+    this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
   }
 }
 
