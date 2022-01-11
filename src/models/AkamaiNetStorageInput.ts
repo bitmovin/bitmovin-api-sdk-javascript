@@ -12,7 +12,7 @@ export class AkamaiNetStorageInput extends Input {
    * @type {string}
    * @memberof AkamaiNetStorageInput
    */
-  public type: InputType.AKAMAI_NETSTORAGE = InputType.AKAMAI_NETSTORAGE;
+  public readonly type: InputType = InputType.AKAMAI_NETSTORAGE;
 
   /**
    * Host to use for Akamai NetStorage transfers (required)

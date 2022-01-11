@@ -13,7 +13,7 @@ export class AdAnalyticsInFilter extends AdAnalyticsAbstractFilter {
    * @type {string}
    * @memberof AdAnalyticsInFilter
    */
-  public operator: AnalyticsQueryOperator.IN = AnalyticsQueryOperator.IN;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.IN;
 
   /**
    * @type {any[]}

@@ -12,7 +12,7 @@ export class FtpInput extends Input {
    * @type {string}
    * @memberof FtpInput
    */
-  public type: InputType.FTP = InputType.FTP;
+  public readonly type: InputType = InputType.FTP;
 
   /**
    * Host URL or IP of the FTP server (required)

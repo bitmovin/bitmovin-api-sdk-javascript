@@ -13,7 +13,7 @@ export class EnhancedWatermarkFilter extends Filter {
    * @type {string}
    * @memberof EnhancedWatermarkFilter
    */
-  public type: FilterType.ENHANCED_WATERMARK = FilterType.ENHANCED_WATERMARK;
+  public readonly type: FilterType = FilterType.ENHANCED_WATERMARK;
 
   /**
    * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)

@@ -13,7 +13,7 @@ export class DolbyAtmosAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof DolbyAtmosAudioConfiguration
    */
-  public type: CodecConfigType.DOLBY_ATMOS = CodecConfigType.DOLBY_ATMOS;
+  public readonly type: CodecConfigType = CodecConfigType.DOLBY_ATMOS;
 
   /**
    * Settings for loudness control (required)

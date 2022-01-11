@@ -12,7 +12,7 @@ export class DenoiseHqdn3dFilter extends Filter {
    * @type {string}
    * @memberof DenoiseHqdn3dFilter
    */
-  public type: FilterType.DENOISE_HQDN3D = FilterType.DENOISE_HQDN3D;
+  public readonly type: FilterType = FilterType.DENOISE_HQDN3D;
 
   /**
    * A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0.

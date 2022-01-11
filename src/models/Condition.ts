@@ -13,7 +13,7 @@ export class Condition extends AbstractCondition {
    * @type {string}
    * @memberof Condition
    */
-  public type: ConditionType.CONDITION = ConditionType.CONDITION;
+  public readonly type: ConditionType = ConditionType.CONDITION;
 
   /**
    * The attribute that should be used for the evaluation. Valid values include, depending on the context: - HEIGHT - WIDTH - BITRATE - FPS - ASPECTRATIO - INPUTSTREAM - LANGUAGE - CHANNELFORMAT - CHANNELLAYOUT - STREAMCOUNT - AUDIOSTREAMCOUNT - VIDEOSTREAMCOUNT - DURATION - ROTATION (required)

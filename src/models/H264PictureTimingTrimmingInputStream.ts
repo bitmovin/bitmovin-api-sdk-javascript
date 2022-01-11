@@ -12,7 +12,7 @@ export class H264PictureTimingTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof H264PictureTimingTrimmingInputStream
    */
-  public type: InputStreamType.TRIMMING_H264_PICTURE_TIMING = InputStreamType.TRIMMING_H264_PICTURE_TIMING;
+  public readonly type: InputStreamType = InputStreamType.TRIMMING_H264_PICTURE_TIMING;
 
   /**
    * The id of the ingest input stream that should be trimmed

@@ -12,7 +12,7 @@ export class HttpInput extends Input {
    * @type {string}
    * @memberof HttpInput
    */
-  public type: InputType.HTTP = InputType.HTTP;
+  public readonly type: InputType = InputType.HTTP;
 
   /**
    * Host Url or IP of the HTTP server (required)

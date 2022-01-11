@@ -14,7 +14,7 @@ export class SftpOutput extends Output {
    * @type {string}
    * @memberof SftpOutput
    */
-  public type: OutputType.SFTP = OutputType.SFTP;
+  public readonly type: OutputType = OutputType.SFTP;
 
   /**
    * Host Url or IP of the SFTP server (required)

@@ -14,7 +14,7 @@ export class AesEncryptionDrm extends Drm {
    * @type {string}
    * @memberof AesEncryptionDrm
    */
-  public type: DrmType.AES = DrmType.AES;
+  public readonly type: DrmType = DrmType.AES;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)

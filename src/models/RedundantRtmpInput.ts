@@ -13,7 +13,7 @@ export class RedundantRtmpInput extends Input {
    * @type {string}
    * @memberof RedundantRtmpInput
    */
-  public type: InputType.REDUNDANT_RTMP = InputType.REDUNDANT_RTMP;
+  public readonly type: InputType = InputType.REDUNDANT_RTMP;
 
   /**
    * When there is no input signal present and this threshold in seconds is reached it will switch to another ingest point

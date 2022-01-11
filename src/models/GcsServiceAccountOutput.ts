@@ -14,7 +14,7 @@ export class GcsServiceAccountOutput extends Output {
    * @type {string}
    * @memberof GcsServiceAccountOutput
    */
-  public type: OutputType.GCS_SERVICE_ACCOUNT = OutputType.GCS_SERVICE_ACCOUNT;
+  public readonly type: OutputType = OutputType.GCS_SERVICE_ACCOUNT;
 
   /**
    * GCS projectId (required)

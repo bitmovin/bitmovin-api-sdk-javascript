@@ -21,7 +21,7 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof Vp9VideoConfiguration
    */
-  public type: CodecConfigType.VP9 = CodecConfigType.VP9;
+  public readonly type: CodecConfigType = CodecConfigType.VP9;
 
   /**
    * Choose from a set of preset configurations tailored for common use cases. Check out [VP9 Presets](https://bitmovin.com/docs/encoding/tutorials/vp9-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.

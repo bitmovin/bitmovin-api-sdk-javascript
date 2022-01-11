@@ -16,7 +16,7 @@ export class DtsXAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof DtsXAudioConfiguration
    */
-  public type: CodecConfigType.DTSX = CodecConfigType.DTSX;
+  public readonly type: CodecConfigType = CodecConfigType.DTSX;
 
   /**
    * @type {DtsXChannelLayout}

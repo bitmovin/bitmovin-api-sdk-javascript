@@ -13,7 +13,7 @@ export class AnalyticsGreaterThanOrEqualFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsGreaterThanOrEqualFilter
    */
-  public operator: AnalyticsQueryOperator.GTE = AnalyticsQueryOperator.GTE;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.GTE;
 
   /**
    * @type {any}

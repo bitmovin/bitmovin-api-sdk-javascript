@@ -13,7 +13,7 @@ export class MarlinDrm extends Drm {
    * @type {string}
    * @memberof MarlinDrm
    */
-  public type: DrmType.MARLIN = DrmType.MARLIN;
+  public readonly type: DrmType = DrmType.MARLIN;
 
   /**
    * 16 byte key in hex (32 characters) (required)

@@ -16,7 +16,7 @@ export class SubtitleAdaptationSet extends AdaptationSet {
    * @type {string}
    * @memberof SubtitleAdaptationSet
    */
-  public type: AdaptationSetType.SUBTITLE = AdaptationSetType.SUBTITLE;
+  public readonly type: AdaptationSetType = AdaptationSetType.SUBTITLE;
 
   /**
    * ISO 639-1 (Alpha-2) code identifying the language of the subtitle adaptation set (required)

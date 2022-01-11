@@ -13,7 +13,7 @@ export class PrimeTimeDrm extends Drm {
    * @type {string}
    * @memberof PrimeTimeDrm
    */
-  public type: DrmType.PRIMETIME = DrmType.PRIMETIME;
+  public readonly type: DrmType = DrmType.PRIMETIME;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)

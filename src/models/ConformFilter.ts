@@ -12,7 +12,7 @@ export class ConformFilter extends Filter {
    * @type {string}
    * @memberof ConformFilter
    */
-  public type: FilterType.CONFORM = FilterType.CONFORM;
+  public readonly type: FilterType = FilterType.CONFORM;
 
   /**
    * The FPS the input should be changed to.

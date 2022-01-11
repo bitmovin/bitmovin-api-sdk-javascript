@@ -14,7 +14,7 @@ export class AudioMixFilter extends Filter {
    * @type {string}
    * @memberof AudioMixFilter
    */
-  public type: FilterType.AUDIO_MIX = FilterType.AUDIO_MIX;
+  public readonly type: FilterType = FilterType.AUDIO_MIX;
 
   /**
    * Channel layout of the audio codec configuration (required)

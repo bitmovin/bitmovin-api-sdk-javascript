@@ -22,7 +22,7 @@ export default class SpriteApi extends BaseAPI {
    * @summary Add Sprite Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {string} adaptationsetId Id of the adaptation set
+   * @param {string} adaptationsetId Id of the image adaptation set
    * @param {SpriteRepresentation} spriteRepresentation The Sprite representation to be added to the adaptation set. Note that the adaptation set has to be an image adaptation set.  Only supported for sprites generated with encoder version &#x60;2.76.0&#x60; or above. 
    * @throws {BitmovinError}
    * @memberof SpriteApi

@@ -15,7 +15,7 @@ export class PlayReadyDrm extends Drm {
    * @type {string}
    * @memberof PlayReadyDrm
    */
-  public type: DrmType.PLAYREADY = DrmType.PLAYREADY;
+  public readonly type: DrmType = DrmType.PLAYREADY;
 
   /**
    * 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required

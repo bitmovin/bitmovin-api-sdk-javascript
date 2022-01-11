@@ -13,7 +13,7 @@ export class AacAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof AacAudioConfiguration
    */
-  public type: CodecConfigType.AAC = CodecConfigType.AAC;
+  public readonly type: CodecConfigType = CodecConfigType.AAC;
 
   /**
    * Channel layout of the audio codec configuration

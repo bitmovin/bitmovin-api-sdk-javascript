@@ -19,7 +19,7 @@ export class CencDrm extends Drm {
    * @type {string}
    * @memberof CencDrm
    */
-  public type: DrmType.CENC = DrmType.CENC;
+  public readonly type: DrmType = DrmType.CENC;
 
   /**
    * 16 byte encryption key, 32 hexadecimal characters (required)

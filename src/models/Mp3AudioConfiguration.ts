@@ -13,7 +13,7 @@ export class Mp3AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof Mp3AudioConfiguration
    */
-  public type: CodecConfigType.MP3 = CodecConfigType.MP3;
+  public readonly type: CodecConfigType = CodecConfigType.MP3;
 
   /**
    * Channel layout of the audio codec configuration

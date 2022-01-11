@@ -13,7 +13,7 @@ export class LocalOutput extends Output {
    * @type {string}
    * @memberof LocalOutput
    */
-  public type: OutputType.LOCAL = OutputType.LOCAL;
+  public readonly type: OutputType = OutputType.LOCAL;
 
   /**
    * Path to your local storage (required)

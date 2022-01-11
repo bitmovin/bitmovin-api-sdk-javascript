@@ -13,7 +13,7 @@ export class GcsServiceAccountInput extends Input {
    * @type {string}
    * @memberof GcsServiceAccountInput
    */
-  public type: InputType.GCS_SERVICE_ACCOUNT = InputType.GCS_SERVICE_ACCOUNT;
+  public readonly type: InputType = InputType.GCS_SERVICE_ACCOUNT;
 
   /**
    * GCS projectId (required)

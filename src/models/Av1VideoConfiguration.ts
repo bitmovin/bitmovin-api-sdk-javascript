@@ -15,7 +15,7 @@ export class Av1VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof Av1VideoConfiguration
    */
-  public type: CodecConfigType.AV1 = CodecConfigType.AV1;
+  public readonly type: CodecConfigType = CodecConfigType.AV1;
 
   constructor(obj?: Partial<Av1VideoConfiguration>) {
     super(obj);

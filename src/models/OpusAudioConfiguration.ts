@@ -13,7 +13,7 @@ export class OpusAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof OpusAudioConfiguration
    */
-  public type: CodecConfigType.OPUS = CodecConfigType.OPUS;
+  public readonly type: CodecConfigType = CodecConfigType.OPUS;
 
   /**
    * Channel layout of the audio codec configuration

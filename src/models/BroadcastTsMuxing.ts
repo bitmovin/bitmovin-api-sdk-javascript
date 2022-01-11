@@ -17,7 +17,7 @@ export class BroadcastTsMuxing extends Muxing {
    * @type {string}
    * @memberof BroadcastTsMuxing
    */
-  public type: MuxingType.BROADCAST_TS = MuxingType.BROADCAST_TS;
+  public readonly type: MuxingType = MuxingType.BROADCAST_TS;
 
   /**
    * Length of the segments in seconds.

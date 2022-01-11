@@ -14,7 +14,7 @@ export class SpekeDrm extends Drm {
    * @type {string}
    * @memberof SpekeDrm
    */
-  public type: DrmType.SPEKE = DrmType.SPEKE;
+  public readonly type: DrmType = DrmType.SPEKE;
 
   /**
    * Unique Identifier of the content, will be generated if not set

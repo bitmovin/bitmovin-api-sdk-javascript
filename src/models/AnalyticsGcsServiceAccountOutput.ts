@@ -14,7 +14,7 @@ export class AnalyticsGcsServiceAccountOutput extends AnalyticsOutput {
    * @type {string}
    * @memberof AnalyticsGcsServiceAccountOutput
    */
-  public type: AnalyticsOutputType.GCS_SERVICE_ACCOUNT = AnalyticsOutputType.GCS_SERVICE_ACCOUNT;
+  public readonly type: AnalyticsOutputType = AnalyticsOutputType.GCS_SERVICE_ACCOUNT;
 
   /**
    * GCS projectId (required)

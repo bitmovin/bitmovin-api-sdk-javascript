@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="dashrepresentation.html" class="tsd-signature-type">DashRepresentation</a>
+						<a href="dashmuxingrepresentation.html" class="tsd-signature-type">DashMuxingRepresentation</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">DashSegmentedRepresentation</span>
@@ -117,6 +117,13 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="dashsegmentedrepresentation.html#startkeyframeid" class="tsd-kind-icon">start<wbr>Keyframe<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="dashsegmentedrepresentation.html#startsegmentnumber" class="tsd-kind-icon">start<wbr>Segment<wbr>Number</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="dashsegmentedrepresentation.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static"><a href="dashsegmentedrepresentation.html#_discriminatorname" class="tsd-kind-icon">_discriminator<wbr>Name</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static"><a href="dashsegmentedrepresentation.html#_discriminatormapping" class="tsd-kind-icon">_discriminator<wbr>Mapping</a></li>
 							</ul>
 						</section>
 					</div>
@@ -133,7 +140,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#constructor">constructor</a></p>
+								<p>Overrides <a href="dashmuxingrepresentation.html">DashMuxingRepresentation</a>.<a href="dashmuxingrepresentation.html#constructor">constructor</a></p>
 								<ul>
 									<li>Defined in models/DashSegmentedRepresentation.ts:56</li>
 								</ul>
@@ -156,9 +163,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dependency<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">dependency<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#dependencyid">dependencyId</a></p>
+						<p>Inherited from <a href="dashmuxingrepresentation.html">DashMuxingRepresentation</a>.<a href="dashmuxingrepresentation.html#dependencyid">dependencyId</a></p>
 						<ul>
-							<li>Defined in models/DashRepresentation.ts:28</li>
+							<li>Defined in models/DashMuxingRepresentation.ts:28</li>
 						</ul>
 					</aside>
 				</section>
@@ -167,9 +174,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> encoding<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">encoding<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#encodingid">encodingId</a></p>
+						<p>Inherited from <a href="dashmuxingrepresentation.html">DashMuxingRepresentation</a>.<a href="dashmuxingrepresentation.html#encodingid">encodingId</a></p>
 						<ul>
-							<li>Defined in models/DashRepresentation.ts:14</li>
+							<li>Defined in models/DashMuxingRepresentation.ts:14</li>
 						</ul>
 					</aside>
 				</section>
@@ -219,9 +226,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> muxing<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">muxing<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#muxingid">muxingId</a></p>
+						<p>Inherited from <a href="dashmuxingrepresentation.html">DashMuxingRepresentation</a>.<a href="dashmuxingrepresentation.html#muxingid">muxingId</a></p>
 						<ul>
-							<li>Defined in models/DashRepresentation.ts:21</li>
+							<li>Defined in models/DashMuxingRepresentation.ts:21</li>
 						</ul>
 					</aside>
 				</section>
@@ -264,6 +271,151 @@
 							<li>Defined in models/DashSegmentedRepresentation.ts:15</li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static">
+					<a name="_discriminatorname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagProtected">Protected</span> _discriminator<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">_discriminator<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"typeDiscriminator"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;typeDiscriminator&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#_discriminatorname">_discriminatorName</a></p>
+						<ul>
+							<li>Defined in models/DashRepresentation.ts:35</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static">
+					<a name="_discriminatormapping" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagProtected">Protected</span> _discriminator<wbr>Mapping</h3>
+					<div class="tsd-signature tsd-kind-icon">_discriminator<wbr>Mapping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="dashrepresentation.html">DashRepresentation</a>.<a href="dashrepresentation.html#_discriminatormapping">_discriminatorMapping</a></p>
+						<ul>
+							<li>Defined in models/DashRepresentation.ts:36</li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.chunked_text" class="tsd-anchor"></a>
+						<h3>CHUNKED_<wbr>TEXT</h3>
+						<div class="tsd-signature tsd-kind-icon">CHUNKED_<wbr>TEXT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashChunkedTextRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:41</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.cmaf" class="tsd-anchor"></a>
+						<h3>CMAF</h3>
+						<div class="tsd-signature tsd-kind-icon">CMAF<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashCmafRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:40</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.content_protection" class="tsd-anchor"></a>
+						<h3>CONTENT_<wbr>PROTECTION</h3>
+						<div class="tsd-signature tsd-kind-icon">CONTENT_<wbr>PROTECTION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;ContentProtection&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:48</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.drm_fmp4" class="tsd-anchor"></a>
+						<h3>DRM_<wbr>FMP4</h3>
+						<div class="tsd-signature tsd-kind-icon">DRM_<wbr>FMP4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashFmp4DrmRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:37</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.drm_mp4" class="tsd-anchor"></a>
+						<h3>DRM_<wbr>MP4</h3>
+						<div class="tsd-signature tsd-kind-icon">DRM_<wbr>MP4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashMp4DrmRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:43</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.fmp4" class="tsd-anchor"></a>
+						<h3>FMP4</h3>
+						<div class="tsd-signature tsd-kind-icon">FMP4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashFmp4Representation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:38</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.imsc" class="tsd-anchor"></a>
+						<h3>IMSC</h3>
+						<div class="tsd-signature tsd-kind-icon">IMSC<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashImscRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:47</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.mp4" class="tsd-anchor"></a>
+						<h3>MP4</h3>
+						<div class="tsd-signature tsd-kind-icon">MP4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashMp4Representation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:42</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.progressive_webm" class="tsd-anchor"></a>
+						<h3>PROGRESSIVE_<wbr>WEBM</h3>
+						<div class="tsd-signature tsd-kind-icon">PROGRESSIVE_<wbr>WEBM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashProgressiveWebmRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:44</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.sprite" class="tsd-anchor"></a>
+						<h3>SPRITE</h3>
+						<div class="tsd-signature tsd-kind-icon">SPRITE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;SpriteRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:46</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.vtt" class="tsd-anchor"></a>
+						<h3>VTT</h3>
+						<div class="tsd-signature tsd-kind-icon">VTT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashVttRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:45</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_discriminatormapping.webm" class="tsd-anchor"></a>
+						<h3>WEBM</h3>
+						<div class="tsd-signature tsd-kind-icon">WEBM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;DashWebmRepresentation&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in models/DashRepresentation.ts:39</li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -317,6 +469,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="dashsegmentedrepresentation.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static">
+								<a href="dashsegmentedrepresentation.html#_discriminatorname" class="tsd-kind-icon">_discriminator<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static">
+								<a href="dashsegmentedrepresentation.html#_discriminatormapping" class="tsd-kind-icon">_discriminator<wbr>Mapping</a>
 							</li>
 						</ul>
 					</li>

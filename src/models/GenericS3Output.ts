@@ -14,7 +14,7 @@ export class GenericS3Output extends Output {
    * @type {string}
    * @memberof GenericS3Output
    */
-  public type: OutputType.GENERIC_S3 = OutputType.GENERIC_S3;
+  public readonly type: OutputType = OutputType.GENERIC_S3;
 
   /**
    * Your generic S3 access key (required)

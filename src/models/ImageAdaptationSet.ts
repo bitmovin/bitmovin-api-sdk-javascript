@@ -15,7 +15,7 @@ export class ImageAdaptationSet extends AdaptationSet {
    * @type {string}
    * @memberof ImageAdaptationSet
    */
-  public type: AdaptationSetType.IMAGE = AdaptationSetType.IMAGE;
+  public readonly type: AdaptationSetType = AdaptationSetType.IMAGE;
 
   constructor(obj?: Partial<ImageAdaptationSet>) {
     super(obj);

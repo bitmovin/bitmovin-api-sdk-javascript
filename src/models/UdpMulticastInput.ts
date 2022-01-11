@@ -12,7 +12,7 @@ export class UdpMulticastInput extends Input {
    * @type {string}
    * @memberof UdpMulticastInput
    */
-  public type: InputType.UDP_MULTICAST = InputType.UDP_MULTICAST;
+  public readonly type: InputType = InputType.UDP_MULTICAST;
 
   /**
    * Host name or IP address to use (required)

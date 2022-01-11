@@ -11,7 +11,7 @@ export class UdpInput extends Input {
    * @type {string}
    * @memberof UdpInput
    */
-  public type: InputType.UDP = InputType.UDP;
+  public readonly type: InputType = InputType.UDP;
 
   constructor(obj?: Partial<UdpInput>) {
     super(obj);

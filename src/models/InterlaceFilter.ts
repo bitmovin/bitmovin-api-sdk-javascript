@@ -14,7 +14,7 @@ export class InterlaceFilter extends Filter {
    * @type {string}
    * @memberof InterlaceFilter
    */
-  public type: FilterType.INTERLACE = FilterType.INTERLACE;
+  public readonly type: FilterType = FilterType.INTERLACE;
 
   /**
    * @type {InterlaceMode}

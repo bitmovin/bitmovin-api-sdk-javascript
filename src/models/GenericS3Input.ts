@@ -13,7 +13,7 @@ export class GenericS3Input extends Input {
    * @type {string}
    * @memberof GenericS3Input
    */
-  public type: InputType.GENERIC_S3 = InputType.GENERIC_S3;
+  public readonly type: InputType = InputType.GENERIC_S3;
 
   /**
    * Your generic S3 bucket name (required)

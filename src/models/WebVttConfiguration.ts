@@ -14,7 +14,7 @@ export class WebVttConfiguration extends SubtitleConfiguration {
    * @type {string}
    * @memberof WebVttConfiguration
    */
-  public type: CodecConfigType.WEBVTT = CodecConfigType.WEBVTT;
+  public readonly type: CodecConfigType = CodecConfigType.WEBVTT;
 
   /**
    * If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.

@@ -13,7 +13,7 @@ export class Cea608CaptionInputStream extends InputStream {
    * @type {string}
    * @memberof Cea608CaptionInputStream
    */
-  public type: InputStreamType.CAPTION_CEA608 = InputStreamType.CAPTION_CEA608;
+  public readonly type: InputStreamType = InputStreamType.CAPTION_CEA608;
 
   /**
    * Id of the Input (required)

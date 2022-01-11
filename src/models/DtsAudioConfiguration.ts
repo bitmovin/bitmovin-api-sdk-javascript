@@ -13,7 +13,7 @@ export class DtsAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof DtsAudioConfiguration
    */
-  public type: CodecConfigType.DTS = CodecConfigType.DTS;
+  public readonly type: CodecConfigType = CodecConfigType.DTS;
 
   /**
    * There are two DTS modes available: DTS Express Audio (EXPRESS_AUDIO) and DTS Digital Surround (DIGITAL_SURROUND)

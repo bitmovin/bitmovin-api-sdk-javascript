@@ -13,7 +13,7 @@ export class FrameIdId3Tag extends Id3Tag {
    * @type {string}
    * @memberof FrameIdId3Tag
    */
-  public type: Id3TagType.FRAME_ID = Id3TagType.FRAME_ID;
+  public readonly type: Id3TagType = Id3TagType.FRAME_ID;
 
   /**
    * Base64 Encoded Data (required)

@@ -12,7 +12,7 @@ export class DolbyVisionInputStream extends InputStream {
    * @type {string}
    * @memberof DolbyVisionInputStream
    */
-  public type: InputStreamType.DOLBY_VISION = InputStreamType.DOLBY_VISION;
+  public readonly type: InputStreamType = InputStreamType.DOLBY_VISION;
 
   /**
    * Id of input (required)

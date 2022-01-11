@@ -13,7 +13,7 @@ export class Ac3AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof Ac3AudioConfiguration
    */
-  public type: CodecConfigType.AC3 = CodecConfigType.AC3;
+  public readonly type: CodecConfigType = CodecConfigType.AC3;
 
   /**
    * Channel layout of the audio codec configuration

@@ -13,7 +13,7 @@ export class S3Input extends Input {
    * @type {string}
    * @memberof S3Input
    */
-  public type: InputType.S3 = InputType.S3;
+  public readonly type: InputType = InputType.S3;
 
   /**
    * The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.

@@ -12,7 +12,7 @@ export class DefaultManifestOrCondition extends DefaultManifestCondition {
    * @type {string}
    * @memberof DefaultManifestOrCondition
    */
-  public type: ConditionType.OR = ConditionType.OR;
+  public readonly type: ConditionType = ConditionType.OR;
 
   /**
    * Array to perform the OR evaluation on. This conditions evaluates to true if at least one sub condition evaluates to true. 

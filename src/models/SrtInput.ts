@@ -14,7 +14,7 @@ export class SrtInput extends Input {
    * @type {string}
    * @memberof SrtInput
    */
-  public type: InputType.SRT = InputType.SRT;
+  public readonly type: InputType = InputType.SRT;
 
   /**
    * The SRT mode to use (required)

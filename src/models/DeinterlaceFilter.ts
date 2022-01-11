@@ -16,7 +16,7 @@ export class DeinterlaceFilter extends Filter {
    * @type {string}
    * @memberof DeinterlaceFilter
    */
-  public type: FilterType.DEINTERLACE = FilterType.DEINTERLACE;
+  public readonly type: FilterType = FilterType.DEINTERLACE;
 
   /**
    * @type {PictureFieldParity}

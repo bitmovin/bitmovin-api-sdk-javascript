@@ -1,11 +1,19 @@
 import {map, mapArray} from '../common/Mapper';
-import BitmovinResponse from './BitmovinResponse';
+import DashRepresentation from './DashRepresentation';
+import DashRepresentationTypeDiscriminator from './DashRepresentationTypeDiscriminator';
 
 /**
  * @export
  * @class SpriteRepresentation
  */
-export class SpriteRepresentation extends BitmovinResponse {
+export class SpriteRepresentation extends DashRepresentation {
+  /**
+   * Discriminator property for DashRepresentation
+   * @type {string}
+   * @memberof SpriteRepresentation
+   */
+  public readonly typeDiscriminator: DashRepresentationTypeDiscriminator = DashRepresentationTypeDiscriminator.SPRITE;
+
   /**
    * UUID of an encoding (required)
    * @type {string}

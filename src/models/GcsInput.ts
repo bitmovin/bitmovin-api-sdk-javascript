@@ -13,7 +13,7 @@ export class GcsInput extends Input {
    * @type {string}
    * @memberof GcsInput
    */
-  public type: InputType.GCS = InputType.GCS;
+  public readonly type: InputType = InputType.GCS;
 
   /**
    * Name of the bucket (required)

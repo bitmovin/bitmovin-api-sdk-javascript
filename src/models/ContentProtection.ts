@@ -1,11 +1,19 @@
 import {map, mapArray} from '../common/Mapper';
-import DashRepresentation from './DashRepresentation';
+import DashMuxingRepresentation from './DashMuxingRepresentation';
+import DashRepresentationTypeDiscriminator from './DashRepresentationTypeDiscriminator';
 
 /**
  * @export
  * @class ContentProtection
  */
-export class ContentProtection extends DashRepresentation {
+export class ContentProtection extends DashMuxingRepresentation {
+  /**
+   * Discriminator property for DashRepresentation
+   * @type {string}
+   * @memberof ContentProtection
+   */
+  public readonly typeDiscriminator: DashRepresentationTypeDiscriminator = DashRepresentationTypeDiscriminator.CONTENT_PROTECTION;
+
   /**
    * DRM Id (required)
    * @type {string}

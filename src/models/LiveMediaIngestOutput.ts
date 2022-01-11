@@ -14,7 +14,7 @@ export class LiveMediaIngestOutput extends Output {
    * @type {string}
    * @memberof LiveMediaIngestOutput
    */
-  public type: OutputType.LIVE_MEDIA_INGEST = OutputType.LIVE_MEDIA_INGEST;
+  public readonly type: OutputType = OutputType.LIVE_MEDIA_INGEST;
 
   /**
    * URL specifying the publishing point for the output. Can use either http or https. (required)

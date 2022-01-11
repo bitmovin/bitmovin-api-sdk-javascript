@@ -13,7 +13,7 @@ export class WatermarkFilter extends Filter {
    * @type {string}
    * @memberof WatermarkFilter
    */
-  public type: FilterType.WATERMARK = FilterType.WATERMARK;
+  public readonly type: FilterType = FilterType.WATERMARK;
 
   /**
    * URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)

@@ -17,7 +17,7 @@ export class TsMuxing extends Muxing {
    * @type {string}
    * @memberof TsMuxing
    */
-  public type: MuxingType.TS = MuxingType.TS;
+  public readonly type: MuxingType = MuxingType.TS;
 
   /**
    * Length of the fragments in seconds (required)

@@ -16,7 +16,7 @@ export class Mp3Muxing extends Muxing {
    * @type {string}
    * @memberof Mp3Muxing
    */
-  public type: MuxingType.MP3 = MuxingType.MP3;
+  public readonly type: MuxingType = MuxingType.MP3;
 
   /**
    * Name of the new file (required)

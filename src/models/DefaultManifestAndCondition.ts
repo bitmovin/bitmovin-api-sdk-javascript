@@ -12,7 +12,7 @@ export class DefaultManifestAndCondition extends DefaultManifestCondition {
    * @type {string}
    * @memberof DefaultManifestAndCondition
    */
-  public type: ConditionType.AND = ConditionType.AND;
+  public readonly type: ConditionType = ConditionType.AND;
 
   /**
    * Array to perform the AND evaluation on. This conditions evaluates to true if all sub conditions evaluate to true. 

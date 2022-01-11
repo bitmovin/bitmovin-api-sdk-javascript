@@ -13,7 +13,7 @@ export class FairPlayDrm extends Drm {
    * @type {string}
    * @memberof FairPlayDrm
    */
-  public type: DrmType.FAIRPLAY = DrmType.FAIRPLAY;
+  public readonly type: DrmType = DrmType.FAIRPLAY;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)

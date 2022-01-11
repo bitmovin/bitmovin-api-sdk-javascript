@@ -12,7 +12,7 @@ export class EbuR128SinglePassFilter extends Filter {
    * @type {string}
    * @memberof EbuR128SinglePassFilter
    */
-  public type: FilterType.EBU_R128_SINGLE_PASS = FilterType.EBU_R128_SINGLE_PASS;
+  public readonly type: FilterType = FilterType.EBU_R128_SINGLE_PASS;
 
   /**
    * Set the targeted integrated loudness value. Range is from '-70.0' to '-5.0'. Default value is '-24.0'. Value is measured in LUFS (Loudness Units, referenced to Full Scale)

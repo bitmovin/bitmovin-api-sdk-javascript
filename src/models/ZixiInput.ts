@@ -12,7 +12,7 @@ export class ZixiInput extends Input {
    * @type {string}
    * @memberof ZixiInput
    */
-  public type: InputType.ZIXI = InputType.ZIXI;
+  public readonly type: InputType = InputType.ZIXI;
 
   /**
    * @type {string}

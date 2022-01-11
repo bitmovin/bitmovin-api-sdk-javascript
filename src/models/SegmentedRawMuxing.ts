@@ -16,7 +16,7 @@ export class SegmentedRawMuxing extends Muxing {
    * @type {string}
    * @memberof SegmentedRawMuxing
    */
-  public type: MuxingType.SEGMENTED_RAW = MuxingType.SEGMENTED_RAW;
+  public readonly type: MuxingType = MuxingType.SEGMENTED_RAW;
 
   /**
    * Length of the fragments in seconds (required)

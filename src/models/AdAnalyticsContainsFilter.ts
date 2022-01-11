@@ -13,7 +13,7 @@ export class AdAnalyticsContainsFilter extends AdAnalyticsAbstractFilter {
    * @type {string}
    * @memberof AdAnalyticsContainsFilter
    */
-  public operator: AnalyticsQueryOperator.CONTAINS = AnalyticsQueryOperator.CONTAINS;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.CONTAINS;
 
   /**
    * @type {any}

@@ -12,7 +12,7 @@ export class LocalInput extends Input {
    * @type {string}
    * @memberof LocalInput
    */
-  public type: InputType.LOCAL = InputType.LOCAL;
+  public readonly type: InputType = InputType.LOCAL;
 
   /**
    * Path to your local storage (required)

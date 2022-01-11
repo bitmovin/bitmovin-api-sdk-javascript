@@ -12,7 +12,7 @@ export class UnsharpFilter extends Filter {
    * @type {string}
    * @memberof UnsharpFilter
    */
-  public type: FilterType.UNSHARP = FilterType.UNSHARP;
+  public readonly type: FilterType = FilterType.UNSHARP;
 
   /**
    * Must be an odd integer between 3 and 23

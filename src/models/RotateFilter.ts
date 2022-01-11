@@ -12,7 +12,7 @@ export class RotateFilter extends Filter {
    * @type {string}
    * @memberof RotateFilter
    */
-  public type: FilterType.ROTATE = FilterType.ROTATE;
+  public readonly type: FilterType = FilterType.ROTATE;
 
   /**
    * Rotation of the video in degrees. A positive value will rotate the video clockwise and a negative one counter clockwise. (required)

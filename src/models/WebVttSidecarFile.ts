@@ -16,7 +16,7 @@ export class WebVttSidecarFile extends SidecarFile {
    * @type {string}
    * @memberof WebVttSidecarFile
    */
-  public type: SidecarFileType.WEB_VTT = SidecarFileType.WEB_VTT;
+  public readonly type: SidecarFileType = SidecarFileType.WEB_VTT;
 
   /**
    * @type {WebVttSidecarFileSegmentation}

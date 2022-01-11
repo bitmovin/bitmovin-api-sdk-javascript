@@ -13,7 +13,7 @@ export class AkamaiNetStorageOutput extends Output {
    * @type {string}
    * @memberof AkamaiNetStorageOutput
    */
-  public type: OutputType.AKAMAI_NETSTORAGE = OutputType.AKAMAI_NETSTORAGE;
+  public readonly type: OutputType = OutputType.AKAMAI_NETSTORAGE;
 
   /**
    * Host to use for Akamai NetStorage transfers (required)

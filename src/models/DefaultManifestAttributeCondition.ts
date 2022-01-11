@@ -13,7 +13,7 @@ export class DefaultManifestAttributeCondition extends DefaultManifestCondition 
    * @type {string}
    * @memberof DefaultManifestAttributeCondition
    */
-  public type: ConditionType.CONDITION = ConditionType.CONDITION;
+  public readonly type: ConditionType = ConditionType.CONDITION;
 
   /**
    * The attribute that should be used for the evaluation: - audio.codec - audio.language - audio.bitrate - subtitle.format - subtitle.language - video.height - video.width - video.codec - video.bitrate - drm.type - muxing.type (required)

@@ -13,7 +13,7 @@ export class ConcatenationInputStream extends InputStream {
    * @type {string}
    * @memberof ConcatenationInputStream
    */
-  public type: InputStreamType.CONCATENATION = InputStreamType.CONCATENATION;
+  public readonly type: InputStreamType = InputStreamType.CONCATENATION;
 
   /**
    * Concatenation configuration for the output of this stream

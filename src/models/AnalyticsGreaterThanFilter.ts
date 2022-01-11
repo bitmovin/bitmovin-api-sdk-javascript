@@ -13,7 +13,7 @@ export class AnalyticsGreaterThanFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsGreaterThanFilter
    */
-  public operator: AnalyticsQueryOperator.GT = AnalyticsQueryOperator.GT;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.GT;
 
   /**
    * @type {any}

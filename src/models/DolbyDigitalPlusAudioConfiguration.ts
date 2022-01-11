@@ -18,7 +18,7 @@ export class DolbyDigitalPlusAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof DolbyDigitalPlusAudioConfiguration
    */
-  public type: CodecConfigType.DDPLUS = CodecConfigType.DDPLUS;
+  public readonly type: CodecConfigType = CodecConfigType.DDPLUS;
 
   /**
    * BitstreamInfo defines metadata parameters contained in the Dolby Digital Plus audio bitstream

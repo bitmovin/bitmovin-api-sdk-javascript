@@ -16,7 +16,7 @@ export class S3RoleBasedOutput extends Output {
    * @type {string}
    * @memberof S3RoleBasedOutput
    */
-  public type: OutputType.S3_ROLE_BASED = OutputType.S3_ROLE_BASED;
+  public readonly type: OutputType = OutputType.S3_ROLE_BASED;
 
   /**
    * Amazon S3 bucket name (required)

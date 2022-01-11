@@ -13,7 +13,7 @@ export class ImscConfiguration extends SubtitleConfiguration {
    * @type {string}
    * @memberof ImscConfiguration
    */
-  public type: CodecConfigType.IMSC = CodecConfigType.IMSC;
+  public readonly type: CodecConfigType = CodecConfigType.IMSC;
 
   /**
    * @type {ImscStyling}

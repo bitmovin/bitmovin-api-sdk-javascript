@@ -12,7 +12,7 @@ export class TimecodeTrackTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof TimecodeTrackTrimmingInputStream
    */
-  public type: InputStreamType.TRIMMING_TIME_CODE_TRACK = InputStreamType.TRIMMING_TIME_CODE_TRACK;
+  public readonly type: InputStreamType = InputStreamType.TRIMMING_TIME_CODE_TRACK;
 
   /**
    * The id of the ingest input stream that should be trimmed (required)

@@ -15,7 +15,7 @@ export class PcmAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof PcmAudioConfiguration
    */
-  public type: CodecConfigType.PCM = CodecConfigType.PCM;
+  public readonly type: CodecConfigType = CodecConfigType.PCM;
 
   /**
    * Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.

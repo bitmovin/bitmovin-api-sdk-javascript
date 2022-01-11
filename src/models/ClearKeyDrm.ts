@@ -13,7 +13,7 @@ export class ClearKeyDrm extends Drm {
    * @type {string}
    * @memberof ClearKeyDrm
    */
-  public type: DrmType.CLEARKEY = DrmType.CLEARKEY;
+  public readonly type: DrmType = DrmType.CLEARKEY;
 
   /**
    * 16 byte encryption key, 32 hexadecimal characters (required)

@@ -13,7 +13,7 @@ export class AnalyticsNotEqualFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsNotEqualFilter
    */
-  public operator: AnalyticsQueryOperator.NE = AnalyticsQueryOperator.NE;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.NE;
 
   /**
    * @type {any}

@@ -16,7 +16,7 @@ export class CmafMuxing extends Muxing {
    * @type {string}
    * @memberof CmafMuxing
    */
-  public type: MuxingType.CMAF = MuxingType.CMAF;
+  public readonly type: MuxingType = MuxingType.CMAF;
 
   /**
    * Length of the fragments in seconds (required)

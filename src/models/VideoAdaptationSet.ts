@@ -15,7 +15,7 @@ export class VideoAdaptationSet extends AdaptationSet {
    * @type {string}
    * @memberof VideoAdaptationSet
    */
-  public type: AdaptationSetType.VIDEO = AdaptationSetType.VIDEO;
+  public readonly type: AdaptationSetType = AdaptationSetType.VIDEO;
 
   constructor(obj?: Partial<VideoAdaptationSet>) {
     super(obj);

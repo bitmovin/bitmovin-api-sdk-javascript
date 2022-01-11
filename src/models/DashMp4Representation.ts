@@ -1,12 +1,20 @@
 import {map, mapArray} from '../common/Mapper';
+import DashMuxingRepresentation from './DashMuxingRepresentation';
 import DashOnDemandRepresentationType from './DashOnDemandRepresentationType';
-import DashRepresentation from './DashRepresentation';
+import DashRepresentationTypeDiscriminator from './DashRepresentationTypeDiscriminator';
 
 /**
  * @export
  * @class DashMp4Representation
  */
-export class DashMp4Representation extends DashRepresentation {
+export class DashMp4Representation extends DashMuxingRepresentation {
+  /**
+   * Discriminator property for DashRepresentation
+   * @type {string}
+   * @memberof DashMp4Representation
+   */
+  public readonly typeDiscriminator: DashRepresentationTypeDiscriminator = DashRepresentationTypeDiscriminator.MP4;
+
   /**
    * Path to the MP4 file (required)
    * @type {string}

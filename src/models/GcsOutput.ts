@@ -14,7 +14,7 @@ export class GcsOutput extends Output {
    * @type {string}
    * @memberof GcsOutput
    */
-  public type: OutputType.GCS = OutputType.GCS;
+  public readonly type: OutputType = OutputType.GCS;
 
   /**
    * GCS access key (required)

@@ -15,7 +15,7 @@ export class EnhancedDeinterlaceFilter extends Filter {
    * @type {string}
    * @memberof EnhancedDeinterlaceFilter
    */
-  public type: FilterType.ENHANCED_DEINTERLACE = FilterType.ENHANCED_DEINTERLACE;
+  public readonly type: FilterType = FilterType.ENHANCED_DEINTERLACE;
 
   /**
    * @type {EnhancedDeinterlaceParity}

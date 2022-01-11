@@ -12,7 +12,7 @@ export class OrConjunction extends AbstractConjunction {
    * @type {string}
    * @memberof OrConjunction
    */
-  public type: ConditionType.OR = ConditionType.OR;
+  public readonly type: ConditionType = ConditionType.OR;
 
   constructor(obj?: Partial<OrConjunction>) {
     super(obj);

@@ -11,7 +11,7 @@ export class RtmpInput extends Input {
    * @type {string}
    * @memberof RtmpInput
    */
-  public type: InputType.RTMP = InputType.RTMP;
+  public readonly type: InputType = InputType.RTMP;
 
   constructor(obj?: Partial<RtmpInput>) {
     super(obj);

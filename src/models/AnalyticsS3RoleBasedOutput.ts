@@ -16,7 +16,7 @@ export class AnalyticsS3RoleBasedOutput extends AnalyticsOutput {
    * @type {string}
    * @memberof AnalyticsS3RoleBasedOutput
    */
-  public type: AnalyticsOutputType.S3_ROLE_BASED = AnalyticsOutputType.S3_ROLE_BASED;
+  public readonly type: AnalyticsOutputType = AnalyticsOutputType.S3_ROLE_BASED;
 
   /**
    * Amazon S3 bucket name (required)

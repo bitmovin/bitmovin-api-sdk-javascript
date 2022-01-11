@@ -14,7 +14,7 @@ export class S3RoleBasedInput extends Input {
    * @type {string}
    * @memberof S3RoleBasedInput
    */
-  public type: InputType.S3_ROLE_BASED = InputType.S3_ROLE_BASED;
+  public readonly type: InputType = InputType.S3_ROLE_BASED;
 
   /**
    * Amazon S3 bucket name (required)

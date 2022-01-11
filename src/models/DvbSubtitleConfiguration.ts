@@ -11,7 +11,7 @@ export class DvbSubtitleConfiguration extends SubtitleConfiguration {
    * @type {string}
    * @memberof DvbSubtitleConfiguration
    */
-  public type: CodecConfigType.DVB_SUBTITLE = CodecConfigType.DVB_SUBTITLE;
+  public readonly type: CodecConfigType = CodecConfigType.DVB_SUBTITLE;
 
   constructor(obj?: Partial<DvbSubtitleConfiguration>) {
     super(obj);

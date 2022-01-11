@@ -13,7 +13,7 @@ export class AnalyticsAzureOutput extends AnalyticsOutput {
    * @type {string}
    * @memberof AnalyticsAzureOutput
    */
-  public type: AnalyticsOutputType.AZURE = AnalyticsOutputType.AZURE;
+  public readonly type: AnalyticsOutputType = AnalyticsOutputType.AZURE;
 
   /**
    * Azure Account Name (required)

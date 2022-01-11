@@ -12,7 +12,7 @@ export class AndConjunction extends AbstractConjunction {
    * @type {string}
    * @memberof AndConjunction
    */
-  public type: ConditionType.AND = ConditionType.AND;
+  public readonly type: ConditionType = ConditionType.AND;
 
   constructor(obj?: Partial<AndConjunction>) {
     super(obj);

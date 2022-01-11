@@ -20,7 +20,7 @@ export class H262VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof H262VideoConfiguration
    */
-  public type: CodecConfigType.H262 = CodecConfigType.H262;
+  public readonly type: CodecConfigType = CodecConfigType.H262;
 
   /**
    * Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.

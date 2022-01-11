@@ -4,6 +4,7 @@ import Ignoring from './Ignoring';
 import Muxing from './Muxing';
 import MuxingStream from './MuxingStream';
 import MuxingType from './MuxingType';
+import PTSAlignMode from './PTSAlignMode';
 import StreamConditionsMode from './StreamConditionsMode';
 
 /**
@@ -16,7 +17,7 @@ export class Fmp4Muxing extends Muxing {
    * @type {string}
    * @memberof Fmp4Muxing
    */
-  public type: MuxingType.FMP4 = MuxingType.FMP4;
+  public readonly type: MuxingType = MuxingType.FMP4;
 
   /**
    * Length of the fragments in seconds (required)
@@ -67,6 +68,13 @@ export class Fmp4Muxing extends Muxing {
    */
   public segmentsMuxed?: number;
 
+  /**
+   * Alignment mode for composition / presentation timestamps (CTS/PTS). Only applies to h.264 and h.265
+   * @type {PTSAlignMode}
+   * @memberof Fmp4Muxing
+   */
+  public ptsAlignMode?: PTSAlignMode;
+
   constructor(obj?: Partial<Fmp4Muxing>) {
     super(obj);
     if(!obj) {
@@ -79,6 +87,7 @@ export class Fmp4Muxing extends Muxing {
     this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
     this.writeDurationPerSample = map(obj.writeDurationPerSample);
     this.segmentsMuxed = map(obj.segmentsMuxed);
+    this.ptsAlignMode = map(obj.ptsAlignMode);
   }
 }
 

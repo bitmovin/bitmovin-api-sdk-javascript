@@ -16,7 +16,7 @@ export class ChunkedTextMuxing extends Muxing {
    * @type {string}
    * @memberof ChunkedTextMuxing
    */
-  public type: MuxingType.CHUNKED_TEXT = MuxingType.CHUNKED_TEXT;
+  public readonly type: MuxingType = MuxingType.CHUNKED_TEXT;
 
   /**
    * Length of the segments in seconds (required)

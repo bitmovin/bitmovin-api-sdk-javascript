@@ -13,7 +13,7 @@ export class CropFilter extends Filter {
    * @type {string}
    * @memberof CropFilter
    */
-  public type: FilterType.CROP = FilterType.CROP;
+  public readonly type: FilterType = FilterType.CROP;
 
   /**
    * Amount of pixels that will be cropped of the input video from the left side. Must be zero or a positive value.

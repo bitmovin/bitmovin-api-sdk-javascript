@@ -16,10 +16,10 @@ export default class TypeApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Input Type
+   * @summary Get adaptation set type
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {string} adaptationsetId Id of the input
+   * @param {string} adaptationsetId Id of the adaptation set
    * @throws {BitmovinError}
    * @memberof TypeApi
    */

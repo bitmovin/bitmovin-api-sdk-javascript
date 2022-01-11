@@ -11,7 +11,7 @@ export class DtsPassthroughAudioConfiguration extends CodecConfiguration {
    * @type {string}
    * @memberof DtsPassthroughAudioConfiguration
    */
-  public type: CodecConfigType.DTS_PASSTHROUGH = CodecConfigType.DTS_PASSTHROUGH;
+  public readonly type: CodecConfigType = CodecConfigType.DTS_PASSTHROUGH;
 
   constructor(obj?: Partial<DtsPassthroughAudioConfiguration>) {
     super(obj);

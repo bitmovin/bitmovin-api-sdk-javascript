@@ -13,7 +13,7 @@ export class PlaintextId3Tag extends Id3Tag {
    * @type {string}
    * @memberof PlaintextId3Tag
    */
-  public type: Id3TagType.PLAIN_TEXT = Id3TagType.PLAIN_TEXT;
+  public readonly type: Id3TagType = Id3TagType.PLAIN_TEXT;
 
   /**
    * Plain Text Data (required)

@@ -14,7 +14,7 @@ export class AudioMixInputStream extends InputStream {
    * @type {string}
    * @memberof AudioMixInputStream
    */
-  public type: InputStreamType.AUDIO_MIX = InputStreamType.AUDIO_MIX;
+  public readonly type: InputStreamType = InputStreamType.AUDIO_MIX;
 
   /**
    * Channel layout of the audio mix input stream

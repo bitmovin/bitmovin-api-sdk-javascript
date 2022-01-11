@@ -19,7 +19,7 @@ export class Vp8VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof Vp8VideoConfiguration
    */
-  public type: CodecConfigType.VP8 = CodecConfigType.VP8;
+  public readonly type: CodecConfigType = CodecConfigType.VP8;
 
   /**
    * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.

@@ -12,7 +12,7 @@ export class DolbyVisionMetadataIngestInputStream extends InputStream {
    * @type {string}
    * @memberof DolbyVisionMetadataIngestInputStream
    */
-  public type: InputStreamType.SIDECAR_DOLBY_VISION_METADATA = InputStreamType.SIDECAR_DOLBY_VISION_METADATA;
+  public readonly type: InputStreamType = InputStreamType.SIDECAR_DOLBY_VISION_METADATA;
 
   /**
    * Id of input (required)

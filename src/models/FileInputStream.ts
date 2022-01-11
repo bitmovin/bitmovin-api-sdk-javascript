@@ -13,7 +13,7 @@ export class FileInputStream extends InputStream {
    * @type {string}
    * @memberof FileInputStream
    */
-  public type: InputStreamType.FILE = InputStreamType.FILE;
+  public readonly type: InputStreamType = InputStreamType.FILE;
 
   /**
    * Id of input (required)

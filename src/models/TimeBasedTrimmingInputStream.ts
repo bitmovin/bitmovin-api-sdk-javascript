@@ -12,7 +12,7 @@ export class TimeBasedTrimmingInputStream extends InputStream {
    * @type {string}
    * @memberof TimeBasedTrimmingInputStream
    */
-  public type: InputStreamType.TRIMMING_TIME_BASED = InputStreamType.TRIMMING_TIME_BASED;
+  public readonly type: InputStreamType = InputStreamType.TRIMMING_TIME_BASED;
 
   /**
    * The id of the ingest input stream that should be trimmed

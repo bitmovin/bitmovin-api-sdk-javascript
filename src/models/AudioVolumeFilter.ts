@@ -14,7 +14,7 @@ export class AudioVolumeFilter extends Filter {
    * @type {string}
    * @memberof AudioVolumeFilter
    */
-  public type: FilterType.AUDIO_VOLUME = FilterType.AUDIO_VOLUME;
+  public readonly type: FilterType = FilterType.AUDIO_VOLUME;
 
   /**
    * Audio volume value (required)

@@ -40,8 +40,8 @@ export default class AdaptationsetsApi extends BaseAPI {
 
   /**
    * @summary List all AdaptationSets
-   * @param {string} manifestId Id of the manifest
-   * @param {string} periodId Id of the adaptation set
+   * @param {string} manifestId Id of the Manifest
+   * @param {string} periodId Id of the Period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof AdaptationsetsApi

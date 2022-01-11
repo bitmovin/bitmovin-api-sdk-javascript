@@ -13,7 +13,7 @@ export class VorbisAudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof VorbisAudioConfiguration
    */
-  public type: CodecConfigType.VORBIS = CodecConfigType.VORBIS;
+  public readonly type: CodecConfigType = CodecConfigType.VORBIS;
 
   /**
    * Channel layout of the audio codec configuration

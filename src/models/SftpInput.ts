@@ -12,7 +12,7 @@ export class SftpInput extends Input {
    * @type {string}
    * @memberof SftpInput
    */
-  public type: InputType.SFTP = InputType.SFTP;
+  public readonly type: InputType = InputType.SFTP;
 
   /**
    * Host Url or IP of the SFTP server (required)

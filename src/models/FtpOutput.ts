@@ -14,7 +14,7 @@ export class FtpOutput extends Output {
    * @type {string}
    * @memberof FtpOutput
    */
-  public type: OutputType.FTP = OutputType.FTP;
+  public readonly type: OutputType = OutputType.FTP;
 
   /**
    * Host URL or IP of the FTP server (required)

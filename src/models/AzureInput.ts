@@ -12,7 +12,7 @@ export class AzureInput extends Input {
    * @type {string}
    * @memberof AzureInput
    */
-  public type: InputType.AZURE = InputType.AZURE;
+  public readonly type: InputType = InputType.AZURE;
 
   /**
    * Azure Account Name (required)

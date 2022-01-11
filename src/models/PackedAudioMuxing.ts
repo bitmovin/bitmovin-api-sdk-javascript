@@ -16,7 +16,7 @@ export class PackedAudioMuxing extends Muxing {
    * @type {string}
    * @memberof PackedAudioMuxing
    */
-  public type: MuxingType.PACKED_AUDIO = MuxingType.PACKED_AUDIO;
+  public readonly type: MuxingType = MuxingType.PACKED_AUDIO;
 
   /**
    * Duration of a segment, given in seconds (required)

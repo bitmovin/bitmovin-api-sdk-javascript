@@ -13,7 +13,7 @@ export class AzureOutput extends Output {
    * @type {string}
    * @memberof AzureOutput
    */
-  public type: OutputType.AZURE = OutputType.AZURE;
+  public readonly type: OutputType = OutputType.AZURE;
 
   /**
    * Azure Account Name (required)

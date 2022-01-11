@@ -16,7 +16,7 @@ export class ProgressiveTsMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveTsMuxing
    */
-  public type: MuxingType.PROGRESSIVE_TS = MuxingType.PROGRESSIVE_TS;
+  public readonly type: MuxingType = MuxingType.PROGRESSIVE_TS;
 
   /**
    * Length of the segments in seconds

@@ -32,7 +32,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
    * @type {string}
    * @memberof H264VideoConfiguration
    */
-  public type: CodecConfigType.H264 = CodecConfigType.H264;
+  public readonly type: CodecConfigType = CodecConfigType.H264;
 
   /**
    * Choose from a set of preset configurations tailored for common use cases. Check out [H264 Presets](https://bitmovin.com/docs/encoding/tutorials/h264-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.

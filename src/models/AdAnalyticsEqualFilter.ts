@@ -13,7 +13,7 @@ export class AdAnalyticsEqualFilter extends AdAnalyticsAbstractFilter {
    * @type {string}
    * @memberof AdAnalyticsEqualFilter
    */
-  public operator: AnalyticsQueryOperator.EQ = AnalyticsQueryOperator.EQ;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.EQ;
 
   /**
    * @type {any}

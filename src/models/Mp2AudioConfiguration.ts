@@ -13,7 +13,7 @@ export class Mp2AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof Mp2AudioConfiguration
    */
-  public type: CodecConfigType.MP2 = CodecConfigType.MP2;
+  public readonly type: CodecConfigType = CodecConfigType.MP2;
 
   /**
    * Channel layout of the audio codec configuration

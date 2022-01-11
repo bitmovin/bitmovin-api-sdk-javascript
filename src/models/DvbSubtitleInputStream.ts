@@ -13,7 +13,7 @@ export class DvbSubtitleInputStream extends InputStream {
    * @type {string}
    * @memberof DvbSubtitleInputStream
    */
-  public type: InputStreamType.DVB_SUBTITLE = InputStreamType.DVB_SUBTITLE;
+  public readonly type: InputStreamType = InputStreamType.DVB_SUBTITLE;
 
   /**
    * Id of input

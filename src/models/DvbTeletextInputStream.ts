@@ -13,7 +13,7 @@ export class DvbTeletextInputStream extends InputStream {
    * @type {string}
    * @memberof DvbTeletextInputStream
    */
-  public type: InputStreamType.DVB_TELETEXT = InputStreamType.DVB_TELETEXT;
+  public readonly type: InputStreamType = InputStreamType.DVB_TELETEXT;
 
   /**
    * Id of input

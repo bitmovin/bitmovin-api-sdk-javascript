@@ -11,7 +11,7 @@ export class TcpInput extends Input {
    * @type {string}
    * @memberof TcpInput
    */
-  public type: InputType.TCP = InputType.TCP;
+  public readonly type: InputType = InputType.TCP;
 
   constructor(obj?: Partial<TcpInput>) {
     super(obj);

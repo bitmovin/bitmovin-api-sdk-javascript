@@ -14,7 +14,7 @@ export class TextFilter extends Filter {
    * @type {string}
    * @memberof TextFilter
    */
-  public type: FilterType.TEXT = FilterType.TEXT;
+  public readonly type: FilterType = FilterType.TEXT;
 
   /**
    * @type {TextFilterFont}

@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
+import TypeApi from './type/TypeApi';
 import Fmp4Api from './fmp4/Fmp4Api';
 import ChunkedTextApi from './chunkedText/ChunkedTextApi';
 import CmafApi from './cmaf/CmafApi';
@@ -28,6 +29,7 @@ import {MuxingListQueryParams, MuxingListQueryParamsBuilder} from './MuxingListQ
  * @extends {BaseAPI}
  */
 export default class MuxingsApi extends BaseAPI {
+  public type: TypeApi;
   public fmp4: Fmp4Api;
   public chunkedText: ChunkedTextApi;
   public cmaf: CmafApi;
@@ -46,6 +48,7 @@ export default class MuxingsApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.type = new TypeApi(configuration);
     this.fmp4 = new Fmp4Api(configuration);
     this.chunkedText = new ChunkedTextApi(configuration);
     this.cmaf = new CmafApi(configuration);

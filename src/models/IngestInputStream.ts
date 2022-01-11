@@ -13,7 +13,7 @@ export class IngestInputStream extends InputStream {
    * @type {string}
    * @memberof IngestInputStream
    */
-  public type: InputStreamType.INGEST = InputStreamType.INGEST;
+  public readonly type: InputStreamType = InputStreamType.INGEST;
 
   /**
    * Id of input

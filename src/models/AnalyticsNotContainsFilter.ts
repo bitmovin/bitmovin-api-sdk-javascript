@@ -13,7 +13,7 @@ export class AnalyticsNotContainsFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsNotContainsFilter
    */
-  public operator: AnalyticsQueryOperator.NOTCONTAINS = AnalyticsQueryOperator.NOTCONTAINS;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.NOTCONTAINS;
 
   /**
    * @type {any}

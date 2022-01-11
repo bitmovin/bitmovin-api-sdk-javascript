@@ -15,7 +15,7 @@ export class AkamaiMslOutput extends Output {
    * @type {string}
    * @memberof AkamaiMslOutput
    */
-  public type: OutputType.AKAMAI_MSL = OutputType.AKAMAI_MSL;
+  public readonly type: OutputType = OutputType.AKAMAI_MSL;
 
   /**
    * The Akamai stream ID (required)

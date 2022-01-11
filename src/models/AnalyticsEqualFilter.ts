@@ -13,7 +13,7 @@ export class AnalyticsEqualFilter extends AnalyticsAbstractFilter {
    * @type {string}
    * @memberof AnalyticsEqualFilter
    */
-  public operator: AnalyticsQueryOperator.EQ = AnalyticsQueryOperator.EQ;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.EQ;
 
   /**
    * @type {any}

@@ -13,7 +13,7 @@ export class RawId3Tag extends Id3Tag {
    * @type {string}
    * @memberof RawId3Tag
    */
-  public type: Id3TagType.RAW = Id3TagType.RAW;
+  public readonly type: Id3TagType = Id3TagType.RAW;
 
   /**
    * Base64 Encoded Data (required)

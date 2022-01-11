@@ -17,7 +17,7 @@ export class ProgressiveWebmMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveWebmMuxing
    */
-  public type: MuxingType.PROGRESSIVE_WEBM = MuxingType.PROGRESSIVE_WEBM;
+  public readonly type: MuxingType = MuxingType.PROGRESSIVE_WEBM;
 
   /**
    * Name of the new Video

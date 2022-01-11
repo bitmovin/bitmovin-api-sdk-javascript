@@ -13,7 +13,7 @@ export class ScaleFilter extends Filter {
    * @type {string}
    * @memberof ScaleFilter
    */
-  public type: FilterType.SCALE = FilterType.SCALE;
+  public readonly type: FilterType = FilterType.SCALE;
 
   /**
    * The width of the output frame in pixels. If not set it will be based on the configured height by maintaining the original aspect ratio. If height is also not set, the original source dimensions will be applied.

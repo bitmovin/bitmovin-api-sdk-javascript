@@ -13,7 +13,7 @@ export class WidevineDrm extends Drm {
    * @type {string}
    * @memberof WidevineDrm
    */
-  public type: DrmType.WIDEVINE = DrmType.WIDEVINE;
+  public readonly type: DrmType = DrmType.WIDEVINE;
 
   /**
    * 16 byte Encryption key, 32 hexadecimal characters (required)

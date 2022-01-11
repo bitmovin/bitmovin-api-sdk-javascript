@@ -13,7 +13,7 @@ export class DolbyAtmosIngestInputStream extends InputStream {
    * @type {string}
    * @memberof DolbyAtmosIngestInputStream
    */
-  public type: InputStreamType.DOLBY_ATMOS = InputStreamType.DOLBY_ATMOS;
+  public readonly type: InputStreamType = InputStreamType.DOLBY_ATMOS;
 
   /**
    * Id of input (required)

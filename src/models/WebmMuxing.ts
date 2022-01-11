@@ -16,7 +16,7 @@ export class WebmMuxing extends Muxing {
    * @type {string}
    * @memberof WebmMuxing
    */
-  public type: MuxingType.WEBM = MuxingType.WEBM;
+  public readonly type: MuxingType = MuxingType.WEBM;
 
   /**
    * Length of the fragments in seconds (required)

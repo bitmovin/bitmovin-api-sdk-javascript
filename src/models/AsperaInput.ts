@@ -12,7 +12,7 @@ export class AsperaInput extends Input {
    * @type {string}
    * @memberof AsperaInput
    */
-  public type: InputType.ASPERA = InputType.ASPERA;
+  public readonly type: InputType = InputType.ASPERA;
 
   /**
    * Minimal download bandwidth. Examples: 100k, 100m, 100g

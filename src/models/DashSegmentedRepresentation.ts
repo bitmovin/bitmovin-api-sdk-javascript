@@ -1,5 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
-import DashRepresentation from './DashRepresentation';
+import DashMuxingRepresentation from './DashMuxingRepresentation';
 import DashRepresentationType from './DashRepresentationType';
 import DashRepresentationTypeMode from './DashRepresentationTypeMode';
 
@@ -7,7 +7,7 @@ import DashRepresentationTypeMode from './DashRepresentationTypeMode';
  * @export
  * @class DashSegmentedRepresentation
  */
-export class DashSegmentedRepresentation extends DashRepresentation {
+export class DashSegmentedRepresentation extends DashMuxingRepresentation {
   /**
    * @type {DashRepresentationType}
    * @memberof DashSegmentedRepresentation

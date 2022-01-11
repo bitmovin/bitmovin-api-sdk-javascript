@@ -15,7 +15,7 @@ export class S3Output extends Output {
    * @type {string}
    * @memberof S3Output
    */
-  public type: OutputType.S3 = OutputType.S3;
+  public readonly type: OutputType = OutputType.S3;
 
   /**
    * Amazon S3 bucket name (required)

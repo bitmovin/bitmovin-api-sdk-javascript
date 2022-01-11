@@ -14,7 +14,7 @@ export class HeAacV2AudioConfiguration extends AudioConfiguration {
    * @type {string}
    * @memberof HeAacV2AudioConfiguration
    */
-  public type: CodecConfigType.HE_AAC_V2 = CodecConfigType.HE_AAC_V2;
+  public readonly type: CodecConfigType = CodecConfigType.HE_AAC_V2;
 
   /**
    * Channel layout of the audio codec configuration

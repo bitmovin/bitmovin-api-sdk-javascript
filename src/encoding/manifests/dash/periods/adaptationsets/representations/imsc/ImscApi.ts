@@ -22,8 +22,8 @@ export default class ImscApi extends BaseAPI {
    * @summary Add IMSC Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
-   * @param {string} adaptationsetId Id of the adaptation set
-   * @param {DashImscRepresentation} dashImscRepresentation The IMSC representation to be added to the adaptation set
+   * @param {string} adaptationsetId Id of the subtitle adaptation set
+   * @param {DashImscRepresentation} dashImscRepresentation The IMSC representation to be added to the adaptation set. Note that the adaptation set has to be a subtitle adaptation set. 
    * @throws {BitmovinError}
    * @memberof ImscApi
    */

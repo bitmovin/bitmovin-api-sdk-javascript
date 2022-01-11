@@ -13,7 +13,7 @@ export class MjpegVideoConfiguration extends CodecConfiguration {
    * @type {string}
    * @memberof MjpegVideoConfiguration
    */
-  public type: CodecConfigType.MJPEG = CodecConfigType.MJPEG;
+  public readonly type: CodecConfigType = CodecConfigType.MJPEG;
 
   /**
    * Width of the encoded video

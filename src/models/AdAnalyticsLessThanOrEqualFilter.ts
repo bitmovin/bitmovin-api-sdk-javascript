@@ -13,7 +13,7 @@ export class AdAnalyticsLessThanOrEqualFilter extends AdAnalyticsAbstractFilter 
    * @type {string}
    * @memberof AdAnalyticsLessThanOrEqualFilter
    */
-  public operator: AnalyticsQueryOperator.LTE = AnalyticsQueryOperator.LTE;
+  public readonly operator: AnalyticsQueryOperator = AnalyticsQueryOperator.LTE;
 
   /**
    * @type {any}

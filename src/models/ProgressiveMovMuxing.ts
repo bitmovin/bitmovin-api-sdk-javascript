@@ -16,7 +16,7 @@ export class ProgressiveMovMuxing extends Muxing {
    * @type {string}
    * @memberof ProgressiveMovMuxing
    */
-  public type: MuxingType.PROGRESSIVE_MOV = MuxingType.PROGRESSIVE_MOV;
+  public readonly type: MuxingType = MuxingType.PROGRESSIVE_MOV;
 
   /**
    * The output file name

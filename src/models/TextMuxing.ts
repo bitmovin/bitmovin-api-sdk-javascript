@@ -16,7 +16,7 @@ export class TextMuxing extends Muxing {
    * @type {string}
    * @memberof TextMuxing
    */
-  public type: MuxingType.TEXT = MuxingType.TEXT;
+  public readonly type: MuxingType = MuxingType.TEXT;
 
   /**
    * The output file name (required)

@@ -19,7 +19,7 @@ export class Mp4Muxing extends Muxing {
    * @type {string}
    * @memberof Mp4Muxing
    */
-  public type: MuxingType.MP4 = MuxingType.MP4;
+  public readonly type: MuxingType = MuxingType.MP4;
 
   /**
    * Name of the new Video
