@@ -15,7 +15,7 @@ export default class StopApi extends BaseAPI {
   }
 
   /**
-   * @summary Stops Currently Running Inserted Content
+   * @summary Stops currently running Inserted Content
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof StopApi

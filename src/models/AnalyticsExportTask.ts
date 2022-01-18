@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AnalyticsExportFileFormat from './AnalyticsExportFileFormat';
 import AnalyticsExportStatus from './AnalyticsExportStatus';
 import AnalyticsExportTaskOutputTarget from './AnalyticsExportTaskOutputTarget';
 import AnalyticsExportType from './AnalyticsExportType';
@@ -89,6 +90,13 @@ export class AnalyticsExportTask extends BitmovinResponse {
    */
   public columns?: string[];
 
+  /**
+   * File format of export file
+   * @type {AnalyticsExportFileFormat}
+   * @memberof AnalyticsExportTask
+   */
+  public fileFormat?: AnalyticsExportFileFormat;
+
   constructor(obj?: Partial<AnalyticsExportTask>) {
     super(obj);
     if(!obj) {
@@ -106,6 +114,7 @@ export class AnalyticsExportTask extends BitmovinResponse {
     this.finishedAt = map(obj.finishedAt, Date);
     this.type = map(obj.type);
     this.columns = mapArray(obj.columns);
+    this.fileFormat = map(obj.fileFormat);
   }
 }
 

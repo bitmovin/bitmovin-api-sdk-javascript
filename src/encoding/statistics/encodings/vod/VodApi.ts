@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
+import DailyApi from './daily/DailyApi';
 import EncodingStatisticsVod from '../../../../models/EncodingStatisticsVod';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {EncodingStatisticsVodListQueryParams, EncodingStatisticsVodListQueryParamsBuilder} from './EncodingStatisticsVodListQueryParams';
@@ -13,9 +14,11 @@ import {EncodingStatisticsVodListByDateRangeQueryParams, EncodingStatisticsVodLi
  * @extends {BaseAPI}
  */
 export default class VodApi extends BaseAPI {
+  public daily: DailyApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.daily = new DailyApi(configuration);
   }
 
   /**

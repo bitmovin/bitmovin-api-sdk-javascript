@@ -4,7 +4,6 @@ import {map, mapArray} from '../../../common/Mapper';
 import DailyStatistics from '../../../models/DailyStatistics';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DailyStatisticsListQueryParams, DailyStatisticsListQueryParamsBuilder} from './DailyStatisticsListQueryParams';
-import {DailyStatisticsListByDateRangeQueryParams, DailyStatisticsListByDateRangeQueryParamsBuilder} from './DailyStatisticsListByDateRangeQueryParams';
 
 /**
  * DailyApi - object-oriented interface
@@ -40,22 +39,15 @@ export default class DailyApi extends BaseAPI {
    * @summary List daily statistics within specific dates
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
-   * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof DailyApi
    */
-  public listByDateRange(from: Date, to: Date, queryParameters?: DailyStatisticsListByDateRangeQueryParams | ((q: DailyStatisticsListByDateRangeQueryParamsBuilder) => DailyStatisticsListByDateRangeQueryParamsBuilder)): Promise<PaginationResponse<DailyStatistics>> {
+  public listByDateRange(from: Date, to: Date): Promise<PaginationResponse<DailyStatistics>> {
     const pathParamMap = {
       from: from,
       to: to
     };
-    let queryParams: DailyStatisticsListByDateRangeQueryParams = {};
-    if (typeof queryParameters === 'function') {
-      queryParams = queryParameters(new DailyStatisticsListByDateRangeQueryParamsBuilder()).buildQueryParams();
-    } else if (queryParameters) {
-      queryParams = queryParameters;
-    }
-    return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily/{from}/{to}', pathParamMap, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<DailyStatistics>>('/encoding/statistics/daily/{from}/{to}', pathParamMap).then((response) => {
       return new PaginationResponse<DailyStatistics>(response, DailyStatistics);
     });
   }

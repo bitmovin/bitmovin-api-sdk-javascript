@@ -60,6 +60,7 @@ export * from './AnalyticsEqualFilter';
 export * from './AnalyticsErrorData';
 export * from './AnalyticsErrorDetail';
 export * from './AnalyticsErrorDetailsResponse';
+export * from './AnalyticsExportFileFormat';
 export * from './AnalyticsExportStatus';
 export * from './AnalyticsExportTask';
 export * from './AnalyticsExportTaskOutputTarget';
