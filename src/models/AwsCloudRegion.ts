@@ -17,7 +17,8 @@ export enum AwsCloudRegion {
   SA_EAST_1 = 'SA_EAST_1',
   EU_WEST_2 = 'EU_WEST_2',
   EU_WEST_3 = 'EU_WEST_3',
-  CA_CENTRAL_1 = 'CA_CENTRAL_1'
+  CA_CENTRAL_1 = 'CA_CENTRAL_1',
+  EU_NORTH_1 = 'EU_NORTH_1'
 }
 
 export default AwsCloudRegion;
