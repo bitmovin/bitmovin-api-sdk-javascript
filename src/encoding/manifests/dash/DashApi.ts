@@ -6,6 +6,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import PeriodsApi from './periods/PeriodsApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import DashManifest from '../../../models/DashManifest';
+import StartManifestRequest from '../../../models/StartManifestRequest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {DashManifestListQueryParams, DashManifestListQueryParamsBuilder} from './DashManifestListQueryParams';
@@ -91,15 +92,15 @@ export default class DashApi extends BaseAPI {
   /**
    * @summary Start DASH Manifest Creation
    * @param {string} manifestId Id of the DASH manifest.
-   * @param {any} [body] Manifest Startup Options
+   * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof DashApi
    */
-  public start(manifestId: string, body?: any): Promise<BitmovinResponse> {
+  public start(manifestId: string, startManifestRequest?: StartManifestRequest): Promise<BitmovinResponse> {
     const pathParamMap = {
       manifest_id: manifestId
     };
-    return this.restClient.post<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/start', pathParamMap, body).then((response) => {
+    return this.restClient.post<BitmovinResponse>('/encoding/manifests/dash/{manifest_id}/start', pathParamMap, startManifestRequest).then((response) => {
       return map(response, BitmovinResponse);
     });
   }

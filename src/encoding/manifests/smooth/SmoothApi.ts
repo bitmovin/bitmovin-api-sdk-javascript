@@ -7,6 +7,7 @@ import RepresentationsApi from './representations/RepresentationsApi';
 import ContentprotectionApi from './contentprotection/ContentprotectionApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import SmoothStreamingManifest from '../../../models/SmoothStreamingManifest';
+import StartManifestRequest from '../../../models/StartManifestRequest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {SmoothStreamingManifestListQueryParams, SmoothStreamingManifestListQueryParamsBuilder} from './SmoothStreamingManifestListQueryParams';
@@ -94,15 +95,15 @@ export default class SmoothApi extends BaseAPI {
   /**
    * @summary Start Smooth Streaming Manifest Creation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
-   * @param {any} [body] Manifest Startup Options
+   * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
-  public start(manifestId: string, body?: any): Promise<BitmovinResponse> {
+  public start(manifestId: string, startManifestRequest?: StartManifestRequest): Promise<BitmovinResponse> {
     const pathParamMap = {
       manifest_id: manifestId
     };
-    return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap, body).then((response) => {
+    return this.restClient.post<BitmovinResponse>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap, startManifestRequest).then((response) => {
       return map(response, BitmovinResponse);
     });
   }

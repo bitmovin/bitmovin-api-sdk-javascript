@@ -7,6 +7,7 @@ import StreamsApi from './streams/StreamsApi';
 import MediaApi from './media/MediaApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import HlsManifest from '../../../models/HlsManifest';
+import StartManifestRequest from '../../../models/StartManifestRequest';
 import Task from '../../../models/Task';
 import PaginationResponse from '../../../models/PaginationResponse';
 import {HlsManifestListQueryParams, HlsManifestListQueryParamsBuilder} from './HlsManifestListQueryParams';
@@ -94,15 +95,15 @@ export default class HlsApi extends BaseAPI {
   /**
    * @summary Start HLS Manifest Creation
    * @param {string} manifestId Id of the HLS manifest.
-   * @param {any} [body] Manifest Startup Options
+   * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof HlsApi
    */
-  public start(manifestId: string, body?: any): Promise<BitmovinResponse> {
+  public start(manifestId: string, startManifestRequest?: StartManifestRequest): Promise<BitmovinResponse> {
     const pathParamMap = {
       manifest_id: manifestId
     };
-    return this.restClient.post<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/start', pathParamMap, body).then((response) => {
+    return this.restClient.post<BitmovinResponse>('/encoding/manifests/hls/{manifest_id}/start', pathParamMap, startManifestRequest).then((response) => {
       return map(response, BitmovinResponse);
     });
   }
