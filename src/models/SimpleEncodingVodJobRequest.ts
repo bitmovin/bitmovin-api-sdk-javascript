@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
 import SimpleEncodingVodJobUrlOutput from './SimpleEncodingVodJobUrlOutput';
 
@@ -7,6 +8,13 @@ import SimpleEncodingVodJobUrlOutput from './SimpleEncodingVodJobUrlOutput';
  * @class SimpleEncodingVodJobRequest
  */
 export class SimpleEncodingVodJobRequest {
+  /**
+   * The template that will be used for the encoding.
+   * @type {EncodingTemplate}
+   * @memberof SimpleEncodingVodJobRequest
+   */
+  public encodingTemplate?: EncodingTemplate;
+
   /**
    * @type {SimpleEncodingVodJobUrlInput[]}
    * @memberof SimpleEncodingVodJobRequest
@@ -30,6 +38,7 @@ export class SimpleEncodingVodJobRequest {
     if(!obj) {
       return;
     }
+    this.encodingTemplate = map(obj.encodingTemplate);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobUrlInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobUrlOutput);
     this.name = map(obj.name);
