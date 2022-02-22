@@ -2,6 +2,7 @@ import AkamaiNetStorageInput from './AkamaiNetStorageInput';
 import AsperaInput from './AsperaInput';
 import AzureInput from './AzureInput';
 import BitmovinResource from './BitmovinResource';
+import DirectFileUploadInput from './DirectFileUploadInput';
 import FtpInput from './FtpInput';
 import GcsInput from './GcsInput';
 import GcsServiceAccountInput from './GcsServiceAccountInput';
@@ -41,7 +42,8 @@ export type InputUnion =
   UdpMulticastInput |
   ZixiInput |
   SrtInput |
-  GcsServiceAccountInput;
+  GcsServiceAccountInput |
+  DirectFileUploadInput;
 
 /**
  * @export
@@ -69,7 +71,8 @@ export class Input extends BitmovinResource {
     UDP_MULTICAST: 'UdpMulticastInput',
     ZIXI: 'ZixiInput',
     SRT: 'SrtInput',
-    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountInput'
+    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountInput',
+    DIRECT_FILE_UPLOAD: 'DirectFileUploadInput'
   };
 
   constructor(obj?: Partial<Input>) {

@@ -4,7 +4,6 @@ import {map, mapArray} from '../../../../common/Mapper';
 import CustomdataApi from './customdata/CustomdataApi';
 import Av1VideoConfiguration from '../../../../models/Av1VideoConfiguration';
 import BitmovinResponse from '../../../../models/BitmovinResponse';
-import VideoConfiguration from '../../../../models/VideoConfiguration';
 import PaginationResponse from '../../../../models/PaginationResponse';
 import {Av1VideoConfigurationListQueryParams, Av1VideoConfigurationListQueryParamsBuilder} from './Av1VideoConfigurationListQueryParams';
 

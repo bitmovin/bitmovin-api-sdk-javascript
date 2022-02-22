@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
 import SimpleEncodingVodJobStatus from './SimpleEncodingVodJobStatus';
 import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
@@ -22,6 +23,13 @@ export class SimpleEncodingVodJobResponse {
    * @memberof SimpleEncodingVodJobResponse
    */
   public status?: SimpleEncodingVodJobStatus;
+
+  /**
+   * The template that has been used for the encoding.
+   * @type {EncodingTemplate}
+   * @memberof SimpleEncodingVodJobResponse
+   */
+  public encodingTemplate?: EncodingTemplate;
 
   /**
    * The identifier of the encoding that has been created based on the job request. This is only returned once the job execution has been successful and the encoding could be started. 
@@ -76,6 +84,7 @@ export class SimpleEncodingVodJobResponse {
     }
     this.id = map(obj.id);
     this.status = map(obj.status);
+    this.encodingTemplate = map(obj.encodingTemplate);
     this.encodingId = map(obj.encodingId);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobUrlInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobUrlOutput);
