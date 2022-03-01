@@ -252,7 +252,6 @@ export * from './DeinterlaceFilter';
 export * from './DeinterlaceFrameSelectionMode';
 export * from './DeinterlaceMode';
 export * from './DenoiseHqdn3dFilter';
-export * from './DirectFileUploadInput';
 export * from './DisplayAspectRatio';
 export * from './DolbyAtmosAudioConfiguration';
 export * from './DolbyAtmosDialogueIntelligence';

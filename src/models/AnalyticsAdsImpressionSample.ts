@@ -888,20 +888,6 @@ export class AnalyticsAdsImpressionSample {
   public time?: number;
 
   /**
-   * Time from content
-   * @type {number}
-   * @memberof AnalyticsAdsImpressionSample
-   */
-  public timeFromContent?: number;
-
-  /**
-   * Time hovered
-   * @type {number}
-   * @memberof AnalyticsAdsImpressionSample
-   */
-  public timeHovered?: number;
-
-  /**
    * Time in viewport
    * @type {number}
    * @memberof AnalyticsAdsImpressionSample
@@ -914,20 +900,6 @@ export class AnalyticsAdsImpressionSample {
    * @memberof AnalyticsAdsImpressionSample
    */
   public timePlayed?: number;
-
-  /**
-   * Time to content
-   * @type {number}
-   * @memberof AnalyticsAdsImpressionSample
-   */
-  public timeToContent?: number;
-
-  /**
-   * Time to hover
-   * @type {number}
-   * @memberof AnalyticsAdsImpressionSample
-   */
-  public timeToHover?: number;
 
   /**
    * Universal ad id registry
@@ -1122,12 +1094,8 @@ export class AnalyticsAdsImpressionSample {
     this.streamFormat = map(obj.streamFormat);
     this.surveyUrl = map(obj.surveyUrl);
     this.time = map(obj.time);
-    this.timeFromContent = map(obj.timeFromContent);
-    this.timeHovered = map(obj.timeHovered);
     this.timeInViewport = map(obj.timeInViewport);
     this.timePlayed = map(obj.timePlayed);
-    this.timeToContent = map(obj.timeToContent);
-    this.timeToHover = map(obj.timeToHover);
     this.universalAdIdRegistry = map(obj.universalAdIdRegistry);
     this.universalAdIdValue = map(obj.universalAdIdValue);
     this.userId = map(obj.userId);
