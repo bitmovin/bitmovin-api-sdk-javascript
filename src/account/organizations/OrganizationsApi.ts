@@ -25,7 +25,7 @@ export default class OrganizationsApi extends BaseAPI {
 
   /**
    * @summary Add Organization
-   * @param {Organization} organization Orgnaization Details
+   * @param {Organization} organization Organization Details
    * @throws {BitmovinError}
    * @memberof OrganizationsApi
    */
