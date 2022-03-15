@@ -545,6 +545,41 @@ export class AnalyticsAdsImpressionSample {
   public customData25?: string;
 
   /**
+   * Free form data set via the customData26 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData26?: string;
+
+  /**
+   * Free form data set via the customData27 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData27?: string;
+
+  /**
+   * Free form data set via the customData28 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData28?: string;
+
+  /**
+   * Free form data set via the customData29 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData29?: string;
+
+  /**
+   * Free form data set via the customData30 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public customData30?: string;
+
+  /**
    * Custom user ID
    * @type {string}
    * @memberof AnalyticsAdsImpressionSample
@@ -1045,6 +1080,11 @@ export class AnalyticsAdsImpressionSample {
     this.customData23 = map(obj.customData23);
     this.customData24 = map(obj.customData24);
     this.customData25 = map(obj.customData25);
+    this.customData26 = map(obj.customData26);
+    this.customData27 = map(obj.customData27);
+    this.customData28 = map(obj.customData28);
+    this.customData29 = map(obj.customData29);
+    this.customData30 = map(obj.customData30);
     this.customUserId = map(obj.customUserId);
     this.dealId = map(obj.dealId);
     this.deviceClass = map(obj.deviceClass);

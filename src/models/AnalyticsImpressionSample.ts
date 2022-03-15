@@ -294,6 +294,41 @@ export class AnalyticsImpressionSample {
   public customData25?: string;
 
   /**
+   * Free form data set via the customData26 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public customData26?: string;
+
+  /**
+   * Free form data set via the customData27 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public customData27?: string;
+
+  /**
+   * Free form data set via the customData28 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public customData28?: string;
+
+  /**
+   * Free form data set via the customData29 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public customData29?: string;
+
+  /**
+   * Free form data set via the customData30 field in the analytics collector configuration
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public customData30?: string;
+
+  /**
    * Type of device (Desktop, Phone, Tablet)
    * @type {string}
    * @memberof AnalyticsImpressionSample
@@ -800,6 +835,11 @@ export class AnalyticsImpressionSample {
     this.customData23 = map(obj.customData23);
     this.customData24 = map(obj.customData24);
     this.customData25 = map(obj.customData25);
+    this.customData26 = map(obj.customData26);
+    this.customData27 = map(obj.customData27);
+    this.customData28 = map(obj.customData28);
+    this.customData29 = map(obj.customData29);
+    this.customData30 = map(obj.customData30);
     this.deviceClass = map(obj.deviceClass);
     this.deviceType = map(obj.deviceType);
     this.domain = map(obj.domain);
