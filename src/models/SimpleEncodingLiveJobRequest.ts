@@ -28,6 +28,13 @@ export class SimpleEncodingLiveJobRequest {
    */
   public cloudRegion?: SimpleEncodingLiveCloudRegion;
 
+  /**
+   * This property will be used for naming the encoding.
+   * @type {string}
+   * @memberof SimpleEncodingLiveJobRequest
+   */
+  public name?: string;
+
   constructor(obj?: Partial<SimpleEncodingLiveJobRequest>) {
     if(!obj) {
       return;
@@ -35,6 +42,7 @@ export class SimpleEncodingLiveJobRequest {
     this.input = map(obj.input, SimpleEncodingLiveJobInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobUrlOutput);
     this.cloudRegion = map(obj.cloudRegion);
+    this.name = map(obj.name);
   }
 }
 
