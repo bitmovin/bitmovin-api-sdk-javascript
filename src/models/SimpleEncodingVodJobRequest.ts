@@ -1,7 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingTemplate from './EncodingTemplate';
+import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
 import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
-import SimpleEncodingVodJobUrlOutput from './SimpleEncodingVodJobUrlOutput';
 
 /**
  * @export
@@ -22,10 +22,11 @@ export class SimpleEncodingVodJobRequest {
   public inputs?: SimpleEncodingVodJobUrlInput[];
 
   /**
-   * @type {SimpleEncodingVodJobUrlOutput[]}
+   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) (required)
+   * @type {SimpleEncodingVodJobOutput[]}
    * @memberof SimpleEncodingVodJobRequest
    */
-  public outputs?: SimpleEncodingVodJobUrlOutput[];
+  public outputs?: SimpleEncodingVodJobOutput[];
 
   /**
    * This property will be used for naming the encoding and the manifests.
@@ -40,7 +41,7 @@ export class SimpleEncodingVodJobRequest {
     }
     this.encodingTemplate = map(obj.encodingTemplate);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobUrlInput);
-    this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobUrlOutput);
+    this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobOutput);
     this.name = map(obj.name);
   }
 }

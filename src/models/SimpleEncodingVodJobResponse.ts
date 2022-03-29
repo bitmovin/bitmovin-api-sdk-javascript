@@ -1,9 +1,9 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
+import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
 import SimpleEncodingVodJobStatus from './SimpleEncodingVodJobStatus';
 import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
-import SimpleEncodingVodJobUrlOutput from './SimpleEncodingVodJobUrlOutput';
 
 /**
  * @export
@@ -45,10 +45,10 @@ export class SimpleEncodingVodJobResponse {
   public inputs?: SimpleEncodingVodJobUrlInput[];
 
   /**
-   * @type {SimpleEncodingVodJobUrlOutput[]}
+   * @type {SimpleEncodingVodJobOutput[]}
    * @memberof SimpleEncodingVodJobResponse
    */
-  public outputs?: SimpleEncodingVodJobUrlOutput[];
+  public outputs?: SimpleEncodingVodJobOutput[];
 
   /**
    * Describes all the errors in cases the status of the job is 'error'. 
@@ -87,7 +87,7 @@ export class SimpleEncodingVodJobResponse {
     this.encodingTemplate = map(obj.encodingTemplate);
     this.encodingId = map(obj.encodingId);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobUrlInput);
-    this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobUrlOutput);
+    this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobOutput);
     this.errors = mapArray(obj.errors, SimpleEncodingVodJobErrors);
     this.createdAt = map(obj.createdAt, Date);
     this.modifiedAt = map(obj.modifiedAt, Date);
