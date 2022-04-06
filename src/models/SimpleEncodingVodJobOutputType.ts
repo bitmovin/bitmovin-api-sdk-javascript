@@ -4,7 +4,8 @@
  * @enum {string}
  */
 export enum SimpleEncodingVodJobOutputType {
-  URL = 'URL'
+  URL = 'URL',
+  CDN = 'CDN'
 }
 
 export default SimpleEncodingVodJobOutputType;

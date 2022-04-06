@@ -1,8 +1,10 @@
+import SimpleEncodingVodJobCdnOutput from './SimpleEncodingVodJobCdnOutput';
 import SimpleEncodingVodJobOutputType from './SimpleEncodingVodJobOutputType';
 import SimpleEncodingVodJobUrlOutput from './SimpleEncodingVodJobUrlOutput';
 
 export type SimpleEncodingVodJobOutputUnion =
-  SimpleEncodingVodJobUrlOutput;
+  SimpleEncodingVodJobUrlOutput |
+  SimpleEncodingVodJobCdnOutput;
 
 /**
  * @export
@@ -11,7 +13,8 @@ export type SimpleEncodingVodJobOutputUnion =
 export class SimpleEncodingVodJobOutput {
   protected static readonly _discriminatorName = 'type';
   protected static readonly _discriminatorMapping: { [key in keyof typeof SimpleEncodingVodJobOutputType]: string; } = {
-    URL: 'SimpleEncodingVodJobUrlOutput'
+    URL: 'SimpleEncodingVodJobUrlOutput',
+    CDN: 'SimpleEncodingVodJobCdnOutput'
   };
 
   constructor(obj?: Partial<SimpleEncodingVodJobOutput>) {

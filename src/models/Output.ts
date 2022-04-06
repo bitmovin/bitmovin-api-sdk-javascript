@@ -4,6 +4,7 @@ import AkamaiMslOutput from './AkamaiMslOutput';
 import AkamaiNetStorageOutput from './AkamaiNetStorageOutput';
 import AzureOutput from './AzureOutput';
 import BitmovinResource from './BitmovinResource';
+import CdnOutput from './CdnOutput';
 import FtpOutput from './FtpOutput';
 import GcsOutput from './GcsOutput';
 import GcsServiceAccountOutput from './GcsServiceAccountOutput';
@@ -18,6 +19,7 @@ import SftpOutput from './SftpOutput';
 export type OutputUnion =
   AkamaiNetStorageOutput |
   AzureOutput |
+  CdnOutput |
   GenericS3Output |
   GcsOutput |
   FtpOutput |
@@ -38,6 +40,7 @@ export class Output extends BitmovinResource {
   protected static readonly _discriminatorMapping: { [key in keyof typeof OutputType]: string; } = {
     AKAMAI_NETSTORAGE: 'AkamaiNetStorageOutput',
     AZURE: 'AzureOutput',
+    CDN: 'CdnOutput',
     GENERIC_S3: 'GenericS3Output',
     GCS: 'GcsOutput',
     FTP: 'FtpOutput',
