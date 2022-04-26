@@ -1,7 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingLiveCloudRegion from './SimpleEncodingLiveCloudRegion';
 import SimpleEncodingLiveJobInput from './SimpleEncodingLiveJobInput';
-import SimpleEncodingLiveJobUrlOutput from './SimpleEncodingLiveJobUrlOutput';
+import SimpleEncodingLiveJobOutput from './SimpleEncodingLiveJobOutput';
 
 /**
  * @export
@@ -15,11 +15,11 @@ export class SimpleEncodingLiveJobRequest {
   public input?: SimpleEncodingLiveJobInput;
 
   /**
-   * output of the live encoding job (required)
-   * @type {SimpleEncodingLiveJobUrlOutput[]}
+   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live#outputs) (required)
+   * @type {SimpleEncodingLiveJobOutput[]}
    * @memberof SimpleEncodingLiveJobRequest
    */
-  public outputs?: SimpleEncodingLiveJobUrlOutput[];
+  public outputs?: SimpleEncodingLiveJobOutput[];
 
   /**
    * The cloud region that will be used for the live encoding. This value has to be set.
@@ -40,7 +40,7 @@ export class SimpleEncodingLiveJobRequest {
       return;
     }
     this.input = map(obj.input, SimpleEncodingLiveJobInput);
-    this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobUrlOutput);
+    this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobOutput);
     this.cloudRegion = map(obj.cloudRegion);
     this.name = map(obj.name);
   }

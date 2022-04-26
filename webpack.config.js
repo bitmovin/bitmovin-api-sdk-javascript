@@ -16,7 +16,7 @@ const config = {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loader: 'ts-loader',
         exclude: /node_modules/
       }
     ]
@@ -28,7 +28,7 @@ const config = {
     extensions: ['.tsx', '.ts', '.js']
   },
   devtool: isProd ? false : 'source-map',
-  stats: process.env.WEBPACK_MODE === 'log' ? 'verbose' : 'normal'
+  stats: process.env.WEBPACK_MODE === 'log' ? { preset: 'verbose' } : { preset: 'normal' }
 };
 
 module.exports = config;

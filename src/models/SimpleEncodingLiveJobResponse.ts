@@ -1,8 +1,8 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingLiveCloudRegion from './SimpleEncodingLiveCloudRegion';
 import SimpleEncodingLiveJobInput from './SimpleEncodingLiveJobInput';
+import SimpleEncodingLiveJobOutput from './SimpleEncodingLiveJobOutput';
 import SimpleEncodingLiveJobStatus from './SimpleEncodingLiveJobStatus';
-import SimpleEncodingLiveJobUrlOutput from './SimpleEncodingLiveJobUrlOutput';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
 
 /**
@@ -52,10 +52,10 @@ export class SimpleEncodingLiveJobResponse {
   public input?: SimpleEncodingLiveJobInput;
 
   /**
-   * @type {SimpleEncodingLiveJobUrlOutput[]}
+   * @type {SimpleEncodingLiveJobOutput[]}
    * @memberof SimpleEncodingLiveJobResponse
    */
-  public outputs?: SimpleEncodingLiveJobUrlOutput[];
+  public outputs?: SimpleEncodingLiveJobOutput[];
 
   /**
    * Describes all the errors in cases the status of the job is 'error'. 
@@ -102,7 +102,7 @@ export class SimpleEncodingLiveJobResponse {
     this.encoderIp = map(obj.encoderIp);
     this.streamKey = map(obj.streamKey);
     this.input = map(obj.input, SimpleEncodingLiveJobInput);
-    this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobUrlOutput);
+    this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobOutput);
     this.errors = mapArray(obj.errors, SimpleEncodingVodJobErrors);
     this.createdAt = map(obj.createdAt, Date);
     this.modifiedAt = map(obj.modifiedAt, Date);

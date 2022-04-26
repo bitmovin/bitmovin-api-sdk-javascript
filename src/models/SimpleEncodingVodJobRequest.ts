@@ -22,7 +22,7 @@ export class SimpleEncodingVodJobRequest {
   public inputs?: SimpleEncodingVodJobUrlInput[];
 
   /**
-   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) (required)
+   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
    * @type {SimpleEncodingVodJobOutput[]}
    * @memberof SimpleEncodingVodJobRequest
    */

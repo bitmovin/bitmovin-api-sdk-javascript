@@ -1,14 +1,23 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingLiveJobCredentials from './SimpleEncodingLiveJobCredentials';
+import SimpleEncodingLiveJobOutput from './SimpleEncodingLiveJobOutput';
+import SimpleEncodingLiveJobOutputType from './SimpleEncodingLiveJobOutputType';
 import SimpleEncodingLiveMaxResolution from './SimpleEncodingLiveMaxResolution';
 
 /**
  * @export
  * @class SimpleEncodingLiveJobUrlOutput
  */
-export class SimpleEncodingLiveJobUrlOutput {
+export class SimpleEncodingLiveJobUrlOutput extends SimpleEncodingLiveJobOutput {
   /**
-   * Define a URL pointing to a folder which will be used to upload the encoded assets.  The output folder structure used looks the following way: <br><br> `http://host/my-folder`     <ul>       <li>         `/video`         <ul>           <li>`/{width}x{height}/` (multiple subfolders containing different output renditions)</li>         </ul>       </li>       <li>`/audio` </li>       <li>`/index.m3u8` (HLS manifest file) </li>       <li>`/stream.mpd` (DASH manifest file) </li>     </ul>  Currently the following protocols/storages systems are supported: S3, GCS, Azure Blob Storage, Akamai NetStorage.  Note that most protocols will require `credentials` to access the asset. Check the description below which ones are applicable. See below how to construct the URLs for the individual protocals/storage systems.  **S3**: * `s3://<my-bucket>/path/`  Authentication can be done via accesskey/secretkey or role-based authentication. Generic S3 is currently NOT supported.  **GCS**: * `gcs://<my-bucket>/path/`  Authentication can be done via accesskey/secretkey or a service account  **Azure Blob Storage (ABS)**: * `https://<account>.blob.core.windows.net/<container>/path/`  It is required to provide the Azure key credentials for authentication.  **Akamai NetStorage**: * `https://<host>-nsu.akamaihd.net/<CP-code>/path/`  It is required to provide username/password credentials for authentication. (required)
+   * Discriminator property for SimpleEncodingLiveJobOutput
+   * @type {string}
+   * @memberof SimpleEncodingLiveJobUrlOutput
+   */
+  public readonly type: SimpleEncodingLiveJobOutputType = SimpleEncodingLiveJobOutputType.URL;
+
+  /**
+   * Define a URL pointing to a folder which will be used to upload the encoded assets.  The output folder structure used looks the following way: <br><br> `http://host/my-folder`     <ul>       <li>         `/video`         <ul>           <li>`/{width}x{height}_{bitrate}/` (multiple subfolders containing different output renditions)</li>         </ul>       </li>       <li>`/audio` </li>       <li>`/index.m3u8` (HLS manifest file) </li>       <li>`/stream.mpd` (DASH manifest file) </li>     </ul>  Currently the following protocols/storages systems are supported: S3, GCS, Azure Blob Storage, Akamai NetStorage.  Note that most protocols will require `credentials` to access the asset. Check the description below which ones are applicable. See below how to construct the URLs for the individual protocals/storage systems.  **S3**: * `s3://<my-bucket>/path/`  Authentication can be done via accesskey/secretkey or role-based authentication. Generic S3 is currently NOT supported.  **GCS**: * `gcs://<my-bucket>/path/`  Authentication can be done via accesskey/secretkey or a service account  **Azure Blob Storage (ABS)**: * `https://<account>.blob.core.windows.net/<container>/path/`  It is required to provide the Azure key credentials for authentication.  **Akamai NetStorage**: * `https://<host>-nsu.akamaihd.net/<CP-code>/path/`  It is required to provide username/password credentials for authentication. (required)
    * @type {string}
    * @memberof SimpleEncodingLiveJobUrlOutput
    */
@@ -28,21 +37,14 @@ export class SimpleEncodingLiveJobUrlOutput {
    */
   public makePublic?: boolean;
 
-  /**
-   * This sets the maximum output resolution that will be generated.
-   * @type {SimpleEncodingLiveMaxResolution}
-   * @memberof SimpleEncodingLiveJobUrlOutput
-   */
-  public maxResolution?: SimpleEncodingLiveMaxResolution;
-
   constructor(obj?: Partial<SimpleEncodingLiveJobUrlOutput>) {
+    super(obj);
     if(!obj) {
       return;
     }
     this.url = map(obj.url);
     this.credentials = map(obj.credentials, SimpleEncodingLiveJobCredentials);
     this.makePublic = map(obj.makePublic);
-    this.maxResolution = map(obj.maxResolution);
   }
 }
 
