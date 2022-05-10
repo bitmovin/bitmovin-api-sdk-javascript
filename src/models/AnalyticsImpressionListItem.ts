@@ -6,7 +6,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class AnalyticsImpressionListItem {
   /**
-   * Impression ID (required)
+   * Random UUID that is used to identify a session (required)
    * @type {string}
    * @memberof AnalyticsImpressionListItem
    */

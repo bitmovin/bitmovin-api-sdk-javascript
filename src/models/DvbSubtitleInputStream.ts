@@ -16,28 +16,28 @@ export class DvbSubtitleInputStream extends InputStream {
   public readonly type: InputStreamType = InputStreamType.DVB_SUBTITLE;
 
   /**
-   * Id of input
+   * ID of an Input resource defining the input storage
    * @type {string}
    * @memberof DvbSubtitleInputStream
    */
   public inputId?: string;
 
   /**
-   * Path to media file
+   * Path to an input media file
    * @type {string}
    * @memberof DvbSubtitleInputStream
    */
   public inputPath?: string;
 
   /**
-   * Specifies the algorithm for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
+   * Specifies the strategy for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
    * @type {StreamSelectionMode}
    * @memberof DvbSubtitleInputStream
    */
   public selectionMode?: StreamSelectionMode;
 
   /**
-   * Position of the stream, starting from 0.
+   * Position of the stream to be selected from the input file (zero-based). Must not be set in combination with selectionMode 'AUTO', defaults to 0 for any other selectionMode.
    * @type {number}
    * @memberof DvbSubtitleInputStream
    */

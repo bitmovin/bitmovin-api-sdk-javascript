@@ -16,28 +16,28 @@ export class IngestInputStream extends InputStream {
   public readonly type: InputStreamType = InputStreamType.INGEST;
 
   /**
-   * Id of input
+   * ID of an Input resource defining the input storage (required)
    * @type {string}
    * @memberof IngestInputStream
    */
   public inputId?: string;
 
   /**
-   * Path to media file
+   * Path to an input media file (required)
    * @type {string}
    * @memberof IngestInputStream
    */
   public inputPath?: string;
 
   /**
-   * Specifies the algorithm how the stream in the input file will be selected
+   * Specifies the strategy for selecting a stream from the input file
    * @type {StreamSelectionMode}
    * @memberof IngestInputStream
    */
   public selectionMode?: StreamSelectionMode;
 
   /**
-   * Position of the stream, starting from 0.
+   * Position of the stream to be selected from the input file (zero-based). Must not be set in combination with selectionMode 'AUTO', defaults to 0 for any other selectionMode.
    * @type {number}
    * @memberof IngestInputStream
    */

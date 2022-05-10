@@ -399,7 +399,7 @@ export class AnalyticsImpressionSample {
   public experimentName?: string;
 
   /**
-   * Random UUID that is used to identify a sessions (required)
+   * Random UUID that is used to identify a session (required)
    * @type {string}
    * @memberof AnalyticsImpressionSample
    */
