@@ -18,9 +18,6 @@ import HttpsApi from './https/HttpsApi';
 import AsperaApi from './aspera/AsperaApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import SrtApi from './srt/SrtApi';
-import TcpApi from './tcp/TcpApi';
-import UdpApi from './udp/UdpApi';
-import UdpMulticastApi from './udpMulticast/UdpMulticastApi';
 import ZixiApi from './zixi/ZixiApi';
 import Input from '../../models/Input';
 import PaginationResponse from '../../models/PaginationResponse';
@@ -50,9 +47,6 @@ export default class InputsApi extends BaseAPI {
   public aspera: AsperaApi;
   public akamaiNetstorage: AkamaiNetstorageApi;
   public srt: SrtApi;
-  public tcp: TcpApi;
-  public udp: UdpApi;
-  public udpMulticast: UdpMulticastApi;
   public zixi: ZixiApi;
 
   constructor(configuration: Configuration) {
@@ -74,9 +68,6 @@ export default class InputsApi extends BaseAPI {
     this.aspera = new AsperaApi(configuration);
     this.akamaiNetstorage = new AkamaiNetstorageApi(configuration);
     this.srt = new SrtApi(configuration);
-    this.tcp = new TcpApi(configuration);
-    this.udp = new UdpApi(configuration);
-    this.udpMulticast = new UdpMulticastApi(configuration);
     this.zixi = new ZixiApi(configuration);
   }
 

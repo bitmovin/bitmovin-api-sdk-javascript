@@ -17,9 +17,6 @@ export enum InputType {
   S3 = 'S3',
   S3_ROLE_BASED = 'S3_ROLE_BASED',
   SFTP = 'SFTP',
-  TCP = 'TCP',
-  UDP = 'UDP',
-  UDP_MULTICAST = 'UDP_MULTICAST',
   ZIXI = 'ZIXI',
   SRT = 'SRT',
   GCS_SERVICE_ACCOUNT = 'GCS_SERVICE_ACCOUNT'

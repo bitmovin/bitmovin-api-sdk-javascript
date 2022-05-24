@@ -16,9 +16,6 @@ import S3Input from './S3Input';
 import S3RoleBasedInput from './S3RoleBasedInput';
 import SftpInput from './SftpInput';
 import SrtInput from './SrtInput';
-import TcpInput from './TcpInput';
-import UdpInput from './UdpInput';
-import UdpMulticastInput from './UdpMulticastInput';
 import ZixiInput from './ZixiInput';
 
 export type InputUnion =
@@ -36,9 +33,6 @@ export type InputUnion =
   S3Input |
   S3RoleBasedInput |
   SftpInput |
-  TcpInput |
-  UdpInput |
-  UdpMulticastInput |
   ZixiInput |
   SrtInput |
   GcsServiceAccountInput;
@@ -64,9 +58,6 @@ export class Input extends BitmovinResource {
     S3: 'S3Input',
     S3_ROLE_BASED: 'S3RoleBasedInput',
     SFTP: 'SftpInput',
-    TCP: 'TcpInput',
-    UDP: 'UdpInput',
-    UDP_MULTICAST: 'UdpMulticastInput',
     ZIXI: 'ZixiInput',
     SRT: 'SrtInput',
     GCS_SERVICE_ACCOUNT: 'GcsServiceAccountInput'

@@ -8,6 +8,7 @@ import StreamsApi from './streams/StreamsApi';
 import InputStreamsApi from './inputStreams/InputStreamsApi';
 import MuxingsApi from './muxings/MuxingsApi';
 import TransferRetriesApi from './transferRetries/TransferRetriesApi';
+import OutputPathsApi from './outputPaths/OutputPathsApi';
 import CaptionsApi from './captions/CaptionsApi';
 import SidecarsApi from './sidecars/SidecarsApi';
 import KeyframesApi from './keyframes/KeyframesApi';
@@ -36,6 +37,7 @@ export default class EncodingsApi extends BaseAPI {
   public inputStreams: InputStreamsApi;
   public muxings: MuxingsApi;
   public transferRetries: TransferRetriesApi;
+  public outputPaths: OutputPathsApi;
   public captions: CaptionsApi;
   public sidecars: SidecarsApi;
   public keyframes: KeyframesApi;
@@ -49,6 +51,7 @@ export default class EncodingsApi extends BaseAPI {
     this.inputStreams = new InputStreamsApi(configuration);
     this.muxings = new MuxingsApi(configuration);
     this.transferRetries = new TransferRetriesApi(configuration);
+    this.outputPaths = new OutputPathsApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.sidecars = new SidecarsApi(configuration);
     this.keyframes = new KeyframesApi(configuration);
