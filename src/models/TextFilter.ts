@@ -114,7 +114,7 @@ export class TextFilter extends Filter {
   public shadowY?: number;
 
   /**
-   * If set, the timecode representation in \"hh:mm:ss[:;.]ff\" format will be applied
+   * If set, the timecode representation in \"hh:mm:ss[:;.]ff\" format will be applied. Drop-frame timecodes (containing \";\" or \".\") must only be used with video frame rates of 29.97, 30, 59.94 or 60 FPS, according to the SMPTE standard
    * @type {string}
    * @memberof TextFilter
    */
@@ -142,6 +142,7 @@ export class TextFilter extends Filter {
   public y?: string;
 
   /**
+   * Video frame rate
    * @type {string}
    * @memberof TextFilter
    */

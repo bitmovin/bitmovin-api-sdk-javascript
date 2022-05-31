@@ -623,7 +623,7 @@ export class AnalyticsImpressionSample {
   public segmentDownloadTime?: number;
 
   /**
-   * Sequence number of the sample in which it occured in the session
+   * Sequence number of the sample in which it occurred in the session
    * @type {number}
    * @memberof AnalyticsImpressionSample
    */

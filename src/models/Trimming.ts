@@ -13,14 +13,14 @@ export class Trimming {
   public offset?: number;
 
   /**
-   * Defines how many seconds from the input will be encoded.
+   * Defines how many seconds from the input will be encoded. If not set, the input will be encoded until its end.
    * @type {number}
    * @memberof Trimming
    */
   public duration?: number;
 
   /**
-   * If set, \"duration\" will be interpreted as a maximum and not cause an error if the input is too short
+   * When true, \"duration\" will be interpreted as a maximum and not cause an error if the input is too short
    * @type {boolean}
    * @memberof Trimming
    */

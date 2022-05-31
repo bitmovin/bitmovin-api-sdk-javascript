@@ -13,7 +13,7 @@ import Tweaks from './Tweaks';
  */
 export class StartEncodingRequest {
   /**
-   * Allows to encode only part of the input. Defines start (offset) and duration of the desired section.
+   * Allows to encode only part of the input. Defines start (offset) and duration of the desired section. This is not allowed when the Encoding uses any kind of Input Stream resource.
    * @type {Trimming}
    * @memberof StartEncodingRequest
    */
