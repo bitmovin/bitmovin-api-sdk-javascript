@@ -1,12 +1,21 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingVodJobCredentials from './SimpleEncodingVodJobCredentials';
+import SimpleEncodingVodJobInput from './SimpleEncodingVodJobInput';
+import SimpleEncodingVodJobInputSourceType from './SimpleEncodingVodJobInputSourceType';
 import SimpleEncodingVodJobInputType from './SimpleEncodingVodJobInputType';
 
 /**
  * @export
  * @class SimpleEncodingVodJobUrlInput
  */
-export class SimpleEncodingVodJobUrlInput {
+export class SimpleEncodingVodJobUrlInput extends SimpleEncodingVodJobInput {
+  /**
+   * Discriminator property for SimpleEncodingVodJobInput
+   * @type {string}
+   * @memberof SimpleEncodingVodJobUrlInput
+   */
+  public readonly type: SimpleEncodingVodJobInputSourceType = SimpleEncodingVodJobInputSourceType.URL;
+
   /**
    * Define a URL pointing to the asset that should be encoded. The URL has to point to a file.  Currently the following protocols/storages systems are supported: HTTP(S), (S)FTP, S3, GCS, Azure Blob Storage, Akamai NetStorage. Note that most protocols will require `credentials` to access the asset. Check the description below which ones are applicable. See below how to construct the URLs for the individual protocols/storage systems.  ---  **HTTP** and **HTTPS**: * `http://<host>[:<port>]/path/file.mp4` * `https://<host>[:<port>]/path/file.mp4`  The port is defaulted to 80 if it's not provided. If the content is secured by Basic Authentication please provide corresponding credentials.  **FTP** and **SFTP**: * `ftp://<host>[:<port>]/path/file.mp4` * `sftp://<host>[:<port>]/path/file.mp4`  The port is defaulted to 21 (ftp) or  22 (sftp) if it's not provided. If the content is secured please provide corresponding credentials.  **S3**: * `s3://<my-bucket>/path/file.mp4`  Authentication can be done via accesskey/secretkey or role-based authentication. Generic S3 is currently NOT supported.  **GCS**: * `gcs://<my-bucket>/path/file.mp4`  Authentication can be done via accesskey/secretkey or a service account  **Azure Blob Storage (ABS)**: * `https://<account>.blob.core.windows.net/<container>/path/file.mp4`  It is required to provide the Azure key credentials for authentication.  **Akamai NetStorage**: * `https://<host>-nsu.akamaihd.net/<CP-code>/path/file.mp4`  It is required to provide username/password credentials for authentication. (required)
    * @type {string}
@@ -36,6 +45,7 @@ export class SimpleEncodingVodJobUrlInput {
   public language?: string;
 
   constructor(obj?: Partial<SimpleEncodingVodJobUrlInput>) {
+    super(obj);
     if(!obj) {
       return;
     }

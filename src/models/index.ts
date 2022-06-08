@@ -623,6 +623,8 @@ export * from './SimpleEncodingVodJobCdnOutput';
 export * from './SimpleEncodingVodJobCredentials';
 export * from './SimpleEncodingVodJobErrors';
 export * from './SimpleEncodingVodJobGcsServiceAccountCredentials';
+export * from './SimpleEncodingVodJobInput';
+export * from './SimpleEncodingVodJobInputSourceType';
 export * from './SimpleEncodingVodJobInputType';
 export * from './SimpleEncodingVodJobOutput';
 export * from './SimpleEncodingVodJobOutputType';

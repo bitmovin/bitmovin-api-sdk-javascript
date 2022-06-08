@@ -1,9 +1,9 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
+import SimpleEncodingVodJobInput from './SimpleEncodingVodJobInput';
 import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
 import SimpleEncodingVodJobStatus from './SimpleEncodingVodJobStatus';
-import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
 
 /**
  * @export
@@ -39,10 +39,10 @@ export class SimpleEncodingVodJobResponse {
   public encodingId?: string;
 
   /**
-   * @type {SimpleEncodingVodJobUrlInput[]}
+   * @type {SimpleEncodingVodJobInput[]}
    * @memberof SimpleEncodingVodJobResponse
    */
-  public inputs?: SimpleEncodingVodJobUrlInput[];
+  public inputs?: SimpleEncodingVodJobInput[];
 
   /**
    * @type {SimpleEncodingVodJobOutput[]}
@@ -86,7 +86,7 @@ export class SimpleEncodingVodJobResponse {
     this.status = map(obj.status);
     this.encodingTemplate = map(obj.encodingTemplate);
     this.encodingId = map(obj.encodingId);
-    this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobUrlInput);
+    this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobOutput);
     this.errors = mapArray(obj.errors, SimpleEncodingVodJobErrors);
     this.createdAt = map(obj.createdAt, Date);
