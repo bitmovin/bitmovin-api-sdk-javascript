@@ -19,6 +19,7 @@ import AsperaApi from './aspera/AsperaApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import SrtApi from './srt/SrtApi';
 import ZixiApi from './zixi/ZixiApi';
+import DirectFileUploadApi from './directFileUpload/DirectFileUploadApi';
 import Input from '../../models/Input';
 import PaginationResponse from '../../models/PaginationResponse';
 import {InputListQueryParams, InputListQueryParamsBuilder} from './InputListQueryParams';
@@ -48,6 +49,7 @@ export default class InputsApi extends BaseAPI {
   public akamaiNetstorage: AkamaiNetstorageApi;
   public srt: SrtApi;
   public zixi: ZixiApi;
+  public directFileUpload: DirectFileUploadApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -69,6 +71,7 @@ export default class InputsApi extends BaseAPI {
     this.akamaiNetstorage = new AkamaiNetstorageApi(configuration);
     this.srt = new SrtApi(configuration);
     this.zixi = new ZixiApi(configuration);
+    this.directFileUpload = new DirectFileUploadApi(configuration);
   }
 
   /**

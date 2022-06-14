@@ -1,8 +1,10 @@
+import SimpleEncodingVodJobDirectFileUploadInput from './SimpleEncodingVodJobDirectFileUploadInput';
 import SimpleEncodingVodJobInputSourceType from './SimpleEncodingVodJobInputSourceType';
 import SimpleEncodingVodJobUrlInput from './SimpleEncodingVodJobUrlInput';
 
 export type SimpleEncodingVodJobInputUnion =
-  SimpleEncodingVodJobUrlInput;
+  SimpleEncodingVodJobUrlInput |
+  SimpleEncodingVodJobDirectFileUploadInput;
 
 /**
  * @export
@@ -11,7 +13,8 @@ export type SimpleEncodingVodJobInputUnion =
 export class SimpleEncodingVodJobInput {
   protected static readonly _discriminatorName = 'type';
   protected static readonly _discriminatorMapping: { [key in keyof typeof SimpleEncodingVodJobInputSourceType]: string; } = {
-    URL: 'SimpleEncodingVodJobUrlInput'
+    URL: 'SimpleEncodingVodJobUrlInput',
+    DIRECT_FILE_UPLOAD: 'SimpleEncodingVodJobDirectFileUploadInput'
   };
 
   constructor(obj?: Partial<SimpleEncodingVodJobInput>) {

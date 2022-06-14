@@ -4,7 +4,8 @@
  * @enum {string}
  */
 export enum SimpleEncodingVodJobInputSourceType {
-  URL = 'URL'
+  URL = 'URL',
+  DIRECT_FILE_UPLOAD = 'DIRECT_FILE_UPLOAD'
 }
 
 export default SimpleEncodingVodJobInputSourceType;

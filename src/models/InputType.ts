@@ -19,7 +19,8 @@ export enum InputType {
   SFTP = 'SFTP',
   ZIXI = 'ZIXI',
   SRT = 'SRT',
-  GCS_SERVICE_ACCOUNT = 'GCS_SERVICE_ACCOUNT'
+  GCS_SERVICE_ACCOUNT = 'GCS_SERVICE_ACCOUNT',
+  DIRECT_FILE_UPLOAD = 'DIRECT_FILE_UPLOAD'
 }
 
 export default InputType;
