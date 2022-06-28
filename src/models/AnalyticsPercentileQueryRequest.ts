@@ -11,7 +11,7 @@ import AnalyticsQueryRequest from './AnalyticsQueryRequest';
  */
 export class AnalyticsPercentileQueryRequest extends AnalyticsQueryRequest {
   /**
-   * The percentage (0-99) used for percentile queries.
+   * The percentage (0-99) used for percentile queries. (required)
    * @type {number}
    * @memberof AnalyticsPercentileQueryRequest
    */

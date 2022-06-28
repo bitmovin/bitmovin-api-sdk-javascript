@@ -11,7 +11,7 @@ import AnalyticsInterval from './AnalyticsInterval';
  */
 export class AdAnalyticsPercentileQueryRequest extends AdAnalyticsQueryRequest {
   /**
-   * The percentage (0-99) used for percentile queries.
+   * The percentage (0-99) used for percentile queries. (required)
    * @type {number}
    * @memberof AdAnalyticsPercentileQueryRequest
    */

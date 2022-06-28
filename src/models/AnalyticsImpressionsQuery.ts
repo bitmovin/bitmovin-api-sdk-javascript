@@ -8,13 +8,14 @@ import AnalyticsQueryTimeframe from './AnalyticsQueryTimeframe';
  */
 export class AnalyticsImpressionsQuery extends AnalyticsQueryTimeframe {
   /**
-   * Analytics license key
+   * Analytics license key (required)
    * @type {string}
    * @memberof AnalyticsImpressionsQuery
    */
   public licenseKey?: string;
 
   /**
+   * Analytics Query Filters  Each filter requires 3 properties: name, operator and value.  Valid operators are [IN, EQ, NE, LT, LTE, GT, GTE, CONTAINS, NOTCONTAINS] 
    * @type {AnalyticsAbstractFilter[]}
    * @memberof AnalyticsImpressionsQuery
    */

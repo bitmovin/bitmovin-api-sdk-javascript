@@ -18,6 +18,7 @@ export class AdAnalyticsQueryRequest extends AnalyticsQueryTimeframe {
   public licenseKey?: string;
 
   /**
+   * Analytics Query Filters  Each filter requires 3 properties: name, operator and value.   Valid operators are [IN, EQ, NE, LT, LTE, GT, GTE, CONTAINS, NOTCONTAINS] 
    * @type {AdAnalyticsAbstractFilter[]}
    * @memberof AdAnalyticsQueryRequest
    */
