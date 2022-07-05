@@ -173,6 +173,8 @@ export * from './BurnInSubtitleDvbSub';
 export * from './BurnInSubtitleSrt';
 export * from './CaptionCharacterEncoding';
 export * from './CdnOutput';
+export * from './CdnUsage';
+export * from './CdnUsageStatistics';
 export * from './Cea608708SubtitleConfiguration';
 export * from './Cea608CaptionInputStream';
 export * from './Cea608ChannelType';

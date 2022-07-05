@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
+import CdnApi from './cdn/CdnApi';
 import DailyApi from './daily/DailyApi';
 import EncodingsApi from './encodings/EncodingsApi';
 import LabelsApi from './labels/LabelsApi';
@@ -15,12 +16,14 @@ import {StatisticsListQueryParams, StatisticsListQueryParamsBuilder} from './Sta
  * @extends {BaseAPI}
  */
 export default class StatisticsApi extends BaseAPI {
+  public cdn: CdnApi;
   public daily: DailyApi;
   public encodings: EncodingsApi;
   public labels: LabelsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.cdn = new CdnApi(configuration);
     this.daily = new DailyApi(configuration);
     this.encodings = new EncodingsApi(configuration);
     this.labels = new LabelsApi(configuration);
