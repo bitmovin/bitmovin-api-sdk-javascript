@@ -21,6 +21,13 @@ export interface InputListQueryParams {
      * @memberof InputListQueryParams
      */
     name?: string | undefined;
+
+    /**
+     * Order list result according an input resource attribute.  The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     * @type {string}
+     * @memberof InputListQueryParams
+     */
+    sort?: string | undefined;
 }
 
 export class InputListQueryParamsBuilder {
@@ -50,6 +57,15 @@ export class InputListQueryParamsBuilder {
      */
     public name(name: string) {
         this.internalParams.name = name;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order list result according an input resource attribute.  The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     */
+    public sort(sort: string) {
+        this.internalParams.sort = sort;
         return this;
     }
 

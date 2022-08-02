@@ -4,8 +4,10 @@ import ColorPrimaries from './ColorPrimaries';
 import ColorRange from './ColorRange';
 import ColorSpace from './ColorSpace';
 import ColorTransfer from './ColorTransfer';
+import InputColorPrimaries from './InputColorPrimaries';
 import InputColorRange from './InputColorRange';
 import InputColorSpace from './InputColorSpace';
+import InputColorTransfer from './InputColorTransfer';
 
 /**
  * @export
@@ -96,6 +98,20 @@ export class ColorConfig {
    */
   public inputColorRange?: InputColorRange;
 
+  /**
+   * Override the color primaries detected in the input file. If not set the input color primaries will be automatically detected if possible.
+   * @type {InputColorPrimaries}
+   * @memberof ColorConfig
+   */
+  public inputColorPrimaries?: InputColorPrimaries;
+
+  /**
+   * Override the color transfer detected in the input file. If not set the input color transfer will be automatically detected if possible.
+   * @type {InputColorTransfer}
+   * @memberof ColorConfig
+   */
+  public inputColorTransfer?: InputColorTransfer;
+
   constructor(obj?: Partial<ColorConfig>) {
     if(!obj) {
       return;
@@ -112,6 +128,8 @@ export class ColorConfig {
     this.colorTransfer = map(obj.colorTransfer);
     this.inputColorSpace = map(obj.inputColorSpace);
     this.inputColorRange = map(obj.inputColorRange);
+    this.inputColorPrimaries = map(obj.inputColorPrimaries);
+    this.inputColorTransfer = map(obj.inputColorTransfer);
   }
 }
 

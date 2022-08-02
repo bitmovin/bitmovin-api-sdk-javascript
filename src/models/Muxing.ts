@@ -96,14 +96,14 @@ export class Muxing extends BitmovinResource {
   public maxBitrate?: number;
 
   /**
-   * If this is set and contains objects, then this muxing has been ignored during the encoding process
+   * This read-only property is set during the analysis step of the encoding. If it contains items, the Muxing has been ignored during the encoding process according to its 'streamConditionsMode'
    * @type {Ignoring[]}
    * @memberof Muxing
    */
   public ignoredBy?: Ignoring[];
 
   /**
-   * Specifies how to handle streams that don't fulfill stream conditions
+   * Specifies how to proceed with the Muxing when some of its Streams are ignored (see 'condition' property of the Stream resource). The settings only make a difference for Muxings with more than one Stream. When retrieving the resource after the analysis step of the encoding has finished, 'ignoredBy' will indicate if and why it has been ignored.
    * @type {StreamConditionsMode}
    * @memberof Muxing
    */
