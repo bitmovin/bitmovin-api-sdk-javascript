@@ -27,7 +27,7 @@ const config = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
-  devtool: isProd ? false : 'source-map',
+  devtool: false,
   stats: process.env.WEBPACK_MODE === 'log' ? { preset: 'verbose' } : { preset: 'normal' }
 };
 
