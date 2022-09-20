@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import BitmovinStreamEncodingTask from './BitmovinStreamEncodingTask';
 import BitmovinStreamQuality from './BitmovinStreamQuality';
 import BitmovinStreamStatus from './BitmovinStreamStatus';
 
@@ -50,18 +51,25 @@ export class BitmovinStreamResponse {
   public status?: BitmovinStreamStatus;
 
   /**
-   * The target quality of the Stream
+   * The target quality of the Stream (OBSOLETE!)
    * @type {BitmovinStreamQuality}
    * @memberof BitmovinStreamResponse
    */
   public targetQuality?: BitmovinStreamQuality;
 
   /**
-   * List of available stream qualities
+   * List of available stream qualities (OBSOLETE!)
    * @type {BitmovinStreamQuality[]}
    * @memberof BitmovinStreamResponse
    */
   public availableQualities?: BitmovinStreamQuality[];
+
+  /**
+   * List of encoding status information
+   * @type {BitmovinStreamEncodingTask[]}
+   * @memberof BitmovinStreamResponse
+   */
+  public encodingTasks?: BitmovinStreamEncodingTask[];
 
   constructor(obj?: Partial<BitmovinStreamResponse>) {
     if(!obj) {
@@ -75,6 +83,7 @@ export class BitmovinStreamResponse {
     this.status = map(obj.status);
     this.targetQuality = map(obj.targetQuality);
     this.availableQualities = mapArray(obj.availableQualities);
+    this.encodingTasks = mapArray(obj.encodingTasks, BitmovinStreamEncodingTask);
   }
 }
 

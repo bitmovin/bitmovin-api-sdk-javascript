@@ -159,6 +159,8 @@ export * from './BillableEncodingMinutesDetails';
 export * from './BitmovinResource';
 export * from './BitmovinResponse';
 export * from './BitmovinResponseList';
+export * from './BitmovinStreamEncodingStatus';
+export * from './BitmovinStreamEncodingTask';
 export * from './BitmovinStreamQuality';
 export * from './BitmovinStreamResponse';
 export * from './BitmovinStreamStatus';
