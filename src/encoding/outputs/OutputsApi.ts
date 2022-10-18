@@ -16,6 +16,7 @@ import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import LiveMediaIngestApi from './liveMediaIngest/LiveMediaIngestApi';
 import CdnApi from './cdn/CdnApi';
 import Output from '../../models/Output';
+import OutputType from '../../models/OutputType';
 import PaginationResponse from '../../models/PaginationResponse';
 import {OutputListQueryParams, OutputListQueryParamsBuilder} from './OutputListQueryParams';
 

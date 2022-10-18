@@ -1,3 +1,4 @@
+import OutputType from '../../models/OutputType';
 
 export interface OutputListQueryParams {
 
@@ -16,11 +17,18 @@ export interface OutputListQueryParams {
     limit?: number | undefined;
 
     /**
-     * Filter output by name
+     * Filter outputs by name
      * @type {string}
      * @memberof OutputListQueryParams
      */
     name?: string | undefined;
+
+    /**
+     * Filter outputs by type
+     * @type {OutputType}
+     * @memberof OutputListQueryParams
+     */
+    type?: OutputType | undefined;
 }
 
 export class OutputListQueryParamsBuilder {
@@ -46,10 +54,19 @@ export class OutputListQueryParamsBuilder {
 
     /**
      *
-     * @param name Filter output by name
+     * @param name Filter outputs by name
      */
     public name(name: string) {
         this.internalParams.name = name;
+        return this;
+    }
+
+    /**
+     *
+     * @param type Filter outputs by type
+     */
+    public type(type: OutputType) {
+        this.internalParams.type = type;
         return this;
     }
 
