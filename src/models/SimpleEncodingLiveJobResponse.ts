@@ -3,6 +3,7 @@ import SimpleEncodingLiveCloudRegion from './SimpleEncodingLiveCloudRegion';
 import SimpleEncodingLiveJobInput from './SimpleEncodingLiveJobInput';
 import SimpleEncodingLiveJobOutput from './SimpleEncodingLiveJobOutput';
 import SimpleEncodingLiveJobStatus from './SimpleEncodingLiveJobStatus';
+import SimpleEncodingLiveProfile from './SimpleEncodingLiveProfile';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
 
 /**
@@ -92,6 +93,13 @@ export class SimpleEncodingLiveJobResponse {
    */
   public cloudRegion?: SimpleEncodingLiveCloudRegion;
 
+  /**
+   * The profile that will be used for the live encoding.
+   * @type {SimpleEncodingLiveProfile}
+   * @memberof SimpleEncodingLiveJobResponse
+   */
+  public encodingProfile?: SimpleEncodingLiveProfile;
+
   constructor(obj?: Partial<SimpleEncodingLiveJobResponse>) {
     if(!obj) {
       return;
@@ -108,6 +116,7 @@ export class SimpleEncodingLiveJobResponse {
     this.modifiedAt = map(obj.modifiedAt, Date);
     this.name = map(obj.name);
     this.cloudRegion = map(obj.cloudRegion);
+    this.encodingProfile = map(obj.encodingProfile);
   }
 }
 

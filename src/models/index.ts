@@ -624,6 +624,7 @@ export * from './SimpleEncodingLiveJobStatus';
 export * from './SimpleEncodingLiveJobUrlOutput';
 export * from './SimpleEncodingLiveJobUsernamePasswordCredentials';
 export * from './SimpleEncodingLiveMaxResolution';
+export * from './SimpleEncodingLiveProfile';
 export * from './SimpleEncodingVodJobAccessKeyCredentials';
 export * from './SimpleEncodingVodJobAzureCredentials';
 export * from './SimpleEncodingVodJobCdnOutput';

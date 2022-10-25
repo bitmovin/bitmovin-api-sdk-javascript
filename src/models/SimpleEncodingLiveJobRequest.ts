@@ -2,12 +2,20 @@ import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingLiveCloudRegion from './SimpleEncodingLiveCloudRegion';
 import SimpleEncodingLiveJobInput from './SimpleEncodingLiveJobInput';
 import SimpleEncodingLiveJobOutput from './SimpleEncodingLiveJobOutput';
+import SimpleEncodingLiveProfile from './SimpleEncodingLiveProfile';
 
 /**
  * @export
  * @class SimpleEncodingLiveJobRequest
  */
 export class SimpleEncodingLiveJobRequest {
+  /**
+   * The profile that will be used for the live encoding.
+   * @type {SimpleEncodingLiveProfile}
+   * @memberof SimpleEncodingLiveJobRequest
+   */
+  public encodingProfile?: SimpleEncodingLiveProfile;
+
   /**
    * @type {SimpleEncodingLiveJobInput}
    * @memberof SimpleEncodingLiveJobRequest
@@ -39,6 +47,7 @@ export class SimpleEncodingLiveJobRequest {
     if(!obj) {
       return;
     }
+    this.encodingProfile = map(obj.encodingProfile);
     this.input = map(obj.input, SimpleEncodingLiveJobInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingLiveJobOutput);
     this.cloudRegion = map(obj.cloudRegion);
