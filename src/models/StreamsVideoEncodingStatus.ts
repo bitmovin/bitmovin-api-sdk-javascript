@@ -2,11 +2,11 @@
  * @export
  * @enum {string}
  */
-export enum BitmovinStreamEncodingStatus {
+export enum StreamsVideoEncodingStatus {
   STARTED = 'STARTED',
   ERROR = 'ERROR',
   FINISHED = 'FINISHED'
 }
 
-export default BitmovinStreamEncodingStatus;
+export default StreamsVideoEncodingStatus;
 

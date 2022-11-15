@@ -2,31 +2,31 @@ import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
- * @class CreateBitmovinStreamRequest
+ * @class StreamsVideoCreateRequest
  */
-export class CreateBitmovinStreamRequest {
+export class StreamsVideoCreateRequest {
   /**
-   * The Streams input asset URL
+   * The streams input asset URL
    * @type {string}
-   * @memberof CreateBitmovinStreamRequest
+   * @memberof StreamsVideoCreateRequest
    */
   public assetUrl?: string;
 
   /**
-   * Title of the Stream
+   * Title of the stream
    * @type {string}
-   * @memberof CreateBitmovinStreamRequest
+   * @memberof StreamsVideoCreateRequest
    */
   public title?: string;
 
   /**
-   * Description of the Stream
+   * Description of the stream
    * @type {string}
-   * @memberof CreateBitmovinStreamRequest
+   * @memberof StreamsVideoCreateRequest
    */
   public description?: string;
 
-  constructor(obj?: Partial<CreateBitmovinStreamRequest>) {
+  constructor(obj?: Partial<StreamsVideoCreateRequest>) {
     if(!obj) {
       return;
     }
@@ -36,5 +36,5 @@ export class CreateBitmovinStreamRequest {
   }
 }
 
-export default CreateBitmovinStreamRequest;
+export default StreamsVideoCreateRequest;
 

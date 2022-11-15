@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingLiveMaxResolution from './SimpleEncodingLiveMaxResolution';
 import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
+import SimpleEncodingVodJobOutputArtifact from './SimpleEncodingVodJobOutputArtifact';
 import SimpleEncodingVodJobOutputType from './SimpleEncodingVodJobOutputType';
 
 /**

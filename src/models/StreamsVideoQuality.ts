@@ -2,11 +2,11 @@
  * @export
  * @enum {string}
  */
-export enum BitmovinStreamQuality {
+export enum StreamsVideoQuality {
   NONE = 'NONE',
   PREVIEW = 'PREVIEW',
   DEFAULT = 'DEFAULT'
 }
 
-export default BitmovinStreamQuality;
+export default StreamsVideoQuality;
 

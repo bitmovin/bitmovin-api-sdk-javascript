@@ -2,10 +2,10 @@
  * @export
  * @enum {string}
  */
-export enum BitmovinStreamStatus {
+export enum StreamsVideoStatus {
   PUBLISHED = 'PUBLISHED',
   UNPUBLISHED = 'UNPUBLISHED'
 }
 
-export default BitmovinStreamStatus;
+export default StreamsVideoStatus;
 

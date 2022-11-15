@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import SimpleEncodingVodJobCredentials from './SimpleEncodingVodJobCredentials';
 import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
+import SimpleEncodingVodJobOutputArtifact from './SimpleEncodingVodJobOutputArtifact';
 import SimpleEncodingVodJobOutputType from './SimpleEncodingVodJobOutputType';
 
 /**

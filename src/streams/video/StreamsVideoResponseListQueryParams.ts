@@ -1,30 +1,30 @@
 
-export interface BitmovinStreamResponseListQueryParams {
+export interface StreamsVideoResponseListQueryParams {
 
     /**
      * Index of the first item to return, starting at 0. Default is 0
      * @type {number}
-     * @memberof BitmovinStreamResponseListQueryParams
+     * @memberof StreamsVideoResponseListQueryParams
      */
     offset?: number | undefined;
 
     /**
      * Maximum number of items to return. Default is 25, maximum is 100
      * @type {number}
-     * @memberof BitmovinStreamResponseListQueryParams
+     * @memberof StreamsVideoResponseListQueryParams
      */
     limit?: number | undefined;
 
     /**
      * Order list result according an resource attribute.  The fields that can be used for sorting are: + `createdAt` 
      * @type {string}
-     * @memberof BitmovinStreamResponseListQueryParams
+     * @memberof StreamsVideoResponseListQueryParams
      */
     sort?: string | undefined;
 }
 
-export class BitmovinStreamResponseListQueryParamsBuilder {
-    private internalParams: BitmovinStreamResponseListQueryParams = {};
+export class StreamsVideoResponseListQueryParamsBuilder {
+    private internalParams: StreamsVideoResponseListQueryParams = {};
 
     /**
      *
