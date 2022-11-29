@@ -688,6 +688,7 @@ export * from './StreamMode';
 export * from './StreamPerTitleFixedResolutionAndBitrateSettings';
 export * from './StreamPerTitleSettings';
 export * from './StreamSelectionMode';
+export * from './StreamsLiveUpdateRequest';
 export * from './StreamsVideoCreateRequest';
 export * from './StreamsVideoEncodingStatus';
 export * from './StreamsVideoEncodingTask';

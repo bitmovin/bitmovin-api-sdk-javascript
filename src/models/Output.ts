@@ -54,6 +54,7 @@ export class Output extends BitmovinResource {
   };
 
   /**
+   * Deprecation notice: This property does not have any effect and will not be returned by GET endpoints
    * @type {AclEntry[]}
    * @memberof Output
    */
