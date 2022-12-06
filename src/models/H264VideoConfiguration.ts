@@ -49,7 +49,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public dynamicRangeFormat?: H264DynamicRangeFormat;
 
   /**
-   * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+   * Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
    * @type {number}
    * @memberof H264VideoConfiguration
    */
@@ -63,28 +63,28 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public profile?: ProfileH264;
 
   /**
-   * Sets the amount of b frames.
+   * Amount of b frames
    * @type {number}
    * @memberof H264VideoConfiguration
    */
   public bframes?: number;
 
   /**
-   * Sets the amount of reference frames.
+   * Amount of reference frames.
    * @type {number}
    * @memberof H264VideoConfiguration
    */
   public refFrames?: number;
 
   /**
-   * Sets the minimum of quantization factor.
+   * Minimum quantization factor
    * @type {number}
    * @memberof H264VideoConfiguration
    */
   public qpMin?: number;
 
   /**
-   * Sets the maximum of quantization factor.
+   * Maximum quantization factor
    * @type {number}
    * @memberof H264VideoConfiguration
    */
@@ -97,7 +97,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public mvPredictionMode?: MvPredictionMode;
 
   /**
-   * Sets the maximum Motion-Vector-Search-Range
+   * Maximum motion vector search range
    * @type {number}
    * @memberof H264VideoConfiguration
    */

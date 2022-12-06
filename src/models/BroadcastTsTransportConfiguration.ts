@@ -48,14 +48,14 @@ export class BroadcastTsTransportConfiguration {
   public variableMuxRate?: boolean;
 
   /**
-   * Sets the presentation time stamp value for the first video frame. The timestamp is specified in the timescale of 90000
+   * Presentation time stamp value for the first video frame. The timestamp is specified in the timescale of 90000
    * @type {number}
    * @memberof BroadcastTsTransportConfiguration
    */
   public initialPresentationTimeStamp?: number;
 
   /**
-   * Sets the Program Clock Reference value at the beginning of the first packet for the transport stream. The PCR is specified in the timescale of 90000
+   * Program Clock Reference value at the beginning of the first packet for the transport stream. The PCR is specified in the timescale of 90000
    * @type {number}
    * @memberof BroadcastTsTransportConfiguration
    */

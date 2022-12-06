@@ -20,7 +20,7 @@ export class SimpleEncodingLiveJobOutput {
   };
 
   /**
-   * This sets the maximum output resolution that will be generated.
+   * The maximum output resolution to be generated
    * @type {SimpleEncodingLiveMaxResolution}
    * @memberof SimpleEncodingLiveJobOutput
    */

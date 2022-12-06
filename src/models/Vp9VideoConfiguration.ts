@@ -38,7 +38,7 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
   public dynamicRangeFormat?: Vp9DynamicRangeFormat;
 
   /**
-   * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+   * Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
    * @type {number}
    * @memberof Vp9VideoConfiguration
    */
@@ -87,14 +87,14 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
   public maxIntraRate?: number;
 
   /**
-   * Sets the minimum of quantization factor.
+   * Minimum quantization factor.
    * @type {number}
    * @memberof Vp9VideoConfiguration
    */
   public qpMin?: number;
 
   /**
-   * Sets the maximum of quantization factor.
+   * Maximum quantization factor.
    * @type {number}
    * @memberof Vp9VideoConfiguration
    */

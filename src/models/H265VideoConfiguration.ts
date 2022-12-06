@@ -54,7 +54,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public dynamicRangeFormat?: H265DynamicRangeFormat;
 
   /**
-   * Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+   * Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
    * @type {number}
    * @memberof H265VideoConfiguration
    */
@@ -67,21 +67,21 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public profile?: ProfileH265;
 
   /**
-   * Sets the amount of b frames
+   * Amount of b frames
    * @type {number}
    * @memberof H265VideoConfiguration
    */
   public bframes?: number;
 
   /**
-   * Sets the amount of reference frames
+   * Amount of reference frames
    * @type {number}
    * @memberof H265VideoConfiguration
    */
   public refFrames?: number;
 
   /**
-   * Sets the quantization factor
+   * Quantization factor
    * @type {number}
    * @memberof H265VideoConfiguration
    */
@@ -405,14 +405,14 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public rateDistortionLevelForQuantization?: RateDistortionLevelForQuantization;
 
   /**
-   * Sets the minimum of quantization factor. Valid value range: 0 - 69
+   * Minimum quantization factor. Valid value range: 0 - 69
    * @type {number}
    * @memberof H265VideoConfiguration
    */
   public qpMin?: number;
 
   /**
-   * Sets the maximum of quantization factor. Valid value range: 0 - 69
+   * Maximum quantization factor. Valid value range: 0 - 69
    * @type {number}
    * @memberof H265VideoConfiguration
    */
@@ -643,7 +643,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public pbRatio?: number;
 
   /**
-   * Sets the quantizer curve compression factor. It weights the frame quantizer based on the complexity of residual (measured by lookahead). Default 0.6
+   * Quantizer curve compression factor. It weights the frame quantizer based on the complexity of residual (measured by lookahead). Default 0.6
    * @type {number}
    * @memberof H265VideoConfiguration
    */

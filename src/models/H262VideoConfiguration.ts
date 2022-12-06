@@ -37,7 +37,7 @@ export class H262VideoConfiguration extends VideoConfiguration {
   public profile?: ProfileH262;
 
   /**
-   * Sets the amount of b frames.
+   * Amount of b frames.
    * @type {number}
    * @memberof H262VideoConfiguration
    */

@@ -1,5 +1,5 @@
 /**
- * Sets the Motion Vector Prediction Mode.
+ * Motion vector prediction mode
  * @export
  * @enum {string}
  */

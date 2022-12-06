@@ -48,7 +48,7 @@ export class StartLiveEncodingRequest {
   public reuploadSettings?: ReuploadSettings;
 
   /**
-   * Sets the version of the manifest generation engine
+   * Version of the manifest generation engine to be used
    * @type {ManifestGenerator}
    * @memberof StartLiveEncodingRequest
    */

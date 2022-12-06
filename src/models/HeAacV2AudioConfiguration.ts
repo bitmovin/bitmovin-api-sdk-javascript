@@ -24,7 +24,7 @@ export class HeAacV2AudioConfiguration extends AudioConfiguration {
   public channelLayout?: AacChannelLayout;
 
   /**
-   * Sets the Spectral Band Replication (SBR) and Parameteric Stereo (PS) signaling style.
+   * Spectral Band Replication (SBR) and Parameteric Stereo (PS) signaling style.
    * @type {HeAacV2Signaling}
    * @memberof HeAacV2AudioConfiguration
    */

@@ -20,14 +20,14 @@ export class StartEncodingRequest {
   public trimming?: Trimming;
 
   /**
-   * Set scheduling parameters of the encoding.
+   * Scheduling parameters of the encoding.
    * @type {Scheduling}
    * @memberof StartEncodingRequest
    */
   public scheduling?: Scheduling;
 
   /**
-   * Set special tweaks for your encoding job.
+   * Special tweaks for your encoding job.
    * @type {Tweaks}
    * @memberof StartEncodingRequest
    */
@@ -83,7 +83,7 @@ export class StartEncodingRequest {
   public vodSmoothManifests?: ManifestResource[];
 
   /**
-   * Sets the version of the manifest generation engine
+   * Version of the manifest generation engine to be used
    * @type {ManifestGenerator}
    * @memberof StartEncodingRequest
    */
