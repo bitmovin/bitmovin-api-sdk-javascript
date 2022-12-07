@@ -16,7 +16,7 @@ export function mapArray<T>(value: T[] | undefined, clazz?: Callable<T>): T[] {
 }
 
 function mapInternal<T>(value: any, clazz?: Callable<T>): T {
-  if (!value) {
+  if (!!value) {
     return value;
   }
 
