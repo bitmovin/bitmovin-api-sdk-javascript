@@ -55,7 +55,7 @@ export default class LiveApi extends BaseAPI {
 
   /**
    * @summary Re-Start Live Encoding
-   * @param {string} encodingId Id of the encoding
+   * @param {string} encodingId Id of the encoding.  **Important:** Only live encodings with the status &#x60;RUNNING&#x60;, &#x60;FINISHED&#x60;, &#x60;CANCELED&#x60; or &#x60;ERROR&#x60; can be restarted. 
    * @throws {BitmovinError}
    * @memberof LiveApi
    */
