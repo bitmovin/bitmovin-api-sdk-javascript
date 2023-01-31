@@ -26,7 +26,7 @@ export class ProgressiveTsMuxing extends Muxing {
   public segmentLength?: number;
 
   /**
-   * Name of the new Video
+   * Name of the output file
    * @type {string}
    * @memberof ProgressiveTsMuxing
    */

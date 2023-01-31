@@ -22,7 +22,7 @@ export class Mp4Muxing extends Muxing {
   public readonly type: MuxingType = MuxingType.MP4;
 
   /**
-   * Name of the new Video
+   * Name of the output file
    * @type {string}
    * @memberof Mp4Muxing
    */

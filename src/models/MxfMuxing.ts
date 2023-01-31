@@ -19,7 +19,7 @@ export class MxfMuxing extends Muxing {
   public readonly type: MuxingType = MuxingType.MXF;
 
   /**
-   * Name of the new file (required)
+   * Name of the output file (required)
    * @type {string}
    * @memberof MxfMuxing
    */

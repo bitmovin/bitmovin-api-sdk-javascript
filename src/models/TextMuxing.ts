@@ -19,7 +19,7 @@ export class TextMuxing extends Muxing {
   public readonly type: MuxingType = MuxingType.TEXT;
 
   /**
-   * The output file name (required)
+   * Name of the output file (required)
    * @type {string}
    * @memberof TextMuxing
    */

@@ -26,7 +26,7 @@ export class ChunkedTextMuxing extends Muxing {
   public segmentLength?: number;
 
   /**
-   * Segment naming template
+   * Segment naming policy
    * @type {string}
    * @memberof ChunkedTextMuxing
    */

@@ -15,6 +15,8 @@ import AkamaiMslApi from './akamaiMsl/AkamaiMslApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import LiveMediaIngestApi from './liveMediaIngest/LiveMediaIngestApi';
 import CdnApi from './cdn/CdnApi';
+import CheckOutputPermissionsRequest from '../../models/CheckOutputPermissionsRequest';
+import CheckOutputPermissionsResponse from '../../models/CheckOutputPermissionsResponse';
 import Output from '../../models/Output';
 import OutputType from '../../models/OutputType';
 import PaginationResponse from '../../models/PaginationResponse';
@@ -58,6 +60,22 @@ export default class OutputsApi extends BaseAPI {
     this.akamaiNetstorage = new AkamaiNetstorageApi(configuration);
     this.liveMediaIngest = new LiveMediaIngestApi(configuration);
     this.cdn = new CdnApi(configuration);
+  }
+
+  /**
+   * @summary Check output permissions (S3 only)
+   * @param {string} outputId Id of the output to be checked. Currently limited to S3 outputs. The access credentials that have been provided for this Output still need to be valid, otherwise the request will fail. If they are not valid any more, create a new Output with new credentials (resources are immutable).
+   * @param {CheckOutputPermissionsRequest} [checkOutputPermissionsRequest] Additional parameters for the permissions check
+   * @throws {BitmovinError}
+   * @memberof OutputsApi
+   */
+  public checkPermissions(outputId: string, checkOutputPermissionsRequest?: CheckOutputPermissionsRequest): Promise<CheckOutputPermissionsResponse> {
+    const pathParamMap = {
+      output_id: outputId
+    };
+    return this.restClient.post<CheckOutputPermissionsResponse>('/encoding/outputs/{output_id}/check-permissions', pathParamMap, checkOutputPermissionsRequest).then((response) => {
+      return map(response, CheckOutputPermissionsResponse);
+    });
   }
 
   /**

@@ -186,6 +186,8 @@ export * from './CencPlayReady';
 export * from './CencWidevine';
 export * from './ChannelLayout';
 export * from './ChannelsAttributeForAudio';
+export * from './CheckOutputPermissionsRequest';
+export * from './CheckOutputPermissionsResponse';
 export * from './ChromaLocation';
 export * from './ChunkedTextMuxing';
 export * from './ClearKeyDrm';

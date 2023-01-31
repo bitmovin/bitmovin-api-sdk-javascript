@@ -44,7 +44,7 @@ export class Message extends BitmovinResponse {
   public more?: any;
 
   /**
-   * Timestamp when the message occured
+   * Timestamp when the message occurred
    * @type {Date}
    * @memberof Message
    */
