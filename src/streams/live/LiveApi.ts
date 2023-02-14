@@ -16,7 +16,7 @@ export default class LiveApi extends BaseAPI {
   }
 
   /**
-   * @summary Update stream by id
+   * @summary Update live stream by id
    * @param {string} streamId Id of the stream.
    * @param {StreamsLiveUpdateRequest} streamsLiveUpdateRequest Stream fields to update.
    * @throws {BitmovinError}

@@ -20,7 +20,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Create new Stream
+   * @summary Create new Streams video
    * @param {StreamsVideoCreateRequest} streamsVideoCreateRequest Create a new stream.
    * @throws {BitmovinError}
    * @memberof VideoApi
@@ -32,7 +32,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Get stream by id
+   * @summary Get Streams video by id
    * @param {string} streamId Id of the stream.
    * @throws {BitmovinError}
    * @memberof VideoApi
@@ -47,7 +47,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Get paginated list of streams
+   * @summary Get paginated list of Streams videos
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof VideoApi
@@ -65,7 +65,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Update stream by id
+   * @summary Update Streams video by id
    * @param {string} streamId Id of the stream.
    * @param {StreamsVideoUpdateRequest} streamsVideoUpdateRequest Stream fields to update.
    * @throws {BitmovinError}
