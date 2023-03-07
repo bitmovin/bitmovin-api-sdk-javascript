@@ -16,6 +16,7 @@ export class SimpleEncodingVodJobRequest {
   public encodingTemplate?: EncodingTemplate;
 
   /**
+   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
    * @type {SimpleEncodingVodJobInput[]}
    * @memberof SimpleEncodingVodJobRequest
    */

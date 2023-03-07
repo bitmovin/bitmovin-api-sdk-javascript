@@ -17,6 +17,7 @@ export class SimpleEncodingLiveJobRequest {
   public encodingProfile?: SimpleEncodingLiveProfile;
 
   /**
+   * Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live#inputs) (required)
    * @type {SimpleEncodingLiveJobInput}
    * @memberof SimpleEncodingLiveJobRequest
    */

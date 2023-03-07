@@ -14,6 +14,7 @@ import XmlNamespace from './XmlNamespace';
  */
 export class DashManifest extends Manifest {
   /**
+   * Determines if segmented or progressive representations can appear in the manifest
    * @type {DashProfile}
    * @memberof DashManifest
    */
