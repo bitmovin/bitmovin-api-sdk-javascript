@@ -21,6 +21,7 @@ export class EncodingOutput {
   public outputPath?: string;
 
   /**
+   * Determines accessibility of files written to this output. Only applies to output types that support ACLs. Defaults to PUBLIC_READ if the list is empty. The destination (e.g. cloud storage bucket) needs to allow the configured ACL
    * @type {AclEntry[]}
    * @memberof EncodingOutput
    */
