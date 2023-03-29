@@ -19,12 +19,20 @@ export class StreamsLiveUpdateRequest {
    */
   public description?: string;
 
+  /**
+   * Id of the stream config to use
+   * @type {string}
+   * @memberof StreamsLiveUpdateRequest
+   */
+  public configId?: string;
+
   constructor(obj?: Partial<StreamsLiveUpdateRequest>) {
     if(!obj) {
       return;
     }
     this.title = map(obj.title);
     this.description = map(obj.description);
+    this.configId = map(obj.configId);
   }
 }
 

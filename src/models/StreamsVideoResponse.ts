@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import StreamsConfigResponse from './StreamsConfigResponse';
 import StreamsVideoEncodingTask from './StreamsVideoEncodingTask';
 import StreamsVideoStatus from './StreamsVideoStatus';
 
@@ -50,6 +51,12 @@ export class StreamsVideoResponse {
   public status?: StreamsVideoStatus;
 
   /**
+   * @type {StreamsConfigResponse}
+   * @memberof StreamsVideoResponse
+   */
+  public config?: StreamsConfigResponse;
+
+  /**
    * List of encoding status information
    * @type {StreamsVideoEncodingTask[]}
    * @memberof StreamsVideoResponse
@@ -66,6 +73,7 @@ export class StreamsVideoResponse {
     this.description = map(obj.description);
     this.createdAt = map(obj.createdAt, Date);
     this.status = map(obj.status);
+    this.config = map(obj.config, StreamsConfigResponse);
     this.encodingTasks = mapArray(obj.encodingTasks, StreamsVideoEncodingTask);
   }
 }

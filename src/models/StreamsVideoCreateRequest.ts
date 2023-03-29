@@ -26,6 +26,13 @@ export class StreamsVideoCreateRequest {
    */
   public description?: string;
 
+  /**
+   * Id of the stream config to use
+   * @type {string}
+   * @memberof StreamsVideoCreateRequest
+   */
+  public configId?: string;
+
   constructor(obj?: Partial<StreamsVideoCreateRequest>) {
     if(!obj) {
       return;
@@ -33,6 +40,7 @@ export class StreamsVideoCreateRequest {
     this.assetUrl = map(obj.assetUrl);
     this.title = map(obj.title);
     this.description = map(obj.description);
+    this.configId = map(obj.configId);
   }
 }
 
