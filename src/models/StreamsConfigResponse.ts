@@ -26,6 +26,20 @@ export class StreamsConfigResponse {
    */
   public playerStyle?: any;
 
+  /**
+   * URL of the watermark image
+   * @type {string}
+   * @memberof StreamsConfigResponse
+   */
+  public watermarkUrl?: string;
+
+  /**
+   * Target link of the watermark image
+   * @type {string}
+   * @memberof StreamsConfigResponse
+   */
+  public watermarkTargetLink?: string;
+
   constructor(obj?: Partial<StreamsConfigResponse>) {
     if(!obj) {
       return;
@@ -33,6 +47,8 @@ export class StreamsConfigResponse {
     this.id = map(obj.id);
     this.orgId = map(obj.orgId);
     this.playerStyle = map(obj.playerStyle);
+    this.watermarkUrl = map(obj.watermarkUrl);
+    this.watermarkTargetLink = map(obj.watermarkTargetLink);
   }
 }
 
