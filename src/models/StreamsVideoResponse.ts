@@ -63,6 +63,13 @@ export class StreamsVideoResponse {
    */
   public encodingTasks?: StreamsVideoEncodingTask[];
 
+  /**
+   * Poster URL
+   * @type {string}
+   * @memberof StreamsVideoResponse
+   */
+  public posterUrl?: string;
+
   constructor(obj?: Partial<StreamsVideoResponse>) {
     if(!obj) {
       return;
@@ -75,6 +82,7 @@ export class StreamsVideoResponse {
     this.status = map(obj.status);
     this.config = map(obj.config, StreamsConfigResponse);
     this.encodingTasks = mapArray(obj.encodingTasks, StreamsVideoEncodingTask);
+    this.posterUrl = map(obj.posterUrl);
   }
 }
 

@@ -34,6 +34,13 @@ export class StreamsVideoUpdateRequest {
    */
   public configId?: string;
 
+  /**
+   * URL to hosted poster image
+   * @type {string}
+   * @memberof StreamsVideoUpdateRequest
+   */
+  public posterUrl?: string;
+
   constructor(obj?: Partial<StreamsVideoUpdateRequest>) {
     if(!obj) {
       return;
@@ -42,6 +49,7 @@ export class StreamsVideoUpdateRequest {
     this.title = map(obj.title);
     this.description = map(obj.description);
     this.configId = map(obj.configId);
+    this.posterUrl = map(obj.posterUrl);
   }
 }
 

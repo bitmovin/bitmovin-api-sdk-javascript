@@ -135,6 +135,7 @@ export * from './AudioVideoSyncMode';
 export * from './AudioVolumeFilter';
 export * from './AudioVolumeFormat';
 export * from './AudioVolumeUnit';
+export * from './AutoLevelSetup';
 export * from './AutoRepresentation';
 export * from './AutoRestartConfiguration';
 export * from './Av1PerTitleConfiguration';

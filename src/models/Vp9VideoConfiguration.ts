@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AutoLevelSetup from './AutoLevelSetup';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
 import DisplayAspectRatio from './DisplayAspectRatio';
@@ -251,6 +252,13 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
    */
   public arnrType?: Vp9ArnrType;
 
+  /**
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting targetLevel, rateOvershootPct, or clientBufferSize properties will automatically disable the calculation.
+   * @type {AutoLevelSetup}
+   * @memberof Vp9VideoConfiguration
+   */
+  public autoLevelSetup?: AutoLevelSetup;
+
   constructor(obj?: Partial<Vp9VideoConfiguration>) {
     super(obj);
     if(!obj) {
@@ -289,6 +297,7 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
     this.arnrMaxFrames = map(obj.arnrMaxFrames);
     this.arnrStrength = map(obj.arnrStrength);
     this.arnrType = map(obj.arnrType);
+    this.autoLevelSetup = map(obj.autoLevelSetup);
   }
 }
 

@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AdaptiveQuantMode from './AdaptiveQuantMode';
+import AutoLevelSetup from './AutoLevelSetup';
 import BAdapt from './BAdapt';
 import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
 import CodecConfigType from './CodecConfigType';
@@ -705,6 +706,13 @@ export class H265VideoConfiguration extends VideoConfiguration {
    */
   public cea608708SubtitleConfig?: Cea608708SubtitleConfiguration;
 
+  /**
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+   * @type {AutoLevelSetup}
+   * @memberof H265VideoConfiguration
+   */
+  public autoLevelSetup?: AutoLevelSetup;
+
   constructor(obj?: Partial<H265VideoConfiguration>) {
     super(obj);
     if(!obj) {
@@ -806,6 +814,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
     this.limitSao = map(obj.limitSao);
     this.lowpassDct = map(obj.lowpassDct);
     this.cea608708SubtitleConfig = map(obj.cea608708SubtitleConfig, Cea608708SubtitleConfiguration);
+    this.autoLevelSetup = map(obj.autoLevelSetup);
   }
 }
 

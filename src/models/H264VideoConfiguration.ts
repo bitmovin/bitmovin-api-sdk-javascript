@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AdaptiveQuantMode from './AdaptiveQuantMode';
+import AutoLevelSetup from './AutoLevelSetup';
 import BAdapt from './BAdapt';
 import Cea608708SubtitleConfiguration from './Cea608708SubtitleConfiguration';
 import CodecConfigType from './CodecConfigType';
@@ -346,6 +347,13 @@ export class H264VideoConfiguration extends VideoConfiguration {
    */
   public psyTrellis?: number;
 
+  /**
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+   * @type {AutoLevelSetup}
+   * @memberof H264VideoConfiguration
+   */
+  public autoLevelSetup?: AutoLevelSetup;
+
   constructor(obj?: Partial<H264VideoConfiguration>) {
     super(obj);
     if(!obj) {
@@ -396,6 +404,7 @@ export class H264VideoConfiguration extends VideoConfiguration {
     this.quantizerCurveCompression = map(obj.quantizerCurveCompression);
     this.psyRateDistortionOptimization = map(obj.psyRateDistortionOptimization);
     this.psyTrellis = map(obj.psyTrellis);
+    this.autoLevelSetup = map(obj.autoLevelSetup);
   }
 }
 

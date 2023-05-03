@@ -55,6 +55,13 @@ export class StreamsLiveResponse {
    */
   public config?: StreamsConfigResponse;
 
+  /**
+   * Poster URL
+   * @type {string}
+   * @memberof StreamsLiveResponse
+   */
+  public posterUrl?: string;
+
   constructor(obj?: Partial<StreamsLiveResponse>) {
     if(!obj) {
       return;
@@ -66,6 +73,7 @@ export class StreamsLiveResponse {
     this.createdAt = map(obj.createdAt, Date);
     this.lifeCycle = map(obj.lifeCycle);
     this.config = map(obj.config, StreamsConfigResponse);
+    this.posterUrl = map(obj.posterUrl);
   }
 }
 

@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AutoLevelSetup from './AutoLevelSetup';
 import Av1PresetConfiguration from './Av1PresetConfiguration';
 import CodecConfigType from './CodecConfigType';
 import ColorConfig from './ColorConfig';
@@ -26,12 +27,20 @@ export class Av1VideoConfiguration extends VideoConfiguration {
    */
   public presetConfiguration?: Av1PresetConfiguration;
 
+  /**
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate.
+   * @type {AutoLevelSetup}
+   * @memberof Av1VideoConfiguration
+   */
+  public autoLevelSetup?: AutoLevelSetup;
+
   constructor(obj?: Partial<Av1VideoConfiguration>) {
     super(obj);
     if(!obj) {
       return;
     }
     this.presetConfiguration = map(obj.presetConfiguration);
+    this.autoLevelSetup = map(obj.autoLevelSetup);
   }
 }
 

@@ -71,7 +71,7 @@ export default class LiveApi extends BaseAPI {
   }
 
   /**
-   * @summary Update live stream by id
+   * @summary Partially update live stream by id
    * @param {string} streamId Id of the stream.
    * @param {StreamsLiveUpdateRequest} streamsLiveUpdateRequest Stream fields to update.
    * @throws {BitmovinError}
@@ -82,6 +82,22 @@ export default class LiveApi extends BaseAPI {
       stream_id: streamId
     };
     return this.restClient.patch<StreamsLiveUpdateRequest>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
+      return map(response, StreamsLiveUpdateRequest);
+    });
+  }
+
+  /**
+   * @summary Update live stream by id
+   * @param {string} streamId Id of the stream.
+   * @param {StreamsLiveUpdateRequest} streamsLiveUpdateRequest The updated stream config object.
+   * @throws {BitmovinError}
+   * @memberof LiveApi
+   */
+  public update(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveUpdateRequest> {
+    const pathParamMap = {
+      stream_id: streamId
+    };
+    return this.restClient.put<StreamsLiveUpdateRequest>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
       return map(response, StreamsLiveUpdateRequest);
     });
   }
