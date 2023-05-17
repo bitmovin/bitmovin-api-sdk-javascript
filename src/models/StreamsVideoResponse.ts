@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import StreamsAdConfigResponse from './StreamsAdConfigResponse';
 import StreamsConfigResponse from './StreamsConfigResponse';
 import StreamsVideoEncodingTask from './StreamsVideoEncodingTask';
 import StreamsVideoStatus from './StreamsVideoStatus';
@@ -70,6 +71,12 @@ export class StreamsVideoResponse {
    */
   public posterUrl?: string;
 
+  /**
+   * @type {StreamsAdConfigResponse}
+   * @memberof StreamsVideoResponse
+   */
+  public adConfig?: StreamsAdConfigResponse;
+
   constructor(obj?: Partial<StreamsVideoResponse>) {
     if(!obj) {
       return;
@@ -83,6 +90,7 @@ export class StreamsVideoResponse {
     this.config = map(obj.config, StreamsConfigResponse);
     this.encodingTasks = mapArray(obj.encodingTasks, StreamsVideoEncodingTask);
     this.posterUrl = map(obj.posterUrl);
+    this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
   }
 }
 

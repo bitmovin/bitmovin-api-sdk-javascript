@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import ProgramDateTimeSettings from './ProgramDateTimeSettings';
 
 /**
  * @export
@@ -33,6 +34,13 @@ export class LiveHlsManifest {
    */
   public insertProgramDateTime?: boolean;
 
+  /**
+   * Configuration for the EXT-X-PROGRAM-DATETIME tag
+   * @type {ProgramDateTimeSettings}
+   * @memberof LiveHlsManifest
+   */
+  public programDateTimeSettings?: ProgramDateTimeSettings;
+
   constructor(obj?: Partial<LiveHlsManifest>) {
     if(!obj) {
       return;
@@ -41,6 +49,7 @@ export class LiveHlsManifest {
     this.timeshift = map(obj.timeshift);
     this.liveEdgeOffset = map(obj.liveEdgeOffset);
     this.insertProgramDateTime = map(obj.insertProgramDateTime);
+    this.programDateTimeSettings = map(obj.programDateTimeSettings, ProgramDateTimeSettings);
   }
 }
 

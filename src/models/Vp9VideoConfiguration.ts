@@ -253,7 +253,7 @@ export class Vp9VideoConfiguration extends VideoConfiguration {
   public arnrType?: Vp9ArnrType;
 
   /**
-   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting targetLevel, rateOvershootPct, or clientBufferSize properties will automatically disable the calculation.
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. In the case the target level is set explicitly, the maximum bitrate and buffer size are calculated based on the defined level. Explicitly setting rateOvershootPct, or clientBufferSize properties will disable the automatic calculation.
    * @type {AutoLevelSetup}
    * @memberof Vp9VideoConfiguration
    */

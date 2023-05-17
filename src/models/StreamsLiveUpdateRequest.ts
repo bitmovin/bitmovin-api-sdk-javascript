@@ -33,6 +33,13 @@ export class StreamsLiveUpdateRequest {
    */
   public posterUrl?: string;
 
+  /**
+   * Id of the advertisement config to use
+   * @type {string}
+   * @memberof StreamsLiveUpdateRequest
+   */
+  public adConfigId?: string;
+
   constructor(obj?: Partial<StreamsLiveUpdateRequest>) {
     if(!obj) {
       return;
@@ -41,6 +48,7 @@ export class StreamsLiveUpdateRequest {
     this.description = map(obj.description);
     this.configId = map(obj.configId);
     this.posterUrl = map(obj.posterUrl);
+    this.adConfigId = map(obj.adConfigId);
   }
 }
 

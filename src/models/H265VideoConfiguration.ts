@@ -707,7 +707,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public cea608708SubtitleConfig?: Cea608708SubtitleConfiguration;
 
   /**
-   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+   * Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. In the case the target level is set explicitly, the maximum bitrate and buffer size are calculated based on the defined level. Explicitly setting maxBitrate, or bufsize properties will disable the automatic calculation.
    * @type {AutoLevelSetup}
    * @memberof H265VideoConfiguration
    */

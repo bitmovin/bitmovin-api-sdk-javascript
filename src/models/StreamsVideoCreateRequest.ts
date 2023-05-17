@@ -33,6 +33,13 @@ export class StreamsVideoCreateRequest {
    */
   public configId?: string;
 
+  /**
+   * Id of the advertisement config to use
+   * @type {string}
+   * @memberof StreamsVideoCreateRequest
+   */
+  public adConfigId?: string;
+
   constructor(obj?: Partial<StreamsVideoCreateRequest>) {
     if(!obj) {
       return;
@@ -41,6 +48,7 @@ export class StreamsVideoCreateRequest {
     this.title = map(obj.title);
     this.description = map(obj.description);
     this.configId = map(obj.configId);
+    this.adConfigId = map(obj.adConfigId);
   }
 }
 
