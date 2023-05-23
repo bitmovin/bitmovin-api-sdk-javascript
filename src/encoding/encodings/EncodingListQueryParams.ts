@@ -18,6 +18,13 @@ export interface EncodingListQueryParams {
     limit?: number | undefined;
 
     /**
+     * A boolean indicating whether the total count should be returned as well. Default is true
+     * @type {boolean}
+     * @memberof EncodingListQueryParams
+     */
+    includeTotalCount?: boolean | undefined;
+
+    /**
      * Order list result according an encoding resource attribute.  The fields that can be used for sorting are: + `id` + `startedAt` + `createdAt` + `modifiedAt` + `finishedAt` + `type` + `name` + `status` + `cloudRegion` + `encoderVersion` 
      * @type {string}
      * @memberof EncodingListQueryParams
@@ -148,6 +155,15 @@ export class EncodingListQueryParamsBuilder {
      */
     public limit(limit: number) {
         this.internalParams.limit = limit;
+        return this;
+    }
+
+    /**
+     *
+     * @param includeTotalCount A boolean indicating whether the total count should be returned as well. Default is true
+     */
+    public includeTotalCount(includeTotalCount: boolean) {
+        this.internalParams.includeTotalCount = includeTotalCount;
         return this;
     }
 

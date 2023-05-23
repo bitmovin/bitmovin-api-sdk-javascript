@@ -77,12 +77,12 @@ export default class LiveApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof LiveApi
    */
-  public patchStreamsLive(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveUpdateRequest> {
+  public patchStreamsLive(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveResponse> {
     const pathParamMap = {
       stream_id: streamId
     };
-    return this.restClient.patch<StreamsLiveUpdateRequest>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
-      return map(response, StreamsLiveUpdateRequest);
+    return this.restClient.patch<StreamsLiveResponse>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
+      return map(response, StreamsLiveResponse);
     });
   }
 
@@ -93,12 +93,12 @@ export default class LiveApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof LiveApi
    */
-  public update(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveUpdateRequest> {
+  public update(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveResponse> {
     const pathParamMap = {
       stream_id: streamId
     };
-    return this.restClient.put<StreamsLiveUpdateRequest>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
-      return map(response, StreamsLiveUpdateRequest);
+    return this.restClient.put<StreamsLiveResponse>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
+      return map(response, StreamsLiveResponse);
     });
   }
 }
