@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobInput from './SimpleEncodingVodJobInput';
+import SimpleEncodingVodJobOptions from './SimpleEncodingVodJobOptions';
 import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
 
 /**
@@ -30,6 +31,13 @@ export class SimpleEncodingVodJobRequest {
   public outputs?: SimpleEncodingVodJobOutput[];
 
   /**
+   * Options to customize the Simple Encoding Job
+   * @type {SimpleEncodingVodJobOptions}
+   * @memberof SimpleEncodingVodJobRequest
+   */
+  public options?: SimpleEncodingVodJobOptions;
+
+  /**
    * This property will be used for naming the encoding and the manifests.
    * @type {string}
    * @memberof SimpleEncodingVodJobRequest
@@ -43,6 +51,7 @@ export class SimpleEncodingVodJobRequest {
     this.encodingTemplate = map(obj.encodingTemplate);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobOutput);
+    this.options = map(obj.options, SimpleEncodingVodJobOptions);
     this.name = map(obj.name);
   }
 }

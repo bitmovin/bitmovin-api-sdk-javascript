@@ -11,27 +11,26 @@ import UtcTiming from './UtcTiming';
 import XmlNamespace from './XmlNamespace';
 
 /**
- * V2 of the default dash manifest is an experimental feature and might be subject to change in the future. 
  * @export
  * @class DashManifestDefault
  */
 export class DashManifestDefault extends DashManifest {
   /**
-   * The id of the encoding to create a default manifest from. Required: encodingId or periods
+   * The id of the encoding to create a default manifest from. Either \"encodingId\" or \"periods\" is required.
    * @type {string}
    * @memberof DashManifestDefault
    */
   public encodingId?: string;
 
   /**
-   * The version of the default manifest generator
+   * Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
    * @type {DashManifestDefaultVersion}
    * @memberof DashManifestDefault
    */
   public version?: DashManifestDefaultVersion;
 
   /**
-   * Adds a period for every item. Required: encodingId or periods
+   * Adds a period for every item. Either \"periods\" or \"encodingId\" is required.
    * @type {DefaultDashManifestPeriod[]}
    * @memberof DashManifestDefault
    */

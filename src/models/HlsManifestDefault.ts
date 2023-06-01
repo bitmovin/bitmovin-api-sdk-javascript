@@ -21,7 +21,7 @@ export class HlsManifestDefault extends HlsManifest {
   public encodingId?: string;
 
   /**
-   * The version of the default manifest generator
+   * Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
    * @type {HlsManifestDefaultVersion}
    * @memberof HlsManifestDefault
    */

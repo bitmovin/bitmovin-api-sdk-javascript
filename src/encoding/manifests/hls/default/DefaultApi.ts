@@ -16,8 +16,8 @@ export default class DefaultApi extends BaseAPI {
   }
 
   /**
-   * @summary Create HLS Manifest Default
-   * @param {HlsManifestDefault} hlsManifestDefault The HLS Manifest to be created
+   * @summary Create Default HLS Manifest
+   * @param {HlsManifestDefault} hlsManifestDefault A Default Manifest is the easiest way to create a manifest file. Its contents will be configured automatically, depending on what output your encoding creates (muxings, thumbnails, sprites, subtitles, DRM information). If you need more control, create a Custom Manifest instead. See TODO: link
    * @throws {BitmovinError}
    * @memberof DefaultApi
    */

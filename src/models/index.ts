@@ -637,6 +637,7 @@ export * from './SimpleEncodingVodJobGcsServiceAccountCredentials';
 export * from './SimpleEncodingVodJobInput';
 export * from './SimpleEncodingVodJobInputSourceType';
 export * from './SimpleEncodingVodJobInputType';
+export * from './SimpleEncodingVodJobOptions';
 export * from './SimpleEncodingVodJobOutput';
 export * from './SimpleEncodingVodJobOutputArtifact';
 export * from './SimpleEncodingVodJobOutputType';

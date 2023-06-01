@@ -34,7 +34,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Create Smooth Streaming Manifest
-   * @param {SmoothStreamingManifest} smoothStreamingManifest The Smooth Streaming Manifest to be created
+   * @param {SmoothStreamingManifest} smoothStreamingManifest A Custom Smooth Streaming Manifest gives you full control over its contents. Add Representations and Content Protections via the respective endpoints. If you need a simpler solution, create a Default Manifest instead. See TODO: link
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
@@ -46,7 +46,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Delete Smooth Streaming Manifest
-   * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
@@ -61,7 +61,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Smooth Streaming Manifest Details
-   * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
@@ -71,6 +71,21 @@ export default class SmoothApi extends BaseAPI {
     };
     return this.restClient.get<SmoothStreamingManifest>('/encoding/manifests/smooth/{manifest_id}', pathParamMap).then((response) => {
       return map(response, SmoothStreamingManifest);
+    });
+  }
+
+  /**
+   * @summary Manifest Start Details
+   * @param {string} manifestId Id of the manifest
+   * @throws {BitmovinError}
+   * @memberof SmoothApi
+   */
+  public getStartRequest(manifestId: string): Promise<StartManifestRequest> {
+    const pathParamMap = {
+      manifest_id: manifestId
+    };
+    return this.restClient.get<StartManifestRequest>('/encoding/manifests/smooth/{manifest_id}/start', pathParamMap).then((response) => {
+      return map(response, StartManifestRequest);
     });
   }
 
@@ -94,7 +109,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Start Smooth Streaming Manifest Creation
-   * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof SmoothApi
@@ -110,7 +125,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Smooth Streaming Manifest Creation Status
-   * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */
@@ -125,7 +140,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Stop Smooth Streaming Manifest Creation
-   * @param {string} manifestId Id of the Smooth Streaming manifest.
+   * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */

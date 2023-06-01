@@ -103,7 +103,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public minBitrate?: number;
 
   /**
-   * Specify the size of the VBV buffer (kbits)
+   * Size of the VBV buffer (kbits)
    * @type {number}
    * @memberof H265VideoConfiguration
    */
@@ -399,7 +399,7 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public rateDistortionLevelForModeDecision?: number;
 
   /**
-   * Specify the amount of rate-distortion analysis to use within quantization.
+   * Specifies the amount of rate-distortion analysis to use within quantization.
    * @type {RateDistortionLevelForQuantization}
    * @memberof H265VideoConfiguration
    */

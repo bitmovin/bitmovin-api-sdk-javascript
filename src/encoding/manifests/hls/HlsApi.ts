@@ -33,8 +33,8 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary Create HLS Manifest
-   * @param {HlsManifest} hlsManifest The HLS Manifest to be created
+   * @summary Create Custom HLS Manifest
+   * @param {HlsManifest} hlsManifest A Custom HLS Manifest gives you full control over its contents. Add Variant Streams and Media elements via the respective endpoints. If you need a simpler solution, create a Default Manifest instead. See TODO: link
    * @throws {BitmovinError}
    * @memberof HlsApi
    */
@@ -46,7 +46,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary Delete HLS Manifest
-   * @param {string} manifestId Id of the hls manifest.
+   * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
    */
@@ -61,7 +61,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary HLS Manifest Details
-   * @param {string} manifestId Id of the hls manifest.
+   * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
    */
@@ -71,6 +71,21 @@ export default class HlsApi extends BaseAPI {
     };
     return this.restClient.get<HlsManifest>('/encoding/manifests/hls/{manifest_id}', pathParamMap).then((response) => {
       return map(response, HlsManifest);
+    });
+  }
+
+  /**
+   * @summary Manifest Start Details
+   * @param {string} manifestId ID of the manifest
+   * @throws {BitmovinError}
+   * @memberof HlsApi
+   */
+  public getStartRequest(manifestId: string): Promise<StartManifestRequest> {
+    const pathParamMap = {
+      manifest_id: manifestId
+    };
+    return this.restClient.get<StartManifestRequest>('/encoding/manifests/hls/{manifest_id}/start', pathParamMap).then((response) => {
+      return map(response, StartManifestRequest);
     });
   }
 
@@ -94,7 +109,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary Start HLS Manifest Creation
-   * @param {string} manifestId Id of the HLS manifest.
+   * @param {string} manifestId Id of the HLS Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof HlsApi
@@ -110,7 +125,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary HLS Manifest Creation Status
-   * @param {string} manifestId Id of the HLS manifest.
+   * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
    */
@@ -125,7 +140,7 @@ export default class HlsApi extends BaseAPI {
 
   /**
    * @summary Stop HLS Manifest Creation
-   * @param {string} manifestId Id of the HLS manifest.
+   * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
    */

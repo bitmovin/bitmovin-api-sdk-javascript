@@ -42,7 +42,7 @@ export class SmoothStreamingRepresentation extends BitmovinResource {
   public trackName?: string;
 
   /**
-   * Specify the priority of this representation. Representations with higher priority will be listed first in the manifest.
+   * Specifies the priority of this representation. In the manifest, representations will appear ordered by descending priority values.
    * @type {number}
    * @memberof SmoothStreamingRepresentation
    */

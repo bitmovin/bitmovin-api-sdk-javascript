@@ -6,7 +6,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class Scheduling {
   /**
-   * Specify the priority of this encoding (0 - 100). Higher numbers mean higher priority. Default is 50.
+   * Specifies the priority of this encoding (0 - 100). Higher numbers mean higher priority. Default is 50.
    * @type {number}
    * @memberof Scheduling
    */

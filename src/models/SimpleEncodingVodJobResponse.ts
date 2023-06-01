@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import EncodingTemplate from './EncodingTemplate';
 import SimpleEncodingVodJobErrors from './SimpleEncodingVodJobErrors';
 import SimpleEncodingVodJobInput from './SimpleEncodingVodJobInput';
+import SimpleEncodingVodJobOptions from './SimpleEncodingVodJobOptions';
 import SimpleEncodingVodJobOutput from './SimpleEncodingVodJobOutput';
 import SimpleEncodingVodJobStatus from './SimpleEncodingVodJobStatus';
 
@@ -51,6 +52,13 @@ export class SimpleEncodingVodJobResponse {
   public outputs?: SimpleEncodingVodJobOutput[];
 
   /**
+   * Options to customize the Simple Encoding Job
+   * @type {SimpleEncodingVodJobOptions}
+   * @memberof SimpleEncodingVodJobResponse
+   */
+  public options?: SimpleEncodingVodJobOptions;
+
+  /**
    * Describes all the errors in cases the status of the job is 'error'. 
    * @type {SimpleEncodingVodJobErrors[]}
    * @memberof SimpleEncodingVodJobResponse
@@ -88,6 +96,7 @@ export class SimpleEncodingVodJobResponse {
     this.encodingId = map(obj.encodingId);
     this.inputs = mapArray(obj.inputs, SimpleEncodingVodJobInput);
     this.outputs = mapArray(obj.outputs, SimpleEncodingVodJobOutput);
+    this.options = map(obj.options, SimpleEncodingVodJobOptions);
     this.errors = mapArray(obj.errors, SimpleEncodingVodJobErrors);
     this.createdAt = map(obj.createdAt, Date);
     this.modifiedAt = map(obj.modifiedAt, Date);

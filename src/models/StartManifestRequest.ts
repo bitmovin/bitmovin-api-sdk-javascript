@@ -7,7 +7,7 @@ import ManifestGenerator from './ManifestGenerator';
  */
 export class StartManifestRequest {
   /**
-   * Version of the manifest generation engine to be used. The `V2` option is currently only supported for manifests including resources from a single encoding and is only valid in combination with encoder versions >=  `2.108.0`.
+   * Major version of the manifest generator to be used. `V2` is the recommended option and requires the following minimum encoder versions: 2.121.0 for DASH, 2.111.0 for HLS, 2.108.0 for SMOOTH. The default value depends on the sign-up date of your organization. 
    * @type {ManifestGenerator}
    * @memberof StartManifestRequest
    */

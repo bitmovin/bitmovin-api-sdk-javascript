@@ -30,8 +30,8 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary Create DASH Manifest
-   * @param {DashManifest} dashManifest The DASH manifest to be created
+   * @summary Create Custom DASH Manifest
+   * @param {DashManifest} dashManifest A Custom DASH Manifest gives you full control over its contents. Add Periods, Adaptation Sets, Representations, Content Protections or Custom XML Elements via the respective endpoints. If you need a simpler solution, create a Default Manifest instead. See TODO: link
    * @throws {BitmovinError}
    * @memberof DashApi
    */
@@ -43,7 +43,7 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary Delete DASH Manifest
-   * @param {string} manifestId UUID of the DASH manifest to be deleted
+   * @param {string} manifestId UUID of the DASH Manifest to be deleted
    * @throws {BitmovinError}
    * @memberof DashApi
    */
@@ -58,7 +58,7 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary DASH Manifest Details
-   * @param {string} manifestId UUID of the dash manifest
+   * @param {string} manifestId UUID of the DASH Manifest
    * @throws {BitmovinError}
    * @memberof DashApi
    */
@@ -68,6 +68,21 @@ export default class DashApi extends BaseAPI {
     };
     return this.restClient.get<DashManifest>('/encoding/manifests/dash/{manifest_id}', pathParamMap).then((response) => {
       return map(response, DashManifest);
+    });
+  }
+
+  /**
+   * @summary Manifest Start Details
+   * @param {string} manifestId Id of the manifest
+   * @throws {BitmovinError}
+   * @memberof DashApi
+   */
+  public getStartRequest(manifestId: string): Promise<StartManifestRequest> {
+    const pathParamMap = {
+      manifest_id: manifestId
+    };
+    return this.restClient.get<StartManifestRequest>('/encoding/manifests/dash/{manifest_id}/start', pathParamMap).then((response) => {
+      return map(response, StartManifestRequest);
     });
   }
 
@@ -91,7 +106,7 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary Start DASH Manifest Creation
-   * @param {string} manifestId Id of the DASH manifest.
+   * @param {string} manifestId Id of the DASH Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
    * @memberof DashApi
@@ -107,7 +122,7 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary DASH Manifest Creation Status
-   * @param {string} manifestId Id of the DASH manifest.
+   * @param {string} manifestId Id of the DASH Manifest.
    * @throws {BitmovinError}
    * @memberof DashApi
    */
@@ -122,7 +137,7 @@ export default class DashApi extends BaseAPI {
 
   /**
    * @summary Stop DASH Manifest Creation
-   * @param {string} manifestId Id of the DASH manifest.
+   * @param {string} manifestId Id of the DASH Manifest.
    * @throws {BitmovinError}
    * @memberof DashApi
    */

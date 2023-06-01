@@ -16,8 +16,8 @@ export default class DefaultApi extends BaseAPI {
   }
 
   /**
-   * @summary Create DASH Manifest Default
-   * @param {DashManifestDefault} dashManifestDefault The DASH Manifest Default to be created
+   * @summary Create Default DASH Manifest
+   * @param {DashManifestDefault} dashManifestDefault A Default Manifest is the easiest way to create a manifest file. Its contents will be configured automatically, depending on what output your encoding creates (muxings, thumbnails, sprites, subtitles, DRM information). If you need more control, create a Custom Manifest instead. See TODO: link
    * @throws {BitmovinError}
    * @memberof DefaultApi
    */
