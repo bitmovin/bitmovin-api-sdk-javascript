@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import StreamsConfigPlayerStyle from './StreamsConfigPlayerStyle';
 
 /**
  * @export
@@ -20,11 +21,10 @@ export class StreamsConfigResponse {
   public orgId?: string;
 
   /**
-   * Player style config
-   * @type {any}
+   * @type {StreamsConfigPlayerStyle}
    * @memberof StreamsConfigResponse
    */
-  public playerStyle?: any;
+  public playerStyle?: StreamsConfigPlayerStyle;
 
   /**
    * URL of the watermark image
@@ -46,7 +46,7 @@ export class StreamsConfigResponse {
     }
     this.id = map(obj.id);
     this.orgId = map(obj.orgId);
-    this.playerStyle = map(obj.playerStyle);
+    this.playerStyle = map(obj.playerStyle, StreamsConfigPlayerStyle);
     this.watermarkUrl = map(obj.watermarkUrl);
     this.watermarkTargetLink = map(obj.watermarkTargetLink);
   }

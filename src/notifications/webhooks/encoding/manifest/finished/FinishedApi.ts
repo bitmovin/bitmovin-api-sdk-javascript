@@ -18,7 +18,7 @@ export default class FinishedApi extends BaseAPI {
 
   /**
    * @summary Add 'Manifest Finished Successfully' Webhook (All Manifests)
-   * @param {Webhook} webhook Add a new webhook notification if a manifest creation finished successfully. A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook Add a new webhook notification if a manifest generation finished successfully. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */

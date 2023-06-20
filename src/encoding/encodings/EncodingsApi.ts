@@ -162,7 +162,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Start Encoding
+   * @summary Start VoD Encoding
    * @param {string} encodingId Id of the encoding
    * @param {StartEncodingRequest} [startEncodingRequest] Encoding Startup Options
    * @throws {BitmovinError}

@@ -11,14 +11,14 @@ import Status from './Status';
  */
 export class SmoothManifestDefault extends SmoothStreamingManifest {
   /**
-   * The id of the encoding to create a default manifest from. (required)
+   * The id of the encoding to create a default manifest for (required)
    * @type {string}
    * @memberof SmoothManifestDefault
    */
   public encodingId?: string;
 
   /**
-   * Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
+   * Currently not in use
    * @type {SmoothManifestDefaultVersion}
    * @memberof SmoothManifestDefault
    */

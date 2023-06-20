@@ -108,7 +108,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary Start HLS Manifest Creation
+   * @summary Start HLS manifest generation
    * @param {string} manifestId Id of the HLS Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
@@ -124,7 +124,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary HLS Manifest Creation Status
+   * @summary HLS manifest generation status
    * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
@@ -139,7 +139,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary Stop HLS Manifest Creation
+   * @summary Stop HLS manifest generation
    * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi

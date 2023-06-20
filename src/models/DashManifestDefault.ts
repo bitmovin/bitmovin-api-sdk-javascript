@@ -16,7 +16,7 @@ import XmlNamespace from './XmlNamespace';
  */
 export class DashManifestDefault extends DashManifest {
   /**
-   * The id of the encoding to create a default manifest from. Either \"encodingId\" or \"periods\" is required.
+   * The id of the encoding to create a default manifest for. Either \"encodingId\" or \"periods\" is required.
    * @type {string}
    * @memberof DashManifestDefault
    */
@@ -30,7 +30,7 @@ export class DashManifestDefault extends DashManifest {
   public version?: DashManifestDefaultVersion;
 
   /**
-   * Adds a period for every item. Either \"periods\" or \"encodingId\" is required.
+   * Adds a period for every item. Can only be used when setting \"version\" to \"V2\". Either \"periods\" or \"encodingId\" is required.
    * @type {DefaultDashManifestPeriod[]}
    * @memberof DashManifestDefault
    */

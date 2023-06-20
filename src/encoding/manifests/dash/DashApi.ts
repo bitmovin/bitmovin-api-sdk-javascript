@@ -105,7 +105,7 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary Start DASH Manifest Creation
+   * @summary Start DASH manifest generation
    * @param {string} manifestId Id of the DASH Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
@@ -121,7 +121,7 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary DASH Manifest Creation Status
+   * @summary DASH manifest generation status
    * @param {string} manifestId Id of the DASH Manifest.
    * @throws {BitmovinError}
    * @memberof DashApi
@@ -136,7 +136,7 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary Stop DASH Manifest Creation
+   * @summary Stop DASH manifest generation
    * @param {string} manifestId Id of the DASH Manifest.
    * @throws {BitmovinError}
    * @memberof DashApi

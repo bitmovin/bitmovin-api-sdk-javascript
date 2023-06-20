@@ -108,7 +108,7 @@ export default class SmoothApi extends BaseAPI {
   }
 
   /**
-   * @summary Start Smooth Streaming Manifest Creation
+   * @summary Start Smooth Streaming manifest generation
    * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @param {StartManifestRequest} [startManifestRequest] Manifest Startup Options
    * @throws {BitmovinError}
@@ -124,7 +124,7 @@ export default class SmoothApi extends BaseAPI {
   }
 
   /**
-   * @summary Smooth Streaming Manifest Creation Status
+   * @summary Smooth Streaming manifest generation status
    * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
@@ -139,7 +139,7 @@ export default class SmoothApi extends BaseAPI {
   }
 
   /**
-   * @summary Stop Smooth Streaming Manifest Creation
+   * @summary Stop Smooth Streaming manifest generation
    * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi

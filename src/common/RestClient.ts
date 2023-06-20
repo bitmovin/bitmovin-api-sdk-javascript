@@ -30,7 +30,7 @@ function queryParams(params) {
   let addSeperator = false;
 
   for (const key of Object.keys(params)) {
-    if (params[key] != null && typeof params[key] !== 'function') {
+    if (params[key] != null && typeof params[key] !== 'function' && params[key] !== "") {
       queryParameterString += (addSeperator ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(prepareUrlParameterValue(params[key]));
       addSeperator = true;
     }
@@ -233,7 +233,7 @@ class HeaderHandler extends DelegatingHandler {
     const headers: Record<string, string> = {
       'X-Api-Key': apiKey,
       'X-Api-Client': 'bitmovin-api-sdk-javascript',
-      'X-Api-Client-Version': '1.164.0',
+      'X-Api-Client-Version': '1.165.0',
       'Content-Type': 'application/json'
     };
 

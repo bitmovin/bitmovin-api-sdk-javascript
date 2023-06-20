@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
 import StreamsConfigResponse from './StreamsConfigResponse';
+import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
 import StreamsLiveLifeCycle from './StreamsLiveLifeCycle';
 
 /**
@@ -69,6 +70,12 @@ export class StreamsLiveResponse {
    */
   public adConfig?: StreamsAdConfigResponse;
 
+  /**
+   * @type {StreamsContentProtectionResponse}
+   * @memberof StreamsLiveResponse
+   */
+  public contentProtection?: StreamsContentProtectionResponse;
+
   constructor(obj?: Partial<StreamsLiveResponse>) {
     if(!obj) {
       return;
@@ -82,6 +89,7 @@ export class StreamsLiveResponse {
     this.config = map(obj.config, StreamsConfigResponse);
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
+    this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
   }
 }
 

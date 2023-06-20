@@ -20,14 +20,14 @@ export class StartLiveEncodingRequest {
   public streamKey?: string;
 
   /**
-   * List of Hls manifests to use for this live encoding
+   * HLS manifests to be generated during the encoding. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {LiveHlsManifest[]}
    * @memberof StartLiveEncodingRequest
    */
   public hlsManifests?: LiveHlsManifest[];
 
   /**
-   * List of Dash manifests to use for this live encoding
+   * DASH manifests to be generated during the encoding. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {LiveDashManifest[]}
    * @memberof StartLiveEncodingRequest
    */

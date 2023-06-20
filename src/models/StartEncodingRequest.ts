@@ -48,35 +48,35 @@ export class StartEncodingRequest {
   public encodingMode?: EncodingMode;
 
   /**
-   * List of preview DASH manifests to be created
+   * DASH manifests to be generated for previewing while the encoding is still running. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {ManifestResource[]}
    * @memberof StartEncodingRequest
    */
   public previewDashManifests?: ManifestResource[];
 
   /**
-   * List of preview HLS manifests to be created
+   * HLS manifests to be generated for previewing while the encoding is still running. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {ManifestResource[]}
    * @memberof StartEncodingRequest
    */
   public previewHlsManifests?: ManifestResource[];
 
   /**
-   * List of VoD DASH manifests to be created after encoding finished successfully
+   * DASH manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {ManifestResource[]}
    * @memberof StartEncodingRequest
    */
   public vodDashManifests?: ManifestResource[];
 
   /**
-   * List of VoD HLS manifests to be created after encoding finished successfully
+   * HLS manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {ManifestResource[]}
    * @memberof StartEncodingRequest
    */
   public vodHlsManifests?: ManifestResource[];
 
   /**
-   * List of VoD SMOOTH manifests to be created after encoding finished successfully
+   * Smooth Streaming manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
    * @type {ManifestResource[]}
    * @memberof StartEncodingRequest
    */
