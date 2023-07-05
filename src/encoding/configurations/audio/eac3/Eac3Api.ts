@@ -22,7 +22,7 @@ export default class Eac3Api extends BaseAPI {
   }
 
   /**
-   * @summary Create E-AC3 Codec Configuration.  Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
+   * @summary Create E-AC3 Codec Configuration
    * @param {Eac3AudioConfiguration} eac3AudioConfiguration The E-AC3 Codec Configuration to be created
    * @throws {BitmovinError}
    * @memberof Eac3Api
@@ -34,7 +34,7 @@ export default class Eac3Api extends BaseAPI {
   }
 
   /**
-   * @summary Delete E-AC3 Codec Configuration.  Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
+   * @summary Delete E-AC3 Codec Configuration
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Eac3Api
@@ -49,7 +49,7 @@ export default class Eac3Api extends BaseAPI {
   }
 
   /**
-   * @summary E-AC3 Codec Configuration Details.  Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
+   * @summary E-AC3 Codec Configuration Details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Eac3Api
@@ -64,7 +64,7 @@ export default class Eac3Api extends BaseAPI {
   }
 
   /**
-   * @summary List E-AC3 Configurations.  Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings 
+   * @summary List E-AC3 Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof Eac3Api

@@ -24,7 +24,7 @@ export default class TransferErrorApi extends BaseAPI {
 
   /**
    * @summary Add 'Encoding Transfer Error' Webhook
-   * @param {Webhook} webhook The &#39;Encoding Transfer Error&#39; Webhook to be added. A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The &#39;Encoding Transfer Error&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof TransferErrorApi
    */

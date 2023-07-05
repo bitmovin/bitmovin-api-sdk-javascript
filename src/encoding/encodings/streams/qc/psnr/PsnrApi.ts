@@ -19,7 +19,7 @@ export default class PsnrApi extends BaseAPI {
   }
 
   /**
-   * @summary Activate PSNR quality metrics for the selected stream
+   * @summary PSNR quality metrics
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @throws {BitmovinError}

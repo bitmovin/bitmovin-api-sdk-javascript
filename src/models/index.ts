@@ -465,6 +465,7 @@ export * from './LiveEncodingStatsEventDetails';
 export * from './LiveEncodingStatus';
 export * from './LiveHlsManifest';
 export * from './LiveMediaIngestOutput';
+export * from './LiveOptionsType';
 export * from './LocalInput';
 export * from './LocalOutput';
 export * from './Manifest';

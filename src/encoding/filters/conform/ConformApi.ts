@@ -22,7 +22,7 @@ export default class ConformApi extends BaseAPI {
   }
 
   /**
-   * @summary Create Conform Filter. Keeps all the frames of the input. The playback time of the output will be slower or faster.
+   * @summary Create Conform Filter
    * @param {ConformFilter} conformFilter The Conform Filter to be created
    * @throws {BitmovinError}
    * @memberof ConformApi

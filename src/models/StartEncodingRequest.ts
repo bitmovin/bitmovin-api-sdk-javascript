@@ -41,7 +41,7 @@ export class StartEncodingRequest {
   public handleVariableInputFps?: boolean;
 
   /**
-   * The pass mode of the encoding
+   * The pass mode of the encoding. Must only be set when `encodingMode` is not set on any codec configuration used by this encoding.
    * @type {EncodingMode}
    * @memberof StartEncodingRequest
    */

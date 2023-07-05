@@ -18,7 +18,7 @@ export default class ScheduledApi extends BaseAPI {
   }
 
   /**
-   * @summary List All Scheduled Insertable Content For A Live Encoding
+   * @summary List Scheduled Insertable Content
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

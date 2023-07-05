@@ -18,7 +18,7 @@ export default class TransferRetriesApi extends BaseAPI {
   }
 
   /**
-   * @summary Starts transfer retry. A transfer retry is only possible within 72 hours.
+   * @summary Transfer retry
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof TransferRetriesApi

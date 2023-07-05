@@ -20,7 +20,7 @@ export default class VodApi extends BaseAPI {
 
   /**
    * @summary Create a Simple Encoding VOD Job
-   * @param {SimpleEncodingVodJobRequest} simpleEncodingVodJobRequest The Simple Encoding VOD Job to be created.  Check out our [Simple Encoding API Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) for additional information about the Simple Encoding API. 
+   * @param {SimpleEncodingVodJobRequest} simpleEncodingVodJobRequest The Simple Encoding VOD Job to be created.
    * @throws {BitmovinError}
    * @memberof VodApi
    */

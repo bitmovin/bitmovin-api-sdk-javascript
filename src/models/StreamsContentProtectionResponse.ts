@@ -26,6 +26,13 @@ export class StreamsContentProtectionResponse {
    */
   public allowNoReferer?: boolean;
 
+  /**
+   * Controls if Stream is accessible via sharing URL or not
+   * @type {boolean}
+   * @memberof StreamsContentProtectionResponse
+   */
+  public allowShare?: boolean;
+
   constructor(obj?: Partial<StreamsContentProtectionResponse>) {
     if(!obj) {
       return;
@@ -33,6 +40,7 @@ export class StreamsContentProtectionResponse {
     this.id = map(obj.id);
     this.allowedDomains = mapArray(obj.allowedDomains);
     this.allowNoReferer = map(obj.allowNoReferer);
+    this.allowShare = map(obj.allowShare);
   }
 }
 

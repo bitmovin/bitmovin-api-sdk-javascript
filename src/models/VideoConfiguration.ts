@@ -73,7 +73,7 @@ export class VideoConfiguration extends CodecConfiguration {
   public displayAspectRatio?: DisplayAspectRatio;
 
   /**
-   * The mode of the encoding
+   * The mode of the encoding. When this is set, `encodingMode` (`liveEncodingMode`) must not be set in the (live) encoding start request.
    * @type {EncodingMode}
    * @memberof VideoConfiguration
    */

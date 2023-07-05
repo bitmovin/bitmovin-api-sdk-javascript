@@ -28,6 +28,13 @@ export class SpekeDrmProvider {
   public password?: string;
 
   /**
+   * Your API key for authentication via X-API-Key HTTP Header
+   * @type {string}
+   * @memberof SpekeDrmProvider
+   */
+  public apiKey?: string;
+
+  /**
    * AWS role that will be assumed for the key exchange in case the provider runs on AWS.  During the key exchange the role will be assumed to be able to access the key provider.  This role is to be created in the customer's account and must be granted access to the API Gateway of the SPEKE server. For Bitmovin to be able to assume this role, the following has to be added to the trust policy of the role:  ``` {   \"Effect\": \"Allow\",   \"Principal\": {     \"AWS\": \"arn:aws:iam::630681592166:user/bitmovinCustomerSpekeAccess\"   },   \"Action\": \"sts:AssumeRole\",   \"Condition\": {     \"StringEquals\": {       \"sts:ExternalId\": \"{{externalId}}\"     }   } } ``` It is recommended to also set the {{externalId}} due to security reasons but it can also be ommitted.  Additionally the role needs a policy similar to the following to be able to invoke the API gateway: ``` {   \"Version\": \"2012-10-17\",   \"Statement\": [     {       \"Effect\": \"Allow\",       \"Action\": [         \"execute-api:Invoke\"       ],       \"Resource\": [         \"arn:aws:execute-api:{{region}}:*:*_/_*_/POST/_*\"       ]     }   ] } ``` where `{{region}}` is the region of the API gateway (for example `us-west-2`), the same has to be set in the property 'gatewayRegion'. It's also possible to set `{{region}` to `*` to give the role access to all regions. 
    * @type {string}
    * @memberof SpekeDrmProvider
@@ -61,6 +68,7 @@ export class SpekeDrmProvider {
     this.url = map(obj.url);
     this.username = map(obj.username);
     this.password = map(obj.password);
+    this.apiKey = map(obj.apiKey);
     this.roleArn = map(obj.roleArn);
     this.externalId = map(obj.externalId);
     this.externalIdMode = map(obj.externalIdMode);

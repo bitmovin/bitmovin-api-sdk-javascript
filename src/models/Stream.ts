@@ -72,7 +72,7 @@ export class Stream extends BitmovinResource {
   public mode?: StreamMode;
 
   /**
-   * The encoding mode of the stream which was applied by the assigned codec configuration
+   * The encoding mode that was used for this stream. This is derived from `encodingMode`, which can be specified in the codec configuration or in the encoding start request. Note that all streams of an encoding need to use the same encoding mode. This will therefore always match `selectedEncodingMode` of the related Encoding resource. Especially useful when `encodingMode` was not set explicitly or set to STANDARD (which translates to one of the other possible values on encoding start).
    * @type {EncodingMode}
    * @memberof Stream
    */

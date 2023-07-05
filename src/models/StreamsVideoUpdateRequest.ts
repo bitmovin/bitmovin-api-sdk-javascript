@@ -48,6 +48,13 @@ export class StreamsVideoUpdateRequest {
    */
   public adConfigId?: string;
 
+  /**
+   * Id of the content protection config to use
+   * @type {string}
+   * @memberof StreamsVideoUpdateRequest
+   */
+  public contentProtectionId?: string;
+
   constructor(obj?: Partial<StreamsVideoUpdateRequest>) {
     if(!obj) {
       return;
@@ -58,6 +65,7 @@ export class StreamsVideoUpdateRequest {
     this.configId = map(obj.configId);
     this.posterUrl = map(obj.posterUrl);
     this.adConfigId = map(obj.adConfigId);
+    this.contentProtectionId = map(obj.contentProtectionId);
   }
 }
 

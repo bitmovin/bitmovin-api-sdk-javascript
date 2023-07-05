@@ -17,7 +17,7 @@ export default class ScheduleApi extends BaseAPI {
   }
 
   /**
-   * @summary Schedule Insertable Content For a Live Encoding
+   * @summary Schedule Insertable Content
    * @param {string} encodingId Id of the encoding.
    * @param {string} contentId Id of the insertable content.
    * @param {ScheduledInsertableContent} scheduledInsertableContent The scheduled insertable content to be created

@@ -18,7 +18,7 @@ export default class LiveApi extends BaseAPI {
 
   /**
    * @summary Create a Simple Encoding Live Job
-   * @param {SimpleEncodingLiveJobRequest} simpleEncodingLiveJobRequest The Simple Encoding Live Job to be created.  Check out our [Simple Encoding API Live Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live) for additional information about the Simple Encoding API Live. 
+   * @param {SimpleEncodingLiveJobRequest} simpleEncodingLiveJobRequest The Simple Encoding Live Job to be created.
    * @throws {BitmovinError}
    * @memberof LiveApi
    */

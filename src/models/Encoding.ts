@@ -4,6 +4,7 @@ import CloudRegion from './CloudRegion';
 import EncodingMode from './EncodingMode';
 import EncodingType from './EncodingType';
 import InfrastructureSettings from './InfrastructureSettings';
+import LiveOptionsType from './LiveOptionsType';
 import Status from './Status';
 
 /**
@@ -101,7 +102,7 @@ export class Encoding extends BitmovinResource {
   public selectedEncoderVersion?: string;
 
   /**
-   * After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when starting an encoding with encoding mode STANDARD.
+   * After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when `encodingMode` was not set explicitly or set to STANDARD (which translates to one of the other possible values on encoding start).
    * @type {EncodingMode}
    * @memberof Encoding
    */
@@ -128,6 +129,13 @@ export class Encoding extends BitmovinResource {
    */
   public labels?: string[];
 
+  /**
+   * The chosen live option type of the live encoding
+   * @type {LiveOptionsType}
+   * @memberof Encoding
+   */
+  public liveOptionsType?: LiveOptionsType;
+
   constructor(obj?: Partial<Encoding>) {
     super(obj);
     if(!obj) {
@@ -150,6 +158,7 @@ export class Encoding extends BitmovinResource {
     this.selectedCloudRegion = map(obj.selectedCloudRegion);
     this.status = map(obj.status);
     this.labels = mapArray(obj.labels);
+    this.liveOptionsType = map(obj.liveOptionsType);
   }
 }
 

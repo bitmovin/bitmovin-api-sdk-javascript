@@ -24,7 +24,7 @@ export default class FinishedApi extends BaseAPI {
 
   /**
    * @summary Add 'Encoding Finished' Webhook
-   * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added. A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */

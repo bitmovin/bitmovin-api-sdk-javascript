@@ -34,7 +34,7 @@ export default class SmoothApi extends BaseAPI {
 
   /**
    * @summary Create Smooth Streaming Manifest
-   * @param {SmoothStreamingManifest} smoothStreamingManifest A Custom Smooth Streaming Manifest gives you full control over its contents. Add Representations and Content Protections via the respective endpoints. If you need a simpler solution, create a Default Manifest resource instead. See [documentation](https://developer.bitmovin.com/encoding/docs/default-vs-custom-manifest) page for a comparison
+   * @param {SmoothStreamingManifest} smoothStreamingManifest The Custom Smooth Streaming Manifest to be created.
    * @throws {BitmovinError}
    * @memberof SmoothApi
    */

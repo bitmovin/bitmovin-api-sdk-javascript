@@ -18,7 +18,7 @@ export default class ErrorApi extends BaseAPI {
 
   /**
    * @summary Add 'Manifest Error' Webhook (All Manifests)
-   * @param {Webhook} webhook Add a new webhook notification if a manifest generation failed with an error. A maximum number of 5 webhooks is allowed
+   * @param {Webhook} webhook The &#39;Manifest Error&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof ErrorApi
    */
