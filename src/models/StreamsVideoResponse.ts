@@ -1,7 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
-import StreamsConfigResponse from './StreamsConfigResponse';
 import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
+import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
 import StreamsVideoEncodingTask from './StreamsVideoEncodingTask';
 import StreamsVideoStatus from './StreamsVideoStatus';
 
@@ -53,10 +53,10 @@ export class StreamsVideoResponse {
   public status?: StreamsVideoStatus;
 
   /**
-   * @type {StreamsConfigResponse}
+   * @type {StreamsStyleConfigResponse}
    * @memberof StreamsVideoResponse
    */
-  public config?: StreamsConfigResponse;
+  public styleConfig?: StreamsStyleConfigResponse;
 
   /**
    * List of encoding status information
@@ -94,7 +94,7 @@ export class StreamsVideoResponse {
     this.description = map(obj.description);
     this.createdAt = map(obj.createdAt, Date);
     this.status = map(obj.status);
-    this.config = map(obj.config, StreamsConfigResponse);
+    this.styleConfig = map(obj.styleConfig, StreamsStyleConfigResponse);
     this.encodingTasks = mapArray(obj.encodingTasks, StreamsVideoEncodingTask);
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);

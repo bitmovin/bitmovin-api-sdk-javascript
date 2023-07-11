@@ -20,11 +20,11 @@ export class StreamsLiveCreateRequest {
   public description?: string;
 
   /**
-   * Id of the stream config to use
+   * Id of the style config to use
    * @type {string}
    * @memberof StreamsLiveCreateRequest
    */
-  public configId?: string;
+  public styleConfigId?: string;
 
   /**
    * Id of the advertisement config to use
@@ -39,7 +39,7 @@ export class StreamsLiveCreateRequest {
     }
     this.title = map(obj.title);
     this.description = map(obj.description);
-    this.configId = map(obj.configId);
+    this.styleConfigId = map(obj.styleConfigId);
     this.adConfigId = map(obj.adConfigId);
   }
 }

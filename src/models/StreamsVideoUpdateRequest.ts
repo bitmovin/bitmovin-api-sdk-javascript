@@ -28,11 +28,11 @@ export class StreamsVideoUpdateRequest {
   public description?: string;
 
   /**
-   * Id of the stream config to use
+   * Id of the style config to use
    * @type {string}
    * @memberof StreamsVideoUpdateRequest
    */
-  public configId?: string;
+  public styleConfigId?: string;
 
   /**
    * URL to hosted poster image
@@ -62,7 +62,7 @@ export class StreamsVideoUpdateRequest {
     this.status = map(obj.status);
     this.title = map(obj.title);
     this.description = map(obj.description);
-    this.configId = map(obj.configId);
+    this.styleConfigId = map(obj.styleConfigId);
     this.posterUrl = map(obj.posterUrl);
     this.adConfigId = map(obj.adConfigId);
     this.contentProtectionId = map(obj.contentProtectionId);

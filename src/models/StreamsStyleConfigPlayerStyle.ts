@@ -3,59 +3,59 @@ import {map, mapArray} from '../common/Mapper';
 /**
  * Player style config
  * @export
- * @class StreamsConfigPlayerStyle
+ * @class StreamsStyleConfigPlayerStyle
  */
-export class StreamsConfigPlayerStyle {
+export class StreamsStyleConfigPlayerStyle {
   /**
    * Playback marker background color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public playbackMarkerBgColor?: string;
 
   /**
    * Playback marker border color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public playbackMarkerBorderColor?: string;
 
   /**
    * Playback track played color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public playbackTrackPlayedColor?: string;
 
   /**
    * Playback track buffered color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public playbackTrackBufferedColor?: string;
 
   /**
    * Playback track background color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public playbackTrackBgColor?: string;
 
   /**
    * Text color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public textColor?: string;
 
   /**
    * Background color
    * @type {string}
-   * @memberof StreamsConfigPlayerStyle
+   * @memberof StreamsStyleConfigPlayerStyle
    */
   public backgroundColor?: string;
 
-  constructor(obj?: Partial<StreamsConfigPlayerStyle>) {
+  constructor(obj?: Partial<StreamsStyleConfigPlayerStyle>) {
     if(!obj) {
       return;
     }
@@ -69,5 +69,5 @@ export class StreamsConfigPlayerStyle {
   }
 }
 
-export default StreamsConfigPlayerStyle;
+export default StreamsStyleConfigPlayerStyle;
 

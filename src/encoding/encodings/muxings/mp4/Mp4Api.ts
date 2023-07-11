@@ -30,7 +30,7 @@ export default class Mp4Api extends BaseAPI {
   /**
    * @summary Add MP4 muxing
    * @param {string} encodingId Id of the encoding.
-   * @param {Mp4Muxing} mp4Muxing The MP4 muxing to be created
+   * @param {Mp4Muxing} mp4Muxing The progressive MP4 muxing to be created
    * @throws {BitmovinError}
    * @memberof Mp4Api
    */

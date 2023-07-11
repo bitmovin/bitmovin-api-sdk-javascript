@@ -1,8 +1,8 @@
 import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
-import StreamsConfigResponse from './StreamsConfigResponse';
 import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
 import StreamsLiveLifeCycle from './StreamsLiveLifeCycle';
+import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
 
 /**
  * @export
@@ -52,10 +52,10 @@ export class StreamsLiveResponse {
   public lifeCycle?: StreamsLiveLifeCycle;
 
   /**
-   * @type {StreamsConfigResponse}
+   * @type {StreamsStyleConfigResponse}
    * @memberof StreamsLiveResponse
    */
-  public config?: StreamsConfigResponse;
+  public styleConfig?: StreamsStyleConfigResponse;
 
   /**
    * Poster URL
@@ -86,7 +86,7 @@ export class StreamsLiveResponse {
     this.description = map(obj.description);
     this.createdAt = map(obj.createdAt, Date);
     this.lifeCycle = map(obj.lifeCycle);
-    this.config = map(obj.config, StreamsConfigResponse);
+    this.styleConfig = map(obj.styleConfig, StreamsStyleConfigResponse);
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
     this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);

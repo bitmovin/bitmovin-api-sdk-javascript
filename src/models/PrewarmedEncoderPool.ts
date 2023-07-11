@@ -45,6 +45,13 @@ export class PrewarmedEncoderPool extends BitmovinResource {
   public targetPoolSize?: number;
 
   /**
+   * Create pool with GPU instances for hardware encoding presets (e.g., VOD_HARDWARE_SHORTFORM).
+   * @type {boolean}
+   * @memberof PrewarmedEncoderPool
+   */
+  public gpuEnabled?: boolean;
+
+  /**
    * Current status of the pool.
    * @type {PrewarmedEncoderPoolStatus}
    * @memberof PrewarmedEncoderPool
@@ -61,6 +68,7 @@ export class PrewarmedEncoderPool extends BitmovinResource {
     this.infrastructureId = map(obj.infrastructureId);
     this.diskSize = map(obj.diskSize);
     this.targetPoolSize = map(obj.targetPoolSize);
+    this.gpuEnabled = map(obj.gpuEnabled);
     this.status = map(obj.status);
   }
 }

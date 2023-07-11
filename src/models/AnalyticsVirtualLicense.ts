@@ -56,6 +56,13 @@ export class AnalyticsVirtualLicense {
    */
   public customDataFieldLabels?: AnalyticsLicenseCustomDataFieldLabels;
 
+  /**
+   * The expiration date of the license if applicable, returned as ISO 8601 date-time format
+   * @type {Date}
+   * @memberof AnalyticsVirtualLicense
+   */
+  public planExpiredAt?: Date;
+
   constructor(obj?: Partial<AnalyticsVirtualLicense>) {
     if(!obj) {
       return;
@@ -67,6 +74,7 @@ export class AnalyticsVirtualLicense {
     this.licenses = mapArray(obj.licenses, AnalyticsVirtualLicenseLicensesListItem);
     this.customDataFieldsCount = map(obj.customDataFieldsCount);
     this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
+    this.planExpiredAt = map(obj.planExpiredAt, Date);
   }
 }
 

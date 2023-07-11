@@ -16,7 +16,7 @@ export class AnalyticsLicense {
   public id?: string;
 
   /**
-   * Creation date of the Analytics License in UTC format
+   * Creation date of the Analytics License, returned as ISO 8601 date-time format
    * @type {Date}
    * @memberof AnalyticsLicense
    */
@@ -140,6 +140,13 @@ export class AnalyticsLicense {
    */
   public features?: AnalyticsLicenseFeatures;
 
+  /**
+   * The expiration date of the license if applicable, returned as ISO 8601 date-time format
+   * @type {Date}
+   * @memberof AnalyticsLicense
+   */
+  public planExpiredAt?: Date;
+
   constructor(obj?: Partial<AnalyticsLicense>) {
     if(!obj) {
       return;
@@ -163,6 +170,7 @@ export class AnalyticsLicense {
     this.orderIndex = map(obj.orderIndex);
     this.rateLimit = map(obj.rateLimit);
     this.features = map(obj.features, AnalyticsLicenseFeatures);
+    this.planExpiredAt = map(obj.planExpiredAt, Date);
   }
 }
 

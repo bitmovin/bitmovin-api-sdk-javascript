@@ -65,7 +65,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Partially update stream config by id
+   * @summary Partially update video stream by id
    * @param {string} streamId Id of the stream.
    * @param {StreamsVideoUpdateRequest} streamsVideoUpdateRequest Stream fields to update.
    * @throws {BitmovinError}
