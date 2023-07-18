@@ -595,6 +595,13 @@ export class AnalyticsImpressionSample {
   public screenWidth?: number;
 
   /**
+   * Screen orientation (PORTRAIT, LANDSCAPE OR UNKNOWN)
+   * @type {string}
+   * @memberof AnalyticsImpressionSample
+   */
+  public screenOrientation?: string;
+
+  /**
    * Milliseconds it took the player to seek
    * @type {number}
    * @memberof AnalyticsImpressionSample
@@ -878,6 +885,7 @@ export class AnalyticsImpressionSample {
     this.region = map(obj.region);
     this.screenHeight = map(obj.screenHeight);
     this.screenWidth = map(obj.screenWidth);
+    this.screenOrientation = map(obj.screenOrientation);
     this.seeked = map(obj.seeked);
     this.segmentDownloadCount = map(obj.segmentDownloadCount);
     this.segmentDownloadSize = map(obj.segmentDownloadSize);

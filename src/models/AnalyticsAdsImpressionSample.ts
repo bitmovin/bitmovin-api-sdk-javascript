@@ -867,6 +867,13 @@ export class AnalyticsAdsImpressionSample {
   public screenWidth?: number;
 
   /**
+   * Screen orientation (PORTRAIT, LANDSCAPE OR UNKNOWN)
+   * @type {string}
+   * @memberof AnalyticsAdsImpressionSample
+   */
+  public screenOrientation?: string;
+
+  /**
    * Video size (FULLSCREEN or WINDOW)
    * @type {string}
    * @memberof AnalyticsAdsImpressionSample
@@ -1126,6 +1133,7 @@ export class AnalyticsAdsImpressionSample {
     this.region = map(obj.region);
     this.screenHeight = map(obj.screenHeight);
     this.screenWidth = map(obj.screenWidth);
+    this.screenOrientation = map(obj.screenOrientation);
     this.size = map(obj.size);
     this.skipPercentage = map(obj.skipPercentage);
     this.skipPosition = map(obj.skipPosition);
