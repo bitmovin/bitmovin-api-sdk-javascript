@@ -33,7 +33,7 @@ export default class HdApi extends BaseAPI {
   }
 
   /**
-   * @summary Start Live Encoding
+   * @summary Start HD Options Live Encoding
    * @param {string} encodingId Id of the encoding
    * @param {StartLiveChannelEncodingRequest} startLiveChannelEncodingRequest Live Encoding startup options
    * @throws {BitmovinError}
