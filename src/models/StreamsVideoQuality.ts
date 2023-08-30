@@ -5,8 +5,7 @@
 export enum StreamsVideoQuality {
   NONE = 'NONE',
   PREVIEW = 'PREVIEW',
-  DEFAULT = 'DEFAULT',
-  TRIMMED = 'TRIMMED'
+  DEFAULT = 'DEFAULT'
 }
 
 export default StreamsVideoQuality;

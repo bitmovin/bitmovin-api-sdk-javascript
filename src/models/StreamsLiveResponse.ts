@@ -3,6 +3,7 @@ import StreamsAdConfigResponse from './StreamsAdConfigResponse';
 import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
 import StreamsLiveLifeCycle from './StreamsLiveLifeCycle';
 import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
+import StreamsTrimmingStatus from './StreamsTrimmingStatus';
 
 /**
  * @export
@@ -76,6 +77,13 @@ export class StreamsLiveResponse {
    */
   public contentProtection?: StreamsContentProtectionResponse;
 
+  /**
+   * Stream trimming information
+   * @type {StreamsTrimmingStatus}
+   * @memberof StreamsLiveResponse
+   */
+  public trimming?: StreamsTrimmingStatus;
+
   constructor(obj?: Partial<StreamsLiveResponse>) {
     if(!obj) {
       return;
@@ -90,6 +98,7 @@ export class StreamsLiveResponse {
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
     this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
+    this.trimming = map(obj.trimming);
   }
 }
 

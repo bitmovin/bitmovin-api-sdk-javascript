@@ -714,6 +714,7 @@ export * from './StreamsLiveUpdateRequest';
 export * from './StreamsSearchResponse';
 export * from './StreamsStyleConfigPlayerStyle';
 export * from './StreamsStyleConfigResponse';
+export * from './StreamsTrimmingStatus';
 export * from './StreamsType';
 export * from './StreamsVideoCreateRequest';
 export * from './StreamsVideoEncodingStatus';

@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
 import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
 import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
+import StreamsTrimmingStatus from './StreamsTrimmingStatus';
 import StreamsVideoEncodingTask from './StreamsVideoEncodingTask';
 import StreamsVideoStatus from './StreamsVideoStatus';
 
@@ -84,6 +85,13 @@ export class StreamsVideoResponse {
    */
   public contentProtection?: StreamsContentProtectionResponse;
 
+  /**
+   * Stream trimming information
+   * @type {StreamsTrimmingStatus}
+   * @memberof StreamsVideoResponse
+   */
+  public trimming?: StreamsTrimmingStatus;
+
   constructor(obj?: Partial<StreamsVideoResponse>) {
     if(!obj) {
       return;
@@ -99,6 +107,7 @@ export class StreamsVideoResponse {
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
     this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
+    this.trimming = map(obj.trimming);
   }
 }
 

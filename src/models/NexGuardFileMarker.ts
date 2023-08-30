@@ -16,7 +16,7 @@ export class NexGuardFileMarker extends BitmovinResource {
   public license?: string;
 
   /**
-   * The type of watermarking to be used. Usually, OTT is the one recommended in production.
+   * The type of watermarking to be used: * `OTT` - A/B watermarking (for video streams only) * `DUPLICATED` - Stream duplication to match A/B video streams in CDN delivery (for audio streams only) 
    * @type {NexGuardWatermarkingType}
    * @memberof NexGuardFileMarker
    */
