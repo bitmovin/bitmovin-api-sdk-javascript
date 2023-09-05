@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import AccountApiKey from './AccountApiKey';
 import BitmovinResource from './BitmovinResource';
+import Marketplace from './Marketplace';
 
 /**
  * @export
@@ -55,6 +56,12 @@ export class AccountInformation extends BitmovinResource {
    */
   public verified?: boolean;
 
+  /**
+   * @type {Marketplace}
+   * @memberof AccountInformation
+   */
+  public marketplace?: Marketplace;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -67,6 +74,7 @@ export class AccountInformation extends BitmovinResource {
     this.phone = map(obj.phone);
     this.company = map(obj.company);
     this.verified = map(obj.verified);
+    this.marketplace = map(obj.marketplace);
   }
 }
 

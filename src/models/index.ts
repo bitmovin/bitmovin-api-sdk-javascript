@@ -478,6 +478,7 @@ export * from './ManifestGenerator';
 export * from './ManifestResource';
 export * from './ManifestType';
 export * from './ManifestTypeResponse';
+export * from './Marketplace';
 export * from './MarlinDrm';
 export * from './MaxCtuSize';
 export * from './MaxTransformUnitSize';
