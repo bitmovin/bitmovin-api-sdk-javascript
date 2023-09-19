@@ -38,6 +38,21 @@ export default class LiveApi extends BaseAPI {
   }
 
   /**
+   * @summary Delete Stream
+   * @param {string} streamId Id of the stream.
+   * @throws {BitmovinError}
+   * @memberof LiveApi
+   */
+  public delete(streamId: string): Promise<Response> {
+    const pathParamMap = {
+      stream_id: streamId
+    };
+    return this.restClient.delete<Response>('/streams/live/{stream_id}', pathParamMap).then((response) => {
+      return map(response, );
+    });
+  }
+
+  /**
    * @summary Get live stream by id
    * @param {string} streamId Id of the stream.
    * @throws {BitmovinError}

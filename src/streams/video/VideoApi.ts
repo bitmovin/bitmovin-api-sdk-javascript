@@ -32,6 +32,21 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
+   * @summary Delete Stream
+   * @param {string} streamId Id of the stream.
+   * @throws {BitmovinError}
+   * @memberof VideoApi
+   */
+  public delete(streamId: string): Promise<Response> {
+    const pathParamMap = {
+      stream_id: streamId
+    };
+    return this.restClient.delete<Response>('/streams/video/{stream_id}', pathParamMap).then((response) => {
+      return map(response, );
+    });
+  }
+
+  /**
    * @summary Get Streams video by id
    * @param {string} streamId Id of the stream.
    * @throws {BitmovinError}
