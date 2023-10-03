@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import StreamsEncodingProfile from './StreamsEncodingProfile';
 
 /**
  * @export
@@ -40,6 +41,13 @@ export class StreamsVideoCreateRequest {
    */
   public adConfigId?: string;
 
+  /**
+   * Profile to be used in encoding
+   * @type {StreamsEncodingProfile}
+   * @memberof StreamsVideoCreateRequest
+   */
+  public encodingProfile?: StreamsEncodingProfile;
+
   constructor(obj?: Partial<StreamsVideoCreateRequest>) {
     if(!obj) {
       return;
@@ -49,6 +57,7 @@ export class StreamsVideoCreateRequest {
     this.description = map(obj.description);
     this.styleConfigId = map(obj.styleConfigId);
     this.adConfigId = map(obj.adConfigId);
+    this.encodingProfile = map(obj.encodingProfile);
   }
 }
 

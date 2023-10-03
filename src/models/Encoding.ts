@@ -116,6 +116,13 @@ export class Encoding extends BitmovinResource {
   public selectedCloudRegion?: CloudRegion;
 
   /**
+   * After the encoding has been started, this will contain the fallback cloud regions that were actually used. This will differ from fallbackCloudRegions if any of the fallbackCloudRegions were set to an unspecific region (e.g. 'AUTO')
+   * @type {CloudRegion[]}
+   * @memberof Encoding
+   */
+  public selectedFallbackCloudRegions?: CloudRegion[];
+
+  /**
    * The current status of the encoding.
    * @type {Status}
    * @memberof Encoding
@@ -156,6 +163,7 @@ export class Encoding extends BitmovinResource {
     this.selectedEncoderVersion = map(obj.selectedEncoderVersion);
     this.selectedEncodingMode = map(obj.selectedEncodingMode);
     this.selectedCloudRegion = map(obj.selectedCloudRegion);
+    this.selectedFallbackCloudRegions = mapArray(obj.selectedFallbackCloudRegions);
     this.status = map(obj.status);
     this.labels = mapArray(obj.labels);
     this.liveOptionsType = map(obj.liveOptionsType);

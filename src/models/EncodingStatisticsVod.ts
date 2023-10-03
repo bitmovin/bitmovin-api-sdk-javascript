@@ -23,7 +23,7 @@ export class EncodingStatisticsVod extends EncodingStatistics {
    * @type {number}
    * @memberof EncodingStatisticsVod
    */
-  public realTimeFactor?: number;
+  public realtimeFactor?: number;
 
   constructor(obj?: Partial<EncodingStatisticsVod>) {
     super(obj);
@@ -31,7 +31,7 @@ export class EncodingStatisticsVod extends EncodingStatistics {
       return;
     }
     this.timeEnqueued = map(obj.timeEnqueued);
-    this.realTimeFactor = map(obj.realTimeFactor);
+    this.realtimeFactor = map(obj.realtimeFactor);
   }
 }
 
