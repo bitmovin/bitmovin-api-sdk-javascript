@@ -28,20 +28,6 @@ export class StreamsVideoCreateRequest {
   public description?: string;
 
   /**
-   * Id of the style config to use
-   * @type {string}
-   * @memberof StreamsVideoCreateRequest
-   */
-  public styleConfigId?: string;
-
-  /**
-   * Id of the advertisement config to use
-   * @type {string}
-   * @memberof StreamsVideoCreateRequest
-   */
-  public adConfigId?: string;
-
-  /**
    * Profile to be used in encoding
    * @type {StreamsEncodingProfile}
    * @memberof StreamsVideoCreateRequest
@@ -55,8 +41,6 @@ export class StreamsVideoCreateRequest {
     this.assetUrl = map(obj.assetUrl);
     this.title = map(obj.title);
     this.description = map(obj.description);
-    this.styleConfigId = map(obj.styleConfigId);
-    this.adConfigId = map(obj.adConfigId);
     this.encodingProfile = map(obj.encodingProfile);
   }
 }

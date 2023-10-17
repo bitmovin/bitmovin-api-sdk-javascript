@@ -616,6 +616,7 @@ export * from './SidecarErrorMode';
 export * from './SidecarFile';
 export * from './SidecarFileType';
 export * from './SignatureType';
+export * from './SignupSource';
 export * from './SimpleEncodingLiveCloudRegion';
 export * from './SimpleEncodingLiveJobAccessKeyCredentials';
 export * from './SimpleEncodingLiveJobAzureCredentials';

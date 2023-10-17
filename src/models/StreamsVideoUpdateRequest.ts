@@ -28,32 +28,11 @@ export class StreamsVideoUpdateRequest {
   public description?: string;
 
   /**
-   * Id of the style config to use
-   * @type {string}
-   * @memberof StreamsVideoUpdateRequest
-   */
-  public styleConfigId?: string;
-
-  /**
    * URL to hosted poster image
    * @type {string}
    * @memberof StreamsVideoUpdateRequest
    */
   public posterUrl?: string;
-
-  /**
-   * Id of the advertisement config to use
-   * @type {string}
-   * @memberof StreamsVideoUpdateRequest
-   */
-  public adConfigId?: string;
-
-  /**
-   * Id of the content protection config to use
-   * @type {string}
-   * @memberof StreamsVideoUpdateRequest
-   */
-  public contentProtectionId?: string;
 
   constructor(obj?: Partial<StreamsVideoUpdateRequest>) {
     if(!obj) {
@@ -62,10 +41,7 @@ export class StreamsVideoUpdateRequest {
     this.status = map(obj.status);
     this.title = map(obj.title);
     this.description = map(obj.description);
-    this.styleConfigId = map(obj.styleConfigId);
     this.posterUrl = map(obj.posterUrl);
-    this.adConfigId = map(obj.adConfigId);
-    this.contentProtectionId = map(obj.contentProtectionId);
   }
 }
 

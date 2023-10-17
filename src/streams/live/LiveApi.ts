@@ -100,20 +100,4 @@ export default class LiveApi extends BaseAPI {
       return map(response, StreamsLiveResponse);
     });
   }
-
-  /**
-   * @summary Update live stream by id
-   * @param {string} streamId Id of the stream.
-   * @param {StreamsLiveUpdateRequest} streamsLiveUpdateRequest The updated Streams live object.
-   * @throws {BitmovinError}
-   * @memberof LiveApi
-   */
-  public update(streamId: string, streamsLiveUpdateRequest?: StreamsLiveUpdateRequest): Promise<StreamsLiveResponse> {
-    const pathParamMap = {
-      stream_id: streamId
-    };
-    return this.restClient.put<StreamsLiveResponse>('/streams/live/{stream_id}', pathParamMap, streamsLiveUpdateRequest).then((response) => {
-      return map(response, StreamsLiveResponse);
-    });
-  }
 }

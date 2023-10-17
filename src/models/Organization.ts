@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import BitmovinResource from './BitmovinResource';
 import OrganizationType from './OrganizationType';
 import ResourceLimitContainer from './ResourceLimitContainer';
+import SignupSource from './SignupSource';
 
 /**
  * @export
@@ -35,6 +36,13 @@ export class Organization extends BitmovinResource {
    */
   public limitsPerResource?: ResourceLimitContainer[];
 
+  /**
+   * which platform initiated organisation creation
+   * @type {SignupSource}
+   * @memberof Organization
+   */
+  public signupSource?: SignupSource;
+
   constructor(obj?: Partial<Organization>) {
     super(obj);
     if(!obj) {
@@ -44,6 +52,7 @@ export class Organization extends BitmovinResource {
     this.parentId = map(obj.parentId);
     this.labelColor = map(obj.labelColor);
     this.limitsPerResource = mapArray(obj.limitsPerResource, ResourceLimitContainer);
+    this.signupSource = map(obj.signupSource);
   }
 }
 
