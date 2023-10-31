@@ -92,6 +92,13 @@ export class StreamsVideoResponse {
    */
   public trimming?: StreamsTrimmingStatus;
 
+  /**
+   * Single-file download URL of the unaltered video in the best available quality
+   * @type {string}
+   * @memberof StreamsVideoResponse
+   */
+  public downloadUrl?: string;
+
   constructor(obj?: Partial<StreamsVideoResponse>) {
     if(!obj) {
       return;
@@ -108,6 +115,7 @@ export class StreamsVideoResponse {
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
     this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
     this.trimming = map(obj.trimming);
+    this.downloadUrl = map(obj.downloadUrl);
   }
 }
 

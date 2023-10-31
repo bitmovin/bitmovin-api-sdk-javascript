@@ -14,7 +14,7 @@ export class LiveHlsManifest {
   public manifestId?: string;
 
   /**
-   * Timeshift in seconds
+   * Timeshift in seconds. We recommend to use a timeshift value not greater than 3 hours (10800.0 seconds). Longer values could negatively impact the manifest update frequency. 
    * @type {number}
    * @memberof LiveHlsManifest
    */
