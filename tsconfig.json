@@ -12,11 +12,11 @@
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
-    "target": "es5",
+    "target": "ES5",
     "lib": [
-      "dom",
-      "es2015",
-      "es2016"
+      "DOM",
+      "ES2015",
+      "ES2016"
     ]
   },
   "exclude": [

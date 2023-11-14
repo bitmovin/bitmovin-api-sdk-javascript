@@ -2,6 +2,7 @@ import {BaseAPI} from '../../common/BaseAPI';
 import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
 import SubOrganizationsApi from './subOrganizations/SubOrganizationsApi';
+import TenantsApi from './tenants/TenantsApi';
 import GroupsApi from './groups/GroupsApi';
 import Organization from '../../models/Organization';
 import UpdateOrganizationRequest from '../../models/UpdateOrganizationRequest';
@@ -15,11 +16,13 @@ import PaginationResponse from '../../models/PaginationResponse';
  */
 export default class OrganizationsApi extends BaseAPI {
   public subOrganizations: SubOrganizationsApi;
+  public tenants: TenantsApi;
   public groups: GroupsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.subOrganizations = new SubOrganizationsApi(configuration);
+    this.tenants = new TenantsApi(configuration);
     this.groups = new GroupsApi(configuration);
   }
 

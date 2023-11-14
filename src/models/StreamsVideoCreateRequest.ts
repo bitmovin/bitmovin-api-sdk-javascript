@@ -34,6 +34,13 @@ export class StreamsVideoCreateRequest {
    */
   public encodingProfile?: StreamsEncodingProfile;
 
+  /**
+   * If set to true the Stream is only accessible via a token
+   * @type {boolean}
+   * @memberof StreamsVideoCreateRequest
+   */
+  public signed?: boolean;
+
   constructor(obj?: Partial<StreamsVideoCreateRequest>) {
     if(!obj) {
       return;
@@ -42,6 +49,7 @@ export class StreamsVideoCreateRequest {
     this.title = map(obj.title);
     this.description = map(obj.description);
     this.encodingProfile = map(obj.encodingProfile);
+    this.signed = map(obj.signed);
   }
 }
 

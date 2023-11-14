@@ -99,6 +99,13 @@ export class StreamsVideoResponse {
    */
   public downloadUrl?: string;
 
+  /**
+   * True if the stream is signature protected
+   * @type {boolean}
+   * @memberof StreamsVideoResponse
+   */
+  public signed?: boolean;
+
   constructor(obj?: Partial<StreamsVideoResponse>) {
     if(!obj) {
       return;
@@ -116,6 +123,7 @@ export class StreamsVideoResponse {
     this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
     this.trimming = map(obj.trimming);
     this.downloadUrl = map(obj.downloadUrl);
+    this.signed = map(obj.signed);
   }
 }
 

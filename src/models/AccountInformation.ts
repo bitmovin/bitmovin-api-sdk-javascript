@@ -62,6 +62,12 @@ export class AccountInformation extends BitmovinResource {
    */
   public marketplace?: Marketplace;
 
+  /**
+   * @type {boolean}
+   * @memberof AccountInformation
+   */
+  public mfaEnabled?: boolean;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -75,6 +81,7 @@ export class AccountInformation extends BitmovinResource {
     this.company = map(obj.company);
     this.verified = map(obj.verified);
     this.marketplace = map(obj.marketplace);
+    this.mfaEnabled = map(obj.mfaEnabled);
   }
 }
 

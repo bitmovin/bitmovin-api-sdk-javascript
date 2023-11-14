@@ -22,7 +22,7 @@ const config = {
     ]
   },
   optimization: {
-    noEmitOnErrors: false
+    emitOnErrors: true
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
