@@ -24,6 +24,13 @@ export interface OutputListQueryParams {
     name?: string | undefined;
 
     /**
+     * Order list result according to a output resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     * @type {string}
+     * @memberof OutputListQueryParams
+     */
+    sort?: string | undefined;
+
+    /**
      * Filter outputs by type
      * @type {OutputType}
      * @memberof OutputListQueryParams
@@ -58,6 +65,15 @@ export class OutputListQueryParamsBuilder {
      */
     public name(name: string) {
         this.internalParams.name = name;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order list result according to a output resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     */
+    public sort(sort: string) {
+        this.internalParams.sort = sort;
         return this;
     }
 

@@ -1,5 +1,4 @@
 import {map, mapArray} from '../common/Mapper';
-import InvitationStatus from './InvitationStatus';
 import TenantGroupDetail from './TenantGroupDetail';
 
 /**
@@ -8,27 +7,21 @@ import TenantGroupDetail from './TenantGroupDetail';
  */
 export class TenantWithGroups {
   /**
-   * Id of Tenant
+   * Id of Tenant (required)
    * @type {string}
    * @memberof TenantWithGroups
    */
   public id?: string;
 
   /**
-   * Email of Tenant
+   * Email of Tenant (required)
    * @type {string}
    * @memberof TenantWithGroups
    */
   public email?: string;
 
   /**
-   * @type {InvitationStatus}
-   * @memberof TenantWithGroups
-   */
-  public invitationStatus?: InvitationStatus;
-
-  /**
-   * List of all groups of Tenant
+   * List of all groups of Tenant (required)
    * @type {TenantGroupDetail[]}
    * @memberof TenantWithGroups
    */
@@ -40,7 +33,6 @@ export class TenantWithGroups {
     }
     this.id = map(obj.id);
     this.email = map(obj.email);
-    this.invitationStatus = map(obj.invitationStatus);
     this.groups = mapArray(obj.groups, TenantGroupDetail);
   }
 }
