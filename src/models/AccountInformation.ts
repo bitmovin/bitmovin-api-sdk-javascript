@@ -68,6 +68,12 @@ export class AccountInformation extends BitmovinResource {
    */
   public mfaEnabled?: boolean;
 
+  /**
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public intercomIdVerification?: string;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -82,6 +88,7 @@ export class AccountInformation extends BitmovinResource {
     this.verified = map(obj.verified);
     this.marketplace = map(obj.marketplace);
     this.mfaEnabled = map(obj.mfaEnabled);
+    this.intercomIdVerification = map(obj.intercomIdVerification);
   }
 }
 
