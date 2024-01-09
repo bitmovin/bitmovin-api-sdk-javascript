@@ -1,47 +1,59 @@
 import {map, mapArray} from '../common/Mapper';
+import StreamsLiveResponse from './StreamsLiveResponse';
 import StreamsType from './StreamsType';
+import StreamsVideoResponse from './StreamsVideoResponse';
+
+export type StreamsResponseUnion =
+  StreamsVideoResponse |
+  StreamsLiveResponse;
 
 /**
  * @export
- * @class StreamsSearchResponse
+ * @class StreamsResponse
  */
-export class StreamsSearchResponse {
+export class StreamsResponse {
+  protected static readonly _discriminatorName = 'type';
+  protected static readonly _discriminatorMapping: { [key in keyof typeof StreamsType]: string; } = {
+    VIDEO: 'StreamsVideoResponse',
+    LIVE: 'StreamsLiveResponse'
+  };
+
   /**
    * The identifier of the stream
    * @type {string}
-   * @memberof StreamsSearchResponse
+   * @memberof StreamsResponse
    */
   public id?: string;
 
   /**
    * The title of the stream
    * @type {string}
-   * @memberof StreamsSearchResponse
+   * @memberof StreamsResponse
    */
   public title?: string;
 
   /**
    * The description of the stream
    * @type {string}
-   * @memberof StreamsSearchResponse
+   * @memberof StreamsResponse
    */
   public description?: string;
 
   /**
    * Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
    * @type {Date}
-   * @memberof StreamsSearchResponse
+   * @memberof StreamsResponse
    */
   public createdAt?: Date;
 
   /**
-   * The type the stream
+   * Type of the Stream contained in the StreamsResponse
    * @type {StreamsType}
-   * @memberof StreamsSearchResponse
+   * @memberof StreamsResponse
    */
   public type?: StreamsType;
 
-  constructor(obj?: Partial<StreamsSearchResponse>) {
+  constructor(obj?: Partial<StreamsResponse>) {
     if(!obj) {
       return;
     }
@@ -53,5 +65,5 @@ export class StreamsSearchResponse {
   }
 }
 
-export default StreamsSearchResponse;
+export default StreamsResponse;
 

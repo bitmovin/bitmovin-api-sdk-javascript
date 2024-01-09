@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
 import InputType from './InputType';
+import S3AccessStyle from './S3AccessStyle';
 import S3SignatureVersion from './S3SignatureVersion';
 
 /**
@@ -44,6 +45,13 @@ export class GenericS3Input extends Input {
   public ssl?: boolean;
 
   /**
+   * The signing region to use
+   * @type {string}
+   * @memberof GenericS3Input
+   */
+  public signingRegion?: string;
+
+  /**
    * Specifies the method used for authentication
    * @type {S3SignatureVersion}
    * @memberof GenericS3Input
@@ -64,6 +72,13 @@ export class GenericS3Input extends Input {
    */
   public secretKey?: string;
 
+  /**
+   * Specifies the URL access style to use
+   * @type {S3AccessStyle}
+   * @memberof GenericS3Input
+   */
+  public accessStyle?: S3AccessStyle;
+
   constructor(obj?: Partial<GenericS3Input>) {
     super(obj);
     if(!obj) {
@@ -73,9 +88,11 @@ export class GenericS3Input extends Input {
     this.host = map(obj.host);
     this.port = map(obj.port);
     this.ssl = map(obj.ssl);
+    this.signingRegion = map(obj.signingRegion);
     this.signatureVersion = map(obj.signatureVersion);
     this.accessKey = map(obj.accessKey);
     this.secretKey = map(obj.secretKey);
+    this.accessStyle = map(obj.accessStyle);
   }
 }
 

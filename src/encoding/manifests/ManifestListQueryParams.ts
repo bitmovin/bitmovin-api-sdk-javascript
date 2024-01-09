@@ -14,6 +14,13 @@ export interface ManifestListQueryParams {
      * @memberof ManifestListQueryParams
      */
     limit?: number | undefined;
+
+    /**
+     * Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     * @type {string}
+     * @memberof ManifestListQueryParams
+     */
+    sort?: string | undefined;
 }
 
 export class ManifestListQueryParamsBuilder {
@@ -34,6 +41,15 @@ export class ManifestListQueryParamsBuilder {
      */
     public limit(limit: number) {
         this.internalParams.limit = limit;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     */
+    public sort(sort: string) {
+        this.internalParams.sort = sort;
         return this;
     }
 

@@ -16,6 +16,13 @@ export interface SmoothStreamingManifestListQueryParams {
     limit?: number | undefined;
 
     /**
+     * Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     * @type {string}
+     * @memberof SmoothStreamingManifestListQueryParams
+     */
+    sort?: string | undefined;
+
+    /**
      * Get the manifests that belong to that encoding id
      * @type {string}
      * @memberof SmoothStreamingManifestListQueryParams
@@ -41,6 +48,15 @@ export class SmoothStreamingManifestListQueryParamsBuilder {
      */
     public limit(limit: number) {
         this.internalParams.limit = limit;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     */
+    public sort(sort: string) {
+        this.internalParams.sort = sort;
         return this;
     }
 

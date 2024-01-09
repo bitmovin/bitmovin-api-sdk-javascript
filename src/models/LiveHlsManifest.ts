@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import HlsManifestAdMarkerSettings from './HlsManifestAdMarkerSettings';
 import ProgramDateTimeSettings from './ProgramDateTimeSettings';
 
 /**
@@ -41,6 +42,13 @@ export class LiveHlsManifest {
    */
   public programDateTimeSettings?: ProgramDateTimeSettings;
 
+  /**
+   * Configuration for tags related to ad markers (e.g. Scte35)
+   * @type {HlsManifestAdMarkerSettings}
+   * @memberof LiveHlsManifest
+   */
+  public adMarkerSettings?: HlsManifestAdMarkerSettings;
+
   constructor(obj?: Partial<LiveHlsManifest>) {
     if(!obj) {
       return;
@@ -50,6 +58,7 @@ export class LiveHlsManifest {
     this.liveEdgeOffset = map(obj.liveEdgeOffset);
     this.insertProgramDateTime = map(obj.insertProgramDateTime);
     this.programDateTimeSettings = map(obj.programDateTimeSettings, ProgramDateTimeSettings);
+    this.adMarkerSettings = map(obj.adMarkerSettings, HlsManifestAdMarkerSettings);
   }
 }
 

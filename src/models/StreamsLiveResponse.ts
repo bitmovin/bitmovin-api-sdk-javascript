@@ -2,20 +2,22 @@ import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
 import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
 import StreamsLiveLifeCycle from './StreamsLiveLifeCycle';
+import StreamsResponse from './StreamsResponse';
 import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
 import StreamsTrimmingStatus from './StreamsTrimmingStatus';
+import StreamsType from './StreamsType';
 
 /**
  * @export
  * @class StreamsLiveResponse
  */
-export class StreamsLiveResponse {
+export class StreamsLiveResponse extends StreamsResponse {
   /**
-   * The identifier of the stream
+   * Discriminator property for StreamsResponse
    * @type {string}
    * @memberof StreamsLiveResponse
    */
-  public id?: string;
+  public readonly type: StreamsType = StreamsType.LIVE;
 
   /**
    * The streamKey of the stream
@@ -23,27 +25,6 @@ export class StreamsLiveResponse {
    * @memberof StreamsLiveResponse
    */
   public streamKey?: string;
-
-  /**
-   * The title of the stream
-   * @type {string}
-   * @memberof StreamsLiveResponse
-   */
-  public title?: string;
-
-  /**
-   * The description of the stream
-   * @type {string}
-   * @memberof StreamsLiveResponse
-   */
-  public description?: string;
-
-  /**
-   * Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-   * @type {Date}
-   * @memberof StreamsLiveResponse
-   */
-  public createdAt?: Date;
 
   /**
    * The life cycle of the stream
@@ -85,14 +66,11 @@ export class StreamsLiveResponse {
   public trimming?: StreamsTrimmingStatus;
 
   constructor(obj?: Partial<StreamsLiveResponse>) {
+    super(obj);
     if(!obj) {
       return;
     }
-    this.id = map(obj.id);
     this.streamKey = map(obj.streamKey);
-    this.title = map(obj.title);
-    this.description = map(obj.description);
-    this.createdAt = map(obj.createdAt, Date);
     this.lifeCycle = map(obj.lifeCycle);
     this.styleConfig = map(obj.styleConfig, StreamsStyleConfigResponse);
     this.posterUrl = map(obj.posterUrl);
