@@ -519,6 +519,7 @@ export * from './OpusAudioConfiguration';
 export * from './OpusChannelLayout';
 export * from './OrConjunction';
 export * from './Organization';
+export * from './OrganizationPendingInvitation';
 export * from './OrganizationType';
 export * from './OttLoudnessMode';
 export * from './Output';

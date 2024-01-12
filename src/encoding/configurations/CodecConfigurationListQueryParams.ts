@@ -21,6 +21,13 @@ export interface CodecConfigurationListQueryParams {
      * @memberof CodecConfigurationListQueryParams
      */
     name?: string | undefined;
+
+    /**
+     * Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     * @type {string}
+     * @memberof CodecConfigurationListQueryParams
+     */
+    sort?: string | undefined;
 }
 
 export class CodecConfigurationListQueryParamsBuilder {
@@ -50,6 +57,15 @@ export class CodecConfigurationListQueryParamsBuilder {
      */
     public name(name: string) {
         this.internalParams.name = name;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order list result according to a filter resource attribute. The fields that can be used for sorting are: + `id` + `createdAt` + `modifiedAt` + `type` + `name` 
+     */
+    public sort(sort: string) {
+        this.internalParams.sort = sort;
         return this;
     }
 
