@@ -6,6 +6,7 @@ import OutputsApi from './outputs/OutputsApi';
 import ConfigurationsApi from './configurations/ConfigurationsApi';
 import FiltersApi from './filters/FiltersApi';
 import EncodingsApi from './encodings/EncodingsApi';
+import LiveApi from './live/LiveApi';
 import ManifestsApi from './manifests/ManifestsApi';
 import InfrastructureApi from './infrastructure/InfrastructureApi';
 import StatisticsApi from './statistics/StatisticsApi';
@@ -26,6 +27,7 @@ export default class EncodingApi extends BaseAPI {
   public configurations: ConfigurationsApi;
   public filters: FiltersApi;
   public encodings: EncodingsApi;
+  public live: LiveApi;
   public manifests: ManifestsApi;
   public infrastructure: InfrastructureApi;
   public statistics: StatisticsApi;
@@ -41,6 +43,7 @@ export default class EncodingApi extends BaseAPI {
     this.configurations = new ConfigurationsApi(configuration);
     this.filters = new FiltersApi(configuration);
     this.encodings = new EncodingsApi(configuration);
+    this.live = new LiveApi(configuration);
     this.manifests = new ManifestsApi(configuration);
     this.infrastructure = new InfrastructureApi(configuration);
     this.statistics = new StatisticsApi(configuration);

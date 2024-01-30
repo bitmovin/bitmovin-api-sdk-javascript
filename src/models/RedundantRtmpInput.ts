@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import Input from './Input';
 import InputType from './InputType';
 import RtmpIngestPoint from './RtmpIngestPoint';
+import StaticRtmpIngestPoint from './StaticRtmpIngestPoint';
 
 /**
  * @export
@@ -23,10 +24,18 @@ export class RedundantRtmpInput extends Input {
   public delayThreshold?: number;
 
   /**
+   * Configuration for ingest points that use a dynamic IP based endpoint to stream to e.g.: rtmp://41.167.11.21/live Either ingestPoints **or** staticIngestPoints can be set 
    * @type {RtmpIngestPoint[]}
    * @memberof RedundantRtmpInput
    */
   public ingestPoints?: RtmpIngestPoint[];
+
+  /**
+   * Configuration for static ingest points. These ingest points use a consistent endpoint to stream to e.g.: rtmps://live-ingest.bitmovin.com/live Either ingestPoints **or** staticIngestPoints can be set 
+   * @type {StaticRtmpIngestPoint[]}
+   * @memberof RedundantRtmpInput
+   */
+  public staticIngestPoints?: StaticRtmpIngestPoint[];
 
   constructor(obj?: Partial<RedundantRtmpInput>) {
     super(obj);
@@ -35,6 +44,7 @@ export class RedundantRtmpInput extends Input {
     }
     this.delayThreshold = map(obj.delayThreshold);
     this.ingestPoints = mapArray(obj.ingestPoints, RtmpIngestPoint);
+    this.staticIngestPoints = mapArray(obj.staticIngestPoints, StaticRtmpIngestPoint);
   }
 }
 
