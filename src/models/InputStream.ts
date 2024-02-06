@@ -7,7 +7,6 @@ import DolbyAtmosIngestInputStream from './DolbyAtmosIngestInputStream';
 import DolbyVisionInputStream from './DolbyVisionInputStream';
 import DolbyVisionMetadataIngestInputStream from './DolbyVisionMetadataIngestInputStream';
 import DvbSubtitleInputStream from './DvbSubtitleInputStream';
-import DvbTeletextInputStream from './DvbTeletextInputStream';
 import FileInputStream from './FileInputStream';
 import H264PictureTimingTrimmingInputStream from './H264PictureTimingTrimmingInputStream';
 import IngestInputStream from './IngestInputStream';
@@ -27,7 +26,6 @@ export type InputStreamUnion =
   Cea708CaptionInputStream |
   FileInputStream |
   DvbSubtitleInputStream |
-  DvbTeletextInputStream |
   DolbyAtmosIngestInputStream |
   DolbyVisionInputStream;
 
@@ -49,7 +47,6 @@ export class InputStream extends BitmovinResource {
     CAPTION_CEA708: 'Cea708CaptionInputStream',
     FILE: 'FileInputStream',
     DVB_SUBTITLE: 'DvbSubtitleInputStream',
-    DVB_TELETEXT: 'DvbTeletextInputStream',
     DOLBY_ATMOS: 'DolbyAtmosIngestInputStream',
     DOLBY_VISION: 'DolbyVisionInputStream'
   };

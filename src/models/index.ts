@@ -323,7 +323,6 @@ export * from './DtsXAudioConfiguration';
 export * from './DtsXChannelLayout';
 export * from './DvbSubtitleConfiguration';
 export * from './DvbSubtitleInputStream';
-export * from './DvbTeletextInputStream';
 export * from './Eac3AudioConfiguration';
 export * from './EbuR128SinglePassFilter';
 export * from './EgressCategory';
