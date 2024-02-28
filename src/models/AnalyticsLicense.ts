@@ -93,6 +93,13 @@ export class AnalyticsLicense {
   public retentionTime?: string;
 
   /**
+   * Retention time for compressed data, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
+   * @type {string}
+   * @memberof AnalyticsLicense
+   */
+  public compressedRetentionTime?: string;
+
+  /**
    * Whitelisted domains
    * @type {AnalyticsLicenseDomain[]}
    * @memberof AnalyticsLicense
@@ -163,6 +170,7 @@ export class AnalyticsLicense {
     this.maxImpressions = map(obj.maxImpressions);
     this.timeZone = map(obj.timeZone);
     this.retentionTime = map(obj.retentionTime);
+    this.compressedRetentionTime = map(obj.compressedRetentionTime);
     this.domains = mapArray(obj.domains, AnalyticsLicenseDomain);
     this.includeInInsights = map(obj.includeInInsights);
     this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);

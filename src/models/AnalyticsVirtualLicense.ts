@@ -36,6 +36,13 @@ export class AnalyticsVirtualLicense {
   public retentionTime?: string;
 
   /**
+   * Retention time for compressed data, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
+   * @type {string}
+   * @memberof AnalyticsVirtualLicense
+   */
+  public compressedRetentionTime?: string;
+
+  /**
    * List of Analytics Licenses
    * @type {AnalyticsVirtualLicenseLicensesListItem[]}
    * @memberof AnalyticsVirtualLicense
@@ -71,6 +78,7 @@ export class AnalyticsVirtualLicense {
     this.name = map(obj.name);
     this.timezone = map(obj.timezone);
     this.retentionTime = map(obj.retentionTime);
+    this.compressedRetentionTime = map(obj.compressedRetentionTime);
     this.licenses = mapArray(obj.licenses, AnalyticsVirtualLicenseLicensesListItem);
     this.customDataFieldsCount = map(obj.customDataFieldsCount);
     this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);

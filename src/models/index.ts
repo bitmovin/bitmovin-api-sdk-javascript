@@ -206,6 +206,7 @@ export * from './ColorTransfer';
 export * from './ConcatenationInputConfiguration';
 export * from './ConcatenationInputStream';
 export * from './Condition';
+export * from './ConditionAttribute';
 export * from './ConditionOperator';
 export * from './ConditionType';
 export * from './ConformFilter';
