@@ -26,6 +26,13 @@ export class StreamsLiveUpdateRequest {
    */
   public posterUrl?: string;
 
+  /**
+   * Id of the domain restriction config to use
+   * @type {string}
+   * @memberof StreamsLiveUpdateRequest
+   */
+  public domainRestrictionId?: string;
+
   constructor(obj?: Partial<StreamsLiveUpdateRequest>) {
     if(!obj) {
       return;
@@ -33,6 +40,7 @@ export class StreamsLiveUpdateRequest {
     this.title = map(obj.title);
     this.description = map(obj.description);
     this.posterUrl = map(obj.posterUrl);
+    this.domainRestrictionId = map(obj.domainRestrictionId);
   }
 }
 

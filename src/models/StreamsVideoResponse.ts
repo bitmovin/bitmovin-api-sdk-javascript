@@ -1,6 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
-import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
+import StreamsDomainRestrictionResponse from './StreamsDomainRestrictionResponse';
 import StreamsResponse from './StreamsResponse';
 import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
 import StreamsTrimmingStatus from './StreamsTrimmingStatus';
@@ -61,10 +61,10 @@ export class StreamsVideoResponse extends StreamsResponse {
   public adConfig?: StreamsAdConfigResponse;
 
   /**
-   * @type {StreamsContentProtectionResponse}
+   * @type {StreamsDomainRestrictionResponse}
    * @memberof StreamsVideoResponse
    */
-  public contentProtection?: StreamsContentProtectionResponse;
+  public domainRestriction?: StreamsDomainRestrictionResponse;
 
   /**
    * Stream trimming information
@@ -98,7 +98,7 @@ export class StreamsVideoResponse extends StreamsResponse {
     this.encodingTasks = mapArray(obj.encodingTasks, StreamsVideoEncodingTask);
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
-    this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
+    this.domainRestriction = map(obj.domainRestriction, StreamsDomainRestrictionResponse);
     this.trimming = map(obj.trimming);
     this.downloadUrl = map(obj.downloadUrl);
     this.signed = map(obj.signed);

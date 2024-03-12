@@ -718,7 +718,7 @@ export * from './StreamPerTitleSettings';
 export * from './StreamSelectionMode';
 export * from './StreamsAdConfigAd';
 export * from './StreamsAdConfigResponse';
-export * from './StreamsContentProtectionResponse';
+export * from './StreamsDomainRestrictionResponse';
 export * from './StreamsEncodingProfile';
 export * from './StreamsLiveCreateRequest';
 export * from './StreamsLiveLifeCycle';

@@ -28,6 +28,13 @@ export class StreamsVideoCreateRequest {
   public description?: string;
 
   /**
+   * Id of the domain restriction config to use
+   * @type {string}
+   * @memberof StreamsVideoCreateRequest
+   */
+  public domainRestrictionId?: string;
+
+  /**
    * Profile to be used in encoding
    * @type {StreamsEncodingProfile}
    * @memberof StreamsVideoCreateRequest
@@ -48,6 +55,7 @@ export class StreamsVideoCreateRequest {
     this.assetUrl = map(obj.assetUrl);
     this.title = map(obj.title);
     this.description = map(obj.description);
+    this.domainRestrictionId = map(obj.domainRestrictionId);
     this.encodingProfile = map(obj.encodingProfile);
     this.signed = map(obj.signed);
   }

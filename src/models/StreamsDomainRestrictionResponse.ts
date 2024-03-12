@@ -2,38 +2,38 @@ import {map, mapArray} from '../common/Mapper';
 
 /**
  * @export
- * @class StreamsContentProtectionResponse
+ * @class StreamsDomainRestrictionResponse
  */
-export class StreamsContentProtectionResponse {
+export class StreamsDomainRestrictionResponse {
   /**
-   * The identifier of the streams content protection entity
+   * The identifier of the streams domain restriction entity
    * @type {string}
-   * @memberof StreamsContentProtectionResponse
+   * @memberof StreamsDomainRestrictionResponse
    */
   public id?: string;
 
   /**
    * The list of allowed domains
    * @type {string[]}
-   * @memberof StreamsContentProtectionResponse
+   * @memberof StreamsDomainRestrictionResponse
    */
   public allowedDomains?: string[];
 
   /**
-   * Controls if requests to content protected streams without referer header should be allowed or denied
+   * Controls if requests to domain restricted streams without referer header should be allowed or denied
    * @type {boolean}
-   * @memberof StreamsContentProtectionResponse
+   * @memberof StreamsDomainRestrictionResponse
    */
   public allowNoReferer?: boolean;
 
   /**
    * Controls if Stream is accessible via sharing URL or not
    * @type {boolean}
-   * @memberof StreamsContentProtectionResponse
+   * @memberof StreamsDomainRestrictionResponse
    */
   public allowShare?: boolean;
 
-  constructor(obj?: Partial<StreamsContentProtectionResponse>) {
+  constructor(obj?: Partial<StreamsDomainRestrictionResponse>) {
     if(!obj) {
       return;
     }
@@ -44,5 +44,5 @@ export class StreamsContentProtectionResponse {
   }
 }
 
-export default StreamsContentProtectionResponse;
+export default StreamsDomainRestrictionResponse;
 

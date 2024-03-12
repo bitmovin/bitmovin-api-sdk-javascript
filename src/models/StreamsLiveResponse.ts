@@ -1,6 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import StreamsAdConfigResponse from './StreamsAdConfigResponse';
-import StreamsContentProtectionResponse from './StreamsContentProtectionResponse';
+import StreamsDomainRestrictionResponse from './StreamsDomainRestrictionResponse';
 import StreamsLiveLifeCycle from './StreamsLiveLifeCycle';
 import StreamsResponse from './StreamsResponse';
 import StreamsStyleConfigResponse from './StreamsStyleConfigResponse';
@@ -53,10 +53,10 @@ export class StreamsLiveResponse extends StreamsResponse {
   public adConfig?: StreamsAdConfigResponse;
 
   /**
-   * @type {StreamsContentProtectionResponse}
+   * @type {StreamsDomainRestrictionResponse}
    * @memberof StreamsLiveResponse
    */
-  public contentProtection?: StreamsContentProtectionResponse;
+  public domainRestriction?: StreamsDomainRestrictionResponse;
 
   /**
    * Stream trimming information
@@ -75,7 +75,7 @@ export class StreamsLiveResponse extends StreamsResponse {
     this.styleConfig = map(obj.styleConfig, StreamsStyleConfigResponse);
     this.posterUrl = map(obj.posterUrl);
     this.adConfig = map(obj.adConfig, StreamsAdConfigResponse);
-    this.contentProtection = map(obj.contentProtection, StreamsContentProtectionResponse);
+    this.domainRestriction = map(obj.domainRestriction, StreamsDomainRestrictionResponse);
     this.trimming = map(obj.trimming);
   }
 }
