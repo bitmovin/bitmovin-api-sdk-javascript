@@ -3,7 +3,7 @@ import Configuration from '../../common/Configuration';
 import {map, mapArray} from '../../common/Mapper';
 import AdsApi from './ads/AdsApi';
 import ErrorsApi from './errors/ErrorsApi';
-import AnalyticsImpressionDetails from '../../models/AnalyticsImpressionDetails';
+import AnalyticsImpressionSample from '../../models/AnalyticsImpressionSample';
 import AnalyticsImpressionsQuery from '../../models/AnalyticsImpressionsQuery';
 import AnalyticsImpressionsResponse from '../../models/AnalyticsImpressionsResponse';
 import AnalyticsLicenseKey from '../../models/AnalyticsLicenseKey';
@@ -31,12 +31,12 @@ export default class ImpressionsApi extends BaseAPI {
    * @throws {BitmovinError}
    * @memberof ImpressionsApi
    */
-  public create(impressionId: string, analyticsLicenseKey?: AnalyticsLicenseKey): Promise<AnalyticsImpressionDetails> {
+  public create(impressionId: string, analyticsLicenseKey?: AnalyticsLicenseKey): Promise<AnalyticsImpressionSample[]> {
     const pathParamMap = {
       impression_id: impressionId
     };
-    return this.restClient.post<AnalyticsImpressionDetails>('/analytics/impressions/{impression_id}', pathParamMap, analyticsLicenseKey).then((response) => {
-      return map(response, AnalyticsImpressionDetails);
+    return this.restClient.post<AnalyticsImpressionSample[]>('/analytics/impressions/{impression_id}', pathParamMap, analyticsLicenseKey).then((response) => {
+      return mapArray(response, AnalyticsImpressionSample);
     });
   }
 
