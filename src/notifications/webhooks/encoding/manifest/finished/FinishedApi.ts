@@ -3,6 +3,7 @@ import Configuration from '../../../../../common/Configuration';
 import {map, mapArray} from '../../../../../common/Mapper';
 import BitmovinResponse from '../../../../../models/BitmovinResponse';
 import Webhook from '../../../../../models/Webhook';
+import PaginationResponse from '../../../../../models/PaginationResponse';
 
 /**
  * FinishedApi - object-oriented interface
@@ -56,6 +57,17 @@ export default class FinishedApi extends BaseAPI {
     };
     return this.restClient.delete<BitmovinResponse>('/notifications/webhooks/encoding/manifest/finished/{notification_id}', pathParamMap).then((response) => {
       return map(response, BitmovinResponse);
+    });
+  }
+
+  /**
+   * @summary Get 'Manifest Finished' Webhooks (All Manifests)
+   * @throws {BitmovinError}
+   * @memberof FinishedApi
+   */
+  public list(): Promise<PaginationResponse<Webhook>> {
+    return this.restClient.get<PaginationResponse<Webhook>>('/notifications/webhooks/encoding/manifest/finished', {}).then((response) => {
+      return new PaginationResponse<Webhook>(response, Webhook);
     });
   }
 

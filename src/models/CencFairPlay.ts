@@ -13,7 +13,7 @@ export class CencFairPlay {
   public iv?: string;
 
   /**
-   * URL of the licensing server
+   * URL of the licensing server. Typically starts with a skd://. Please check with your DRM provider on their required format.
    * @type {string}
    * @memberof CencFairPlay
    */
