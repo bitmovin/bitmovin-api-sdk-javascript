@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
+import ActionsApi from './actions/ActionsApi';
 import BitmovinResponse from '../../../models/BitmovinResponse';
 import StreamKey from '../../../models/StreamKey';
 import PaginationResponse from '../../../models/PaginationResponse';
@@ -13,9 +14,11 @@ import {StreamKeyListQueryParams, StreamKeyListQueryParamsBuilder} from './Strea
  * @extends {BaseAPI}
  */
 export default class StreamKeysApi extends BaseAPI {
+  public actions: ActionsApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.actions = new ActionsApi(configuration);
   }
 
   /**

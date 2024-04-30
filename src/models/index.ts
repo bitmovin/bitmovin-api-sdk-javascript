@@ -708,6 +708,7 @@ export * from './StreamKeyConfiguration';
 export * from './StreamKeyConfigurationType';
 export * from './StreamKeyStatus';
 export * from './StreamKeyType';
+export * from './StreamKeysUnassignAction';
 export * from './StreamMetadata';
 export * from './StreamMode';
 export * from './StreamPerTitleFixedResolutionAndBitrateSettings';

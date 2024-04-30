@@ -43,6 +43,13 @@ export class Organization extends BitmovinResource {
    */
   public signupSource?: SignupSource;
 
+  /**
+   * Flag indicating if MFA is required for the organization
+   * @type {boolean}
+   * @memberof Organization
+   */
+  public mfaRequired?: boolean;
+
   constructor(obj?: Partial<Organization>) {
     super(obj);
     if(!obj) {
@@ -53,6 +60,7 @@ export class Organization extends BitmovinResource {
     this.labelColor = map(obj.labelColor);
     this.limitsPerResource = mapArray(obj.limitsPerResource, ResourceLimitContainer);
     this.signupSource = map(obj.signupSource);
+    this.mfaRequired = map(obj.mfaRequired);
   }
 }
 
