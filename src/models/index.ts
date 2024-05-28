@@ -528,6 +528,7 @@ export * from './PackedAudioMuxingInformation';
 export * from './PaddingDurationUnit';
 export * from './PaddingSequence';
 export * from './PaginationResponse';
+export * from './PassthroughAudioConfiguration';
 export * from './PassthroughMode';
 export * from './PcmAudioConfiguration';
 export * from './PcmChannelLayout';

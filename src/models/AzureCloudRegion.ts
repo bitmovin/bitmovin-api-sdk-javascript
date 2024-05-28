@@ -24,7 +24,9 @@ export enum AzureCloudRegion {
   US_EAST2 = 'US_EAST2',
   US_WEST = 'US_WEST',
   US_WEST2 = 'US_WEST2',
-  US_SOUTH_CENTRAL = 'US_SOUTH_CENTRAL'
+  US_SOUTH_CENTRAL = 'US_SOUTH_CENTRAL',
+  US_NORTH_CENTRAL = 'US_NORTH_CENTRAL',
+  UK_SOUTH = 'UK_SOUTH'
 }
 
 export default AzureCloudRegion;

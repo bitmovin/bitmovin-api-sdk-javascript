@@ -8,6 +8,7 @@ import DtsxApi from './dtsx/DtsxApi';
 import DolbyAtmosApi from './dolbyAtmos/DolbyAtmosApi';
 import HeAacV1Api from './heAacV1/HeAacV1Api';
 import HeAacV2Api from './heAacV2/HeAacV2Api';
+import PassthroughApi from './passthrough/PassthroughApi';
 import VorbisApi from './vorbis/VorbisApi';
 import OpusApi from './opus/OpusApi';
 import PcmApi from './pcm/PcmApi';
@@ -32,6 +33,7 @@ export default class AudioApi extends BaseAPI {
   public dolbyAtmos: DolbyAtmosApi;
   public heAacV1: HeAacV1Api;
   public heAacV2: HeAacV2Api;
+  public passthrough: PassthroughApi;
   public vorbis: VorbisApi;
   public opus: OpusApi;
   public pcm: PcmApi;
@@ -51,6 +53,7 @@ export default class AudioApi extends BaseAPI {
     this.dolbyAtmos = new DolbyAtmosApi(configuration);
     this.heAacV1 = new HeAacV1Api(configuration);
     this.heAacV2 = new HeAacV2Api(configuration);
+    this.passthrough = new PassthroughApi(configuration);
     this.vorbis = new VorbisApi(configuration);
     this.opus = new OpusApi(configuration);
     this.pcm = new PcmApi(configuration);

@@ -21,6 +21,7 @@ import MjpegVideoConfiguration from './MjpegVideoConfiguration';
 import Mp2AudioConfiguration from './Mp2AudioConfiguration';
 import Mp3AudioConfiguration from './Mp3AudioConfiguration';
 import OpusAudioConfiguration from './OpusAudioConfiguration';
+import PassthroughAudioConfiguration from './PassthroughAudioConfiguration';
 import PcmAudioConfiguration from './PcmAudioConfiguration';
 import VorbisAudioConfiguration from './VorbisAudioConfiguration';
 import Vp8VideoConfiguration from './Vp8VideoConfiguration';
@@ -29,6 +30,7 @@ import WebVttConfiguration from './WebVttConfiguration';
 
 export type CodecConfigurationUnion =
   AacAudioConfiguration |
+  PassthroughAudioConfiguration |
   DtsPassthroughAudioConfiguration |
   DtsAudioConfiguration |
   DtsXAudioConfiguration |
@@ -63,6 +65,7 @@ export class CodecConfiguration extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
   protected static readonly _discriminatorMapping: { [key in keyof typeof CodecConfigType]: string; } = {
     AAC: 'AacAudioConfiguration',
+    AUDIO_PASSTHROUGH: 'PassthroughAudioConfiguration',
     DTS_PASSTHROUGH: 'DtsPassthroughAudioConfiguration',
     DTS: 'DtsAudioConfiguration',
     DTSX: 'DtsXAudioConfiguration',
