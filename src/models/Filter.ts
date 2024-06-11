@@ -1,5 +1,6 @@
 import AudioMixFilter from './AudioMixFilter';
 import AudioVolumeFilter from './AudioVolumeFilter';
+import AzureSpeechToCaptionsFilter from './AzureSpeechToCaptionsFilter';
 import BitmovinResource from './BitmovinResource';
 import ConformFilter from './ConformFilter';
 import CropFilter from './CropFilter';
@@ -31,7 +32,8 @@ export type FilterUnion =
   ScaleFilter |
   InterlaceFilter |
   AudioVolumeFilter |
-  EbuR128SinglePassFilter;
+  EbuR128SinglePassFilter |
+  AzureSpeechToCaptionsFilter;
 
 /**
  * @export
@@ -54,7 +56,8 @@ export class Filter extends BitmovinResource {
     SCALE: 'ScaleFilter',
     INTERLACE: 'InterlaceFilter',
     AUDIO_VOLUME: 'AudioVolumeFilter',
-    EBU_R128_SINGLE_PASS: 'EbuR128SinglePassFilter'
+    EBU_R128_SINGLE_PASS: 'EbuR128SinglePassFilter',
+    AZURE_SPEECH_TO_CAPTIONS: 'AzureSpeechToCaptionsFilter'
   };
 
   constructor(obj?: Partial<Filter>) {

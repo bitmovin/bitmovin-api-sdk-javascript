@@ -5,6 +5,7 @@ import TypeApi from './type/TypeApi';
 import ConformApi from './conform/ConformApi';
 import WatermarkApi from './watermark/WatermarkApi';
 import AudioVolumeApi from './audioVolume/AudioVolumeApi';
+import AzureSpeechToCaptionsApi from './azureSpeechToCaptions/AzureSpeechToCaptionsApi';
 import EnhancedWatermarkApi from './enhancedWatermark/EnhancedWatermarkApi';
 import CropApi from './crop/CropApi';
 import RotateApi from './rotate/RotateApi';
@@ -32,6 +33,7 @@ export default class FiltersApi extends BaseAPI {
   public conform: ConformApi;
   public watermark: WatermarkApi;
   public audioVolume: AudioVolumeApi;
+  public azureSpeechToCaptions: AzureSpeechToCaptionsApi;
   public enhancedWatermark: EnhancedWatermarkApi;
   public crop: CropApi;
   public rotate: RotateApi;
@@ -51,6 +53,7 @@ export default class FiltersApi extends BaseAPI {
     this.conform = new ConformApi(configuration);
     this.watermark = new WatermarkApi(configuration);
     this.audioVolume = new AudioVolumeApi(configuration);
+    this.azureSpeechToCaptions = new AzureSpeechToCaptionsApi(configuration);
     this.enhancedWatermark = new EnhancedWatermarkApi(configuration);
     this.crop = new CropApi(configuration);
     this.rotate = new RotateApi(configuration);
