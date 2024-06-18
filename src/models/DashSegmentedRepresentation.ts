@@ -42,14 +42,14 @@ export class DashSegmentedRepresentation extends DashMuxingRepresentation {
   public endSegmentNumber?: number;
 
   /**
-   * Id of the Keyframe to start with
+   * Id of the keyframe to start with. It takes precedence over startSegmentNumber
    * @type {string}
    * @memberof DashSegmentedRepresentation
    */
   public startKeyframeId?: string;
 
   /**
-   * Id of the Keyframe to end with
+   * Id of the keyframe to end with. It takes precedence over endSegmentNumber. The segment containing the end keyframe is not included in the representation.
    * @type {string}
    * @memberof DashSegmentedRepresentation
    */
