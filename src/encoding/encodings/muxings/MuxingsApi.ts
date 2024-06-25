@@ -15,6 +15,7 @@ import Mp4Api from './mp4/Mp4Api';
 import MxfApi from './mxf/MxfApi';
 import ProgressiveTsApi from './progressiveTs/ProgressiveTsApi';
 import BroadcastTsApi from './broadcastTs/BroadcastTsApi';
+import ProgressiveWavApi from './progressiveWav/ProgressiveWavApi';
 import ProgressiveWebmApi from './progressiveWebm/ProgressiveWebmApi';
 import ProgressiveMovApi from './progressiveMov/ProgressiveMovApi';
 import Muxing from '../../../models/Muxing';
@@ -43,6 +44,7 @@ export default class MuxingsApi extends BaseAPI {
   public mxf: MxfApi;
   public progressiveTs: ProgressiveTsApi;
   public broadcastTs: BroadcastTsApi;
+  public progressiveWav: ProgressiveWavApi;
   public progressiveWebm: ProgressiveWebmApi;
   public progressiveMov: ProgressiveMovApi;
 
@@ -62,6 +64,7 @@ export default class MuxingsApi extends BaseAPI {
     this.mxf = new MxfApi(configuration);
     this.progressiveTs = new ProgressiveTsApi(configuration);
     this.broadcastTs = new BroadcastTsApi(configuration);
+    this.progressiveWav = new ProgressiveWavApi(configuration);
     this.progressiveWebm = new ProgressiveWebmApi(configuration);
     this.progressiveMov = new ProgressiveMovApi(configuration);
   }
