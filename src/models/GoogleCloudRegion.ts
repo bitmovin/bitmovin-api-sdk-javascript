@@ -20,7 +20,8 @@ export enum GoogleCloudRegion {
   NORTHAMERICA_NORTHEAST_1 = 'NORTHAMERICA_NORTHEAST_1',
   SOUTHAMERICA_EAST_1 = 'SOUTHAMERICA_EAST_1',
   US_EAST_4 = 'US_EAST_4',
-  US_WEST_2 = 'US_WEST_2'
+  US_WEST_2 = 'US_WEST_2',
+  ME_CENTRAL_2 = 'ME_CENTRAL_2'
 }
 
 export default GoogleCloudRegion;

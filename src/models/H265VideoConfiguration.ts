@@ -89,21 +89,21 @@ export class H265VideoConfiguration extends VideoConfiguration {
   public qp?: number;
 
   /**
-   * Maximum Bitrate
+   * Maximum Bitrate (bps)
    * @type {number}
    * @memberof H265VideoConfiguration
    */
   public maxBitrate?: number;
 
   /**
-   * Minimum Bitrate
+   * Minimum Bitrate (bps)
    * @type {number}
    * @memberof H265VideoConfiguration
    */
   public minBitrate?: number;
 
   /**
-   * Size of the VBV buffer (kbits)
+   * Size of the VBV buffer (bits)
    * @type {number}
    * @memberof H265VideoConfiguration
    */

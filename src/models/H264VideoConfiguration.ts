@@ -112,21 +112,21 @@ export class H264VideoConfiguration extends VideoConfiguration {
   public cabac?: boolean;
 
   /**
-   * Maximum Bitrate
+   * Maximum Bitrate (bps)
    * @type {number}
    * @memberof H264VideoConfiguration
    */
   public maxBitrate?: number;
 
   /**
-   * Minimum Bitrate
+   * Minimum Bitrate (bps)
    * @type {number}
    * @memberof H264VideoConfiguration
    */
   public minBitrate?: number;
 
   /**
-   * Playback device buffer size
+   * Playback device buffer size (bits)
    * @type {number}
    * @memberof H264VideoConfiguration
    */

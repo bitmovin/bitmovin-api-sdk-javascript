@@ -3,7 +3,8 @@
  * @enum {string}
  */
 export enum PcmChannelLayout {
-  MONO = 'MONO'
+  MONO = 'MONO',
+  STEREO = 'STEREO'
 }
 
 export default PcmChannelLayout;
