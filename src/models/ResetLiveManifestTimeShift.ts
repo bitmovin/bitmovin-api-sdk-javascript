@@ -20,6 +20,13 @@ export class ResetLiveManifestTimeShift extends BitmovinResponse {
    */
   public manifestIds?: string[];
 
+  /**
+   * If set to true, the Progressive muxing start position will be shifted to the start of the first remaining segment after the removal.  NOTE: This only works for Progressive MP4 muxings.
+   * @type {boolean}
+   * @memberof ResetLiveManifestTimeShift
+   */
+  public shiftProgressiveMuxingStartPosition?: boolean;
+
   constructor(obj?: Partial<ResetLiveManifestTimeShift>) {
     super(obj);
     if(!obj) {
@@ -27,6 +34,7 @@ export class ResetLiveManifestTimeShift extends BitmovinResponse {
     }
     this.residualPeriodInSeconds = map(obj.residualPeriodInSeconds);
     this.manifestIds = mapArray(obj.manifestIds);
+    this.shiftProgressiveMuxingStartPosition = map(obj.shiftProgressiveMuxingStartPosition);
   }
 }
 

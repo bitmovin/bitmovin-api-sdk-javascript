@@ -12,7 +12,6 @@ import InfrastructureApi from './infrastructure/InfrastructureApi';
 import StatisticsApi from './statistics/StatisticsApi';
 import WatchFoldersApi from './watchFolders/WatchFoldersApi';
 import SimpleApi from './simple/SimpleApi';
-import HistoryApi from './history/HistoryApi';
 import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
 
 /**
@@ -33,7 +32,6 @@ export default class EncodingApi extends BaseAPI {
   public statistics: StatisticsApi;
   public watchFolders: WatchFoldersApi;
   public simple: SimpleApi;
-  public history: HistoryApi;
   public errorDefinitions: ErrorDefinitionsApi;
 
   constructor(configuration: Configuration) {
@@ -49,7 +47,6 @@ export default class EncodingApi extends BaseAPI {
     this.statistics = new StatisticsApi(configuration);
     this.watchFolders = new WatchFoldersApi(configuration);
     this.simple = new SimpleApi(configuration);
-    this.history = new HistoryApi(configuration);
     this.errorDefinitions = new ErrorDefinitionsApi(configuration);
   }
 }
