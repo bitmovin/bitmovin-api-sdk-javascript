@@ -55,6 +55,20 @@ export class PerTitleConfiguration {
    */
   public fixedResolutionAndBitrateConfiguration?: PerTitleFixedResolutionAndBitrateConfiguration;
 
+  /**
+   * Desired target quality of the highest representation expressed as CRF value
+   * @type {number}
+   * @memberof PerTitleConfiguration
+   */
+  public targetQualityCrf?: number;
+
+  /**
+   * This factor influences the resolution selection of the per-title algorithm. The default value is 0.0. negative values will lead to results where the algorithm will choose lower resolutions for given bitrates. A positive value will result in higher resolutions to be selected. The range of the factor is -5.0 to +5.0. Please note that changing this factor might also lead to slightly different bitrate selection by the algorithm.
+   * @type {number}
+   * @memberof PerTitleConfiguration
+   */
+  public resolutionScaleFactor?: number;
+
   constructor(obj?: Partial<PerTitleConfiguration>) {
     if(!obj) {
       return;
@@ -66,6 +80,8 @@ export class PerTitleConfiguration {
     this.autoRepresentations = map(obj.autoRepresentations, AutoRepresentation);
     this.complexityFactor = map(obj.complexityFactor);
     this.fixedResolutionAndBitrateConfiguration = map(obj.fixedResolutionAndBitrateConfiguration, PerTitleFixedResolutionAndBitrateConfiguration);
+    this.targetQualityCrf = map(obj.targetQualityCrf);
+    this.resolutionScaleFactor = map(obj.resolutionScaleFactor);
   }
 }
 
