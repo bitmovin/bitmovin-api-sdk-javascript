@@ -13,6 +13,7 @@ import StatisticsApi from './statistics/StatisticsApi';
 import WatchFoldersApi from './watchFolders/WatchFoldersApi';
 import SimpleApi from './simple/SimpleApi';
 import ErrorDefinitionsApi from './errorDefinitions/ErrorDefinitionsApi';
+import TemplatesApi from './templates/TemplatesApi';
 
 /**
  * EncodingApi - object-oriented interface
@@ -33,6 +34,7 @@ export default class EncodingApi extends BaseAPI {
   public watchFolders: WatchFoldersApi;
   public simple: SimpleApi;
   public errorDefinitions: ErrorDefinitionsApi;
+  public templates: TemplatesApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -48,5 +50,6 @@ export default class EncodingApi extends BaseAPI {
     this.watchFolders = new WatchFoldersApi(configuration);
     this.simple = new SimpleApi(configuration);
     this.errorDefinitions = new ErrorDefinitionsApi(configuration);
+    this.templates = new TemplatesApi(configuration);
   }
 }
