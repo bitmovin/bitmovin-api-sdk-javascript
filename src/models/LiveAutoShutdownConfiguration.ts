@@ -19,12 +19,20 @@ export class LiveAutoShutdownConfiguration {
    */
   public streamTimeoutMinutes?: number;
 
+  /**
+   * Automatically shutdown the live stream if input is never connected for a predefined number of minutes.
+   * @type {number}
+   * @memberof LiveAutoShutdownConfiguration
+   */
+  public waitingForFirstConnectTimeoutMinutes?: number;
+
   constructor(obj?: Partial<LiveAutoShutdownConfiguration>) {
     if(!obj) {
       return;
     }
     this.bytesReadTimeoutSeconds = map(obj.bytesReadTimeoutSeconds);
     this.streamTimeoutMinutes = map(obj.streamTimeoutMinutes);
+    this.waitingForFirstConnectTimeoutMinutes = map(obj.waitingForFirstConnectTimeoutMinutes);
   }
 }
 

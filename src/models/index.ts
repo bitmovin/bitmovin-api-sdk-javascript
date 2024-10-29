@@ -45,8 +45,6 @@ export * from './AkamaiMslVersion';
 export * from './AkamaiNetStorageInput';
 export * from './AkamaiNetStorageOutput';
 export * from './AnalyticsAbstractFilter';
-export * from './AnalyticsAdsImpressionSample';
-export * from './AnalyticsAdsImpressionsResponse';
 export * from './AnalyticsAttribute';
 export * from './AnalyticsAvgConcurrentViewersResponse';
 export * from './AnalyticsAvgDroppedFramesResponse';
