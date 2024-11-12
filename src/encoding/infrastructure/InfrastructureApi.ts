@@ -5,6 +5,7 @@ import AwsApi from './aws/AwsApi';
 import StaticIpsApi from './staticIps/StaticIpsApi';
 import AzureApi from './azure/AzureApi';
 import GceApi from './gce/GceApi';
+import AkamaiApi from './akamai/AkamaiApi';
 import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPoolsApi';
 
 /**
@@ -18,6 +19,7 @@ export default class InfrastructureApi extends BaseAPI {
   public staticIps: StaticIpsApi;
   public azure: AzureApi;
   public gce: GceApi;
+  public akamai: AkamaiApi;
   public prewarmedEncoderPools: PrewarmedEncoderPoolsApi;
 
   constructor(configuration: Configuration) {
@@ -26,6 +28,7 @@ export default class InfrastructureApi extends BaseAPI {
     this.staticIps = new StaticIpsApi(configuration);
     this.azure = new AzureApi(configuration);
     this.gce = new GceApi(configuration);
+    this.akamai = new AkamaiApi(configuration);
     this.prewarmedEncoderPools = new PrewarmedEncoderPoolsApi(configuration);
   }
 }
