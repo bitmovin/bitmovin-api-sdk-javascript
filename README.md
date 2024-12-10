@@ -31,7 +31,7 @@ If you have any questions regarding the SDK, provided examples or our services, 
 ## Installation
 
 ``` bash
-npm install @bitmovin/api-sdk@1.213.0
+npm install @bitmovin/api-sdk@1.214.0
 ```
 
 ## Initialization
@@ -39,7 +39,7 @@ npm install @bitmovin/api-sdk@1.213.0
 ### Node
 
 Using ES6 `import`
-```es6
+```js
 import BitmovinApi from '@bitmovin/api-sdk';
 
 const bitmovinApi = new BitmovinApi({apiKey: '<YOUR_API_KEY>'});

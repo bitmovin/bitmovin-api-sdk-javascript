@@ -45,7 +45,7 @@ export class PrewarmedEncoderPool extends BitmovinResource {
   public targetPoolSize?: number;
 
   /**
-   * Activate dynamic pool behaviour. Pool will increase/decrease based on usage. Minimum pool size is set by targetPoolSize.
+   * Activate dynamic pool behaviour. Pool will increase/decrease based on usage up until a size of 10 instances. Minimum pool size is set by targetPoolSize
    * @type {boolean}
    * @memberof PrewarmedEncoderPool
    */

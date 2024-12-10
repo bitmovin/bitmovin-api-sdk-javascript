@@ -176,6 +176,7 @@ export * from './BurnInSubtitleDvbSub';
 export * from './BurnInSubtitleSrt';
 export * from './CaptionCharacterEncoding';
 export * from './CdnOutput';
+export * from './CdnProvider';
 export * from './CdnUsage';
 export * from './CdnUsageStatistics';
 export * from './Cea608708SubtitleConfiguration';
