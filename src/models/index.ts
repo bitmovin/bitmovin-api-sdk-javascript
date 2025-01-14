@@ -634,6 +634,7 @@ export * from './ScheduledInsertableContent';
 export * from './ScheduledInsertableContentStatus';
 export * from './Scheduling';
 export * from './Scte35Cue';
+export * from './Scte35Trigger';
 export * from './SegmentedRawMuxing';
 export * from './SegmentsMediaInfo';
 export * from './SftpInput';

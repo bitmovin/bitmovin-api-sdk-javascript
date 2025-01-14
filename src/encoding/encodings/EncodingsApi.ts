@@ -11,6 +11,7 @@ import OutputPathsApi from './outputPaths/OutputPathsApi';
 import CaptionsApi from './captions/CaptionsApi';
 import SidecarsApi from './sidecars/SidecarsApi';
 import KeyframesApi from './keyframes/KeyframesApi';
+import Scte35TriggersApi from './scte35Triggers/Scte35TriggersApi';
 import BitmovinResponse from '../../models/BitmovinResponse';
 import CloudRegion from '../../models/CloudRegion';
 import Encoding from '../../models/Encoding';
@@ -39,6 +40,7 @@ export default class EncodingsApi extends BaseAPI {
   public captions: CaptionsApi;
   public sidecars: SidecarsApi;
   public keyframes: KeyframesApi;
+  public scte35Triggers: Scte35TriggersApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
@@ -52,6 +54,7 @@ export default class EncodingsApi extends BaseAPI {
     this.captions = new CaptionsApi(configuration);
     this.sidecars = new SidecarsApi(configuration);
     this.keyframes = new KeyframesApi(configuration);
+    this.scte35Triggers = new Scte35TriggersApi(configuration);
   }
 
   /**
