@@ -1,14 +1,10 @@
-import * as e6p from 'es6-promise';
 import * as urljoin from 'url-join';
-import * as isomorphicFetch from 'isomorphic-fetch';
 
 import { RequiredError } from './BaseAPI';
 import Configuration from './Configuration';
 import Logger from './Logger';
 import NullLogger from './NullLogger';
 import { buildBitmovinError, buildBitmovinErrorFromError } from './BitmovinErrorBuilder';
-
-(e6p as any).polyfill();
 
 const BASE_URL = 'https://api.bitmovin.com/v1';
 
@@ -140,7 +136,7 @@ export class RestClient {
     this.apiKey = configuration.apiKey;
     this.tenantOrgId = configuration.tenantOrgId;
     this.baseUrl = configuration.baseUrl || BASE_URL;
-    this.fetch = configuration.fetch || isomorphicFetch;
+    this.fetch = configuration.fetch || fetch;
     this.logger = configuration.logger || new NullLogger();
     this.headers = configuration.headers;
 
@@ -233,7 +229,7 @@ class HeaderHandler extends DelegatingHandler {
     const headers: Record<string, string> = {
       'X-Api-Key': apiKey,
       'X-Api-Client': 'bitmovin-api-sdk-javascript',
-      'X-Api-Client-Version': '1.217.0',
+      'X-Api-Client-Version': '1.218.0',
       'Content-Type': 'application/json'
     };
 

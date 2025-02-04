@@ -1,6 +1,6 @@
 {
   "name": "@bitmovin/api-sdk",
-  "version": "1.217.0",
+  "version": "1.218.0",
   "description": "Bitmovin JS/TS API SDK",
   "author": "Bitmovin Inc",
   "keywords": [
@@ -24,15 +24,12 @@
     "format-check": "prettier --list-different \"./src/**/*.{ts,tsx,scss}\""
   },
   "dependencies": {
-    "es6-promise": "^4.2.5",
-    "isomorphic-fetch": ">=3.0.0",
     "url-join": "^4.0.0"
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
-    "@types/isomorphic-fetch": ">=0.0.35",
     "@types/node": "^20.8.9",
     "ts-loader": "^9.2.8",
     "cross-env": "^5.2.0",

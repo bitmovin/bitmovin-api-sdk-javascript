@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import DashEditionCompatibility from './DashEditionCompatibility';
+import DashISO8601TimestampFormat from './DashISO8601TimestampFormat';
 import DashProfile from './DashProfile';
 import EncodingOutput from './EncodingOutput';
 import Manifest from './Manifest';
@@ -48,6 +49,13 @@ export class DashManifest extends Manifest {
    */
   public dashEditionCompatibility?: DashEditionCompatibility;
 
+  /**
+   * Determines how timestamps should appear in the manifest
+   * @type {DashISO8601TimestampFormat}
+   * @memberof DashManifest
+   */
+  public iso8601TimestampFormat?: DashISO8601TimestampFormat;
+
   constructor(obj?: Partial<DashManifest>) {
     super(obj);
     if(!obj) {
@@ -58,6 +66,7 @@ export class DashManifest extends Manifest {
     this.namespaces = mapArray(obj.namespaces, XmlNamespace);
     this.utcTimings = mapArray(obj.utcTimings, UtcTiming);
     this.dashEditionCompatibility = map(obj.dashEditionCompatibility);
+    this.iso8601TimestampFormat = map(obj.iso8601TimestampFormat);
   }
 }
 

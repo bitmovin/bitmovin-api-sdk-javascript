@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import DashEditionCompatibility from './DashEditionCompatibility';
+import DashISO8601TimestampFormat from './DashISO8601TimestampFormat';
 import DashManifest from './DashManifest';
 import DashManifestDefaultVersion from './DashManifestDefaultVersion';
 import DashProfile from './DashProfile';
