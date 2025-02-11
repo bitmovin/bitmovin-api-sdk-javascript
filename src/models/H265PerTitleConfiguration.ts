@@ -29,6 +29,13 @@ export class H265PerTitleConfiguration extends PerTitleConfiguration {
    */
   public codecBufsizeFactor?: number;
 
+  /**
+   * Desired target quality of the highest representation expressed as CRF value
+   * @type {number}
+   * @memberof H265PerTitleConfiguration
+   */
+  public targetQualityCrf?: number;
+
   constructor(obj?: Partial<H265PerTitleConfiguration>) {
     super(obj);
     if(!obj) {
@@ -37,6 +44,7 @@ export class H265PerTitleConfiguration extends PerTitleConfiguration {
     this.codecMinBitrateFactor = map(obj.codecMinBitrateFactor);
     this.codecMaxBitrateFactor = map(obj.codecMaxBitrateFactor);
     this.codecBufsizeFactor = map(obj.codecBufsizeFactor);
+    this.targetQualityCrf = map(obj.targetQualityCrf);
   }
 }
 
