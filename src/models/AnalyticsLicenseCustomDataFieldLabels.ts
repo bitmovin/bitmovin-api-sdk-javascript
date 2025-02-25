@@ -215,6 +215,146 @@ export class AnalyticsLicenseCustomDataFieldLabels {
    */
   public customData30?: string;
 
+  /**
+   * Label for field Custom Data 31
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData31?: string;
+
+  /**
+   * Label for field Custom Data 32
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData32?: string;
+
+  /**
+   * Label for field Custom Data 33
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData33?: string;
+
+  /**
+   * Label for field Custom Data 34
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData34?: string;
+
+  /**
+   * Label for field Custom Data 35
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData35?: string;
+
+  /**
+   * Label for field Custom Data 36
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData36?: string;
+
+  /**
+   * Label for field Custom Data 37
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData37?: string;
+
+  /**
+   * Label for field Custom Data 38
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData38?: string;
+
+  /**
+   * Label for field Custom Data 39
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData39?: string;
+
+  /**
+   * Label for field Custom Data 40
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData40?: string;
+
+  /**
+   * Label for field Custom Data 41
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData41?: string;
+
+  /**
+   * Label for field Custom Data 42
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData42?: string;
+
+  /**
+   * Label for field Custom Data 43
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData43?: string;
+
+  /**
+   * Label for field Custom Data 44
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData44?: string;
+
+  /**
+   * Label for field Custom Data 45
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData45?: string;
+
+  /**
+   * Label for field Custom Data 46
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData46?: string;
+
+  /**
+   * Label for field Custom Data 47
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData47?: string;
+
+  /**
+   * Label for field Custom Data 48
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData48?: string;
+
+  /**
+   * Label for field Custom Data 49
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData49?: string;
+
+  /**
+   * Label for field Custom Data 50
+   * @type {string}
+   * @memberof AnalyticsLicenseCustomDataFieldLabels
+   */
+  public customData50?: string;
+
   constructor(obj?: Partial<AnalyticsLicenseCustomDataFieldLabels>) {
     if(!obj) {
       return;
@@ -249,6 +389,26 @@ export class AnalyticsLicenseCustomDataFieldLabels {
     this.customData28 = map(obj.customData28);
     this.customData29 = map(obj.customData29);
     this.customData30 = map(obj.customData30);
+    this.customData31 = map(obj.customData31);
+    this.customData32 = map(obj.customData32);
+    this.customData33 = map(obj.customData33);
+    this.customData34 = map(obj.customData34);
+    this.customData35 = map(obj.customData35);
+    this.customData36 = map(obj.customData36);
+    this.customData37 = map(obj.customData37);
+    this.customData38 = map(obj.customData38);
+    this.customData39 = map(obj.customData39);
+    this.customData40 = map(obj.customData40);
+    this.customData41 = map(obj.customData41);
+    this.customData42 = map(obj.customData42);
+    this.customData43 = map(obj.customData43);
+    this.customData44 = map(obj.customData44);
+    this.customData45 = map(obj.customData45);
+    this.customData46 = map(obj.customData46);
+    this.customData47 = map(obj.customData47);
+    this.customData48 = map(obj.customData48);
+    this.customData49 = map(obj.customData49);
+    this.customData50 = map(obj.customData50);
   }
 }
 
