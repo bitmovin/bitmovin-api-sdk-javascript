@@ -31,7 +31,7 @@ If you have any questions regarding the SDK, provided examples or our services, 
 ## Installation
 
 ``` bash
-npm install @bitmovin/api-sdk@1.222.0
+npm install @bitmovin/api-sdk@1.223.0
 ```
 
 ## Initialization
