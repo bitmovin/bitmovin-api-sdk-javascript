@@ -5,6 +5,7 @@ import AnalyticsApi from './analytics/AnalyticsApi';
 import DomainsApi from './domains/DomainsApi';
 import ThirdPartyLicensingApi from './thirdPartyLicensing/ThirdPartyLicensingApi';
 import PlayerLicense from '../../models/PlayerLicense';
+import PlayerLicenseUpdateRequest from '../../models/PlayerLicenseUpdateRequest';
 import PaginationResponse from '../../models/PaginationResponse';
 import {PlayerLicenseListQueryParams, PlayerLicenseListQueryParamsBuilder} from './PlayerLicenseListQueryParams';
 
@@ -68,6 +69,22 @@ export default class LicensesApi extends BaseAPI {
     }
     return this.restClient.get<PaginationResponse<PlayerLicense>>('/player/licenses', {}, queryParams).then((response) => {
       return new PaginationResponse<PlayerLicense>(response, PlayerLicense);
+    });
+  }
+
+  /**
+   * @summary Update License
+   * @param {string} licenseId License id
+   * @param {PlayerLicenseUpdateRequest} playerLicenseUpdateRequest Player License details to be updated
+   * @throws {BitmovinError}
+   * @memberof LicensesApi
+   */
+  public update(licenseId: string, playerLicenseUpdateRequest?: PlayerLicenseUpdateRequest): Promise<PlayerLicense> {
+    const pathParamMap = {
+      license_id: licenseId
+    };
+    return this.restClient.put<PlayerLicense>('/player/licenses/{license_id}', pathParamMap, playerLicenseUpdateRequest).then((response) => {
+      return map(response, PlayerLicense);
     });
   }
 }

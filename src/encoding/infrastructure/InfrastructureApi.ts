@@ -6,6 +6,7 @@ import StaticIpsApi from './staticIps/StaticIpsApi';
 import AzureApi from './azure/AzureApi';
 import GceApi from './gce/GceApi';
 import AkamaiApi from './akamai/AkamaiApi';
+import OciApi from './oci/OciApi';
 import PrewarmedEncoderPoolsApi from './prewarmedEncoderPools/PrewarmedEncoderPoolsApi';
 
 /**
@@ -20,6 +21,7 @@ export default class InfrastructureApi extends BaseAPI {
   public azure: AzureApi;
   public gce: GceApi;
   public akamai: AkamaiApi;
+  public oci: OciApi;
   public prewarmedEncoderPools: PrewarmedEncoderPoolsApi;
 
   constructor(configuration: Configuration) {
@@ -29,6 +31,7 @@ export default class InfrastructureApi extends BaseAPI {
     this.azure = new AzureApi(configuration);
     this.gce = new GceApi(configuration);
     this.akamai = new AkamaiApi(configuration);
+    this.oci = new OciApi(configuration);
     this.prewarmedEncoderPools = new PrewarmedEncoderPoolsApi(configuration);
   }
 }

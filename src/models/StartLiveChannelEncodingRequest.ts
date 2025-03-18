@@ -1,5 +1,7 @@
 import AutoRestartConfiguration from './AutoRestartConfiguration';
+import CacheControlSettings from './CacheControlSettings';
 import EncodingMode from './EncodingMode';
+import EsamSettings from './EsamSettings';
 import LiveAutoShutdownConfiguration from './LiveAutoShutdownConfiguration';
 import LiveDashManifest from './LiveDashManifest';
 import LiveHlsManifest from './LiveHlsManifest';

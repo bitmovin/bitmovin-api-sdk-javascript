@@ -1,6 +1,8 @@
 import {map, mapArray} from '../common/Mapper';
 import AutoRestartConfiguration from './AutoRestartConfiguration';
+import CacheControlSettings from './CacheControlSettings';
 import EncodingMode from './EncodingMode';
+import EsamSettings from './EsamSettings';
 import LiveAutoShutdownConfiguration from './LiveAutoShutdownConfiguration';
 import LiveDashManifest from './LiveDashManifest';
 import LiveHlsManifest from './LiveHlsManifest';
@@ -68,6 +70,20 @@ export class StartLiveEncodingRequest {
    */
   public autoShutdownConfiguration?: LiveAutoShutdownConfiguration;
 
+  /**
+   * Configuration for Event Signaling and Management (ESAM) system,  allowing the encoder to communicate with an ESAM server for signal processing and dynamic ad insertion update.' 
+   * @type {EsamSettings}
+   * @memberof StartLiveEncodingRequest
+   */
+  public esamSettings?: EsamSettings;
+
+  /**
+   * Configuration of cache control policies for media segments, HLS, and DASH manifests.  You can set caching for the HLS multivariant playlist, HLS media playlist, DASH timeline manifest,  DASH template manifest, initialization segment, and media segment. 
+   * @type {CacheControlSettings}
+   * @memberof StartLiveEncodingRequest
+   */
+  public cacheControlSettings?: CacheControlSettings;
+
   constructor(obj?: Partial<StartLiveEncodingRequest>) {
     if(!obj) {
       return;
@@ -80,6 +96,8 @@ export class StartLiveEncodingRequest {
     this.manifestGenerator = map(obj.manifestGenerator);
     this.autoRestartConfiguration = map(obj.autoRestartConfiguration, AutoRestartConfiguration);
     this.autoShutdownConfiguration = map(obj.autoShutdownConfiguration, LiveAutoShutdownConfiguration);
+    this.esamSettings = map(obj.esamSettings, EsamSettings);
+    this.cacheControlSettings = map(obj.cacheControlSettings, CacheControlSettings);
   }
 }
 
