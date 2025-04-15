@@ -62,6 +62,13 @@ export class Fmp4Muxing extends Muxing {
   public writeDurationPerSample?: boolean;
 
   /**
+   * Insert scte35 triggers as emsg boxes into the fMP4 segments.
+   * @type {boolean}
+   * @memberof Fmp4Muxing
+   */
+  public signalScte35AsEmsg?: boolean;
+
+  /**
    * Number of segments which have been encoded
    * @type {number}
    * @memberof Fmp4Muxing
@@ -86,6 +93,7 @@ export class Fmp4Muxing extends Muxing {
     this.initSegmentName = map(obj.initSegmentName);
     this.initSegmentNameTemplate = map(obj.initSegmentNameTemplate);
     this.writeDurationPerSample = map(obj.writeDurationPerSample);
+    this.signalScte35AsEmsg = map(obj.signalScte35AsEmsg);
     this.segmentsMuxed = map(obj.segmentsMuxed);
     this.ptsAlignMode = map(obj.ptsAlignMode);
   }

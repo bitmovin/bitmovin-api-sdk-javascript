@@ -6,7 +6,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class CacheControl {
   /**
-   * Cache control for storing data on CDN. Example \"public, max-age=0, no-cache\".
+   * Cache control for storing data on CDN. Example \"public, max-age=0, no-cache\". Cache control is supported on S3, GCS and Azure output storage providers.
    * @type {string}
    * @memberof CacheControl
    */

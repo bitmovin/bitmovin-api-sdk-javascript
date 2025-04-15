@@ -2,6 +2,7 @@ import {BaseAPI} from './common/BaseAPI';
 import Configuration from './common/Configuration';
 import {map, mapArray} from './common/Mapper';
 import AccountApi from './account/AccountApi';
+import AiSceneAnalysisApi from './aiSceneAnalysis/AiSceneAnalysisApi';
 import AnalyticsApi from './analytics/AnalyticsApi';
 import EncodingApi from './encoding/EncodingApi';
 import GeneralApi from './general/GeneralApi';
@@ -17,6 +18,7 @@ import StreamsApi from './streams/StreamsApi';
  */
 export default class BitmovinApi extends BaseAPI {
   public account: AccountApi;
+  public aiSceneAnalysis: AiSceneAnalysisApi;
   public analytics: AnalyticsApi;
   public encoding: EncodingApi;
   public general: GeneralApi;
@@ -27,6 +29,7 @@ export default class BitmovinApi extends BaseAPI {
   constructor(configuration: Configuration) {
     super(configuration);
     this.account = new AccountApi(configuration);
+    this.aiSceneAnalysis = new AiSceneAnalysisApi(configuration);
     this.analytics = new AnalyticsApi(configuration);
     this.encoding = new EncodingApi(configuration);
     this.general = new GeneralApi(configuration);

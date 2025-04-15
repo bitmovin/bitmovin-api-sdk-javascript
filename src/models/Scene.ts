@@ -1,0 +1,74 @@
+import {map, mapArray} from '../common/Mapper';
+import Content from './Content';
+import IABTaxonomy from './IABTaxonomy';
+
+/**
+ * @export
+ * @class Scene
+ */
+export class Scene {
+  /**
+   * @type {number}
+   * @memberof Scene
+   */
+  public startInSeconds?: number;
+
+  /**
+   * @type {number}
+   * @memberof Scene
+   */
+  public endInSeconds?: number;
+
+  /**
+   * @type {string}
+   * @memberof Scene
+   */
+  public id?: string;
+
+  /**
+   * @type {Content}
+   * @memberof Scene
+   */
+  public content?: Content;
+
+  /**
+   * @type {string}
+   * @memberof Scene
+   */
+  public summary?: string;
+
+  /**
+   * @type {string[]}
+   * @memberof Scene
+   */
+  public sensitiveTopics?: string[];
+
+  /**
+   * @type {string[]}
+   * @memberof Scene
+   */
+  public keywords?: string[];
+
+  /**
+   * @type {IABTaxonomy}
+   * @memberof Scene
+   */
+  public iab?: IABTaxonomy;
+
+  constructor(obj?: Partial<Scene>) {
+    if(!obj) {
+      return;
+    }
+    this.startInSeconds = map(obj.startInSeconds);
+    this.endInSeconds = map(obj.endInSeconds);
+    this.id = map(obj.id);
+    this.content = map(obj.content, Content);
+    this.summary = map(obj.summary);
+    this.sensitiveTopics = mapArray(obj.sensitiveTopics);
+    this.keywords = mapArray(obj.keywords);
+    this.iab = map(obj.iab, IABTaxonomy);
+  }
+}
+
+export default Scene;
+

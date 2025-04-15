@@ -14,6 +14,13 @@ export interface LiveEncodingStatsEventListQueryParams {
      * @memberof LiveEncodingStatsEventListQueryParams
      */
     limit?: number | undefined;
+
+    /**
+     * Sort events by time in DESC order
+     * @type {boolean}
+     * @memberof LiveEncodingStatsEventListQueryParams
+     */
+    sortByTime?: boolean | undefined;
 }
 
 export class LiveEncodingStatsEventListQueryParamsBuilder {
@@ -34,6 +41,15 @@ export class LiveEncodingStatsEventListQueryParamsBuilder {
      */
     public limit(limit: number) {
         this.internalParams.limit = limit;
+        return this;
+    }
+
+    /**
+     *
+     * @param sortByTime Sort events by time in DESC order
+     */
+    public sortByTime(sortByTime: boolean) {
+        this.internalParams.sortByTime = sortByTime;
         return this;
     }
 
