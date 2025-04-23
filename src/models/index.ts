@@ -180,6 +180,7 @@ export * from './BroadcastTsProgramConfiguration';
 export * from './BroadcastTsSubtitleInputStreamConfiguration';
 export * from './BroadcastTsTransportConfiguration';
 export * from './BroadcastTsVideoInputStreamConfiguration';
+export * from './BurnInSubtitleAssa';
 export * from './BurnInSubtitleDvbSub';
 export * from './BurnInSubtitleSrt';
 export * from './CacheControl';
