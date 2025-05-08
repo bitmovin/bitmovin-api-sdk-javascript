@@ -1,5 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
-import AiContentAnalysis from './AiContentAnalysis';
+import AiSceneAnalysis from './AiSceneAnalysis';
 import EncodingMode from './EncodingMode';
 import ManifestGenerator from './ManifestGenerator';
 import ManifestResource from './ManifestResource';
@@ -98,11 +98,11 @@ export class StartEncodingRequest {
   public perTitle?: PerTitle;
 
   /**
-   * AI content analysis settings
-   * @type {AiContentAnalysis}
+   * AI scene analysis settings
+   * @type {AiSceneAnalysis}
    * @memberof StartEncodingRequest
    */
-  public aiContentAnalysis?: AiContentAnalysis;
+  public aiSceneAnalysis?: AiSceneAnalysis;
 
   constructor(obj?: Partial<StartEncodingRequest>) {
     if(!obj) {
@@ -120,7 +120,7 @@ export class StartEncodingRequest {
     this.vodSmoothManifests = mapArray(obj.vodSmoothManifests, ManifestResource);
     this.manifestGenerator = map(obj.manifestGenerator);
     this.perTitle = map(obj.perTitle, PerTitle);
-    this.aiContentAnalysis = map(obj.aiContentAnalysis, AiContentAnalysis);
+    this.aiSceneAnalysis = map(obj.aiSceneAnalysis, AiSceneAnalysis);
   }
 }
 

@@ -6,6 +6,7 @@ import CustomdataApi from './customdata/CustomdataApi';
 import StreamsApi from './streams/StreamsApi';
 import InputStreamsApi from './inputStreams/InputStreamsApi';
 import MuxingsApi from './muxings/MuxingsApi';
+import TemplateApi from './template/TemplateApi';
 import TransferRetriesApi from './transferRetries/TransferRetriesApi';
 import OutputPathsApi from './outputPaths/OutputPathsApi';
 import CaptionsApi from './captions/CaptionsApi';
@@ -35,6 +36,7 @@ export default class EncodingsApi extends BaseAPI {
   public streams: StreamsApi;
   public inputStreams: InputStreamsApi;
   public muxings: MuxingsApi;
+  public template: TemplateApi;
   public transferRetries: TransferRetriesApi;
   public outputPaths: OutputPathsApi;
   public captions: CaptionsApi;
@@ -49,6 +51,7 @@ export default class EncodingsApi extends BaseAPI {
     this.streams = new StreamsApi(configuration);
     this.inputStreams = new InputStreamsApi(configuration);
     this.muxings = new MuxingsApi(configuration);
+    this.template = new TemplateApi(configuration);
     this.transferRetries = new TransferRetriesApi(configuration);
     this.outputPaths = new OutputPathsApi(configuration);
     this.captions = new CaptionsApi(configuration);

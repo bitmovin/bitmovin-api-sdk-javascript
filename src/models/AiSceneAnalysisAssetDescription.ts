@@ -3,23 +3,23 @@ import EncodingOutput from './EncodingOutput';
 
 /**
  * @export
- * @class AiContentAnalysisAssetDescription
+ * @class AiSceneAnalysisAssetDescription
  */
-export class AiContentAnalysisAssetDescription {
+export class AiSceneAnalysisAssetDescription {
   /**
    * Name of the output json file
    * @type {string}
-   * @memberof AiContentAnalysisAssetDescription
+   * @memberof AiSceneAnalysisAssetDescription
    */
   public filename?: string;
 
   /**
    * @type {EncodingOutput[]}
-   * @memberof AiContentAnalysisAssetDescription
+   * @memberof AiSceneAnalysisAssetDescription
    */
   public outputs?: EncodingOutput[];
 
-  constructor(obj?: Partial<AiContentAnalysisAssetDescription>) {
+  constructor(obj?: Partial<AiSceneAnalysisAssetDescription>) {
     if(!obj) {
       return;
     }
@@ -28,5 +28,5 @@ export class AiContentAnalysisAssetDescription {
   }
 }
 
-export default AiContentAnalysisAssetDescription;
+export default AiSceneAnalysisAssetDescription;
 

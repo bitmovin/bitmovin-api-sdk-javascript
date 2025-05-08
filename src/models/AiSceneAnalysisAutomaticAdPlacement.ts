@@ -3,17 +3,17 @@ import AutomaticAdPlacementPosition from './AutomaticAdPlacementPosition';
 
 /**
  * @export
- * @class AiContentAnalysisAutomaticAdPlacement
+ * @class AiSceneAnalysisAutomaticAdPlacement
  */
-export class AiContentAnalysisAutomaticAdPlacement {
+export class AiSceneAnalysisAutomaticAdPlacement {
   /**
    * Ad placements schedule 
    * @type {AutomaticAdPlacementPosition[]}
-   * @memberof AiContentAnalysisAutomaticAdPlacement
+   * @memberof AiSceneAnalysisAutomaticAdPlacement
    */
   public schedule?: AutomaticAdPlacementPosition[];
 
-  constructor(obj?: Partial<AiContentAnalysisAutomaticAdPlacement>) {
+  constructor(obj?: Partial<AiSceneAnalysisAutomaticAdPlacement>) {
     if(!obj) {
       return;
     }
@@ -21,5 +21,5 @@ export class AiContentAnalysisAutomaticAdPlacement {
   }
 }
 
-export default AiContentAnalysisAutomaticAdPlacement;
+export default AiSceneAnalysisAutomaticAdPlacement;
 
