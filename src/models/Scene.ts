@@ -8,6 +8,12 @@ import IABTaxonomy from './IABTaxonomy';
  */
 export class Scene {
   /**
+   * @type {string}
+   * @memberof Scene
+   */
+  public title?: string;
+
+  /**
    * @type {number}
    * @memberof Scene
    */
@@ -59,6 +65,7 @@ export class Scene {
     if(!obj) {
       return;
     }
+    this.title = map(obj.title);
     this.startInSeconds = map(obj.startInSeconds);
     this.endInSeconds = map(obj.endInSeconds);
     this.id = map(obj.id);

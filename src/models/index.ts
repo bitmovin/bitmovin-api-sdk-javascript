@@ -529,6 +529,7 @@ export * from './MediaStream';
 export * from './MediaType';
 export * from './Message';
 export * from './MessageType';
+export * from './Metadata';
 export * from './MinCodingUnitSize';
 export * from './MjpegVideoConfiguration';
 export * from './MotionSearch';

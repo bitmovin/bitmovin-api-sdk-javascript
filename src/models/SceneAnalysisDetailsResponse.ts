@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import Metadata from './Metadata';
 import Rating from './Rating';
 import Scene from './Scene';
 
@@ -43,6 +44,12 @@ export class SceneAnalysisDetailsResponse {
    */
   public iabSensitiveTopicTaxonomies?: string[];
 
+  /**
+   * @type {Metadata}
+   * @memberof SceneAnalysisDetailsResponse
+   */
+  public metadata?: Metadata;
+
   constructor(obj?: Partial<SceneAnalysisDetailsResponse>) {
     if(!obj) {
       return;
@@ -53,6 +60,7 @@ export class SceneAnalysisDetailsResponse {
     this.ratings = mapArray(obj.ratings, Rating);
     this.sensitiveTopics = mapArray(obj.sensitiveTopics);
     this.iabSensitiveTopicTaxonomies = mapArray(obj.iabSensitiveTopicTaxonomies);
+    this.metadata = map(obj.metadata, Metadata);
   }
 }
 
