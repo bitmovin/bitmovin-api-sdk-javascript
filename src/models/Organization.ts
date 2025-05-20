@@ -50,6 +50,13 @@ export class Organization extends BitmovinResource {
    */
   public mfaRequired?: boolean;
 
+  /**
+   * User ID of the owner of the organization.
+   * @type {string}
+   * @memberof Organization
+   */
+  public ownerUserId?: string;
+
   constructor(obj?: Partial<Organization>) {
     super(obj);
     if(!obj) {
@@ -61,6 +68,7 @@ export class Organization extends BitmovinResource {
     this.limitsPerResource = mapArray(obj.limitsPerResource, ResourceLimitContainer);
     this.signupSource = map(obj.signupSource);
     this.mfaRequired = map(obj.mfaRequired);
+    this.ownerUserId = map(obj.ownerUserId);
   }
 }
 

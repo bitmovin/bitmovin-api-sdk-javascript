@@ -74,13 +74,6 @@ export class AccountInformation extends BitmovinResource {
    */
   public intercomIdVerification?: string;
 
-  /**
-   * Original organization of the account created during signup.
-   * @type {string}
-   * @memberof AccountInformation
-   */
-  public accountRootOrganizationId?: string;
-
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -96,7 +89,6 @@ export class AccountInformation extends BitmovinResource {
     this.marketplace = map(obj.marketplace);
     this.mfaEnabled = map(obj.mfaEnabled);
     this.intercomIdVerification = map(obj.intercomIdVerification);
-    this.accountRootOrganizationId = map(obj.accountRootOrganizationId);
   }
 }
 
