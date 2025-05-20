@@ -74,6 +74,13 @@ export class AccountInformation extends BitmovinResource {
    */
   public intercomIdVerification?: string;
 
+  /**
+   * The Saml Domain of this Account
+   * @type {string}
+   * @memberof AccountInformation
+   */
+  public samlDomain?: string;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -89,6 +96,7 @@ export class AccountInformation extends BitmovinResource {
     this.marketplace = map(obj.marketplace);
     this.mfaEnabled = map(obj.mfaEnabled);
     this.intercomIdVerification = map(obj.intercomIdVerification);
+    this.samlDomain = map(obj.samlDomain);
   }
 }
 

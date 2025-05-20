@@ -83,7 +83,7 @@ export default class TemplatesApi extends BaseAPI {
   }
 
   /**
-   * @summary BETA: Start an Encoding defined with an Encoding Template
+   * @summary Start an Encoding defined with an Encoding Template
    * @param {any} encodingTemplateRequest The Encoding Template to start an Encoding from
    * @throws {BitmovinError}
    * @memberof TemplatesApi
