@@ -428,6 +428,7 @@ export * from './HeAacV1AudioConfiguration';
 export * from './HeAacV1Signaling';
 export * from './HeAacV2AudioConfiguration';
 export * from './HeAacV2Signaling';
+export * from './HlsInput';
 export * from './HlsManifest';
 export * from './HlsManifestAdMarkerSettings';
 export * from './HlsManifestAdMarkerType';

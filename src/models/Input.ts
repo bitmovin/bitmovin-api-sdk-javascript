@@ -7,6 +7,7 @@ import FtpInput from './FtpInput';
 import GcsInput from './GcsInput';
 import GcsServiceAccountInput from './GcsServiceAccountInput';
 import GenericS3Input from './GenericS3Input';
+import HlsInput from './HlsInput';
 import HttpInput from './HttpInput';
 import HttpsInput from './HttpsInput';
 import InputType from './InputType';
@@ -29,6 +30,7 @@ export type InputUnion =
   GcsInput |
   HttpInput |
   HttpsInput |
+  HlsInput |
   LocalInput |
   RtmpInput |
   S3Input |
@@ -55,6 +57,7 @@ export class Input extends BitmovinResource {
     GCS: 'GcsInput',
     HTTP: 'HttpInput',
     HTTPS: 'HttpsInput',
+    HLS: 'HlsInput',
     LOCAL: 'LocalInput',
     RTMP: 'RtmpInput',
     S3: 'S3Input',
