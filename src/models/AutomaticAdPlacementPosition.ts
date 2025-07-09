@@ -6,14 +6,14 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class AutomaticAdPlacementPosition {
   /**
-   * Position of the ad placement in seconds.
+   * Position of the ad placement in seconds. (required)
    * @type {number}
    * @memberof AutomaticAdPlacementPosition
    */
   public position?: number;
 
   /**
-   * Maximum deviation in seconds to the ad placement position.
+   * Maximum deviation in seconds to the ad placement position. (required)
    * @type {number}
    * @memberof AutomaticAdPlacementPosition
    */
