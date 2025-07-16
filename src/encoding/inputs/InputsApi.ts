@@ -12,6 +12,7 @@ import GcsApi from './gcs/GcsApi';
 import GcsServiceAccountApi from './gcsServiceAccount/GcsServiceAccountApi';
 import AzureApi from './azure/AzureApi';
 import FtpApi from './ftp/FtpApi';
+import HlsApi from './hls/HlsApi';
 import SftpApi from './sftp/SftpApi';
 import HttpApi from './http/HttpApi';
 import HttpsApi from './https/HttpsApi';
@@ -42,6 +43,7 @@ export default class InputsApi extends BaseAPI {
   public gcsServiceAccount: GcsServiceAccountApi;
   public azure: AzureApi;
   public ftp: FtpApi;
+  public hls: HlsApi;
   public sftp: SftpApi;
   public http: HttpApi;
   public https: HttpsApi;
@@ -64,6 +66,7 @@ export default class InputsApi extends BaseAPI {
     this.gcsServiceAccount = new GcsServiceAccountApi(configuration);
     this.azure = new AzureApi(configuration);
     this.ftp = new FtpApi(configuration);
+    this.hls = new HlsApi(configuration);
     this.sftp = new SftpApi(configuration);
     this.http = new HttpApi(configuration);
     this.https = new HttpsApi(configuration);

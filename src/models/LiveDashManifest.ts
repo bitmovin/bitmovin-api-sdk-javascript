@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AvailabilityStartTimeMode from './AvailabilityStartTimeMode';
+import DashManifestAdMarkerSettings from './DashManifestAdMarkerSettings';
 
 /**
  * @export
@@ -48,6 +49,12 @@ export class LiveDashManifest {
    */
   public availabilityStartTimeMode?: AvailabilityStartTimeMode;
 
+  /**
+   * @type {DashManifestAdMarkerSettings}
+   * @memberof LiveDashManifest
+   */
+  public adMarkerSettings?: DashManifestAdMarkerSettings;
+
   constructor(obj?: Partial<LiveDashManifest>) {
     if(!obj) {
       return;
@@ -58,6 +65,7 @@ export class LiveDashManifest {
     this.suggestedPresentationDelay = map(obj.suggestedPresentationDelay);
     this.minimumUpdatePeriod = map(obj.minimumUpdatePeriod);
     this.availabilityStartTimeMode = map(obj.availabilityStartTimeMode);
+    this.adMarkerSettings = map(obj.adMarkerSettings, DashManifestAdMarkerSettings);
   }
 }
 

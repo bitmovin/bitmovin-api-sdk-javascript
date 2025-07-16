@@ -7,14 +7,14 @@ import BitmovinResource from './BitmovinResource';
  */
 export class AwsAccount extends BitmovinResource {
   /**
-   * Amazon access key (required)
+   * Deprecated: Amazon access key for legacy support. Use roleName instead
    * @type {string}
    * @memberof AwsAccount
    */
   public accessKey?: string;
 
   /**
-   * Amazon secret key (required)
+   * Deprecated: Amazon secret key for legacy support. Use roleName instead
    * @type {string}
    * @memberof AwsAccount
    */
@@ -27,6 +27,20 @@ export class AwsAccount extends BitmovinResource {
    */
   public accountNumber?: string;
 
+  /**
+   * Role name including path for the AWS IAM role that will be used by Bitmovin to access the AWS account depicted by accountNumber. The role ARN is constructed based on accountNumber and roleName: arn:aws:iam::{accountNumber}:role/{roleName}
+   * @type {string}
+   * @memberof AwsAccount
+   */
+  public roleName?: string;
+
+  /**
+   * External ID that needs to be set in the trust policy of the AWS IAM role (depicted by roleName) that allows Bitmovin access to the AWS account depicted by accountNumber
+   * @type {string}
+   * @memberof AwsAccount
+   */
+  public externalId?: string;
+
   constructor(obj?: Partial<AwsAccount>) {
     super(obj);
     if(!obj) {
@@ -35,6 +49,8 @@ export class AwsAccount extends BitmovinResource {
     this.accessKey = map(obj.accessKey);
     this.secretKey = map(obj.secretKey);
     this.accountNumber = map(obj.accountNumber);
+    this.roleName = map(obj.roleName);
+    this.externalId = map(obj.externalId);
   }
 }
 

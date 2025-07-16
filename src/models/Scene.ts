@@ -44,6 +44,12 @@ export class Scene {
   public summary?: string;
 
   /**
+   * @type {string}
+   * @memberof Scene
+   */
+  public verboseSummary?: string;
+
+  /**
    * @type {string[]}
    * @memberof Scene
    */
@@ -71,6 +77,7 @@ export class Scene {
     this.id = map(obj.id);
     this.content = map(obj.content, Content);
     this.summary = map(obj.summary);
+    this.verboseSummary = map(obj.verboseSummary);
     this.sensitiveTopics = mapArray(obj.sensitiveTopics);
     this.keywords = mapArray(obj.keywords);
     this.iab = map(obj.iab, IABTaxonomy);
