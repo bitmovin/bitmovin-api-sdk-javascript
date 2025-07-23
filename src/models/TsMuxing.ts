@@ -27,6 +27,13 @@ export class TsMuxing extends Muxing {
   public segmentLength?: number;
 
   /**
+   * Prevents creation of very short final segments (in seconds). If the last segment is shorter than minimumSegmentLength, it will be merged with the previous one, creating a segment of a size up to segmentLength + minimumSegmentLength.
+   * @type {number}
+   * @memberof TsMuxing
+   */
+  public minimumSegmentLength?: number;
+
+  /**
    * Segment naming policy
    * @type {string}
    * @memberof TsMuxing
@@ -67,6 +74,7 @@ export class TsMuxing extends Muxing {
       return;
     }
     this.segmentLength = map(obj.segmentLength);
+    this.minimumSegmentLength = map(obj.minimumSegmentLength);
     this.segmentNaming = map(obj.segmentNaming);
     this.segmentNamingTemplate = map(obj.segmentNamingTemplate);
     this.startOffset = map(obj.startOffset);

@@ -13,11 +13,19 @@ export class HlsManifestAdMarkerSettings {
    */
   public enabledMarkerTypes?: HlsManifestAdMarkerType[];
 
+  /**
+   * Certain tags, such as EXT_X_DATERANGE, may be preannounced in the HLS manifest. This means they are inserted as early as possible, before the actual ad break begins or ends. Preannouncing helps clients anticipate upcoming splice points, but may cause compatibility issues with some downstream consumers (e.g., AWS MediaTailor SSAI). When this setting is enabled, preannouncing of tags is disabled, and tags are inserted at the segment corresponding to the event's splice time. 
+   * @type {boolean}
+   * @memberof HlsManifestAdMarkerSettings
+   */
+  public disablePreannouncing?: boolean;
+
   constructor(obj?: Partial<HlsManifestAdMarkerSettings>) {
     if(!obj) {
       return;
     }
     this.enabledMarkerTypes = mapArray(obj.enabledMarkerTypes);
+    this.disablePreannouncing = map(obj.disablePreannouncing);
   }
 }
 
