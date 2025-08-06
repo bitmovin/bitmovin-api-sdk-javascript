@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
+import LanguageApi from './language/LanguageApi';
 import SceneAnalysisDetailsResponse from '../../../../models/SceneAnalysisDetailsResponse';
 
 /**
@@ -10,9 +11,11 @@ import SceneAnalysisDetailsResponse from '../../../../models/SceneAnalysisDetail
  * @extends {BaseAPI}
  */
 export default class DetailsApi extends BaseAPI {
+  public language: LanguageApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.language = new LanguageApi(configuration);
   }
 
   /**
