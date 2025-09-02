@@ -1,6 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 import Content from './Content';
 import IABTaxonomy from './IABTaxonomy';
+import SceneType from './SceneType';
 
 /**
  * @export
@@ -67,6 +68,20 @@ export class Scene {
    */
   public iab?: IABTaxonomy;
 
+  /**
+   * The detected type of scene based on content analysis
+   * @type {SceneType}
+   * @memberof Scene
+   */
+  public type?: SceneType;
+
+  /**
+   * Confidence score for the detected scene type (0.0 to 1.0)
+   * @type {number}
+   * @memberof Scene
+   */
+  public typeConfidence?: number;
+
   constructor(obj?: Partial<Scene>) {
     if(!obj) {
       return;
@@ -81,6 +96,8 @@ export class Scene {
     this.sensitiveTopics = mapArray(obj.sensitiveTopics);
     this.keywords = mapArray(obj.keywords);
     this.iab = map(obj.iab, IABTaxonomy);
+    this.type = map(obj.type);
+    this.typeConfidence = map(obj.typeConfidence);
   }
 }
 
