@@ -32,6 +32,7 @@ export * from './AdAnalyticsQueryRequest';
 export * from './AdAnalyticsStddevQueryRequest';
 export * from './AdAnalyticsSumQueryRequest';
 export * from './AdAnalyticsVarianceQueryRequest';
+export * from './AdMarkersSource';
 export * from './AdPosition';
 export * from './AdaptationSet';
 export * from './AdaptationSetRole';

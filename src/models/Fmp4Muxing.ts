@@ -27,7 +27,7 @@ export class Fmp4Muxing extends Muxing {
   public segmentLength?: number;
 
   /**
-   * Prevents creation of very short final segments (in seconds). If the last segment is shorter than minimumSegmentLength, it will be merged with the previous one, creating a segment of a size up to segmentLength + minimumSegmentLength.
+   * Prevents creation of very short segments (in seconds). If the last segment is shorter than minimumSegmentLength or there is a custom keyframe too close to a segment boundary, short segments will be omitted by removing segment boundaries, resulting in a segment of a size up to segmentLength + minimumSegmentLength.
    * @type {number}
    * @memberof Fmp4Muxing
    */

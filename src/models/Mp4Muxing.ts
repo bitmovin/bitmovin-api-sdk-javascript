@@ -35,6 +35,13 @@ export class Mp4Muxing extends Muxing {
   public fragmentDuration?: number;
 
   /**
+   * Prevents creation of very short fragments (in seconds). If the last fragment is shorter than minimumFragmentDuration or there is a custom keyframe too close to a fragment boundary, short fragments will be omitted by removing fragment boundaries, resulting in a fragment of a size up to fragmentDuration + minimumFragmentDuration.
+   * @type {number}
+   * @memberof Mp4Muxing
+   */
+  public minimumFragmentDuration?: number;
+
+  /**
    * @type {FragmentedMp4MuxingManifestType}
    * @memberof Mp4Muxing
    */
@@ -54,6 +61,7 @@ export class Mp4Muxing extends Muxing {
     }
     this.filename = map(obj.filename);
     this.fragmentDuration = map(obj.fragmentDuration);
+    this.minimumFragmentDuration = map(obj.minimumFragmentDuration);
     this.fragmentedMP4MuxingManifestType = map(obj.fragmentedMP4MuxingManifestType);
     this.dolbyVisionConfiguration = map(obj.dolbyVisionConfiguration, DolbyVisionMuxingConfiguration);
   }
