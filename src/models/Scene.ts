@@ -75,13 +75,6 @@ export class Scene {
    */
   public type?: SceneType;
 
-  /**
-   * Confidence score for the detected scene type (0.0 to 1.0)
-   * @type {number}
-   * @memberof Scene
-   */
-  public typeConfidence?: number;
-
   constructor(obj?: Partial<Scene>) {
     if(!obj) {
       return;
@@ -97,7 +90,6 @@ export class Scene {
     this.keywords = mapArray(obj.keywords);
     this.iab = map(obj.iab, IABTaxonomy);
     this.type = map(obj.type);
-    this.typeConfidence = map(obj.typeConfidence);
   }
 }
 
