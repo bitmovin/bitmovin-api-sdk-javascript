@@ -107,6 +107,13 @@ export class AnalyticsLicense {
   public domains?: AnalyticsLicenseDomain[];
 
   /**
+   * Allowlisted player domains
+   * @type {string[]}
+   * @memberof AnalyticsLicense
+   */
+  public playerDomains?: string[];
+
+  /**
    * Whether the data of this license should be included in the industry insights or not
    * @type {boolean}
    * @memberof AnalyticsLicense
@@ -172,6 +179,7 @@ export class AnalyticsLicense {
     this.retentionTime = map(obj.retentionTime);
     this.compressedRetentionTime = map(obj.compressedRetentionTime);
     this.domains = mapArray(obj.domains, AnalyticsLicenseDomain);
+    this.playerDomains = mapArray(obj.playerDomains);
     this.includeInInsights = map(obj.includeInInsights);
     this.customDataFieldLabels = map(obj.customDataFieldLabels, AnalyticsLicenseCustomDataFieldLabels);
     this.customDataFieldsCount = map(obj.customDataFieldsCount);
