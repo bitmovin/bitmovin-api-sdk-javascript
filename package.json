@@ -1,6 +1,6 @@
 {
   "name": "@bitmovin/api-sdk",
-  "version": "1.247.0",
+  "version": "1.248.2",
   "description": "Bitmovin JS/TS API SDK",
   "author": "Bitmovin Inc",
   "keywords": [

@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import Content from './Content';
 import IABTaxonomy from './IABTaxonomy';
 import SceneType from './SceneType';
+import Shot from './Shot';
 
 /**
  * @export
@@ -75,6 +76,13 @@ export class Scene {
    */
   public type?: SceneType;
 
+  /**
+   * A detailed breakdown of individual camera shots within this scene, providing granular analysis of visual content and subjects
+   * @type {Shot[]}
+   * @memberof Scene
+   */
+  public shots?: Shot[];
+
   constructor(obj?: Partial<Scene>) {
     if(!obj) {
       return;
@@ -90,6 +98,7 @@ export class Scene {
     this.keywords = mapArray(obj.keywords);
     this.iab = map(obj.iab, IABTaxonomy);
     this.type = map(obj.type);
+    this.shots = mapArray(obj.shots, Shot);
   }
 }
 

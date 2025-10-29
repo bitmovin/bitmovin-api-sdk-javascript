@@ -100,6 +100,13 @@ export class AnalyticsLicense {
   public compressedRetentionTime?: string;
 
   /**
+   * The date and time up until which the compressed data is available. Returned as ISO 8601 date-time format
+   * @type {Date}
+   * @memberof AnalyticsLicense
+   */
+  public compressionAvailableTo?: Date;
+
+  /**
    * Whitelisted domains
    * @type {AnalyticsLicenseDomain[]}
    * @memberof AnalyticsLicense
@@ -178,6 +185,7 @@ export class AnalyticsLicense {
     this.timeZone = map(obj.timeZone);
     this.retentionTime = map(obj.retentionTime);
     this.compressedRetentionTime = map(obj.compressedRetentionTime);
+    this.compressionAvailableTo = map(obj.compressionAvailableTo, Date);
     this.domains = mapArray(obj.domains, AnalyticsLicenseDomain);
     this.playerDomains = mapArray(obj.playerDomains);
     this.includeInInsights = map(obj.includeInInsights);

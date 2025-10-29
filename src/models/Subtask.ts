@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import BitmovinResponse from './BitmovinResponse';
 import Message from './Message';
 import Status from './Status';
+import SubtaskMetadata from './SubtaskMetadata';
 
 /**
  * @export
@@ -35,6 +36,13 @@ export class Subtask extends BitmovinResponse {
    * @memberof Subtask
    */
   public messages?: Message[];
+
+  /**
+   * Task specific metadata
+   * @type {SubtaskMetadata[]}
+   * @memberof Subtask
+   */
+  public metadata?: SubtaskMetadata[];
 
   /**
    * Timestamp when the subtask was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ 
@@ -94,6 +102,7 @@ export class Subtask extends BitmovinResponse {
     this.progress = map(obj.progress);
     this.name = map(obj.name);
     this.messages = mapArray(obj.messages, Message);
+    this.metadata = mapArray(obj.metadata, SubtaskMetadata);
     this.createdAt = map(obj.createdAt, Date);
     this.updatedAt = map(obj.updatedAt, Date);
     this.startedAt = map(obj.startedAt, Date);
