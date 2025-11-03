@@ -49,6 +49,13 @@ export class AnalyticsErrorDetail {
   public errorData?: AnalyticsErrorData;
 
   /**
+   * Severity of the error
+   * @type {string}
+   * @memberof AnalyticsErrorDetail
+   */
+  public severity?: string;
+
+  /**
    * @type {AnalyticsHttpRequest[]}
    * @memberof AnalyticsErrorDetail
    */
@@ -64,6 +71,7 @@ export class AnalyticsErrorDetail {
     this.code = map(obj.code);
     this.message = map(obj.message);
     this.errorData = map(obj.errorData, AnalyticsErrorData);
+    this.severity = map(obj.severity);
     this.httpRequests = mapArray(obj.httpRequests, AnalyticsHttpRequest);
   }
 }
