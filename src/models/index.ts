@@ -46,8 +46,6 @@ export * from './AiSceneAnalysisAssetDescription';
 export * from './AiSceneAnalysisAutomaticAdPlacement';
 export * from './AiSceneAnalysisFeatures';
 export * from './AiSceneAnalysisOutputLanguageCodes';
-export * from './AiService';
-export * from './AiServiceProvider';
 export * from './AkamaiAccount';
 export * from './AkamaiAccountRegionSettings';
 export * from './AkamaiCloudRegion';
