@@ -56,6 +56,13 @@ export class DashManifest extends Manifest {
    */
   public iso8601TimestampFormat?: DashISO8601TimestampFormat;
 
+  /**
+   * The minimum buffer time in seconds that the client should maintain to ensure uninterrupted playback. Default is 2 seconds. Note: For VOD ON_DEMAND dash manifests, the default value may differ from 2.0 seconds if not explicitly set. 
+   * @type {number}
+   * @memberof DashManifest
+   */
+  public minBufferTime?: number;
+
   constructor(obj?: Partial<DashManifest>) {
     super(obj);
     if(!obj) {
@@ -67,6 +74,7 @@ export class DashManifest extends Manifest {
     this.utcTimings = mapArray(obj.utcTimings, UtcTiming);
     this.dashEditionCompatibility = map(obj.dashEditionCompatibility);
     this.iso8601TimestampFormat = map(obj.iso8601TimestampFormat);
+    this.minBufferTime = map(obj.minBufferTime);
   }
 }
 

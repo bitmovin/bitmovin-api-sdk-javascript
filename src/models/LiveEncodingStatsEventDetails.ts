@@ -20,18 +20,11 @@ export class LiveEncodingStatsEventDetails {
   public message?: string;
 
   /**
-   * Name of the mid roll asset name
-   * @type {string[]}
+   * Additional event details as key-value pairs
+   * @type {string}
    * @memberof LiveEncodingStatsEventDetails
    */
-  public midRollAssetNames?: string[];
-
-  /**
-   * Duration in seconds
-   * @type {number}
-   * @memberof LiveEncodingStatsEventDetails
-   */
-  public durationInSeconds?: number;
+  public additionalProperties?: string;
 
   constructor(obj?: Partial<LiveEncodingStatsEventDetails>) {
     if(!obj) {
@@ -39,8 +32,7 @@ export class LiveEncodingStatsEventDetails {
     }
     this.eventType = map(obj.eventType);
     this.message = map(obj.message);
-    this.midRollAssetNames = mapArray(obj.midRollAssetNames);
-    this.durationInSeconds = map(obj.durationInSeconds);
+    this.additionalProperties = map(obj.additionalProperties);
   }
 }
 

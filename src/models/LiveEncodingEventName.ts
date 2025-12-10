@@ -8,7 +8,10 @@ export enum LiveEncodingEventName {
   RECONNECT = 'RECONNECT',
   RESYNCING = 'RESYNCING',
   IDLE = 'IDLE',
-  ERROR = 'ERROR'
+  ERROR = 'ERROR',
+  WARNING = 'WARNING',
+  PICTURE_TIMING = 'PICTURE_TIMING',
+  INFO = 'INFO'
 }
 
 export default LiveEncodingEventName;
