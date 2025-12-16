@@ -11,6 +11,7 @@ import TransferRetriesApi from './transferRetries/TransferRetriesApi';
 import OutputPathsApi from './outputPaths/OutputPathsApi';
 import CaptionsApi from './captions/CaptionsApi';
 import SidecarsApi from './sidecars/SidecarsApi';
+import KantarWatermarkApi from './kantarWatermark/KantarWatermarkApi';
 import KeyframesApi from './keyframes/KeyframesApi';
 import Scte35TriggersApi from './scte35Triggers/Scte35TriggersApi';
 import BitmovinResponse from '../../models/BitmovinResponse';
@@ -41,6 +42,7 @@ export default class EncodingsApi extends BaseAPI {
   public outputPaths: OutputPathsApi;
   public captions: CaptionsApi;
   public sidecars: SidecarsApi;
+  public kantarWatermark: KantarWatermarkApi;
   public keyframes: KeyframesApi;
   public scte35Triggers: Scte35TriggersApi;
 
@@ -56,6 +58,7 @@ export default class EncodingsApi extends BaseAPI {
     this.outputPaths = new OutputPathsApi(configuration);
     this.captions = new CaptionsApi(configuration);
     this.sidecars = new SidecarsApi(configuration);
+    this.kantarWatermark = new KantarWatermarkApi(configuration);
     this.keyframes = new KeyframesApi(configuration);
     this.scte35Triggers = new Scte35TriggersApi(configuration);
   }

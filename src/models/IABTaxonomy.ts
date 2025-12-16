@@ -9,7 +9,13 @@ export class IABTaxonomy {
    * @type {string}
    * @memberof IABTaxonomy
    */
-  public version?: string;
+  public contentVersion?: string;
+
+  /**
+   * @type {string}
+   * @memberof IABTaxonomy
+   */
+  public adProductVersion?: string;
 
   /**
    * @type {string[]}
@@ -33,7 +39,8 @@ export class IABTaxonomy {
     if(!obj) {
       return;
     }
-    this.version = map(obj.version);
+    this.contentVersion = map(obj.contentVersion);
+    this.adProductVersion = map(obj.adProductVersion);
     this.contentTaxonomies = mapArray(obj.contentTaxonomies);
     this.adOpportunityTaxonomies = mapArray(obj.adOpportunityTaxonomies);
     this.sensitiveTopicTaxonomies = mapArray(obj.sensitiveTopicTaxonomies);
