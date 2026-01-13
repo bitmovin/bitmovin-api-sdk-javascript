@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../common/BaseAPI';
 import Configuration from '../../../common/Configuration';
 import {map, mapArray} from '../../../common/Mapper';
+import EsamApi from './esam/EsamApi';
 import ResetLiveManifestTimeshiftApi from './resetLiveManifestTimeshift/ResetLiveManifestTimeshiftApi';
 import HeartbeatApi from './heartbeat/HeartbeatApi';
 import HdApi from './hd/HdApi';
@@ -17,6 +18,7 @@ import StartLiveEncodingRequest from '../../../models/StartLiveEncodingRequest';
  * @extends {BaseAPI}
  */
 export default class LiveApi extends BaseAPI {
+  public esam: EsamApi;
   public resetLiveManifestTimeshift: ResetLiveManifestTimeshiftApi;
   public heartbeat: HeartbeatApi;
   public hd: HdApi;
@@ -25,6 +27,7 @@ export default class LiveApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.esam = new EsamApi(configuration);
     this.resetLiveManifestTimeshift = new ResetLiveManifestTimeshiftApi(configuration);
     this.heartbeat = new HeartbeatApi(configuration);
     this.hd = new HdApi(configuration);

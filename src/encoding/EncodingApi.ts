@@ -1,11 +1,11 @@
 import {BaseAPI} from '../common/BaseAPI';
 import Configuration from '../common/Configuration';
 import {map, mapArray} from '../common/Mapper';
+import EncodingsApi from './encodings/EncodingsApi';
 import InputsApi from './inputs/InputsApi';
 import OutputsApi from './outputs/OutputsApi';
 import ConfigurationsApi from './configurations/ConfigurationsApi';
 import FiltersApi from './filters/FiltersApi';
-import EncodingsApi from './encodings/EncodingsApi';
 import LiveApi from './live/LiveApi';
 import ManifestsApi from './manifests/ManifestsApi';
 import InfrastructureApi from './infrastructure/InfrastructureApi';
@@ -21,11 +21,11 @@ import TemplatesApi from './templates/TemplatesApi';
  * @extends {BaseAPI}
  */
 export default class EncodingApi extends BaseAPI {
+  public encodings: EncodingsApi;
   public inputs: InputsApi;
   public outputs: OutputsApi;
   public configurations: ConfigurationsApi;
   public filters: FiltersApi;
-  public encodings: EncodingsApi;
   public live: LiveApi;
   public manifests: ManifestsApi;
   public infrastructure: InfrastructureApi;
@@ -36,11 +36,11 @@ export default class EncodingApi extends BaseAPI {
 
   constructor(configuration: Configuration) {
     super(configuration);
+    this.encodings = new EncodingsApi(configuration);
     this.inputs = new InputsApi(configuration);
     this.outputs = new OutputsApi(configuration);
     this.configurations = new ConfigurationsApi(configuration);
     this.filters = new FiltersApi(configuration);
-    this.encodings = new EncodingsApi(configuration);
     this.live = new LiveApi(configuration);
     this.manifests = new ManifestsApi(configuration);
     this.infrastructure = new InfrastructureApi(configuration);

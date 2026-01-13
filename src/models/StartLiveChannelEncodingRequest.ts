@@ -1,3 +1,4 @@
+import AdInsertionSettings from './AdInsertionSettings';
 import AutoRestartConfiguration from './AutoRestartConfiguration';
 import CacheControlSettings from './CacheControlSettings';
 import EncodingMode from './EncodingMode';

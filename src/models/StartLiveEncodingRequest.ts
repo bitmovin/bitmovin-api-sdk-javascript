@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AdInsertionSettings from './AdInsertionSettings';
 import AutoRestartConfiguration from './AutoRestartConfiguration';
 import CacheControlSettings from './CacheControlSettings';
 import EncodingMode from './EncodingMode';
@@ -84,6 +85,13 @@ export class StartLiveEncodingRequest {
    */
   public cacheControlSettings?: CacheControlSettings;
 
+  /**
+   * Configuration for ad insertion features like ESAM MediaPoint insertion
+   * @type {AdInsertionSettings}
+   * @memberof StartLiveEncodingRequest
+   */
+  public adInsertionSettings?: AdInsertionSettings;
+
   constructor(obj?: Partial<StartLiveEncodingRequest>) {
     if(!obj) {
       return;
@@ -98,6 +106,7 @@ export class StartLiveEncodingRequest {
     this.autoShutdownConfiguration = map(obj.autoShutdownConfiguration, LiveAutoShutdownConfiguration);
     this.esamSettings = map(obj.esamSettings, EsamSettings);
     this.cacheControlSettings = map(obj.cacheControlSettings, CacheControlSettings);
+    this.adInsertionSettings = map(obj.adInsertionSettings, AdInsertionSettings);
   }
 }
 

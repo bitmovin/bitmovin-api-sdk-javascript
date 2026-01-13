@@ -23,12 +23,20 @@ export class LiveMediaIngestOutput extends Output {
    */
   public publishingPoint?: string;
 
+  /**
+   * Enable passthrough of SCTE-35 messages from input to output. Default is false.
+   * @type {boolean}
+   * @memberof LiveMediaIngestOutput
+   */
+  public scte35Passthrough?: boolean;
+
   constructor(obj?: Partial<LiveMediaIngestOutput>) {
     super(obj);
     if(!obj) {
       return;
     }
     this.publishingPoint = map(obj.publishingPoint);
+    this.scte35Passthrough = map(obj.scte35Passthrough);
   }
 }
 
