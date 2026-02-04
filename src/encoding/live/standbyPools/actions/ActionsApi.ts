@@ -1,6 +1,7 @@
 import {BaseAPI} from '../../../../common/BaseAPI';
 import Configuration from '../../../../common/Configuration';
 import {map, mapArray} from '../../../../common/Mapper';
+import LiveStandbyPoolAcquireEncoding from '../../../../models/LiveStandbyPoolAcquireEncoding';
 import LiveStandbyPoolEncoding from '../../../../models/LiveStandbyPoolEncoding';
 
 /**
@@ -18,14 +19,15 @@ export default class ActionsApi extends BaseAPI {
   /**
    * @summary Acquire an encoding from a standby pool
    * @param {string} poolId Id of the standby pool
+   * @param {LiveStandbyPoolAcquireEncoding} [liveStandbyPoolAcquireEncoding] The optionally provided payload for acquiring an encoding
    * @throws {BitmovinError}
    * @memberof ActionsApi
    */
-  public acquireEncoding(poolId: string): Promise<LiveStandbyPoolEncoding> {
+  public acquireEncoding(poolId: string, liveStandbyPoolAcquireEncoding?: LiveStandbyPoolAcquireEncoding): Promise<LiveStandbyPoolEncoding> {
     const pathParamMap = {
       pool_id: poolId
     };
-    return this.restClient.post<LiveStandbyPoolEncoding>('/encoding/live/standby-pools/{pool_id}/actions/acquire-encoding', pathParamMap).then((response) => {
+    return this.restClient.post<LiveStandbyPoolEncoding>('/encoding/live/standby-pools/{pool_id}/actions/acquire-encoding', pathParamMap, liveStandbyPoolAcquireEncoding).then((response) => {
       return map(response, LiveStandbyPoolEncoding);
     });
   }

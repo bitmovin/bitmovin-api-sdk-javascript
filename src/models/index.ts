@@ -517,6 +517,7 @@ export * from './LiveOptionsEntry';
 export * from './LiveOptionsStatistics';
 export * from './LiveOptionsSummary';
 export * from './LiveOptionsType';
+export * from './LiveStandbyPoolAcquireEncoding';
 export * from './LiveStandbyPoolDetails';
 export * from './LiveStandbyPoolEncoding';
 export * from './LiveStandbyPoolEncodingIngestPoint';
