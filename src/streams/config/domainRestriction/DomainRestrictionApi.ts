@@ -26,7 +26,7 @@ export default class DomainRestrictionApi extends BaseAPI {
    * @memberof DomainRestrictionApi
    */
   public create(streamsDomainRestrictionCreateRequest?: StreamsDomainRestrictionCreateRequest): Promise<StreamsDomainRestrictionResponse> {
-    return this.restClient.post<StreamsDomainRestrictionResponse>('/streams/config/domain-restriction/', {}, streamsDomainRestrictionCreateRequest).then((response) => {
+    return this.restClient.post<StreamsDomainRestrictionResponse>('/streams/config/domain-restriction', {}, streamsDomainRestrictionCreateRequest).then((response) => {
       return map(response, StreamsDomainRestrictionResponse);
     });
   }
@@ -74,7 +74,7 @@ export default class DomainRestrictionApi extends BaseAPI {
     } else if (queryParameters) {
       queryParams = queryParameters;
     }
-    return this.restClient.get<PaginationResponse<StreamsDomainRestrictionResponse>>('/streams/config/domain-restriction/', {}, queryParams).then((response) => {
+    return this.restClient.get<PaginationResponse<StreamsDomainRestrictionResponse>>('/streams/config/domain-restriction', {}, queryParams).then((response) => {
       return new PaginationResponse<StreamsDomainRestrictionResponse>(response, StreamsDomainRestrictionResponse);
     });
   }

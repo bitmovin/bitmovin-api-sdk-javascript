@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AdOpportunity from './AdOpportunity';
 import Content from './Content';
 import IABTaxonomy from './IABTaxonomy';
 import SceneType from './SceneType';
@@ -83,6 +84,12 @@ export class Scene {
    */
   public shots?: Shot[];
 
+  /**
+   * @type {AdOpportunity}
+   * @memberof Scene
+   */
+  public adOpportunityInformation?: AdOpportunity;
+
   constructor(obj?: Partial<Scene>) {
     if(!obj) {
       return;
@@ -99,6 +106,7 @@ export class Scene {
     this.iab = map(obj.iab, IABTaxonomy);
     this.type = map(obj.type);
     this.shots = mapArray(obj.shots, Shot);
+    this.adOpportunityInformation = map(obj.adOpportunityInformation, AdOpportunity);
   }
 }
 
