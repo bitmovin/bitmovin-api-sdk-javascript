@@ -37,20 +37,20 @@ export type OutputUnion =
  */
 export class Output extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof OutputType]: string; } = {
-    AKAMAI_NETSTORAGE: 'AkamaiNetStorageOutput',
-    AZURE: 'AzureOutput',
-    CDN: 'CdnOutput',
-    GENERIC_S3: 'GenericS3Output',
-    GCS: 'GcsOutput',
-    FTP: 'FtpOutput',
-    LOCAL: 'LocalOutput',
-    S3: 'S3Output',
-    S3_ROLE_BASED: 'S3RoleBasedOutput',
-    SFTP: 'SftpOutput',
-    AKAMAI_MSL: 'AkamaiMslOutput',
-    LIVE_MEDIA_INGEST: 'LiveMediaIngestOutput',
-    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountOutput'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "AKAMAI_NETSTORAGE": 'AkamaiNetStorageOutput',
+    "AZURE": 'AzureOutput',
+    "CDN": 'CdnOutput',
+    "GENERIC_S3": 'GenericS3Output',
+    "GCS": 'GcsOutput',
+    "FTP": 'FtpOutput',
+    "LOCAL": 'LocalOutput',
+    "S3": 'S3Output',
+    "S3_ROLE_BASED": 'S3RoleBasedOutput',
+    "SFTP": 'SftpOutput',
+    "AKAMAI_MSL": 'AkamaiMslOutput',
+    "LIVE_MEDIA_INGEST": 'LiveMediaIngestOutput',
+    "GCS_SERVICE_ACCOUNT": 'GcsServiceAccountOutput'
   };
 
   /**

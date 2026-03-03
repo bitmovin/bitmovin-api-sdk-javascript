@@ -47,26 +47,26 @@ export type InputUnion =
  */
 export class Input extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof InputType]: string; } = {
-    AKAMAI_NETSTORAGE: 'AkamaiNetStorageInput',
-    ASPERA: 'AsperaInput',
-    AZURE: 'AzureInput',
-    REDUNDANT_RTMP: 'RedundantRtmpInput',
-    FTP: 'FtpInput',
-    GENERIC_S3: 'GenericS3Input',
-    GCS: 'GcsInput',
-    HTTP: 'HttpInput',
-    HTTPS: 'HttpsInput',
-    HLS: 'HlsInput',
-    LOCAL: 'LocalInput',
-    RTMP: 'RtmpInput',
-    S3: 'S3Input',
-    S3_ROLE_BASED: 'S3RoleBasedInput',
-    SFTP: 'SftpInput',
-    ZIXI: 'ZixiInput',
-    SRT: 'SrtInput',
-    GCS_SERVICE_ACCOUNT: 'GcsServiceAccountInput',
-    DIRECT_FILE_UPLOAD: 'DirectFileUploadInput'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "AKAMAI_NETSTORAGE": 'AkamaiNetStorageInput',
+    "ASPERA": 'AsperaInput',
+    "AZURE": 'AzureInput',
+    "REDUNDANT_RTMP": 'RedundantRtmpInput',
+    "FTP": 'FtpInput',
+    "GENERIC_S3": 'GenericS3Input',
+    "GCS": 'GcsInput',
+    "HTTP": 'HttpInput',
+    "HTTPS": 'HttpsInput',
+    "HLS": 'HlsInput',
+    "LOCAL": 'LocalInput',
+    "RTMP": 'RtmpInput',
+    "S3": 'S3Input',
+    "S3_ROLE_BASED": 'S3RoleBasedInput',
+    "SFTP": 'SftpInput',
+    "ZIXI": 'ZixiInput',
+    "SRT": 'SrtInput',
+    "GCS_SERVICE_ACCOUNT": 'GcsServiceAccountInput',
+    "DIRECT_FILE_UPLOAD": 'DirectFileUploadInput'
   };
 
   constructor(obj?: Partial<Input>) {

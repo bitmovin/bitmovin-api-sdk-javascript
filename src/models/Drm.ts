@@ -29,16 +29,16 @@ export type DrmUnion =
  */
 export class Drm extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof DrmType]: string; } = {
-    WIDEVINE: 'WidevineDrm',
-    PLAYREADY: 'PlayReadyDrm',
-    PRIMETIME: 'PrimeTimeDrm',
-    FAIRPLAY: 'FairPlayDrm',
-    MARLIN: 'MarlinDrm',
-    CLEARKEY: 'ClearKeyDrm',
-    AES: 'AesEncryptionDrm',
-    CENC: 'CencDrm',
-    SPEKE: 'SpekeDrm'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "WIDEVINE": 'WidevineDrm',
+    "PLAYREADY": 'PlayReadyDrm',
+    "PRIMETIME": 'PrimeTimeDrm',
+    "FAIRPLAY": 'FairPlayDrm',
+    "MARLIN": 'MarlinDrm',
+    "CLEARKEY": 'ClearKeyDrm',
+    "AES": 'AesEncryptionDrm',
+    "CENC": 'CencDrm',
+    "SPEKE": 'SpekeDrm'
   };
 
   /**

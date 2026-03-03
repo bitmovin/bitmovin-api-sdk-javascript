@@ -15,8 +15,8 @@ export type SidecarFileUnion =
  */
 export class SidecarFile extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof SidecarFileType]: string; } = {
-    WEB_VTT: 'WebVttSidecarFile'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "WEB_VTT": 'WebVttSidecarFile'
   };
 
   /**

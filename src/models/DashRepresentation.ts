@@ -33,19 +33,19 @@ export type DashRepresentationUnion =
  */
 export class DashRepresentation extends BitmovinResponse {
   protected static readonly _discriminatorName = 'typeDiscriminator';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof DashRepresentationTypeDiscriminator]: string; } = {
-    DRM_FMP4: 'DashFmp4DrmRepresentation',
-    FMP4: 'DashFmp4Representation',
-    WEBM: 'DashWebmRepresentation',
-    CMAF: 'DashCmafRepresentation',
-    CHUNKED_TEXT: 'DashChunkedTextRepresentation',
-    MP4: 'DashMp4Representation',
-    DRM_MP4: 'DashMp4DrmRepresentation',
-    PROGRESSIVE_WEBM: 'DashProgressiveWebmRepresentation',
-    VTT: 'DashVttRepresentation',
-    SPRITE: 'SpriteRepresentation',
-    IMSC: 'DashImscRepresentation',
-    CONTENT_PROTECTION: 'ContentProtection'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "DRM_FMP4": 'DashFmp4DrmRepresentation',
+    "FMP4": 'DashFmp4Representation',
+    "WEBM": 'DashWebmRepresentation',
+    "CMAF": 'DashCmafRepresentation',
+    "CHUNKED_TEXT": 'DashChunkedTextRepresentation',
+    "MP4": 'DashMp4Representation',
+    "DRM_MP4": 'DashMp4DrmRepresentation',
+    "PROGRESSIVE_WEBM": 'DashProgressiveWebmRepresentation',
+    "VTT": 'DashVttRepresentation',
+    "SPRITE": 'SpriteRepresentation',
+    "IMSC": 'DashImscRepresentation',
+    "CONTENT_PROTECTION": 'ContentProtection'
   };
 
   constructor(obj?: Partial<DashRepresentation>) {

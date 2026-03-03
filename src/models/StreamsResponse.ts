@@ -13,9 +13,9 @@ export type StreamsResponseUnion =
  */
 export class StreamsResponse {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof StreamsType]: string; } = {
-    VIDEO: 'StreamsVideoResponse',
-    LIVE: 'StreamsLiveResponse'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "VIDEO": 'StreamsVideoResponse',
+    "LIVE": 'StreamsLiveResponse'
   };
 
   /**

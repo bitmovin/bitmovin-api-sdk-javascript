@@ -11,11 +11,18 @@ export class AdPosition {
    */
   public position?: number;
 
+  /**
+   * @type {number}
+   * @memberof AdPosition
+   */
+  public duration?: number;
+
   constructor(obj?: Partial<AdPosition>) {
     if(!obj) {
       return;
     }
     this.position = map(obj.position);
+    this.duration = map(obj.duration);
   }
 }
 

@@ -22,11 +22,11 @@ export type AdaptationSetUnion =
  */
 export class AdaptationSet extends BitmovinResponse {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof AdaptationSetType]: string; } = {
-    VIDEO: 'VideoAdaptationSet',
-    AUDIO: 'AudioAdaptationSet',
-    IMAGE: 'ImageAdaptationSet',
-    SUBTITLE: 'SubtitleAdaptationSet'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "VIDEO": 'VideoAdaptationSet',
+    "AUDIO": 'AudioAdaptationSet',
+    "IMAGE": 'ImageAdaptationSet',
+    "SUBTITLE": 'SubtitleAdaptationSet'
   };
 
   /**

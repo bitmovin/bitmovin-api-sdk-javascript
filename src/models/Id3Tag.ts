@@ -17,10 +17,10 @@ export type Id3TagUnion =
  */
 export class Id3Tag extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof Id3TagType]: string; } = {
-    RAW: 'RawId3Tag',
-    FRAME_ID: 'FrameIdId3Tag',
-    PLAIN_TEXT: 'PlaintextId3Tag'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "RAW": 'RawId3Tag',
+    "FRAME_ID": 'FrameIdId3Tag',
+    "PLAIN_TEXT": 'PlaintextId3Tag'
   };
 
   /**

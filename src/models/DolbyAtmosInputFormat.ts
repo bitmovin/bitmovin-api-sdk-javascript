@@ -4,7 +4,8 @@
  */
 export enum DolbyAtmosInputFormat {
   DAMF = 'DAMF',
-  ADM = 'ADM'
+  ADM = 'ADM',
+  MXF = 'MXF'
 }
 
 export default DolbyAtmosInputFormat;

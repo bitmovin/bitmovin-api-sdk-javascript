@@ -35,20 +35,20 @@ export type InputStreamUnion =
  */
 export class InputStream extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof InputStreamType]: string; } = {
-    INGEST: 'IngestInputStream',
-    CONCATENATION: 'ConcatenationInputStream',
-    TRIMMING_TIME_BASED: 'TimeBasedTrimmingInputStream',
-    TRIMMING_TIME_CODE_TRACK: 'TimecodeTrackTrimmingInputStream',
-    TRIMMING_H264_PICTURE_TIMING: 'H264PictureTimingTrimmingInputStream',
-    AUDIO_MIX: 'AudioMixInputStream',
-    SIDECAR_DOLBY_VISION_METADATA: 'DolbyVisionMetadataIngestInputStream',
-    CAPTION_CEA608: 'Cea608CaptionInputStream',
-    CAPTION_CEA708: 'Cea708CaptionInputStream',
-    FILE: 'FileInputStream',
-    DVB_SUBTITLE: 'DvbSubtitleInputStream',
-    DOLBY_ATMOS: 'DolbyAtmosIngestInputStream',
-    DOLBY_VISION: 'DolbyVisionInputStream'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "INGEST": 'IngestInputStream',
+    "CONCATENATION": 'ConcatenationInputStream',
+    "TRIMMING_TIME_BASED": 'TimeBasedTrimmingInputStream',
+    "TRIMMING_TIME_CODE_TRACK": 'TimecodeTrackTrimmingInputStream',
+    "TRIMMING_H264_PICTURE_TIMING": 'H264PictureTimingTrimmingInputStream',
+    "AUDIO_MIX": 'AudioMixInputStream',
+    "SIDECAR_DOLBY_VISION_METADATA": 'DolbyVisionMetadataIngestInputStream',
+    "CAPTION_CEA608": 'Cea608CaptionInputStream',
+    "CAPTION_CEA708": 'Cea708CaptionInputStream',
+    "FILE": 'FileInputStream',
+    "DVB_SUBTITLE": 'DvbSubtitleInputStream',
+    "DOLBY_ATMOS": 'DolbyAtmosIngestInputStream',
+    "DOLBY_VISION": 'DolbyVisionInputStream'
   };
 
   constructor(obj?: Partial<InputStream>) {

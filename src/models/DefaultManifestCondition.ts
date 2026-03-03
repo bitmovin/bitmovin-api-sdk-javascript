@@ -14,10 +14,10 @@ export type DefaultManifestConditionUnion =
  */
 export class DefaultManifestCondition {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof ConditionType]: string; } = {
-    CONDITION: 'DefaultManifestAttributeCondition',
-    AND: 'DefaultManifestAndCondition',
-    OR: 'DefaultManifestOrCondition'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "CONDITION": 'DefaultManifestAttributeCondition',
+    "AND": 'DefaultManifestAndCondition',
+    "OR": 'DefaultManifestOrCondition'
   };
 
   constructor(obj?: Partial<DefaultManifestCondition>) {

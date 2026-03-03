@@ -41,23 +41,23 @@ export type FilterUnion =
  */
 export class Filter extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof FilterType]: string; } = {
-    CROP: 'CropFilter',
-    CONFORM: 'ConformFilter',
-    WATERMARK: 'WatermarkFilter',
-    ENHANCED_WATERMARK: 'EnhancedWatermarkFilter',
-    ROTATE: 'RotateFilter',
-    DEINTERLACE: 'DeinterlaceFilter',
-    ENHANCED_DEINTERLACE: 'EnhancedDeinterlaceFilter',
-    AUDIO_MIX: 'AudioMixFilter',
-    DENOISE_HQDN3D: 'DenoiseHqdn3dFilter',
-    TEXT: 'TextFilter',
-    UNSHARP: 'UnsharpFilter',
-    SCALE: 'ScaleFilter',
-    INTERLACE: 'InterlaceFilter',
-    AUDIO_VOLUME: 'AudioVolumeFilter',
-    EBU_R128_SINGLE_PASS: 'EbuR128SinglePassFilter',
-    AZURE_SPEECH_TO_CAPTIONS: 'AzureSpeechToCaptionsFilter'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "CROP": 'CropFilter',
+    "CONFORM": 'ConformFilter',
+    "WATERMARK": 'WatermarkFilter',
+    "ENHANCED_WATERMARK": 'EnhancedWatermarkFilter',
+    "ROTATE": 'RotateFilter',
+    "DEINTERLACE": 'DeinterlaceFilter',
+    "ENHANCED_DEINTERLACE": 'EnhancedDeinterlaceFilter',
+    "AUDIO_MIX": 'AudioMixFilter',
+    "DENOISE_HQDN3D": 'DenoiseHqdn3dFilter',
+    "TEXT": 'TextFilter',
+    "UNSHARP": 'UnsharpFilter',
+    "SCALE": 'ScaleFilter',
+    "INTERLACE": 'InterlaceFilter',
+    "AUDIO_VOLUME": 'AudioVolumeFilter',
+    "EBU_R128_SINGLE_PASS": 'EbuR128SinglePassFilter',
+    "AZURE_SPEECH_TO_CAPTIONS": 'AzureSpeechToCaptionsFilter'
   };
 
   constructor(obj?: Partial<Filter>) {

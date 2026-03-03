@@ -46,23 +46,23 @@ export type MuxingUnion =
  */
 export class Muxing extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof MuxingType]: string; } = {
-    FMP4: 'Fmp4Muxing',
-    CMAF: 'CmafMuxing',
-    MP4: 'Mp4Muxing',
-    TS: 'TsMuxing',
-    WEBM: 'WebmMuxing',
-    MP3: 'Mp3Muxing',
-    MXF: 'MxfMuxing',
-    PROGRESSIVE_WAV: 'ProgressiveWavMuxing',
-    PROGRESSIVE_WEBM: 'ProgressiveWebmMuxing',
-    PROGRESSIVE_MOV: 'ProgressiveMovMuxing',
-    PROGRESSIVE_TS: 'ProgressiveTsMuxing',
-    BROADCAST_TS: 'BroadcastTsMuxing',
-    CHUNKED_TEXT: 'ChunkedTextMuxing',
-    TEXT: 'TextMuxing',
-    SEGMENTED_RAW: 'SegmentedRawMuxing',
-    PACKED_AUDIO: 'PackedAudioMuxing'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "FMP4": 'Fmp4Muxing',
+    "CMAF": 'CmafMuxing',
+    "MP4": 'Mp4Muxing',
+    "TS": 'TsMuxing',
+    "WEBM": 'WebmMuxing',
+    "MP3": 'Mp3Muxing',
+    "MXF": 'MxfMuxing',
+    "PROGRESSIVE_WAV": 'ProgressiveWavMuxing',
+    "PROGRESSIVE_WEBM": 'ProgressiveWebmMuxing',
+    "PROGRESSIVE_MOV": 'ProgressiveMovMuxing',
+    "PROGRESSIVE_TS": 'ProgressiveTsMuxing',
+    "BROADCAST_TS": 'BroadcastTsMuxing',
+    "CHUNKED_TEXT": 'ChunkedTextMuxing',
+    "TEXT": 'TextMuxing',
+    "SEGMENTED_RAW": 'SegmentedRawMuxing',
+    "PACKED_AUDIO": 'PackedAudioMuxing'
   };
 
   /**

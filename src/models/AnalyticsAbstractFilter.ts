@@ -28,16 +28,16 @@ export type AnalyticsAbstractFilterUnion =
  */
 export class AnalyticsAbstractFilter {
   protected static readonly _discriminatorName = 'operator';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof AnalyticsQueryOperator]: string; } = {
-    IN: 'AnalyticsInFilter',
-    EQ: 'AnalyticsEqualFilter',
-    NE: 'AnalyticsNotEqualFilter',
-    LT: 'AnalyticsLessThanFilter',
-    LTE: 'AnalyticsLessThanOrEqualFilter',
-    GT: 'AnalyticsGreaterThanFilter',
-    GTE: 'AnalyticsGreaterThanOrEqualFilter',
-    CONTAINS: 'AnalyticsContainsFilter',
-    NOTCONTAINS: 'AnalyticsNotContainsFilter'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "IN": 'AnalyticsInFilter',
+    "EQ": 'AnalyticsEqualFilter',
+    "NE": 'AnalyticsNotEqualFilter',
+    "LT": 'AnalyticsLessThanFilter',
+    "LTE": 'AnalyticsLessThanOrEqualFilter',
+    "GT": 'AnalyticsGreaterThanFilter',
+    "GTE": 'AnalyticsGreaterThanOrEqualFilter',
+    "CONTAINS": 'AnalyticsContainsFilter',
+    "NOTCONTAINS": 'AnalyticsNotContainsFilter'
   };
 
   /**

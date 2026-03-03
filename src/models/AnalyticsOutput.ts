@@ -17,10 +17,10 @@ export type AnalyticsOutputUnion =
  */
 export class AnalyticsOutput extends BitmovinResource {
   protected static readonly _discriminatorName = 'type';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof AnalyticsOutputType]: string; } = {
-    S3_ROLE_BASED: 'AnalyticsS3RoleBasedOutput',
-    GCS_SERVICE_ACCOUNT: 'AnalyticsGcsServiceAccountOutput',
-    AZURE: 'AnalyticsAzureOutput'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "S3_ROLE_BASED": 'AnalyticsS3RoleBasedOutput',
+    "GCS_SERVICE_ACCOUNT": 'AnalyticsGcsServiceAccountOutput',
+    "AZURE": 'AnalyticsAzureOutput'
   };
 
   /**

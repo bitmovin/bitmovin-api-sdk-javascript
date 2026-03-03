@@ -28,16 +28,16 @@ export type AdAnalyticsAbstractFilterUnion =
  */
 export class AdAnalyticsAbstractFilter {
   protected static readonly _discriminatorName = 'operator';
-  protected static readonly _discriminatorMapping: { [key in keyof typeof AnalyticsQueryOperator]: string; } = {
-    IN: 'AdAnalyticsInFilter',
-    EQ: 'AdAnalyticsEqualFilter',
-    NE: 'AdAnalyticsNotEqualFilter',
-    LT: 'AdAnalyticsLessThanFilter',
-    LTE: 'AdAnalyticsLessThanOrEqualFilter',
-    GT: 'AdAnalyticsGreaterThanFilter',
-    GTE: 'AdAnalyticsGreaterThanOrEqualFilter',
-    CONTAINS: 'AdAnalyticsContainsFilter',
-    NOTCONTAINS: 'AdAnalyticsNotContainsFilter'
+  protected static readonly _discriminatorMapping: { [key: string]: string; } = {
+    "IN": 'AdAnalyticsInFilter',
+    "EQ": 'AdAnalyticsEqualFilter',
+    "NE": 'AdAnalyticsNotEqualFilter',
+    "LT": 'AdAnalyticsLessThanFilter',
+    "LTE": 'AdAnalyticsLessThanOrEqualFilter',
+    "GT": 'AdAnalyticsGreaterThanFilter',
+    "GTE": 'AdAnalyticsGreaterThanOrEqualFilter',
+    "CONTAINS": 'AdAnalyticsContainsFilter',
+    "NOTCONTAINS": 'AdAnalyticsNotContainsFilter'
   };
 
   /**
