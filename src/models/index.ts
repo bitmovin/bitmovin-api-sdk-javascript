@@ -405,8 +405,6 @@ export * from './EnhancedDeinterlaceParity';
 export * from './EnhancedWatermarkFilter';
 export * from './ErrorDetails';
 export * from './ErrorRetryHint';
-export * from './EsamCondition';
-export * from './EsamDirection';
 export * from './EsamMediaPoint';
 export * from './EsamSettings';
 export * from './EsamSignal';

@@ -1,5 +1,4 @@
 import {map, mapArray} from '../common/Mapper';
-import EsamCondition from './EsamCondition';
 import EsamSignal from './EsamSignal';
 
 /**
@@ -22,20 +21,12 @@ export class EsamMediaPoint {
    */
   public signals?: EsamSignal[];
 
-  /**
-   * Optional array of ESAM conditions with timing offsets and directional markers (OUT/IN) for signaling content boundaries
-   * @type {EsamCondition[]}
-   * @memberof EsamMediaPoint
-   */
-  public conditions?: EsamCondition[];
-
   constructor(obj?: Partial<EsamMediaPoint>) {
     if(!obj) {
       return;
     }
     this.matchTime = map(obj.matchTime, Date);
     this.signals = mapArray(obj.signals, EsamSignal);
-    this.conditions = mapArray(obj.conditions, EsamCondition);
   }
 }
 
