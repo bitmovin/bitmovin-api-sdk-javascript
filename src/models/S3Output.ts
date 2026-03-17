@@ -4,6 +4,7 @@ import AwsCloudRegion from './AwsCloudRegion';
 import Output from './Output';
 import OutputType from './OutputType';
 import S3SignatureVersion from './S3SignatureVersion';
+import S3StorageClass from './S3StorageClass';
 
 /**
  * @export
@@ -59,6 +60,13 @@ export class S3Output extends Output {
    */
   public signatureVersion?: S3SignatureVersion;
 
+  /**
+   * Specifies the storage class used for the bucket. This depends on the requirements of workloads, like performance, data access, resiliency, and cost.
+   * @type {S3StorageClass}
+   * @memberof S3Output
+   */
+  public storageClass?: S3StorageClass;
+
   constructor(obj?: Partial<S3Output>) {
     super(obj);
     if(!obj) {
@@ -70,6 +78,7 @@ export class S3Output extends Output {
     this.md5MetaTag = map(obj.md5MetaTag);
     this.cloudRegion = map(obj.cloudRegion);
     this.signatureVersion = map(obj.signatureVersion);
+    this.storageClass = map(obj.storageClass);
   }
 }
 
