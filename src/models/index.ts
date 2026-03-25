@@ -69,6 +69,7 @@ export * from './AkamaiMslStreamFormat';
 export * from './AkamaiMslVersion';
 export * from './AkamaiNetStorageInput';
 export * from './AkamaiNetStorageOutput';
+export * from './AllSceneBoundaries';
 export * from './AnalyticsAbstractFilter';
 export * from './AnalyticsAttribute';
 export * from './AnalyticsAvgConcurrentViewersResponse';
