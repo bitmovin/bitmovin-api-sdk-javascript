@@ -91,6 +91,20 @@ export class LiveEncodingHeartbeatIngestStream {
   public keyFrameIntervalAvg?: number;
 
   /**
+   * Largest key-frame interval observed over the last minute, in milliseconds. Absent until the rolling window has at least one sample.
+   * @type {number}
+   * @memberof LiveEncodingHeartbeatIngestStream
+   */
+  public keyFrameIntervalMaxLastMinute?: number;
+
+  /**
+   * Average key-frame interval over the last minute, in milliseconds. Absent until the rolling window has at least one sample.
+   * @type {number}
+   * @memberof LiveEncodingHeartbeatIngestStream
+   */
+  public keyFrameIntervalAvgLastMinute?: number;
+
+  /**
    * Last presentation timestamp (PTS) of the stream.
    * @type {number}
    * @memberof LiveEncodingHeartbeatIngestStream
@@ -148,6 +162,8 @@ export class LiveEncodingHeartbeatIngestStream {
     this.incomingBitrate = map(obj.incomingBitrate);
     this.keyFrameIntervalMax = map(obj.keyFrameIntervalMax);
     this.keyFrameIntervalAvg = map(obj.keyFrameIntervalAvg);
+    this.keyFrameIntervalMaxLastMinute = map(obj.keyFrameIntervalMaxLastMinute);
+    this.keyFrameIntervalAvgLastMinute = map(obj.keyFrameIntervalAvgLastMinute);
     this.lastTimestamp = map(obj.lastTimestamp);
     this.lastTimestampTimescale = map(obj.lastTimestampTimescale);
     this.numberOfAudioChannels = map(obj.numberOfAudioChannels);
