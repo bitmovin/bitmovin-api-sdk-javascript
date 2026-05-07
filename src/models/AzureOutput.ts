@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
+import AzureServicePrincipal from './AzureServicePrincipal';
 import Output from './Output';
 import OutputType from './OutputType';
 
@@ -23,11 +24,17 @@ export class AzureOutput extends Output {
   public accountName?: string;
 
   /**
-   * Azure Account Key (required)
+   * Azure Account Key
    * @type {string}
    * @memberof AzureOutput
    */
   public accountKey?: string;
+
+  /**
+   * @type {AzureServicePrincipal}
+   * @memberof AzureOutput
+   */
+  public servicePrincipal?: AzureServicePrincipal;
 
   /**
    * Name of the bucket (required)
@@ -43,6 +50,7 @@ export class AzureOutput extends Output {
     }
     this.accountName = map(obj.accountName);
     this.accountKey = map(obj.accountKey);
+    this.servicePrincipal = map(obj.servicePrincipal, AzureServicePrincipal);
     this.container = map(obj.container);
   }
 }

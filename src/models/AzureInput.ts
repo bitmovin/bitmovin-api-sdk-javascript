@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import AzureServicePrincipal from './AzureServicePrincipal';
 import Input from './Input';
 import InputType from './InputType';
 
@@ -22,11 +23,17 @@ export class AzureInput extends Input {
   public accountName?: string;
 
   /**
-   * Azure Account Key (required)
+   * Azure Account Key
    * @type {string}
    * @memberof AzureInput
    */
   public accountKey?: string;
+
+  /**
+   * @type {AzureServicePrincipal}
+   * @memberof AzureInput
+   */
+  public servicePrincipal?: AzureServicePrincipal;
 
   /**
    * Name of the bucket (required)
@@ -42,6 +49,7 @@ export class AzureInput extends Input {
     }
     this.accountName = map(obj.accountName);
     this.accountKey = map(obj.accountKey);
+    this.servicePrincipal = map(obj.servicePrincipal, AzureServicePrincipal);
     this.container = map(obj.container);
   }
 }

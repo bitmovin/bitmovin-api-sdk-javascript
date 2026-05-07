@@ -173,6 +173,7 @@ export * from './AzureAccountRegionSettings';
 export * from './AzureCloudRegion';
 export * from './AzureInput';
 export * from './AzureOutput';
+export * from './AzureServicePrincipal';
 export * from './AzureSpeechServicesCredentials';
 export * from './AzureSpeechToCaptionsFilter';
 export * from './AzureSpeechToCaptionsProfanity';

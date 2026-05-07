@@ -1,5 +1,5 @@
 /**
- * Alignmet mode for PTS
+ * Alignment mode for PTS
  * @export
  * @enum {string}
  */
