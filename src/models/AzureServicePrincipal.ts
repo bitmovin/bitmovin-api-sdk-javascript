@@ -1,7 +1,7 @@
 import {map, mapArray} from '../common/Mapper';
 
 /**
- * Azure service principal credentials for Microsoft Entra ID authentication
+ * Azure service principal credentials for Microsoft Entra ID authentication. This authentication method is usable from encoder version 2.273.0 onwards.
  * @export
  * @class AzureServicePrincipal
  */

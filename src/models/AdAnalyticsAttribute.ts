@@ -141,6 +141,7 @@ export enum AdAnalyticsAttribute {
   HOUR = 'HOUR',
   IP_ADDRESS = 'IP_ADDRESS',
   IS_LINEAR = 'IS_LINEAR',
+  IS_SLATE = 'IS_SLATE',
   ISP = 'ISP',
   LANGUAGE = 'LANGUAGE',
   LICENSE_KEY = 'LICENSE_KEY',

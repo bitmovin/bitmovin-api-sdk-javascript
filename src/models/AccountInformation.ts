@@ -81,6 +81,13 @@ export class AccountInformation extends BitmovinResource {
    */
   public samlDomain?: string;
 
+  /**
+   * Whether the user has accepted the Terms of Service. Users created via SAML SSO start as `false` because the SAML flow bypasses the registration form that normally captures TOS acceptance; all other signup paths default to `true`. Acceptance is one-way: sending `true` accepts the TOS, sending `false` is ignored.
+   * @type {boolean}
+   * @memberof AccountInformation
+   */
+  public tosAccepted?: boolean;
+
   constructor(obj?: Partial<AccountInformation>) {
     super(obj);
     if(!obj) {
@@ -97,6 +104,7 @@ export class AccountInformation extends BitmovinResource {
     this.mfaEnabled = map(obj.mfaEnabled);
     this.intercomIdVerification = map(obj.intercomIdVerification);
     this.samlDomain = map(obj.samlDomain);
+    this.tosAccepted = map(obj.tosAccepted);
   }
 }
 
