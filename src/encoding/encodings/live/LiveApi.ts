@@ -4,6 +4,7 @@ import {map, mapArray} from '../../../common/Mapper';
 import EsamApi from './esam/EsamApi';
 import ResetLiveManifestTimeshiftApi from './resetLiveManifestTimeshift/ResetLiveManifestTimeshiftApi';
 import HeartbeatApi from './heartbeat/HeartbeatApi';
+import HeartbeatFinalApi from './heartbeatFinal/HeartbeatFinalApi';
 import HdApi from './hd/HdApi';
 import InsertableContentApi from './insertableContent/InsertableContentApi';
 import Scte35CueApi from './scte35Cue/Scte35CueApi';
@@ -21,6 +22,7 @@ export default class LiveApi extends BaseAPI {
   public esam: EsamApi;
   public resetLiveManifestTimeshift: ResetLiveManifestTimeshiftApi;
   public heartbeat: HeartbeatApi;
+  public heartbeatFinal: HeartbeatFinalApi;
   public hd: HdApi;
   public insertableContent: InsertableContentApi;
   public scte35Cue: Scte35CueApi;
@@ -30,6 +32,7 @@ export default class LiveApi extends BaseAPI {
     this.esam = new EsamApi(configuration);
     this.resetLiveManifestTimeshift = new ResetLiveManifestTimeshiftApi(configuration);
     this.heartbeat = new HeartbeatApi(configuration);
+    this.heartbeatFinal = new HeartbeatFinalApi(configuration);
     this.hd = new HdApi(configuration);
     this.insertableContent = new InsertableContentApi(configuration);
     this.scte35Cue = new Scte35CueApi(configuration);

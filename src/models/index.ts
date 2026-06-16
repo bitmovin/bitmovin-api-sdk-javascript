@@ -523,6 +523,7 @@ export * from './LiveEncodingHeartbeatEventType';
 export * from './LiveEncodingHeartbeatIngest';
 export * from './LiveEncodingHeartbeatIngestPoint';
 export * from './LiveEncodingHeartbeatIngestStream';
+export * from './LiveEncodingHeartbeatUrlResponse';
 export * from './LiveEncodingHeartbeatWebhook';
 export * from './LiveEncodingOptionsStatistics';
 export * from './LiveEncodingStats';
