@@ -452,6 +452,7 @@ export * from './H264Trellis';
 export * from './H264VideoConfiguration';
 export * from './H265DynamicRangeFormat';
 export * from './H265PerTitleConfiguration';
+export * from './H265V2PerTitleConfiguration';
 export * from './H265VideoConfiguration';
 export * from './HeAacV1AudioConfiguration';
 export * from './HeAacV1Signaling';

@@ -110,7 +110,12 @@ export function buildBitmovinError(additionalInfo: string, request: any, respons
 }
 
 export function buildBitmovinErrorFromError(request: any, error: Error): BitmovinError {
-  const shortMessage = `Request failed: ${error.message}`
+  // The native fetch surfaces low-level network failures as a generic
+  // 'fetch failed'/'terminated' message and carries the actual reason on
+  // 'error.cause'. Surface that cause so the message stays informative.
+  const cause = (error as any).cause;
+  const reason = cause && cause.message ? `${error.message}: ${cause.message}` : error.message;
+  const shortMessage = `Request failed: ${reason}`
   let message: string = appendLine('', shortMessage);
 
   message += appendRequestMessage(request);

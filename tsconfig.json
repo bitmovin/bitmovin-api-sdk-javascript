@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -12,11 +13,10 @@
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
-    "target": "ES5",
+    "target": "ES2018",
     "lib": [
       "DOM",
-      "ES2015",
-      "ES2016"
+      "ES2018"
     ]
   },
   "exclude": [
