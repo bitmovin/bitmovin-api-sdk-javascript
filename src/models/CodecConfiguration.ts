@@ -13,6 +13,7 @@ import DvbSubtitleConfiguration from './DvbSubtitleConfiguration';
 import Eac3AudioConfiguration from './Eac3AudioConfiguration';
 import H262VideoConfiguration from './H262VideoConfiguration';
 import H264VideoConfiguration from './H264VideoConfiguration';
+import H265V2VideoConfiguration from './H265V2VideoConfiguration';
 import H265VideoConfiguration from './H265VideoConfiguration';
 import HeAacV1AudioConfiguration from './HeAacV1AudioConfiguration';
 import HeAacV2AudioConfiguration from './HeAacV2AudioConfiguration';
@@ -55,7 +56,8 @@ export type CodecConfigurationUnion =
   H262VideoConfiguration |
   PcmAudioConfiguration |
   WebVttConfiguration |
-  ImscConfiguration;
+  ImscConfiguration |
+  H265V2VideoConfiguration;
 
 /**
  * @export
@@ -90,7 +92,8 @@ export class CodecConfiguration extends BitmovinResource {
     "H262": 'H262VideoConfiguration',
     "PCM": 'PcmAudioConfiguration',
     "WEBVTT": 'WebVttConfiguration',
-    "IMSC": 'ImscConfiguration'
+    "IMSC": 'ImscConfiguration',
+    "H265V2": 'H265V2VideoConfiguration'
   };
 
   constructor(obj?: Partial<CodecConfiguration>) {

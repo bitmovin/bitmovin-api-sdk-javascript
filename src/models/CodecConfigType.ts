@@ -29,7 +29,8 @@ export enum CodecConfigType {
   PCM = 'PCM',
   WEBVTT = 'WEBVTT',
   IMSC = 'IMSC',
-  DVB_SUBTITLE = 'DVB_SUBTITLE'
+  DVB_SUBTITLE = 'DVB_SUBTITLE',
+  H265V2 = 'H265V2'
 }
 
 export default CodecConfigType;
