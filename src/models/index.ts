@@ -455,6 +455,7 @@ export * from './H265PerTitleConfiguration';
 export * from './H265V2ConstantBitrateModeConfig';
 export * from './H265V2MotionCompensatedTemporalFiltering';
 export * from './H265V2PerTitleConfiguration';
+export * from './H265V2PerceptualEncodingMode';
 export * from './H265V2PerceptualQualityModeConfig';
 export * from './H265V2PresetConfiguration';
 export * from './H265V2RateControlModeConfig';
