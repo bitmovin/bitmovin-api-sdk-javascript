@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import CharacterAppearance from './CharacterAppearance';
 
 /**
  * @export
@@ -6,10 +7,10 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class Character {
   /**
-   * @type {string}
+   * @type {CharacterAppearance}
    * @memberof Character
    */
-  public appearance?: string;
+  public characterAppearance?: CharacterAppearance;
 
   /**
    * @type {string}
@@ -21,14 +22,21 @@ export class Character {
    * @type {string}
    * @memberof Character
    */
+  public playedBy?: string;
+
+  /**
+   * @type {string}
+   * @memberof Character
+   */
   public description?: string;
 
   constructor(obj?: Partial<Character>) {
     if(!obj) {
       return;
     }
-    this.appearance = map(obj.appearance);
+    this.characterAppearance = map(obj.characterAppearance, CharacterAppearance);
     this.name = map(obj.name);
+    this.playedBy = map(obj.playedBy);
     this.description = map(obj.description);
   }
 }

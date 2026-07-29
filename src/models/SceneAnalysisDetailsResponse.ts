@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import Credits from './Credits';
 import Metadata from './Metadata';
 import Rating from './Rating';
 import Scene from './Scene';
@@ -25,6 +26,13 @@ export class SceneAnalysisDetailsResponse {
    * @memberof SceneAnalysisDetailsResponse
    */
   public description?: string;
+
+  /**
+   * Inferred title representing the analyzed content as a whole. If omitted or null, the title is not available.
+   * @type {string}
+   * @memberof SceneAnalysisDetailsResponse
+   */
+  public title?: string;
 
   /**
    * @type {string[]}
@@ -57,6 +65,12 @@ export class SceneAnalysisDetailsResponse {
   public inputLanguageCodes?: string[];
 
   /**
+   * @type {Credits}
+   * @memberof SceneAnalysisDetailsResponse
+   */
+  public credits?: Credits;
+
+  /**
    * @type {Metadata}
    * @memberof SceneAnalysisDetailsResponse
    */
@@ -69,11 +83,13 @@ export class SceneAnalysisDetailsResponse {
     this.scenes = mapArray(obj.scenes, Scene);
     this.duration = map(obj.duration);
     this.description = map(obj.description);
+    this.title = map(obj.title);
     this.keywords = mapArray(obj.keywords);
     this.ratings = mapArray(obj.ratings, Rating);
     this.sensitiveTopics = mapArray(obj.sensitiveTopics);
     this.iabSensitiveTopicTaxonomies = mapArray(obj.iabSensitiveTopicTaxonomies);
     this.inputLanguageCodes = mapArray(obj.inputLanguageCodes);
+    this.credits = map(obj.credits, Credits);
     this.metadata = map(obj.metadata, Metadata);
   }
 }
