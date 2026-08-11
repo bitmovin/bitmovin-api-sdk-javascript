@@ -19,7 +19,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary Add VTT Media
+   * @summary Create VTT Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {VttMediaInfo} vttMediaInfo The VTT Media to be added
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary VTT Media Details
+   * @summary Get VTT Media details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the VTT media.
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary List all VTT Media
+   * @summary List VTT Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

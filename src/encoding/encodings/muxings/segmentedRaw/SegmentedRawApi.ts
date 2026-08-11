@@ -22,7 +22,7 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Segmented RAW muxing
+   * @summary Create Segmented RAW muxing
    * @param {string} encodingId Id of the encoding.
    * @param {SegmentedRawMuxing} segmentedRawMuxing The Segmented RAW muxing to be created
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class SegmentedRawApi extends BaseAPI {
   }
 
   /**
-   * @summary Segmented RAW muxing details
+   * @summary Get Segmented RAW muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Segmented RAW muxing
    * @throws {BitmovinError}

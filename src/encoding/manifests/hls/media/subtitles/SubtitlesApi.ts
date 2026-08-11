@@ -19,7 +19,7 @@ export default class SubtitlesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Subtitles Media
+   * @summary Create Subtitles Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {SubtitlesMediaInfo} subtitlesMediaInfo The Subtitles Media to be added
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class SubtitlesApi extends BaseAPI {
   }
 
   /**
-   * @summary Subtitles Media Details
+   * @summary Get Subtitles Media details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the subtitles media.
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class SubtitlesApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Subtitles Media
+   * @summary List Subtitles Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

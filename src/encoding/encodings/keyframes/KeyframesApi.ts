@@ -52,7 +52,7 @@ export default class KeyframesApi extends BaseAPI {
   }
 
   /**
-   * @summary Keyframe Details
+   * @summary Get Keyframe details
    * @param {string} encodingId Id of the encoding.
    * @param {string} keyframeId Id of the keyframe.
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class KeyframesApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Keyframes
+   * @summary List Keyframes
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -49,7 +49,7 @@ export default class DirectFileUploadApi extends BaseAPI {
   }
 
   /**
-   * @summary Direct File Upload Input Details
+   * @summary Get Direct File Upload Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof DirectFileUploadApi

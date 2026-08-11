@@ -19,7 +19,7 @@ export default class DolbyVisionMetadataIngestApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Dolby Vision Metadata Ingest Input Stream
+   * @summary Create Dolby Vision Metadata Ingest Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {DolbyVisionMetadataIngestInputStream} dolbyVisionMetadataIngestInputStream The Dolby Vision Metadata Ingest Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class DolbyVisionMetadataIngestApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Vision Metadata Ingest Input Stream Details
+   * @summary Get Dolby Vision Metadata Ingest Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the Dolby Vision Metadata Ingest input stream.
    * @throws {BitmovinError}

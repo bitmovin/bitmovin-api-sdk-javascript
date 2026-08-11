@@ -19,7 +19,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Audio AdaptationSet
+   * @summary Create Audio AdaptationSet
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {AudioAdaptationSet} audioAdaptationSet The audio adaptation set to be added to the period
@@ -56,7 +56,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio AdaptationSet Details
+   * @summary Get Audio AdaptationSet details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the audio adaptation set
@@ -75,7 +75,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Audio AdaptationSets
+   * @summary List Audio AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

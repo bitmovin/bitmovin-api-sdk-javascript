@@ -22,7 +22,7 @@ export default class NexguardFileMarkerApi extends BaseAPI {
   }
 
   /**
-   * @summary Add a nexguard file marker watermarking configurations
+   * @summary Create a nexguard file marker watermarking configurations
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {NexGuardFileMarker} nexGuardFileMarker The nexguard file marker configurations
@@ -40,7 +40,7 @@ export default class NexguardFileMarkerApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete nexguard file marker watermarking configurations
+   * @summary Delete Nexguard file marker watermarking configurations
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} nexguardId Id of the nexguard file marker watermarking configurations
@@ -59,7 +59,7 @@ export default class NexguardFileMarkerApi extends BaseAPI {
   }
 
   /**
-   * @summary Nexguard file marker watermarking configurations details
+   * @summary Get Nexguard file marker watermarking configurations details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} nexguardId Id of the nexguard file marker watermarking configurations.

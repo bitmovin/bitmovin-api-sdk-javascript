@@ -48,7 +48,7 @@ export default class GenericS3Api extends BaseAPI {
   }
 
   /**
-   * @summary Generic S3 Output Details
+   * @summary Get Generic S3 Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof GenericS3Api

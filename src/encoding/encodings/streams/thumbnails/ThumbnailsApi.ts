@@ -22,7 +22,7 @@ export default class ThumbnailsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Thumbnail
+   * @summary Create Thumbnail
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {Thumbnail} thumbnail The Thumbnail to be added
@@ -59,7 +59,7 @@ export default class ThumbnailsApi extends BaseAPI {
   }
 
   /**
-   * @summary Thumbnail Details
+   * @summary Get Thumbnail details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} thumbnailId Id of the thumbnail.

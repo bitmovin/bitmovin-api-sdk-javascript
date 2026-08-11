@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Thumbnail Custom Data
+   * @summary Get Thumbnail Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} thumbnailId Id of the thumbnail.

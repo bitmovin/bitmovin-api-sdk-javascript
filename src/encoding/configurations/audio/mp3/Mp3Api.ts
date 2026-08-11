@@ -49,7 +49,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary MP3 Codec Configuration Details
+   * @summary Get MP3 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Mp3Api

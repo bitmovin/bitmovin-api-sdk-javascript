@@ -49,7 +49,7 @@ export default class LocalApi extends BaseAPI {
   }
 
   /**
-   * @summary Local Input Details
+   * @summary Get Local Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof LocalApi

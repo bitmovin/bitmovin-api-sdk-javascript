@@ -35,7 +35,7 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Sidecar
+   * @summary Delete WebVTT Sidecar
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary WebVTT Sidecar Details
+   * @summary Get WebVTT Sidecar details
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
    * @throws {BitmovinError}

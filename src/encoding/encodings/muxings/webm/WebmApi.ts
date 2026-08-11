@@ -25,7 +25,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add WebM muxing
+   * @summary Create WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {WebmMuxing} webmMuxing The WebM muxing to be created
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary WebM muxing details
+   * @summary Get WebM muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @throws {BitmovinError}

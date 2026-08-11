@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Output Custom Data
+   * @summary Get Azure Output Custom Data
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof CustomdataApi

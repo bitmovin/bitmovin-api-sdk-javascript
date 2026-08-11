@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary VP8 Codec Configuration Custom Data
+   * @summary Get VP8 Codec Configuration Custom Data
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof CustomdataApi

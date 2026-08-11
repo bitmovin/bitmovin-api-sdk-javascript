@@ -49,7 +49,7 @@ export default class AacApi extends BaseAPI {
   }
 
   /**
-   * @summary AAC Codec Configuration Details
+   * @summary Get AAC Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof AacApi

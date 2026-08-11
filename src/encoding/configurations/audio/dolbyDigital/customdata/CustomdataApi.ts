@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Digital Codec Configuration Custom Data
+   * @summary Get Dolby Digital Codec Configuration Custom Data
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof CustomdataApi

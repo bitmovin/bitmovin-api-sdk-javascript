@@ -19,7 +19,7 @@ export default class TimecodeTrackApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Timecode Track Trimming Input Stream
+   * @summary Create Timecode Track Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {TimecodeTrackTrimmingInputStream} timecodeTrackTrimmingInputStream The Timecode Track Trimming Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class TimecodeTrackApi extends BaseAPI {
   }
 
   /**
-   * @summary Timecode Track Trimming Input Stream Details
+   * @summary Get Timecode Track Trimming Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the Timecode Track Trimming Input Stream.
    * @throws {BitmovinError}

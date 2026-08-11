@@ -23,7 +23,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Encoding Finished' Webhook
+   * @summary Create 'Encoding Finished' Webhook
    * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -35,7 +35,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Encoding Finished' Webhook for a specific Encoding
+   * @summary Create 'Encoding Finished' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {Webhook} webhook The &#39;Encoding Finished&#39; Webhook to be added. A maximum number of 5 webhooks per Encoding is allowed
    * @throws {BitmovinError}
@@ -83,7 +83,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary 'Encoding Finished' Webhook Details for a specific Encoding
+   * @summary Get 'Encoding Finished' Webhook details for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -100,7 +100,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary 'Encoding Finished' Webhook Details
+   * @summary Get 'Encoding Finished' Webhook details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof FinishedApi

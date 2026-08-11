@@ -22,7 +22,7 @@ export default class WidevineApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Widevine DRM to an fMP4 muxing
+   * @summary Create Widevine DRM to an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {WidevineDrm} widevineDrm The Widevine DRM to be created
@@ -59,7 +59,7 @@ export default class WidevineApi extends BaseAPI {
   }
 
   /**
-   * @summary Widevine DRM Details of an fMP4 muxing
+   * @summary Get Widevine DRM from an fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {string} drmId Id of the widevine drm.

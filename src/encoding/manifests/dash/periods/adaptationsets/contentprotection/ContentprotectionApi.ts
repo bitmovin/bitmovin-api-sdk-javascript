@@ -19,7 +19,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Content Protection to AdaptationSet
+   * @summary Create Content Protection to AdaptationSet
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -60,7 +60,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary AdaptationSet Content Protection Details
+   * @summary Get AdaptationSet Content Protection details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -81,7 +81,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary List all AdaptationSet Content Protections
+   * @summary List AdaptationSet Content Protections
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

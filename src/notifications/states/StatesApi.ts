@@ -18,7 +18,7 @@ export default class StatesApi extends BaseAPI {
   }
 
   /**
-   * @summary List Notification State History (Specific Resource)
+   * @summary List Notification State History for a specific Resource
    * @param {string} notificationId Id of the notification
    * @param {string} resourceId Id of the resource, e.g. encoding id
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

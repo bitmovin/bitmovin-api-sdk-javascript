@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary WebM muxing Custom Data
+   * @summary Get WebM muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing
    * @throws {BitmovinError}

@@ -25,7 +25,7 @@ export default class ProgressiveWavApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive Wav muxing
+   * @summary Create Progressive Wav muxing
    * @param {string} encodingId Id of the encoding.
    * @param {ProgressiveWavMuxing} progressiveWavMuxing The Progressive WAV muxing to be created
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class ProgressiveWavApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive WAV muxing details
+   * @summary Get Progressive WAV muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WAV muxing
    * @throws {BitmovinError}

@@ -19,7 +19,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Closed Captions Media
+   * @summary Create Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {ClosedCaptionsMediaInfo} closedCaptionsMediaInfo The Closed Captions Media to be added
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Closed Captions Media Details
+   * @summary Get Closed Captions Media details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the closed captions media.
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class ClosedCaptionsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Closed Captions Media
+   * @summary List Closed Captions Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -20,7 +20,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Video Media
+   * @summary Create Video Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {VideoMediaInfo} videoMediaInfo The Video Media to be added
    * @throws {BitmovinError}
@@ -53,7 +53,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Video Media Details
+   * @summary Get Video Media details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the video media.
    * @throws {BitmovinError}
@@ -70,7 +70,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Video Media
+   * @summary List Video Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

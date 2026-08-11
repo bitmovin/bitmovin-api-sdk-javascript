@@ -49,7 +49,7 @@ export default class RotateApi extends BaseAPI {
   }
 
   /**
-   * @summary Rotate Filter Details
+   * @summary Get Rotate Filter details
    * @param {string} filterId Id of the Rotate Filter.
    * @throws {BitmovinError}
    * @memberof RotateApi

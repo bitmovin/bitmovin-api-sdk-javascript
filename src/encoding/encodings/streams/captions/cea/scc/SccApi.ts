@@ -22,7 +22,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Embed SCC captions as 608/708 into Stream
+   * @summary Create SCC captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {SccCaption} sccCaption The SCC captions to be embedded as 607/708 into Stream
@@ -40,7 +40,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SCC captions as 608/708 from Stream
+   * @summary Delete SCC captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
@@ -59,7 +59,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Embed SCC captions as 608/708 Details
+   * @summary Get SCC captions as 608/708 details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
@@ -78,7 +78,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary List SCC captions as 608/708 from Stream
+   * @summary List SCC captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

@@ -25,7 +25,7 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add TS muxing
+   * @summary Create TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {TsMuxing} tsMuxing The TS muxing to be created
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class TsApi extends BaseAPI {
   }
 
   /**
-   * @summary TS muxing details
+   * @summary Get TS muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing
    * @throws {BitmovinError}

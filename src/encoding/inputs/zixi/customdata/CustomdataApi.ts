@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Zixi input Custom Data
+   * @summary Get Zixi Input Custom Data
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof CustomdataApi

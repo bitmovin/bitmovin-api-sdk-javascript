@@ -21,7 +21,7 @@ export default class EncodingApi extends BaseAPI {
   }
 
   /**
-   * @summary List Email Notifications (All Encodings)
+   * @summary List Encoding Email Notifications
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof EncodingApi

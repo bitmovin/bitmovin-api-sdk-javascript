@@ -22,7 +22,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AES encryption configuration to a TS muxing
+   * @summary Create AES encryption configuration to a TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {AesEncryptionDrm} aesEncryptionDrm The AES encryption configuration to be created
@@ -59,7 +59,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary AES encryption Details of a TS muxing
+   * @summary Get AES encryption configuration from a TS muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the TS muxing.
    * @param {string} drmId Id of the AES encryption configuration.

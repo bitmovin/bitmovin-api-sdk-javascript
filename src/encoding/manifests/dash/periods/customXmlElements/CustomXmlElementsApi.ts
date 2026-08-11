@@ -19,7 +19,7 @@ export default class CustomXmlElementsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Custom XML Element to Period
+   * @summary Create Custom XML Element to Period
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {CustomXmlElement} customXmlElement Data of the custom XML element to be added to the period
@@ -56,7 +56,7 @@ export default class CustomXmlElementsApi extends BaseAPI {
   }
 
   /**
-   * @summary Custom XML Element Details
+   * @summary Get Custom XML Element details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} customXmlElementId Id of the Custom XML Element
@@ -75,7 +75,7 @@ export default class CustomXmlElementsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Custom XML Elements of Period
+   * @summary List Custom XML Elements of Period
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

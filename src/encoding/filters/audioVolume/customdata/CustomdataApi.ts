@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio Volume Filter Custom Data
+   * @summary Get Audio Volume Filter Custom Data
    * @param {string} filterId Id of the Audio Volume Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

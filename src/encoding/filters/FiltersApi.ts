@@ -14,6 +14,7 @@ import EnhancedDeinterlaceApi from './enhancedDeinterlace/EnhancedDeinterlaceApi
 import AudioMixApi from './audioMix/AudioMixApi';
 import DenoiseHqdn3dApi from './denoiseHqdn3d/DenoiseHqdn3dApi';
 import EbuR128SinglePassApi from './ebuR128SinglePass/EbuR128SinglePassApi';
+import DolbyLoudnessApi from './dolbyLoudness/DolbyLoudnessApi';
 import TextApi from './text/TextApi';
 import InterlaceApi from './interlace/InterlaceApi';
 import UnsharpApi from './unsharp/UnsharpApi';
@@ -42,6 +43,7 @@ export default class FiltersApi extends BaseAPI {
   public audioMix: AudioMixApi;
   public denoiseHqdn3d: DenoiseHqdn3dApi;
   public ebuR128SinglePass: EbuR128SinglePassApi;
+  public dolbyLoudness: DolbyLoudnessApi;
   public text: TextApi;
   public interlace: InterlaceApi;
   public unsharp: UnsharpApi;
@@ -62,6 +64,7 @@ export default class FiltersApi extends BaseAPI {
     this.audioMix = new AudioMixApi(configuration);
     this.denoiseHqdn3d = new DenoiseHqdn3dApi(configuration);
     this.ebuR128SinglePass = new EbuR128SinglePassApi(configuration);
+    this.dolbyLoudness = new DolbyLoudnessApi(configuration);
     this.text = new TextApi(configuration);
     this.interlace = new InterlaceApi(configuration);
     this.unsharp = new UnsharpApi(configuration);

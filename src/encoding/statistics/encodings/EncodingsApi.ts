@@ -25,7 +25,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Statistics from an Encoding
+   * @summary Get Encoding Statistics
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof EncodingsApi

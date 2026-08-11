@@ -22,7 +22,7 @@ export default class BifsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add a Roku Bif file
+   * @summary Create a Roku Bif file
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {Bif} bif The Roku Bif file to be added
@@ -59,7 +59,7 @@ export default class BifsApi extends BaseAPI {
   }
 
   /**
-   * @summary Bif Details
+   * @summary Get Bif details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} bifId Id of the Bif configuration.

@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary SRT input Custom Data
+   * @summary Get SRT Input Custom Data
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof CustomdataApi

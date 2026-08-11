@@ -22,7 +22,7 @@ export default class StreamKeysApi extends BaseAPI {
   }
 
   /**
-   * @summary Create new stream key
+   * @summary Create Stream Key
    * @param {StreamKey} streamKey The stream key to be created
    * @throws {BitmovinError}
    * @memberof StreamKeysApi
@@ -49,7 +49,7 @@ export default class StreamKeysApi extends BaseAPI {
   }
 
   /**
-   * @summary Stream Key details
+   * @summary Get Stream Key details
    * @param {string} streamKeyId Id of the stream key
    * @throws {BitmovinError}
    * @memberof StreamKeysApi

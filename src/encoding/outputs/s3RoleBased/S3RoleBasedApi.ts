@@ -48,7 +48,7 @@ export default class S3RoleBasedApi extends BaseAPI {
   }
 
   /**
-   * @summary S3 Role-based Output Details
+   * @summary Get S3 Role-based Output details
    * @param {string} outputId Id of the input
    * @throws {BitmovinError}
    * @memberof S3RoleBasedApi

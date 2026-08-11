@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Unsharp Filter Custom Data
+   * @summary Get Unsharp Filter Custom Data
    * @param {string} filterId Id of the unsharp filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi

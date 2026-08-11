@@ -19,7 +19,7 @@ export default class FileApi extends BaseAPI {
   }
 
   /**
-   * @summary Add File input stream
+   * @summary Create File input stream
    * @param {string} encodingId Id of the encoding.
    * @param {FileInputStream} fileInputStream The File input stream to be created
    * @throws {BitmovinError}
@@ -35,7 +35,7 @@ export default class FileApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete File stream
+   * @summary Delete File Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the File input stream.
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class FileApi extends BaseAPI {
   }
 
   /**
-   * @summary File input stream details
+   * @summary Get File Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the File input stream.
    * @throws {BitmovinError}

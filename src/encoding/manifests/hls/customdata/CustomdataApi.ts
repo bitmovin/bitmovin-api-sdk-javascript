@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary HLS Manifest Custom Data
+   * @summary Get HLS Manifest Custom Data
    * @param {string} manifestId UUID of the HLS manifest
    * @throws {BitmovinError}
    * @memberof CustomdataApi

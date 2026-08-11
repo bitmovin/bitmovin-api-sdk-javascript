@@ -26,7 +26,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add fMP4 Representation
+   * @summary Create fMP4 Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -67,7 +67,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary fMP4 Representation Details
+   * @summary Get fMP4 Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -88,7 +88,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary List all fMP4 Representations
+   * @summary List fMP4 Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

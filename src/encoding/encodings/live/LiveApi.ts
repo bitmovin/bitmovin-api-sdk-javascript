@@ -54,7 +54,7 @@ export default class LiveApi extends BaseAPI {
   }
 
   /**
-   * @summary Live Encoding Start Details
+   * @summary Get Live Encoding Start Details
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof LiveApi

@@ -18,7 +18,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Error Email Notification (All Encodings)
+   * @summary Create 'Encoding Error' Email Notification
    * @param {EncodingErrorEmailNotification} encodingErrorEmailNotification Add a new email notification if an encoding received an error
    * @throws {BitmovinError}
    * @memberof ErrorApi
@@ -30,7 +30,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Encoding Error Email Notification (Specific Encoding)
+   * @summary Create 'Encoding Error' Email Notification for a specific Encoding
    * @param {string} encodingId Id of the encoding resource
    * @param {EmailNotification} emailNotification The email notifications object
    * @throws {BitmovinError}
@@ -46,7 +46,7 @@ export default class ErrorApi extends BaseAPI {
   }
 
   /**
-   * @summary Replace Encoding Error Email Notification
+   * @summary Update 'Encoding Error' Email Notification
    * @param {string} notificationId Id of the email notification
    * @param {EmailNotification} emailNotification The email notification with the updated values
    * @throws {BitmovinError}

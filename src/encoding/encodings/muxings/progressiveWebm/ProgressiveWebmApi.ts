@@ -28,7 +28,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive WebM muxing
+   * @summary Create Progressive WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {ProgressiveWebmMuxing} progressiveWebmMuxing The Progressive WebM muxing to be created
    * @throws {BitmovinError}
@@ -61,7 +61,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive WebM muxing details
+   * @summary Get Progressive WebM muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WebM muxing
    * @throws {BitmovinError}

@@ -22,7 +22,7 @@ export default class CmafApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CMAF muxing
+   * @summary Create CMAF muxing
    * @param {string} encodingId Id of the encoding.
    * @param {CmafMuxing} cmafMuxing The CMAF muxing to be created
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class CmafApi extends BaseAPI {
   }
 
   /**
-   * @summary CMAF muxing details
+   * @summary Get CMAF muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
    * @throws {BitmovinError}

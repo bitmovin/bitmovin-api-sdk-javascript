@@ -48,7 +48,7 @@ export default class AzureApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Output Details
+   * @summary Get Azure Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof AzureApi

@@ -49,7 +49,7 @@ export default class DolbyDigitalPlusApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Digital Plus Codec Configuration Details
+   * @summary Get Dolby Digital Plus Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof DolbyDigitalPlusApi

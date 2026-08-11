@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary HTTP Custom Data
+   * @summary Get HTTP Input Custom Data
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof CustomdataApi

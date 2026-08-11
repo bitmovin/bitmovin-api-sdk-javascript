@@ -49,7 +49,7 @@ export default class PcmApi extends BaseAPI {
   }
 
   /**
-   * @summary PCM Codec Configuration Details
+   * @summary Get PCM Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof PcmApi

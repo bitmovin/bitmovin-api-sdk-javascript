@@ -28,7 +28,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add fMP4 muxing
+   * @summary Create fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {Fmp4Muxing} fmp4Muxing The fMP4 muxing to be created
    * @throws {BitmovinError}
@@ -61,7 +61,7 @@ export default class Fmp4Api extends BaseAPI {
   }
 
   /**
-   * @summary fMP4 muxing details
+   * @summary Get fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @throws {BitmovinError}

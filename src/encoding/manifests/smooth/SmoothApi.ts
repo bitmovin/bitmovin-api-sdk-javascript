@@ -60,7 +60,7 @@ export default class SmoothApi extends BaseAPI {
   }
 
   /**
-   * @summary Smooth Streaming Manifest Details
+   * @summary Get Smooth Streaming Manifest details
    * @param {string} manifestId Id of the Smooth Streaming Manifest.
    * @throws {BitmovinError}
    * @memberof SmoothApi
@@ -75,7 +75,7 @@ export default class SmoothApi extends BaseAPI {
   }
 
   /**
-   * @summary Manifest Start Details
+   * @summary Smooth Streaming Manifest Start Details
    * @param {string} manifestId Id of the manifest
    * @throws {BitmovinError}
    * @memberof SmoothApi

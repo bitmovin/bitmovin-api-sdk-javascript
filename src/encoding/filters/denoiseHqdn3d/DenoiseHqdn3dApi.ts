@@ -49,7 +49,7 @@ export default class DenoiseHqdn3dApi extends BaseAPI {
   }
 
   /**
-   * @summary Denoise hqdn3d Filter Details
+   * @summary Get Denoise hqdn3d Filter details
    * @param {string} filterId Id of the denoise hqdn3d filter
    * @throws {BitmovinError}
    * @memberof DenoiseHqdn3dApi

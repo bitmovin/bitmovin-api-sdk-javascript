@@ -19,7 +19,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Audio Media
+   * @summary Create Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {AudioMediaInfo} audioMediaInfo The Audio Media to be added
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio Media Details
+   * @summary Get Audio Media details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the audio media.
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class AudioApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Audio Media
+   * @summary List Audio Media
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

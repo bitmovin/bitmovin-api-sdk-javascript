@@ -88,7 +88,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Details
+   * @summary Get Encoding details
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof EncodingsApi
@@ -103,7 +103,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Start Details
+   * @summary Get Encoding Start Details
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof EncodingsApi
@@ -118,7 +118,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Encodings
+   * @summary List Encodings
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof EncodingsApi
@@ -168,7 +168,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Start VoD Encoding
+   * @summary Start VOD Encoding
    * @param {string} encodingId Id of the encoding
    * @param {StartEncodingRequest} [startEncodingRequest] Encoding Startup Options
    * @throws {BitmovinError}
@@ -184,7 +184,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Status
+   * @summary Get Encoding Status
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof EncodingsApi
@@ -199,7 +199,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary Stop Encoding
+   * @summary Stop VOD Encoding
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof EncodingsApi

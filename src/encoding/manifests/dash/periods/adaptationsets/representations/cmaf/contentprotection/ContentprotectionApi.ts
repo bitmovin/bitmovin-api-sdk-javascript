@@ -19,7 +19,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Content Protection to CMAF Representation
+   * @summary Create Content Protection to CMAF Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -64,7 +64,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary CMAF Representation Content Protection Details
+   * @summary Get CMAF Representation Content Protection details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -87,7 +87,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary List all CMAF Representation Content Protections
+   * @summary List CMAF Representation Content Protections
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

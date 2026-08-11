@@ -25,7 +25,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary Add MP3 muxing
+   * @summary Create MP3 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {Mp3Muxing} mp3Muxing The MP3 muxing to be created
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class Mp3Api extends BaseAPI {
   }
 
   /**
-   * @summary MP3 muxing details
+   * @summary Get MP3 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP3 muxing
    * @throws {BitmovinError}

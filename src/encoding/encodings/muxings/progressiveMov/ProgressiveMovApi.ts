@@ -25,7 +25,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive MOV muxing
+   * @summary Create Progressive MOV muxing
    * @param {string} encodingId Id of the encoding.
    * @param {ProgressiveMovMuxing} progressiveMovMuxing The Progressive MOV muxing to be created
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class ProgressiveMovApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive MOV muxing details
+   * @summary Get Progressive MOV muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive MOV muxing
    * @throws {BitmovinError}

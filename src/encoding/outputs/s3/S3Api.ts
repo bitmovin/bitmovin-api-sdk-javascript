@@ -48,7 +48,7 @@ export default class S3Api extends BaseAPI {
   }
 
   /**
-   * @summary S3 Output Details
+   * @summary Get S3 Output details
    * @param {string} outputId Id of the input
    * @throws {BitmovinError}
    * @memberof S3Api

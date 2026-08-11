@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Embed SCC captions as 608/708 Custom Data
+   * @summary Get SCC captions as 608/708 Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.

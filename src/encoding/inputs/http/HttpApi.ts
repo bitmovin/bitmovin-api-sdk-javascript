@@ -48,7 +48,7 @@ export default class HttpApi extends BaseAPI {
   }
 
   /**
-   * @summary HTTP Input Details
+   * @summary Get HTTP Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof HttpApi

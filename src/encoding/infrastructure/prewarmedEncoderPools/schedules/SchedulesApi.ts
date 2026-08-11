@@ -35,7 +35,7 @@ export default class SchedulesApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete prewarmed encoder pool schedule
+   * @summary Delete Prewarmed encoder pool schedule
    * @param {string} poolId Id of the scheduled encoder pool
    * @param {string} scheduleId Id of the prewarmed encoder pool schedule
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class SchedulesApi extends BaseAPI {
   }
 
   /**
-   * @summary Prewarmed encoder pool schedule details
+   * @summary Get Prewarmed encoder pool schedule details
    * @param {string} poolId Id of the scheduled encoder pool
    * @param {string} scheduleId Id of the prewarmed encoder pool schedule
    * @throws {BitmovinError}

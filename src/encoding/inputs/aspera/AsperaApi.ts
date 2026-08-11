@@ -48,7 +48,7 @@ export default class AsperaApi extends BaseAPI {
   }
 
   /**
-   * @summary Aspera Input Details
+   * @summary Get Aspera Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof AsperaApi

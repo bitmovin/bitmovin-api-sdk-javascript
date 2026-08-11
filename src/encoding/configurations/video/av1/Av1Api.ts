@@ -49,7 +49,7 @@ export default class Av1Api extends BaseAPI {
   }
 
   /**
-   * @summary AV1 Codec Configuration Details
+   * @summary Get AV1 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Av1Api

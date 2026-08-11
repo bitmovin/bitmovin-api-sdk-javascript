@@ -19,7 +19,7 @@ export default class LiveEncodingHeartbeatApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Live Encoding Heartbeat' Webhook
+   * @summary Create 'Live Encoding Heartbeat' Webhook
    * @param {LiveEncodingHeartbeatWebhook} liveEncodingHeartbeatWebhook The &#39;Live Encoding Heartbeat&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof LiveEncodingHeartbeatApi
@@ -46,7 +46,7 @@ export default class LiveEncodingHeartbeatApi extends BaseAPI {
   }
 
   /**
-   * @summary 'Live Encoding Heartbeat' Webhook Details
+   * @summary Get 'Live Encoding Heartbeat' Webhook details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof LiveEncodingHeartbeatApi

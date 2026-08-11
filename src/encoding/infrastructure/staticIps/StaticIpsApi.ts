@@ -19,7 +19,7 @@ export default class StaticIpsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Static IP Address
+   * @summary Create Static IP Address
    * @param {StaticIp} staticIp The static ip to be created
    * @throws {BitmovinError}
    * @memberof StaticIpsApi
@@ -46,7 +46,7 @@ export default class StaticIpsApi extends BaseAPI {
   }
 
   /**
-   * @summary Static IP Address Details
+   * @summary Get Static IP Address details
    * @param {string} id Id of the Static IP Address
    * @throws {BitmovinError}
    * @memberof StaticIpsApi
@@ -61,7 +61,7 @@ export default class StaticIpsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Static IP Addresses
+   * @summary List Static IP Addresses
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof StaticIpsApi

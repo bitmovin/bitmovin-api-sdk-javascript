@@ -33,7 +33,7 @@ export default class ZixiApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Zixi input
+   * @summary Delete Zixi Input
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof ZixiApi
@@ -48,7 +48,7 @@ export default class ZixiApi extends BaseAPI {
   }
 
   /**
-   * @summary Zixi Input Details
+   * @summary Get Zixi Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof ZixiApi

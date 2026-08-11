@@ -49,7 +49,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Text Filter Details
+   * @summary Get Text Filter details
    * @param {string} filterId Id of the Text Filter
    * @throws {BitmovinError}
    * @memberof TextApi

@@ -47,7 +47,7 @@ export default class PassthroughApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio Passthrough Configuration Details
+   * @summary Get Audio Passthrough Codec Configuration details
    * @param {string} configurationId Id of the audio configuration
    * @throws {BitmovinError}
    * @memberof PassthroughApi

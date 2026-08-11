@@ -48,7 +48,7 @@ export default class FtpApi extends BaseAPI {
   }
 
   /**
-   * @summary FTP Input Details
+   * @summary Get FTP Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof FtpApi

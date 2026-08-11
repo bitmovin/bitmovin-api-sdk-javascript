@@ -49,7 +49,7 @@ export default class ConformApi extends BaseAPI {
   }
 
   /**
-   * @summary Conform Filter Details
+   * @summary Get Conform Filter details
    * @param {string} filterId Id of the conform filter
    * @throws {BitmovinError}
    * @memberof ConformApi

@@ -49,7 +49,7 @@ export default class Mp2Api extends BaseAPI {
   }
 
   /**
-   * @summary MP2 Codec Configuration Details
+   * @summary Get MP2 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Mp2Api

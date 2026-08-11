@@ -19,7 +19,7 @@ export default class DolbyVisionApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Dolby Vision Metadata
+   * @summary Create Dolby Vision Metadata
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {DolbyVisionMetadata} dolbyVisionMetadata The Dolby Vision Metadata to be added
@@ -56,7 +56,7 @@ export default class DolbyVisionApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Vision Metadata Details
+   * @summary Get Dolby Vision Metadata details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} hdrId Id of the Dolby Vision Metadata.

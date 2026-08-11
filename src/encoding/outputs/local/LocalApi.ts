@@ -48,7 +48,7 @@ export default class LocalApi extends BaseAPI {
   }
 
   /**
-   * @summary Local Output Details
+   * @summary Get Local Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof LocalApi

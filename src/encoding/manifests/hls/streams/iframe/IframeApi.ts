@@ -19,7 +19,7 @@ export default class IframeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add I-frame playlist to variant stream
+   * @summary Create I-frame playlist to variant stream
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {IFramePlaylist} iFramePlaylist The I-frame playlist to be added
@@ -56,7 +56,7 @@ export default class IframeApi extends BaseAPI {
   }
 
   /**
-   * @summary I-frame playlist Details
+   * @summary Get I-frame playlist details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {string} iframeId Id of the Iframe-Playlist.
@@ -75,7 +75,7 @@ export default class IframeApi extends BaseAPI {
   }
 
   /**
-   * @summary List all I-frame playlists of a variant stream
+   * @summary List I-frame playlists of a variant stream
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

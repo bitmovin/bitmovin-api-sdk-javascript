@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary MXF muxing Custom Data
+   * @summary Get MXF muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MXF muxing
    * @throws {BitmovinError}

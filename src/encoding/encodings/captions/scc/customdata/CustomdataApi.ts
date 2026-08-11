@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Convert SCC captions Custom Data
+   * @summary Get SCC Caption Conversion Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} captionsId Id of the caption.
    * @throws {BitmovinError}

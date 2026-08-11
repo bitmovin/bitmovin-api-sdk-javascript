@@ -19,7 +19,7 @@ export default class DetailsApi extends BaseAPI {
   }
 
   /**
-   * @summary Get AI scene analysis details by encoding ID
+   * @summary Get AI Scene Analysis details
    * @param {string} encodingId The encoding ID
    * @throws {BitmovinError}
    * @memberof DetailsApi

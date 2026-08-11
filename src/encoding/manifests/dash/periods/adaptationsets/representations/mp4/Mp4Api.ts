@@ -22,7 +22,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add MP4 Representation
+   * @summary Create MP4 Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -63,7 +63,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary MP4 Representation Details
+   * @summary Get MP4 Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -84,7 +84,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary List all MP4 Representations
+   * @summary List MP4 Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

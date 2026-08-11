@@ -23,7 +23,7 @@ export default class LiveManifestReadyApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Live Manifest Ready' Webhook
+   * @summary Create 'Live Manifest Ready' Webhook
    * @param {Webhook} webhook The &#39;Live Manifest Ready&#39; Webhook to be added.
    * @throws {BitmovinError}
    * @memberof LiveManifestReadyApi
@@ -35,7 +35,7 @@ export default class LiveManifestReadyApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Live Manifest Ready' Webhook for a specific Encoding
+   * @summary Create 'Live Manifest Ready' Webhook for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {Webhook} webhook The &#39;Live Manifest Ready&#39; Webhook to be added.
    * @throws {BitmovinError}
@@ -83,7 +83,7 @@ export default class LiveManifestReadyApi extends BaseAPI {
   }
 
   /**
-   * @summary 'Live Manifest Ready' Webhook Details for a specific Encoding
+   * @summary Get 'Live Manifest Ready' Webhook details for a specific Encoding
    * @param {string} encodingId Id of the encoding
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
@@ -100,7 +100,7 @@ export default class LiveManifestReadyApi extends BaseAPI {
   }
 
   /**
-   * @summary 'Live Manifest Ready' Webhook Details
+   * @summary Get 'Live Manifest Ready' Webhook details
    * @param {string} webhookId Id of the webhook
    * @throws {BitmovinError}
    * @memberof LiveManifestReadyApi

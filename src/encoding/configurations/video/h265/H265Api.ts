@@ -49,7 +49,7 @@ export default class H265Api extends BaseAPI {
   }
 
   /**
-   * @summary H265/HEVC Codec Configuration Details
+   * @summary Get H265/HEVC Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof H265Api

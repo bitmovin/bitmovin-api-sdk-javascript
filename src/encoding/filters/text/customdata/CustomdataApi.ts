@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Text Filter Custom Data
+   * @summary Get Text Filter Custom Data
    * @param {string} filterId Id of the Text Filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi

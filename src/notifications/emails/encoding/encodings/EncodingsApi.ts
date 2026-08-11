@@ -24,7 +24,7 @@ export default class EncodingsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Email Notifications (Specific Encoding)
+   * @summary List Email Notifications for a specific Encoding
    * @param {string} encodingId Id of the encoding resource
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -54,7 +54,7 @@ export default class RegionsApi extends BaseAPI {
   }
 
   /**
-   * @summary OCI account region settings details
+   * @summary Get OCI account region settings details
    * @param {string} infrastructureId Id of the OCI account
    * @param {OciCloudRegion} region OCI region
    * @throws {BitmovinError}

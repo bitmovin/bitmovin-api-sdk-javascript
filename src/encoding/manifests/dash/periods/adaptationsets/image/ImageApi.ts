@@ -20,7 +20,7 @@ export default class ImageApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Image AdaptationSet
+   * @summary Create Image AdaptationSet
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {ImageAdaptationSet} imageAdaptationSet The image adaptation set to be added to the period
@@ -57,7 +57,7 @@ export default class ImageApi extends BaseAPI {
   }
 
   /**
-   * @summary Image AdaptationSet Details
+   * @summary Get Image AdaptationSet details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the Image adaptation set
@@ -76,7 +76,7 @@ export default class ImageApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Image AdaptationSets
+   * @summary List Image AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

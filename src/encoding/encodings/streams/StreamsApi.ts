@@ -55,7 +55,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Stream
+   * @summary Create Stream
    * @param {string} encodingId Id of the encoding.
    * @param {Stream} stream The Stream to be created
    * @throws {BitmovinError}
@@ -88,7 +88,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary Stream Details
+   * @summary Get Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @throws {BitmovinError}

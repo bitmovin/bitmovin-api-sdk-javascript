@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Conform Filter Custom Data
+   * @summary Get Conform Filter Custom Data
    * @param {string} filterId Id of the conform filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi

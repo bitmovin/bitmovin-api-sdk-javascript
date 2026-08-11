@@ -22,7 +22,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CENC DRM to a WebM muxing
+   * @summary Create CENC DRM to a WebM muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing.
    * @param {CencDrm} cencDrm The CencDrm to be created
@@ -59,7 +59,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary CENC DRM Details of a WebM muxing
+   * @summary Get CENC DRM from a WebM muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the WebM muxing.
    * @param {string} drmId Id of the cenc drm.

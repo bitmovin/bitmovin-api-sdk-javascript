@@ -37,7 +37,7 @@ export default class CustomTagsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Custom Tag
+   * @summary Delete Media Custom Tag
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the media.
    * @param {string} customTagId Id of the custom tag.
@@ -56,7 +56,7 @@ export default class CustomTagsApi extends BaseAPI {
   }
 
   /**
-   * @summary Custom Tag Details
+   * @summary Media Custom Tag Details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} mediaId Id of the media
    * @param {string} customTagId Id of the custom tag.

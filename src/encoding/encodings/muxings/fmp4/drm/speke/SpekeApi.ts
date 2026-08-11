@@ -22,7 +22,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary Add SPEKE DRM key provider to fMP4
+   * @summary Create SPEKE DRM key provider to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {SpekeDrm} spekeDrm The SPEKE DRM key provider to be created
@@ -59,7 +59,7 @@ export default class SpekeApi extends BaseAPI {
   }
 
   /**
-   * @summary SPEKE DRM Details of an fMP4 muxing
+   * @summary Get SPEKE DRM from an fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the SPEKE DRM.

@@ -49,7 +49,7 @@ export default class AudioVolumeApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio Volume Filter Details
+   * @summary Get Audio Volume Filter details
    * @param {string} filterId Id of the Audio Volume Filter.
    * @throws {BitmovinError}
    * @memberof AudioVolumeApi

@@ -19,7 +19,7 @@ export default class DvbsubApi extends BaseAPI {
   }
 
   /**
-   * @summary Burn-In DVB-SUB Subtitle into Stream
+   * @summary Create Burn-In DVB-SUB Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {BurnInSubtitleDvbSub} burnInSubtitleDvbSub The Burn-In DVB-SUB Subtitle to be added
@@ -37,7 +37,7 @@ export default class DvbsubApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Burn-In DVB-SUB Subtitle from Stream
+   * @summary Delete Burn-In DVB-SUB Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the subtitle.
@@ -56,7 +56,7 @@ export default class DvbsubApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Burn-In DVB-SUB Subtitle Details
+   * @summary Get Burn-In DVB-SUB Subtitle details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the subtitle.
@@ -75,7 +75,7 @@ export default class DvbsubApi extends BaseAPI {
   }
 
   /**
-   * @summary List the Burn-In DVB-SUB subtitles of a stream
+   * @summary List Burn-In DVB-SUB Subtitles
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

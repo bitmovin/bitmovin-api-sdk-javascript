@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Rotate Filter Custom Data
+   * @summary Get Rotate Filter Custom Data
    * @param {string} filterId Id of the Rotate Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

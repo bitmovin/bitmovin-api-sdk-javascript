@@ -28,7 +28,7 @@ export default class PackedAudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Packed Audio muxing
+   * @summary Create Packed Audio muxing
    * @param {string} encodingId Id of the encoding.
    * @param {PackedAudioMuxing} packedAudioMuxing The Packed Audio muxing to be created
    * @throws {BitmovinError}
@@ -61,7 +61,7 @@ export default class PackedAudioApi extends BaseAPI {
   }
 
   /**
-   * @summary Packed Audio muxing details
+   * @summary Get Packed Audio muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Packed Audio muxing
    * @throws {BitmovinError}

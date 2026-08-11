@@ -18,7 +18,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Stream Infos of Live Statistics from an Encoding
+   * @summary List Live Statistics Stream Infos
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

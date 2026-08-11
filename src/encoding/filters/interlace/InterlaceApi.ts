@@ -49,7 +49,7 @@ export default class InterlaceApi extends BaseAPI {
   }
 
   /**
-   * @summary Interlace Filter Details
+   * @summary Get Interlace Filter details
    * @param {string} filterId Id of the Interlace Filter
    * @throws {BitmovinError}
    * @memberof InterlaceApi

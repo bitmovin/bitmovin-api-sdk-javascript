@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Smooth Streaming Manifest Custom Data
+   * @summary Get Smooth Streaming Manifest Custom Data
    * @param {string} manifestId UUID of the Smooth Streaming manifest
    * @throws {BitmovinError}
    * @memberof CustomdataApi

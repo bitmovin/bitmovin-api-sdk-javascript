@@ -49,7 +49,7 @@ export default class WebvttApi extends BaseAPI {
   }
 
   /**
-   * @summary WebVtt subtitle configuration details
+   * @summary Get WebVtt subtitle configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof WebvttApi

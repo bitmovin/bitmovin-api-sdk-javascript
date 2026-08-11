@@ -22,7 +22,7 @@ export default class PlayreadyApi extends BaseAPI {
   }
 
   /**
-   * @summary Add PlayReady DRM to an fMP4 muxing
+   * @summary Create PlayReady DRM to an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {PlayReadyDrm} playReadyDrm The PlayReady DRM to be created
@@ -59,7 +59,7 @@ export default class PlayreadyApi extends BaseAPI {
   }
 
   /**
-   * @summary PlayReady DRM Details of an fMP4 muxing
+   * @summary Get PlayReady DRM from an fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the PlayReady DRM configuration.

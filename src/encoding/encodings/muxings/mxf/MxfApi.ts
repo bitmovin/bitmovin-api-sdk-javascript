@@ -22,7 +22,7 @@ export default class MxfApi extends BaseAPI {
   }
 
   /**
-   * @summary Add MXF muxing
+   * @summary Create MXF muxing
    * @param {string} encodingId Id of the encoding.
    * @param {MxfMuxing} mxfMuxing The MXF muxing to be created
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class MxfApi extends BaseAPI {
   }
 
   /**
-   * @summary MXF muxing details
+   * @summary Get MXF muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MXF muxing
    * @throws {BitmovinError}

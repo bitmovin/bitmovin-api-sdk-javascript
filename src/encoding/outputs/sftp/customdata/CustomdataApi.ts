@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary SFTP Output Custom Data
+   * @summary Get SFTP Output Custom Data
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof CustomdataApi

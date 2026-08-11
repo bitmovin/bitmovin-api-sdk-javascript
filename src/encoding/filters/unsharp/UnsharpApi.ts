@@ -49,7 +49,7 @@ export default class UnsharpApi extends BaseAPI {
   }
 
   /**
-   * @summary Unsharp Filter Details
+   * @summary Get Unsharp Filter details
    * @param {string} filterId Id of the unsharp filter
    * @throws {BitmovinError}
    * @memberof UnsharpApi

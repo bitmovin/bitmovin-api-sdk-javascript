@@ -22,7 +22,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Text muxing
+   * @summary Create Text muxing
    * @param {string} encodingId Id of the encoding.
    * @param {TextMuxing} textMuxing The Text muxing to be created
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class TextApi extends BaseAPI {
   }
 
   /**
-   * @summary Text muxing details
+   * @summary Get Text muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Text muxing
    * @throws {BitmovinError}

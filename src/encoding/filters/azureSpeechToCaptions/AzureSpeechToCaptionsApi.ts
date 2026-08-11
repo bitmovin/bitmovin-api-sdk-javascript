@@ -49,7 +49,7 @@ export default class AzureSpeechToCaptionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Speech to captions Filter details
+   * @summary Get Azure Speech to captions Filter details
    * @param {string} filterId Id of the Azure Speech to captions Filter.
    * @throws {BitmovinError}
    * @memberof AzureSpeechToCaptionsApi

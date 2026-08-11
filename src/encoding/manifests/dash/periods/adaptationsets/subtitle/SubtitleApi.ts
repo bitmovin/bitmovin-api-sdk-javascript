@@ -19,7 +19,7 @@ export default class SubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Subtitle AdaptationSet
+   * @summary Create Subtitle AdaptationSet
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {SubtitleAdaptationSet} subtitleAdaptationSet The subtitle adaptation set to be added to the period
@@ -56,7 +56,7 @@ export default class SubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary Subtitle AdaptationSet Details
+   * @summary Get Subtitle AdaptationSet details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the subtitle adaptation set
@@ -75,7 +75,7 @@ export default class SubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Subtitle AdaptationSets
+   * @summary List Subtitle AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

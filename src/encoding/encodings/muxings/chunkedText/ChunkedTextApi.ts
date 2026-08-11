@@ -22,7 +22,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Chunked Text muxing
+   * @summary Create Chunked Text muxing
    * @param {string} encodingId Id of the encoding.
    * @param {ChunkedTextMuxing} chunkedTextMuxing The Chunked Text muxing to be created
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Chunked Text muxing details
+   * @summary Get Chunked Text muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Chunked Text muxing
    * @throws {BitmovinError}

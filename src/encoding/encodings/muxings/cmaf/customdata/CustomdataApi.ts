@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary CMAF muxing custom data
+   * @summary Get CMAF muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the CMAF muxing
    * @throws {BitmovinError}

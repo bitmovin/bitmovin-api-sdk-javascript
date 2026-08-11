@@ -17,7 +17,7 @@ export default class LiveInputStreamChangedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Live Input Stream Changed Email Notification (All Encodings)
+   * @summary Create 'Live Input Stream Changed' Email Notification
    * @param {EmailNotificationWithStreamConditionsRequest} emailNotificationWithStreamConditionsRequest The email notifications object
    * @throws {BitmovinError}
    * @memberof LiveInputStreamChangedApi
@@ -29,7 +29,7 @@ export default class LiveInputStreamChangedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Live Input Stream Changed Email Notification (Specific Encoding)
+   * @summary Create 'Live Input Stream Changed' Email Notification for a specific Encoding
    * @param {string} encodingId Id of the encoding resource
    * @param {EmailNotificationWithStreamConditionsRequest} emailNotificationWithStreamConditionsRequest The email notifications object
    * @throws {BitmovinError}
@@ -45,7 +45,7 @@ export default class LiveInputStreamChangedApi extends BaseAPI {
   }
 
   /**
-   * @summary Replace Live Input Stream Changed Email Notification
+   * @summary Update 'Live Input Stream Changed' Email Notification
    * @param {string} notificationId Id of the email notification
    * @param {EmailNotificationWithStreamConditionsRequest} emailNotificationWithStreamConditionsRequest The email notification with the updated values
    * @throws {BitmovinError}

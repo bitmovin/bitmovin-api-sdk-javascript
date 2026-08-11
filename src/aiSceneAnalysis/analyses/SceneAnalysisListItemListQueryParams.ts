@@ -17,7 +17,14 @@ export interface SceneAnalysisListItemListQueryParams {
     limit?: number | undefined;
 
     /**
-     * Order the result by creation date. Default is createdAt:DESC
+     * Natural-language text for semantic analysis search. A value containing at least one non-whitespace character enables semantic search and must contain at least 3 characters; omitted, empty, or whitespace-only values use ordinary list behavior
+     * @type {string}
+     * @memberof SceneAnalysisListItemListQueryParams
+     */
+    searchText?: string | undefined;
+
+    /**
+     * Order the results. When searchText is omitted, empty, or whitespace-only, the default is createdAt:DESC and the supported values are createdAt:DESC and createdAt:ASC. When searchText contains at least one non-whitespace character, relevance:DESC is the default and only supported value. Other combinations are rejected
      * @type {SceneAnalysisListSort}
      * @memberof SceneAnalysisListItemListQueryParams
      */
@@ -61,7 +68,16 @@ export class SceneAnalysisListItemListQueryParamsBuilder {
 
     /**
      *
-     * @param sort Order the result by creation date. Default is createdAt:DESC
+     * @param searchText Natural-language text for semantic analysis search. A value containing at least one non-whitespace character enables semantic search and must contain at least 3 characters; omitted, empty, or whitespace-only values use ordinary list behavior
+     */
+    public searchText(searchText: string) {
+        this.internalParams.searchText = searchText;
+        return this;
+    }
+
+    /**
+     *
+     * @param sort Order the results. When searchText is omitted, empty, or whitespace-only, the default is createdAt:DESC and the supported values are createdAt:DESC and createdAt:ASC. When searchText contains at least one non-whitespace character, relevance:DESC is the default and only supported value. Other combinations are rejected
      */
     public sort(sort: SceneAnalysisListSort) {
         this.internalParams.sort = sort;

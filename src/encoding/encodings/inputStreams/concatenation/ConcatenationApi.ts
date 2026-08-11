@@ -19,7 +19,7 @@ export default class ConcatenationApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Concatenation Input Stream
+   * @summary Create Concatenation Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {ConcatenationInputStream} concatenationInputStream The Concatenation Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class ConcatenationApi extends BaseAPI {
   }
 
   /**
-   * @summary Concatenation Input Stream Details
+   * @summary Get Concatenation Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the concatenation input stream.
    * @throws {BitmovinError}

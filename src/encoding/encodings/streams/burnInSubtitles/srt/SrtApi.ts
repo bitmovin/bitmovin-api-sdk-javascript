@@ -19,7 +19,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Burn-In SRT Subtitle into Stream
+   * @summary Create Burn-In SRT Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {BurnInSubtitleSrt} burnInSubtitleSrt The Burn-In SRT Subtitle to be added
@@ -37,7 +37,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Burn-In SRT Subtitle from Stream
+   * @summary Delete Burn-In SRT Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
@@ -56,7 +56,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Burn-In SRT Subtitle Details
+   * @summary Get Burn-In SRT Subtitle details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
@@ -75,7 +75,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary List the Burn-In SRT subtitles of a stream
+   * @summary List Burn-In SRT Subtitles
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

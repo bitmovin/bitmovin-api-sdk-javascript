@@ -16,7 +16,7 @@ export default class TemplateApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Template URL
+   * @summary Get Encoding Template URL
    * @param {string} encodingId Id of the Encoding
    * @throws {BitmovinError}
    * @memberof TemplateApi

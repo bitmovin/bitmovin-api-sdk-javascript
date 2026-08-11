@@ -48,7 +48,7 @@ export default class AkamaiNetstorageApi extends BaseAPI {
   }
 
   /**
-   * @summary Akamai NetStorage Output Details
+   * @summary Get Akamai NetStorage Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof AkamaiNetstorageApi

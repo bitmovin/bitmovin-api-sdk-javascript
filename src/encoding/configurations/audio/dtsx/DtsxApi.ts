@@ -49,7 +49,7 @@ export default class DtsxApi extends BaseAPI {
   }
 
   /**
-   * @summary DTS:X Codec Configuration Details
+   * @summary Get DTS:X Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof DtsxApi

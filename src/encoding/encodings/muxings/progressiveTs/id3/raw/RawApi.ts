@@ -22,7 +22,7 @@ export default class RawApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Raw ID3 Tag to a Progressive TS muxing
+   * @summary Create Raw ID3 Tag to a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {RawId3Tag} rawId3Tag The Raw ID3 Tag to be created
@@ -59,7 +59,7 @@ export default class RawApi extends BaseAPI {
   }
 
   /**
-   * @summary Raw ID3 Tag Details of a Progressive TS muxing
+   * @summary Get Raw ID3 Tag of a Progressive TS muxing details
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Raw ID3 Tag

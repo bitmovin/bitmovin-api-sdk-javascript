@@ -49,7 +49,7 @@ export default class OpusApi extends BaseAPI {
   }
 
   /**
-   * @summary Opus Codec Configuration Details
+   * @summary Get Opus Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof OpusApi

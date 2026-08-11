@@ -25,7 +25,7 @@ export default class SidecarsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Sidecar
+   * @summary Create Sidecar
    * @param {string} encodingId Id of the encoding.
    * @param {SidecarFile} sidecarFile The Sidecar to be added
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class SidecarsApi extends BaseAPI {
   }
 
   /**
-   * @summary Sidecar Details
+   * @summary Get Sidecar details
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
    * @throws {BitmovinError}

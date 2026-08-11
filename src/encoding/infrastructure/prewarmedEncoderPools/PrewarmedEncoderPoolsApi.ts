@@ -34,7 +34,7 @@ export default class PrewarmedEncoderPoolsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete prewarmed encoder pool
+   * @summary Delete Prewarmed encoder pool
    * @param {string} poolId Id of the prewarmed encoder pool
    * @throws {BitmovinError}
    * @memberof PrewarmedEncoderPoolsApi
@@ -49,7 +49,7 @@ export default class PrewarmedEncoderPoolsApi extends BaseAPI {
   }
 
   /**
-   * @summary Prewarmed encoder pool details
+   * @summary Get Prewarmed encoder pool details
    * @param {string} poolId Id of the prewarmed encoder pool
    * @throws {BitmovinError}
    * @memberof PrewarmedEncoderPoolsApi

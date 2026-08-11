@@ -54,7 +54,7 @@ export default class RegionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Region Settings Details
+   * @summary Get Azure Region Settings details
    * @param {string} infrastructureId Id of the Azure account
    * @param {AzureCloudRegion} region Azure region.
    * @throws {BitmovinError}

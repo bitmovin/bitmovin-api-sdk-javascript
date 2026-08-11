@@ -48,7 +48,7 @@ export default class GcsApi extends BaseAPI {
   }
 
   /**
-   * @summary GCS Input Details
+   * @summary Get GCS Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof GcsApi

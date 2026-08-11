@@ -49,7 +49,7 @@ export default class AudioMixApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio Mix Filter Details
+   * @summary Get Audio Mix Filter details
    * @param {string} filterId Id of the Audio Mix Filter.
    * @throws {BitmovinError}
    * @memberof AudioMixApi

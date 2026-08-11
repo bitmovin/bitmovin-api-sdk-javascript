@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Packed Audio muxing Custom Data
+   * @summary Get Packed Audio muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Packed Audio muxing
    * @throws {BitmovinError}

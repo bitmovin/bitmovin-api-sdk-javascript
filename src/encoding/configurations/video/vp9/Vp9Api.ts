@@ -49,7 +49,7 @@ export default class Vp9Api extends BaseAPI {
   }
 
   /**
-   * @summary VP9 Codec Configuration Details
+   * @summary Get VP9 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Vp9Api

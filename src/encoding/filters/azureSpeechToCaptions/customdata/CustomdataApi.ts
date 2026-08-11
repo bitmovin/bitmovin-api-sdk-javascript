@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Speech to captions Filter Custom Data
+   * @summary Get Azure Speech to captions Filter Custom Data
    * @param {string} filterId Id of the Azure Speech to captions Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

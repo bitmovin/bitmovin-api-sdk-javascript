@@ -16,7 +16,7 @@ export default class AdPlacementsApi extends BaseAPI {
   }
 
   /**
-   * @summary Get AI scene analysis ad placements by encoding ID
+   * @summary Get AI Scene Analysis ad placements
    * @param {string} encodingId The encoding ID
    * @throws {BitmovinError}
    * @memberof AdPlacementsApi

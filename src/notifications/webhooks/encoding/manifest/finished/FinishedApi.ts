@@ -18,7 +18,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Manifest Finished Successfully' Webhook (All Manifests)
+   * @summary Create 'Manifest Finished' Webhook
    * @param {Webhook} webhook Add a new webhook notification that triggers if a manifest generation finished successfully. A maximum number of 5 webhooks is allowed
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -30,7 +30,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add 'Manifest Finished Successfully' Webhook Notification (Specific Manifest)
+   * @summary Create 'Manifest Finished' Webhook for a specific Manifest
    * @param {string} manifestId Id of the manifest resource
    * @param {Webhook} webhook The webhook notifications object. A maximum number of 5 webhooks per Manifest is allowed
    * @throws {BitmovinError}
@@ -46,7 +46,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Manifest Finished Webhook
+   * @summary Delete 'Manifest Finished' Webhook
    * @param {string} notificationId Id of the webhook notification
    * @throws {BitmovinError}
    * @memberof FinishedApi
@@ -61,7 +61,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Get 'Manifest Finished' Webhooks (All Manifests)
+   * @summary List 'Manifest Finished' Webhooks
    * @throws {BitmovinError}
    * @memberof FinishedApi
    */
@@ -72,7 +72,7 @@ export default class FinishedApi extends BaseAPI {
   }
 
   /**
-   * @summary Replace Manifest Finished Webhook Notification
+   * @summary Update 'Manifest Finished' Webhook
    * @param {string} notificationId Id of the webhook notification
    * @param {Webhook} webhook The webhook notification with the updated values
    * @throws {BitmovinError}

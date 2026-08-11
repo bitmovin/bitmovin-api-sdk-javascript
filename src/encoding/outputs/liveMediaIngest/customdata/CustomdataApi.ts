@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Live Media Ingest Output Custom Data
+   * @summary Get Live Media Ingest Output Custom Data
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof CustomdataApi

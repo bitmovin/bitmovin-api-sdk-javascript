@@ -49,7 +49,7 @@ export default class CropApi extends BaseAPI {
   }
 
   /**
-   * @summary Crop Filter Details
+   * @summary Get Crop Filter details
    * @param {string} filterId Id of the Crop Filter.
    * @throws {BitmovinError}
    * @memberof CropApi

@@ -33,7 +33,7 @@ export default class ActionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete error encodings from the standby pool
+   * @summary Delete Error Encodings from Standby Pool
    * @param {string} poolId Id of the standby pool
    * @throws {BitmovinError}
    * @memberof ActionsApi

@@ -49,7 +49,7 @@ export default class AkamaiMslApi extends BaseAPI {
   }
 
   /**
-   * @summary Akamai MSL Output Details
+   * @summary Get Akamai MSL Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof AkamaiMslApi

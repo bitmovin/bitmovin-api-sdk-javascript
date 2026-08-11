@@ -25,7 +25,7 @@ export default class LiveStatisticsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Live Statistics from an Encoding
+   * @summary List Live Statistics
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof LiveStatisticsApi

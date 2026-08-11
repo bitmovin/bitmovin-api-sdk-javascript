@@ -46,7 +46,7 @@ export default class H265v2Api extends BaseAPI {
   }
 
   /**
-   * @summary H265 V2 Codec Configuration Details
+   * @summary Get H265 V2 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof H265v2Api

@@ -19,7 +19,7 @@ export default class DolbyAtmosApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Dolby Atmos input stream
+   * @summary Create Dolby Atmos input stream
    * @param {string} encodingId Id of the encoding
    * @param {DolbyAtmosIngestInputStream} dolbyAtmosIngestInputStream The Dolby Atmos input stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class DolbyAtmosApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Atmos input stream details
+   * @summary Get Dolby Atmos input stream details
    * @param {string} encodingId Id of the encoding
    * @param {string} inputStreamId Id of the Dolby Atmos input stream
    * @throws {BitmovinError}

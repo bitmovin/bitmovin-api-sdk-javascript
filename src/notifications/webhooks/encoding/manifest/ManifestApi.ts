@@ -24,7 +24,7 @@ export default class ManifestApi extends BaseAPI {
   }
 
   /**
-   * @summary List Webhook Notifications (Specific Manifest)
+   * @summary List Webhooks for a specific Manifest
    * @param {string} manifestId Id of the manifest resource
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

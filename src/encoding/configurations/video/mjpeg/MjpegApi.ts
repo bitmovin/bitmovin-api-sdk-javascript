@@ -49,7 +49,7 @@ export default class MjpegApi extends BaseAPI {
   }
 
   /**
-   * @summary MJPEG Codec Configuration Details
+   * @summary Get MJPEG Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof MjpegApi

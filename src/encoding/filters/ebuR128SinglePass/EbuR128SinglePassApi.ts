@@ -49,7 +49,7 @@ export default class EbuR128SinglePassApi extends BaseAPI {
   }
 
   /**
-   * @summary EBU R128 Single Pass Filter Details
+   * @summary Get EBU R128 Single Pass Filter details
    * @param {string} filterId Id of the EBU R128 Single Pass filter.
    * @throws {BitmovinError}
    * @memberof EbuR128SinglePassApi

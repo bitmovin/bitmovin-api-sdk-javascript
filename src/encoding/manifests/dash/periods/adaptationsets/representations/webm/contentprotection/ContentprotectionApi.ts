@@ -19,7 +19,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Content Protection to WebM Representation
+   * @summary Create Content Protection to WebM Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -64,7 +64,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary WebM Representation Content Protection Details
+   * @summary Get WebM Representation Content Protection details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -87,7 +87,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary List all WebM Representation Content Protections
+   * @summary List WebM Representation Content Protections
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

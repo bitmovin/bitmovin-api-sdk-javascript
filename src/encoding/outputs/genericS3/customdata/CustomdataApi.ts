@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Generic S3 Output Custom Data
+   * @summary Get Generic S3 Output Custom Data
    * @param {string} outputId Id of the Output
    * @throws {BitmovinError}
    * @memberof CustomdataApi

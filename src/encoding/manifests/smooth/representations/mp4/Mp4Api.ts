@@ -19,7 +19,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Add MP4 Representation to Smooth Streaming Manifest
+   * @summary Create MP4 Representation to Smooth Streaming Manifest
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {SmoothStreamingRepresentation} smoothStreamingRepresentation The MP4 Representation to be added
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class Mp4Api extends BaseAPI {
   }
 
   /**
-   * @summary Smooth Streaming MP4 Representation Details
+   * @summary Get Smooth Streaming MP4 Representation details
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} representationId Id of the MP4 representation.
    * @throws {BitmovinError}

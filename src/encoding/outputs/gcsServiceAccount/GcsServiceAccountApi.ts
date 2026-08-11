@@ -48,7 +48,7 @@ export default class GcsServiceAccountApi extends BaseAPI {
   }
 
   /**
-   * @summary Service Account based GCS Output Details
+   * @summary Get Service Account based GCS Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof GcsServiceAccountApi

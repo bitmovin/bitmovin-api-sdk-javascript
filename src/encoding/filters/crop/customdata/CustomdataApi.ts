@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Crop Filter Custom Data
+   * @summary Get Crop Filter Custom Data
    * @param {string} filterId Id of the Crop Filter.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

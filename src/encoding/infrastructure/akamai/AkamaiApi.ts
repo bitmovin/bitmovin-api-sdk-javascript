@@ -21,7 +21,7 @@ export default class AkamaiApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Akamai account
+   * @summary Create Akamai account
    * @param {AkamaiAccount} akamaiAccount The Akamai account to be added
    * @throws {BitmovinError}
    * @memberof AkamaiApi
@@ -48,7 +48,7 @@ export default class AkamaiApi extends BaseAPI {
   }
 
   /**
-   * @summary Akamai account details
+   * @summary Get Akamai account details
    * @param {string} infrastructureId Id of the Akamai account
    * @throws {BitmovinError}
    * @memberof AkamaiApi

@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Denoise hqdn3d Filter Custom Data
+   * @summary Get Denoise hqdn3d Filter Custom Data
    * @param {string} filterId Id of the denoise hqdn3d filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi

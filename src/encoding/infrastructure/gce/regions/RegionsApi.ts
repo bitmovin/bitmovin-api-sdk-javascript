@@ -54,7 +54,7 @@ export default class RegionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Google Cloud Region Settings Details
+   * @summary Get Google Cloud Region Settings details
    * @param {string} infrastructureId Id of the Google Cloud Connect infrastructure resource
    * @param {GoogleCloudRegion} region Google Cloud region.
    * @throws {BitmovinError}

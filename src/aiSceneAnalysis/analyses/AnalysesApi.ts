@@ -22,7 +22,7 @@ export default class AnalysesApi extends BaseAPI {
   }
 
   /**
-   * @summary List AI scene analyses
+   * @summary List AI Scene Analyses
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof AnalysesApi

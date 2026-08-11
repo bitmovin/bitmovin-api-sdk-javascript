@@ -21,7 +21,7 @@ export default class AwsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AWS Account
+   * @summary Create AWS Account
    * @param {AwsAccount} awsAccount The AWS Account to be added
    * @throws {BitmovinError}
    * @memberof AwsApi
@@ -48,7 +48,7 @@ export default class AwsApi extends BaseAPI {
   }
 
   /**
-   * @summary AWS Account Details
+   * @summary Get AWS Account details
    * @param {string} infrastructureId Id of the AWS account
    * @throws {BitmovinError}
    * @memberof AwsApi

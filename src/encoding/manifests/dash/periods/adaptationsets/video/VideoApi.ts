@@ -20,7 +20,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Video AdaptationSet
+   * @summary Create Video AdaptationSet
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {VideoAdaptationSet} videoAdaptationSet The video adaptation set to be added to the period
@@ -57,7 +57,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary Video AdaptationSet Details
+   * @summary Get Video AdaptationSet details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the video adaptation set
@@ -76,7 +76,7 @@ export default class VideoApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Video AdaptationSets
+   * @summary List Video AdaptationSets
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

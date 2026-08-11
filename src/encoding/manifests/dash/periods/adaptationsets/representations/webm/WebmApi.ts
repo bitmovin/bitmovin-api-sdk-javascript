@@ -23,7 +23,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add WebM Representation
+   * @summary Create WebM Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -64,7 +64,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary WebM Representation Details
+   * @summary Get WebM Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -85,7 +85,7 @@ export default class WebmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all WebM Representations
+   * @summary List WebM Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

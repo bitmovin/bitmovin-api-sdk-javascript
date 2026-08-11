@@ -46,7 +46,7 @@ export default class WatchFoldersApi extends BaseAPI {
   }
 
   /**
-   * @summary Watch Folder details
+   * @summary Get Watch Folder details
    * @param {string} watchFolderId Id of the Watch Folder
    * @throws {BitmovinError}
    * @memberof WatchFoldersApi
@@ -61,7 +61,7 @@ export default class WatchFoldersApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Watch Folders
+   * @summary List Watch Folders
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof WatchFoldersApi

@@ -22,7 +22,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary Add FairPlay DRM to a Progressive TS muxing
+   * @summary Create FairPlay DRM to a Progressive TS muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {FairPlayDrm} fairPlayDrm The FairPlay DRM to be created
@@ -59,7 +59,7 @@ export default class FairplayApi extends BaseAPI {
   }
 
   /**
-   * @summary FairPlay DRM Details of a Progressive TS
+   * @summary Get FairPlay DRM from a Progressive TS muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive TS muxing.
    * @param {string} drmId Id of the FairPlay DRM configuration.

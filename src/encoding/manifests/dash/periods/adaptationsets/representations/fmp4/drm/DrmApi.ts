@@ -22,7 +22,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add DRM fMP4 Representation
+   * @summary Create DRM fMP4 Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -63,7 +63,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary DRM fMP4 Representation Details
+   * @summary Get DRM fMP4 Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -84,7 +84,7 @@ export default class DrmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all DRM fMP4 Representations
+   * @summary List DRM fMP4 Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

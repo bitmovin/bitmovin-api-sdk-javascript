@@ -18,7 +18,7 @@ export default class CdnApi extends BaseAPI {
   }
 
   /**
-   * @summary CDN Output Details
+   * @summary Get CDN Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof CdnApi

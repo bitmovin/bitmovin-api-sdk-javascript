@@ -20,7 +20,7 @@ export default class FiltersApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Filters to Stream
+   * @summary Create Filters to Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {StreamFilter[]} streamFilter The Filters to be added
@@ -74,7 +74,7 @@ export default class FiltersApi extends BaseAPI {
   }
 
   /**
-   * @summary List the filters of a stream
+   * @summary List Filters of a Stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

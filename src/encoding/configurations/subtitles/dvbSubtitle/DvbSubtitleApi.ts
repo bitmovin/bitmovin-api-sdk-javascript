@@ -50,7 +50,7 @@ export default class DvbSubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary DVB-SUB subtitle configuration details
+   * @summary Get DVB-SUB subtitle configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof DvbSubtitleApi

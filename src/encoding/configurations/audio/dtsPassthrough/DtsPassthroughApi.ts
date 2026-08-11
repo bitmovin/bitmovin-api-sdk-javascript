@@ -50,7 +50,7 @@ export default class DtsPassthroughApi extends BaseAPI {
   }
 
   /**
-   * @summary DTS Passthrough Codec Configuration Details
+   * @summary Get DTS Passthrough Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof DtsPassthroughApi

@@ -46,7 +46,7 @@ export default class RedundantRtmpApi extends BaseAPI {
   }
 
   /**
-   * @summary Redundant RTMP Input Details
+   * @summary Get Redundant RTMP Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof RedundantRtmpApi

@@ -22,7 +22,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add AES encryption configuration to fMP4
+   * @summary Create AES encryption configuration to fMP4
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {AesEncryptionDrm} aesEncryptionDrm The AES encryption configuration to be created
@@ -59,7 +59,7 @@ export default class AesApi extends BaseAPI {
   }
 
   /**
-   * @summary AES encryption Details of an fMP4 muxing
+   * @summary Get AES encryption configuration from an fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {string} drmId Id of the AES encryption configuration.

@@ -54,7 +54,7 @@ export default class RegionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Akamai account region settings details
+   * @summary Get Akamai account region settings details
    * @param {string} infrastructureId Id of the Akamai account
    * @param {AkamaiCloudRegion} region Akamai region
    * @throws {BitmovinError}

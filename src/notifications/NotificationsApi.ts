@@ -45,7 +45,7 @@ export default class NotificationsApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Notification
+   * @summary Get Notification details
    * @param {string} notificationId Id of the notification
    * @throws {BitmovinError}
    * @memberof NotificationsApi
@@ -78,7 +78,7 @@ export default class NotificationsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Notification State History (All Resources)
+   * @summary List Notification State History
    * @param {string} notificationId Id of the notification
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

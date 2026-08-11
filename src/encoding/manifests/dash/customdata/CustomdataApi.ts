@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary DASH Manifest Custom Data
+   * @summary Get DASH Manifest Custom Data
    * @param {string} manifestId UUID of the DASH manifest
    * @throws {BitmovinError}
    * @memberof CustomdataApi

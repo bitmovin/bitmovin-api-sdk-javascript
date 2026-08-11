@@ -49,7 +49,7 @@ export default class DolbyAtmosApi extends BaseAPI {
   }
 
   /**
-   * @summary Dolby Atmos Codec Configuration Details
+   * @summary Get Dolby Atmos Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof DolbyAtmosApi

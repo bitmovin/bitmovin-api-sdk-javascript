@@ -25,7 +25,7 @@ export default class PeriodsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Period
+   * @summary Create Period
    * @param {string} manifestId Id of the manifest
    * @param {Period} period The Period to be added to the manifest
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class PeriodsApi extends BaseAPI {
   }
 
   /**
-   * @summary Period Details
+   * @summary Get Period details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class PeriodsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Periods
+   * @summary List Periods
    * @param {string} manifestId Id of the manifest
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

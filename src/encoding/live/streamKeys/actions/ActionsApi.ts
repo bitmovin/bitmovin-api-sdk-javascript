@@ -16,7 +16,7 @@ export default class ActionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Unassign stream keys
+   * @summary Unassign Stream Keys
    * @param {StreamKeysUnassignAction} streamKeysUnassignAction The action payload for unassigning stream keys
    * @throws {BitmovinError}
    * @memberof ActionsApi

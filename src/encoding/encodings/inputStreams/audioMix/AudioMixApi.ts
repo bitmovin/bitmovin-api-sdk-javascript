@@ -19,7 +19,7 @@ export default class AudioMixApi extends BaseAPI {
   }
 
   /**
-   * @summary Add audio mix input stream
+   * @summary Create audio mix input stream
    * @param {string} encodingId Id of the encoding.
    * @param {AudioMixInputStream} audioMixInputStream The audio mix input stream to be created
    * @throws {BitmovinError}
@@ -35,7 +35,7 @@ export default class AudioMixApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete audio mix input stream
+   * @summary Delete Audio mix input stream
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the audio mix input stream.
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class AudioMixApi extends BaseAPI {
   }
 
   /**
-   * @summary Audio mix input stream details
+   * @summary Get Audio mix input stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the audio mix input stream.
    * @throws {BitmovinError}

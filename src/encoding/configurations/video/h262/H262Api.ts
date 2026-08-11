@@ -49,7 +49,7 @@ export default class H262Api extends BaseAPI {
   }
 
   /**
-   * @summary H262 Codec Configuration Details
+   * @summary Get H262 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof H262Api

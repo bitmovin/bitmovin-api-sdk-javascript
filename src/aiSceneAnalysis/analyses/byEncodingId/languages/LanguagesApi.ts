@@ -16,7 +16,7 @@ export default class LanguagesApi extends BaseAPI {
   }
 
   /**
-   * @summary Get AI scene analysis languages by encoding ID
+   * @summary Get AI Scene Analysis languages
    * @param {string} encodingId The encoding ID
    * @throws {BitmovinError}
    * @memberof LanguagesApi

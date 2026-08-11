@@ -6,6 +6,7 @@ import ConformFilter from './ConformFilter';
 import CropFilter from './CropFilter';
 import DeinterlaceFilter from './DeinterlaceFilter';
 import DenoiseHqdn3dFilter from './DenoiseHqdn3dFilter';
+import DolbyLoudnessFilter from './DolbyLoudnessFilter';
 import EbuR128SinglePassFilter from './EbuR128SinglePassFilter';
 import EnhancedDeinterlaceFilter from './EnhancedDeinterlaceFilter';
 import EnhancedWatermarkFilter from './EnhancedWatermarkFilter';
@@ -33,7 +34,8 @@ export type FilterUnion =
   InterlaceFilter |
   AudioVolumeFilter |
   EbuR128SinglePassFilter |
-  AzureSpeechToCaptionsFilter;
+  AzureSpeechToCaptionsFilter |
+  DolbyLoudnessFilter;
 
 /**
  * @export
@@ -57,7 +59,8 @@ export class Filter extends BitmovinResource {
     "INTERLACE": 'InterlaceFilter',
     "AUDIO_VOLUME": 'AudioVolumeFilter',
     "EBU_R128_SINGLE_PASS": 'EbuR128SinglePassFilter',
-    "AZURE_SPEECH_TO_CAPTIONS": 'AzureSpeechToCaptionsFilter'
+    "AZURE_SPEECH_TO_CAPTIONS": 'AzureSpeechToCaptionsFilter',
+    "DOLBY_LOUDNESS": 'DolbyLoudnessFilter'
   };
 
   constructor(obj?: Partial<Filter>) {

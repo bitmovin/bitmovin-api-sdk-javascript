@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Scale Filter Custom Data
+   * @summary Get Scale Filter Custom Data
    * @param {string} filterId Id of the scale filter
    * @throws {BitmovinError}
    * @memberof CustomdataApi

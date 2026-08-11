@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive Wav muxing Custom Data
+   * @summary Get Progressive WAV muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Progressive WAV muxing
    * @throws {BitmovinError}

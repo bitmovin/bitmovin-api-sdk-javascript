@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary ClearKey DRM Custom Data of an MP4 muxing
+   * @summary Get ClearKey DRM from an MP4 muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4.
    * @param {string} drmId Id of the ClearKey DRM configuration.

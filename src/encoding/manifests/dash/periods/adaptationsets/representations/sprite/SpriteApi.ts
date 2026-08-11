@@ -19,7 +19,7 @@ export default class SpriteApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Sprite Representation
+   * @summary Create Sprite Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the image adaptation set
@@ -60,7 +60,7 @@ export default class SpriteApi extends BaseAPI {
   }
 
   /**
-   * @summary Sprite Representation Details
+   * @summary Get Sprite Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -81,7 +81,7 @@ export default class SpriteApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Sprite Representations
+   * @summary List Sprite Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

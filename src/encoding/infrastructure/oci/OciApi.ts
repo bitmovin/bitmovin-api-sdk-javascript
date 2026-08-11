@@ -21,7 +21,7 @@ export default class OciApi extends BaseAPI {
   }
 
   /**
-   * @summary Add OCI account
+   * @summary Create OCI account
    * @param {OciAccount} ociAccount The OCI account to be added
    * @throws {BitmovinError}
    * @memberof OciApi
@@ -48,7 +48,7 @@ export default class OciApi extends BaseAPI {
   }
 
   /**
-   * @summary OCI account details
+   * @summary Get OCI account details
    * @param {string} infrastructureId Id of the OCI account
    * @throws {BitmovinError}
    * @memberof OciApi

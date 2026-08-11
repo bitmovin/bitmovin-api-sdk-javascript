@@ -49,7 +49,7 @@ export default class Vp8Api extends BaseAPI {
   }
 
   /**
-   * @summary VP8 Codec Configuration Details
+   * @summary Get VP8 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Vp8Api
@@ -64,6 +64,7 @@ export default class Vp8Api extends BaseAPI {
   }
 
   /**
+   * @summary List VP8 Codec Configurations
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof Vp8Api

@@ -21,7 +21,7 @@ export default class GceApi extends BaseAPI {
   }
 
   /**
-   * @summary Add GCE Account
+   * @summary Create GCE Account
    * @param {GceAccount} gceAccount The GCE Account to be added
    * @throws {BitmovinError}
    * @memberof GceApi
@@ -48,7 +48,7 @@ export default class GceApi extends BaseAPI {
   }
 
   /**
-   * @summary GCE Account Details
+   * @summary Get GCE Account details
    * @param {string} infrastructureId Id of the GCE account
    * @throws {BitmovinError}
    * @memberof GceApi

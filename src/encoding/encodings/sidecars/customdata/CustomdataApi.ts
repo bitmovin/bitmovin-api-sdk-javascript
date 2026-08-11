@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Sidecar Custom Data
+   * @summary Get Sidecar Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} sidecarId Id of the sidecar.
    * @throws {BitmovinError}

@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Chunked Text muxing custom data
+   * @summary Get Chunked Text muxing Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the Chunked Text muxing
    * @throws {BitmovinError}

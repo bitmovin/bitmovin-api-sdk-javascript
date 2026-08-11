@@ -48,7 +48,7 @@ export default class SftpApi extends BaseAPI {
   }
 
   /**
-   * @summary SFTP Output Details
+   * @summary Get SFTP Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof SftpApi

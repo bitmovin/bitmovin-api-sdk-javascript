@@ -54,7 +54,7 @@ export default class RegionsApi extends BaseAPI {
   }
 
   /**
-   * @summary AWS Region Settings Details
+   * @summary Get AWS Region Settings details
    * @param {string} infrastructureId Id of the AWS account
    * @param {AwsCloudRegion} region AWS region.
    * @throws {BitmovinError}

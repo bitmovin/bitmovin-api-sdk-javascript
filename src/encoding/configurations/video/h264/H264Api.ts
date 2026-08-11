@@ -49,7 +49,7 @@ export default class H264Api extends BaseAPI {
   }
 
   /**
-   * @summary H264/AVC Codec Configuration Details
+   * @summary Get H264/AVC Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof H264Api

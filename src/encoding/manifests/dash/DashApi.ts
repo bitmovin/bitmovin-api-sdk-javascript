@@ -57,7 +57,7 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary DASH Manifest Details
+   * @summary Get DASH Manifest details
    * @param {string} manifestId UUID of the DASH Manifest
    * @throws {BitmovinError}
    * @memberof DashApi
@@ -72,7 +72,7 @@ export default class DashApi extends BaseAPI {
   }
 
   /**
-   * @summary Manifest Start Details
+   * @summary DASH Manifest Start Details
    * @param {string} manifestId Id of the manifest
    * @throws {BitmovinError}
    * @memberof DashApi

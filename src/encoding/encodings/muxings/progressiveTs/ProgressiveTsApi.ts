@@ -31,7 +31,7 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive TS muxing
+   * @summary Create Progressive TS muxing
    * @param {string} encodingId ID of the encoding.
    * @param {ProgressiveTsMuxing} progressiveTsMuxing The Progressive TS muxing to be created
    * @throws {BitmovinError}
@@ -64,7 +64,7 @@ export default class ProgressiveTsApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive TS muxing details
+   * @summary Get Progressive TS muxing details
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @throws {BitmovinError}

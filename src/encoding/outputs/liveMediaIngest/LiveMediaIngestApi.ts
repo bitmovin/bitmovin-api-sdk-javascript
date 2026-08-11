@@ -49,7 +49,7 @@ export default class LiveMediaIngestApi extends BaseAPI {
   }
 
   /**
-   * @summary Live Media Ingest Output Details
+   * @summary Get Live Media Ingest Output details
    * @param {string} outputId Id of the output
    * @throws {BitmovinError}
    * @memberof LiveMediaIngestApi

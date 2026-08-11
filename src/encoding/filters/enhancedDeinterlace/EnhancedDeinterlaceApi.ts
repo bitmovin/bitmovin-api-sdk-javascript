@@ -49,7 +49,7 @@ export default class EnhancedDeinterlaceApi extends BaseAPI {
   }
 
   /**
-   * @summary Enhanced Deinterlace Filter Details
+   * @summary Get Enhanced Deinterlace Filter details
    * @param {string} filterId Id of the Enhanced Deinterlace Filter
    * @throws {BitmovinError}
    * @memberof EnhancedDeinterlaceApi

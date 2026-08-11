@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Custom Data
+   * @summary Get Encoding Custom Data
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof CustomdataApi

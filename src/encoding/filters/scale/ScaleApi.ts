@@ -49,7 +49,7 @@ export default class ScaleApi extends BaseAPI {
   }
 
   /**
-   * @summary Scale Filter Details
+   * @summary Get Scale Filter details
    * @param {string} filterId Id of the scale filter
    * @throws {BitmovinError}
    * @memberof ScaleApi

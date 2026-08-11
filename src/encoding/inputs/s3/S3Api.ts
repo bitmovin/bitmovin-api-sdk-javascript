@@ -49,7 +49,7 @@ export default class S3Api extends BaseAPI {
   }
 
   /**
-   * @summary S3 Input Details
+   * @summary Get S3 Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof S3Api

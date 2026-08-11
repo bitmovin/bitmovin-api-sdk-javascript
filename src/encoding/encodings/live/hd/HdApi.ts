@@ -18,7 +18,7 @@ export default class HdApi extends BaseAPI {
   }
 
   /**
-   * @summary Live Encoding Start Details
+   * @summary Get Live Encoding Channel Start Details
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof HdApi

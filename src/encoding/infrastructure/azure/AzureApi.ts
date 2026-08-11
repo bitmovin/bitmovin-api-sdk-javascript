@@ -21,7 +21,7 @@ export default class AzureApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Azure Account
+   * @summary Create Azure Account
    * @param {AzureAccount} azureAccount The Azure Account to be added
    * @throws {BitmovinError}
    * @memberof AzureApi
@@ -48,7 +48,7 @@ export default class AzureApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Account Details
+   * @summary Get Azure Account details
    * @param {string} infrastructureId Id of the Azure account
    * @throws {BitmovinError}
    * @memberof AzureApi

@@ -22,7 +22,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Embed SRT captions as 608/708 into Stream
+   * @summary Create SRT captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {SrtToCea608708Caption} srtToCea608708Caption The SRT captions to be embedded as 607/708 into Stream
@@ -40,7 +40,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SRT captions as 608/708 from Stream
+   * @summary Delete SRT captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
@@ -59,7 +59,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Embed SRT captions as 608/708 Details
+   * @summary Get SRT captions as 608/708 details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} captionsId Id of the caption.
@@ -78,7 +78,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary List SRT captions as 608/708 from Stream
+   * @summary List SRT captions as 608/708
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

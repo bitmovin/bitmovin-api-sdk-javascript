@@ -25,7 +25,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Variant Stream
+   * @summary Create Variant Stream
    * @param {string} manifestId Id of the hls manifest.
    * @param {StreamInfo} streamInfo The Variant Stream to be added
    * @throws {BitmovinError}
@@ -58,7 +58,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary Variant Stream Details
+   * @summary Get Variant Stream details
    * @param {string} manifestId Id of the hls manifest.
    * @param {string} streamId Id of the variant stream.
    * @throws {BitmovinError}
@@ -75,7 +75,7 @@ export default class StreamsApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Variant Streams
+   * @summary List Variant Streams
    * @param {string} manifestId Id of the hls manifest.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

@@ -18,7 +18,7 @@ export default class RtmpApi extends BaseAPI {
   }
 
   /**
-   * @summary RTMP Input Details
+   * @summary Get RTMP Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof RtmpApi

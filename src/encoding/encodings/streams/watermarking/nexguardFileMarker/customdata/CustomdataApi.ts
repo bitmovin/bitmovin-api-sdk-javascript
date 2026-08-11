@@ -16,7 +16,7 @@ export default class CustomdataApi extends BaseAPI {
   }
 
   /**
-   * @summary Nexguard file marker watermarking configuration Custom Data
+   * @summary Get Nexguard file marker watermarking configurations Custom Data
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} nexguardId Id of the nexguard file marker watermarking configuration.

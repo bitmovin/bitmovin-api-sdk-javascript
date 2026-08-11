@@ -49,7 +49,7 @@ export default class Eac3Api extends BaseAPI {
   }
 
   /**
-   * @summary E-AC3 Codec Configuration Details
+   * @summary Get E-AC3 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof Eac3Api

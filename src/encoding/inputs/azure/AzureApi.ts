@@ -48,7 +48,7 @@ export default class AzureApi extends BaseAPI {
   }
 
   /**
-   * @summary Azure Input Details
+   * @summary Get Azure Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof AzureApi

@@ -17,7 +17,7 @@ export default class DailyApi extends BaseAPI {
   }
 
   /**
-   * @summary List daily VoD encoding statistics within specific dates
+   * @summary List daily VOD encoding statistics within specific dates
    * @param {Date} from Start date, format: yyyy-MM-dd
    * @param {Date} to End date, format: yyyy-MM-dd
    * @throws {BitmovinError}

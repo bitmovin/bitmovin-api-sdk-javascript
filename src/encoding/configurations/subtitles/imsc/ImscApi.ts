@@ -49,7 +49,7 @@ export default class ImscApi extends BaseAPI {
   }
 
   /**
-   * @summary IMSC subtitle configuration details
+   * @summary Get IMSC subtitle configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof ImscApi

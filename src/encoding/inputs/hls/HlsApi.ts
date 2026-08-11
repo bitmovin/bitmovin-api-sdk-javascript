@@ -45,7 +45,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary HLS Input Details
+   * @summary Get HLS Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof HlsApi

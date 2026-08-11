@@ -20,7 +20,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Chunked Text Representation
+   * @summary Create Chunked Text Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -61,7 +61,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary Chunked Text Representation Details
+   * @summary Get Chunked Text Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -82,7 +82,7 @@ export default class ChunkedTextApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Chunked Text Representations
+   * @summary List Chunked Text Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

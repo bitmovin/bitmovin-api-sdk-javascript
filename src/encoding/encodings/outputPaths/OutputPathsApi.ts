@@ -16,7 +16,7 @@ export default class OutputPathsApi extends BaseAPI {
   }
 
   /**
-   * @summary Encoding Output Paths Retrieval
+   * @summary Get Encoding Output Paths
    * @param {string} encodingId Id of the encoding
    * @throws {BitmovinError}
    * @memberof OutputPathsApi

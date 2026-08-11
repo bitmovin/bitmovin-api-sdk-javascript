@@ -22,7 +22,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Convert SCC captions
+   * @summary Create SCC Caption Conversion
    * @param {string} encodingId Id of the encoding.
    * @param {ConvertSccCaption} convertSccCaption The SCC captions to be created
    * @throws {BitmovinError}
@@ -38,7 +38,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Convert SCC captions
+   * @summary Delete SCC Caption Conversion
    * @param {string} encodingId Id of the encoding.
    * @param {string} captionsId Id of the caption.
    * @throws {BitmovinError}
@@ -55,7 +55,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary Convert SCC captions Details
+   * @summary Get SCC Caption Conversion details
    * @param {string} encodingId Id of the encoding.
    * @param {string} captionsId Id of the caption.
    * @throws {BitmovinError}
@@ -72,7 +72,7 @@ export default class SccApi extends BaseAPI {
   }
 
   /**
-   * @summary List Convert SCC captions
+   * @summary List SCC Caption Conversions
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

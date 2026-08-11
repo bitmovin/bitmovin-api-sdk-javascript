@@ -33,7 +33,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete SRT input
+   * @summary Delete SRT Input
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof SrtApi
@@ -48,7 +48,7 @@ export default class SrtApi extends BaseAPI {
   }
 
   /**
-   * @summary SRT Input Details
+   * @summary Get SRT Input details
    * @param {string} inputId Id of the input
    * @throws {BitmovinError}
    * @memberof SrtApi

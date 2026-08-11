@@ -17,7 +17,7 @@ export default class KantarWatermarkApi extends BaseAPI {
   }
 
   /**
-   * @summary Create or replace the Kantar Watermark for an encoding
+   * @summary Create or replace Kantar Watermark
    * @param {string} encodingId Id of the encoding.
    * @param {KantarWatermark} kantarWatermark The Kantar Watermark to be created
    * @throws {BitmovinError}
@@ -33,7 +33,7 @@ export default class KantarWatermarkApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete the Kantar Watermark for an encoding
+   * @summary Delete Kantar Watermark
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof KantarWatermarkApi
@@ -48,7 +48,7 @@ export default class KantarWatermarkApi extends BaseAPI {
   }
 
   /**
-   * @summary Get the Kantar Watermark for an encoding
+   * @summary Get Kantar Watermark
    * @param {string} encodingId Id of the encoding.
    * @throws {BitmovinError}
    * @memberof KantarWatermarkApi

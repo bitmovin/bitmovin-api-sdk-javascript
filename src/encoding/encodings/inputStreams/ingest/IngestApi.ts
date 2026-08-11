@@ -19,7 +19,7 @@ export default class IngestApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Ingest Input Stream
+   * @summary Create Ingest Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {IngestInputStream} ingestInputStream The Ingest Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class IngestApi extends BaseAPI {
   }
 
   /**
-   * @summary Ingest Input Stream Details
+   * @summary Get Ingest Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the ingest input stream.
    * @throws {BitmovinError}

@@ -49,7 +49,7 @@ export default class VorbisApi extends BaseAPI {
   }
 
   /**
-   * @summary Vorbis Codec Configuration Details
+   * @summary Get Vorbis Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof VorbisApi

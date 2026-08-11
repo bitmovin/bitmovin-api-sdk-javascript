@@ -19,7 +19,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary Add VTT Representation
+   * @summary Create VTT Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -60,7 +60,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary VTT Representation Details
+   * @summary Get VTT Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -81,7 +81,7 @@ export default class VttApi extends BaseAPI {
   }
 
   /**
-   * @summary List all VTT Representations
+   * @summary List VTT Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

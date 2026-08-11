@@ -49,7 +49,7 @@ export default class EnhancedWatermarkApi extends BaseAPI {
   }
 
   /**
-   * @summary Enhanced Watermark Filter Details
+   * @summary Get Enhanced Watermark Filter details
    * @param {string} filterId Id of the enhanced Watermark Filter.
    * @throws {BitmovinError}
    * @memberof EnhancedWatermarkApi

@@ -23,7 +23,7 @@ export default class CmafApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CMAF Representation
+   * @summary Create CMAF Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -64,7 +64,7 @@ export default class CmafApi extends BaseAPI {
   }
 
   /**
-   * @summary CMAF Representation Details
+   * @summary Get CMAF Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -85,7 +85,7 @@ export default class CmafApi extends BaseAPI {
   }
 
   /**
-   * @summary List all CMAF Representations
+   * @summary List CMAF Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

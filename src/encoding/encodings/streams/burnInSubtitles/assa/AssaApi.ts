@@ -19,7 +19,7 @@ export default class AssaApi extends BaseAPI {
   }
 
   /**
-   * @summary Burn-In ASSA Subtitle into Stream
+   * @summary Create Burn-In ASSA Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {BurnInSubtitleAssa} burnInSubtitleAssa The Burn-In ASSA Subtitle to be added
@@ -37,7 +37,7 @@ export default class AssaApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Burn-In ASSA Subtitle from Stream
+   * @summary Delete Burn-In ASSA Subtitle
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
@@ -56,7 +56,7 @@ export default class AssaApi extends BaseAPI {
   }
 
   /**
-   * @summary Get Burn-In ASSA Subtitle Details
+   * @summary Get Burn-In ASSA Subtitle details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} subtitleId Id of the burn-in subtitle.
@@ -75,7 +75,7 @@ export default class AssaApi extends BaseAPI {
   }
 
   /**
-   * @summary List the Burn-In ASSA subtitles of a stream
+   * @summary List Burn-In ASSA Subtitles
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination

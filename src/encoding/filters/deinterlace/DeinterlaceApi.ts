@@ -49,7 +49,7 @@ export default class DeinterlaceApi extends BaseAPI {
   }
 
   /**
-   * @summary Deinterlace Filter Details
+   * @summary Get Deinterlace Filter details
    * @param {string} filterId Id of the Deinterlace Filter
    * @throws {BitmovinError}
    * @memberof DeinterlaceApi

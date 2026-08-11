@@ -18,7 +18,7 @@ export default class UsageReportsApi extends BaseAPI {
   }
 
   /**
-   * @summary List Email Notifications (All Usage Reports)
+   * @summary List Usage Report Email Notifications
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}
    * @memberof UsageReportsApi

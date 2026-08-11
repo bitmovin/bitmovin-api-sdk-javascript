@@ -22,7 +22,7 @@ export default class SpritesApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Sprite
+   * @summary Create Sprite
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {Sprite} sprite The Sprite to be added
@@ -59,7 +59,7 @@ export default class SpritesApi extends BaseAPI {
   }
 
   /**
-   * @summary Sprite Details
+   * @summary Get Sprite details
    * @param {string} encodingId Id of the encoding.
    * @param {string} streamId Id of the stream.
    * @param {string} spriteId Id of the sprite configuration.

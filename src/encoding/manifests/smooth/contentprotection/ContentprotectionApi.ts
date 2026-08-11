@@ -19,7 +19,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Content Protection to Smooth Streaming
+   * @summary Create Content Protection to Smooth Streaming
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {SmoothManifestContentProtection} smoothManifestContentProtection The Content Protection to be added
    * @throws {BitmovinError}
@@ -35,7 +35,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Delete Content Protection of Smooth Streaming
+   * @summary Delete Content Protection of Smooth Streaming Representation
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} protectionId Id of the content protection.
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class ContentprotectionApi extends BaseAPI {
   }
 
   /**
-   * @summary Content Protection of Smooth Streaming Representation Details
+   * @summary Get Content Protection of Smooth Streaming Representation details
    * @param {string} manifestId Id of the Smooth Streaming manifest.
    * @param {string} protectionId Id of the content protection.
    * @throws {BitmovinError}

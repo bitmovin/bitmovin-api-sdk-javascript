@@ -22,7 +22,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary Add CENC DRM to an MP4 muxing
+   * @summary Create CENC DRM to an MP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the mp4 fragment.
    * @param {CencDrm} cencDrm The CENC DRM to be created
@@ -59,7 +59,7 @@ export default class CencApi extends BaseAPI {
   }
 
   /**
-   * @summary CENC DRM Details of an MP4 muxing
+   * @summary Get CENC DRM from an MP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the MP4 muxing.
    * @param {string} drmId Id of the cenc drm.

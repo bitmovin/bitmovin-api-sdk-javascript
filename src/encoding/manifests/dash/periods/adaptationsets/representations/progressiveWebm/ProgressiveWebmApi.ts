@@ -19,7 +19,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Progressive WebM Representation
+   * @summary Create Progressive WebM Representation
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -60,7 +60,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary Progressive WebM Representation Details
+   * @summary Get Progressive WebM Representation details
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set
@@ -81,7 +81,7 @@ export default class ProgressiveWebmApi extends BaseAPI {
   }
 
   /**
-   * @summary List all Progressive WebM Representations
+   * @summary List Progressive WebM Representations
    * @param {string} manifestId Id of the manifest
    * @param {string} periodId Id of the period
    * @param {string} adaptationsetId Id of the adaptation set

@@ -22,7 +22,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Frame ID ID3 Tag to a Progressive TS muxing
+   * @summary Create Frame ID ID3 Tag to a Progressive TS muxing
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {FrameIdId3Tag} frameIdId3Tag The Frame ID ID3 Tag to be created
@@ -59,7 +59,7 @@ export default class FrameIdApi extends BaseAPI {
   }
 
   /**
-   * @summary Frame ID ID3 Tag Details of a Progressive TS muxing
+   * @summary Get Frame ID ID3 Tag of a Progressive TS muxing details
    * @param {string} encodingId ID of the Encoding.
    * @param {string} muxingId ID of the Progressive TS muxing
    * @param {string} id3TagId ID of the Frame ID ID3 Tag

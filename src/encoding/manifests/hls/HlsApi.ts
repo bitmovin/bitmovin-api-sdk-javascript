@@ -60,7 +60,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary HLS Manifest Details
+   * @summary Get HLS Manifest details
    * @param {string} manifestId Id of the HLS Manifest.
    * @throws {BitmovinError}
    * @memberof HlsApi
@@ -75,7 +75,7 @@ export default class HlsApi extends BaseAPI {
   }
 
   /**
-   * @summary Manifest Start Details
+   * @summary HLS Manifest Start Details
    * @param {string} manifestId ID of the manifest
    * @throws {BitmovinError}
    * @memberof HlsApi

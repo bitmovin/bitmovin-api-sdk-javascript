@@ -19,7 +19,7 @@ export default class H264PictureTimingApi extends BaseAPI {
   }
 
   /**
-   * @summary Add H264 Picture Timing Trimming Input Stream
+   * @summary Create H264 Picture Timing Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {H264PictureTimingTrimmingInputStream} h264PictureTimingTrimmingInputStream The H264 Picture Timing Trimming Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class H264PictureTimingApi extends BaseAPI {
   }
 
   /**
-   * @summary H264 Picture Timing Trimming Input Stream Details
+   * @summary Get H264 Picture Timing Trimming Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the H264 Picture Timing Trimming Input Stream.
    * @throws {BitmovinError}

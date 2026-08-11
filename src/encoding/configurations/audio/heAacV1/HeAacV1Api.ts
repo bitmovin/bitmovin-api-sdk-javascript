@@ -49,7 +49,7 @@ export default class HeAacV1Api extends BaseAPI {
   }
 
   /**
-   * @summary HE-AAC v1 Codec Configuration Details
+   * @summary Get HE-AAC v1 Codec Configuration details
    * @param {string} configurationId Id of the codec configuration
    * @throws {BitmovinError}
    * @memberof HeAacV1Api

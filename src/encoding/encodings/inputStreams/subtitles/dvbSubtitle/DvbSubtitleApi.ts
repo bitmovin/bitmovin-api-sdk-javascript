@@ -19,7 +19,7 @@ export default class DvbSubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary Add DVB Subtitle Input Stream
+   * @summary Create DVB Subtitle Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {DvbSubtitleInputStream} dvbSubtitleInputStream The DVB Subtitle Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class DvbSubtitleApi extends BaseAPI {
   }
 
   /**
-   * @summary DVB Subtitle Input Stream Details
+   * @summary Get DVB Subtitle Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the DVB Subtitle Input Stream.
    * @throws {BitmovinError}

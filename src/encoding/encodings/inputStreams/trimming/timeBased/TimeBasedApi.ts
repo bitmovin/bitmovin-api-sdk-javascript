@@ -19,7 +19,7 @@ export default class TimeBasedApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Time-Based Trimming Input Stream
+   * @summary Create Time-Based Trimming Input Stream
    * @param {string} encodingId Id of the encoding.
    * @param {TimeBasedTrimmingInputStream} timeBasedTrimmingInputStream The Time-Based Trimming Input Stream to be created
    * @throws {BitmovinError}
@@ -52,7 +52,7 @@ export default class TimeBasedApi extends BaseAPI {
   }
 
   /**
-   * @summary Time-Based Trimming Input Stream Details
+   * @summary Get Time-Based Trimming Input Stream details
    * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the Time-Based Trimming Input Stream.
    * @throws {BitmovinError}

@@ -19,7 +19,7 @@ export default class Scte35TriggersApi extends BaseAPI {
   }
 
   /**
-   * @summary Create SCTE 35 trigger
+   * @summary Create SCTE 35 Trigger
    * @param {string} encodingId Id of the encoding.
    * @param {Scte35Trigger} scte35Trigger The SCTE 35 trigger to be created
    * @throws {BitmovinError}
@@ -69,7 +69,7 @@ export default class Scte35TriggersApi extends BaseAPI {
   }
 
   /**
-   * @summary List all SCTE 35 triggers for an encoding
+   * @summary List SCTE 35 Triggers
    * @param {string} encodingId Id of the encoding.
    * @param {*} [queryParameters] query parameters for filtering, sorting and pagination
    * @throws {BitmovinError}

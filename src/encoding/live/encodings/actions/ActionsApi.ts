@@ -17,7 +17,7 @@ export default class ActionsApi extends BaseAPI {
   }
 
   /**
-   * @summary Update the ingest points of a Redundant RTMP Input
+   * @summary Update Ingest Points of a Redundant RTMP Input
    * @param {string} encodingId Id of the encoding.
    * @param {UpdateEncodingRtmpIngestPointRequest} updateEncodingRtmpIngestPointRequest The list of the RTMP ingest points to update.
    * @throws {BitmovinError}

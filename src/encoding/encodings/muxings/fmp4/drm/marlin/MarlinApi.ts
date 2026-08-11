@@ -22,7 +22,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary Add Marlin DRM to an fMP4 muxing
+   * @summary Create Marlin DRM to an fMP4 muxing
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing.
    * @param {MarlinDrm} marlinDrm The Marlin DRM to be created
@@ -59,7 +59,7 @@ export default class MarlinApi extends BaseAPI {
   }
 
   /**
-   * @summary Marlin DRM Details of an fMP4 muxing
+   * @summary Get Marlin DRM from an fMP4 muxing details
    * @param {string} encodingId Id of the encoding.
    * @param {string} muxingId Id of the fMP4 muxing
    * @param {string} drmId Id of the Marlin DRM configuration.
