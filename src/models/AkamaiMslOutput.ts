@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import AclEntry from './AclEntry';
 import AkamaiMslStreamFormat from './AkamaiMslStreamFormat';
 import AkamaiMslVersion from './AkamaiMslVersion';
+import MslPublishingAuthentication from './MslPublishingAuthentication';
 import Output from './Output';
 import OutputType from './OutputType';
 
@@ -39,11 +40,18 @@ export class AkamaiMslOutput extends Output {
   public streamFormat?: AkamaiMslStreamFormat;
 
   /**
-   * The Akamai MSL Version. Only MSL4 is supported at the moment. (required)
+   * The Akamai MSL Version. MSL4 and MSL5 are supported. (required)
    * @type {AkamaiMslVersion}
    * @memberof AkamaiMslOutput
    */
   public mslVersion?: AkamaiMslVersion;
+
+  /**
+   * MSL5 only. HTTP Digest publishing credentials. Sending this field with `mslVersion: MSL4` is rejected. Credentials (username, password) are write-only and not returned in responses. 
+   * @type {MslPublishingAuthentication}
+   * @memberof AkamaiMslOutput
+   */
+  public publishingAuthentication?: MslPublishingAuthentication;
 
   constructor(obj?: Partial<AkamaiMslOutput>) {
     super(obj);
@@ -54,6 +62,7 @@ export class AkamaiMslOutput extends Output {
     this.eventName = map(obj.eventName);
     this.streamFormat = map(obj.streamFormat);
     this.mslVersion = map(obj.mslVersion);
+    this.publishingAuthentication = map(obj.publishingAuthentication, MslPublishingAuthentication);
   }
 }
 

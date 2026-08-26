@@ -1,4 +1,5 @@
 import {map, mapArray} from '../common/Mapper';
+import SceneAnalysisMatchingSegment from './SceneAnalysisMatchingSegment';
 
 /**
  * @export
@@ -61,6 +62,13 @@ export class SceneAnalysisListItem {
    */
   public outputLanguageCodes?: string[];
 
+  /**
+   * The scene segment that best matches searchText. Present only for semantic-search requests with a non-blank searchText; omitted from ordinary list results.
+   * @type {SceneAnalysisMatchingSegment}
+   * @memberof SceneAnalysisListItem
+   */
+  public matchingSegment?: SceneAnalysisMatchingSegment;
+
   constructor(obj?: Partial<SceneAnalysisListItem>) {
     if(!obj) {
       return;
@@ -73,6 +81,7 @@ export class SceneAnalysisListItem {
     this.keywords = mapArray(obj.keywords);
     this.sceneCount = map(obj.sceneCount);
     this.outputLanguageCodes = mapArray(obj.outputLanguageCodes);
+    this.matchingSegment = map(obj.matchingSegment, SceneAnalysisMatchingSegment);
   }
 }
 

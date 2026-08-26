@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import MainSubject from './MainSubject';
+import ShotAdvisories from './ShotAdvisories';
 
 /**
  * Represents a continuous camera shot within a scene, containing detailed visual analysis including subjects, timing, and descriptive metadata
@@ -42,6 +43,13 @@ export class Shot {
    */
   public mainSubjects?: MainSubject[];
 
+  /**
+   * Content advisory detection results for this shot, such as tobacco or vaping imagery
+   * @type {ShotAdvisories}
+   * @memberof Shot
+   */
+  public shotAdvisories?: ShotAdvisories;
+
   constructor(obj?: Partial<Shot>) {
     if(!obj) {
       return;
@@ -51,6 +59,7 @@ export class Shot {
     this.detailedDescription = map(obj.detailedDescription);
     this.keywords = mapArray(obj.keywords);
     this.mainSubjects = mapArray(obj.mainSubjects, MainSubject);
+    this.shotAdvisories = map(obj.shotAdvisories, ShotAdvisories);
   }
 }
 

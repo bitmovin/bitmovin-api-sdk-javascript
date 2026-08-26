@@ -2,6 +2,7 @@ import {map, mapArray} from '../common/Mapper';
 import AiSceneAnalysisAssetDescription from './AiSceneAnalysisAssetDescription';
 import AiSceneAnalysisAutomaticAdPlacement from './AiSceneAnalysisAutomaticAdPlacement';
 import AiSceneAnalysisOutputLanguageCodes from './AiSceneAnalysisOutputLanguageCodes';
+import AiSceneAnalysisRegulatoryAdvisories from './AiSceneAnalysisRegulatoryAdvisories';
 
 /**
  * @export
@@ -29,6 +30,13 @@ export class AiSceneAnalysisFeatures {
    */
   public outputLanguageCodes?: AiSceneAnalysisOutputLanguageCodes;
 
+  /**
+   * AI scene analysis will screen the asset for content requiring a statutory on-screen advisory and report the findings per shot in the asset description. Requires assetDescription. Contact support to enable this feature for your organization. 
+   * @type {AiSceneAnalysisRegulatoryAdvisories}
+   * @memberof AiSceneAnalysisFeatures
+   */
+  public regulatoryAdvisories?: AiSceneAnalysisRegulatoryAdvisories;
+
   constructor(obj?: Partial<AiSceneAnalysisFeatures>) {
     if(!obj) {
       return;
@@ -36,6 +44,7 @@ export class AiSceneAnalysisFeatures {
     this.assetDescription = map(obj.assetDescription, AiSceneAnalysisAssetDescription);
     this.automaticAdPlacement = map(obj.automaticAdPlacement, AiSceneAnalysisAutomaticAdPlacement);
     this.outputLanguageCodes = map(obj.outputLanguageCodes, AiSceneAnalysisOutputLanguageCodes);
+    this.regulatoryAdvisories = map(obj.regulatoryAdvisories, AiSceneAnalysisRegulatoryAdvisories);
   }
 }
 
