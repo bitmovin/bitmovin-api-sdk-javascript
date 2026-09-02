@@ -2,7 +2,6 @@ import {map, mapArray} from '../common/Mapper';
 import AudioConfiguration from './AudioConfiguration';
 import CodecConfigType from './CodecConfigType';
 import DtsXChannelLayout from './DtsXChannelLayout';
-import MediaConfigBitrate from './MediaConfigBitrate';
 import OttLoudnessMode from './OttLoudnessMode';
 
 /**

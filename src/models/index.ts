@@ -592,7 +592,6 @@ export * from './Marketplace';
 export * from './MarlinDrm';
 export * from './MaxCtuSize';
 export * from './MaxTransformUnitSize';
-export * from './MediaConfigBitrate';
 export * from './MediaInfoType';
 export * from './MediaInfoTypeResponse';
 export * from './MediaStream';
