@@ -4,6 +4,7 @@ import {map, mapArray} from '../common/Mapper';
 import ChannelsApi from './channels/ChannelsApi';
 import LicensesApi from './licenses/LicensesApi';
 import CustomBuildsApi from './customBuilds/CustomBuildsApi';
+import TestingApi from './testing/TestingApi';
 
 /**
  * PlayerApi - object-oriented interface
@@ -15,11 +16,13 @@ export default class PlayerApi extends BaseAPI {
   public channels: ChannelsApi;
   public licenses: LicensesApi;
   public customBuilds: CustomBuildsApi;
+  public testing: TestingApi;
 
   constructor(configuration: Configuration) {
     super(configuration);
     this.channels = new ChannelsApi(configuration);
     this.licenses = new LicensesApi(configuration);
     this.customBuilds = new CustomBuildsApi(configuration);
+    this.testing = new TestingApi(configuration);
   }
 }

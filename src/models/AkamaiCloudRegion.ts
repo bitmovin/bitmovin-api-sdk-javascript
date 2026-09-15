@@ -3,6 +3,7 @@
  * @enum {string}
  */
 export enum AkamaiCloudRegion {
+  AU_MEL = 'AU_MEL',
   BR_GRU = 'BR_GRU',
   ES_MAD = 'ES_MAD',
   FR_PAR = 'FR_PAR',
