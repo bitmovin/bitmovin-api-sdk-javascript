@@ -1,0 +1,14 @@
+/**
+ * @export
+ * @enum {string}
+ */
+export enum AiSceneAnalysisLiveSourceGapReason {
+  SOURCE_DISCONNECTED = 'SOURCE_DISCONNECTED',
+  PROCESSING_MEDIA_PRESSURE = 'PROCESSING_MEDIA_PRESSURE',
+  ANALYSIS_LAG = 'ANALYSIS_LAG',
+  WINDOW_BUILD_FAILED = 'WINDOW_BUILD_FAILED',
+  FINALIZATION_BACKLOG = 'FINALIZATION_BACKLOG'
+}
+
+export default AiSceneAnalysisLiveSourceGapReason;
+
