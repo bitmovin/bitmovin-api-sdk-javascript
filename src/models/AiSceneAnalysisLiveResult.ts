@@ -38,6 +38,13 @@ export class AiSceneAnalysisLiveResult {
   public producedAt?: Date;
 
   /**
+   * UTC presentation-clock time in Unix milliseconds corresponding to media time zero. This origin is fixed for the Live Analysis; coverage, observation, and source-gap times remain relative to it. It is not the source capture time or result publication time. (required)
+   * @type {number}
+   * @memberof AiSceneAnalysisLiveResult
+   */
+  public mediaTimeOriginUnixMs?: number;
+
+  /**
    * Whether AI analysis produced this as the final result generation. This does not by itself imply that the Analysis completed successfully. (required)
    * @type {boolean}
    * @memberof AiSceneAnalysisLiveResult
@@ -87,6 +94,7 @@ export class AiSceneAnalysisLiveResult {
     this.encodingId = map(obj.encodingId);
     this.sequence = map(obj.sequence);
     this.producedAt = map(obj.producedAt, Date);
+    this.mediaTimeOriginUnixMs = map(obj.mediaTimeOriginUnixMs);
     this.isFinal = map(obj.isFinal);
     this.analyzedStartTimeSeconds = map(obj.analyzedStartTimeSeconds);
     this.analyzedEndTimeSeconds = map(obj.analyzedEndTimeSeconds);
