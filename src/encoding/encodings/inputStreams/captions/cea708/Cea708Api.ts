@@ -36,7 +36,7 @@ export default class Cea708Api extends BaseAPI {
 
   /**
    * @summary Delete CEA 708 Input Stream
-   * @param {string} encodingId Id of the Encoding
+   * @param {string} encodingId Id of the encoding.
    * @param {string} inputStreamId Id of the CEA 708 input stream.
    * @throws {BitmovinError}
    * @memberof Cea708Api

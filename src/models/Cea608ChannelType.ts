@@ -1,5 +1,5 @@
 /**
- * Subtitle channel track
+ * CEA-608 caption channel, as defined in ANSI/CTA-608-E. Only the primary channel of each field is selectable.
  * @export
  * @enum {string}
  */

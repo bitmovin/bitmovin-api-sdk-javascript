@@ -7,21 +7,21 @@ import BitmovinResponse from './BitmovinResponse';
  */
 export class ResetLiveManifestTimeShift extends BitmovinResponse {
   /**
-   * Determines how many seconds will be left in the manifest after segments are removed. If this is not set, all but one segment will be removed. 
+   * Specifies how many seconds of content remain in the manifest after older segments are removed. At least one segment is always retained. If neither `residualPeriodInSeconds` nor `offsetInSeconds` is set, all segments except the most recent are removed. For DASH manifests that use SegmentTemplate, the retained duration also includes the value configured for `liveEdgeOffset`. 
    * @type {number}
    * @memberof ResetLiveManifestTimeShift
    */
   public residualPeriodInSeconds?: number;
 
   /**
-   * Offset in seconds from the start of the live event, defining the point from which all segments within that duration will be removed from the given manifests. E.g.: The segment length is 2 seconds and a timeshift of 120 seconds (2 minutes) is configured.  The manifest contains 60 segments with the last segment number being 80 (`segment_80.ts`).  This means the manifest contains `segment_20.ts` to `segment_80.ts` (timeshift of 2 minutes equals 60 segments in manifest) If you set `offsetInSeconds` to `120`, all segments below segment number 60 (`segment_60.ts`) will be removed. (`targetSegmentNumber = offsetInSeconds / segmentLength`) The manifests will then contain `segment_60.ts` to `segment_80.ts` *Note:* Only `offsetInSeconds` or `residualPeriodInSeconds` can be set. 
+   * Specifies an offset, in seconds, from the start of the live event. All segments before this position are removed from the affected manifests. For example, assume a segment length of 2 seconds and a configured `timeshift` of 120 seconds (2 minutes). If the most recent segment is `segment_80.ts`, the manifest contains 60 segments, from `segment_21.ts` through `segment_80.ts`. Setting `offsetInSeconds` to `120` sets the target segment number to 60 (`targetSegmentNumber = offsetInSeconds / segmentLength`). All segments before `segment_60.ts` are removed. Each affected manifest then contains `segment_60.ts` through `segment_80.ts`.  *Note:* Do not set both `offsetInSeconds` and `residualPeriodInSeconds`. 
    * @type {number}
    * @memberof ResetLiveManifestTimeShift
    */
   public offsetInSeconds?: number;
 
   /**
-   * The ids of the manifests to update. If this property is not set, all manifests tied to the encoding are updated.
+   * The IDs of the manifests to update. If omitted, all supported manifests associated with the encoding are updated. HLS live manifests are supported. DASH live manifests require encoder version 2.235.0 or later.
    * @type {string[]}
    * @memberof ResetLiveManifestTimeShift
    */
