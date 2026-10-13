@@ -31,6 +31,13 @@ export class AiSceneAnalysisLiveCreateRequest {
   public cloudRegion?: CloudRegion;
 
   /**
+   * Encoder release for the backing Live Encoding, using the same values and validation as `Encoding.encoderVersion` (for example, `LATEST` or a supported release version). Passed unchanged to the Encoding Resource Service. If omitted, the server default is used. Selects the full encoder release; component header overrides remain separate.
+   * @type {string}
+   * @memberof AiSceneAnalysisLiveCreateRequest
+   */
+  public encoderVersion?: string;
+
+  /**
    * Destinations for the stream recording (required)
    * @type {AiSceneAnalysisLiveRecordingRequest}
    * @memberof AiSceneAnalysisLiveCreateRequest
@@ -51,6 +58,7 @@ export class AiSceneAnalysisLiveCreateRequest {
     this.name = map(obj.name);
     this.streamKey = map(obj.streamKey);
     this.cloudRegion = map(obj.cloudRegion);
+    this.encoderVersion = map(obj.encoderVersion);
     this.recording = map(obj.recording, AiSceneAnalysisLiveRecordingRequest);
     this.outputs = mapArray(obj.outputs, AiSceneAnalysisLiveOutput);
   }

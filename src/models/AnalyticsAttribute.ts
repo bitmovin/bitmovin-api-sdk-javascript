@@ -121,6 +121,7 @@ export enum AnalyticsAttribute {
   ISP = 'ISP',
   LANGUAGE = 'LANGUAGE',
   LATENCY = 'LATENCY',
+  LATENCY_DELTA = 'LATENCY_DELTA',
   LICENSE_KEY = 'LICENSE_KEY',
   M3U8_URL = 'M3U8_URL',
   MINUTE = 'MINUTE',
