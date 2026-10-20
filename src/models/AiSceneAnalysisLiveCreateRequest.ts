@@ -45,7 +45,7 @@ export class AiSceneAnalysisLiveCreateRequest {
   public recording?: AiSceneAnalysisLiveRecordingRequest;
 
   /**
-   * Destinations for cumulative AI analysis results (required)
+   * Destinations for incremental Live Analysis result batches (required)
    * @type {AiSceneAnalysisLiveOutput[]}
    * @memberof AiSceneAnalysisLiveCreateRequest
    */

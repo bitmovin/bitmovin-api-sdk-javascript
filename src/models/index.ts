@@ -66,6 +66,7 @@ export * from './AiSceneAnalysisAutomaticAdPlacement';
 export * from './AiSceneAnalysisFeatures';
 export * from './AiSceneAnalysisLiveCreateRequest';
 export * from './AiSceneAnalysisLiveError';
+export * from './AiSceneAnalysisLiveKeyMoment';
 export * from './AiSceneAnalysisLiveObservation';
 export * from './AiSceneAnalysisLiveOutput';
 export * from './AiSceneAnalysisLiveRecording';

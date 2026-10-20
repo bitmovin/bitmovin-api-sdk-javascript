@@ -7,7 +7,7 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class AiSceneAnalysisLiveObservation {
   /**
-   * Stable opaque observation ID that remains unchanged across cumulative result generations (required)
+   * Stable opaque observation ID that remains unchanged during the observation's lifetime and is never reused after removal (required)
    * @type {string}
    * @memberof AiSceneAnalysisLiveObservation
    */

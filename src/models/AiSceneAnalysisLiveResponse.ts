@@ -46,7 +46,7 @@ export class AiSceneAnalysisLiveResponse {
   public recording?: AiSceneAnalysisLiveRecording;
 
   /**
-   * Resolved Encoding Output ID references for cumulative AI analysis results (required)
+   * Resolved Encoding Output ID references for incremental Live Analysis result batches (required)
    * @type {EncodingOutput[]}
    * @memberof AiSceneAnalysisLiveResponse
    */
