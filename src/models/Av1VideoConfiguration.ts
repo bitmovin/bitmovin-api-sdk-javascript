@@ -1,5 +1,6 @@
 import {map, mapArray} from '../common/Mapper';
 import AutoLevelSetup from './AutoLevelSetup';
+import Av1DetailPreservationMode from './Av1DetailPreservationMode';
 import Av1DynamicRangeFormat from './Av1DynamicRangeFormat';
 import Av1PresetConfiguration from './Av1PresetConfiguration';
 import CodecConfigType from './CodecConfigType';
@@ -44,6 +45,13 @@ export class Av1VideoConfiguration extends VideoConfiguration {
   public maxLevel?: LevelAv1;
 
   /**
+   * Tunes the encoder to preserve film grain and fine detail. Defaults to OFF.
+   * @type {Av1DetailPreservationMode}
+   * @memberof Av1VideoConfiguration
+   */
+  public detailPreservationMode?: Av1DetailPreservationMode;
+
+  /**
    * Configures what kind of dynamic range the output should conform to.
    * @type {Av1DynamicRangeFormat}
    * @memberof Av1VideoConfiguration
@@ -79,6 +87,7 @@ export class Av1VideoConfiguration extends VideoConfiguration {
     this.presetConfiguration = map(obj.presetConfiguration);
     this.autoLevelSetup = map(obj.autoLevelSetup);
     this.maxLevel = map(obj.maxLevel);
+    this.detailPreservationMode = map(obj.detailPreservationMode);
     this.dynamicRangeFormat = map(obj.dynamicRangeFormat);
     this.masterDisplay = map(obj.masterDisplay);
     this.maxContentLightLevel = map(obj.maxContentLightLevel);
