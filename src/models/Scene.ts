@@ -11,60 +11,70 @@ import Shot from './Shot';
  */
 export class Scene {
   /**
+   * Short AI-generated title describing the scene.
    * @type {string}
    * @memberof Scene
    */
   public title?: string;
 
   /**
+   * Start time of the scene in seconds from the beginning of the video.
    * @type {number}
    * @memberof Scene
    */
   public startInSeconds?: number;
 
   /**
+   * End time of the scene in seconds from the beginning of the video.
    * @type {number}
    * @memberof Scene
    */
   public endInSeconds?: number;
 
   /**
+   * Identifier assigned to this scene within the analysis result.
    * @type {string}
    * @memberof Scene
    */
   public id?: string;
 
   /**
+   * Structured description of this scene.
    * @type {Content}
    * @memberof Scene
    */
   public content?: Content;
 
   /**
+   * Concise summary of the scene.
    * @type {string}
    * @memberof Scene
    */
   public summary?: string;
 
   /**
+   * Detailed description of the scene, providing more context than summary.
    * @type {string}
    * @memberof Scene
    */
   public verboseSummary?: string;
 
   /**
+   * Sensitive topics identified in this scene, expressed as free text rather than taxonomy identifiers. (required)
    * @type {string[]}
    * @memberof Scene
    */
   public sensitiveTopics?: string[];
 
   /**
+   * Free-text keywords describing this scene. Preserve the returned spelling and case. (required)
    * @type {string[]}
    * @memberof Scene
    */
   public keywords?: string[];
 
   /**
+   * IAB classification of this scene.
    * @type {IABTaxonomy}
    * @memberof Scene
    */
@@ -78,13 +88,14 @@ export class Scene {
   public type?: SceneType;
 
   /**
-   * A detailed breakdown of individual camera shots within this scene, providing granular analysis of visual content and subjects
+   * Camera shots with available analysis associated with this scene. The list can be empty or omitted and need not include every shot.
    * @type {Shot[]}
    * @memberof Scene
    */
   public shots?: Shot[];
 
   /**
+   * Suitability assessment for an ad break at the end of this scene. This does not confirm that an ad was placed.
    * @type {AdOpportunity}
    * @memberof Scene
    */

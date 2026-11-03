@@ -14,6 +14,7 @@ export class AiSceneAnalysisAssetDescription {
   public filename?: string;
 
   /**
+   * Output destinations in which the generated asset-description JSON files are stored.
    * @type {EncodingOutput[]}
    * @memberof AiSceneAnalysisAssetDescription
    */

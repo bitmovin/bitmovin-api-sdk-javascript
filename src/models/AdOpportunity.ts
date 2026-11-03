@@ -6,14 +6,14 @@ import {map, mapArray} from '../common/Mapper';
  */
 export class AdOpportunity {
   /**
-   * The reason why the scene was rated with a certain score
+   * Explanation of the scene boundary's suitability for an ad break, including low or zero suitability.
    * @type {string}
    * @memberof AdOpportunity
    */
   public reason?: string;
 
   /**
-   * Score from 0.0 to 1.0 rating the ad placement suitability at the end of a scene based on content analysis
+   * Suitability of placing an ad break at the end of the scene. Higher scores indicate greater suitability. A score of 0.5 can also mean that no assessment is available.
    * @type {number}
    * @memberof AdOpportunity
    */

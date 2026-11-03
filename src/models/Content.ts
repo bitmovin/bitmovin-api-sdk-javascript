@@ -10,24 +10,28 @@ import Setting from './Setting';
  */
 export class Content {
   /**
+   * Selected people or characters described in this scene. An empty or omitted list can mean that no characters were identified or that character descriptions were unavailable. (required)
    * @type {Character[]}
    * @memberof Content
    */
   public characters?: Character[];
 
   /**
+   * Selected notable objects described in this scene; not an exhaustive object inventory. (required)
    * @type {SceneObject[]}
    * @memberof Content
    */
   public objects?: SceneObject[];
 
   /**
+   * Places and environmental conditions described in this scene. More than one setting can be reported. (required)
    * @type {Setting[]}
    * @memberof Content
    */
   public settings?: Setting[];
 
   /**
+   * Narrative dynamics of this scene.
    * @type {SceneDynamics}
    * @memberof Content
    */

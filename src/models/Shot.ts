@@ -3,7 +3,7 @@ import MainSubject from './MainSubject';
 import ShotAdvisories from './ShotAdvisories';
 
 /**
- * Represents a continuous camera shot within a scene, containing detailed visual analysis including subjects, timing, and descriptive metadata
+ * A detected shot associated with one scene. A shot can cross a scene boundary or lie entirely outside its associated scene. Use the shot's own timestamps to locate its content.
  * @export
  * @class Shot
  */
@@ -23,28 +23,28 @@ export class Shot {
   public endInSeconds?: number;
 
   /**
-   * A comprehensive textual description of the visual content, action, and context within this shot
+   * Description of the shot's visual content, action and context.
    * @type {string}
    * @memberof Shot
    */
   public detailedDescription?: string;
 
   /**
-   * A list of relevant keywords and tags that describe the content, themes, or notable elements in this shot
+   * Keywords describing the shot's content, themes or notable elements.
    * @type {string[]}
    * @memberof Shot
    */
   public keywords?: string[];
 
   /**
-   * A collection of the primary subjects or objects detected and tracked within this shot, including their positions and characteristics
+   * Selected subjects or objects identified in this shot.
    * @type {MainSubject[]}
    * @memberof Shot
    */
   public mainSubjects?: MainSubject[];
 
   /**
-   * Content advisory detection results for this shot, such as tobacco or vaping imagery
+   * Content advisory results for this shot, or null when no assessment is available. Availability depends on whether advisory analysis was enabled and supported by the analysis version.
    * @type {ShotAdvisories}
    * @memberof Shot
    */

@@ -1,13 +1,13 @@
 import {map, mapArray} from '../common/Mapper';
 
 /**
- * Represents a main subject or object detected within a shot, including its classification, spatial position, and appearance timing
+ * A subject or object identified in a shot. Positions describe sampled appearances, not continuous tracking.
  * @export
  * @class MainSubject
  */
 export class MainSubject {
   /**
-   * The category or type of the detected subject based on the YOLOv8 OIv7 (Open Images V7) object detection model (e.g., 'person', 'vehicle', 'building') (required)
+   * Category of the subject, usually an Open Images V7 class name such as Person or Vehicle. Other values can occur. Retains its original value in language-specific results. (required)
    * @type {string}
    * @memberof MainSubject
    */
@@ -21,7 +21,7 @@ export class MainSubject {
   public description?: string;
 
   /**
-   * The timestamp in seconds when this subject first appears or is most prominently visible in the shot (required)
+   * Time in seconds from the start of this shot when the subject first appears. (required)
    * @type {number}
    * @memberof MainSubject
    */
@@ -41,6 +41,13 @@ export class MainSubject {
    */
   public centerY?: number;
 
+  /**
+   * Bounding box at the subject's sampled appearance, in [ymin, xmin, ymax, xmax] order. Coordinates use a 0-1000 scale with a top-left origin, normalized independently against the full frame height and width. Omitted when no bounding box is available; the center coordinates remain valid.
+   * @type {number[]}
+   * @memberof MainSubject
+   */
+  public box2d?: number[];
+
   constructor(obj?: Partial<MainSubject>) {
     if(!obj) {
       return;
@@ -50,6 +57,7 @@ export class MainSubject {
     this.appearanceTimeInSeconds = map(obj.appearanceTimeInSeconds);
     this.centerX = map(obj.centerX);
     this.centerY = map(obj.centerY);
+    this.box2d = mapArray(obj.box2d);
   }
 }
 

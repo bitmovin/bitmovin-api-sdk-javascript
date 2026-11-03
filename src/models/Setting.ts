@@ -8,18 +8,21 @@ import Location from './Location';
  */
 export class Setting {
   /**
+   * Location of the scene.
    * @type {Location}
    * @memberof Setting
    */
   public location?: Location;
 
   /**
+   * Time of day described by the analysis, in free text rather than a fixed vocabulary.
    * @type {string}
    * @memberof Setting
    */
   public timeOfDay?: string;
 
   /**
+   * Description of the setting's atmosphere.
    * @type {Atmosphere}
    * @memberof Setting
    */

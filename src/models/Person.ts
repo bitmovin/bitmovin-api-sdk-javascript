@@ -7,12 +7,14 @@ import Department from './Department';
  */
 export class Person {
   /**
+   * Name of the credited person extracted from the credit text.
    * @type {string}
    * @memberof Person
    */
   public name?: string;
 
   /**
+   * Credited role, or the portrayed character for acting credits when available.
    * @type {string}
    * @memberof Person
    */
