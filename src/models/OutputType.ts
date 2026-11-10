@@ -15,7 +15,8 @@ export enum OutputType {
   AKAMAI_MSL = 'AKAMAI_MSL',
   LIVE_MEDIA_INGEST = 'LIVE_MEDIA_INGEST',
   GCS_SERVICE_ACCOUNT = 'GCS_SERVICE_ACCOUNT',
-  CDN = 'CDN'
+  CDN = 'CDN',
+  MOQ = 'MOQ'
 }
 
 export default OutputType;

@@ -606,6 +606,8 @@ export * from './MessageType';
 export * from './Metadata';
 export * from './MinCodingUnitSize';
 export * from './MjpegVideoConfiguration';
+export * from './MoqDraftVersion';
+export * from './MoqOutput';
 export * from './MotionSearch';
 export * from './Mp2AudioConfiguration';
 export * from './Mp3AudioConfiguration';

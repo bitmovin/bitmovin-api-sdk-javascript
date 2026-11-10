@@ -11,6 +11,7 @@ import GcsServiceAccountOutput from './GcsServiceAccountOutput';
 import GenericS3Output from './GenericS3Output';
 import LiveMediaIngestOutput from './LiveMediaIngestOutput';
 import LocalOutput from './LocalOutput';
+import MoqOutput from './MoqOutput';
 import OutputType from './OutputType';
 import S3Output from './S3Output';
 import S3RoleBasedOutput from './S3RoleBasedOutput';
@@ -29,7 +30,8 @@ export type OutputUnion =
   SftpOutput |
   AkamaiMslOutput |
   LiveMediaIngestOutput |
-  GcsServiceAccountOutput;
+  GcsServiceAccountOutput |
+  MoqOutput;
 
 /**
  * @export
@@ -50,7 +52,8 @@ export class Output extends BitmovinResource {
     "SFTP": 'SftpOutput',
     "AKAMAI_MSL": 'AkamaiMslOutput',
     "LIVE_MEDIA_INGEST": 'LiveMediaIngestOutput',
-    "GCS_SERVICE_ACCOUNT": 'GcsServiceAccountOutput'
+    "GCS_SERVICE_ACCOUNT": 'GcsServiceAccountOutput',
+    "MOQ": 'MoqOutput'
   };
 
   /**

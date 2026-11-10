@@ -14,6 +14,7 @@ import SftpApi from './sftp/SftpApi';
 import AkamaiMslApi from './akamaiMsl/AkamaiMslApi';
 import AkamaiNetstorageApi from './akamaiNetstorage/AkamaiNetstorageApi';
 import LiveMediaIngestApi from './liveMediaIngest/LiveMediaIngestApi';
+import MoqApi from './moq/MoqApi';
 import CdnApi from './cdn/CdnApi';
 import CheckOutputPermissionsRequest from '../../models/CheckOutputPermissionsRequest';
 import CheckOutputPermissionsResponse from '../../models/CheckOutputPermissionsResponse';
@@ -42,6 +43,7 @@ export default class OutputsApi extends BaseAPI {
   public akamaiMsl: AkamaiMslApi;
   public akamaiNetstorage: AkamaiNetstorageApi;
   public liveMediaIngest: LiveMediaIngestApi;
+  public moq: MoqApi;
   public cdn: CdnApi;
 
   constructor(configuration: Configuration) {
@@ -59,6 +61,7 @@ export default class OutputsApi extends BaseAPI {
     this.akamaiMsl = new AkamaiMslApi(configuration);
     this.akamaiNetstorage = new AkamaiNetstorageApi(configuration);
     this.liveMediaIngest = new LiveMediaIngestApi(configuration);
+    this.moq = new MoqApi(configuration);
     this.cdn = new CdnApi(configuration);
   }
 
